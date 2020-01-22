@@ -50,8 +50,10 @@ class ItemsModel extends CI_Model {
 	}
 
 	public function countItems() {
-
+		return $this->db->count_all("items");
 	}
+
+
 	// *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "items as a";
 	//var $join_table = "customer_vt as b";
@@ -124,10 +126,7 @@ class ItemsModel extends CI_Model {
 		return $this->db->count_all_results();
 	}
 
-	public function countItems() {
-
-	}
-
+	
 	
 	//*****************end*********************
 

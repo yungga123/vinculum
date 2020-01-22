@@ -22,7 +22,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            <!-- small box -->
 	            <div class="small-box bg-info">
 	              <div class="inner">
-	                <h3>150</h3>
+	                <h3><?php echo $countItem ?></h3>
 
 	                <p>Registered Items</p>
 	              </div>
@@ -66,7 +66,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>2102</h3>
+                <h3><?php echo $countDispatch ?></h3>
 
                 <p>Dispatch Forms</p>
               </div>

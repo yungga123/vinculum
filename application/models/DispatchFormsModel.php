@@ -100,6 +100,10 @@ class DispatchFormsModel extends CI_Model {
 		
 	}
 
+	public function countDispatch() {
+		return $this->db->count_all('dispatch_forms');
+	}
+
 // *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "dispatch_forms as a";
 	var $join_table = "customer_vt as b";
