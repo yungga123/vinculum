@@ -128,17 +128,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 										<select id="item_type" name="item_type" class="form-control item_type_edit" value="">
 											<option value="">---Please Select---</option>
-											<option>CCTV</option>
-											<option>Time Attendance and Access Control</option>
-											<option>FDAS</option>
-											<option>Network Management</option>
-											<option>E-Fence</option>
-											<option>PABGM</option>
-											<option>PABX</option>
-											<option>Monitor</option>
-											<option>Cables</option>
-											<option>MDVR</option>
-											<option>Accessories</option>
+											<option>Direct</option>
+											<option>Indirect</option>
 										</select>
 									</p>
 								</div>

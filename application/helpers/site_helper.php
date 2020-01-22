@@ -14,6 +14,7 @@ if(!function_exists('html_variable')) {
 			'items_menu_display' => '',
 			'registration' => '',
 			'ul_items' => '',
+			'indirect_list' => '',
 			'item_stocks' => '',
 			'pullout_items' => '',
 			'listof_pullouts' => '',

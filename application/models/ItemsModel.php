@@ -22,7 +22,6 @@ class ItemsModel extends CI_Model {
 		$this->db->order_by("itemName","asc");
 		return $this->db->get()->result();
 	}
-
 	
 
 	public function getSpecificMasterItems($item_code){
@@ -130,13 +129,8 @@ class ItemsModel extends CI_Model {
 	
 	//*****************end*********************
 
-	// public function getItems(){
-	// 	// return $this->db->get('items')->result();
-	// 	//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
-	// 	$this->db->select("itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder");
-	// 	$this->db->from("items");
-	// 	return $this->db->get()->result();
-	// }
+
+
 
 	// *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table2 = "items as a";

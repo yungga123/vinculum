@@ -14,6 +14,30 @@ class ItemsController extends CI_Controller
 			$data['items_menu_display'] = ' block';
 			$data['registration'] = ' active';
 			$data['ul_items'] = ' active';
+			$data['category'] = 'Direct';
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('items/items_masterlist/items_masterlist');
+			$this->load->view('templates/footer');
+		} else {
+			redirect('','refresh');
+		}
+
+		
+	}
+
+	public function indirect_items_masterlist() {
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Masterlist of Items';
+			$data['items_menu_status'] = ' menu-open';
+			$data['items_menu_display'] = ' block';
+			$data['indirect_list'] = ' active';
+			$data['ul_items'] = ' active';
+			$data['category'] = 'Indirect';
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -348,7 +372,7 @@ class ItemsController extends CI_Controller
 	}
 
 
-	public function get_masterlist() {
+	public function get_masterlist($item_category) {
 
 		$button_edit = '<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-default">
           Launch Default Modal

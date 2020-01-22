@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    	"serverSide": true,
 	            "order":[],
 	            "ajax":{
-	                url: "<?php echo site_url('ItemsController/get_masterlist') ?>",
+	                url: "<?php echo site_url('ItemsController/get_masterlist/'.$category) ?>",
 	                type: "POST"
 	            },
 	            "columnDefs": [

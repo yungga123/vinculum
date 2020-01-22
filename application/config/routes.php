@@ -60,9 +60,11 @@ $route['login'] = 'LoginController';
 
 //Item Controller
 $route['masterlistofitems'] = 'ItemsController/items_masterlist';
+$route['masterlistofindirectitems'] = 'ItemsController/indirect_items_masterlist';
 $route['addnewitem'] = 'ItemsController/register_new_item';
 $route['print-items'] = 'ItemsController/print_items';
 $route['actual-stocks'] = 'ItemsController/item_stocks';
+
 
 //Logs Controller
 $route['logs'] = 'LogsController';

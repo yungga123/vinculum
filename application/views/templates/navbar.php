@@ -74,7 +74,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            <a href="javascript:void(0)" class="nav-link<?php echo $ul_items ?>">
 	              <i class="nav-icon fas fa-cubes"></i>
 	              <p>
-	                Direct Items
+	                Items Inventory
 	                <i class="fas fa-angle-left right"></i>
 	              </p>
 	            </a>
@@ -83,10 +83,17 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	              <li class="nav-item">
 	                <a href="<?php echo site_url('masterlistofitems') ?>" class="nav-link<?php echo $registration ?>">
 	                  <i class="far fa-circle nav-icon"></i>
-	                  <p>Items Masterlist</p>
+	                  <p>Direct Items List</p>
 	                </a>
 	              </li>
 
+	              <li class="nav-item">
+	                <a href="<?php echo site_url('masterlistofindirectitems') ?>" class="nav-link<?php echo $indirect_list ?>">
+	                  <i class="far fa-circle nav-icon"></i>
+	                  <p>Indirect Item List</p>
+	                </a>
+	              </li>
+	              
 	              <li class="nav-item">
 	                <a href="<?php echo site_url('actual-stocks') ?>" class="nav-link<?php echo $item_stocks ?>">
 	                  <i class="far fa-circle nav-icon"></i>
