@@ -49,6 +49,10 @@ class ItemsModel extends CI_Model {
 		return $this->db->query("UPDATE items SET stocks = stocks + ".$stocksToAdd." WHERE itemCode = '".$itemCode."'");
 	}
 
+
+	public function count_items() {
+		
+	}
 	// *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "items as a";
 	//var $join_table = "customer_vt as b";
