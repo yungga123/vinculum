@@ -50,7 +50,7 @@ class ItemsModel extends CI_Model {
 	}
 
 	public function countItems() {
-		
+
 	}
 	// *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "items as a";
@@ -122,6 +122,10 @@ class ItemsModel extends CI_Model {
 		$this->db->select("*");
 		$this->db->from($this->table);
 		return $this->db->count_all_results();
+	}
+
+	public function countItems() {
+		
 	}
 	//*****************end*********************
 
