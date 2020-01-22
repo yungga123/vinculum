@@ -1,0 +1,54 @@
+<?php
+
+
+
+
+if(!function_exists('html_variable')) {
+  function html_variable() {
+  
+		$data = [
+			//html variables
+			'title' => '',
+			'dashboard' => '',
+			'items_menu_status' => '',
+			'items_menu_display' => '',
+			'registration' => '',
+			'ul_items' => '',
+			'item_stocks' => '',
+			'pullout_items' => '',
+			'listof_pullouts' => '',
+			'ul_tools' => '',
+			'listof_tools' => '',
+			'pullout_tools' => '',
+			'consumeables' => '',
+			'history' => '',
+			'listof_warranty' => '',
+			'ul_reports' => '',
+			'daily_reports' => '',
+			'weekly_reports' => '',
+			'monthly_reports' => '',
+			'ul_salesforms' => '',
+			'make_quote' => '',
+			'make_drform' => '',
+			'make_warrantyform' => '',
+			'ul_formslisting' => '',
+			'list_quote' => '',
+			'list_drform' => '',
+			'list_warrantyform' => '',
+			'schedules' => '',
+			'ul_forms' => '',
+			'Generate_dispatch' => '',
+			'dispatch_menu_status' => '',
+			'dispatch_forms' => '',
+			'dispatch_list' => '',
+			'dispatch' => '',
+			'salesdispatch' => '',
+			'servicecall' => '',
+			'ul_servicereport' => '',
+			'encode_sr' => '',
+			'sr_listing' => ''
+		];
+
+    return $data;
+  }
+}
