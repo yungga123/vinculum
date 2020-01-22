@@ -51,7 +51,7 @@ class ItemsModel extends CI_Model {
 
 
 	public function count_items() {
-		
+		fdsnklsdfkl;
 	}
 	// *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "items as a";
