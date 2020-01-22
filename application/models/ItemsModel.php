@@ -125,8 +125,10 @@ class ItemsModel extends CI_Model {
 	}
 
 	public function countItems() {
-		
+
 	}
+
+	
 	//*****************end*********************
 
 	// public function getItems(){
