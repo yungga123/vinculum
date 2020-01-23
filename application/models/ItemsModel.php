@@ -77,10 +77,13 @@ class ItemsModel extends CI_Model {
 			"encoder"
 		);
 
+
+
 	public function itemMasterlist_query(){
 
 		$this->db->select($this->select_column);
 		$this->db->from($this->table);
+		$this->db->where('itemType','Indirect');
 		//$this->db->join($this->join_table,'a.CustomerName = b.CustomerID','left');
 
 		if(isset($_POST["search"]["value"])){
@@ -102,6 +105,8 @@ class ItemsModel extends CI_Model {
 		}
 
 	}
+
+
 
 	public function itemMasterlist_datatable() {
 

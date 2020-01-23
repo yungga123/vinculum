@@ -76,6 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            ]
 		    });
 
+		    
+
 		    var item_actual_stocks_dt = $("#item_actual_stocks_dt").DataTable({
 		    	responsive: true,
 		    	"serverSide": true,
@@ -91,6 +93,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                }
 	            ]
 		    });
+
 
 
 		    //click select edit

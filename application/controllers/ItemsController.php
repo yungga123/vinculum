@@ -4,6 +4,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 class ItemsController extends CI_Controller
 {	
+
 	public function items_masterlist() {
 		if($this->session->userdata('logged_in')) {
 

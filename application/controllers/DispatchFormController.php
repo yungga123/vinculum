@@ -71,7 +71,7 @@ public function addDispatch() {
 	
 
 	}
-
+	
 	public function fetch_dispatchforms() {
 		$this->load->model('DispatchFormsModel');
 		$fetch_data = $this->DispatchFormsModel->dispatchform_datatable();
