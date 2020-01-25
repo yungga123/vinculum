@@ -393,8 +393,11 @@ class ItemsController extends CI_Controller
 			$sub_array[] = $row->location;
 			$sub_array[] = $row->supplier;
 			$sub_array[] = $row->encoder;
-			$sub_array[] = '<button type="button" class="btn btn-warning btn-xs btn_select" data-toggle="modal" data-target="#modal-edit-item"><i class="fas fa-edit"></i> Edit
-        </button> <a href="'.site_url("ItemsController/delete_items/".$row->itemCode).'" class="btn btn-danger btn-xs" onclick="return confirm(\'Are you sure?\')"><i class="fas fa-trash"></i> Delete</a> <button class="btn btn-primary btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks"><i class="fas fa-plus"></i> Add Stocks</button>';
+			$sub_array[] = '<button type="button" class="btn btn-warning btn-xs btn_select" data-toggle="modal" data-target="#modal-edit-item" 				title="Edit"><i class="fas fa-edit"></i></button> 
+
+							<a href="'.site_url("ItemsController/delete_items/".$row->itemCode).'" class="btn btn-danger btn-xs" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i></a> 
+
+							<button class="btn btn-success btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks" title="Add Stocks"><i class="fas fa-plus"></i></button>';
 			$data[] = $sub_array;
 		}
 

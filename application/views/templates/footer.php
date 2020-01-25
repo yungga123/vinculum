@@ -286,6 +286,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</script>
 
 
+	<!-- Universal Toaster -->
 	<?php if ($this->session->flashdata('success')): ?>
 		<script type="text/javascript">
 			
@@ -310,6 +311,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</script>
 	<?php endif ?>
 	
+
+	<!-- Toasters for Dispatch Table -->
 	<script type="text/javascript">
 	//New Dispatch
 		$('#New-form-dispatch').submit(function(e) {
@@ -425,6 +428,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</script>
 	<?php endif ?>
 
+
+	<!-- Dispatch Forms Table -->
 	<script>
 		//Forms Table
 	  	$(document).ready( function () {
@@ -650,10 +655,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    });
 	</script>   
 
+
+	<!-- Date Time Picker -->
 	<script type="text/javascript">
 	    $("#end_date2").datetimepicker({
 	        format: "yyyy/mm/dd hh:ii"
 	    });
+	</script>
+
+	<!-- ToolTips -->
+	<script type="text/javascript">
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		});
 	</script>
 	
 	</body>
