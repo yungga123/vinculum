@@ -662,13 +662,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	        format: "yyyy/mm/dd hh:ii"
 	    });
 	</script>
-
-	<!-- ToolTips -->
-	<script type="text/javascript">
-		$(function () {
-		  $('[data-toggle="tooltip"]').tooltip()
-		});
-	</script>
 	
 	</body>
 </html>
