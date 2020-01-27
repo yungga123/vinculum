@@ -489,10 +489,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 			else  if (response.dispatch_form_edit[0].RepairOrService =="1"){
 			 				$(".TypeOfService_Edit").val("Service");
 			 			}
-			 			
-			 			
-			 		
-			 			
 			 		}
 			 	});
 			} );
