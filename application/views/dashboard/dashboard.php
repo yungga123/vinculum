@@ -78,6 +78,22 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           </div>
 
       	</div>
+
+      	<div class="row">
+          <div class="col-md-3 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"><a href="#">Customers</a></span>
+                <span class="info-box-number">1,410</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
+        </div>
       </div>
   	</section>
   </div>
