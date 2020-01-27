@@ -22,9 +22,9 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            <!-- small box -->
 	            <div class="small-box bg-info">
 	              <div class="inner">
-	                <h3><?php echo $countItem ?></h3>
+	                <h3><?php echo $direct_item_count ?></h3>
 
-	                <p>Registered Items</p>
+	                <p>Direct Items</p>
 	              </div>
 	              <div class="icon">
 	                <i class="fas fa-barcode"></i>
@@ -36,14 +36,14 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           	<div class="col-lg-3 col-6">
           		<div class="small-box bg-warning">
 	              <div class="inner">
-	                <h3>44</h3>
+	                <h3><?php echo $indirect_item_count ?></h3>
 
-	                <p>Scheduled Tasks</p>
+	                <p>Indirect Items</p>
 	              </div>
 	              <div class="icon">
-	                <i class="fas fa-calendar-alt"></i>
+	                <i class="fas fa-cogs"></i>
 	              </div>
-	              <a href="javascript:void(0)" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+	              <a href="<?php echo site_url('masterlistofindirectitems') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 	            </div>
           	</div>
 
@@ -53,7 +53,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	              <div class="inner">
 	                <h3>45</h3>
 
-	                <p>Customer Inquiries</p>
+	                <p>Schedules Board</p>
 	              </div>
 	              <div class="icon">
 	                <i class="fas fa-users"></i>

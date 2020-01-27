@@ -15,8 +15,9 @@ class DashboardController extends CI_Controller {
 			$data['title'] = 'Dashboard';
 			$data['dashboard'] = ' active';
 			$data['items_menu_display'] = ' none';
-			$data['countItem'] = $this->ItemsModel->countItems();
 			$data['countDispatch'] = $this->DispatchFormsModel->countDispatch();
+			$data['direct_item_count'] = $this->ItemsModel->get_all_itemMasterlist_data('Direct');
+			$data['indirect_item_count'] = $this->ItemsModel->get_all_itemMasterlist_data('Indirect');
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');

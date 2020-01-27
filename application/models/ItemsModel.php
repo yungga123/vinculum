@@ -48,9 +48,6 @@ class ItemsModel extends CI_Model {
 		return $this->db->query("UPDATE items SET stocks = stocks + ".$stocksToAdd." WHERE itemCode = '".$itemCode."'");
 	}
 
-	public function countItems() {
-		return $this->db->count_all("items");
-	}
 
 
 	// *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
@@ -66,6 +63,7 @@ class ItemsModel extends CI_Model {
 			"a.supplier",
 			"a.encoder"
 		);
+
 	var $order_column = array(
 			"itemCode",
 			"itemName",
@@ -77,13 +75,14 @@ class ItemsModel extends CI_Model {
 			"encoder"
 		);
 
-	public function itemMasterlist_query(){
+	public function itemMasterlist_query($category){
 
 		$this->db->select($this->select_column);
 		$this->db->from($this->table);
 		//$this->db->join($this->join_table,'a.CustomerName = b.CustomerID','left');
 
 		if(isset($_POST["search"]["value"])){
+
 			$this->db->like("itemCode", $_POST["search"]["value"]);
 			$this->db->or_like("itemName", $_POST["search"]["value"]);
 			$this->db->or_like("itemType", $_POST["search"]["value"]);
@@ -92,8 +91,9 @@ class ItemsModel extends CI_Model {
 			$this->db->or_like("location", $_POST["search"]["value"]);
 			$this->db->or_like("supplier", $_POST["search"]["value"]);
 			$this->db->or_like("encoder", $_POST["search"]["value"]);
+			$this->db->having('itemType', $category);
 			
-		}
+		}	
 
 		if (isset($_POST["order"])) {
 			$this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
@@ -103,9 +103,9 @@ class ItemsModel extends CI_Model {
 
 	}
 
-	public function itemMasterlist_datatable() {
+	public function itemMasterlist_datatable($category) {
 
-		$this->itemMasterlist_query();
+		$this->itemMasterlist_query($category);
 		if($_POST["length"] != -1) {
 			$this->db->limit($_POST["length"],$_POST["start"]);
 		}
@@ -113,15 +113,16 @@ class ItemsModel extends CI_Model {
 		return $query->result();
 	}
 
-	public function filter_itemMasterlist_data() {
-		$this->itemMasterlist_query();
+	public function filter_itemMasterlist_data($category) {
+		$this->itemMasterlist_query($category);
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
 
-	public function get_all_itemMasterlist_data() {
+	public function get_all_itemMasterlist_data($category) {
 		$this->db->select("*");
 		$this->db->from($this->table);
+		$this->db->where('itemType',$category);
 		return $this->db->count_all_results();
 	}
 

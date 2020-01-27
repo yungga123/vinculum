@@ -381,7 +381,7 @@ class ItemsController extends CI_Controller
 
 
 		$this->load->model('ItemsModel');
-		$fetch_data = $this->ItemsModel->itemMasterlist_datatable();
+		$fetch_data = $this->ItemsModel->itemMasterlist_datatable($item_category);
 		$data = array();
 		foreach($fetch_data as $row) {
 			$sub_array = array();
@@ -403,8 +403,8 @@ class ItemsController extends CI_Controller
 
 		$output = array(
 			"draw"	=>	intval($_POST["draw"]),
-			"recordsTotal" => $this->ItemsModel->get_all_itemMasterlist_data(),
-			"recordsFiltered" => $this->ItemsModel->filter_itemMasterlist_data(),
+			"recordsTotal" => $this->ItemsModel->get_all_itemMasterlist_data($item_category),
+			"recordsFiltered" => $this->ItemsModel->filter_itemMasterlist_data($item_category),
 			"data" => $data
 		);
 
