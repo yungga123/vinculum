@@ -15,7 +15,7 @@ if(!function_exists('html_variable')) {
 			'registration' => '',
 			'ul_items' => '',
 			'indirect_list' => '',
-			'item_stocks' => '',
+			// 'item_stocks' => '',
 			'pullout_items' => '',
 			'listof_pullouts' => '',
 			'ul_tools' => '',

@@ -94,12 +94,12 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	                </a>
 	              </li>
 	              
-	              <li class="nav-item">
-	                <a href="<?php echo site_url('actual-stocks') ?>" class="nav-link<?php echo $item_stocks ?>">
+	              <!-- <li class="nav-item">
+	                <a href="<?php //echo site_url('actual-stocks') ?>" class="nav-link<?php //echo $item_stocks ?>">
 	                  <i class="far fa-circle nav-icon"></i>
 	                  <p>Item Stocks</p>
 	                </a>
-	              </li>
+	              </li> -->
 
 	              <li class="nav-item">
 	                <a href="#" class="nav-link<?php echo $pullout_items ?>">

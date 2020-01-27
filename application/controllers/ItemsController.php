@@ -51,25 +51,25 @@ class ItemsController extends CI_Controller
 		
 	}
 
-	public function item_stocks() {
+	// public function item_stocks() {
 
-		if($this->session->userdata('logged_in')) {
-			$this->load->helper('site_helper');
-			$data = html_variable();
-			$data['title'] = 'Item Actual Stocks';
-			$data['items_menu_status'] = ' menu-open';
-			$data['items_menu_display'] = ' block';
-			$data['ul_items'] = ' active';
-			$data['item_stocks'] = ' active';
+	// 	if($this->session->userdata('logged_in')) {
+	// 		$this->load->helper('site_helper');
+	// 		$data = html_variable();
+	// 		$data['title'] = 'Item Actual Stocks';
+	// 		$data['items_menu_status'] = ' menu-open';
+	// 		$data['items_menu_display'] = ' block';
+	// 		$data['ul_items'] = ' active';
+	// 		$data['item_stocks'] = ' active';
 
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/navbar');
-			$this->load->view('items/item_stocks/item_stocks_list');
-			$this->load->view('templates/footer');
-		} else {
-			redirect('','refresh');
-		}
-	}
+	// 		$this->load->view('templates/header', $data);
+	// 		$this->load->view('templates/navbar');
+	// 		$this->load->view('items/item_stocks/item_stocks_list');
+	// 		$this->load->view('templates/footer');
+	// 	} else {
+	// 		redirect('','refresh');
+	// 	}
+	// }
 
 	public function register_new_item(){
 	
@@ -390,14 +390,20 @@ class ItemsController extends CI_Controller
 			$sub_array[] = $row->itemType;
 			$sub_array[] = $row->itemSupplierPrice;
 			$sub_array[] = $row->itemPrice;
+			$sub_array[] = $row->stocks;
+			$sub_array[] = date_format(date_create($row->date_of_purchase),'F d, Y');
 			$sub_array[] = $row->location;
 			$sub_array[] = $row->supplier;
 			$sub_array[] = $row->encoder;
-			$sub_array[] = '<button type="button" class="btn btn-warning btn-xs btn_select" data-toggle="modal" data-target="#modal-edit-item" 				title="Edit"><i class="fas fa-edit"></i></button> 
+			$sub_array[] = '
+							<button type="button" class="btn btn-warning btn-xs btn_select" data-toggle="modal" data-target="#modal-edit-item" title="Edit"><i class="fas fa-edit"></i></button> 
 
 							<a href="'.site_url("ItemsController/delete_items/".$row->itemCode).'" class="btn btn-danger btn-xs" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i></a> 
 
-							<button class="btn btn-success btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks" title="Add Stocks"><i class="fas fa-plus"></i></button>';
+							<button class="btn btn-success btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks" title="Add Stocks"><i class="fas fa-plus"></i></button>
+
+							<button class="btn btn-primary btn-xs" title="Pullout Item"><i class="fas fa-sign-out-alt"></i></button>
+							';
 			$data[] = $sub_array;
 		}
 
@@ -453,37 +459,37 @@ class ItemsController extends CI_Controller
 		echo json_encode($validate);
 	}
 
-	public function get_ActualStocks() {
+	// public function get_ActualStocks() {
 
-		$this->load->model('ItemsModel');
-		$fetch_data = $this->ItemsModel->itemActualStocks_datatable();
-		$data = array();
-		foreach($fetch_data as $row) {
-			$sub_array = array();
-			$sub_array[] = $row->itemCode;
-			$sub_array[] = $row->itemName;
-			$sub_array[] = $row->itemType;
-			$sub_array[] = $row->itemSupplierPrice;
-			$sub_array[] = $row->itemPrice;
-			$sub_array[] = $row->stocks;
-			$sub_array[] = date_format(date_create($row->date_of_purchase),"M j, Y");
-			$sub_array[] = $row->location;
-			$sub_array[] = $row->supplier;
-			$sub_array[] = $row->encoder;
-			$sub_array[] = '<button type="button" class="btn btn-primary btn-xs btn_select"><i class="fas fa-external-link-alt"></i>
-         Pullout</button>';
-			$data[] = $sub_array;
-		}
+	// 	$this->load->model('ItemsModel');
+	// 	$fetch_data = $this->ItemsModel->itemActualStocks_datatable();
+	// 	$data = array();
+	// 	foreach($fetch_data as $row) {
+	// 		$sub_array = array();
+	// 		$sub_array[] = $row->itemCode;
+	// 		$sub_array[] = $row->itemName;
+	// 		$sub_array[] = $row->itemType;
+	// 		$sub_array[] = $row->itemSupplierPrice;
+	// 		$sub_array[] = $row->itemPrice;
+	// 		$sub_array[] = $row->stocks;
+	// 		$sub_array[] = date_format(date_create($row->date_of_purchase),"M j, Y");
+	// 		$sub_array[] = $row->location;
+	// 		$sub_array[] = $row->supplier;
+	// 		$sub_array[] = $row->encoder;
+	// 		$sub_array[] = '<button type="button" class="btn btn-primary btn-xs btn_select"><i class="fas fa-external-link-alt"></i>
+ //         Pullout</button>';
+	// 		$data[] = $sub_array;
+	// 	}
 
-		$output = array(
-			"draw"	=>	intval($_POST["draw"]),
-			"recordsTotal" => $this->ItemsModel->get_all_itemActualStocks_data(),
-			"recordsFiltered" => $this->ItemsModel->filter_itemActualStocks_data(),
-			"data" => $data
-		);
+	// 	$output = array(
+	// 		"draw"	=>	intval($_POST["draw"]),
+	// 		"recordsTotal" => $this->ItemsModel->get_all_itemActualStocks_data(),
+	// 		"recordsFiltered" => $this->ItemsModel->filter_itemActualStocks_data(),
+	// 		"data" => $data
+	// 	);
 
-		echo json_encode($output);
-	}
+	// 	echo json_encode($output);
+	// }
 
 	public function print_items() {
 		$this->load->model('ItemsModel');

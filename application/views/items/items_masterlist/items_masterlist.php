@@ -52,6 +52,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
 			            				<th>Category</th>
 			            				<th>Supplier's Price</th>
 			            				<th>SRP</th>
+			            				<th>No. of Stocks</th>
+			            				<th>Date Added</th>
 			            				<th>Location</th>
 			            				<th>Supplier</th>
 			            				<th>Encoder</th>

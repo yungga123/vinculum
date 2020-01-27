@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed.');
+
+date_default_timezone_set('Asia/Manila');
 ?>
 
 <div class="content-wrapper">
@@ -73,9 +75,9 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 								<input type="text" id="no_of_stocks" name="no_of_stocks" class="form-control" placeholder="Enter Item No. of Stocks">
 							</div>
 							<div class="form-group">
-								<label for="date_of_purchase">Date of Purchase</label>
+								<label for="date_of_purchase">Date Added</label>
 								<div class="input-group">
-									<input class="form-control" type="date" id="date_of_purchase" name="date_of_purchase" placeholder="Select Date">
+									<input class="form-control" type="date" id="date_of_purchase" name="date_of_purchase" placeholder="Select Date" value="<?php echo date('Y-m-d') ?>" readonly>
 									<div id="resetDate" class="input-group-addon">
 										<i class="fa fa-remove"></i>
 									</div>

@@ -40,9 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 	<!-- ChartJS -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/chart.js/Chart.min.js"></script>
-	<!-- daterangepicker -->
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/moment/moment.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
 	<!-- Tempusdominus Bootstrap 4 -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 	<!-- Summernote -->
@@ -78,21 +75,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		    
 
-		    var item_actual_stocks_dt = $("#item_actual_stocks_dt").DataTable({
-		    	responsive: true,
-		    	"serverSide": true,
-	            "order":[],
-	            "ajax":{
-	                url: "<?php echo site_url('ItemsController/get_ActualStocks') ?>",
-	                type: "POST"
-	            },
-	            "columnDefs": [
-	                {
-	                   "targets": [8],
-	                    "orderable": false, 
-	                }
-	            ]
-		    });
+		    // var item_actual_stocks_dt = $("#item_actual_stocks_dt").DataTable({
+		    // 	responsive: true,
+		    // 	"serverSide": true,
+	     //        "order":[],
+	     //        "ajax":{
+	     //            url: "<?php //echo site_url('ItemsController/get_ActualStocks') ?>",
+	     //            type: "POST"
+	     //        },
+	     //        "columnDefs": [
+	     //            {
+	     //               "targets": [8],
+	     //                "orderable": false, 
+	     //            }
+	     //        ]
+		    // });
 
 
 
@@ -496,168 +493,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 
-<!-- Data Time Picker -->
-	<script>
-		$(document).ready(function() {
-			$('#dispatch_date').datetimepicker({
-				format: 'yyyy-mm-dd',
-				minView: 2,
-				autoclose: true,
-				todayBtn: 'linked',
-				todayHighlight: true
-			});
-			$('#date_of_purchase').datetimepicker({
-				format: 'yyyy-mm-dd',
-				minView: 2,
-				autoclose: true,
-				todayBtn: 'linked',
-				todayHighlight: true
-			});
 
-			$('#start_date').datetimepicker({
-				format: 'yyyy-mm-dd',
-				minView: 2,
-				autoclose: true,
-				todayBtn: 'linked',
-				todayHighlight: true
-			});
-			$('#date_to').datetimepicker({
-				format: 'yyyy-mm-dd',
-				minView: 2,
-				autoclose: true,
-				todayBtn: 'linked',
-				todayHighlight: true
-			});
-
-			$('#time_in').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_out').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_in_1').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_out_1').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_in_2').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_out_2').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_in_3').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_out_3').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_in_4').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-
-			$('#time_out_4').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-			$('#dispatch_time').datetimepicker({
-				format: 'hh:ii',
-				autoclose: true,
-				startView: 1,
-				showMeridian: true,
-				maxView: 1
-			});
-			
-			$('#reset_dispatch_date').click(function(){
-				$('#dispatch_date').val("").datetimepicker('update');
-			});
-
-			$('#reset_time_in').click(function(){
-				$('#time_in').val("").datetimepicker('update');
-			});
-
-			$('#reset_time_out').click(function(){
-				$('#time_out').val("").datetimepicker('update');
-			});
-
-		});
-	</script>
-
-	<script type="text/javascript">
-	    $(".start_date").datetimepicker({
-	        format: "yyyy/mm/dd hh:ii",
-	        autoclose: true,
-	    });
-	</script>   
-	<script type="text/javascript">
-	    $(".end_date").datetimepicker({
-	        format: "yyyy/mm/dd hh:ii",
-	        autoclose: true,
-	    });
-	</script>   
-
-	<script type="text/javascript">
-	    $("#start_date2").datetimepicker({
-	        format: "yyyy/mm/dd hh:ii",
-	        autoclose: true,
-	    });
-	</script>   
-
-
-	<!-- Date Time Picker -->
-	<script type="text/javascript">
-	    $("#end_date2").datetimepicker({
-	        format: "yyyy/mm/dd hh:ii"
-	    });
-	</script>
 	
 	</body>
 </html>
