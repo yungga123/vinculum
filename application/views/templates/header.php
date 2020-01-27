@@ -37,6 +37,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+   <!-- fullCalendar -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-daygrid/main.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-timegrid/main.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.css">
 </head>
 
 

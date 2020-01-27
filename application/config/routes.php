@@ -77,3 +77,6 @@ $route['dispatchtable'] = 'DispatchFormController/DispatchTable';
 $route['printdispatch/(:num)'] = 'DispatchFormController/printDispatch/$1';
 $route['updatedispatch/(:any)'] = 'DispatchFormController/updateDispatch/$1';
 $route['deletedispatch/(:any)'] = 'DispatchFormController/deleteDispatch/$1';
+
+//Schedules Controller
+$route['schedules'] = 'ScheduleController';

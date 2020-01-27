@@ -53,6 +53,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- AdminLTE App -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
 
+	<!-- fullCalendar 2.2.5 -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/moment/moment.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-daygrid/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-timegrid/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.js"></script>
 
 	<!-- Data Table for Item Master List -->
 	<script>
@@ -493,7 +500,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 
+<!-- Display Calendar -->
+<script type="text/javascript">
+    $(document).ready(function() {
 
+    var date_last_clicked = null;
+     var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+
+    var Calendar = FullCalendar.Calendar;
+    var calendarEl = document.getElementById('calendar');
+
+     var calendar = new Calendar(calendarEl, {
+      plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
+      header    : {
+        left  : 'prev,next today',
+        center: 'title',
+        right : 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+
+        events    : [
+        {
+          title          : 'All Day Event',
+          start          : new Date(y, m, 1),
+          backgroundColor: '#f56954', //red
+          borderColor    : '#f56954' //red
+          
+
+        }
+        ]
+     
+        
+    });
+
+    calendar.render();
+});
+    </script>>
+
+<!-- Scheduled Calendar Notif -->
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('#todayScheduleModal').modal();
+
+  });
+</script>
 	
 	</body>
 </html>
