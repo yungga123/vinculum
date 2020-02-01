@@ -34,7 +34,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 									<?php echo form_open('DispatchFormController/addDispatchValidate',["id" => "New-form-dispatch"]) ?>
 									<div class="form-group">
 				                		<label>Dispatch Date</label>
-							                <input class="form-control" id="dispatch_date" type="date" name="dispatch_date" placeholder="Select Date" readonly>
+							                <input class="form-control" id="dispatch_date" type="date" name="dispatch_date" placeholder="Select Date">
 							                <div id="reset_dispatch_date" class="input-group-addon">
 												<i class="fa fa-remove"></i>
 											</div>
@@ -149,9 +149,9 @@ defined('BASEPATH') or die('No direct script access allowed.');
 							</div>
 						</div>
 							<div class="modal-footer justify-content-between">
-					                <a href="<?php echo base_url('index.php/dispatchtable') ?>" class="btn btn-success btn-lg">
-					                	<i class="fa fa-table"></i>Dispatch Forms</a>
-					                <button type="submit" class="btn btn-primary btn-lg">Add Record</button>
+					                <a href="<?php echo base_url('index.php/dispatchtable') ?>" class="btn btn-success btn-md">
+					                	<i class="fa fa-table"></i>  Dispatch Forms</a>
+					                <button type="submit" class="btn btn-primary btn-md">Add Record</button>
 					                <?php echo form_close() ?>
 				   			</div>
 						</div>

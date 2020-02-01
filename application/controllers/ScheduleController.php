@@ -27,7 +27,7 @@ class ScheduleController extends CI_Controller {
 
      	  	$this->load->view('templates/header', $data);
           $this->load->view('templates/navbar');
-          	$this->load->view('schedules', array());
+          	$this->load->view('schedules');
           	$this->load->view('templates/footer');
 
 		} else {

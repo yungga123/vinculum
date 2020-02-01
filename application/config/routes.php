@@ -63,6 +63,7 @@ $route['masterlistofitems'] = 'ItemsController/items_masterlist';
 $route['masterlistofindirectitems'] = 'ItemsController/indirect_items_masterlist';
 $route['addnewitem'] = 'ItemsController/register_new_item';
 $route['print-items'] = 'ItemsController/print_items';
+$route['Pull-Out-item'] = 'ItemsController/PullOutItem';
 // $route['actual-stocks'] = 'ItemsController/item_stocks';
 
 
@@ -80,3 +81,9 @@ $route['deletedispatch/(:any)'] = 'DispatchFormController/deleteDispatch/$1';
 
 //Schedules Controller
 $route['schedules'] = 'ScheduleController';
+
+//Sales Dispatch
+$route['sales-dispatch'] = 'SalesDispatchController';
+$route['print-salesdispatch/(:any)'] = 'SalesDispatchController/print_sales_dispatch/$1';
+$route['salesdispatch-table'] = 'SalesDispatchController/sales_dispatch_table';
+$route['update-salesdispatch/(:any)'] = 'SalesDispatchController/update_sales_dispatch/$1';

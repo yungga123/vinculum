@@ -531,13 +531,168 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         }
         ]
+        
+        
      
         
     });
 
     calendar.render();
 });
-    </script>>
+    </script>
+
+   <!-- Sales Dispatch Table-->
+	<script type="text/javascript">
+		var salesdispatchTable = $('#salesdispatchTable').DataTable({
+            responsive: true,
+            "processing": true,
+            "serverSide": true,
+            "order":[],
+            "ajax":{
+                url: "<?php echo site_url('SalesDispatchController/fetch_salesdispatchforms') ?>",
+                type: "POST"
+            },
+            "columnDefs": [
+                {
+                   "targets": [5,6,7],
+                    "orderable": false, 
+                }
+            ]
+        });
+         $('#salesdispatchTable tbody').on( 'click', '.btn_select', function () {
+		    	var data = salesdispatchTable.row($(this).parents('tr')).data();
+				var rowdata = salesdispatchTable.row(this).data();
+
+				if (data == undefined) {
+					var me = '<?php echo site_url('SalesDispatchController/update_sales_dispatch/') ?>'+rowdata[0];
+					$(".sales_dispatchID_edit").val(rowdata[0]);
+				} else if (rowdata == undefined) {
+					var me = '<?php echo site_url('SalesDispatchController/update_sales_dispatch/') ?>'+data[0];
+					$(".sales_dispatchID_edit").val(data[0]);
+
+				}
+			   //ajax
+			 	$.ajax({
+			 		url: me,
+			 		type: 'get',
+			 		dataType: 'json',
+			 		success: function(response) {
+			 			$(".dispatch_date_edit").val(response.dispatch_data[0].dispatch_date);
+			 			$(".dispatch_time_edit").val(response.dispatch_data[0].dispatch_time);
+			 			$(".assigned_sales_edit").val(response.dispatch_data[0].assigned_sales);
+			 			$(".address_edit").val(response.dispatch_data[0].address);
+			 			$(".customer_1_edit").val(response.dispatch_data[0].customer_1);
+			 			$(".purpose_1_edit").val(response.dispatch_data[0].purpose_1);
+			 			$(".time_in_1_edit").val(response.dispatch_data[0].time_in_1);
+			 			$(".time_out_1_edit").val(response.dispatch_data[0].time_out_1);
+			 			$(".customer_2_edit").val(response.dispatch_data[0].customer_2);
+			 			$(".purpose_2_edit").val(response.dispatch_data[0].purpose_2);
+			 			$(".time_in_2_edit").val(response.dispatch_data[0].time_in_2);
+			 			$(".time_out_2_edit").val(response.dispatch_data[0].time_out_2);
+			 			$(".customer_3_edit").val(response.dispatch_data[0].customer_3);
+			 			$(".purpose_3_edit").val(response.dispatch_data[0].purpose_3);
+			 			$(".time_in_3_edit").val(response.dispatch_data[0].time_in_3);
+			 			$(".time_out_3_edit").val(response.dispatch_data[0].time_out_3);
+			 			$(".customer_4_edit").val(response.dispatch_data[0].customer_4);
+			 			$(".purpose_4_edit").val(response.dispatch_data[0].purpose_4);
+			 			$(".time_in_4_edit").val(response.dispatch_data[0].time_in_4);
+			 			$(".time_out_4_edit").val(response.dispatch_data[0].time_out_4);
+
+			 			
+			 			
+			 		}
+			 	});
+			} );
+	</script>
+
+<!-- Sales Dispatch Update -->
+<script type="text/javascript">
+	$('#form_updatesalesdispatch').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 
+		 	var me = $(this);
+		 	var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Successfully Updated! Please Refresh");
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+</script>
+
+<script type="text/javascript">
+$('#form-salesdispatch').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	var a = '<a href="<?php echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Dispatch Added! " + a);
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+</script>
 
 <!-- Scheduled Calendar Notif -->
 <script type="text/javascript">

@@ -102,7 +102,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	              </li> -->
 
 	              <li class="nav-item">
-	                <a href="#" class="nav-link<?php echo $pullout_items ?>">
+	                <a href="<?php echo site_url('Pull-Out-item') ?>" class="nav-link<?php echo $pullout_items ?>">
 	                  <i class="far fa-circle nav-icon"></i>
 	                  <p>Pull-out Items</p>
 	                </a>
@@ -281,7 +281,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            </a>
           	</li>
 
-          	<li class="nav-item has-treeview">
+          	<li class="nav-item has-treeview<?php echo $forms_menu_status ?>">
 		        <a href="#" class="nav-link<?php echo $ul_forms ?>">
 		          <i class="nav-icon fas fa-copy"></i>
 		          <p>
@@ -289,7 +289,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		            <i class="fas fa-angle-left right"></i>
 		          </p>
 		        </a>
-		        <ul class="nav nav-treeview" style="display: none;">
+		        <ul class="nav nav-treeview">
 		        	<li class="nav-item has-treeview<?php echo $dispatch_menu_status; ?>">
 				        <a href="#" class="nav-link<?php echo $dispatch_forms ?>">
 				          <i class="nav-icon fas fa-reply"></i>
@@ -298,7 +298,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				            <i class="fas fa-angle-left right"></i>
 				          </p>
 				        </a>
-				        <ul class="nav nav-treeview" style="display:">
+				        <ul class="nav nav-treeview" style="display">
 				          <li class="nav-item">
 				            <a href="<?php echo site_url('dispatchform') ?>" class="nav-link<?php echo $Generate_dispatch ?>">
 				              <i class="far fa-circle nav-icon"></i>
@@ -320,12 +320,27 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		            </a>
 		          </li> -->
 
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $salesdispatch ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Sales Dispatch</p>
-		            </a>
-		          </li>
+		         <li class="nav-item has-treeview<?php echo $sales_menu_status; ?>">
+				            <a href="#" class="nav-link<?php echo $sales_dispatch ?>">
+				              <i class="nav-icon fas fa-road nav-icon"></i>
+				              <p>Sales Dispatch</p>
+				              <i class="fas fa-angle-left right"></i>
+				            </a>
+				            <ul class="nav nav-treeview" style="display:">
+					          <li class="nav-item">
+					            <a href="<?php echo site_url('sales-dispatch') ?>" class="nav-link<?php echo $Generate_sales_dispatch ?>">
+					              <i class="far fa-circle nav-icon"></i>
+					              <p>Generate Sales Dispatch</p>
+					            </a>
+					          </li>
+					          <li class="nav-item">
+					            <a href="<?php echo site_url('salesdispatch-table') ?>" class="nav-link<?php echo $sales_dispatch_list ?>">
+					              <i class="far fa-circle nav-icon"></i>
+					              <p>Sales Dispatch List</p>
+					            </a>
+					          </li>
+					      </ul>
+				          </li>
 
 		          <li class="nav-item">
 		            <a href="#" class="nav-link<?php echo $servicecall ?>">
