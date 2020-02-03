@@ -22,7 +22,7 @@ defined('BASEPATH') or exit('Access Denied');
 	    		<p><?php echo $this->session->flashdata('msg'); ?></p>
 				<?php endif; ?>
 						<div class="table-responsive">
-							<table class="table table-striped table-bordered" id="Pull-Out-Indirect-Item">
+							<table class="table table-striped table-bordered" id="Pull-Out-Item">
 								<thead>
 									<tr>
 										<th>ID</th>

@@ -702,6 +702,17 @@ $('#form-salesdispatch').submit(function(e) {
 
   });
 </script>
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#ScanIndirectItem').modal();
+
+    var myTable = $("#Pull-Out-Item").DataTable({
+		    	responsive: true
+		    });
+  });
+</script>
 	
 	</body>
 </html>

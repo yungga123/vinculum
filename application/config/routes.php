@@ -63,7 +63,7 @@ $route['masterlistofitems'] = 'ItemsController/items_masterlist';
 $route['masterlistofindirectitems'] = 'ItemsController/indirect_items_masterlist';
 $route['addnewitem'] = 'ItemsController/register_new_item';
 $route['print-items'] = 'ItemsController/print_items';
-$route['Pull-Out-item'] = 'ItemsController/PullOutItem';
+$route['Pull-Out-item'] = 'ItemsController/pulledOut_Items';
 // $route['actual-stocks'] = 'ItemsController/item_stocks';
 
 
