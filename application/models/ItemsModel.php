@@ -132,7 +132,10 @@ class ItemsModel extends CI_Model {
 		return $this->db->count_all_results();
 	}
 
-	
+	public function ItemsGetByName($itemCode) {
+		$this->db->where('itemName', $itemCode);
+		return $this->db->get('items')->result();
+	}
 	
 	//*****************end*********************
 

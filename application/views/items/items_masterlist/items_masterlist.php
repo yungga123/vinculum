@@ -223,20 +223,20 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
       <div class="modal-body">
 
-      	<a style="margin-bottom: 35px" href="<?php echo site_url('indirectpullouts') ?>" class="btn btn-primary btn-block" target="_blank">Item Pullout List</a>
+      	<a style="margin-bottom: 35px" href="<?php echo site_url('Pull-Out-item') ?>" class="btn btn-primary btn-block" target="_blank">Item Pullout List</a>
 
-      	<?php echo form_open('indirectItemsController/pulloutValidate',["id" => "form-pullout"]) ?>
+      	<?php echo form_open('ItemsController/pulloutValidate',["id" => "form-pullout"]) ?>
 
         <center><label class="control-label" for="" style="font-size: 19px">Stocks to Pullout</label></center>
 
         <div class="form-group">
-        	<label>Item Code</label>
-        	<input class="form-control text-center" type="text" name="CodeofItem" id="CodeofItem" readonly>
+        	<label for="item_code" class="control-label">Item Code</label>
+			<input type="text" id="item_code" name="item_code" class="form-control item_code_edit" placeholder="Enter Item Code" readonly>
         </div>
 
         <div class="form-group">
-        	<label>Item Name</label>
-        	<input class="form-control" type="text" name="NameofItem" id="NameofItem" readonly>
+        	<label for="item_name" class="control-label">Item Name</label>
+        	<input class="form-control item_name_edit" type="text" name="item_name" id="item_name" readonly>
         </div>
 
         <div class="form-group">

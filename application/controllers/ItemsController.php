@@ -17,6 +17,10 @@ class ItemsController extends CI_Controller
 			$data['ul_items'] = ' active';
 			$data['category'] = 'Direct';
 
+			$this->load->model('CustomersModel');
+			$resultCustomers = $this->CustomersModel->getCustomers();
+			$data['resultCustomers'] = $resultCustomers;
+
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('items/items_masterlist/items_masterlist');
@@ -382,6 +386,8 @@ class ItemsController extends CI_Controller
 
 		$this->load->model('ItemsModel');
 		$fetch_data = $this->ItemsModel->itemMasterlist_datatable($item_category);
+
+
 		$data = array();
 		foreach($fetch_data as $row) {
 			$sub_array = array();
@@ -402,7 +408,7 @@ class ItemsController extends CI_Controller
 
 							<button class="btn btn-success btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks" title="Add Stocks"><i class="fas fa-plus"></i></button>
 
-							<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#toPulloutModal" title="Pullout Item"><i class="fas fa-sign-out-alt"></i></button>
+							<button class="btn btn-primary btn-xs btn_select" data-toggle="modal" data-target="#toPulloutModal" title="Pullout Item"><i class="fas fa-sign-out-alt"></i></button>
 							';
 			$data[] = $sub_array;
 		}
@@ -539,4 +545,71 @@ class ItemsController extends CI_Controller
 			redirect('', 'refresh');
 		}
 	}
+	public function pulloutValidate() {
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+		
+
+		$this->load->model('ItemsModel');
+		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_name'));
+
+		$itemStock = 0;
+		foreach ($results as $row) {
+			$itemStock = $row->stocks;
+		}
+
+		$rules = [
+			[
+				'field' => 'item_name',
+				'label' => 'Item Name',
+				'rules' => 'trim|required|callback_check_item',
+				'errors' => ['check_item' => 'This item is already in pullout list.','required' => 'Select another item to pullout.']
+			],
+			[
+				'field' => 'pullout_stocks',
+				'label' => 'Stocks to Pullout',
+				'rules' => 'trim|required|numeric|less_than_equal_to['.$itemStock.']|is_natural_no_zero',
+				'errors' => ['less_than_equal_to' => 'Only '.$itemStock.' stock/s available.']
+			],
+			[
+				'field' => 'pull_out_to',
+				'label' => 'Pulled Out to',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Please select.']
+				
+			]
+		];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			date_default_timezone_set('Asia/Manila');
+
+			$validate['success'] = true;
+
+			$this->load->model('PullOutsModel');
+
+			$data = [
+				'item_code' => $this->input->post('item_code'),
+				'date_of_punch' => date("Y-m-d H:i:s"),
+				'stocks_to_pullout' => $this->input->post('pullout_stocks'),
+				'pullout_to' => $this->input->post('pull_out_to'),
+				'discount' => '0'
+			];
+
+			$this->PullOutsModel->addPullout($data);
+			
+		} 
+		else {
+			$validate['errors'] = validation_errors();
+			}
+			echo json_encode($validate);
+		}
+
 }
