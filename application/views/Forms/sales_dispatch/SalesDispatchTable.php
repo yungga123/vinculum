@@ -60,7 +60,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 	<div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-            	<h1 class="modal-title sales_dispatchID_edit">Update Sales Dispatch ID:</h1>
+            	<h1 class="modal-title sales_dispatchID_edit">Update Sales Dispatch</h1>
             	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

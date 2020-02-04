@@ -410,7 +410,7 @@ public function deleteDispatch($id) {
 			$updateMsg = 	'<div class="alert alert-warning alert-dismissable">
                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 Dispatch Successfully Deleted!
-                            </div>;';
+                            </div>';
 
 			$this->session->set_flashdata('msg', $updateMsg);
 

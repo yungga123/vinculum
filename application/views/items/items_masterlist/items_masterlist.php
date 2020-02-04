@@ -217,5 +217,52 @@ defined('BASEPATH') or die('No direct script access allowed.');
 		</div>
 	</div>
 
+<div class="modal fade" id="toPulloutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
 
+      <div class="modal-body">
+
+      	<a style="margin-bottom: 35px" href="<?php echo site_url('indirectpullouts') ?>" class="btn btn-primary btn-block" target="_blank">Item Pullout List</a>
+
+      	<?php echo form_open('indirectItemsController/pulloutValidate',["id" => "form-pullout"]) ?>
+
+        <center><label class="control-label" for="" style="font-size: 19px">Stocks to Pullout</label></center>
+
+        <div class="form-group">
+        	<label>Item Code</label>
+        	<input class="form-control text-center" type="text" name="CodeofItem" id="CodeofItem" readonly>
+        </div>
+
+        <div class="form-group">
+        	<label>Item Name</label>
+        	<input class="form-control" type="text" name="NameofItem" id="NameofItem" readonly>
+        </div>
+
+        <div class="form-group">
+        	<input class="form-control" type="text" name="pullout_stocks" id="pullout_stocks" placeholder="Enter number of stocks to pullout."> 
+        </div>
+
+        <div class="form-group">
+        	<select class="form-control" name="pull_out_to" id="pull_out_to">
+        		<option value="">---Select customer for pullout---</option>
+        		<?php foreach ($resultCustomers as $row): ?>
+
+        			<option value="<?php echo $row->id ?>"><?php echo $row->customer_name ?></option>
+        			
+        		<?php endforeach ?>
+        	</select>
+        </div>
+
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Cancel</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-sign-out"></i> Pull-out</button>
+        <?php echo form_close() ?>
+      </div>
+    </div>
+  </div>
+</div>
       

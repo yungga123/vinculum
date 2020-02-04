@@ -402,7 +402,7 @@ class ItemsController extends CI_Controller
 
 							<button class="btn btn-success btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks" title="Add Stocks"><i class="fas fa-plus"></i></button>
 
-							<button class="btn btn-primary btn-xs" title="Pullout Item"><i class="fas fa-sign-out-alt"></i></button>
+							<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#toPulloutModal" title="Pullout Item"><i class="fas fa-sign-out-alt"></i></button>
 							';
 			$data[] = $sub_array;
 		}

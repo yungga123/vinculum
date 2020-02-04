@@ -365,6 +365,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		$('#update-form-dispatch').submit(function(e) {
 		 	e.preventDefault();
 		 	
+		 	var a = '<a href="<?php echo site_url("dispatchtable") ?>"><u>Go</u></a>'
 		 	var me = $(this);
 		 	var succ = '';
 
@@ -394,7 +395,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				toastr.success("Updated! Please refresh this page.");
+		 				toastr.success("Updated! Please refresh this page. " + a );
+
 		 			} else {
 		 				toastr.error(response.errors);
 		 			}

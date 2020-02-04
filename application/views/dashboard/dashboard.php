@@ -58,7 +58,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	              <div class="icon">
 	                <i class="fas fa-users"></i>
 	              </div>
-	              <a href="javascript:void(0)" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+	              <a href="<?php echo site_url('schedules') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 	            </div>
 	        </div>
 
@@ -73,7 +73,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
               <div class="icon">
                 <i class="fas fa-file-signature"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo site_url('dispatchtable') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
