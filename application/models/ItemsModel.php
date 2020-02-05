@@ -136,7 +136,18 @@ class ItemsModel extends CI_Model {
 		$this->db->where('itemName', $itemCode);
 		return $this->db->get('items')->result();
 	}
+
+	public function ItemsGet($itemCode) {
+		$this->db->where('itemCode', $itemCode);
+		return $this->db->get('items')->result();
+	}
 	
+	public function decreasedByPullout($stocks,$item_code) {
+		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
+		
+		return $this->db->query("UPDATE items SET stocks = (stocks - ".$stocks.") WHERE itemCode = '".$item_code."'");
+	}
+
 	//*****************end*********************
 
 

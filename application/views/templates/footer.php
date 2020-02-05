@@ -200,6 +200,82 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  	});
 	</script>
 
+	<!-- Pull out item scan -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+
+		
+		$(document).keypress(function(e) {
+			if(e.which == 13) {
+				if ($('#itemCode').val().trim() == "") {
+					alert('Please focus the textbox when scanning item.');
+				} else {
+
+			        var item = $('#itemCode').val();
+					$('#dynamic_field').load('<?php echo site_url('ItemsController/ItemGet/') ?>'+item);
+					
+					$('#itemCode').val('');
+				
+					}
+				} 
+			});
+
+
+	});
+
+	$(function() {
+	    $('#itemCode').on('keypress', function(e) {
+	        if (e.which == 32)
+	            return false;
+	    });
+	});
+</script>
+
+<script type="text/javascript">
+	$('#addPulloutForm').submit(function(e) {
+	 	e.preventDefault();
+
+	 	var me = $(this);
+
+	 	//ajax
+	 	$.ajax({
+	 		url: me.attr('action'),
+	 		type: 'post',
+	 		data: me.serialize(),
+	 		dataType: 'json',
+	 		success: function(response) {
+	 			if (response.success == true) {
+
+	 				$('.alert-success').remove();
+
+	 				$('#the-message').append('<div class="alert alert-success alert-dismissable">'
+	 					+'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'
+	 					+'</button>'
+	 					+'Item Successfully Pulled Out. It is now pending for confirmation. <a href="<?php echo site_url('pullouts') ?>" class="alert-link">View Current Pull-outs</a>'
+	 					+'</div>');
+	 				$('.form-group').removeClass('has-error')
+	 								.removeClass('has-success');
+	 				$('.text-danger').remove();
+
+	 				me[0].reset();
+
+	 			
+	 			} else {
+	 				$.each(response.messages, function(key, value) {
+	 					$('.alert-success').remove();
+	 					var element = $('#' + key);
+	 					element.closest('div.form-group')
+	 					.removeClass('has-error')
+	 					.addClass(value.length > 0 ? 'has-error' : 'has-success')
+	 					.find('.text-danger').remove();
+	 					element.after(value);
+	 				});
+	 			}
+	 		}
+	 	});
+	 });
+</script>
+
 	
 	
 	<script>
@@ -753,7 +829,7 @@ $('#form-salesdispatch').submit(function(e) {
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#ScanIndirectItem').modal();
+    $('#ScanItem').modal();
 
     var myTable = $("#Pull-Out-Item").DataTable({
 		    	responsive: true

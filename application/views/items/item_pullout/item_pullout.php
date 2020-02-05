@@ -58,7 +58,7 @@ defined('BASEPATH') or exit('Access Denied');
 										<td><?php echo number_format($row->discount*100).'%'; ?></td>
 										<td><?php echo number_format($row->total_price,2) ?></td>
 										<td><?php echo number_format($row->discount_price,2) ?></td>
-										<td class="text-center"><a class="btn btn-sm btn-danger" href="<?php echo base_url('index.php/indirectitemsController/deleteindirectPullout/').$row->id ?>" onclick="return confirm('Are you sure?')" ><i class="fa fa-trash"></i> Delete</a></td>
+										<td class="text-center"><a class="btn btn-sm btn-danger" href="<?php echo base_url('index.php/itemsController/deletePullout/').$row->id ?>" onclick="return confirm('Are you sure?')" ><i class="fa fa-trash"></i> Delete</a></td>
 									</tr>
 									<?php } ?>
 								</tbody>
@@ -86,8 +86,8 @@ defined('BASEPATH') or exit('Access Denied');
 
 										<a href="<?php echo site_url('make-warranty') ?>" class="btn btn-success">Warranty Items</a>
 
-										<button type="button" class="btn btn-info" data-target="#ScanIndirectItem" data-toggle="modal"><i class="fa fa-plus"></i> Add more items</button>
-										<a href="<?php echo site_url('indirectItemsController/confirmIndirectPullout') ?>" onclick="return confirm('Pull out following items?')" class="btn btn-success"><i class="fa fa-check"></i> Confirm Pull-out</a>
+										<button type="button" class="btn btn-info" data-target="#ScanItem" data-toggle="modal"><i class="fa fa-plus"></i> Add more items</button>
+										<a href="<?php echo site_url('ItemsController/confirmPullout') ?>" onclick="return confirm('Pull out following items?')" class="btn btn-success"><i class="fa fa-check"></i> Confirm Pull-out</a>
 
 									</div>
 								</div>
@@ -100,13 +100,14 @@ defined('BASEPATH') or exit('Access Denied');
 </div>
 
 
-<div class="modal fade" id="ScanIndirectItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade" id="ScanItem" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	<div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
 	        <div class="modal-header">
 	            <h4 class="modal-title" id="myModalLabel">Scan Item</h4>
 	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 	        </div>
+
 	        <div class="modal-body">
 	           	<h4>Note: Items that pulled-out will be SOLD items.</h4>
 		           	<div class="form-group">
@@ -114,11 +115,25 @@ defined('BASEPATH') or exit('Access Denied');
 						<input id="itemCode" class="form-control" type="text" name="itemCode" autofocus placeholder="Focus in this textbox and scan the item barcode.">
 					</div>
 	        </div>
+
+	        <div class="modal-body">
+	        	<div id="dynamic_field">
+
+				</div>
+	        </div>
+	       
 	        <div class="modal-footer">
 	            <!-- <button type="button" class="btn btn-primary">Submit</button> -->
 	           	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        </div>
 	    </div>
+
+	    		<?php if($this->session->flashdata('msg')): ?>
+				<p><?php echo $this->session->flashdata('msg'); ?></p>
+				<?php endif; ?>
+				<?php echo form_error('itemcode2','<div class="alert alert-danger alert-dismissable">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>','</div>') ?>
+				<?php echo form_close() ?>
 	    <!-- /.modal-content -->
 	</div>
 </div>

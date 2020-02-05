@@ -578,7 +578,7 @@ class ItemsController extends CI_Controller
 				'field' => 'pull_out_to',
 				'label' => 'Pulled Out to',
 				'rules' => 'trim|required',
-				'errors' => ['required' => 'Please select.']
+				'errors' => ['required' => 'Please select customer name']
 				
 			]
 		];
@@ -612,4 +612,59 @@ class ItemsController extends CI_Controller
 			echo json_encode($validate);
 		}
 
+		public function deletePullout($id) {		
+		$this->load->model('PullOutsModel');
+		$this->PullOutsModel->deletePullout($id);
+		$updateMsg = 	'<div class="alert alert-success alert-dismissable">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                Successfully Deleted!
+                            </div>';
+		$this->session->set_flashdata('msg', $updateMsg);
+		redirect('Pull-Out-item');
+
+	}
+
+	public function confirmPullout() {
+		$this->load->model('ConfirmedPullOutsModel');
+		$this->ConfirmedPullOutsModel->insertdirect();
+
+		date_default_timezone_set('Asia/Manila');
+
+		$this->load->model('ItemsModel');
+		$selectQuery = $this->db->query("SELECT item_code,stocks_to_pullout FROM pulled_out");
+		$results = $selectQuery->result();
+
+		foreach ($results as $row) {
+			$itemCode = $row->item_code;
+			$stocks = $row->stocks_to_pullout;
+			$this->ItemsModel->decreasedByPulloutdirect($stocks,$itemCode);
+		}
+
+		$this->load->model('PullOutsModel');
+		$this->PullOutsModel->deletePullouts();
+		
+
+		$updateMsg = 	'<div class="alert alert-success alert-dismissable">
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                Items Successfully pulled out.
+                            </div>';
+		$this->session->set_flashdata('msg', $updateMsg);
+
+		redirect('Pull-Out-item');
+
+	}
+
+	public function ItemGet($itemCode) {
+
+		$this->load->model('ItemsModel');
+		$this->load->model('CustomersModel');
+
+		$results = $this->ItemsModel->ItemsGet($itemCode);
+		$customers = $this->CustomersModel->getCustomers();
+		$data['results'] = $results;
+		$data['customers'] = $customers;
+		$this->load->view('items/item_pullout/itemsget', $data);
+
+
+	}
 }
