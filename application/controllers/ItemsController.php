@@ -426,7 +426,7 @@ class ItemsController extends CI_Controller
 	public function addStocksValidate() {
 		$validate = [
 			'success' => false,
-			'messages' => array()
+			'errors' => ''
 		];
 
 		$rules = [
@@ -666,5 +666,87 @@ class ItemsController extends CI_Controller
 		$this->load->view('items/item_pullout/itemsget', $data);
 
 
+	}
+
+	public function ItemGetValidate($id) {
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$this->load->model('ItemsModel');
+		$results = $this->ItemsModel->ItemsGet(str_replace(' ','',$id));
+
+		$max_length = 0;
+		foreach ($results as $row) {
+			$max_length = $row->stocks;
+		}
+
+		$rules = [
+			[
+				'field' => 'item_code',
+				'label' => 'Item Code',
+				'rules' => 'trim|is_unique[pulled_out.item_code]',
+				'errors' => ['is_unique' => 'This item is already in current pulled-out']
+			],
+			[
+				'field' => 'item_name',
+				'label' => 'Item Name',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'item_type',
+				'label' => 'Item Type',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'item_stocks',
+				'label' => 'Stocks',
+				'rules' => 'trim|numeric|required|less_than_equal_to['.$max_length.']|is_natural_no_zero',
+				'errors' => ['less_than_equal_to' => 'Only '.$max_length.' stock/s available']
+			],
+			[
+				'field' => 'pull_out_to',
+				'label' => 'Pull-out to',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Please select customer.']
+			],
+			[
+				'field' => 'discount',
+				'label' => 'Discount',
+				'rules' => 'trim'
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if($this->form_validation->run()){
+
+			$validate['success'] = true;
+
+			$this->load->model('PullOutsModel');
+
+			date_default_timezone_set("Asia/Manila");
+
+			$data = [
+
+				'item_code' => $this->input->post('item_code'),
+				'date_of_punch' => date("Y-m-d H:i:s"),
+				'stocks_to_pullout' => $this->input->post('item_stocks'),
+				'pullout_to' => $this->input->post('pull_out_to'),
+				'discount' => $this->input->post('discount')
+
+			];
+
+			$this->PullOutsModel->addPullout($data);
+
+
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
 	}
 }
