@@ -290,7 +290,7 @@ $this->Myfpdf->Cell(48.75,5,'________________________________',0,0,'');
 $this->Myfpdf->Cell(48.75,5,'',0,0,'C');
 $this->Myfpdf->Cell(48.75,5,'',0,0,'C');
 $this->Myfpdf->SetFont('Times','U',11);
-$this->Myfpdf->Cell(48.75,5,'Arlyn R. Canaway',0,0,'C');
+$this->Myfpdf->Cell(48.75,5,'Jenina Gaceta',0,0,'C');
 
 $this->Myfpdf->ln(4);
 
@@ -298,7 +298,7 @@ $this->Myfpdf->SetFont('Times','',11);
 $this->Myfpdf->Cell(48.75,5,'Customer Signature over Printed Name',0,0,'');
 $this->Myfpdf->Cell(48.75,5,'',0,0,'C');
 $this->Myfpdf->Cell(48.75,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'HRAD Assistant',0,0,'C');
+$this->Myfpdf->Cell(48.75,5,'HRAD',0,0,'C');
 
 $this->Myfpdf->Output();
 ?>
