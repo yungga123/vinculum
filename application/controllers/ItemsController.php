@@ -55,26 +55,6 @@ class ItemsController extends CI_Controller
 		
 	}
 
-	// public function item_stocks() {
-
-	// 	if($this->session->userdata('logged_in')) {
-	// 		$this->load->helper('site_helper');
-	// 		$data = html_variable();
-	// 		$data['title'] = 'Item Actual Stocks';
-	// 		$data['items_menu_status'] = ' menu-open';
-	// 		$data['items_menu_display'] = ' block';
-	// 		$data['ul_items'] = ' active';
-	// 		$data['item_stocks'] = ' active';
-
-	// 		$this->load->view('templates/header', $data);
-	// 		$this->load->view('templates/navbar');
-	// 		$this->load->view('items/item_stocks/item_stocks_list');
-	// 		$this->load->view('templates/footer');
-	// 	} else {
-	// 		redirect('','refresh');
-	// 	}
-	// }
-
 	public function register_new_item(){
 	
 
