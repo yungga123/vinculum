@@ -147,20 +147,29 @@ $this->Myfpdf->Cell(89,4,'With work permit?',1,1,''); // with permit checkbox
 
 $this->Myfpdf->Cell(95,4,$assignedTech1,1,0,'');
 $this->Myfpdf->Cell(5,4,'',0,0,'C');
-
+$this->Myfpdf->Cell(95,4,'',0,0,'');
 
 $this->Myfpdf->ln(4);
-$this->Myfpdf->Cell(95,4,$assignedTech2,1,1,'');
+$this->Myfpdf->Cell(95,4,$assignedTech2,1,0,'');
+$this->Myfpdf->Cell(5,4,'',0,0,'');
+$this->Myfpdf->SetFont('Times','B',10);
+$this->Myfpdf->Cell(30,4,'Activity Remarks',1,0,'');
+$this->Myfpdf->ln(4);
 
-$this->Myfpdf->Cell(95,4,$assignedTech3,1,1,'');
+$this->Myfpdf->SetFont('Times','',10);
+$this->Myfpdf->Cell(95,4,$assignedTech3,1,0,'');
+$this->Myfpdf->Cell(5,4,'',0,0,'');
+$this->Myfpdf->MultiCell(95,4,'',1,'');
 
-$this->Myfpdf->Cell(95,4,$assignedTech4,1,1,'');
 
-$this->Myfpdf->Cell(95,4,$assignedTech5,1,1,'');
+$this->Myfpdf->Cell(95,4,$assignedTech4,1,0,'');
+
+$this->Myfpdf->ln(4);
+$this->Myfpdf->Cell(95,4,$assignedTech5,1,0,'');
 
 $this->Myfpdf->SetFont('Times','B',11);
 $this->Myfpdf->Cell(195,5,'',0,1,'');
-$this->Myfpdf->Cell(20,5,'Remarks :',0,0,'');
+$this->Myfpdf->Cell(20,5,'Concern :',0,0,'');
 $this->Myfpdf->SetFont('Times','',11);
 $this->Myfpdf->MultiCell(175,5,$remarks,1,'');
 
