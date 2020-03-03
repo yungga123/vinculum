@@ -93,136 +93,140 @@ foreach ($results as $row) {
 	}
 }
 
-$this->Myfpdf = new FPDF('p','mm','Letter');
-$this->Myfpdf->AddPage();
-$this->Myfpdf->SetAutoPageBreak(false);
+$pdf = new PDF_MC_Table('p','mm','Letter');
+$pdf->AddPage();
+$pdf->SetAutoPageBreak(false);
 
-$this->Myfpdf->SetFont('Times','B',18);
+//Multi Cell Custom Functions
+$pdf->SetWidths([95]);
+$pdf->SetLineHeight(5);
 
-$this->Myfpdf->Image(base_url('assets/images/vinculumNewLogo.jpg'),10,10,44);
+$pdf->SetFont('Times','B',18);
 
-$this->Myfpdf->Cell(195,5,'',0,1,'C');
-$this->Myfpdf->Cell(195,5,'Dispatch Form',0,1,'C');
-$this->Myfpdf->Cell(195,5,'',0,1,'C');
+$pdf->Image(base_url('assets/images/vinculumNewLogo.jpg'),10,10,44);
 
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(195,5,'Dispatch ID: '. $DispatchID,0,1,'R');
+$pdf->Cell(195,5,'',0,1,'C');
+$pdf->Cell(195,5,'Dispatch Form',0,1,'C');
+$pdf->Cell(195,5,'',0,1,'C');
 
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(30,5,'Customer Name',1,0,'');
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(165,5,utf8_decode($customerName.' --- '.$companyName),1,1,'');
+$pdf->SetFont('Times','',11);
+$pdf->Cell(195,5,'Dispatch ID: '. $DispatchID,0,1,'R');
 
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(30,5,'Contact Person',1,0,'');
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(165,5,$contactPerson,1,1,'');
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(30,5,'Customer Name',1,0,'');
+$pdf->SetFont('Times','',11);
+$pdf->Cell(165,5,utf8_decode($customerName.' --- '.$companyName),1,1,'');
 
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(30,5,'Contact Number',1,0,'');
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(165,5,$contactNumber,1,1,'');
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(30,5,'Contact Person',1,0,'');
+$pdf->SetFont('Times','',11);
+$pdf->Cell(165,5,$contactPerson,1,1,'');
 
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(30,5,'Address',1,0,'');
-$this->Myfpdf->SetFont('Times','',11);
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(30,5,'Contact Number',1,0,'');
+$pdf->SetFont('Times','',11);
+$pdf->Cell(165,5,$contactNumber,1,1,'');
+
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(30,5,'Address',1,0,'');
+$pdf->SetFont('Times','',11);
 
 $fontSize = 11;
 $tempFontSize = $fontSize;
-while ( $this->Myfpdf->GetStringWidth($address) > 163.5) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
+while ( $pdf->GetStringWidth($address) > 163.5) {
+		$pdf->SetFontSize($tempFontSize -= 0.1);
 }
-$this->Myfpdf->Cell(165,5,utf8_decode($address),1,1,'');
+$pdf->Cell(165,5,utf8_decode($address),1,1,'');
 $tempFontSize = $fontSize;
-$this->Myfpdf->SetFontSize($fontSize);
+$pdf->SetFontSize($fontSize);
 
-$this->Myfpdf->Cell(195,5,'',0,1,'');
+$pdf->Cell(195,5,'',0,1,'');
 
-$this->Myfpdf->SetFont('Times','B',10);
-$this->Myfpdf->Cell(95,4,'Personnel/s',1,0,'C');
-$this->Myfpdf->Cell(5,4,'',0,0,'C');
-$this->Myfpdf->Cell(6,4,$with_permit,1,0,'C');
-$this->Myfpdf->SetFont('Times','',10);
-$this->Myfpdf->Cell(89,4,'With work permit?',1,1,''); // with permit checkbox
+$pdf->SetFont('Times','B',10);
+$pdf->Cell(95,4,'Personnel/s',1,0,'C');
+$pdf->Cell(5,4,'',0,0,'C');
+$pdf->Cell(6,4,$with_permit,1,0,'C');
+$pdf->SetFont('Times','',10);
+$pdf->Cell(89,4,'With work permit?',1,1,''); // with permit checkbox
 
-$this->Myfpdf->Cell(95,4,$assignedTech1,1,0,'');
-$this->Myfpdf->Cell(5,4,'',0,0,'C');
-$this->Myfpdf->Cell(95,4,'',0,0,'');
+$pdf->Cell(95,4,$assignedTech1,1,0,'');
+$pdf->Cell(5,4,'',0,0,'C');
+$pdf->Cell(95,4,'',0,0,'');
 
-$this->Myfpdf->ln(4);
-$this->Myfpdf->Cell(95,4,$assignedTech2,1,0,'');
-$this->Myfpdf->Cell(5,4,'',0,0,'');
-$this->Myfpdf->SetFont('Times','B',10);
-$this->Myfpdf->Cell(30,4,'Activity Remarks',1,0,'');
-$this->Myfpdf->ln(4);
+$pdf->ln(4);
+$pdf->Cell(95,4,$assignedTech2,1,0,'');
+$pdf->Cell(5,4,'',0,0,'');
+$pdf->SetFont('Times','B',10);
+$pdf->Cell(30,4,'Activity Remarks',1,0,'');
+$pdf->ln(4);
 
-$this->Myfpdf->SetFont('Times','',10);
-$this->Myfpdf->Cell(95,4,$assignedTech3,1,0,'');
-$this->Myfpdf->Cell(5,4,'',0,0,'');
-$this->Myfpdf->MultiCell(95,4,'',1,'');
+$pdf->SetFont('Times','',10);
+$pdf->Cell(95,4,$assignedTech3,1,0,'');
+$pdf->Cell(5,4,'',0,0,'');
+$pdf->Row(Array('AHGSDHGKJSAD sdf gdsgfdsgjfdsg ofds goijfds goidsjgoidsjfgoi fdsgoijfd oigjfd oigjfdsoig fdsoi jgoifds jgoifds goifds goifds jgoifdsjg fdsjg oifds'));
 
+$pdf->ln(4);
+$pdf->Cell(95,4,$assignedTech4,1,0,'');
 
-$this->Myfpdf->Cell(95,4,$assignedTech4,1,0,'');
+$pdf->ln(4);
+$pdf->Cell(95,4,$assignedTech5,1,0,'');
 
-$this->Myfpdf->ln(4);
-$this->Myfpdf->Cell(95,4,$assignedTech5,1,0,'');
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(195,5,'',0,1,'');
+$pdf->Cell(20,5,'Concern :',0,0,'');
+$pdf->SetFont('Times','',11);
+$pdf->MultiCell(175,5,$remarks,1,'');
 
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(195,5,'',0,1,'');
-$this->Myfpdf->Cell(20,5,'Concern :',0,0,'');
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->MultiCell(175,5,$remarks,1,'');
+$pdf->ln(10);
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(20,5,'Time In',1,0,'');
 
-$this->Myfpdf->ln(10);
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(20,5,'Time In',1,0,'');
+$pdf->SetFont('Times','',11);
+$pdf->Cell(30,5,$timeIn,1,0,'');
+$pdf->Cell(5,5,'',0,0,'');
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(30,5,'Type of Service',1,0,'');
+$pdf->Cell(35,5,'',0,0,'');
+$pdf->Cell(30,5,'Dispatch Date',1,1,'');
 
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(30,5,$timeIn,1,0,'');
-$this->Myfpdf->Cell(5,5,'',0,0,'');
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(30,5,'Type of Service',1,0,'');
-$this->Myfpdf->Cell(35,5,'',0,0,'');
-$this->Myfpdf->Cell(30,5,'Dispatch Date',1,1,'');
+$pdf->SetFont('Times','B',11);
 
-$this->Myfpdf->SetFont('Times','B',11);
+$pdf->Cell(20,5,'Time Out',1,0,'');
 
-$this->Myfpdf->Cell(20,5,'Time Out',1,0,'');
+$pdf->SetFont('Times','',11);
 
-$this->Myfpdf->SetFont('Times','',11);
+$pdf->Cell(30,5,$timeOut,1,0,'');
+$pdf->Cell(5,5,'',0,0,'');
+$pdf->Cell(60,5,$typeOfService,1,0,'');
+$pdf->Cell(5,5,'',0,0,'');
+$pdf->Cell(75,5,date('l - F j, Y',strtotime($dispatchDate)),1,1,'');
 
-$this->Myfpdf->Cell(30,5,$timeOut,1,0,'');
-$this->Myfpdf->Cell(5,5,'',0,0,'');
-$this->Myfpdf->Cell(60,5,$typeOfService,1,0,'');
-$this->Myfpdf->Cell(5,5,'',0,0,'');
-$this->Myfpdf->Cell(75,5,date('l - F j, Y',strtotime($dispatchDate)),1,1,'');
+$pdf->ln(9);
 
-$this->Myfpdf->ln(9);
+$pdf->SetFont('Times','B',11);
+$pdf->Cell(48.75,5,'Customer Acceptance:',0,0,'');
+$pdf->Cell(35,5,'',0,0,'C');
+$pdf->Cell(48.75,5,'Checked By:',0,0,'');
+$pdf->Cell(20.5,5,'',0,0,'C');
+$pdf->Cell(48.75,5,'Dispatched By:',0,0,'');
 
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(48.75,5,'Customer Acceptance:',0,0,'');
-$this->Myfpdf->Cell(35,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'Checked By:',0,0,'');
-$this->Myfpdf->Cell(20.5,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'Dispatched By:',0,0,'');
+$pdf->ln(9);
 
-$this->Myfpdf->ln(9);
+$pdf->Cell(48.75,5,'________________________________',0,0,'');
+$pdf->Cell(24.5,5,'',0,0,'C');
+$pdf->SetFont('Times','U',11);
+$pdf->Cell(48.75,5,'Jenina F. Gaceta',0,0,'C');
+$pdf->Cell(24.5,5,'',0,0,'C');
+$pdf->Cell(48.75,5,'Irish Gale L. Serrano',0,0,'C');
 
-$this->Myfpdf->Cell(48.75,5,'________________________________',0,0,'');
-$this->Myfpdf->Cell(24.5,5,'',0,0,'C');
-$this->Myfpdf->SetFont('Times','U',11);
-$this->Myfpdf->Cell(48.75,5,'Jenina F. Gaceta',0,0,'C');
-$this->Myfpdf->Cell(24.5,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'Irish Gale L. Serrano',0,0,'C');
+$pdf->ln(4);
 
-$this->Myfpdf->ln(4);
+$pdf->SetFont('Times','',11);
+$pdf->Cell(48.75,5,'Customer Signature over Printed Name',0,0,'');
+$pdf->Cell(24,5,'',0,0,'C');
+$pdf->Cell(48.75,5,'HR Officer',0,0,'C');
+$pdf->Cell(25,5,'',0,0,'C');
+$pdf->Cell(48.75,5,'Admin & Accounting',0,0,'C');
 
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(48.75,5,'Customer Signature over Printed Name',0,0,'');
-$this->Myfpdf->Cell(24,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'HR Officer',0,0,'C');
-$this->Myfpdf->Cell(25,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'Admin & Accounting',0,0,'C');
-
-$this->Myfpdf->Output();
+$pdf->Output();
 ?>

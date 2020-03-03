@@ -134,7 +134,7 @@ public function addDispatch() {
 		if($this->session->userdata('logged_in')) {
 
 
-			$this->load->library('Myfpdf');
+			$this->load->library('MyfpdfMultiCell');
 			$this->load->model('DispatchFormsModel');
 
 			$results = $this->DispatchFormsModel->getSpecificDispatch($id);
