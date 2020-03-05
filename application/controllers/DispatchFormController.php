@@ -134,17 +134,23 @@ public function addDispatch() {
 		if($this->session->userdata('logged_in')) {
 
 
-			$this->load->library('MyfpdfMultiCell');
+			// $this->load->library('MyfpdfMultiCell');
+			// $this->load->model('DispatchFormsModel');
+
+			// $results = $this->DispatchFormsModel->getSpecificDispatch($id);
+
+			// $data['results'] = $results;
+			// $data['dispatch_id'] = $id;
+
+			// $this->load->view('forms/printdispatch', $data);
+
 			$this->load->model('DispatchFormsModel');
-
 			$results = $this->DispatchFormsModel->getSpecificDispatch($id);
-
-			$data['results'] = $results;
-			$data['dispatch_id'] = $id;
-
-			$this->load->view('forms/printdispatch', $data);
-
-			
+			$data = [
+				'title' => 'Print',
+				'results' => $results
+			];
+			$this->load->view('forms/printdispatch',$data);
 
 		} else {
 			redirect('', 'refresh');
