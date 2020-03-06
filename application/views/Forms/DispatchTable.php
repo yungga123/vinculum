@@ -36,7 +36,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 											<th>Address</th>
 											<th>Time In</th>
 											<th>Time Out</th>
-											<th>Remarks</th>
+											<th>Concern</th>
 											<th>Assigned Technician 1</th>
 											<th>Assigned Technician 2</th>
 											<th>Assigned Technician 3</th>
@@ -46,6 +46,9 @@ defined('BASEPATH') or die('No direct script access allowed.');
 											<th>Installation</th>
 											<th>Repair/Service</th>
 											<th>Warranty</th>
+											<th>Dispatch Out</th>
+											<th>SR Number</th>
+											<th>Remarks</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
@@ -84,13 +87,50 @@ defined('BASEPATH') or die('No direct script access allowed.');
               </button>
             </div>
             <div class="modal-body">
+            	
+            	<div class="row">
+            		<div class="col-lg-12">
+            			<div class="card">
+
+            				<?php echo form_open('DispatchFormController/updateDispatchValidate',["id" => "update-form-dispatch"]) ?>
+							<input type="hidden" class="form-control Dispatch_ID" name="dispatch_id">
+							
+		            		<div class="card-header">
+		            			Official Use
+		            		</div>
+
+		            		<div class="card-body">
+		            			<div class="row">
+		            				<div class="col-lg-6">
+										<div class="form-group">
+						        			<label>Dispatch Out</label>
+									        <input class="form-control DispatchOut_Edit" type="time" name="dispatch_out" id="dispatch_out" placeholder="Select Time">
+						        		 </div>
+
+						        		 <div class="form-group">
+						                    <label>Remarks</label>
+							                    <textarea class="form-control Remarks_Edit" rows="3" name="remarks2" id="remarks2" placeholder="Enter Remarks"></textarea>
+				               			 </div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label>SR Number</label>
+											<input class="form-control SRNumber_Edit" type="text" name="sr_number" id="sr_number" placeholder="Enter SR No. here">
+										</div>
+									</div>
+		            			</div>
+		            			
+		            		</div>
+		            	</div>
+            		</div>
+				</div>
+
               	<div class="row">
 					<div class="col-sm-6">
 					<div class="modal-header">
 	              	<h6 class="modal-title">Dispatch Details </h6>
 	            	</div>
-	            	<?php echo form_open('DispatchFormController/updateDispatchValidate',["id" => "update-form-dispatch"]) ?>
-							<input type="hidden" class="form-control Dispatch_ID" name="dispatch_id">
 
 					<div class="card card-primary">
 						<div class="card-body">
@@ -130,8 +170,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
 							</div>
 
 							<div class="form-group">
-			                    <label for="remarks" class="control-label">Remarks</label>
-			                    <textarea class="form-control Remarks_Edit" rows="3" name="remarks" id="remarks" placeholder="Enter Remarks"></textarea>
+			                    <label for="remarks" class="control-label">Concern</label>
+			                    <textarea class="form-control Concern_Edit" rows="3" name="remarks" id="remarks" placeholder="Enter Concern"></textarea>
 			                </div>
 
 			                <div class="form-group">

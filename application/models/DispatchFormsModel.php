@@ -51,7 +51,10 @@ class DispatchFormsModel extends CI_Model {
 			"a.WithPermit",
 			"a.Installation",
 			"a.RepairOrService",
-			"a.Warranty"
+			"a.Warranty",
+			"a.dispatch_out",
+			"a.sr_number",
+			"a.remarks2"
 		);
 
 		$table = "dispatch_forms as a";
@@ -87,7 +90,10 @@ class DispatchFormsModel extends CI_Model {
 			"a.WithPermit",
 			"a.Installation",
 			"a.RepairOrService",
-			"a.Warranty"
+			"a.Warranty",
+			"a.dispatch_out",
+			"a.sr_number",
+			"a.remarks2"
 		);
 
 		$table = "dispatch_forms as a";
@@ -125,7 +131,10 @@ class DispatchFormsModel extends CI_Model {
 			"a.WithPermit",
 			"a.Installation",
 			"a.RepairOrService",
-			"a.Warranty"
+			"a.Warranty",
+			"a.dispatch_out",
+			"a.sr_number",
+			"a.remarks2"
 		);
 	var $order_column = array(
 			"Dispatch_ID",
@@ -145,7 +154,10 @@ class DispatchFormsModel extends CI_Model {
 			"WithPermit",
 			null,
 			null,
-			null
+			null,
+			"a.dispatch_out",
+			"a.sr_number",
+			"a.remarks2"
 		);
 
 	public function dispatchform_query(){
@@ -168,8 +180,10 @@ class DispatchFormsModel extends CI_Model {
 			$this->db->or_like("AssignedTechnicians4", $_POST["search"]["value"]);
 			$this->db->or_like("AssignedTechnicians5", $_POST["search"]["value"]);
 			$this->db->or_like("WithPermit", $_POST["search"]["value"]);
+			$this->db->or_like("dispatch_out", $_POST["search"]["value"]);
+			$this->db->or_like("sr_number", $_POST["search"]["value"]);
+			$this->db->or_like("remarks2", $_POST["search"]["value"]);
 		}
-
 		if (isset($_POST["order"])) {
 			$this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
 		} else {

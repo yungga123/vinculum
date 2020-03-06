@@ -1,237 +1,108 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
 
-// $DispatchID = '';
-// $companyName = '';
-// $customerName = '';
-// $contactPerson = '';
-// $contactNumber = '';
-// $dispatchDate = '';
-// $address = '';
-// $timeIn = '';
-// $timeOut = '';
-// $remarks = '';
-// $assignedTech1 = '';
-// $assignedTech2 = 'N/A';
-// $assignedTech3 = 'N/A';
-// $assignedTech4 = 'N/A';
-// $assignedTech5 = 'N/A';
-// $with_permit = '';
-// $typeOfService = '';
+$DispatchID = '';
+$companyName = '';
+$customerName = '';
+$contactPerson = '';
+$contactNumber = '';
+$dispatchDate = '';
+$address = '';
+$timeIn = '';
+$timeOut = '';
+$dispatch_out = '';
+$concern = '';
+$assignedTech1 = '';
+$assignedTech2 = 'N/A';
+$assignedTech3 = 'N/A';
+$assignedTech4 = 'N/A';
+$assignedTech5 = 'N/A';
+$with_permit = '';
+$typeOfService = '';
+$sr_number = '';
+$remarks = '';
 
-// foreach ($results as $row) {
-// 	$DispatchID = $dispatch_id;
-// 	$companyName = $row->CompanyName;
-// 	$customerName = $row->CustomerName;
-// 	$contactPerson = $row->ContactPerson;
-// 	$contactNumber = $row->ContactNumber;
-// 	$dispatchDate = $row->DispatchDate;
-// 	$address = $row->Address;
-
-// 	if ($row->TimeIn == '00:00:00' or $row->TimeIn == '') {
-// 		$timeIn = '';
-// 	} else {
-// 		$timeIn = date('g:i A',strtotime($row->TimeIn));
-// 	}
-
-// 	if ($row->TimeOut == '00:00:00' or $row->TimeIn == '') {
-// 		$timeOut = '';
-// 	} else {
-// 		$timeOut =  date('g:i A',strtotime($row->TimeOut));
-// 	} 	
-
-// 	$remarks = $row->Remarks;
-
-// 	if ($row->AssignedTechnicians1 == '') {
-// 		$assignedTech1 = 'N/A';
-// 	} else {
-// 		$assignedTech1 = $row->AssignedTechnicians1;
-// 	}
-
-// 	if ($row->AssignedTechnicians2 == '') {
-// 		$assignedTech2 = 'N/A';
-// 	} else {
-// 		$assignedTech2 = $row->AssignedTechnicians2;
-// 	}
-
-// 	if ($row->AssignedTechnicians3 == '') {
-// 		$assignedTech3 = 'N/A';
-// 	} else {
-// 		$assignedTech3 = $row->AssignedTechnicians3;
-// 	}
-
-// 	if ($row->AssignedTechnicians4 == '') {
-// 		$assignedTech4 = 'N/A';
-// 	} else {
-// 		$assignedTech4 = $row->AssignedTechnicians4;
-// 	}
-
-// 	if ($row->AssignedTechnicians5 == '') {
-// 		$assignedTech5 = 'N/A';
-// 	} else {
-// 		$assignedTech5 = $row->AssignedTechnicians5;
-// 	}
-
-// 	if ($row->WithPermit == 'Yes') {
-// 		$with_permit = 'Yes';
-// 	} elseif($row->WithPermit == 'No') {
-// 		$with_permit = 'No';
-// 	} else {
-// 		$with_permit = '';
-// 	}
-
-// 	if ($row->Installation == 1) {
-// 		$typeOfService = 'Installation';
-// 	}
-
-// 	if ($row->RepairOrService) {
-// 		$typeOfService = 'Service';
-// 	}
-
-// 	if ($row->Warranty) {
-// 		$typeOfService = 'Warranty';
-// 	}
-// }
-
-// $pdf = new PDF_MC_Table('p','mm','Letter');
-// $pdf->AddPage();
-// $pdf->SetAutoPageBreak(false);
+foreach ($results as $row) {
+	$DispatchID = $dispatch_id;
+	$companyName = $row->CompanyName;
+	$customerName = $row->CustomerName;
+	$contactPerson = $row->ContactPerson;
+	$contactNumber = $row->ContactNumber;
+	$dispatchDate = $row->DispatchDate;
+	$address = $row->Address;
+	$sr_number = $row->sr_number;
+	$remarks = $row->remarks2;
 
 
-// $pdf->SetFont('Times','B',18);
+	if ($row->dispatch_out == '00:00:00' or $row->dispatch_out == '') {
+		$dispatch_out = '';
+	} else {
+		$dispatch_out = date('g:i A',strtotime($row->dispatch_out));
+	}
 
-// $pdf->Image(base_url('assets/images/vinculumNewLogo.jpg'),10,10,44);
+	if ($row->TimeIn == '00:00:00' or $row->TimeIn == '') {
+		$timeIn = '';
+	} else {
+		$timeIn = date('g:i A',strtotime($row->TimeIn));
+	}
 
-// $pdf->Cell(195,5,'',0,1,'C');
-// $pdf->Cell(195,5,'Dispatch Form',0,1,'C');
-// $pdf->Cell(195,5,'',0,1,'C');
+	if ($row->TimeOut == '00:00:00' or $row->TimeIn == '') {
+		$timeOut = '';
+	} else {
+		$timeOut =  date('g:i A',strtotime($row->TimeOut));
+	} 	
 
-// $pdf->SetFont('Times','',11);
-// $pdf->Cell(195,5,'Dispatch ID: '. $DispatchID,0,1,'R');
+	$concern = $row->Remarks;
 
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(30,5,'Customer Name',1,0,'');
-// $pdf->SetFont('Times','',11);
-// $pdf->Cell(165,5,utf8_decode($customerName.' --- '.$companyName),1,1,'');
+	if ($row->AssignedTechnicians1 == '') {
+		$assignedTech1 = 'N/A';
+	} else {
+		$assignedTech1 = $row->AssignedTechnicians1;
+	}
 
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(30,5,'Contact Person',1,0,'');
-// $pdf->SetFont('Times','',11);
-// $pdf->Cell(165,5,$contactPerson,1,1,'');
+	if ($row->AssignedTechnicians2 == '') {
+		$assignedTech2 = 'N/A';
+	} else {
+		$assignedTech2 = $row->AssignedTechnicians2;
+	}
 
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(30,5,'Contact Number',1,0,'');
-// $pdf->SetFont('Times','',11);
-// $pdf->Cell(165,5,$contactNumber,1,1,'');
+	if ($row->AssignedTechnicians3 == '') {
+		$assignedTech3 = 'N/A';
+	} else {
+		$assignedTech3 = $row->AssignedTechnicians3;
+	}
 
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(30,5,'Address',1,0,'');
-// $pdf->SetFont('Times','',11);
+	if ($row->AssignedTechnicians4 == '') {
+		$assignedTech4 = 'N/A';
+	} else {
+		$assignedTech4 = $row->AssignedTechnicians4;
+	}
 
-// $fontSize = 11;
-// $tempFontSize = $fontSize;
-// while ( $pdf->GetStringWidth($address) > 163.5) {
-// 		$pdf->SetFontSize($tempFontSize -= 0.1);
-// }
-// $pdf->Cell(165,5,utf8_decode($address),1,1,'');
-// $tempFontSize = $fontSize;
-// $pdf->SetFontSize($fontSize);
+	if ($row->AssignedTechnicians5 == '') {
+		$assignedTech5 = 'N/A';
+	} else {
+		$assignedTech5 = $row->AssignedTechnicians5;
+	}
 
-// $pdf->Cell(195,5,'',0,1,'');
+	if ($row->Installation == 1) {
+		$typeOfService = 'Installation';
+	}
 
-// $pdf->SetFont('Times','B',10);
-// $pdf->Cell(95,4,'Personnel/s',1,0,'C');
-// $pdf->Cell(5,4,'',0,0,'C');
-// $pdf->Cell(6,4,$with_permit,1,0,'C');
-// $pdf->SetFont('Times','',10);
-// $pdf->Cell(89,4,'With work permit?',1,1,''); // with permit checkbox
+	if ($row->RepairOrService) {
+		$typeOfService = 'Service';
+	}
 
-// $pdf->Cell(95,4,$assignedTech1,1,0,'');
-// $pdf->Cell(5,4,'',0,0,'C');
-// $pdf->Cell(95,4,'',0,0,'');
+	if ($row->WithPermit == 'Yes') {
+		$with_permit = 'fas fa-check-square';
+	} else {
+		$with_permit = 'fas fa-times';
+	}
 
-// $pdf->ln(4);
-// $pdf->Cell(95,4,$assignedTech2,1,0,'');
-// $pdf->Cell(5,4,'',0,0,'');
-// $pdf->SetFont('Times','B',10);
-// $pdf->Cell(30,4,'Activity Remarks',1,0,'');
-// $pdf->ln(4);
+	if ($row->Warranty) {
+		$typeOfService = 'Warranty';
+	}
+}
 
-
-// //Multi Cell Custom Functions
-// $pdf->SetWidths([95]);
-// $pdf->SetLineHeight(5);
-
-
-// $pdf->SetFont('Times','',10);
-// $pdf->Cell(95,4,$assignedTech3,1,0,'');
-// $pdf->Cell(5,4,'',0,0,'');
-// $pdf->Row(Array('AHGSDHGKJSAD sdf gdsgfdsgjfdsg ofds goijfds goidsjgoidsjfgoi fdsgoijfd oigjfd oigjfdsoig fdsoi jgoifds jgoifds goifds goifds jgoifdsjg fdsjg oifds'));
-
-// $pdf->ln(4);
-// $pdf->Cell(95,4,$assignedTech4,1,0,'');
-
-// $pdf->ln(4);
-// $pdf->Cell(95,4,$assignedTech5,1,0,'');
-
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(195,5,'',0,1,'');
-// $pdf->Cell(20,5,'Concern :',0,0,'');
-// $pdf->SetFont('Times','',11);
-// $pdf->MultiCell(175,5,$remarks,1,'');
-
-// $pdf->ln(10);
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(20,5,'Time In',1,0,'');
-
-// $pdf->SetFont('Times','',11);
-// $pdf->Cell(30,5,$timeIn,1,0,'');
-// $pdf->Cell(5,5,'',0,0,'');
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(30,5,'Type of Service',1,0,'');
-// $pdf->Cell(35,5,'',0,0,'');
-// $pdf->Cell(30,5,'Dispatch Date',1,1,'');
-
-// $pdf->SetFont('Times','B',11);
-
-// $pdf->Cell(20,5,'Time Out',1,0,'');
-
-// $pdf->SetFont('Times','',11);
-
-// $pdf->Cell(30,5,$timeOut,1,0,'');
-// $pdf->Cell(5,5,'',0,0,'');
-// $pdf->Cell(60,5,$typeOfService,1,0,'');
-// $pdf->Cell(5,5,'',0,0,'');
-// $pdf->Cell(75,5,date('l - F j, Y',strtotime($dispatchDate)),1,1,'');
-
-// $pdf->ln(9);
-
-// $pdf->SetFont('Times','B',11);
-// $pdf->Cell(48.75,5,'Customer Acceptance:',0,0,'');
-// $pdf->Cell(35,5,'',0,0,'C');
-// $pdf->Cell(48.75,5,'Checked By:',0,0,'');
-// $pdf->Cell(20.5,5,'',0,0,'C');
-// $pdf->Cell(48.75,5,'Dispatched By:',0,0,'');
-
-// $pdf->ln(9);
-
-// $pdf->Cell(48.75,5,'________________________________',0,0,'');
-// $pdf->Cell(24.5,5,'',0,0,'C');
-// $pdf->SetFont('Times','U',11);
-// $pdf->Cell(48.75,5,'Jenina F. Gaceta',0,0,'C');
-// $pdf->Cell(24.5,5,'',0,0,'C');
-// $pdf->Cell(48.75,5,'Irish Gale L. Serrano',0,0,'C');
-
-// $pdf->ln(4);
-
-// $pdf->SetFont('Times','',11);
-// $pdf->Cell(48.75,5,'Customer Signature over Printed Name',0,0,'');
-// $pdf->Cell(24,5,'',0,0,'C');
-// $pdf->Cell(48.75,5,'HR Officer',0,0,'C');
-// $pdf->Cell(25,5,'',0,0,'C');
-// $pdf->Cell(48.75,5,'Admin & Accounting',0,0,'C');
-
-// $pdf->Output();
 ?>
 
 <!DOCTYPE html>
@@ -284,7 +155,7 @@ defined('BASEPATH') or die('Access Denied');
 				</div>
 				<div class="col-6">
 					<p class="text-center mx-auto" style="font-size: 23px;font-weight: bold;">DISPATCH FORM</p>
-					<p class="text-center mx-auto">ID No. 1565</p>
+					<p class="text-center mx-auto">ID No. <?php echo $DispatchID ?></p>
 				</div>
 			</div>
 
@@ -294,22 +165,22 @@ defined('BASEPATH') or die('Access Denied');
 						<tbody>
 							<tr>
 								<td width="20%" style="font-weight: bold">Customer Name</td>
-								<td width="80%">Renato Hipolito</td>
+								<td width="80%"><?php echo $customerName.' --- '.$companyName ?></td>
 							</tr>
 
 							<tr>
 								<td width="20%" style="font-weight: bold">Contact Person</td>
-								<td width="80%">Mr. Renato Hipolito</td>
+								<td width="80%"><?php echo $contactPerson ?></td>
 							</tr>
 
 							<tr>
 								<td width="20%" style="font-weight: bold">Contact Number</td>
-								<td width="80%">0943-298-4923</td>
+								<td width="80%"><?php echo $contactNumber ?></td>
 							</tr>
 
 							<tr>
 								<td width="20%" style="font-weight: bold">Address</td>
-								<td width="80%">Muntinlupa City</td>
+								<td width="80%"><?php echo $address ?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -324,23 +195,23 @@ defined('BASEPATH') or die('Access Denied');
 								<td width="100%" class="text-center" style="font-weight: bold">Personnel/s</td>
 							</tr>
 							<tr>
-								<td width="100%">Reynan Jardin</td>
+								<td width="100%"><?php echo $assignedTech1 ?></td>
 							</tr>
 
 							<tr>
-								<td width="100%">John Joel Guevarra</td>
+								<td width="100%"><?php echo $assignedTech2 ?></td>
 							</tr>
 
 							<tr>
-								<td width="100%">Jeorge M Reyno</td>
+								<td width="100%"><?php echo $assignedTech3 ?></td>
 							</tr>
 
 							<tr>
-								<td width="100%">Carlo Temporosa</td>
+								<td width="100%"><?php echo $assignedTech4 ?></td>
 							</tr>
 
 							<tr>
-								<td width="100%">Geran Roel Angco</td>
+								<td width="100%"><?php echo $assignedTech5 ?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -351,30 +222,30 @@ defined('BASEPATH') or die('Access Denied');
 						<tbody>
 							<tr>
 								<td width="30%" style="font-weight: bold;">Date</td>
-								<td width="70%">Saturday -  March 5, 2020</td>
+								<td width="70%"><?php echo date('l - F j, Y',strtotime($dispatchDate)) ?></td>
 							</tr>
 
 							<tr>
 								<td width="30%" style="font-weight: bold;">Time In</td>
-								<td width="70%">10:00 AM</td>
+								<td width="70%"><?php echo $timeIn ?></td>
 							</tr>
 
 							<tr>
 								<td width="30%" style="font-weight: bold;">Time Out</td>
-								<td width="70%">10:00 PM</td>
+								<td width="70%"><?php echo $timeOut ?></td>
 							</tr>
 
 							<tr>
 								<td width="30%" style="font-weight: bold;">Dispatch Out</td>
-								<td width="70%">10:00 PM</td>
+								<td width="70%"><?php echo $dispatch_out ?></td>
 							</tr>
 
 							<tr>
 								<td width="30%" style="font-weight: bold;">Service Type</td>
-								<td width="70%">Installation</td>
+								<td width="70%"><?php echo $typeOfService ?></td>
 							</tr>
 							<tr>
-								<td width="100%" class="" colspan="2">Service Report No. : 224</td>
+								<td width="100%" class="" colspan="2">Service Report No. : <?php echo $sr_number ?></td>
 							</tr>
 						</tbody>
 					</table>
@@ -386,7 +257,7 @@ defined('BASEPATH') or die('Access Denied');
 							
 
 							<tr>
-								<td width="100%" class="">With Work Permit? <i class="fas fa-check-square"></i></td>
+								<td width="100%" class="">With Work Permit? <i class="<?php echo $with_permit ?>"></i></td>
 							</tr>
 						</tbody>
 					</table>
@@ -398,13 +269,40 @@ defined('BASEPATH') or die('Access Denied');
 					<table class="table table-bordered table-sm" style="font-size: 15px">
 						<tbody>
 							<tr>
-								<td width="20%" style="font-weight: bold">Concern</td>
-								<td width="80%">No byuwing</td>
+								<td width="15%" style="font-weight: bold">Description</td>
+								<td width="85%"><?php echo $concern ?></td>
+							</tr>
+
+							<tr>
+								<td width="15%" style="font-weight: bold">Remarks</td>
+								<td width="85%"><?php echo $remarks ?></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-			</div>	
+			</div>
+
+			<div class="row mt-3">
+
+				<div class="col-4">
+					<p style="font-weight: bold">Customer Acceptance:</p>
+					<p>________________________________ <br> 
+					Customer Signature over Printed Name</p>
+				</div>
+				
+				<div class="col-4 text-center">
+					<p style="font-weight: bold">Checked By:</p>
+					<p><u>Jenina F. Gaceta</u><br> 
+					HR Officer</p>
+				</div>
+
+				<div class="col-4 text-right">
+					<p style="font-weight: bold">Dispatched By:</p>
+					<p><u>Irish Gale L. Serrano</u><br> 
+					Admin & Accounting</p>
+				</div>
+
+			</div>
 		</div>
 	</div>
 </body>

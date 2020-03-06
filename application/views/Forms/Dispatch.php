@@ -15,6 +15,44 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 	<section class="content">
 		<div class="container-fluid">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="card">
+						<?php echo form_open('DispatchFormController/addDispatchValidate',["id" => "New-form-dispatch"]) ?>
+						<div class="card-header">
+							Official Use
+						</div>
+
+						<div class="card-body">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+					        			<label>Dispatch Out</label>
+								        <input class="form-control" type="time" name="dispatch_out" id="dispatch_out" placeholder="Select Time">
+					        		 </div>
+
+					        		 <div class="form-group">
+					                    <label>Remarks</label>
+						                    <textarea class="form-control" rows="3" name="remarks2" id="remarks2" placeholder="Enter Remarks"></textarea>
+			               			 </div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label>SR Number</label>
+										<input class="form-control" type="text" name="sr_number" id="sr_number" placeholder="Enter SR No. here">
+									</div>
+								</div>
+							</div>
+							
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="card">
@@ -31,7 +69,6 @@ defined('BASEPATH') or die('No direct script access allowed.');
 						<div class="card-body">
 							<div class="row">
 								<div class="col-lg-6">
-									<?php echo form_open('DispatchFormController/addDispatchValidate',["id" => "New-form-dispatch"]) ?>
 									<div class="form-group">
 				                		<label>Dispatch Date</label>
 							                <input class="form-control" id="dispatch_date" type="date" name="dispatch_date" placeholder="Select Date">
@@ -69,8 +106,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
 								        	</select>
 							         </div>
 							         <div class="form-group">
-					                    <label>Remarks</label>
-						                    <textarea class="form-control" rows="3" name="remarks" id="remarks" placeholder="Enter Remarks"></textarea>
+					                    <label>Concern</label>
+						                    <textarea class="form-control" rows="3" name="remarks" id="remarks" placeholder="Enter Concern"></textarea>
 			               			 </div>
 
 					                 <div class="form-group">
@@ -157,6 +194,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
 						</div>
 					</div>
 				</div>
+
+				
 			</div>
 		</div>
 	</section>

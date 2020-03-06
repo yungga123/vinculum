@@ -96,6 +96,9 @@ public function addDispatch() {
 			$sub_array[] = $row->Installation;
 			$sub_array[] = $row->RepairOrService;
 			$sub_array[] = $row->Warranty;
+			$sub_array[] = $row->dispatch_out;
+			$sub_array[] = $row->sr_number;
+			$sub_array[] = $row->remarks2;
 			$sub_array[] = '<button type="button" class="btn btn-warning btn-sm btn_select" data-toggle="modal" data-target="#modal-edit-dispatch"><i class="fas fa-edit"> EDIT </i>
         </button> <a href="'.site_url("deletedispatch/".$row->Dispatch_ID).'" class="btn btn-sm btn-danger" onclick="return confirm('."'Are you sure?'".')"><i class="fa fa-trash"></i> DELETE</a>
 				<a href="'.site_url('printdispatch/'.$row->Dispatch_ID).'" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-print"></i> Print</a>';
@@ -148,7 +151,8 @@ public function addDispatch() {
 			$results = $this->DispatchFormsModel->getSpecificDispatch($id);
 			$data = [
 				'title' => 'Print',
-				'results' => $results
+				'results' => $results,
+				'dispatch_id' => $id
 			];
 			$this->load->view('forms/printdispatch',$data);
 
@@ -188,7 +192,7 @@ public function addDispatch() {
 			],
 			[
 				'field' => 'remarks',
-				'label' => 'Remarks',
+				'label' => 'Concern',
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
@@ -225,7 +229,23 @@ public function addDispatch() {
 				'field' => 'with_permit',
 				'label' => 'Is this with permit?',
 				'rules' => 'trim|required'
+			],
+			[
+				'field' => 'dispatch_out',
+				'label' => 'Dispatch Out',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'sr_number',
+				'label' => 'SR Number',
+				'rules' => 'trim|numeric'
+			],
+			[
+				'field' => 'remarks2',
+				'label' => 'Remarks',
+				'rules' => 'trim|max_length[1000]'
 			]
+
 
 		];
 
@@ -266,7 +286,10 @@ public function addDispatch() {
 				'WithPermit' => $this->input->post('with_permit'),
 				'Installation' => $installation,
 				'RepairOrService' => $service,
-				'Warranty' => $warranty
+				'Warranty' => $warranty,
+				'dispatch_out' => $this->input->post('dispatch_out'),
+				'sr_number' => $this->input->post('sr_number'),
+				'remarks2' => $this->input->post('remarks2')
 			];
 
 			$this->load->model('DispatchFormsModel');
@@ -306,7 +329,7 @@ public function addDispatch() {
 			],
 			[
 				'field' => 'remarks',
-				'label' => 'Remarks',
+				'label' => 'Concern',
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
@@ -343,6 +366,21 @@ public function addDispatch() {
 				'field' => 'with_permit',
 				'label' => 'Is this with permit?',
 				'rules' => 'trim|required'
+			],
+			[
+				'field' => 'dispatch_out',
+				'label' => 'Dispatch Out',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'sr_number',
+				'label' => 'SR Number',
+				'rules' => 'trim|numeric'
+			],
+			[
+				'field' => 'remarks2',
+				'label' => 'Remarks',
+				'rules' => 'trim|max_length[1000]'
 			]
 
 		];
@@ -385,7 +423,10 @@ public function addDispatch() {
 				'WithPermit' => $this->input->post('with_permit'),
 				'Installation' => $installation,
 				'RepairOrService' => $service,
-				'Warranty' => $warranty
+				'Warranty' => $warranty,
+				'dispatch_out' => $this->input->post('dispatch_out'),
+				'sr_number' => $this->input->post('sr_number'),
+				'remarks2' => $this->input->post('remarks2')
 			];
 
 			$this->DispatchFormsModel->insertDispatch($data);

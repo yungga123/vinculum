@@ -643,13 +643,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 			$(".DispatchDate_Edit").val(response.dispatch_form_edit[0].DispatchDate);
 			 			$(".TimeIn_Edit").val(response.dispatch_form_edit[0].TimeIn);
 			 			$(".TimeOut_Edit").val(response.dispatch_form_edit[0].TimeOut);
-			 			$(".Remarks_Edit").val(response.dispatch_form_edit[0].Remarks);
+			 			$(".Concern_Edit").val(response.dispatch_form_edit[0].Remarks);
 			 			$(".AssignedTechnicians1_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians1);
 			 			$(".AssignedTechnicians2_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians2);
 			 			$(".AssignedTechnicians3_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians3);
 			 			$(".AssignedTechnicians4_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians4);
 			 			$(".AssignedTechnicians5_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians5);
 			 			$(".WithPermit_Edit").val(response.dispatch_form_edit[0].WithPermit);
+			 			$(".DispatchOut_Edit").val(response.dispatch_form_edit[0].dispatch_out);
+			 			$(".SRNumber_Edit").val(response.dispatch_form_edit[0].sr_number);
+			 			$(".Remarks_Edit").val(response.dispatch_form_edit[0].remarks2);
 			 			
 			 			if (response.dispatch_form_edit[0].Installation =="1"){
 			 				$(".TypeOfService_Edit").val("Installation");
