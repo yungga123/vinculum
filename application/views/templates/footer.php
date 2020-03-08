@@ -80,24 +80,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            ]
 		    });
 
-		    
-
-		    // var item_actual_stocks_dt = $("#item_actual_stocks_dt").DataTable({
-		    // 	responsive: true,
-		    // 	"serverSide": true,
-	     //        "order":[],
-	     //        "ajax":{
-	     //            url: "<?php //echo site_url('ItemsController/get_ActualStocks') ?>",
-	     //            type: "POST"
-	     //        },
-	     //        "columnDefs": [
-	     //            {
-	     //               "targets": [8],
-	     //                "orderable": false, 
-	     //            }
-	     //        ]
-		    // });
-
+		    var customers_table = $("#customers_table").DataTable({
+		    	responsive: true,
+		    	"serverSide": true,
+	            "order":[],
+	            "ajax":{
+	                url: "<?php echo site_url('CustomersController/get_customers') ?>",
+	                type: "POST"
+	            },
+	            "columnDefs": [
+	                {
+	                   "targets": [],
+	                    "orderable": false, 
+	                }
+	            ]
+		    });
 
 
 		    //click select edit
@@ -649,6 +646,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 			$(".AssignedTechnicians3_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians3);
 			 			$(".AssignedTechnicians4_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians4);
 			 			$(".AssignedTechnicians5_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians5);
+			 			$(".AssignedTechnicians6_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians6);
+			 			$(".AssignedTechnicians7_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians7);
+			 			$(".AssignedTechnicians8_Edit").val(response.dispatch_form_edit[0].AssignedTechnicians8);
 			 			$(".WithPermit_Edit").val(response.dispatch_form_edit[0].WithPermit);
 			 			$(".DispatchOut_Edit").val(response.dispatch_form_edit[0].dispatch_out);
 			 			$(".SRNumber_Edit").val(response.dispatch_form_edit[0].sr_number);

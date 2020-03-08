@@ -48,6 +48,9 @@ class DispatchFormsModel extends CI_Model {
 			"a.AssignedTechnicians3",
 			"a.AssignedTechnicians4",
 			"a.AssignedTechnicians5",
+			"a.AssignedTechnicians6",
+			"a.AssignedTechnicians7",
+			"a.AssignedTechnicians8",
 			"a.WithPermit",
 			"a.Installation",
 			"a.RepairOrService",
@@ -87,6 +90,9 @@ class DispatchFormsModel extends CI_Model {
 			"a.AssignedTechnicians3",
 			"a.AssignedTechnicians4",
 			"a.AssignedTechnicians5",
+			"a.AssignedTechnicians6",
+			"a.AssignedTechnicians7",
+			"a.AssignedTechnicians8",
 			"a.WithPermit",
 			"a.Installation",
 			"a.RepairOrService",
@@ -128,6 +134,9 @@ class DispatchFormsModel extends CI_Model {
 			"a.AssignedTechnicians3",
 			"a.AssignedTechnicians4",
 			"a.AssignedTechnicians5",
+			"a.AssignedTechnicians6",
+			"a.AssignedTechnicians7",
+			"a.AssignedTechnicians8",
 			"a.WithPermit",
 			"a.Installation",
 			"a.RepairOrService",
@@ -151,6 +160,9 @@ class DispatchFormsModel extends CI_Model {
 			"AssignedTechnicians3",
 			"AssignedTechnicians4",
 			"AssignedTechnicians5",
+			"AssignedTechnicians6",
+			"AssignedTechnicians7",
+			"AssignedTechnicians8",
 			"WithPermit",
 			null,
 			null,
@@ -179,6 +191,9 @@ class DispatchFormsModel extends CI_Model {
 			$this->db->or_like("AssignedTechnicians3", $_POST["search"]["value"]);
 			$this->db->or_like("AssignedTechnicians4", $_POST["search"]["value"]);
 			$this->db->or_like("AssignedTechnicians5", $_POST["search"]["value"]);
+			$this->db->or_like("AssignedTechnicians6", $_POST["search"]["value"]);
+			$this->db->or_like("AssignedTechnicians7", $_POST["search"]["value"]);
+			$this->db->or_like("AssignedTechnicians8", $_POST["search"]["value"]);
 			$this->db->or_like("WithPermit", $_POST["search"]["value"]);
 			$this->db->or_like("dispatch_out", $_POST["search"]["value"]);
 			$this->db->or_like("sr_number", $_POST["search"]["value"]);

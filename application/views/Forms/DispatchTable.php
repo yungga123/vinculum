@@ -42,6 +42,9 @@ defined('BASEPATH') or die('No direct script access allowed.');
 											<th>Assigned Technician 3</th>
 											<th>Assigned Technician 4</th>
 											<th>Assigned Technician 5</th>
+											<th>Assigned Technician 6</th>
+											<th>Assigned Technician 7</th>
+											<th>Assigned Technician 8</th>
 											<th>With Permit?</th>
 											<th>Installation</th>
 											<th>Repair/Service</th>
@@ -237,6 +240,36 @@ defined('BASEPATH') or die('No direct script access allowed.');
 							<div class="form-group">
 								<label>Assigned Technician 5</label>
 								<select name="assigned_tech5" id="assigned_tech5" class="form-control AssignedTechnicians5_Edit">
+									<option value="">N/A</option>
+									<?php foreach ($Technicians_Edit as $row): ?>
+										<option value="<?php echo "ID Number: ".$row->id." ".$row->name ?>"><?php echo "ID Number: ".$row->id." --- ".$row->name ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label>Assigned Technician 6</label>
+								<select name="assigned_tech6" id="assigned_tech6" class="form-control AssignedTechnicians6_Edit">
+									<option value="">N/A</option>
+									<?php foreach ($Technicians_Edit as $row): ?>
+										<option value="<?php echo "ID Number: ".$row->id." ".$row->name ?>"><?php echo "ID Number: ".$row->id." --- ".$row->name ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label>Assigned Technician 7</label>
+								<select name="assigned_tech7" id="assigned_tech7" class="form-control AssignedTechnicians7_Edit">
+									<option value="">N/A</option>
+									<?php foreach ($Technicians_Edit as $row): ?>
+										<option value="<?php echo "ID Number: ".$row->id." ".$row->name ?>"><?php echo "ID Number: ".$row->id." --- ".$row->name ?></option>
+									<?php endforeach ?>
+								</select>
+							</div>
+
+							<div class="form-group">
+								<label>Assigned Technician 8</label>
+								<select name="assigned_tech8" id="assigned_tech8" class="form-control AssignedTechnicians8_Edit">
 									<option value="">N/A</option>
 									<?php foreach ($Technicians_Edit as $row): ?>
 										<option value="<?php echo "ID Number: ".$row->id." ".$row->name ?>"><?php echo "ID Number: ".$row->id." --- ".$row->name ?></option>

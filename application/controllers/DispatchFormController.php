@@ -92,6 +92,9 @@ public function addDispatch() {
 			$sub_array[] = $row->AssignedTechnicians3;
 			$sub_array[] = $row->AssignedTechnicians4;
 			$sub_array[] = $row->AssignedTechnicians5;
+			$sub_array[] = $row->AssignedTechnicians6;
+			$sub_array[] = $row->AssignedTechnicians7;
+			$sub_array[] = $row->AssignedTechnicians8;
 			$sub_array[] = $row->WithPermit;
 			$sub_array[] = $row->Installation;
 			$sub_array[] = $row->RepairOrService;
@@ -226,6 +229,21 @@ public function addDispatch() {
 				'rules' => 'trim'
 			],
 			[
+				'field' => 'assigned_tech6',
+				'label' => 'Assigned Technician 6',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'assigned_tech7',
+				'label' => 'Assigned Technician 7',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'assigned_tech8',
+				'label' => 'Assigned Technician 8',
+				'rules' => 'trim'
+			],
+			[
 				'field' => 'with_permit',
 				'label' => 'Is this with permit?',
 				'rules' => 'trim|required'
@@ -283,6 +301,9 @@ public function addDispatch() {
 				'AssignedTechnicians3' => $this->input->post('assigned_tech3'),
 				'AssignedTechnicians4' => $this->input->post('assigned_tech4'),
 				'AssignedTechnicians5' => $this->input->post('assigned_tech5'),
+				'AssignedTechnicians6' => $this->input->post('assigned_tech6'),
+				'AssignedTechnicians7' => $this->input->post('assigned_tech7'),
+				'AssignedTechnicians8' => $this->input->post('assigned_tech8'),
 				'WithPermit' => $this->input->post('with_permit'),
 				'Installation' => $installation,
 				'RepairOrService' => $service,
@@ -363,6 +384,21 @@ public function addDispatch() {
 				'rules' => 'trim'
 			],
 			[
+				'field' => 'assigned_tech6',
+				'label' => 'Assigned Technician 6',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'assigned_tech7',
+				'label' => 'Assigned Technician 7',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'assigned_tech8',
+				'label' => 'Assigned Technician 8',
+				'rules' => 'trim'
+			],
+			[
 				'field' => 'with_permit',
 				'label' => 'Is this with permit?',
 				'rules' => 'trim|required'
@@ -420,6 +456,9 @@ public function addDispatch() {
 				'AssignedTechnicians3' => $this->input->post('assigned_tech3'),
 				'AssignedTechnicians4' => $this->input->post('assigned_tech4'),
 				'AssignedTechnicians5' => $this->input->post('assigned_tech5'),
+				'AssignedTechnicians6' => $this->input->post('assigned_tech6'),
+				'AssignedTechnicians7' => $this->input->post('assigned_tech7'),
+				'AssignedTechnicians8' => $this->input->post('assigned_tech8'),
 				'WithPermit' => $this->input->post('with_permit'),
 				'Installation' => $installation,
 				'RepairOrService' => $service,

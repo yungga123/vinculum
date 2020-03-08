@@ -39,8 +39,32 @@ class CustomersModel extends CI_Model {
 
 //*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "customer_vt";
-	var $select_column = array("CustomerID","CompanyName","ContactPerson","Address","ContactNumber","EmailAddress","Website","Interest","Type","Notes");
-	var $order_column = array("CustomerID","CompanyName","ContactPerson",null,null,null,null,null,null,null);
+	var $select_column = array(
+		"CustomerID",
+		"CompanyName",
+		"ContactPerson",
+		"Address",
+		"ContactNumber",
+		"EmailAddress",
+		"Website",
+		"InstallationDate",
+		"Interest",
+		"Type",
+		"Notes"
+	);
+	var $order_column = array(
+		"CustomerID",
+		"CompanyName",
+		"ContactPerson",
+		"Address",
+		"ContactNumber",
+		"EmailAddress",
+		"Website",
+		"InstallationDate",
+		"Interest",
+		"Type",
+		"Notes"
+	);
 
 	public function customervt_query(){
 
@@ -52,6 +76,13 @@ class CustomersModel extends CI_Model {
 			$this->db->or_like("CompanyName", $_POST["search"]["value"]);
 			$this->db->or_like("ContactPerson", $_POST["search"]["value"]);
 			$this->db->or_like("Address", $_POST["search"]["value"]);
+			$this->db->or_like("ContactNumber", $_POST["search"]["value"]);
+			$this->db->or_like("EmailAddress", $_POST["search"]["value"]);
+			$this->db->or_like("Website", $_POST["search"]["value"]);
+			$this->db->or_like("InstallationDate", $_POST["search"]["value"]);
+			$this->db->or_like("Interest", $_POST["search"]["value"]);
+			$this->db->or_like("Type", $_POST["search"]["value"]);
+			$this->db->or_like("Notes", $_POST["search"]["value"]);
 		}
 
 		if (isset($_POST["order"])) {

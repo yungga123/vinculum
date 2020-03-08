@@ -52,7 +52,9 @@ if(!function_exists('html_variable')) {
 			'servicecall' => '',
 			'ul_servicereport' => '',
 			'encode_sr' => '',
-			'sr_listing' => ''
+			'sr_listing' => '',
+
+			'category' => '' //for Get Items Masterlist
 		];
 
     return $data;

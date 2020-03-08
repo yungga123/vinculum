@@ -17,6 +17,9 @@ $assignedTech2 = 'N/A';
 $assignedTech3 = 'N/A';
 $assignedTech4 = 'N/A';
 $assignedTech5 = 'N/A';
+$assignedTech6 = 'N/A';
+$assignedTech7 = 'N/A';
+$assignedTech8 = 'N/A';
 $with_permit = '';
 $typeOfService = '';
 $sr_number = '';
@@ -82,6 +85,24 @@ foreach ($results as $row) {
 		$assignedTech5 = 'N/A';
 	} else {
 		$assignedTech5 = $row->AssignedTechnicians5;
+	}
+
+	if ($row->AssignedTechnicians6 == '') {
+		$assignedTech6 = 'N/A';
+	} else {
+		$assignedTech6 = $row->AssignedTechnicians5;
+	}
+
+	if ($row->AssignedTechnicians7 == '') {
+		$assignedTech7 = 'N/A';
+	} else {
+		$assignedTech7 = $row->AssignedTechnicians7;
+	}
+
+	if ($row->AssignedTechnicians8 == '') {
+		$assignedTech8 = 'N/A';
+	} else {
+		$assignedTech8 = $row->AssignedTechnicians8;
 	}
 
 	if ($row->Installation == 1) {
@@ -188,38 +209,48 @@ foreach ($results as $row) {
 			</div>
 
 			<div class="row">
-				<div class="col-4">
+				<div class="col-8">
 					<table class="table table-bordered table-sm" style="font-size: 15px">
 						<tbody>
 							<tr>
-								<td width="100%" class="text-center" style="font-weight: bold">Personnel/s</td>
+								<td width="100%" class="text-center" colspan="2" style="font-weight: bold">Personnel/s</td>
 							</tr>
 							<tr>
-								<td width="100%"><?php echo $assignedTech1 ?></td>
-							</tr>
-
-							<tr>
-								<td width="100%"><?php echo $assignedTech2 ?></td>
+								<td width="50%"><?php echo $assignedTech1 ?></td>
+								<td width="50%"><?php echo $assignedTech2 ?></td>
 							</tr>
 
 							<tr>
-								<td width="100%"><?php echo $assignedTech3 ?></td>
+								<td width="50%"><?php echo $assignedTech3 ?></td>
+								<td width="50%"><?php echo $assignedTech4 ?></td>
 							</tr>
 
 							<tr>
-								<td width="100%"><?php echo $assignedTech4 ?></td>
+								<td width="50%"><?php echo $assignedTech5 ?></td>
+								<td width="50%"><?php echo $assignedTech6?></td>
 							</tr>
 
 							<tr>
-								<td width="100%"><?php echo $assignedTech5 ?></td>
+								<td width="50%"><?php echo $assignedTech7 ?></td>
+								<td width="50%"><?php echo $assignedTech8 ?></td>
+							</tr>
+
+							<tr>
+								<td width="100%" class="text-center" colspan="2" style="font-weight: bold;">Service Report No. : <?php echo $sr_number ?></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 
 				<div class="col-4">
-					<table class="table table-bordered table-sm" style="font-size: 15px">
+					<table class="table table-bordered table-sm mb-4" style="font-size: 15px">
 						<tbody>
+							
+
+							<tr>
+								<td width="100%" class="" colspan="2">With Work Permit? <i class="<?php echo $with_permit ?>"></i></td>
+							</tr>
+
 							<tr>
 								<td width="30%" style="font-weight: bold;">Date</td>
 								<td width="70%"><?php echo date('l - F j, Y',strtotime($dispatchDate)) ?></td>
@@ -243,21 +274,6 @@ foreach ($results as $row) {
 							<tr>
 								<td width="30%" style="font-weight: bold;">Service Type</td>
 								<td width="70%"><?php echo $typeOfService ?></td>
-							</tr>
-							<tr>
-								<td width="100%" class="" colspan="2">Service Report No. : <?php echo $sr_number ?></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="col-4">
-					<table class="table table-bordered table-sm mb-4" style="font-size: 15px">
-						<tbody>
-							
-
-							<tr>
-								<td width="100%" class="">With Work Permit? <i class="<?php echo $with_permit ?>"></i></td>
 							</tr>
 						</tbody>
 					</table>

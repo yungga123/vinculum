@@ -174,6 +174,39 @@ defined('BASEPATH') or die('No direct script access allowed.');
 												<?php endforeach ?>
 											</select>
 									</div>
+
+									<div class="form-group">
+										<label>Assigned Technician 6</label>
+											<select name="assigned_tech6" id="assigned_tech6" class="form-control">
+												<option value="">N/A</option>
+
+												<?php foreach ($GetTech as $row): ?>
+													<option value="<?php echo "ID Number: ".$row->id." ".$row->name ?>"><?php echo "ID Number: ".$row->id." --- ".$row->name ?></option>
+												<?php endforeach ?>
+											</select>
+									</div>
+
+									<div class="form-group">
+										<label>Assigned Technician 7</label>
+											<select name="assigned_tech7" id="assigned_tech7" class="form-control">
+												<option value="">N/A</option>
+
+												<?php foreach ($GetTech as $row): ?>
+													<option value="<?php echo "ID Number: ".$row->id." ".$row->name ?>"><?php echo "ID Number: ".$row->id." --- ".$row->name ?></option>
+												<?php endforeach ?>
+											</select>
+									</div>
+
+									<div class="form-group">
+										<label>Assigned Technician 8</label>
+											<select name="assigned_tech8" id="assigned_tech8" class="form-control">
+												<option value="">N/A</option>
+
+												<?php foreach ($GetTech as $row): ?>
+													<option value="<?php echo "ID Number: ".$row->id." ".$row->name ?>"><?php echo "ID Number: ".$row->id." --- ".$row->name ?></option>
+												<?php endforeach ?>
+											</select>
+									</div>
 									<div class="form-group">
 										<label class="control-label">Is this with permit?</label>
 											<select class="form-control" name="with_permit" id="with_permit">
