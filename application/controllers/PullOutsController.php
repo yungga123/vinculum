@@ -6,7 +6,9 @@ class PullOutsController extends CI_Controller {
 	public function index() {
 		if($this->session->userdata('logged_in')) {
 			$this->load->model('PullOutsModel');
+			$this->load->model('CustomersModel');
 			$results = $this->PullOutsModel->viewPullout();
+			$customer_results = $this->CustomersModel->getVtCustomersByName();
 			$sum_of_pullouts = $this->PullOutsModel->sum_of_pullouts();
 
 			$this->load->helper('site_helper');
@@ -19,6 +21,7 @@ class PullOutsController extends CI_Controller {
 			$data['ul_items'] = ' active';
 			$data['results'] = $results;
 			$data['sum_of_pullouts'] = $sum_of_pullouts;
+			$data['customer_results'] = $customer_results;
 
 
 			$this->load->view('templates/header', $data);

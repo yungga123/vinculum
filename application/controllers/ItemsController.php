@@ -88,10 +88,9 @@ class ItemsController extends CI_Controller
 			[
 				'field' => 'item_name',
 				'label' => 'Item Name',
-				'rules' => 'trim|required|max_length[500]|alpha_numeric_spaces',
+				'rules' => 'trim|required|max_length[500]',
 				'errors' => [
-					'required' => 'Please provide an Item Name',
-					'alpha_numeric_spaces' => 'Letters and Numbers are only allowed in Item Name.'
+					'required' => 'Please provide an Item Name'
 				]
 			],
 			[
@@ -123,9 +122,8 @@ class ItemsController extends CI_Controller
 			[
 				'field' => 'location',
 				'label' => 'Location',
-				'rules' => 'trim|required|max_length[200]',
+				'rules' => 'trim|max_length[200]',
 				'errors' => [
-					'required' => 'Provide where item is Located',
 					'max_length' => 'You are allowed only of 200 characters in Location'
 				]
 			],
@@ -273,9 +271,8 @@ class ItemsController extends CI_Controller
 			[
 				'field' => 'location',
 				'label' => 'Location',
-				'rules' => 'trim|required|max_length[200]',
+				'rules' => 'trim|max_length[200]',
 				'errors' => [
-					'required' => 'Provide where item is Located',
 					'max_length' => 'You are allowed only of 200 characters in Location'
 				]
 			],
