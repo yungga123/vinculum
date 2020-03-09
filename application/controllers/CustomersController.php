@@ -83,7 +83,8 @@ class CustomersController extends CI_Controller {
 			'success' => false,
 			'errors' => ''
 		];
-		
+
+
 
 		$this->load->model('ItemsModel');
 		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_name'));
