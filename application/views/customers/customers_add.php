@@ -23,7 +23,7 @@ defined('BASEPATH') or die('Access Denied');
 						<div class="card-body">
 							<div class="row">
 								<div class="col-6">
-
+									<?php echo form_open('CustomersController/customer_add_validate',["id" => "form-customer-add"]) ?>
 									<div class="form-group">
 										<label>Customer Name</label>
 										<input class="form-control" type="text" name="customer_name" id="customer_name" placeholder="Enter Customer Name here.">
@@ -82,12 +82,11 @@ defined('BASEPATH') or die('Access Denied');
 						</div>
 						
 						<div class="card-footer">
-
-							<div class="text-right">
-								<button class="btn btn-success">Register New Client</button>
-							</div>
-
+							<button type="submit" class="btn btn-success float-right">Register New Client</button>	
+							<a href="<?php echo site_url('customers') ?>" class="btn btn-primary">Customers Database</a>
 						</div>
+
+						<?php echo form_close() ?>
 					</div>
 				</div>
 			</div>

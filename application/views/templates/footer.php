@@ -161,45 +161,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		    //click pullout item
 		    $('#form-pullout').submit(function(e) {
-		 	e.preventDefault();
+			 	e.preventDefault();
 
 
-		 	var me = $(this);
-		 	var succ = '';
+			 	var me = $(this);
+			 	var succ = '';
 
-		 	toastr.options = {
-				"closeButton": false,
-				"debug": false,
-				"newestOnTop": false,
-				"progressBar": true,
-				"positionClass": "toast-top-right",
-				"preventDuplicates": true,
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			}
+			 	toastr.options = {
+					"closeButton": false,
+					"debug": false,
+					"newestOnTop": false,
+					"progressBar": true,
+					"positionClass": "toast-top-right",
+					"preventDuplicates": true,
+					"onclick": null,
+					"showDuration": "300",
+					"hideDuration": "1000",
+					"timeOut": "5000",
+					"extendedTimeOut": "1000",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+				}
 
-		 	//ajax
-		 	$.ajax({
-		 		url: me.attr('action'),
-		 		type: 'post',
-		 		data: me.serialize(),
-		 		dataType: 'json',
-		 		success: function(response) {
-		 			if (response.success == true) {
-		 				toastr.success("Success! it is now for pending. Click to Refresh ");
-		 			} else {
-		 				toastr.error(response.errors);
-		 			}
+			 	//ajax
+			 	$.ajax({
+			 		url: me.attr('action'),
+			 		type: 'post',
+			 		data: me.serialize(),
+			 		dataType: 'json',
+			 		success: function(response) {
+			 			if (response.success == true) {
+			 				toastr.success("Success! it is now for pending. Click to Refresh ");
+			 			} else {
+			 				toastr.error(response.errors);
+			 			}
 
-		 		}
-		 	});
+			 		}
+			 	});
 		 });
 
 	  	});
@@ -336,6 +336,92 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		}
 		 	});
 		 });
+
+		//Form Add Customer
+		$('#form-customer-add').submit(function(e) {
+		 	e.preventDefault();
+		 	var a = '<a href="<?php echo site_url("customers") ?>"><u>View Here</u></a>';
+		 	var me = $(this);
+		 	var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Customer Added! "+a);
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+
+		//Form Update Customer
+		$('#form-customer-update').submit(function(e) {
+		 	e.preventDefault();
+		 	var a = '<a href="<?php echo site_url("customers") ?>"><u>View Here</u></a>';
+		 	var me = $(this);
+		 	var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Customer Updated! "+a);
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+
+
 	</script>
 
 
