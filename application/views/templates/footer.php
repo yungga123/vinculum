@@ -61,9 +61,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.js"></script>
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.js"></script>
 
-	<!-- Data Table for Item Master List -->
+	
 	<script>
+
+		
 	  	$(document).ready( function () {
+	  		// Data Table for Item Master List
 		    var masterlist_table = $("#item_masterlist").DataTable({
 		    	responsive: true,
 		    	"serverSide": true,
@@ -79,7 +82,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                }
 	            ]
 		    });
+			//end of datatable
 
+			//Datatable for Customers Table
 		    var customers_table = $("#customers_table").DataTable({
 		    	responsive: true,
 		    	"serverSide": true,
@@ -95,9 +100,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                }
 	            ]
 		    });
+		    //end of datatable
 
 
-		    //click select edit
+		    //click select edit for masterlist table
 		    $('#item_masterlist tbody').on( 'click', '.btn_select', function () {
 		    	var data = masterlist_table.row($(this).parents('tr')).data();
 				var rowdata = masterlist_table.row(this).data();
@@ -129,8 +135,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 		}
 			 	});
 			} );
+			//end of click select edit
 
-
+			//add stock button on masterlist table
 			$('#item_masterlist tbody').on( 'click', '.btn_addstock', function () {
 		    	var data = masterlist_table.row($(this).parents('tr')).data();
 				var rowdata = masterlist_table.row(this).data();
@@ -142,6 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				}
 			} );
+			//end of add stock button on masterlist table
 
 			var item_register_history = $("#item_register_history").DataTable({
 		    	responsive: true
@@ -154,8 +162,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    //click pullout item
 		    $('#form-pullout').submit(function(e) {
 		 	e.preventDefault();
-		 	
-		 	//var a = '<a href="<?php echo site_url("IndirectListofStockItems") ?>"><u>Go to Item Stocks</u></a>';
+
+
 		 	var me = $(this);
 		 	var succ = '';
 
@@ -197,128 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  	});
 	</script>
 
-	<!-- Pull out item scan -->
-	<script type="text/javascript">
-	$(document).ready(function(){
 
-		
-		$(document).keypress(function(e) {
-			if(e.which == 13) {
-				if ($('#itemCode').val().trim() == "") {
-					alert('Please focus the textbox when scanning item.');
-				} else {
-
-			        var item = $('#itemCode').val();
-					$('#dynamic_field').load('<?php echo site_url('ItemsController/ItemGet/') ?>'+item);
-					
-					$('#itemCode').val('');
-				
-					}
-				} 
-			});
-
-
-	});
-
-	$(function() {
-	    $('#itemCode').on('keypress', function(e) {
-	        if (e.which == 32)
-	            return false;
-	    });
-	});
-</script>
-
-<script type="text/javascript">
-
-	$('#addPulloutForm').submit(function(e) {
-		 	e.preventDefault();
-		 	
-		 	//var a = '<a href="<?php echo site_url("IndirectListofStockItems") ?>"><u>Go to Item Stocks</u></a>';
-		 	var me = $(this);
-		 	var succ = '';
-
-		 	toastr.options = {
-				"closeButton": false,
-				"debug": false,
-				"newestOnTop": false,
-				"progressBar": true,
-				"positionClass": "toast-top-right",
-				"preventDuplicates": true,
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			}
-
-		 	//ajax
-		 	$.ajax({
-		 		url: me.attr('action'),
-		 		type: 'post',
-		 		data: me.serialize(),
-		 		dataType: 'json',
-		 		success: function(response) {
-		 			if (response.success == true) {
-		 				toastr.success("Success! it is now for pending. Click to Refresh ");
-		 				
-		 			} else {
-		 				toastr.error(response.errors);
-		 			}
-
-		 		}
-		 	});
-		 });
-
-	$('#gg').submit(function(e) {
-	 	e.preventDefault();
-
-	 	var me = $(this);
-
-	 	//ajax
-	 	$.ajax({
-	 		url: me.attr('action'),
-	 		type: 'post',
-	 		data: me.serialize(),
-	 		dataType: 'json',
-	 		success: function(response) {
-	 			if (response.success == true) {
-
-	 				$('.alert-success').remove();
-
-	 				$('#the-message').append('<div class="alert alert-success alert-dismissable">'
-	 					+'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>'
-	 					+'</button>'
-	 					+'Item Successfully Pulled Out. It is now pending for confirmation. <a href="<?php echo site_url('pullouts') ?>" class="alert-link">View Current Pull-outs</a>'
-	 					+'</div>');
-	 				$('.form-group').removeClass('has-error')
-	 								.removeClass('has-success');
-	 				$('.text-danger').remove();
-
-	 				me[0].reset();
-
-	 			
-	 			} else {
-	 				$.each(response.messages, function(key, value) {
-	 					$('.alert-success').remove();
-	 					var element = $('#' + key);
-	 					element.closest('div.form-group')
-	 					.removeClass('has-error')
-	 					.addClass(value.length > 0 ? 'has-error' : 'has-success')
-	 					.find('.text-danger').remove();
-	 					element.after(value);
-	 				});
-	 			}
-	 		}
-	 	});
-	 });
-</script>
-
-	
-	
 	<script>
 		//Form for Adding Item
 		$('#form-register-item').submit(function(e) {

@@ -60,4 +60,61 @@ class CustomersController extends CI_Controller {
 
 		echo json_encode($output);
 	}
+
+	public function customer_add() {
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+
+			$data = html_variable();
+			$data['title'] = 'Register New Client';
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('customers/customers_add');
+			$this->load->view('templates/footer');
+		} else {
+			redirect('','refresh');
+		}
+	}
+
+	public function customer_add_validate() {
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+		
+
+		$this->load->model('ItemsModel');
+		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_name'));
+
+		$itemStock = 0;
+		foreach ($results as $row) {
+			$itemStock = $row->stocks;
+		}
+
+		$rules = [
+			[
+				'field' => '',
+				'label' => '',
+				'rules' => '',
+				'errors' => ['' => '']
+			]
+		];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$validate['success'] = true;
+			
+		} 
+		else {
+			$validate['errors'] = validation_errors();
+			}
+			echo json_encode($validate);
+		}
+	}
 }

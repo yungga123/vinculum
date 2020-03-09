@@ -90,3 +90,4 @@ $route['update-salesdispatch/(:any)'] = 'SalesDispatchController/update_sales_di
 
 //Customers Controller
 $route['customers'] = 'CustomersController';
+$route['customers-add'] = 'CustomersController/customer_add';

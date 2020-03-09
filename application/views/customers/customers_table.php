@@ -24,7 +24,7 @@ defined('BASEPATH') or die('Access Denied');
 							<p style="font-weight: bold;">Menu Selection</p>
 						</div>
 						<div class="card-body">
-							<button class="btn btn-success"><i class="fas fa-plus"></i> Add Customer</button>
+							<a  href="<?php echo site_url('customers-add') ?>" class="btn btn-success"><i class="fas fa-plus"></i> Add Customer</a>
 
 							<button class="btn btn-primary"><i class="fas fa-print"></i> Print Customer Database</button>
 
