@@ -421,6 +421,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });
 
+		//Get Search Pullout Item
+		$('#form-item-search').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+		 	var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$("#search-result").empty();
+		 				$.each(response.data,function(index,value){
+		 					$("#search-result").append(value);
+		 				});
+			 			
+			 			console.log(toastr.success(response.success_msg));
+		 			} else {
+		 				$("#search-result").empty();
+			 			$("#search-result").append(response.data);
+			 			console.log(toastr.error(response.error_msg));
+		 			}
+
+
+
+		 		}
+		 	});
+		 });
+
 
 	</script>
 

@@ -47,7 +47,9 @@ defined('BASEPATH') or exit('Access Denied');
 				<div class="col-sm-12">
 					<div class="card">
 						<div class="card-header">
+							<?php echo form_open('PullOutsController/getSearchItem',["id" => "form-item-search"]) ?>
 							<p style="font-weight: bold;">Second Step: Search Item to Pullout</p>
+							
 						</div>
 
 						<div class="card-body">
@@ -55,13 +57,15 @@ defined('BASEPATH') or exit('Access Denied');
 								<div class="col-8">
 									<div class="form-group">
 										<div class="input-group input-group">
-											<input type="text" class="form-control" placeholder="Search Item Name or Item Code">
+											<input type="text" class="form-control" placeholder="Search Item Name or Item Code" name="search_item" id="search_item">
 											<span class="input-group-append">
-											<button type="button" class="btn btn-info btn-flat"><i class="fas fa-search"></i> Search</button>
+											<button type="submit" class="btn btn-info btn-flat"><i class="fas fa-search"></i> Search</button>
 											</span>
 										</div>
+										<?php echo form_close() ?>
 									</div>
 								</div>		
+
 							</div>
 						</div>
 
@@ -73,6 +77,7 @@ defined('BASEPATH') or exit('Access Denied');
 
 											<thead>
 												<tr>
+													<th>Operation</th>
 													<th>Item Code</th>
 													<th>Description</th>
 													<th>Category</th>
@@ -83,25 +88,10 @@ defined('BASEPATH') or exit('Access Denied');
 													<th>Location</th>
 													<th>Supplier</th>
 													<th>Encoder</th>
-													<th>Operation</th>
 												</tr>
 											</thead>
 
-											<tbody>
-												<tr>
-													<td>DS-CHUCHU</td>
-													<td>Chichichic</td>
-													<td>Direct</td>
-													<td>2400.00</td>
-													<td>3000.00</td>
-													<td>8</td>
-													<td>January 28, 2020</td>
-													<td>SHOWROOM</td>
-													<td>HYE</td>
-													<td>Irish</td>
-													<td><button class="btn btn-danger">Pullout</button></td>
-												</tr>
-											</tbody>
+											<tbody id="search-result"></tbody>
 
 										</table>
 									</div>
