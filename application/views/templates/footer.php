@@ -65,7 +65,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script>
 
 		
+		
 	  	$(document).ready( function () {
+
+	  		
+
 	  		// Data Table for Item Master List
 		    var masterlist_table = $("#item_masterlist").DataTable({
 		    	responsive: true,

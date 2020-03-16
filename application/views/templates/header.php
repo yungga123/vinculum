@@ -40,7 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
    <!-- fullCalendar -->
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.min.css">
-  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.css">
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-daygrid/main.min.css">
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-timegrid/main.min.css">
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.css">

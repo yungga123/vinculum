@@ -106,3 +106,27 @@ defined('BASEPATH') or exit('Access Denied');
 	</section>
 
 </div>
+
+
+
+<div class="modal fade pullout_stocks" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<label style="font-size: 22px;font-weight: bold;">Enter Quantity</label>
+	    		<br>
+	    		<div class="form-group">
+	    			<input class="form-control item_code_val" type="text" name="" id="" value="" readonly>
+	    		</div>
+	    		
+	    		<div class="form-group">
+	    			<input class="form-control" type="text" name="" id="" placeholder="Enter Quantity to pullout here.">
+	    		</div>
+	    		
+	    		<button class="btn btn-success btn-block">Proceed to Pullout</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

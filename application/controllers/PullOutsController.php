@@ -45,7 +45,7 @@ class PullOutsController extends CI_Controller {
 			foreach ($results as $row) {
 				$sub_array = array();
 				$sub_array[] = '<tr>';
-				$sub_array[] = '<td><button class="btn btn-danger">Pullout</button></td>';
+				$sub_array[] = '<td><button class="btn btn-danger btn_pulloutget" data-toggle="modal" data-target=".pullout_stocks">Pullout</button></td>';
 				$sub_array[] = '<td>'.$row->itemCode.'</td>';
 				$sub_array[] = '<td>'.$row->itemName.'</td>';
 				$sub_array[] = '<td>'.$row->itemType.'</td>';
