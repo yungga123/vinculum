@@ -133,7 +133,7 @@ class ItemsModel extends CI_Model {
 	}
 
 	public function ItemsGetByName($itemCode) {
-		$this->db->where('itemName', $itemCode);
+		$this->db->where('itemCode', $itemCode);
 		return $this->db->get('items')->result();
 	}
 

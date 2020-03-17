@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
 
 	<!-- Angular JS -->
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/angularjs/angular.min.js"></script>
+<!-- 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/angularjs/angular.min.js"></script> -->
 
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
@@ -40,8 +40,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 	<!-- ChartJS -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/chart.js/Chart.min.js"></script>
-	<!-- Tempusdominus Bootstrap 4 -->
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 	<!-- Summernote -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/summernote/summernote-bs4.min.js"></script>
 	<!-- SweetAlert2 -->
@@ -53,22 +51,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- AdminLTE App -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
 
-	<!-- fullCalendar 2.2.5 -->
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/moment/moment.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-daygrid/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-timegrid/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.js"></script>
 
-	
 	<script>
-
-		
-		
 	  	$(document).ready( function () {
-
-	  		
 
 	  		// Data Table for Item Master List
 		    var masterlist_table = $("#item_masterlist").DataTable({
@@ -425,6 +410,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });
 
+		//Form Insert Pullout
+		$('#form-insert-pullout').submit(function(e) {
+		 	e.preventDefault();
+		 	var a = '<a href="<?php echo site_url("#") ?>"><u>View Here</u></a>';
+		 	var me = $(this);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Pullout Success "+a);
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+
 		//Get Search Pullout Item
 		$('#form-item-search').submit(function(e) {
 		 	e.preventDefault();
@@ -461,16 +487,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 				$.each(response.data,function(index,value){
 		 					$("#search-result").append(value);
 		 				});
-			 			
+
+		 				$('.table-pullout tbody').on('click','.btn_pulloutget',function(){
+	  	
+				  			// get the current row
+					         var currentRow=$(this).closest("tr");
+					         var col1=currentRow.find("td:eq(1)").text(); // get current row 3rd TD\
+					         $('#item_code_val').val(col1);
+					         $('#pullout_customer_name').val($('.pullout_customer_name').val());
+				  		});
+						 			
 			 			console.log(toastr.success(response.success_msg));
+
 		 			} else {
 		 				$("#search-result").empty();
 			 			$("#search-result").append(response.data);
 			 			console.log(toastr.error(response.error_msg));
 		 			}
-
-
-
 		 		}
 		 	});
 		 });
@@ -697,46 +730,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 
-<!-- Display Calendar -->
-<script type="text/javascript">
-    $(document).ready(function() {
-
-    var date_last_clicked = null;
-     var date = new Date()
-    var d    = date.getDate(),
-        m    = date.getMonth(),
-        y    = date.getFullYear()
-
-    var Calendar = FullCalendar.Calendar;
-    var calendarEl = document.getElementById('calendar');
-
-     var calendar = new Calendar(calendarEl, {
-      plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
-      header    : {
-        left  : 'prev,next today',
-        center: 'title',
-        right : 'dayGridMonth,timeGridWeek,timeGridDay'
-      },
-
-        events    : [
-        {
-          title          : 'All Day Event',
-          start          : new Date(y, m, 1),
-          backgroundColor: '#f56954', //red
-          borderColor    : '#f56954' //red
-          
-
-        }
-        ]
-        
-        
-     
-        
-    });
-
-    calendar.render();
-});
-    </script>
 
    <!-- Sales Dispatch Table-->
 	<script type="text/javascript">

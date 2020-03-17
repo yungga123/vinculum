@@ -36,11 +36,11 @@ class PullOutsModel extends CI_Model {
 		return $this->db->empty_table('pulled_out');
 	}
 
-	public function getPulledOutName($itemName) {
-		$this->db->select("a.id,a.item_code,b.itemName")
+	public function getPulledOutName($itemCode) {
+		$this->db->select("a.id,a.item_code,b.itemCode")
 				 ->from("pulled_out as a")
 				 ->join("items as b","a.item_code=b.itemCode","left")
-				 ->where("b.itemName", $itemName);
+				 ->where("b.itemCode", $itemCode);
 
 		return $this->db->get()->num_rows();
 

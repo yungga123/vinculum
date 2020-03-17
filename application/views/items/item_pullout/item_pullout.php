@@ -23,12 +23,12 @@ defined('BASEPATH') or exit('Access Denied');
 						<div class="card-header" style="font-weight: bold;">First Step: Select A Customer</div>
 
 						<div class="card-body">
-
+							
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label>Customer Name</label>
-										<select class="form-control" name="" id="">
+										<select class="form-control pullout_customer_name" name="" id="">
 											<option value="">---</option>
 
 											<?php foreach ($customer_results as $row): ?>
@@ -73,7 +73,7 @@ defined('BASEPATH') or exit('Access Denied');
 							<div class="row">
 								<div class="col-12">
 									<div class="table-responsive">
-										<table class="table table-bordered table-hover">
+										<table class="table table-bordered table-hover table-pullout">
 
 											<thead>
 												<tr>
@@ -115,15 +115,23 @@ defined('BASEPATH') or exit('Access Denied');
 			<div class="modal-body text-center">
 				<label style="font-size: 22px;font-weight: bold;">Enter Quantity</label>
 	    		<br>
+	    		<?php echo form_open('PullOutsController/insert_pullout',["id" => "form-insert-pullout"]) ?>
 	    		<div class="form-group">
-	    			<input class="form-control item_code_val" type="text" name="" id="" value="" readonly>
+	    			<label>Customer ID</label>
+	    			<input class="form-control" type="text" name="pullout_customer_name" id="pullout_customer_name" value="" readonly>
+	    		</div>
+	    		<div class="form-group">
+	    			<label>Item Code</label>
+	    			<input class="form-control" type="text" name="item_code_val" id="item_code_val" value="" readonly>
 	    		</div>
 	    		
 	    		<div class="form-group">
-	    			<input class="form-control" type="text" name="" id="" placeholder="Enter Quantity to pullout here.">
+	    			<label>Stocks to pullout</label>
+	    			<input class="form-control" type="text" name="pullout_stocks" id="pullout_stocks" placeholder="Enter Quantity to pullout here.">
 	    		</div>
 	    		
-	    		<button class="btn btn-success btn-block">Proceed to Pullout</button>
+	    		<button type="submit" class="btn btn-success btn-block">Proceed to Pullout</button>
+	    		<?php echo form_close() ?>
 			</div>
 		</div>
 		<!-- /.modal-content -->
