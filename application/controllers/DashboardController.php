@@ -10,6 +10,8 @@ class DashboardController extends CI_Controller {
 			$this->load->helper('site_helper');
 			$this->load->model('ItemsModel');
 			$this->load->model('DispatchFormsModel');
+			$this->load->model('CustomersModel');
+
 
 			$data = html_variable();
 			$data['title'] = 'Dashboard';
@@ -18,6 +20,7 @@ class DashboardController extends CI_Controller {
 			$data['countDispatch'] = $this->DispatchFormsModel->countDispatch();
 			$data['direct_item_count'] = $this->ItemsModel->get_all_itemMasterlist_data('Direct');
 			$data['indirect_item_count'] = $this->ItemsModel->get_all_itemMasterlist_data('Indirect');
+			$data['customer_count'] = $this->CustomersModel->count_vtCustomer();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');

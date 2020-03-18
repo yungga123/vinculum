@@ -29,6 +29,24 @@ class PullOutsController extends CI_Controller {
 
 	}
 
+	public function pending_pullouts() {
+		if($this->session->userdata('logged_in')) {
+			$this->load->helper('site_helper');
+			$this->load->model('PullOutsModel');
+			$results = $this->PullOutsModel->viewPullout();
+			$data = html_variable();
+			$data['title'] = 'Pending Pullouts';
+			$data['results'] = $results;
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('items/item_pullout/pullouts_pending');
+			$this->load->view('templates/footer');
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
 	public function getSearchItem() {
 		$this->load->model('ItemsModel');
 		$results = $this->ItemsModel->getItemsBySearchLike($this->input->post('search_item'));
@@ -51,7 +69,7 @@ class PullOutsController extends CI_Controller {
 				 '<td>'.$row->itemSupplierPrice.'</td>'.
 				 '<td>'.$row->itemPrice.'</td>'.
 				 '<td>'.$row->stocks.'</td>'.
-				 '<td>'.$row->date_of_purchase.'</td>'.
+				 '<td>'.date_format(date_create($row->date_of_purchase),'F d, Y').'</td>'.
 				 '<td>'.$row->location.'</td>'.
 				 '<td>'.$row->supplier.'</td>'.
 				 '<td>'.$row->encoder.'</td>'.
@@ -162,6 +180,15 @@ class PullOutsController extends CI_Controller {
 		}
 
 		echo json_encode($validate);
+	}
+
+	public function delete_pending_pullout($id) {
+		$this->load->model('PullOutsModel');
+		$this->PullOutsModel->deletePullout($id);
+
+
+		$this->session->set_flashdata('success', 'Success Deleting!');
+		redirect('pending-pullouts');
 	}
 
 }

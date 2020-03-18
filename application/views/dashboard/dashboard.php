@@ -85,8 +85,8 @@ defined('BASEPATH') or exit('No direct script access allowed.');
               <span class="info-box-icon bg-info"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text"><a href="#">Customers</a></span>
-                <span class="info-box-number">1,410</span>
+                <span class="info-box-text"><a href="<?php echo site_url('customers') ?>">Customers</a></span>
+                <span class="info-box-number"><?php echo number_format($customer_count) ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>

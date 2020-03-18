@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 if(!function_exists('html_variable')) {
   function html_variable() {
   

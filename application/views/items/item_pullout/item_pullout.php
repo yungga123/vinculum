@@ -102,6 +102,27 @@ defined('BASEPATH') or exit('Access Denied');
 					</div>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card">
+						<div class="card-header">
+							<p style="font-weight: bold;">Third Step: Proceed to Confirmation</p>
+						</div>
+
+						<div class="card-body">
+							<div class="row">
+								<div class="col-6">
+									<a href="<?php echo site_url('masterlistofitems') ?>" class="btn btn-block btn-primary text-bold">DIRECT ITEMS MASTERLIST</a>
+								</div>
+								<div class="col-6">
+									<a href="<?php echo site_url('pending-pullouts') ?>" class="btn btn-block btn-success text-bold">CONFIRM PULLOUT</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 

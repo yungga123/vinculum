@@ -63,8 +63,6 @@ $route['masterlistofitems'] = 'ItemsController/items_masterlist';
 $route['masterlistofindirectitems'] = 'ItemsController/indirect_items_masterlist';
 $route['addnewitem'] = 'ItemsController/register_new_item';
 $route['print-items'] = 'ItemsController/print_items';
-$route['Pull-Out-item'] = 'PullOutsController';
-// $route['actual-stocks'] = 'ItemsController/item_stocks';
 
 
 //Logs Controller
@@ -92,3 +90,7 @@ $route['update-salesdispatch/(:any)'] = 'SalesDispatchController/update_sales_di
 $route['customers'] = 'CustomersController';
 $route['customers-add'] = 'CustomersController/customer_add';
 $route['customers-update/(:num)'] = 'CustomersController/customer_update/$1';
+
+//Pullouts Controller
+$route['Pull-Out-item'] = 'PullOutsController';
+$route['pending-pullouts'] = 'PullOutsController/pending_pullouts';

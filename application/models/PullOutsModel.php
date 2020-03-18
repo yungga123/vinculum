@@ -10,10 +10,10 @@ class PullOutsModel extends CI_Model {
 	public function viewPullout() {
 		// SELECT id,pulled_out.item_code,itemName,itemType,itemSupplierPrice,itemPrice,stocks FROM items INNER JOIN pulled_out ON pulled_out.item_code=items.itemCode
 
-		$this->db->select("pulled_out.id as id,pulled_out.item_code,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_punch,'%b %d, %Y %h:%i %p') as date_of_punch,stocks_to_pullout,customer_name,discount,(stocks_to_pullout*itemPrice) as total_price,(stocks_to_pullout*itemPrice) - (itemPrice*stocks_to_pullout*discount) as discount_price");
+		$this->db->select("pulled_out.id as id,pulled_out.item_code,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_punch,'%b %d, %Y %h:%i %p') as date_of_punch,stocks_to_pullout,CompanyName,discount,(stocks_to_pullout*itemPrice) as total_price,((stocks_to_pullout*itemPrice)-discount) as final_price");
 		$this->db->from('items');
 		$this->db->join('pulled_out','pulled_out.item_code=items.itemCode','inner');
-		$this->db->join('customers','customers.id=pulled_out.pullout_to','inner');
+		$this->db->join('customer_vt','customer_vt.CustomerID=pulled_out.pullout_to','inner');
 		return $this->db->get()->result();
 
 	}

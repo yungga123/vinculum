@@ -151,5 +151,8 @@ class CustomersModel extends CI_Model {
 		$this->db->delete('customer_vt');
 	}
 	
+	public function count_vtCustomer() {
+		return $this->db->get('customer_vt')->num_rows();
+	}
 
 }

@@ -413,7 +413,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		//Form Insert Pullout
 		$('#form-insert-pullout').submit(function(e) {
 		 	e.preventDefault();
-		 	var a = '<a href="<?php echo site_url("#") ?>"><u>View Here</u></a>';
+		 	var a = '<a href="<?php echo site_url("pending-pullouts") ?>"><u>View Here</u></a>';
 		 	var me = $(this);
 
 		 	toastr.options = {
@@ -629,32 +629,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		
 	</script>
-
-	<?php if ($this->session->flashdata('success')): ?>
-		<script type="text/javascript">
-			
-			toastr.options = {
-				"closeButton": false,
-				"debug": false,
-				"newestOnTop": false,
-				"progressBar": true,
-				"positionClass": "toast-top-right",
-				"preventDuplicates": true,
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			}
-
-			toastr.success("<?php echo $this->session->flashdata('success') ?>");
-
-		</script>
-	<?php endif ?>
 
 
 	<!-- Dispatch Forms Table -->
@@ -893,14 +867,19 @@ $('#form-salesdispatch').submit(function(e) {
   });
 </script>
 
-
+<!-- Normal Data Tables -->
 <script type="text/javascript">
   $(document).ready(function() {
     $('#ScanItem').modal();
 
     var myTable = $("#Pull-Out-Item").DataTable({
-		    	responsive: true
-		    });
+		responsive: true
+	});
+
+	$(".table-pendingpullout").DataTable({
+		responsive: true
+	});
+
   });
 </script>
 	
