@@ -183,6 +183,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 		success: function(response) {
 			 			if (response.success == true) {
 			 				toastr.success("Success! it is now for pending. Click to Refresh ");
+			 				me[0].reset();
 			 			} else {
 			 				toastr.error(response.errors);
 			 			}
@@ -231,6 +232,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		success: function(response) {
 		 			if (response.success == true) {
 		 				toastr.success("Added! " + a);
+		 				me[0].reset();
 		 			} else {
 		 				toastr.error(response.errors);
 		 			}
@@ -318,6 +320,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 				toastr.success("Stocks Added! Please refresh this page.");
 		 				$('.addstocks').modal('hide');
 		 				$('#AS_Quantity').val("");
+		 				me[0].reset();
 		 			} else {
 		 				toastr.error(response.errors);
 		 			}
@@ -360,6 +363,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		success: function(response) {
 		 			if (response.success == true) {
 		 				toastr.success("Customer Added! "+a);
+		 				me[0].reset();
 		 			} else {
 		 				toastr.error(response.errors);
 		 			}
@@ -496,14 +500,52 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					         $('#item_code_val').val(col1);
 					         $('#pullout_customer_name').val($('.pullout_customer_name').val());
 				  		});
-						 			
-			 			console.log(toastr.success(response.success_msg));
 
 		 			} else {
 		 				$("#search-result").empty();
 			 			$("#search-result").append(response.data);
-			 			console.log(toastr.error(response.error_msg));
 		 			}
+		 		}
+		 	});
+		 });
+
+		 //Form Less Price Pullout
+		$('#form-less-pullout').submit(function(e) {
+		 	e.preventDefault();
+		 	var a = '<a href="<?php echo site_url("pending-pullouts") ?>"><u>Refresh!</u></a>';
+		 	var me = $(this);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Success! Please refresh this page."+a);
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
 		 		}
 		 	});
 		 });
@@ -575,6 +617,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		success: function(response) {
 		 			if (response.success == true) {
 		 				toastr.success("Dispatch Added! " + a);
+		 				me[0].reset();
 		 			} else {
 		 				toastr.error(response.errors);
 		 			}
@@ -761,8 +804,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 			$(".purpose_4_edit").val(response.dispatch_data[0].purpose_4);
 			 			$(".time_in_4_edit").val(response.dispatch_data[0].time_in_4);
 			 			$(".time_out_4_edit").val(response.dispatch_data[0].time_out_4);
-
-			 			
 			 			
 			 		}
 			 	});
@@ -876,12 +917,31 @@ $('#form-salesdispatch').submit(function(e) {
 		responsive: true
 	});
 
-	$(".table-pendingpullout").DataTable({
+	var table_pendingpullout = $(".table-pendingpullout").DataTable({
 		responsive: true
+	});
+
+	$('.table-pendingpullout tbody').on('click','.get-pullout-less',function(){
+
+		var data = table_pendingpullout.row($(this).parents('tr')).data();
+		var rowdata = table_pendingpullout.row(this).data();
+
+		if (data == undefined) {
+			$('#less_item_code').val(rowdata[1]);
+			$('#less_total_price').val(rowdata[9]);
+		} else if (rowdata == undefined) {
+			$('#less_item_code').val(data[1]);
+			$('#less_total_price').val(data[9]);
+		}
+
 	});
 
   });
 </script>
+
+<!-- Get Pending Pullouts Data -->
+
 	
-	</body>
+	
+</body>
 </html>

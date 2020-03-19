@@ -23,11 +23,17 @@ class PullOutsModel extends CI_Model {
 		return $this->db->delete('pulled_out');
 	}
 
-	public function sum_of_pullouts() {
-		// SELECT SUM(itemPrice*stocks) as total_pullout_price FROM items INNER JOIN pulled_out ON pulled_out.item_code=items.itemCode
-		$this->db->select('SUM(itemPrice*stocks_to_pullout)-(itemPrice*stocks_to_pullout*discount) as total_pullout_price')
-				->from('items')
-				->join('pulled_out','pulled_out.item_code=items.itemCode','inner');
+	public function pullouts_total_price() {
+		$this->db->select('SUM(stocks_to_pullout*itemPrice) as total_price');
+		$this->db->from('items as a');
+		$this->db->join('pulled_out as b','a.itemCode=b.item_code','left');
+		return $this->db->get()->result();
+	}
+
+	public function pullouts_final_price() {
+		$this->db->select('SUM((itemPrice*stocks_to_pullout)-discount) as final_price')
+				->from('items as a')
+				->join('pulled_out as b','a.itemCode=b.item_code','left');
 		return $this->db->get()->result();
 
 	}
@@ -44,6 +50,11 @@ class PullOutsModel extends CI_Model {
 
 		return $this->db->get()->num_rows();
 
+	}
+
+	public function update_pullout($id,$data) {
+		$this->db->where('item_code', $id);
+		$this->db->update('pulled_out', $data);
 	}
 
 }

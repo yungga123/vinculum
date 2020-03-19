@@ -33,10 +33,15 @@ class PullOutsController extends CI_Controller {
 		if($this->session->userdata('logged_in')) {
 			$this->load->helper('site_helper');
 			$this->load->model('PullOutsModel');
+
 			$results = $this->PullOutsModel->viewPullout();
+			$pullout_total_price = $this->PullOutsModel->pullouts_total_price();
+			$pullout_final_price = $this->PullOutsModel->pullouts_final_price();
 			$data = html_variable();
 			$data['title'] = 'Pending Pullouts';
 			$data['results'] = $results;
+			$data['pullout_total_price'] = $pullout_total_price;
+			$data['pullout_final_price'] = $pullout_final_price;
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -74,6 +79,7 @@ class PullOutsController extends CI_Controller {
 				 '<td>'.$row->supplier.'</td>'.
 				 '<td>'.$row->encoder.'</td>'.
 				 '</tr>';
+
 				
 				$data[] = $sub_array;
 			}
@@ -186,9 +192,52 @@ class PullOutsController extends CI_Controller {
 		$this->load->model('PullOutsModel');
 		$this->PullOutsModel->deletePullout($id);
 
-
 		$this->session->set_flashdata('success', 'Success Deleting!');
 		redirect('pending-pullouts');
+	}
+
+	public function less_pullout() {
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'less_item_code',
+				'label' => 'Item Code',
+				'rules' => 'trim|required'
+			],
+			[
+				'field' => 'less_total_price',
+				'label' => 'Total Price',
+				'rules' => 'trim|required'
+			],
+			[
+				'field' => 'less_price',
+				'label' => 'Less Price',
+				'rules' => 'trim|required|numeric|numeric',
+				'errors' => [
+					'required' => 'Please provide less price.'
+				]
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$validate['success'] = true;
+			
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+
+		echo json_encode($validate);
+		
 	}
 
 }

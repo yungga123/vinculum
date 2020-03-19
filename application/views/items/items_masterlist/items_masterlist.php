@@ -223,7 +223,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
       <div class="modal-body">
 
-      	<a style="margin-bottom: 35px" href="<?php echo site_url('Pull-Out-item') ?>" class="btn btn-primary btn-block" target="_blank">Item Pullout List</a>
+      	<a style="margin-bottom: 35px" href="<?php echo site_url('pending-pullouts') ?>" class="btn btn-primary btn-block" target="_blank">Item Pullout List</a>
 
       	<?php echo form_open('ItemsController/pulloutValidate',["id" => "form-pullout"]) ?>
 
@@ -248,7 +248,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
         		<option value="">---Select customer for pullout---</option>
         		<?php foreach ($resultCustomers as $row): ?>
 
-        			<option value="<?php echo $row->id ?>"><?php echo $row->customer_name ?></option>
+        			<option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName.' --- '.$row->CustomerID ?></option>
         			
         		<?php endforeach ?>
         	</select>

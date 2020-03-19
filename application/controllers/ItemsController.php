@@ -18,7 +18,7 @@ class ItemsController extends CI_Controller
 			$data['category'] = 'Direct';
 
 			$this->load->model('CustomersModel');
-			$resultCustomers = $this->CustomersModel->getCustomers();
+			$resultCustomers = $this->CustomersModel->getVtCustomersByName();
 			$data['resultCustomers'] = $resultCustomers;
 
 			$this->load->view('templates/header', $data);
@@ -495,6 +495,19 @@ class ItemsController extends CI_Controller
 		redirect('masterlistofitems');
 	}
 
+	function check_item() {
+		$itemCode = $this->input->post('item_code');
+		$this->load->model('PullOutsModel');
+		$results = $this->PullOutsModel->getPulledOutName($itemCode);
+		
+		if ($results == 1) {
+			return FALSE;
+		} else {
+			return TRUE;
+		}
+
+	}
+
 	
 	public function pulloutValidate() {
 
@@ -505,7 +518,7 @@ class ItemsController extends CI_Controller
 		
 
 		$this->load->model('ItemsModel');
-		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_name'));
+		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_code'));
 
 		$itemStock = 0;
 		foreach ($results as $row) {
@@ -514,8 +527,8 @@ class ItemsController extends CI_Controller
 
 		$rules = [
 			[
-				'field' => 'item_name',
-				'label' => 'Item Name',
+				'field' => 'item_code',
+				'label' => 'Item Code',
 				'rules' => 'trim|required|callback_check_item',
 				'errors' => ['check_item' => 'This item is already in pullout list.','required' => 'Select another item to pullout.']
 			],
@@ -627,11 +640,11 @@ class ItemsController extends CI_Controller
 		];
 
 		$this->load->model('ItemsModel');
-		$results = $this->ItemsModel->ItemsGet(str_replace(' ','',$id));
-
-		$max_length = 0;
+		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_code'));
+		
+		$itemStock = 0;
 		foreach ($results as $row) {
-			$max_length = $row->stocks;
+			$itemStock = $row->stocks;
 		}
 
 		$rules = [
@@ -647,26 +660,16 @@ class ItemsController extends CI_Controller
 				'rules' => 'trim'
 			],
 			[
-				'field' => 'item_type',
-				'label' => 'Item Type',
-				'rules' => 'trim'
-			],
-			[
-				'field' => 'item_stocks',
+				'field' => 'pullout_stocks',
 				'label' => 'Stocks',
-				'rules' => 'trim|numeric|required|less_than_equal_to['.$max_length.']|is_natural_no_zero',
-				'errors' => ['less_than_equal_to' => 'Only '.$max_length.' stock/s available']
+				'rules' => 'trim|numeric|required|less_than_equal_to['.$itemStock.']|is_natural_no_zero',
+				'errors' => ['less_than_equal_to' => 'Only '.$itemStock.' stock/s available']
 			],
 			[
 				'field' => 'pull_out_to',
 				'label' => 'Pull-out to',
 				'rules' => 'trim|required',
 				'errors' => ['required' => 'Please select customer.']
-			],
-			[
-				'field' => 'discount',
-				'label' => 'Discount',
-				'rules' => 'trim'
 			]
 		];
 
