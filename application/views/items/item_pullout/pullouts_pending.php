@@ -108,14 +108,18 @@ foreach ($pullout_final_price as $row) {
 			<div class="modal-body text-center">
 			
 				<?php echo form_open('PullOutsController/less_pullout',["id" => "form-less-pullout"]) ?>
+				
+				<div class="form-group">
+				  <input type="hidden" name="less_pullout_id" id="less_pullout_id" class="form-control" placeholder="">
+				</div>						
 
 				<div class="form-group">
-				  <label for="">Item Code</label>
+				  <label for="less_item_code">Item Code</label>
 				  <input type="text" name="less_item_code" id="less_item_code" class="form-control" readonly>
 				</div>
 
 				<div class="form-group">
-				  <label for="">Total Price</label>
+				  <label for="less_total_price">Total Price</label>
 				  <input type="text" name="less_total_price" id="less_total_price" class="form-control" readonly>
 				</div>
 

@@ -929,9 +929,11 @@ $('#form-salesdispatch').submit(function(e) {
 		if (data == undefined) {
 			$('#less_item_code').val(rowdata[1]);
 			$('#less_total_price').val(rowdata[9]);
+			$('#less_pullout_id').val(rowdata[0]);
 		} else if (rowdata == undefined) {
 			$('#less_item_code').val(data[1]);
 			$('#less_total_price').val(data[9]);
+			$('#less_pullout_id').val(data[0]);
 		}
 
 	});

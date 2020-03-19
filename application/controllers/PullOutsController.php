@@ -198,6 +198,16 @@ class PullOutsController extends CI_Controller {
 
 	public function less_pullout() {
 
+		$this->load->model('PullOutsModel');
+
+		$id = $this->input->post('less_pullout_id');
+		$specific_pullout = $this->PullOutsModel->specific_pullout($id);
+		$total_price_count = 0;
+	
+		foreach ($specific_pullout as $row) {
+			$total_price_count = $row->itemPrice*$row->stocks_to_pullout;
+		}
+
 		$validate = [
 			'success' => false,
 			'errors' => ''
@@ -217,9 +227,10 @@ class PullOutsController extends CI_Controller {
 			[
 				'field' => 'less_price',
 				'label' => 'Less Price',
-				'rules' => 'trim|required|numeric|numeric',
+				'rules' => 'trim|required|numeric|less_than['.$total_price_count.']',
 				'errors' => [
-					'required' => 'Please provide less price.'
+					'required' => 'Please provide less price.',
+					'less_than' => 'The total price of item is '.number_format($total_price_count,2)
 				]
 			]
 		];
@@ -229,8 +240,14 @@ class PullOutsController extends CI_Controller {
 		$this->form_validation->set_rules($rules);
 
 		if ($this->form_validation->run()) {
-
 			$validate['success'] = true;
+
+			$id = $this->input->post('less_item_code');
+			$data = [
+				'discount' => $this->input->post('less_price')
+			];
+
+			$this->PullOutsModel->update_pullout($id,$data);
 			
 		} else {
 			$validate['errors'] = validation_errors();

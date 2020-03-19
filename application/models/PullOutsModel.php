@@ -10,7 +10,20 @@ class PullOutsModel extends CI_Model {
 	public function viewPullout() {
 		// SELECT id,pulled_out.item_code,itemName,itemType,itemSupplierPrice,itemPrice,stocks FROM items INNER JOIN pulled_out ON pulled_out.item_code=items.itemCode
 
-		$this->db->select("pulled_out.id as id,pulled_out.item_code,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_punch,'%b %d, %Y %h:%i %p') as date_of_punch,stocks_to_pullout,CompanyName,discount,(stocks_to_pullout*itemPrice) as total_price,((stocks_to_pullout*itemPrice)-discount) as final_price");
+		$this->db->select("
+			pulled_out.id as id,
+			pulled_out.item_code,
+			itemName,
+			itemType,
+			itemSupplierPrice,
+			itemPrice,
+			stocks,
+			DATE_FORMAT(date_of_punch,'%b %d, %Y %h:%i %p') as date_of_punch,
+			stocks_to_pullout,CompanyName,
+			discount,
+			(stocks_to_pullout*itemPrice) as total_price,
+			((stocks_to_pullout*itemPrice)-discount) as final_price
+		");
 		$this->db->from('items');
 		$this->db->join('pulled_out','pulled_out.item_code=items.itemCode','inner');
 		$this->db->join('customer_vt','customer_vt.CustomerID=pulled_out.pullout_to','inner');
@@ -55,6 +68,33 @@ class PullOutsModel extends CI_Model {
 	public function update_pullout($id,$data) {
 		$this->db->where('item_code', $id);
 		$this->db->update('pulled_out', $data);
+	}
+
+	public function specific_pullout($id) {
+		// $this->db->where('item_code',$id);
+		// return $this->db->get('pulled_out')->result();
+
+		$this->db->select('
+			a.itemCode,
+			a.itemName,
+			a.itemType,
+			a.itemSupplierPrice,
+			a.itemPrice,
+			a.stocks,
+			a.date_of_purchase,
+			a.location,
+			a.supplier,
+			a.encoder,
+			b.id as pullout_id,
+			b.date_of_punch,
+			b.stocks_to_pullout,
+			b.pullout_to,
+			b.discount'
+		);
+		$this->db->from('items as a');
+		$this->db->join('pulled_out as b','a.itemCode=b.item_code','left');
+		$this->db->where('b.id',$id);
+		return $this->db->get()->result();
 	}
 
 }
