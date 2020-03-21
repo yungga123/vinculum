@@ -94,3 +94,4 @@ $route['customers-update/(:num)'] = 'CustomersController/customer_update/$1';
 //Pullouts Controller
 $route['Pull-Out-item'] = 'PullOutsController';
 $route['pending-pullouts'] = 'PullOutsController/pending_pullouts';
+$route['confirmed-pullouts'] = 'PullOutsController/confirmed_pullouts';

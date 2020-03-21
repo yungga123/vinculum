@@ -109,9 +109,9 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	              </li>
 
 	              <li class="nav-item">
-	                <a href="#" class="nav-link<?php echo $listof_pullouts ?>">
+	                <a href="<?php echo site_url('confirmed-pullouts') ?>" class="nav-link<?php echo $listof_pullouts ?>">
 	                  <i class="far fa-circle nav-icon"></i>
-	                  <p>List of Pull-outs</p>
+	                  <p>Confirmed Pullouts</p>
 	                </a>
 	              </li>
 

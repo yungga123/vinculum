@@ -90,7 +90,7 @@ foreach ($pullout_final_price as $row) {
 
 						<div class="card-footer">
 							<a href="<?php echo site_url('Pull-Out-item') ?>" class="btn btn-primary text-bold">ADD MORE ITEMS</a>
-							<button type="button" class="btn btn-success float-right text-bold">PROCEED TO PULLOUT</button>
+							<button type="button" class="btn btn-success float-right text-bold" data-toggle="modal" data-target=".pullout-proceed">PROCEED TO PULLOUT</button>
 						</div>
 					</div>
 				</div>
@@ -100,7 +100,7 @@ foreach ($pullout_final_price as $row) {
 </div>
 
 
-<!-- Modal -->
+<!-- Modal for less pullout -->
 <div class="modal fade pullout-less" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content">
@@ -139,5 +139,20 @@ foreach ($pullout_final_price as $row) {
 	</div>
 </div>
 
+<!-- Modal for proceed pullout -->
+<div class="modal fade pullout-proceed" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
 
+			<div class="modal-body text-center">
+				<label style="font-size: 25px">Pullout pending items?</label>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary text-bold" data-dismiss="modal">RETURN</button>
+				<a href="<?php echo site_url('PullOutsController/confirm_pullouts') ?>" class="btn btn-success text-bold">PROCEED</a>
+			</div>
+		</div>
+	</div>
+</div>
 

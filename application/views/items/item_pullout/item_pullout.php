@@ -18,14 +18,14 @@ defined('BASEPATH') or exit('Access Denied');
 	<section class="content">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-6">
 					<div class="card">
 						<div class="card-header" style="font-weight: bold;">First Step: Select A Customer</div>
 
 						<div class="card-body">
 							
 							<div class="row">
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<div class="form-group">
 										<label>Customer Name</label>
 										<select class="form-control pullout_customer_name" name="" id="">

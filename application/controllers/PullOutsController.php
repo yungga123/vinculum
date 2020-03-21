@@ -257,4 +257,43 @@ class PullOutsController extends CI_Controller {
 		
 	}
 
+	public function confirm_pullouts() {
+
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->model('ConfirmedPullOutsModel');
+			$this->ConfirmedPullOutsModel->insert();
+
+			$this->session->set_flashdata('success', 'Success! Items Pulled Out!!');
+
+			$this->db->empty_table('pulled_out');
+			redirect('pending-pullouts');
+			
+		} else {
+			redirect('', 'refresh');
+		}
+
+	}
+
+	public function confirmed_pullouts() {
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+
+			$data = html_variable();
+			$data['title'] = 'Confirmed Pullouts';
+			$data['items_menu_status'] = ' menu-open';
+			$data['items_menu_display'] = ' block';
+			$data['listof_pullouts'] = ' active';
+			$data['ul_items'] = ' active';
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('items/item_pullout/confirmed_pullouts');
+			$this->load->view('templates/footer');
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
 }

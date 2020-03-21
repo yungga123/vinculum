@@ -890,6 +890,7 @@ $('#form-salesdispatch').submit(function(e) {
 		 		success: function(response) {
 		 			if (response.success == true) {
 		 				toastr.success("Dispatch Added! " + a);
+						 me[0].reset();
 		 			} else {
 		 				toastr.error(response.errors);
 		 			}
