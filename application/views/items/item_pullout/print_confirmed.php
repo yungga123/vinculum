@@ -4,6 +4,17 @@ date_default_timezone_set("Asia/Manila");
 
 $start_date = date_format(date_create($start_date),'F d, Y');
 $end_date = date_format(date_create($end_date),'F d, Y');
+
+$cpullout_total_price = number_format("0",2);
+$cpullout_final_price = number_format("0",2);
+
+foreach ($total_price as $row) {
+  $cpullout_total_price = number_format($row->total_price,2);
+}
+
+foreach ($final_price as $row) {
+  $cpullout_final_price = number_format($row->final_price,2);
+}
 ?>
 
 <!DOCTYPE html>
@@ -97,6 +108,15 @@ $end_date = date_format(date_create($end_date),'F d, Y');
               
             </tbody>
           </table>
+        </div>
+
+        <div class="card-body">
+          <div class="text-right">
+            <p><label>Total Price (Without Less): <span class="text-red"><?php echo $cpullout_total_price ?> PHP</span></label></p>
+
+            <p><label>Final Price: <span class="text-red"><?php echo $cpullout_final_price ?> PHP</span></label></p>
+          </div>
+          
         </div>
         <!-- /.card-body -->
       </div>

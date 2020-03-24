@@ -286,6 +286,8 @@ class PullOutsController extends CI_Controller {
 			$current_date = date('Y-m-d');
 
 			$results_confirm_pullout = $this->ConfirmedPullOutsModel->getSpecificConfirmedPullout($current_date,$current_date);
+			$total_price = $this->ConfirmedPullOutsModel->cpullouts_total_price($current_date,$current_date);
+			$final_price = $this->ConfirmedPullOutsModel->cpullouts_final_price($current_date,$current_date);
 
 			$data = html_variable();
 			$data['title'] = 'Confirmed Pullouts';
@@ -296,6 +298,8 @@ class PullOutsController extends CI_Controller {
 			$data['results_confirm_pullout'] = $results_confirm_pullout;
 			$data['start_date'] = $current_date;
 			$data['end_date'] = $current_date;
+			$data['total_price'] = $total_price;
+			$data['final_price'] = $final_price;
 
 
 
@@ -343,6 +347,8 @@ class PullOutsController extends CI_Controller {
 				$end_date = $this->input->post('cpullout_end_date');
 
 				$results_confirm_pullout = $this->ConfirmedPullOutsModel->getSpecificConfirmedPullout($start_date,$end_date);
+				$total_price = $this->ConfirmedPullOutsModel->cpullouts_total_price($start_date,$end_date);
+				$final_price = $this->ConfirmedPullOutsModel->cpullouts_final_price($start_date,$end_date);
 
 				$data = html_variable();
 				$data['title'] = 'Confirmed Pullouts';
@@ -353,6 +359,8 @@ class PullOutsController extends CI_Controller {
 				$data['results_confirm_pullout'] = $results_confirm_pullout;
 				$data['start_date'] = $start_date;
 				$data['end_date'] = $end_date;
+				$data['total_price'] = $total_price;
+				$data['final_price'] = $final_price;
 
 				$this->load->view('templates/header', $data);
 				$this->load->view('templates/navbar');
@@ -373,11 +381,16 @@ class PullOutsController extends CI_Controller {
 	public function print_confirmed_pullout($start_date,$end_date) {
 		$this->load->model('ConfirmedPullOutsModel');
 		$results = $this->ConfirmedPullOutsModel->getSpecificConfirmedPullout($start_date,$end_date);
+		$total_price = $this->ConfirmedPullOutsModel->cpullouts_total_price($start_date,$end_date);
+		$final_price = $this->ConfirmedPullOutsModel->cpullouts_final_price($start_date,$end_date);
+
 		$data = [
 			'title' => 'Print',
 			'results' => $results,
 			'start_date' => $start_date,
-			'end_date' => $end_date
+			'end_date' => $end_date,
+			'total_price' => $total_price,
+			'final_price' => $final_price
 		];
 		$this->load->view('items/item_pullout/print_confirmed',$data);
 	}

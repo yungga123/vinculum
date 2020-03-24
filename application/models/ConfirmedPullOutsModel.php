@@ -71,4 +71,21 @@ class ConfirmedPullOutsModel extends CI_Model {
 		$this->db->delete('confirmed_pullouts');
 	}
 
+	public function cpullouts_total_price($startDate,$endDate) {
+		$where = "date(confirm_date) BETWEEN '".$startDate."' AND '".$endDate."'";
+		$this->db->select('SUM(stocks_pulled_out*itemPrice) as total_price');
+		$this->db->from('confirmed_pullouts');
+		$this->db->where($where);
+		return $this->db->get()->result();
+	}
+
+	public function cpullouts_final_price($startDate,$endDate) {
+		$where = "date(confirm_date) BETWEEN '".$startDate."' AND '".$endDate."'";
+		$this->db->select('SUM((itemPrice*stocks_pulled_out)-discount) as final_price')
+				 ->from('confirmed_pullouts')
+				 ->where($where);
+		return $this->db->get()->result();
+
+	}
+
 }
