@@ -278,7 +278,14 @@ class PullOutsController extends CI_Controller {
 	public function confirmed_pullouts() {
 		if($this->session->userdata('logged_in')) {
 
+			date_default_timezone_set("Asia/Manila");
+
 			$this->load->helper('site_helper');
+			$this->load->model('ConfirmedPullOutsModel');
+
+			$current_date = date('Y-m-d');
+
+			$results_confirm_pullout = $this->ConfirmedPullOutsModel->getSpecificConfirmedPullout($current_date,$current_date);
 
 			$data = html_variable();
 			$data['title'] = 'Confirmed Pullouts';
@@ -286,6 +293,11 @@ class PullOutsController extends CI_Controller {
 			$data['items_menu_display'] = ' block';
 			$data['listof_pullouts'] = ' active';
 			$data['ul_items'] = ' active';
+			$data['results_confirm_pullout'] = $results_confirm_pullout;
+			$data['start_date'] = $current_date;
+			$data['end_date'] = $current_date;
+
+
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -294,6 +306,80 @@ class PullOutsController extends CI_Controller {
 		} else {
 			redirect('', 'refresh');
 		}
+	}
+
+	public function get_confirmed_pullouts() {
+
+		if($this->session->userdata('logged_in')) {
+
+			$rules = [
+			[
+				'field' => 'cpullout_start_date',
+				'label' => 'Start Date',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Select Date.'
+				]
+			],
+			[
+				'field' => 'cpullout_end_date',
+				'label' => 'End Date',
+				'rules' => 'trim'
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+			if ($this->form_validation->run()) {
+
+				date_default_timezone_set("Asia/Manila");
+
+				$this->load->helper('site_helper');
+				$this->load->model('ConfirmedPullOutsModel');
+
+				$start_date = $this->input->post('cpullout_start_date');
+				$end_date = $this->input->post('cpullout_end_date');
+
+				$results_confirm_pullout = $this->ConfirmedPullOutsModel->getSpecificConfirmedPullout($start_date,$end_date);
+
+				$data = html_variable();
+				$data['title'] = 'Confirmed Pullouts';
+				$data['items_menu_status'] = ' menu-open';
+				$data['items_menu_display'] = ' block';
+				$data['listof_pullouts'] = ' active';
+				$data['ul_items'] = ' active';
+				$data['results_confirm_pullout'] = $results_confirm_pullout;
+				$data['start_date'] = $start_date;
+				$data['end_date'] = $end_date;
+
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/navbar');
+				$this->load->view('items/item_pullout/confirmed_pullouts');
+				$this->load->view('templates/footer');
+				
+			} else {
+				$this->session->set_flashdata('fail', json_encode(form_error('cpullout_start_date')));
+				redirect('confirmed-pullouts');
+			}
+			
+		} else {
+			redirect('', 'refresh');
+		}
+
+	}
+
+	public function print_confirmed_pullout($start_date,$end_date) {
+		$this->load->model('ConfirmedPullOutsModel');
+		$results = $this->ConfirmedPullOutsModel->getSpecificConfirmedPullout($start_date,$end_date);
+		$data = [
+			'title' => 'Print',
+			'results' => $results,
+			'start_date' => $start_date,
+			'end_date' => $end_date
+		];
+		$this->load->view('items/item_pullout/print_confirmed',$data);
 	}
 
 }

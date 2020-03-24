@@ -38,6 +38,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+	<!-- Moment JS -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/moment/moment.min.js"></script>
+
 	<!-- ChartJS -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/chart.js/Chart.min.js"></script>
 	<!-- Summernote -->
@@ -50,13 +54,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
+	<!-- Date Range Picker -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
 
 
+	<!-- Data Table for Item Master List -->
 	<script>
-	  	$(document).ready( function () {
+		$(document).ready(function(){
 
-	  		// Data Table for Item Master List
-		    var masterlist_table = $("#item_masterlist").DataTable({
+			//Main
+			var masterlist_table = $("#item_masterlist").DataTable({
 		    	responsive: true,
 		    	"serverSide": true,
 	            "order":[],
@@ -71,39 +78,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	                }
 	            ]
 		    });
-			//end of datatable
-
-			//Datatable for Customers Table
-		    var customers_table = $("#customers_table").DataTable({
-		    	responsive: true,
-		    	"serverSide": true,
-	            "order":[],
-	            "ajax":{
-	                url: "<?php echo site_url('CustomersController/get_customers') ?>",
-	                type: "POST"
-	            },
-	            "columnDefs": [
-	                {
-	                   "targets": [],
-	                    "orderable": false, 
-	                }
-	            ]
-		    });
-		    //end of datatable
 
 
-		    //click select edit for masterlist table
+			//click select edit for masterlist table
 		    $('#item_masterlist tbody').on( 'click', '.btn_select', function () {
 		    	var data = masterlist_table.row($(this).parents('tr')).data();
 				var rowdata = masterlist_table.row(this).data();
-
 				if (data == undefined) {
 					var me = '<?php echo site_url('ItemsController/fetch_masterlist/') ?>'+rowdata[0];
 					$(".item_code_edit").val(rowdata[0]);
 				} else if (rowdata == undefined) {
 					var me = '<?php echo site_url('ItemsController/fetch_masterlist/') ?>'+data[0];
 					$(".item_code_edit").val(data[0]);
-
 				}
 			   //ajax
 			 	$.ajax({
@@ -111,6 +97,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 		type: 'get',
 			 		dataType: 'json',
 			 		success: function(response) {
+
 			 			$(".item_name_edit").val(response.list_of_items[0].itemName);
 			 			$(".item_type_edit").val(response.list_of_items[0].itemType);
 			 			$(".original_price_edit").val(response.list_of_items[0].itemSupplierPrice);
@@ -124,10 +111,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 		}
 			 	});
 			} );
-			//end of click select edit
 
-			//add stock button on masterlist table
-			$('#item_masterlist tbody').on( 'click', '.btn_addstock', function () {
+		    //Add Stock
+		    $('#item_masterlist tbody').on( 'click', '.btn_addstock', function () {
 		    	var data = masterlist_table.row($(this).parents('tr')).data();
 				var rowdata = masterlist_table.row(this).data();
 
@@ -138,17 +124,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				}
 			} );
-			//end of add stock button on masterlist table
 
-			var item_register_history = $("#item_register_history").DataTable({
-		    	responsive: true
-		    });
-
-		    var item_delete_history = $("#item_delete_history").DataTable({
-		    	responsive: true
-		    });
-
-		    //click pullout item
+			//click pullout item
 		    $('#form-pullout').submit(function(e) {
 			 	e.preventDefault();
 
@@ -190,12 +167,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			 		}
 			 	});
-		 });
+		 	});
+		});
+	</script>
 
+	<!-- Data Table for Customer List -->
+	<script>
+	  	$(document).ready( function () {
+			//Datatable for Customers Table
+		    var customers_table = $("#customers_table").DataTable({
+		    	responsive: true,
+		    	"serverSide": true,
+	            "order":[],
+	            "ajax":{
+	                url: "<?php echo site_url('CustomersController/get_customers') ?>",
+	                type: "POST"
+	            },
+	            "columnDefs": [
+	                {
+	                   "targets": [],
+	                    "orderable": false, 
+	                }
+	            ]
+		    });
+		    //end of datatable
 	  	});
 	</script>
 
-
+	<!-- Forms -->
 	<script>
 		//Form for Adding Item
 		$('#form-register-item').submit(function(e) {
@@ -550,11 +549,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });
 
+		//Form Sales Dispatch
+		$('#form-salesdispatch').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	var a = '<a href="<?php echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	var succ = '';
 
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Dispatch Added! " + a);
+						 me[0].reset();
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
 	</script>
 
 
-	<!-- Universal Toaster -->
+	<!-- Universal Toaster For Success -->
 	<?php if ($this->session->flashdata('success')): ?>
 		<script type="text/javascript">
 			
@@ -578,10 +619,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			toastr.success("<?php echo $this->session->flashdata('success') ?>");
 		</script>
 	<?php endif ?>
-	
+
+	<!-- Universal Toaster for Fail -->
+	<?php if ($this->session->flashdata('fail')): ?>
+		<script type="text/javascript">
+			
+			toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+			toastr.error('<?php echo json_decode($this->session->flashdata('fail')) ?>');
+		</script>
+	<?php endif ?>
 
 	<!-- Toasters for Dispatch Table -->
-	<script type="text/javascript">
+	<script>
 	//New Dispatch
 		$('#New-form-dispatch').submit(function(e) {
 		 	e.preventDefault();
@@ -669,8 +734,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		}
 		 	});
 		 });
-
-		
 	</script>
 
 
@@ -810,139 +873,118 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			} );
 	</script>
 
-<!-- Sales Dispatch Update -->
-<script type="text/javascript">
-	$('#form_updatesalesdispatch').submit(function(e) {
-		 	e.preventDefault();
-		 	
-		 
-		 	var me = $(this);
-		 	var succ = '';
+	<!-- Sales Dispatch Update -->
+	<script type="text/javascript">
+		$('#form_updatesalesdispatch').submit(function(e) {
+			 	e.preventDefault();
+			 	
+			 
+			 	var me = $(this);
+			 	var succ = '';
 
-		 	toastr.options = {
-				"closeButton": false,
-				"debug": false,
-				"newestOnTop": false,
-				"progressBar": true,
-				"positionClass": "toast-top-right",
-				"preventDuplicates": true,
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
+			 	toastr.options = {
+					"closeButton": false,
+					"debug": false,
+					"newestOnTop": false,
+					"progressBar": true,
+					"positionClass": "toast-top-right",
+					"preventDuplicates": true,
+					"onclick": null,
+					"showDuration": "300",
+					"hideDuration": "1000",
+					"timeOut": "5000",
+					"extendedTimeOut": "1000",
+					"showEasing": "swing",
+					"hideEasing": "linear",
+					"showMethod": "fadeIn",
+					"hideMethod": "fadeOut"
+				}
+
+			 	//ajax
+			 	$.ajax({
+			 		url: me.attr('action'),
+			 		type: 'post',
+			 		data: me.serialize(),
+			 		dataType: 'json',
+			 		success: function(response) {
+			 			if (response.success == true) {
+			 				toastr.success("Successfully Updated! Please Refresh");
+			 			} else {
+			 				toastr.error(response.errors);
+			 			}
+
+			 		}
+			 	});
+			 });
+	</script>
+
+	<!-- Scheduled Calendar Notif -->
+	<script type="text/javascript">
+	  $(document).ready(function() {
+
+	    $('#todayScheduleModal').modal();
+
+	  });
+	</script>
+
+	<!-- Normal Data Tables -->
+	<script type="text/javascript">
+	  $(document).ready(function() {
+	    $('#ScanItem').modal();
+
+	    var myTable = $("#Pull-Out-Item").DataTable({
+			responsive: true
+		});
+
+		var table_pendingpullout = $(".table-pendingpullout").DataTable({
+			responsive: true
+		});
+
+		var table_confirmedpullout = $(".table-confirmedpullout").DataTable({
+			responsive: true
+		});
+
+		var item_register_history = $("#item_register_history").DataTable({
+	    	responsive: true
+	    });
+
+	    var item_delete_history = $("#item_delete_history").DataTable({
+	    	responsive: true
+	    });
+
+
+		$('.table-pendingpullout tbody').on('click','.get-pullout-less',function(){
+
+			var data = table_pendingpullout.row($(this).parents('tr')).data();
+			var rowdata = table_pendingpullout.row(this).data();
+
+			if (data == undefined) {
+				$('#less_item_code').val(rowdata[1]);
+				$('#less_total_price').val(rowdata[9]);
+				$('#less_pullout_id').val(rowdata[0]);
+			} else if (rowdata == undefined) {
+				$('#less_item_code').val(data[1]);
+				$('#less_total_price').val(data[9]);
+				$('#less_pullout_id').val(data[0]);
 			}
 
-		 	//ajax
-		 	$.ajax({
-		 		url: me.attr('action'),
-		 		type: 'post',
-		 		data: me.serialize(),
-		 		dataType: 'json',
-		 		success: function(response) {
-		 			if (response.success == true) {
-		 				toastr.success("Successfully Updated! Please Refresh");
-		 			} else {
-		 				toastr.error(response.errors);
-		 			}
+		});
 
-		 		}
-		 	});
-		 });
-</script>
+	  });
+	</script>
 
-<script type="text/javascript">
-$('#form-salesdispatch').submit(function(e) {
-		 	e.preventDefault();
-		 	
-		 	var a = '<a href="<?php echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
-		 	var me = $(this);
-		 	var succ = '';
+	<!-- Date Range Pickers -->
+	<script>
+		
 
-		 	toastr.options = {
-				"closeButton": false,
-				"debug": false,
-				"newestOnTop": false,
-				"progressBar": true,
-				"positionClass": "toast-top-right",
-				"preventDuplicates": true,
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			}
+		$('#conpulledout_daterange').daterangepicker();
 
-		 	//ajax
-		 	$.ajax({
-		 		url: me.attr('action'),
-		 		type: 'post',
-		 		data: me.serialize(),
-		 		dataType: 'json',
-		 		success: function(response) {
-		 			if (response.success == true) {
-		 				toastr.success("Dispatch Added! " + a);
-						 me[0].reset();
-		 			} else {
-		 				toastr.error(response.errors);
-		 			}
+		$('#conpulledout_daterange').on('apply.daterangepicker', function(ev, picker) {
 
-		 		}
-		 	});
-		 });
-</script>
-
-<!-- Scheduled Calendar Notif -->
-<script type="text/javascript">
-  $(document).ready(function() {
-
-    $('#todayScheduleModal').modal();
-
-  });
-</script>
-
-<!-- Normal Data Tables -->
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#ScanItem').modal();
-
-    var myTable = $("#Pull-Out-Item").DataTable({
-		responsive: true
-	});
-
-	var table_pendingpullout = $(".table-pendingpullout").DataTable({
-		responsive: true
-	});
-
-	$('.table-pendingpullout tbody').on('click','.get-pullout-less',function(){
-
-		var data = table_pendingpullout.row($(this).parents('tr')).data();
-		var rowdata = table_pendingpullout.row(this).data();
-
-		if (data == undefined) {
-			$('#less_item_code').val(rowdata[1]);
-			$('#less_total_price').val(rowdata[9]);
-			$('#less_pullout_id').val(rowdata[0]);
-		} else if (rowdata == undefined) {
-			$('#less_item_code').val(data[1]);
-			$('#less_total_price').val(data[9]);
-			$('#less_pullout_id').val(data[0]);
-		}
-
-	});
-
-  });
-</script>
-
-<!-- Get Pending Pullouts Data -->
+			$('#cpullout_start_date').val(picker.startDate.format('YYYY-MM-DD'));
+			$('#cpullout_end_date').val(picker.endDate.format('YYYY-MM-DD'));
+		});
+	</script>
 
 	
 	

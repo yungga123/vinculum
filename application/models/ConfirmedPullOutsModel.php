@@ -40,6 +40,32 @@ class ConfirmedPullOutsModel extends CI_Model {
 				pulled_out.item_code=items.itemCode');
 	}
 
+	public function getSpecificConfirmedPullout($startDate,$endDate) {
+		//SELECT DATE_FORMAT(confirm_date,'%b %d, %Y') as confirm_date,DATE_FORMAT(date_of_pullout,'%b %d, %Y %h:%i %p') as date_of_pullout,item_code,itemName,itemPrice,stocks_pulled_out,(itemPrice*stocks_pulled_out) AS total_price FROM confirmed_pullouts INNER JOIN items ON confirmed_pullouts.item_code=items.itemCode
+
+		date_default_timezone_set("Asia/Manila");
+		
+
+		$where = "date(confirm_date) BETWEEN '".$startDate."' AND '".$endDate."'";
+
+		$this->db->select("
+				confirmed_pullouts.id as id,
+				DATE_FORMAT(confirm_date,'%b %d, %Y') as confirm_date,
+				DATE_FORMAT(date_of_pullout,'%b %d, %Y %h:%i %p') as date_of_pullout,
+				item_code,
+				itemName,
+				itemPrice,
+				stocks_pulled_out,
+				CompanyName,
+				discount
+			");
+
+		$this->db->from('confirmed_pullouts');
+		$this->db->join('customer_vt','customer_vt.CustomerID=confirmed_pullouts.pullout_to','left');
+		$this->db->where($where);
+		return $this->db->get()->result();	
+	}
+
 	public function deleteConfirmedPullout($id) {
 		$this->db->where('id',$id);
 		$this->db->delete('confirmed_pullouts');
