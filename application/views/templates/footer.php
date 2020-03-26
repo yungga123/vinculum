@@ -65,6 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			//Main
 			var masterlist_table = $("#item_masterlist").DataTable({
 		    	responsive: true,
+		    	"processing": true,
 		    	"serverSide": true,
 	            "order":[],
 	            "ajax":{
@@ -177,6 +178,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			//Datatable for Customers Table
 		    var customers_table = $("#customers_table").DataTable({
 		    	responsive: true,
+		    	"processing": true,
 		    	"serverSide": true,
 	            "order":[],
 	            "ajax":{
@@ -194,7 +196,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  	});
 	</script>
 
-	<!-- Forms -->
+	<!-- Forms AJAX -->
 	<script>
 		//Form for Adding Item
 		$('#form-register-item').submit(function(e) {
@@ -592,6 +594,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		}
 		 	});
 		 });
+
+		//Form Return Pullouts
+		$('#form-return-pullouts').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	// var a = '<a href="<?php //echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	//var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Success! Please Refresh this page.");
+						 me[0].reset();
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
 	</script>
 
 
@@ -641,7 +687,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"showMethod": "fadeIn",
 				"hideMethod": "fadeOut"
 			}
-			toastr.error('<?php echo json_decode($this->session->flashdata('fail')) ?>');
+			toastr.error('<?php echo $this->session->flashdata('fail') ?>');
 		</script>
 	<?php endif ?>
 
@@ -743,6 +789,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  	$(document).ready( function () {
 		    var dispatchTable = $("#dispatchTable").DataTable({
 		    	responsive: true,
+		    	"processing": true,
 		    	"serverSide": true,
 	            "order":[],
 	            "ajax":{
@@ -952,7 +999,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    	responsive: true
 	    });
 
+	    var table_return_history = $('.table-returnhistory').DataTable({
+	    	responsive: true
+	    });
 
+
+	    //Fetching Data in Table Pending Pullout
 		$('.table-pendingpullout tbody').on('click','.get-pullout-less',function(){
 
 			var data = table_pendingpullout.row($(this).parents('tr')).data();
@@ -969,6 +1021,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 
 		});
+		//end
+
+		//Fetching Data in Table Confirmed Pullout
+		$('.table-confirmedpullout tbody').on('click','.btn-get-cpullout',function(){
+
+			var data = table_confirmedpullout.row($(this).parents('tr')).data();
+			var rowdata = table_confirmedpullout.row(this).data();
+
+			if (data == undefined) {
+				$('#cpullout_id').val(rowdata[0]);
+			} else if (rowdata == undefined) {
+				$('#cpullout_id').val(data[0]);
+			}
+
+		});
+
+		$('.table-confirmedpullout tbody').on('click','.btn-delete-cpullout',function(){
+
+			var data = table_confirmedpullout.row($(this).parents('tr')).data();
+			var rowdata = table_confirmedpullout.row(this).data();
+
+			if (data == undefined) {
+				$('#cpullout_delete_id').val(rowdata[0]);
+			} else if (rowdata == undefined) {
+				$('#cpullout_delete_id').val(data[0]);
+			}
+
+		});
+		//end
 
 	  });
 	</script>
@@ -983,6 +1064,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			$('#cpullout_start_date').val(picker.startDate.format('YYYY-MM-DD'));
 			$('#cpullout_end_date').val(picker.endDate.format('YYYY-MM-DD'));
+		});
+
+
+		$('#cpullout_return_date').daterangepicker();
+
+		$('#cpullout_return_date').on('apply.daterangepicker', function(ev, picker) {
+
+			$('#rpullout_start_date').val(picker.startDate.format('YYYY-MM-DD'));
+			$('#rpullout_end_date').val(picker.endDate.format('YYYY-MM-DD'));
 		});
 	</script>
 

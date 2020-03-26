@@ -1,20 +1,20 @@
 <?php
 defined('BASEPATH') or die('No direct script access allowed.');
-date_default_timezone_set("Asia/Manila");
 
-$start_date = date_format(date_create($start_date),'F d, Y');
-$end_date = date_format(date_create($end_date),'F d, Y');
+$start_date_format = date_format(date_create($start_date),'F d, Y');
+$end_date_format = date_format(date_create($end_date),'F d, Y');
 
-$cpullout_total_price = number_format("0",2);
-$cpullout_final_price = number_format("0",2);
+$r_total_price = number_format("0",2);
+$r_return_price = number_format("0",2);
 
 foreach ($total_price as $row) {
-  $cpullout_total_price = number_format($row->total_price,2);
+  $r_total_price = number_format($row->total_price,2);
 }
 
-foreach ($final_price as $row) {
-  $cpullout_final_price = number_format($row->final_price,2);
+foreach ($return_price as $row) {
+  $r_return_price = number_format($row->return_price,2);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -70,43 +70,47 @@ foreach ($final_price as $row) {
     <div class="col-12">
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Item Pullouts</h3>
-          <div class="card-tools">Date Coverage: <?php echo $start_date.' - '.$end_date ?></div>
+          <h3 class="card-title">Return Pullouts</h3>
+          <div class="card-tools">Date Coverage: <?php echo $start_date_format.' - '.$end_date_format ?></div>
         </div>
         <!-- /.card-header -->
         <div style="font-size: 14px" class="card-body p-0">
           <table class="table table-sm table-bordered">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Confirm Date</th>
-                <th>Date/Time Pending</th>
+                <th>Return ID</th>
+                <th>Date Processed</th>
+                <th>Confirm ID</th>
                 <th>Item Code</th>
                 <th>Item Name</th>
-                <th>Selling Price</th>
-                <th>Stocks Pulled Out</th>
-                <th>Pulled Out to</th>
+                <th>Item Type</th>
+                <th>Item Price</th>
+                <th>Stocks Pulled out</th>
+                <th>Stocks Returned</th>
+                <th>Pullout to</th>
                 <th>Total Price</th>
-                <th>Less Price</th>
-                <th>Final Price</th>
+                <th>Return Price</th>
               </tr>
             </thead>
             <tbody>
-            	<?php foreach ($results as $row): ?>
             		<tr>
-                  <td><?php echo $row->id ?></td>
-                  <td><?php echo $row->confirm_date ?></td>
-                  <td><?php echo $row->date_of_pullout ?></td>
-                  <td><?php echo $row->item_code ?></td>
-                  <td><?php echo $row->itemName ?></td>
-                  <td><?php echo number_format($row->itemPrice,2) ?></td>
-                  <td><?php echo $row->stocks_pulled_out ?></td>
-                  <td><?php echo $row->CompanyName ?></td>
-                  <td><?php echo number_format($row->itemPrice*$row->stocks_pulled_out,2) ?></td>
-                  <td><?php echo number_format($row->discount,2) ?></td>
-                  <td><?php echo number_format(($row->itemPrice*$row->stocks_pulled_out)-$row->discount,2) ?></td>
+                  <?php foreach ($results as $row): ?>
+                    <tr>
+                      <td><?php echo $row->return_id ?></td>
+                      <td><?php echo date_format(date_create($row->date_processed),"F d, Y g:i A");  ?></td>
+                      <td><?php echo $row->confirm_id ?></td>
+                      <td><?php echo $row->item_code ?></td>
+                      <td><?php echo $row->item_name ?></td>
+                      <td><?php echo $row->itemType ?></td>
+                      <td><?php echo number_format($row->itemPrice,2) ?></td>
+                      <td><?php echo $row->stocks_pulled_out ?></td>
+                      <td><?php echo $row->stocks_returned ?></td>
+                      <td><?php echo $row->pullout_to ?></td>
+                      <td><?php echo number_format($row->stocks_pulled_out*$row->itemPrice,2) ?></td>
+                      <td><?php echo number_format($row->stocks_returned*$row->itemPrice,2) ?></td>
+                    </tr>
+                  <?php endforeach ?>
                 </tr>
-            	<?php endforeach ?>
               
             </tbody>
           </table>
@@ -114,9 +118,9 @@ foreach ($final_price as $row) {
 
         <div class="card-body">
           <div class="text-right">
-            <p><label>Total Price (Without Less): <span class="text-red"><?php echo $cpullout_total_price ?> PHP</span></label></p>
+            <p><label>Total Price: <span class="text-red"><?php echo $r_total_price ?> PHP</span></label></p>
 
-            <p><label>Final Price: <span class="text-red"><?php echo $cpullout_final_price ?> PHP</span></label></p>
+            <p><label>Return Price: <span class="text-red"><?php echo $r_return_price ?> PHP</span></label></p>
           </div>
           
         </div>

@@ -69,6 +69,8 @@ foreach ($final_price as $row) {
 
 						<div class="card-body">
 							<a href="<?php echo site_url('print-pullout/'.$start_date.'/'.$end_date) ?>" class="btn btn-success btn-block text-bold" target="_blank"><i class="fas fa-print"></i> PRINT DATE COVERAGE</a>
+
+							<a class="btn btn-primary btn-block text-bold" href="<?php echo site_url('return-history') ?>"><i class="fas fa-history"></i> RETURN OF ITEMS LOGS</a>
 						</div>
 					</div>
 				</div>
@@ -86,6 +88,7 @@ foreach ($final_price as $row) {
 
 								<thead>
 									<tr>
+										<th>ID</th>
 										<th>Confirm Date</th>
 										<th>Date/Time Pending</th>
 										<th>Item Code</th>
@@ -103,6 +106,7 @@ foreach ($final_price as $row) {
 								<tbody>
 									<?php foreach ($results_confirm_pullout as $row): ?>
 										<tr>
+											<td><?php echo $row->id ?></td>
 											<td><?php echo $row->confirm_date ?></td>
 											<td><?php echo $row->date_of_pullout ?></td>
 											<td><?php echo $row->item_code ?></td>
@@ -114,9 +118,9 @@ foreach ($final_price as $row) {
 											<td><?php echo number_format($row->discount,2) ?></td>
 											<td><?php echo number_format(($row->itemPrice*$row->stocks_pulled_out)-$row->discount,2) ?></td>
 											<td>
-												<button type="button" class="btn btn-danger btn-sm text-bold" title="Delete"><i class="fas fa-trash"></i></button>
+												<button type="button" class="btn btn-danger btn-sm text-bold btn-delete-cpullout" title="Delete" data-toggle="modal" data-target=".modal_delete_pullout"><i class="fas fa-trash"></i></button>
 
-												<button type="button" class="btn btn-success btn-sm text-bold" title="Return"><i class="fas fa-undo"></i></button>
+												<button type="button" class="btn btn-success btn-sm text-bold btn-get-cpullout" title="Return" data-toggle="modal" data-target=".modal_confirmed_pullout"><i class="fas fa-undo"></i></button>
 											</td>
 										</tr>
 									<?php endforeach ?>
@@ -143,3 +147,51 @@ foreach ($final_price as $row) {
 
 </div>
 
+
+<div class="modal fade modal_confirmed_pullout" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<label style="font-size: 22px;font-weight: bold;">Do you want to return this item?</label>
+				<small  class="form-text text-red">Note: Returning all items with less price will result negative in final price.</small>
+				<?php echo form_open('PullOutsController/return_cpullouts',["id" => "form-return-pullouts"]) ?>
+				<div class="form-group">
+					<label for="cpullout_id">Item ID</label>
+					<input class="form-control text-center text-bold" type="text" name="cpullout_id" id="cpullout_id" readonly>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="text" name="cpullout_stocks_return" id="cpullout_stocks_return" placeholder="Enter stocks pulled out to return.">
+				</div>
+
+				<button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+	    		<button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+	    		<?php echo form_close() ?>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade modal_delete_pullout" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<p></p><label class="text-red" style="font-size: 20px;">Removing items in confirmed pullouts is invalid.</label>
+
+				<p><label style="font-size: 20px;">Confirming this message will be <span class="text-red">sent as request</span> to delete this item. Do you you want to request to delete this item?</label></p>
+
+				<div class="form-group">
+					<label for="cpullout_delete_id">Item ID</label>
+					<input class="form-control text-center text-bold" type="text" name="cpullout_delete_id" id="cpullout_delete_id" readonly>
+				</div>
+
+				<button type="success" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+	    		<button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

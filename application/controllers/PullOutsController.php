@@ -317,24 +317,24 @@ class PullOutsController extends CI_Controller {
 		if($this->session->userdata('logged_in')) {
 
 			$rules = [
-			[
-				'field' => 'cpullout_start_date',
-				'label' => 'Start Date',
-				'rules' => 'trim|required',
-				'errors' => [
-					'required' => 'Please Select Date.'
+				[
+					'field' => 'cpullout_start_date',
+					'label' => 'Start Date',
+					'rules' => 'trim|required',
+					'errors' => [
+						'required' => 'Please Select Date.'
+					]
+				],
+				[
+					'field' => 'cpullout_end_date',
+					'label' => 'End Date',
+					'rules' => 'trim'
 				]
-			],
-			[
-				'field' => 'cpullout_end_date',
-				'label' => 'End Date',
-				'rules' => 'trim'
-			]
-		];
+			];
 
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+			$this->form_validation->set_error_delimiters('<p>• ','</p>');
 
-		$this->form_validation->set_rules($rules);
+			$this->form_validation->set_rules($rules);
 
 			if ($this->form_validation->run()) {
 
@@ -368,7 +368,7 @@ class PullOutsController extends CI_Controller {
 				$this->load->view('templates/footer');
 				
 			} else {
-				$this->session->set_flashdata('fail', json_encode(form_error('cpullout_start_date')));
+				$this->session->set_flashdata('fail', form_error('cpullout_start_date'));
 				redirect('confirmed-pullouts');
 			}
 			
@@ -394,5 +394,184 @@ class PullOutsController extends CI_Controller {
 		];
 		$this->load->view('items/item_pullout/print_confirmed',$data);
 	}
+
+	public function return_cpullouts(){
+
+		date_default_timezone_set('Asia/Manila');
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$id = $this->input->post('cpullout_id');
+		$this->load->model('ConfirmedPullOutsModel');
+		$results = $this->ConfirmedPullOutsModel->select_specific($id);
+		$stocks_pulled_out = 0;
+
+		foreach ($results as $row) {
+			$stocks_pulled_out = $row->stocks_pulled_out;
+		}
+
+		$rules = [
+			[
+				'field' => 'cpullout_id',
+				'label' => 'Stocks to return',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select item.',
+				]
+			],
+			[
+				'field' => 'cpullout_stocks_return',
+				'label' => 'Stocks to return',
+				'rules' => 'trim|required|numeric|less_than_equal_to['.$stocks_pulled_out.']|is_natural_no_zero',
+				'errors' => [
+					'required' => 'Please enter number to pullout.',
+					'numeric' => 'Data must be number',
+					'less_than_equal_to' => 'Data must be less or equal to '.$stocks_pulled_out,
+					'is_natural_no_zero' => 'Data must contain natural number'
+				]
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$this->load->model('ReturnHistoryModel');
+
+			$validate['success'] = true;
+
+			$data = [
+				'stocks_pulled_out' => $stocks_pulled_out - ($this->input->post('cpullout_stocks_return'))
+			];
+
+			$data2 = [
+				'confirm_pullouts_id' => $this->input->post('cpullout_id'),
+				'no_of_stocks_returned' => $this->input->post('cpullout_stocks_return'),
+				'date_time' => date('Y-m-d H:i:s')
+			];
+
+			$this->ReturnHistoryModel->insert($data2);
+			$this->ConfirmedPullOutsModel->update($id,$data);
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+
+		echo json_encode($validate);
+	}
+
+	public function return_history() {
+
+		if($this->session->userdata('logged_in')) {
+
+			date_default_timezone_set('Asia/Manila');
+
+			$this->load->model('ReturnHistoryModel');
+
+			$this->load->helper('site_helper');
+
+			$current_date = date('Y-m-d');
+
+			$data = html_variable();
+			$data['title'] = 'Returned Pullouts';
+			$data['start_date'] = $current_date;
+			$data['end_date'] = $current_date;
+			$data['results'] = $this->ReturnHistoryModel->view_returns($current_date,$current_date);
+			$data['total_price'] = $this->ReturnHistoryModel->total_price($current_date,$current_date);
+			$data['return_price'] = $this->ReturnHistoryModel->return_price($current_date,$current_date);
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('items/item_pullout/return_history');
+			$this->load->view('templates/footer');
+
+		} else {
+			redirect('','refresh');
+		}
+
+	}
+
+	public function specific_return_history() {
+
+		if($this->session->userdata('logged_in')) {
+
+			$rules = [
+				[
+					'field' => 'rpullout_start_date',
+					'label' => 'Start Date',
+					'rules' => 'trim|required',
+					'errors' => [
+						'required' => 'Please Select Date.'
+					]
+				],
+				[
+					'field' => 'rpullout_end_date',
+					'label' => 'End Date',
+					'rules' => 'trim'
+				]
+			];
+
+			$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+			$this->form_validation->set_rules($rules);
+
+			if ($this->form_validation->run()) {
+
+				date_default_timezone_set('Asia/Manila');
+
+				$this->load->model('ReturnHistoryModel');
+
+				$this->load->helper('site_helper');
+
+				$startDate = $this->input->post('rpullout_start_date');
+				$endDate = $this->input->post('rpullout_end_date');
+
+				$data = html_variable();
+				$data['title'] = 'Returned Pullouts';
+				$data['start_date'] = $startDate;
+				$data['end_date'] = $endDate;
+				$data['results'] = $this->ReturnHistoryModel->view_returns($startDate,$endDate);
+				$data['total_price'] = $this->ReturnHistoryModel->total_price($startDate,$endDate);
+				$data['return_price'] = $this->ReturnHistoryModel->return_price($startDate,$endDate);
+
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/navbar');
+				$this->load->view('items/item_pullout/return_history');
+				$this->load->view('templates/footer');
+				
+			} else {
+				$this->session->set_flashdata('fail', form_error('rpullout_start_date'));
+				redirect('return-history');
+			}
+
+		} else {
+			redirect('','refresh');
+		}
+
+	}
+
+	public function print_return_history($startDate,$endDate) {
+
+		$this->load->model('ReturnHistoryModel');
+		$results = $this->ReturnHistoryModel->view_returns($startDate,$endDate);
+		$total_price = $this->ReturnHistoryModel->total_price($startDate,$endDate);
+		$return_price = $this->ReturnHistoryModel->return_price($startDate,$endDate);
+
+		$data = [
+			'title' => 'Print',
+			'results' => $results,
+			'start_date' => $startDate,
+			'end_date' => $endDate,
+			'total_price' => $total_price,
+			'return_price' => $return_price
+		];
+		$this->load->view('items/item_pullout/return_history_print',$data);
+
+	}
+
 
 }

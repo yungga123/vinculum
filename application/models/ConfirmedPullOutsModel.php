@@ -40,6 +40,16 @@ class ConfirmedPullOutsModel extends CI_Model {
 				pulled_out.item_code=items.itemCode');
 	}
 
+	public function update($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('confirmed_pullouts',$data);
+	}
+
+	public function select_specific($id) {
+		$this->db->where('id',$id);
+		return $this->db->get('confirmed_pullouts')->result();
+	}
+
 	public function getSpecificConfirmedPullout($startDate,$endDate) {
 		//SELECT DATE_FORMAT(confirm_date,'%b %d, %Y') as confirm_date,DATE_FORMAT(date_of_pullout,'%b %d, %Y %h:%i %p') as date_of_pullout,item_code,itemName,itemPrice,stocks_pulled_out,(itemPrice*stocks_pulled_out) AS total_price FROM confirmed_pullouts INNER JOIN items ON confirmed_pullouts.item_code=items.itemCode
 
