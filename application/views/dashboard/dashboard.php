@@ -93,6 +93,20 @@ defined('BASEPATH') or exit('No direct script access allowed.');
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
+
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-hard-hat"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"><a href="<?php echo site_url('technicians') ?>">Technicians</a></span>
+                <span class="info-box-number">2,000</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
         </div>
       </div>
   	</section>

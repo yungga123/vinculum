@@ -17,6 +17,9 @@ defined('BASEPATH') or exit('No direct script access allowed.');
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo site_url('customers') ?>" class="nav-link">Customers</a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="<?php echo site_url('technicians') ?>" class="nav-link">Technicians</a>
+      </li>
     </ul>
 
     <!-- Right navbar links -->
