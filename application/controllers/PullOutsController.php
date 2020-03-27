@@ -404,8 +404,11 @@ class PullOutsController extends CI_Controller {
 			'errors' => ''
 		];
 
-		$id = $this->input->post('cpullout_id');
 		$this->load->model('ConfirmedPullOutsModel');
+		$this->load->model('ItemsModel');
+
+		$id = $this->input->post('cpullout_id');
+		
 		$results = $this->ConfirmedPullOutsModel->select_specific($id);
 		$stocks_pulled_out = 0;
 
@@ -455,8 +458,11 @@ class PullOutsController extends CI_Controller {
 				'date_time' => date('Y-m-d H:i:s')
 			];
 
+			$cpullout_item_code = $this->input->post('cpullout_item_code');
+			
 			$this->ReturnHistoryModel->insert($data2);
 			$this->ConfirmedPullOutsModel->update($id,$data);
+			$this->ItemsModel->updateExistingItem($cpullout_item_code,$this->input->post('cpullout_stocks_return'));
 		} else {
 			$validate['errors'] = validation_errors();
 		}

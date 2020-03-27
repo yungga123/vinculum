@@ -155,6 +155,9 @@ foreach ($final_price as $row) {
 				<label style="font-size: 22px;font-weight: bold;">Do you want to return this item?</label>
 				<small  class="form-text text-red">Note: Returning all items with less price will result negative in final price.</small>
 				<?php echo form_open('PullOutsController/return_cpullouts',["id" => "form-return-pullouts"]) ?>
+				
+				<input type="hidden" name="cpullout_item_code" id="cpullout_item_code">
+
 				<div class="form-group">
 					<label for="cpullout_id">Item ID</label>
 					<input class="form-control text-center text-bold" type="text" name="cpullout_id" id="cpullout_id" readonly>

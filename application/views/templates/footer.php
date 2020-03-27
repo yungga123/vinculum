@@ -1031,8 +1031,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			if (data == undefined) {
 				$('#cpullout_id').val(rowdata[0]);
+				$('#cpullout_item_code').val(rowdata[3]);
 			} else if (rowdata == undefined) {
 				$('#cpullout_id').val(data[0]);
+				$('#cpullout_item_code').val(data[3]);
 			}
 
 		});
