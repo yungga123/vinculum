@@ -185,13 +185,15 @@ foreach ($final_price as $row) {
 
 				<p><label style="font-size: 20px;">Confirming this message will be <span class="text-red">sent as request</span> to delete this item. Do you you want to request to delete this item?</label></p>
 
+				<?php echo form_open('PullOutsController/delete_request_history',["id" => "form-request-delete"]) ?>
 				<div class="form-group">
 					<label for="cpullout_delete_id">Item ID</label>
 					<input class="form-control text-center text-bold" type="text" name="cpullout_delete_id" id="cpullout_delete_id" readonly>
 				</div>
 
-				<button type="success" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+				<button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
 	    		<button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+	    		<?php echo form_close() ?>
 			</div>
 		</div>
 		<!-- /.modal-content -->

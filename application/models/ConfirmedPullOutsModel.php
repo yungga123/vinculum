@@ -95,7 +95,6 @@ class ConfirmedPullOutsModel extends CI_Model {
 				 ->from('confirmed_pullouts')
 				 ->where($where);
 		return $this->db->get()->result();
-
 	}
 
 }

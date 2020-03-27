@@ -459,7 +459,7 @@ class PullOutsController extends CI_Controller {
 			];
 
 			$cpullout_item_code = $this->input->post('cpullout_item_code');
-			
+
 			$this->ReturnHistoryModel->insert($data2);
 			$this->ConfirmedPullOutsModel->update($id,$data);
 			$this->ItemsModel->updateExistingItem($cpullout_item_code,$this->input->post('cpullout_stocks_return'));
@@ -576,6 +576,49 @@ class PullOutsController extends CI_Controller {
 			'return_price' => $return_price
 		];
 		$this->load->view('items/item_pullout/return_history_print',$data);
+
+	}
+
+	public function delete_request_history() {
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'cpullout_delete_id',
+				'label' => 'Item ID',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select item to delete.',
+				]
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$validate['success'] = true;
+
+			$id = $this->input->post('cpullout_delete_id');
+
+			$this->load->model('ConfirmedPullOutsModel');
+
+			$data = [
+				'request_delete' => 1
+			];
+
+			$this->ConfirmedPullOutsModel->update($id,$data);
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+
+		echo json_encode($validate);
 
 	}
 
