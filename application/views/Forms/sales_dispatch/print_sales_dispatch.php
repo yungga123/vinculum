@@ -2,6 +2,7 @@
 
 defined('BASEPATH') or die('Access Denied');
 
+$dispatch_id = "";
 $dispatch_date = "";
 $dispatch_time = "";
 $assigned_sales = "";
@@ -24,6 +25,7 @@ $time_in_4 = "";
 $time_out_4 = "";
 
 foreach ($results as $row) {
+	$dispatch_id = $row->id;
 	$dispatch_date = $row->dispatch_date;
 	$dispatch_time = $row->dispatch_time;
 	$assigned_sales = $row->assigned_sales;
@@ -96,209 +98,214 @@ if ($time_out_4 == "00:00:00") {
 	$time_out_4 = date('h:i A',strtotime($time_out_4));
 }
 
-$this->Myfpdf = new FPDF('p','mm','Letter');
-$this->Myfpdf->AddPage();
-$this->Myfpdf->SetAutoPageBreak(false);
-
-$this->Myfpdf->SetFont('Times','B',18);
-
-$this->Myfpdf->Image(base_url('assets/images/vinculumNewLogo.jpg'),10,10,44);
-
-$this->Myfpdf->Cell(195,5,'',0,1,'C');
-$this->Myfpdf->Cell(195,5,'Dispatch Form',0,1,'C');
-$this->Myfpdf->Cell(195,5,'',0,1,'C');
-
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(195,5,'Dispatch ID: '. $id,0,1,'R');
-
-$this->Myfpdf->SetFont('Times','B',9);
-$this->Myfpdf->Cell(30,5,'Pre-Sales Technical',1,0,'');
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(165,5,utf8_decode($assigned_sales),1,1,'');
-
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(30,5,'Location',1,0,'');
-$this->Myfpdf->SetFont('Times','',11);
-
-$fontSize = 11;
-$tempFontSize = $fontSize;
-while ( $this->Myfpdf->GetStringWidth($address) > 163.5) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-}
-$this->Myfpdf->Cell(165,5,utf8_decode($address),1,1,'');
-$tempFontSize = $fontSize;
-$this->Myfpdf->SetFontSize($fontSize);
-
-$this->Myfpdf->Cell(195,5,'',0,1,'');
-
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(97.5,5,'Client Name',0,0,'C');
-$this->Myfpdf->Cell(24.375,5,'Purpose',0,0,'C');
-$this->Myfpdf->Cell(24.375,5,'Time In',0,0,'C');
-$this->Myfpdf->Cell(24.375,5,'Time Out',0,0,'C');
-$this->Myfpdf->Cell(24.375,5,'Signature',0,1,'C');
-
-$this->Myfpdf->SetFont('Times','',11);
-
-// ---------------First Segment
-
-	// ---------------Customer 1
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($customer_1) > 95) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(97.5,5,utf8_decode($customer_1),1,0,'');
-	$tempFontSize = $fontSize;
-
-	// ---------------End of Customer 1
-
-
-	// ------------------Purpose 1
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($purpose_1) > 22) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(24.375,5,utf8_decode($purpose_1),1,0,'');
-	$tempFontSize = $fontSize;
-	$this->Myfpdf->SetFontSize($fontSize);
-	//------------------End of Purpose 1
-
-	$this->Myfpdf->Cell(24.375,5,$time_in_1,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,$time_out_1,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,'',1,0,'');
-
-//---------------End of First Segment
-
-$this->Myfpdf->ln(7);
-
-//---------------Second Segment
-
-	// ---------------Customer 2
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($customer_2) > 95) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(97.5,5,$customer_2,1,0,'');
-	$tempFontSize = $fontSize;
-	// ---------------End of Customer 2
-
-	// ------------------Purpose 2
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($purpose_2) > 22) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(24.375,5,$purpose_2,1,0,'');
-	$tempFontSize = $fontSize;
-	$this->Myfpdf->SetFontSize($fontSize);
-	//------------------End of Purpose 2
-	
-	$this->Myfpdf->Cell(24.375,5,$time_in_2,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,$time_out_2,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,'',1,0,'');
-//---------------End of Second Segment
-
-$this->Myfpdf->ln(7);
-
-//---------------Third Segment
-
-	// ---------------Customer 3
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($customer_3) > 95) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(97.5,5,$customer_3,1,0,'');
-	$tempFontSize = $fontSize;
-	// ---------------End of Customer 3
-
-	// ------------------Purpose 3
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($purpose_3) > 22) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(24.375,5,$purpose_3,1,0,'');
-	$tempFontSize = $fontSize;
-	$this->Myfpdf->SetFontSize($fontSize);
-	//------------------End of Purpose 3
-
-	$this->Myfpdf->Cell(24.375,5,$time_in_3,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,$time_out_3,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,'',1,0,'');
-//-----------------END of Third Segment
-
-$this->Myfpdf->ln(7);
-
-//----------Fourth Segment
-
-	// ---------------Customer 4
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($customer_4) > 95) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(97.5,5,$customer_4,1,0,'');
-	$tempFontSize = $fontSize;
-	// ---------------End of Customer 4
-
-	// ------------------Purpose 4
-	$fontSize = 11;
-	$tempFontSize = $fontSize;
-	while ($this->Myfpdf->GetStringWidth($purpose_4) > 22) {
-		$this->Myfpdf->SetFontSize($tempFontSize -= 0.1);
-	}
-	$this->Myfpdf->Cell(24.375,5,$purpose_4,1,0,'');
-	$tempFontSize = $fontSize;
-	$this->Myfpdf->SetFontSize($fontSize);
-	//------------------End of Purpose 4
-
-	$this->Myfpdf->Cell(24.375,5,$time_in_4,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,$time_out_4,1,0,'');
-	$this->Myfpdf->Cell(24.375,5,'',1,0,'');
-//------------End of Fourth Segment
-
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(195,5,'',0,1,'');
-
-$this->Myfpdf->ln(6);
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(30,5,'Dispatch Date',1,0,'');
-$this->Myfpdf->Cell(60,5,date('l - F d, Y',strtotime($dispatch_date)),1,1,'');
-
-$this->Myfpdf->SetFont('Times','B',11);
-
-$this->Myfpdf->Cell(30,5,'Dispatch Time',1,0,'');
-$this->Myfpdf->Cell(60,5,date('h:i A',strtotime($dispatch_time)),1,0,'');
-
-$this->Myfpdf->SetFont('Times','',11);
-
-$this->Myfpdf->ln(9);
-
-$this->Myfpdf->SetFont('Times','B',11);
-$this->Myfpdf->Cell(48.75,5,'Customer Acceptance:',0,0,'');
-$this->Myfpdf->Cell(48.75,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'         Dispatched By:',0,0,'');
-
-$this->Myfpdf->ln(9);
-
-$this->Myfpdf->Cell(48.75,5,'________________________________',0,0,'');
-$this->Myfpdf->Cell(48.75,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'',0,0,'C');
-$this->Myfpdf->SetFont('Times','U',11);
-$this->Myfpdf->Cell(48.75,5,'Jenina Gaceta',0,0,'C');
-
-$this->Myfpdf->ln(4);
-
-$this->Myfpdf->SetFont('Times','',11);
-$this->Myfpdf->Cell(48.75,5,'Customer Signature over Printed Name',0,0,'');
-$this->Myfpdf->Cell(48.75,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'',0,0,'C');
-$this->Myfpdf->Cell(48.75,5,'HRAD',0,0,'C');
-
-$this->Myfpdf->Output();
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo $title ?></title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/summernote/summernote-bs4.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <!-- DataTables Responsive -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+</head>
+
+
+<body>
+	<div class="row">
+		<div class="col-12 text-center">
+			<p>
+				<label style="font-size: 24px">
+					DISPATCH FORM
+				</label>
+			</p>
+
+			<p>
+				<label class="float-right">
+					No. : <?php echo $dispatch_id ?>
+				</label>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<table class="table table-bordered table-sm" style="font-size: 15px">
+				<tbody>
+					<tr>
+						<td width="20%" class="text-bold">Pre-technical Sales</td>
+						<td width="80%"><?php echo $assigned_sales ?></td>
+					</tr>
+
+					<tr>
+						<td width="20%" class="text-bold">Location</td>
+						<td width="80%"><?php echo $address ?></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<table class="table table-bordered table-sm" style="font-size: 15px">
+				<tbody>
+					<tr class="text-bold text-center">
+						<td width="40%">Client Name</td>
+						<td width="15%">Contact Number</td>
+						<td width="15%">Purpose</td>
+						<td width="10%">Time In</td>
+						<td width="10%">Time Out</td>
+						<td width="10%">Signature</td>
+					</tr>
+
+					<tr>
+						<td width="40%"><?php echo $customer_1 ?></td>
+						<td width="15%">Contact Number</td>
+						<td width="15%"><?php echo $purpose_1 ?></td>
+						<td width="10%"><?php echo $time_in_1 ?></td>
+						<td width="10%"><?php echo $time_out_1 ?></td>
+						<td width="10%"></td>
+					</tr>
+
+					<tr>
+						<td width="40%"><?php echo $customer_2 ?></td>
+						<td width="15%">Contact Number</td>
+						<td width="15%"><?php echo $purpose_2 ?></td>
+						<td width="10%"><?php echo $time_in_2 ?></td>
+						<td width="10%"><?php echo $time_out_2 ?></td>
+						<td width="10%"></td>
+					</tr>
+
+					<tr>
+						<td width="40%"><?php echo $customer_3 ?></td>
+						<td width="15%">Contact Number</td>
+						<td width="15%"><?php echo $purpose_3 ?></td>
+						<td width="10%"><?php echo $time_in_3 ?></td>
+						<td width="10%"><?php echo $time_out_3 ?></td>
+						<td width="10%"></td>
+					</tr>
+
+					<tr>
+						<td width="40%"><?php echo $customer_4 ?></td>
+						<td width="15%">Contact Number</td>
+						<td width="15%"><?php echo $purpose_4 ?></td>
+						<td width="10%"><?php echo $time_in_4 ?></td>
+						<td width="10%"><?php echo $time_out_4 ?></td>
+						<td width="10%"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-6">
+			<table class="table table-bordered table-sm" style="font-size: 15px">
+
+				<tbody>
+					<tr>
+						<td width="50%" class="text-bold">Dispatch Date</td>
+						<td width="50%"><?php echo date_format(date_create($dispatch_date),'F d, Y') ?></td>
+					</tr>
+
+					<tr>
+						<td width="50%" class="text-bold">Dispatch Time</td>
+						<td width="50%"><?php echo date_format(date_create($dispatch_time),'g:i A') ?></td>
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-6">
+			<label>Customer Acceptance:</label>
+			<br>
+			__________________________________
+			<br>
+			Customer Signature over Printed Name
+		</div>
+
+		<div class="col-6 text-right">
+			<label>Dispatch By:</label>
+			<br>
+			<u>Jenina F. Gaceta</u>
+			<br>
+			HRAD Assistant
+		</div>
+	</div>
+</body>
+
+
+
+
+
+<!-- jQuery -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+
+<!-- Bootstrap 4 -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- ChartJS -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/chart.js/Chart.min.js"></script>
+<!-- daterangepicker -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/moment/moment.min.js"></script>
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/summernote/summernote-bs4.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
+
+<script type="text/javascript"> 
+  window.addEventListener("load", window.print());
+</script>

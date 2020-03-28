@@ -12,6 +12,7 @@ class DashboardController extends CI_Controller {
 			$this->load->model('DispatchFormsModel');
 			$this->load->model('CustomersModel');
 			$this->load->model('TechniciansModel');
+			$this->load->model('PulloutsModel');
 
 			$data = html_variable();
 			$data['title'] = 'Dashboard';
@@ -22,6 +23,7 @@ class DashboardController extends CI_Controller {
 			$data['indirect_item_count'] = $this->ItemsModel->get_all_itemMasterlist_data('Indirect');
 			$data['customer_count'] = $this->CustomersModel->count_vtCustomer();
 			$data['technicians_count'] = $this->TechniciansModel->countTechnicians();
+			$data['pullouts_count'] = $this->PulloutsModel->countPullouts();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');

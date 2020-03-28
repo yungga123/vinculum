@@ -107,6 +107,19 @@ defined('BASEPATH') or exit('No direct script access allowed.');
             <!-- /.info-box -->
           </div>
 
+          <div class="col-12 col-sm-6 col-md-3">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text"><a href="<?php echo site_url('pending-pullouts') ?>">Pending Pullouts</a></span>
+                <span class="info-box-number"><?php echo number_format($pullouts_count) ?></span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+
         </div>
       </div>
   	</section>

@@ -75,6 +75,7 @@ class SalesDispatchController extends CI_Controller {
 			$sub_array[] = date('g:i A',strtotime($row->dispatch_time));
 			$sub_array[] = $row->address;
 			$sub_array[] = $row->customer_1;
+			$sub_array[] = $row->contact_1;
 			$sub_array[] = $row->purpose_1;
 
 			if ($row->time_in_1 == "00:00:00") {
@@ -90,6 +91,7 @@ class SalesDispatchController extends CI_Controller {
 			}
 			
 			$sub_array[] = $row->customer_2;
+			$sub_array[] = $row->contact_2;
 			$sub_array[] = $row->purpose_2;
 
 			if ($row->time_in_2 == "00:00:00") {
@@ -106,6 +108,7 @@ class SalesDispatchController extends CI_Controller {
 
 			
 			$sub_array[] = $row->customer_3;
+			$sub_array[] = $row->contact_3;
 			$sub_array[] = $row->purpose_3;
 
 			if ($row->time_in_3 == "00:00:00") {
@@ -122,6 +125,7 @@ class SalesDispatchController extends CI_Controller {
 
 			
 			$sub_array[] = $row->customer_4;
+			$sub_array[] = $row->contact_4;
 			$sub_array[] = $row->purpose_4;
 
 			if ($row->time_in_4 == "00:00:00") {
@@ -161,6 +165,7 @@ class SalesDispatchController extends CI_Controller {
 
 			$results = $this->SalesDispatchModel->select_specific($id);
 
+			$data['title'] = 'Print Dispatch';
 			$data['results'] = $results;
 			$data['id'] = $id;
 
@@ -205,6 +210,11 @@ class SalesDispatchController extends CI_Controller {
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
+				'field' => 'contact_1',
+				'label' => 'Contact 1',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
 				'field' => 'purpose_1',
 				'label' => 'Purpose',
 				'rules' => 'trim|max_length[1000]'
@@ -222,6 +232,11 @@ class SalesDispatchController extends CI_Controller {
 			[
 				'field' => 'customer_2',
 				'label' => 'Customer 2',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
+				'field' => 'contact_2',
+				'label' => 'Contact 2',
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
@@ -245,6 +260,11 @@ class SalesDispatchController extends CI_Controller {
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
+				'field' => 'contact_3',
+				'label' => 'Contact 3',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
 				'field' => 'purpose_3',
 				'label' => 'Purpose',
 				'rules' => 'trim|max_length[1000]'
@@ -262,6 +282,11 @@ class SalesDispatchController extends CI_Controller {
 			[
 				'field' => 'customer_4',
 				'label' => 'Customer 4',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
+				'field' => 'contact_4',
+				'label' => 'Contact 4',
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
@@ -295,18 +320,22 @@ class SalesDispatchController extends CI_Controller {
 				'assigned_sales' => $this->input->post('assigned_sales'),
 				'address' => $this->input->post('address'),
 				'customer_1' => $this->input->post('customer_1'),
+				'contact_1' => $this->input->post('contact_1'),
 				'purpose_1' => $this->input->post('purpose_1'),
 				'time_in_1' => $this->input->post('time_in_1'),
 				'time_out_1' => $this->input->post('time_out_1'),
 				'customer_2' => $this->input->post('customer_2'),
+				'contact_2' => $this->input->post('contact_2'),
 				'purpose_2' => $this->input->post('purpose_2'),
 				'time_in_2' => $this->input->post('time_in_2'),
 				'time_out_2' => $this->input->post('time_out_2'),
 				'customer_3' => $this->input->post('customer_3'),
+				'contact_3' => $this->input->post('contact_3'),
 				'purpose_3' => $this->input->post('purpose_3'),
 				'time_in_3' => $this->input->post('time_in_3'),
 				'time_out_3' => $this->input->post('time_out_3'),
 				'customer_4' => $this->input->post('customer_4'),
+				'contact_4' => $this->input->post('contact_4'),
 				'purpose_4' => $this->input->post('purpose_4'),
 				'time_in_4' => $this->input->post('time_in_4'),
 				'time_out_4' => $this->input->post('time_out_4')
@@ -357,6 +386,11 @@ class SalesDispatchController extends CI_Controller {
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
+				'field' => 'contact_1',
+				'label' => 'Contact 1',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
 				'field' => 'purpose_1',
 				'label' => 'Purpose',
 				'rules' => 'trim|max_length[1000]'
@@ -374,6 +408,11 @@ class SalesDispatchController extends CI_Controller {
 			[
 				'field' => 'customer_2',
 				'label' => 'Customer 2',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
+				'field' => 'contact_2',
+				'label' => 'Contact 2',
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
@@ -397,6 +436,11 @@ class SalesDispatchController extends CI_Controller {
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
+				'field' => 'contact_3',
+				'label' => 'Contact 3',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
 				'field' => 'purpose_3',
 				'label' => 'Purpose',
 				'rules' => 'trim|max_length[1000]'
@@ -414,6 +458,11 @@ class SalesDispatchController extends CI_Controller {
 			[
 				'field' => 'customer_4',
 				'label' => 'Customer 4',
+				'rules' => 'trim|max_length[1000]'
+			],
+			[
+				'field' => 'contact_4',
+				'label' => 'Contact 4',
 				'rules' => 'trim|max_length[1000]'
 			],
 			[
@@ -446,18 +495,22 @@ class SalesDispatchController extends CI_Controller {
 				'assigned_sales' => $this->input->post('assigned_sales'),
 				'address' => $this->input->post('address'),
 				'customer_1' => $this->input->post('customer_1'),
+				'contact_1' => $this->input->post('contact_1'),
 				'purpose_1' => $this->input->post('purpose_1'),
 				'time_in_1' => $this->input->post('time_in_1'),
 				'time_out_1' => $this->input->post('time_out_1'),
 				'customer_2' => $this->input->post('customer_2'),
+				'contact_2' => $this->input->post('contact_2'),
 				'purpose_2' => $this->input->post('purpose_2'),
 				'time_in_2' => $this->input->post('time_in_2'),
 				'time_out_2' => $this->input->post('time_out_2'),
 				'customer_3' => $this->input->post('customer_3'),
+				'contact_3' => $this->input->post('contact_3'),
 				'purpose_3' => $this->input->post('purpose_3'),
 				'time_in_3' => $this->input->post('time_in_3'),
 				'time_out_3' => $this->input->post('time_out_3'),
 				'customer_4' => $this->input->post('customer_4'),
+				'contact_4' => $this->input->post('contact_4'),
 				'purpose_4' => $this->input->post('purpose_4'),
 				'time_in_4' => $this->input->post('time_in_4'),
 				'time_out_4' => $this->input->post('time_out_4')

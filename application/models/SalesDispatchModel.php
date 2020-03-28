@@ -39,18 +39,22 @@ class SalesDispatchModel extends CI_Model {
 			"dispatch_time",
 			"address",
 			"customer_1",
+			"contact_1",
 			"purpose_1",
 			"time_in_1",
 			"time_out_1",
 			"customer_2",
+			"contact_2",
 			"purpose_2",
 			"time_in_2",
 			"time_out_2",
 			"customer_3",
+			"contact_3",
 			"purpose_3",
 			"time_in_3",
 			"time_out_3",
 			"customer_4",
+			"contact_4",
 			"purpose_4",
 			"time_in_4",
 			"time_out_4"
@@ -62,18 +66,22 @@ class SalesDispatchModel extends CI_Model {
 			"assigned_sales",
 			"address",
 			"customer_1",
+			"contact_1",
 			null,
 			null,
 			null,
 			"customer_2",
+			"contact_2",
 			null,
 			null,
 			null,
 			"customer_3",
+			"contact_3",
 			null,
 			null,
 			null,
 			"customer_4",
+			"contact_4",
 			null,
 			null,
 			null
@@ -91,18 +99,22 @@ class SalesDispatchModel extends CI_Model {
 			$this->db->or_like("dispatch_date", $_POST["search"]["value"]);
 			$this->db->or_like("address", $_POST["search"]["value"]);
 			$this->db->or_like("customer_1", $_POST["search"]["value"]);
+			$this->db->or_like("contact_1", $_POST["search"]["value"]);
 			$this->db->or_like("purpose_1", $_POST["search"]["value"]);
 			$this->db->or_like("time_in_1", $_POST["search"]["value"]);
 			$this->db->or_like("time_out_1", $_POST["search"]["value"]);
 			$this->db->or_like("customer_2", $_POST["search"]["value"]);
+			$this->db->or_like("contact_2", $_POST["search"]["value"]);
 			$this->db->or_like("purpose_2", $_POST["search"]["value"]);
 			$this->db->or_like("time_in_2", $_POST["search"]["value"]);
 			$this->db->or_like("time_out_2", $_POST["search"]["value"]);
 			$this->db->or_like("customer_3", $_POST["search"]["value"]);
+			$this->db->or_like("contact_3", $_POST["search"]["value"]);
 			$this->db->or_like("purpose_3", $_POST["search"]["value"]);
 			$this->db->or_like("time_in_3", $_POST["search"]["value"]);
 			$this->db->or_like("time_out_3", $_POST["search"]["value"]);
 			$this->db->or_like("customer_4", $_POST["search"]["value"]);
+			$this->db->or_like("contact_4", $_POST["search"]["value"]);
 			$this->db->or_like("purpose_4", $_POST["search"]["value"]);
 			$this->db->or_like("time_in_4", $_POST["search"]["value"]);
 			$this->db->or_like("time_out_4", $_POST["search"]["value"]);

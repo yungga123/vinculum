@@ -97,4 +97,8 @@ class PullOutsModel extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	public function countPullouts() {
+		return $this->db->count_all('pulled_out');
+	}
+
 }

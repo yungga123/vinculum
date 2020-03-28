@@ -29,18 +29,22 @@ defined('BASEPATH') or die('No direct script access allowed.');
 										<th>Dispatch Time</th>
 										<th>Location</th>
 										<th>Customer 1</th>
+										<th>Contact Number 1</th>
 										<th>Purpose 1</th>
 										<th>Time In 1</th>
 										<th>Time Out 1</th>
 										<th>Customer 2</th>
+										<th>Contact Number 2</th>
 										<th>Purpose 2</th>
 										<th>Time In 2</th>
 										<th>Time Out 2</th>
 										<th>Customer 3</th>
+										<th>Contact Number 3</th>
 										<th>Purpose 3</th>
 										<th>Time In 3</th>
 										<th>Time Out 3</th>
 										<th>Customer 4</th>
+										<th>Contact Number 4</th>
 										<th>Purpose 4</th>
 										<th>Time In 4</th>
 										<th>Time Out 4</th>
@@ -112,10 +116,17 @@ defined('BASEPATH') or die('No direct script access allowed.');
 				<div class="row">
 							<div class="col-md-12">
 						        	<div class="row">
-						        		<div class="col-md-6">
+						        		<div class="col-md-4">
 						        			<div class="form-group">
 						        				<label class="control-label">Customer 1</label>
 						        				<input class="form-control customer_1_edit" type="text" name="customer_1" id="customer_1" placeholder="Enter Customer Name" value="">
+						        			</div>
+						        		</div>
+
+						        		<div class="col-md-2">
+						        			<div class="form-group">
+						        				<label class="control-label">Contact Number</label>
+						        				<input class="form-control contact_1_edit" type="text" name="contact_1" id="contact_1" placeholder="Enter Contact Number" value="">
 						        			</div>
 						        		</div>
 
@@ -154,13 +165,20 @@ defined('BASEPATH') or die('No direct script access allowed.');
 						        
 
 						        <div class="row">
-						        	<div class="col-md-6">
+						        	<div class="col-md-4">
 					        			<div class="form-group">
 					        				<label class="control-label" for="customer_2">Customer 2</label>
 					        				<input class="form-control customer_2_edit" type="text" name="customer_2" id="customer_2" placeholder="Enter Customer Name" value="">
 					        			</div>
 					        			
 					        		</div>
+
+					        		<div class="col-md-2">
+						        			<div class="form-group">
+						        				<label class="control-label">Contact Number</label>
+						        				<input class="form-control contact_2_edit" type="text" name="contact_2" id="contact_2" placeholder="Enter Contact Number" value="">
+						        			</div>
+						        		</div>
 
 					        		<div class="col-md-2">
 					        			<div class="form-group">
@@ -195,13 +213,20 @@ defined('BASEPATH') or die('No direct script access allowed.');
 						        </div>
 
 						        <div class="row">
-						        	<div class="col-md-6">
+						        	<div class="col-md-4">
 					        			<div class="form-group">
 					        				<label class="control-label" for="customer_3">Customer 3</label>
 					        				<input class="form-control customer_3_edit" type="text" name="customer_3" id="customer_3" placeholder="Enter Customer Name" value="">
 					        			</div>
 					        			
 					        		</div>
+
+					        		<div class="col-md-2">
+						        			<div class="form-group">
+						        				<label class="control-label">Contact Number</label>
+						        				<input class="form-control contact_3_edit" type="text" name="contact_3" id="contact_3" placeholder="Enter Contact Number" value="">
+						        			</div>
+						        		</div>
 
 					        		<div class="col-md-2">
 					        			<div class="form-group">
@@ -236,13 +261,20 @@ defined('BASEPATH') or die('No direct script access allowed.');
 						        </div>
 
 						        <div class="row">
-						        	<div class="col-md-6">
+						        	<div class="col-md-4">
 					        			<div class="form-group">
 					        				<label class="control-label" for="customer_4">Customer 4</label>
 					        				<input class="form-control customer_4_edit" type="text" name="customer_4" id="customer_4" placeholder="Enter Customer Name" value="">
 					        			</div>
 					        			
 					        		</div>
+
+					        		<div class="col-md-2">
+						        			<div class="form-group">
+						        				<label class="control-label">Contact Number</label>
+						        				<input class="form-control contact_4_edit" type="text" name="contact_4" id="contact_4" placeholder="Enter Contact Number" value="">
+						        			</div>
+						        		</div>
 
 					        		<div class="col-md-2">
 					        			<div class="form-group">
