@@ -100,7 +100,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
               <div class="info-box-content">
                 <span class="info-box-text"><a href="<?php echo site_url('technicians') ?>">Technicians</a></span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-number"><?php echo number_format($technicians_count) ?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
