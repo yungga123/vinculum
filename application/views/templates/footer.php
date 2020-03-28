@@ -684,7 +684,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });
 
-		//Form Confirmed Request Delete
+		//Form Add Technicians
 		$('#form-add-tech').submit(function(e) {
 		 	e.preventDefault();
 		 	
@@ -720,6 +720,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 			if (response.success == true) {
 		 				toastr.success("Success! Technician was added! Please refresh this page.");
 						 me[0].reset();
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+
+		//Form Edit Technicians
+		$('#form-edit-tech').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	// var a = '<a href="<?php //echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	//var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Success! Technician was updated! View now at technicians table.");
+						 //me[0].reset();
 		 			} else {
 		 				toastr.error(response.errors);
 		 			}
@@ -1141,6 +1185,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				$('#cpullout_delete_id').val(rowdata[0]);
 			} else if (rowdata == undefined) {
 				$('#cpullout_delete_id').val(data[0]);
+			}
+
+		});
+		//end
+
+		//Fetching Data in Table Technicians
+		$('#technicians_table tbody').on('click','.btn-get-techid',function(){
+
+			var data = technicians_table.row($(this).parents('tr')).data();
+			var rowdata = technicians_table.row(this).data();
+
+			if (data == undefined) {
+				$('#tech_id_del').val(rowdata[0]);
+			} else if (rowdata == undefined) {
+				$('#tech_id_del').val(data[0]);
 			}
 
 		});

@@ -30,6 +30,7 @@ defined('BASEPATH') or die('Access Denied');
 			            			<tr>
 			            				<th>ID</th>
 			            				<th>Name</th>
+			            				<th>Operation</th>
 			            			</tr>
 			            		</thead>
 
@@ -39,6 +40,11 @@ defined('BASEPATH') or die('Access Denied');
 			            				<tr>
 				            				<td><?php echo $row->id ?></td>
 				            				<td><?php echo $row->name ?></td>
+				            				<td>
+				            					<a href="<?php echo site_url('technicians-edit/'.$row->id) ?>" class="btn btn-warning btn-sm text-bold"><i class="fas fa-edit"></i> EDIT</a>
+
+				            					<button class="btn btn-danger btn-sm text-bold btn-get-techid" data-toggle="modal" data-target=".modal_technician_delete"><i class="fas fa-trash"></i> DELETE</button>
+				            				</td>
 				            			</tr>
 			            			<?php endforeach ?>
 			            			
@@ -94,6 +100,29 @@ defined('BASEPATH') or die('Access Denied');
 				<button type="button" class="btn btn-default text-bold" data-dismiss="modal">CLOSE</button>
 				<button type="submit" class="btn btn-primary text-bold">CONFIRM</button>
 				<?php echo form_close() ?>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade modal_technician_delete" aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<p></p><label class="text-red" style="font-size: 20px;">Do you want to delete this technician??</label>
+
+				<?php echo form_open('TechniciansController/delete_tech') ?>
+
+				<div class="form-group">
+					<label for="tech_id_del">Technician ID</label>
+					<input class="form-control text-center text-bold" type="text" name="tech_id_del" id="tech_id_del" readonly>
+				</div>
+
+				<button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+	    		<button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+	    		<?php echo form_close() ?>
 			</div>
 		</div>
 		<!-- /.modal-content -->
