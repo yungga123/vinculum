@@ -278,7 +278,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 	    	<!-- FORMS -->
 	    	<li class="nav-item">
-	            <a href="<?php echo base_url('index.php/schedules') ?>" class="nav-link<?php echo $schedules ?>">
+	            <a href="<?php echo site_url('schedules') ?>" class="nav-link<?php echo $schedules ?>">
 	              <i class="nav-icon fas fa-calendar"></i>
 	              <p>Schedules</p>
 	            </a>

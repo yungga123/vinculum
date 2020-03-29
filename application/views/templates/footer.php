@@ -57,6 +57,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- Date Range Picker -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
 
+	<!-- fullCalendar 2.2.5 -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-daygrid/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-timegrid/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.js"></script>
+
 
 	<!-- Data Table for Item Master List -->
 	<script>
@@ -1234,6 +1241,76 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 
+	<!-- Full Calendar (Schedules) -->
+	<?php if ($this->uri->segment(1)=='schedules'): ?>
+	<script>
+		
+	  $(function () {
+
+	    /* initialize the external events
+	     -----------------------------------------------------------------*/
+	    function ini_events(ele) {
+	      ele.each(function () {
+
+	        // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+	        // it doesn't need to have a start or end
+	        var eventObject = {
+	          title: $.trim($(this).text()) // use the element's text as the event title
+	        }
+
+	        // store the Event Object in the DOM element so we can get to it later
+	        $(this).data('eventObject', eventObject)
+
+	        // make the event draggable using jQuery UI
+	        $(this).draggable({
+	          zIndex        : 1070,
+	          revert        : true, // will cause the event to go back to its
+	          revertDuration: 0  //  original position after the drag
+	        })
+
+	      })
+	    }
+
+	    ini_events($('#external-events div.external-event'))
+
+	    /* initialize the calendar
+	     -----------------------------------------------------------------*/
+	    //Date for the calendar events (dummy data)
+	    var date = new Date()
+	    var d    = date.getDate(),
+	        m    = date.getMonth(),
+	        y    = date.getFullYear()
+
+	    var Calendar = FullCalendar.Calendar;
+	    var calendarEl = document.getElementById('calendar');
+
+	    var calendar = new Calendar(calendarEl, {
+	      plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
+	      header    : {
+	        left  : 'prev,next today',
+	        center: 'title',
+	        right : 'dayGridMonth,timeGridWeek,timeGridDay'
+	      },
+	      events: [
+	      	<?php foreach ($results as $row): ?>
+	      		{
+		          title          : "<?php echo $row->title ?>",
+		          start          : "<?php echo $row->start ?>",
+		          end            : "<?php echo $row->end ?>",
+		          backgroundColor: "violet", //yellow
+		          borderColor    : "black" //yellow
+		        },
+	      	<?php endforeach ?>
+	      	
+	      ]
+	    });
+
+	    calendar.render();
+	  })
+
+	</script>
+	<?php endif ?>
+	
 	
 	
 </body>
