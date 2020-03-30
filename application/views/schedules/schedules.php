@@ -27,8 +27,8 @@ defined('BASEPATH') or die('Access Denied');
 								</div>
 								<div class="card-body">
 									<button class="btn btn-block btn-success text-bold" data-toggle="modal" data-target=".add-schedule"><i class="fas fa-plus"></i> ADD SCHEDULE</button>
-									<button class="btn btn-block btn-warning text-bold" data-toggle="modal" data-target=".update-schedule"><i class="fas fa-edit"></i> UPDATE SCHEDULE</button>
-									<button class="btn btn-block btn-danger text-bold" data-toggle="modal" data-target=".delete-schedule"><i class="fas fa-trash"></i> DELETE SCHEDULE</button>
+									<button class="btn btn-block btn-warning text-bold" data-toggle="modal" data-target=".update-schedule-info"><i class="fas fa-edit"></i> UPDATE SCHEDULE</button>
+									<button class="btn btn-block btn-danger text-bold" data-toggle="modal" data-target=".delete-schedule-info"><i class="fas fa-trash"></i> DELETE SCHEDULE</button>
 								</div>
 								<div class="card-footer">
 									<a href="<?php echo site_url('schedules') ?>" class="btn btn-block btn-primary text-bold"><i class="fas fa-redo"></i> REFRESH SCHEDULE</a>
@@ -128,6 +128,55 @@ defined('BASEPATH') or die('Access Denied');
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 
+			<div class="modal-header">
+				<label>UPDATE SCHEDULE</label>
+			</div>
+
+			<div class="modal-body">
+				<input type="text" name="event_id_edit" id="event_id_edit">
+				<div class="form-group">
+					<label for="event_title_edit">Title</label>
+					<input class="form-control" type="text" name="event_title_edit" id="event_title_edit">
+				</div>
+
+				<div class="form-group">
+					<label for="event_daterange_edit">Date Range</label>
+					<input class="form-control" type="text" name="event_daterange_edit" id="event_daterange_edit" readonly>
+					<input type="hidden" name="event_sd_edit" id="event_sd_edit">
+					<input type="hidden" name="event_ed_edit" id="event_ed_edit">
+				</div>
+
+				<div class="form-group">
+					<label for="event_desc_edit">Description</label>
+					<input class="form-control" type="text" name="event_desc_edit" id="event_desc_edit">
+				</div>
+
+				<div class="form-group">
+					<label for="event_type_edit">Schedule Type</label>
+					<select class="form-control" name="event_type_edit" id="event_type_edit">
+						<option value="">--- Please Select ---</option>
+						<option value="installation">Installation</option>
+						<option value="service">Service</option>
+						<option value="payables">Payables/Bills</option>
+						<option value="holiday">Holiday</option>
+					</select>
+				</div>
+				
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary text-bold" data-dismiss="modal">CLOSE</button>
+				<button type="submit" class="btn btn-success text-bold">CONFIRM</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal for Update Schedule -->
+<div class="modal fade update-schedule-info" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
 			<div class="modal-body">
 				
 				<label style="font-size: 25px">To update a schedule, you can click on a corresponding item in the calendar.</label>
@@ -142,7 +191,7 @@ defined('BASEPATH') or die('Access Denied');
 </div>
 
 <!-- Modal for Delete Schedule -->
-<div class="modal fade delete-schedule" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade delete-schedule-info" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 

@@ -1357,6 +1357,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      events: [
 	      	<?php foreach ($results as $row): ?>
 	      		{
+	      		  id 			: '<?php echo $row->ID ?>',
 		          title          : "<?php echo $row->title ?>",
 		          start          : "<?php echo $row->start ?>",
 		          end            : "<?php echo $row->end ?>",
@@ -1383,11 +1384,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			          		echo '#28a745';
 			          	}
 
-			          ?>"
+			          ?>",
+			      	extendedProps: {
+			        description		: '<?php echo $row->description ?>',
+			      	type 			: '<?php echo $row->type ?>'
+			      }
+			      
 		        },
 	      	<?php endforeach ?>
 	      	
-	      ]
+	      ],
+	      eventClick: function(info) {
+
+	      	//console.log(info.event.id);
+	      	$('#event_id_edit').val(info.event.id);
+	      	$('#event_title_edit').val(info.event.title);
+	      	$('.update-schedule').modal();
+	      }
 	    });
 
 	    calendar.render();

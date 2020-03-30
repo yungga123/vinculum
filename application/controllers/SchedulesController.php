@@ -28,6 +28,41 @@ class SchedulesController extends CI_Controller {
 
 	}
 
+	// public function get_events() {
+
+	// 	date_default_timezone_set('Asia/Manila');
+
+	// 	$start = $this->input->get("start");
+	//      $end = $this->input->get("end");
+
+	     
+
+	//      $startdt = new DateTime('now'); // setup a local datetime
+	//      $startdt->setTimestamp($start); // Set the date based on timestamp
+	//      $start_format = $startdt->format('Y-m-d H:i:s');
+
+	//      $enddt = new DateTime('now'); // setup a local datetime
+	//      $enddt->setTimestamp($end); // Set the date based on timestamp
+	//      $end_format = $enddt->format('Y-m-d H:i:s');
+
+	//      $events = $this->CalendarModel->get_event($start_format, $end_format);
+
+	// 		$data_events = array();
+
+	// 	foreach ($events as $row) {
+	// 		$data_events[] = [
+	// 			"id" => $row->id,
+	// 			"title" => $row->title,
+	// 			"start" => $row->start,
+	// 			"end" => $row->end,
+	// 			"description" => $row->description,
+	// 			"type" => $row->type
+	// 		];
+	// 	}
+
+	// 	echo json_encode($data_events);
+	// }
+
 	public function addEventValidate() {
 
 		$validate = [
