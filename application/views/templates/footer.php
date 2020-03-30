@@ -778,6 +778,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		}
 		 	});
 		 });
+
+		//Form Edit Technicians
+		$('#form-add-event').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	// var a = '<a href="<?php //echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	//var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Success! Schedule was added! Refreshing in 5 seconds!");
+		 				
+						me[0].reset();
+
+						window.setTimeout(function() {
+						    window.location = '<?php echo site_url('schedules') ?>';
+						}, 5000);
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
 	</script>
 
 
@@ -1239,6 +1288,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('#rpullout_start_date').val(picker.startDate.format('YYYY-MM-DD'));
 			$('#rpullout_end_date').val(picker.endDate.format('YYYY-MM-DD'));
 		});
+
+		$('#event_daterange').daterangepicker({
+			 timePicker: true,
+			 locale: {
+			 	format: 'MMM DD, YYYY hh:mm A'
+			 }
+		});
+
+		$('#event_daterange').on('hide.daterangepicker', function(ev, picker) {
+
+			$('#event_sd').val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
+			$('#event_ed').val(picker.endDate.format('YYYY-MM-DD HH:mm:ss'));
+
+		});
 	</script>
 
 	<!-- Full Calendar (Schedules) -->
@@ -1297,8 +1360,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		          title          : "<?php echo $row->title ?>",
 		          start          : "<?php echo $row->start ?>",
 		          end            : "<?php echo $row->end ?>",
-		          backgroundColor: "violet", //yellow
-		          borderColor    : "black" //yellow
+		          backgroundColor: "<?php 
+			          	if ($row->type == 'installation') {
+			          		echo null;
+			          	} else if ($row->type == 'service') {
+			          		echo '#E1D942';
+			          	} else if ($row->type == 'payables') {
+			          		echo '#DB5C5C';
+			          	} else if ($row->type == 'holiday') {
+			          		echo '#6BBA44';
+			          	}
+
+			          ?>",
+		          borderColor    : "<?php 
+			          	if ($row->type == 'installation') {
+			          		echo '#007bff';
+			          	} else if ($row->type == 'service') {
+			          		echo '#ffc107';
+			          	} else if ($row->type == 'payables') {
+			          		echo '#dc3545';
+			          	} else if ($row->type == 'holiday') {
+			          		echo '#28a745';
+			          	}
+
+			          ?>"
 		        },
 	      	<?php endforeach ?>
 	      	
@@ -1307,7 +1392,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	    calendar.render();
 	  })
-
 	</script>
 	<?php endif ?>
 	
