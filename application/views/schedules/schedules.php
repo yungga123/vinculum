@@ -131,9 +131,9 @@ defined('BASEPATH') or die('Access Denied');
 			<div class="modal-header">
 				<label>UPDATE SCHEDULE</label>
 			</div>
-
+			<?php echo form_open('SchedulesController/updateEventValidate',["id" => "form-update-event"]) ?>
 			<div class="modal-body">
-				<input type="text" name="event_id_edit" id="event_id_edit">
+				<input type="hidden" name="event_id_edit" id="event_id_edit">
 				<div class="form-group">
 					<label for="event_title_edit">Title</label>
 					<input class="form-control" type="text" name="event_title_edit" id="event_title_edit">
@@ -161,13 +161,22 @@ defined('BASEPATH') or die('Access Denied');
 						<option value="holiday">Holiday</option>
 					</select>
 				</div>
+
+				<div class="form-group mt-4">
+	                <div class="custom-control custom-checkbox">
+	                  <input class="custom-control-input" type="checkbox" name="delete_event_check" id="delete_event_check" value="1">
+	                  <label for="delete_event_check" class="custom-control-label">DELETE EVENT</label>
+	                </div>
+	            </div>
 				
 			</div>
 
 			<div class="modal-footer">
+				
 				<button type="button" class="btn btn-secondary text-bold" data-dismiss="modal">CLOSE</button>
 				<button type="submit" class="btn btn-success text-bold">CONFIRM</button>
 			</div>
+			<?php echo form_close() ?>
 		</div>
 	</div>
 </div>

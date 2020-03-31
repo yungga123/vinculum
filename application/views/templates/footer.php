@@ -779,7 +779,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });
 
-		//Form Edit Technicians
+		//Form Add Event
 		$('#form-add-event').submit(function(e) {
 		 	e.preventDefault();
 		 	
@@ -814,6 +814,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		success: function(response) {
 		 			if (response.success == true) {
 		 				toastr.success("Success! Schedule was added! Refreshing in 5 seconds!");
+		 				
+						me[0].reset();
+
+						window.setTimeout(function() {
+						    window.location = '<?php echo site_url('schedules') ?>';
+						}, 5000);
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+
+		//Form Update Event
+		$('#form-update-event').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	// var a = '<a href="<?php //echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	//var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Success! Schedule was updated! Refreshing in 5 seconds!");
 		 				
 						me[0].reset();
 
@@ -1302,6 +1351,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('#event_ed').val(picker.endDate.format('YYYY-MM-DD HH:mm:ss'));
 
 		});
+
+		$('#event_daterange_edit').daterangepicker({
+			 timePicker: true,
+			 locale: {
+			 	format: 'MMM DD, YYYY hh:mm A'
+			 }
+		});
+
+		$('#event_daterange_edit').on('hide.daterangepicker', function(ev, picker) {
+
+			$('#event_sd_edit').val(picker.startDate.format('YYYY-MM-DD HH:mm:ss'));
+			$('#event_ed_edit').val(picker.endDate.format('YYYY-MM-DD HH:mm:ss'));
+
+		});
 	</script>
 
 	<!-- Full Calendar (Schedules) -->
@@ -1399,6 +1462,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      	//console.log(info.event.id);
 	      	$('#event_id_edit').val(info.event.id);
 	      	$('#event_title_edit').val(info.event.title);
+	      	$('#event_sd_edit').val(moment(info.event.start).format('YYYY-MM-DD HH:mm:ss'));
+	      	$('#event_ed_edit').val(moment(info.event.end).format('YYYY-MM-DD HH:mm:ss'));
+	      	$('#event_desc_edit').val(info.event.extendedProps.description);
+	      	$('#event_type_edit').val(info.event.extendedProps.type);
+	      	$('#event_daterange_edit').val(moment(info.event.start).format('YYYY-MM-DD HH:mm:ss') + ' - ' + moment(info.event.end).format('YYYY-MM-DD HH:mm:ss'));
+
+
 	      	$('.update-schedule').modal();
 	      }
 	    });

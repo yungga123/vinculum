@@ -17,6 +17,11 @@ class CalendarModel extends CI_Model
 		$this->db->update('calendar_events',$data);
 	}
 
+	public function delete_events($id){
+		$this->db->where('id',$id);
+		$this->db->delete('calendar_events');
+	}
+
 
 }
 
