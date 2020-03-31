@@ -32,6 +32,8 @@ defined('BASEPATH') or die('Access Denied');
 								</div>
 								<div class="card-footer">
 									<a href="<?php echo site_url('schedules') ?>" class="btn btn-block btn-primary text-bold"><i class="fas fa-redo"></i> REFRESH SCHEDULE</a>
+
+									<button class="btn btn-primary btn-block text-bold" data-toggle="modal" data-target=".schedule-today-info">SCHEDULES TODAY</button>
 								</div>
 							</div>
 						</div>
@@ -207,6 +209,103 @@ defined('BASEPATH') or die('Access Denied');
 			<div class="modal-body">
 				
 				<label style="font-size: 25px">To delete a schedule, you can click on a corresponding item in the calendar.</label>
+				
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal for Delete Schedule -->
+<div class="modal fade schedule-today-info" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<label>SCHEDULES FOR TODAY</label>
+			</div>
+
+			<div class="modal-body">
+				
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-3">
+								<div class="card">
+									<div class="card-header">
+										<label>LEGEND</label>
+									</div>
+
+									<div class="card-body text-center">
+										<div class="bg-primary color-palette"><span>Installation</span></div>
+										<div class="bg-warning color-palette"><span>Services</span></div>
+										<div class="bg-danger color-palette"><span>Payables</span></div>
+										<div class="bg-success color-palette"><span>Holiday</span></div>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="col-9">
+								<div class="card">
+									<div class="card-header">
+										<label>Schedules table</label>
+									</div>
+
+									<div class="card-body table-responsive p-0">
+										<table class="table table-sm table-bordered">
+											<thead>
+												<tr>
+													<th>Title</th>
+													<th>Description</th>
+													<th>Start Date</th>
+													<th>End Date</th>
+												</tr>
+											</thead>
+
+											<tbody>
+
+												<?php if (count($results_today_event) > 0): ?>
+
+													<?php foreach ($results_today_event as $row): ?>
+														<tr class="<?php
+														 	if($row->type == 'installation'){
+														 		echo 'bg-primary';
+														 	} else if ($row->type == 'service') {
+														 		echo 'bg-warning';
+														 	} else if ($row->type == 'payables') {
+														 		echo 'bg-danger';
+														 	} else if ($row->type == 'holiday') {
+														 		echo 'bg-success';
+														 	}
+
+														 ?>">
+														<td><?php echo $row->title ?></td>
+														<td><?php echo $row->description ?></td>
+														<td><?php echo date_format(date_create($row->start),'M d, Y h:i A') ?></td>
+														<td><?php echo date_format(date_create($row->end),'M d, Y h:i A') ?></td>
+													</tr>
+													<?php endforeach ?>
+
+												<?php else : ?>
+													<tr>
+														<td class="text-center text-bold text-danger" colspan="4">NO SCHEDULES FOR TODAY</td>
+													</tr>
+												<?php endif ?>
+
+												
+												
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				
 			</div>
 

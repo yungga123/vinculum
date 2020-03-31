@@ -17,7 +17,8 @@ class SchedulesController extends CI_Controller {
 			$data['title'] = 'Schedules';
 			$data['schedules'] = ' active';
 			$data['results'] = $this->CalendarModel->get_events();
-
+			$data['results_today_event'] = $this->CalendarModel->get_events_by_date();
+			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('schedules/schedules');

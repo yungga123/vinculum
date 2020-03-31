@@ -22,6 +22,12 @@ class CalendarModel extends CI_Model
 		$this->db->delete('calendar_events');
 	}
 
+	public function get_events_by_date() {
+		date_default_timezone_set('Asia/Manila');
+		$where = "(start BETWEEN '".date("Y-m-d")." 00:00:00' AND '".date("Y-m-d")." 23:59:59') OR '".date("Y-m-d")." 00:00:00' BETWEEN start AND end";
+		$this->db->where($where);
+		return $this->db->get('calendar_events')->result();
+	}
 
 }
 

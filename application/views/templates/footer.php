@@ -1373,6 +1373,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 	  $(function () {
 
+	  	//Schedule Today Modal for Schedules
+	  	$('.schedule-today-info').modal();
+
+
 	    /* initialize the external events
 	     -----------------------------------------------------------------*/
 	    function ini_events(ele) {
@@ -1466,7 +1470,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	      	$('#event_ed_edit').val(moment(info.event.end).format('YYYY-MM-DD HH:mm:ss'));
 	      	$('#event_desc_edit').val(info.event.extendedProps.description);
 	      	$('#event_type_edit').val(info.event.extendedProps.type);
-	      	$('#event_daterange_edit').val(moment(info.event.start).format('YYYY-MM-DD HH:mm:ss') + ' - ' + moment(info.event.end).format('YYYY-MM-DD HH:mm:ss'));
+	      	$('#event_daterange_edit').val(moment(info.event.start).format('MMM DD, YYYY hh:mm A') + ' - ' + moment(info.event.end).format('MMM DD, YYYY hh:mm A'));
 
 
 	      	$('.update-schedule').modal();
