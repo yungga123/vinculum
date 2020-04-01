@@ -50,6 +50,9 @@ if(!function_exists('html_variable')) {
 			'ul_servicereport' => '',
 			'encode_sr' => '',
 			'sr_listing' => '',
+			'project_report' => '',
+			'project_report_href' => '',
+			'project_report_add' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];

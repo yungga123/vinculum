@@ -104,3 +104,6 @@ $route['print-return/(:any)/(:any)'] = 'PullOutsController/print_return_history/
 //Technicians Controller
 $route['technicians'] = 'TechniciansController';
 $route['technicians-edit/(:any)'] = 'TechniciansController/technicians_edit/$1';
+
+//Project Report Controller
+$route['project-report'] = 'ProjectReportController';

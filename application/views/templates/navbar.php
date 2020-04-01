@@ -275,6 +275,23 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 	    	<li class="nav-header">PROJECTS AND SERVICES</li>
 
+	    	<li class="nav-item has-treeview<?php echo $project_report ?>">
+	            <a href="javascript:void(0)" class="nav-link <?php echo $project_report_href ?>">
+	              <i class="nav-icon fas fa-file-alt"></i>
+	              <p>
+	                Project Report
+	                <i class="fas fa-angle-left right"></i>
+	              </p>
+	            </a>
+	            <ul class="nav nav-treeview">
+	              <li class="nav-item">
+	                <a href="<?php echo site_url('project-report') ?>" class="nav-link <?php echo $project_report_add ?>">
+	                  <i class="far fa-circle nav-icon"></i>
+	                  <p>Add Project Report</p>
+	                </a>
+	              </li>
+	            </ul>
+	        </li>
 
 	    	<!-- FORMS -->
 	    	<li class="nav-item">

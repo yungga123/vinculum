@@ -1481,6 +1481,146 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  })
 	</script>
 	<?php endif ?>
+
+	<!-- Project Report Form Clone -->
+	<?php if ($this->uri->segment(1)=='project-report'): ?>
+	<script>
+		$(document).ready(function(){
+			$('.add-petty-btn').click(function(){
+
+				var newfield = $('.add-petty:last').clone();
+
+				// Add after last <div class='input-form'>
+				$(newfield).insertAfter(".add-petty:last");
+			});
+
+			$('.add-transpo-btn').click(function(){
+
+				var newfield = $('.add-transpo:last').clone();
+
+				// Add after last <div class='input-form'>
+				$(newfield).insertAfter(".add-transpo:last");
+			});
+
+			$('.add-indirect-btn').click(function(){
+
+				var newfield = $('.add-indirect:last').clone();
+
+				// Add after last <div class='input-form'>
+				$(newfield).insertAfter(".add-indirect:last");
+			});
+
+			$('.add-direct-btn').click(function(){
+
+				var newfield = $('.add-direct:last').clone();
+
+				// Add after last <div class='input-form'>
+				$(newfield).insertAfter(".add-direct:last");
+			});
+
+			$('.add-tool-rqstd-btn').click(function(){
+
+				var newfield = $('.add-tool-rqstd:last').clone();
+
+				// Add after last <div class='input-form'>
+				$(newfield).insertAfter(".add-tool-rqstd:last");
+			});
+
+			$('.add-assignedit-btn').click(function(){
+
+				var newfield = $('.add-assignedit:last').clone();
+
+				// Add after last <div class='input-form'>
+				$(newfield).insertAfter(".add-assignedit:last");
+			});
+
+			$('.add-assignedtech-btn').click(function(){
+
+				var newfield = $('.add-assignedtech:last').clone();
+
+				// Add after last <div class='input-form'>
+				$(newfield).insertAfter(".add-assignedtech:last");
+			});
+
+			$(".delete-petty-btn").click(function(){
+
+				count = $('.add-petty').length;
+
+				if (count !== 1) {
+					$('.add-petty').last().remove();
+				} else {
+					return 0;
+				}
+			});
+
+			$(".delete-transpo-btn").click(function(){
+
+				count = $('.add-transpo').length;
+				
+				if (count !== 1) {
+					$('.add-transpo').last().remove();
+				} else {
+					return 0;
+				}
+			});
+
+			$(".delete-indirect-btn").click(function(){
+
+				count = $('.add-indirect').length;
+				
+				if (count !== 1) {
+					$('.add-indirect').last().remove();
+				} else {
+					return 0;
+				}
+			});
+
+			$(".delete-direct-btn").click(function(){
+
+				count = $('.add-direct').length;
+				
+				if (count !== 1) {
+					$('.add-direct').last().remove();
+				} else {
+					return 0;
+				}
+			});
+
+			$(".delete-tool-rqstd-btn").click(function(){
+
+				count = $('.add-tool-rqstd').length;
+				
+				if (count !== 1) {
+					$('.add-tool-rqstd').last().remove();
+				} else {
+					return 0;
+				}
+			});
+
+			$(".delete-assignedit-btn").click(function(){
+
+				count = $('.add-assignedit').length;
+				
+				if (count !== 1) {
+					$('.add-assignedit').last().remove();
+				} else {
+					return 0;
+				}
+			});
+
+			$(".delete-assignedtech-btn").click(function(){
+
+				count = $('.add-assignedtech').length;
+				
+				if (count !== 1) {
+					$('.add-assignedtech').last().remove();
+				} else {
+					return 0;
+				}
+			});
+		});
+	</script>
+	<?php endif ?>
 	
 	
 </body>
