@@ -290,6 +290,13 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	                  <p>Add Project Report</p>
 	                </a>
 	              </li>
+
+	              <li class="nav-item">
+	                <a href="<?php echo site_url('project-report-list') ?>" class="nav-link <?php echo $project_report_list ?>">
+	                  <i class="far fa-circle nav-icon"></i>
+	                  <p>Project Report List</p>
+	                </a>
+	              </li>
 	            </ul>
 	        </li>
 

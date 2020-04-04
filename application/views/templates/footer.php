@@ -203,6 +203,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  	});
 	</script>
 
+	<!-- Data Table for Project Report -->
+	<?php if ($this->uri->segment(1) == "project-report-list"): ?>
+	<script>
+		$(document).ready( function () {
+			//Datatable for Customers Table
+		    var customers_table = $("#projectReport_table").DataTable({
+		    	responsive: true,
+		    	"processing": true,
+		    	"serverSide": true,
+	            "order":[],
+	            "ajax":{
+	                url: "<?php echo site_url('ProjectReportController/get_project_report') ?>",
+	                type: "POST"
+	            },
+	            "columnDefs": [
+	                {
+	                   "targets": [],
+	                    "orderable": false, 
+	                }
+	            ]
+		    });
+		    //end of datatable
+	  	});
+	</script>
+	<?php endif ?>
+	
+
 	<!-- Forms AJAX -->
 	<script>
 		//Form for Adding Item
@@ -875,6 +902,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		 		}
 		 	});
+
+
+		 });
+
+		//Form Add Project Report
+		$('#form-add-projectreport').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	// var a = '<a href="<?php //echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	//var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				toastr.success("Success! Project Report was added!");
+		 			} else {
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+
+		 	
 		 });
 	</script>
 
@@ -1482,7 +1556,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</script>
 	<?php endif ?>
 
-	<!-- Project Report Form Clone -->
+	<!-- Project Report Form Clone/Declone -->
 	<?php if ($this->uri->segment(1)=='project-report'): ?>
 	<script>
 		$(document).ready(function(){

@@ -107,3 +107,5 @@ $route['technicians-edit/(:any)'] = 'TechniciansController/technicians_edit/$1';
 
 //Project Report Controller
 $route['project-report'] = 'ProjectReportController';
+$route['project-report-list'] = 'ProjectReportController/projectReportList';
+$route['project-report-view/(:any)'] = 'ProjectReportController/projectReportView/$1';

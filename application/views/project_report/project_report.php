@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
+
+date_default_timezone_set('Asia/Manila');
 ?>
 
 <div class="content-wrapper">
@@ -27,6 +29,8 @@ defined('BASEPATH') or die('Access Denied');
 						<div class="card-body">
 							<div class="row">
 								<div class="col-sm-12">
+
+									<?php echo form_open('ProjectReportController/addProjReportValidate',["id" => "form-add-projectreport"]) ?>
 
 									<!-- Project Information -->
 									<div class="card">
@@ -65,7 +69,7 @@ defined('BASEPATH') or die('Access Denied');
 
 													<div class="form-group">
 														<label for="date_finished">Date Finsihed</label>
-														<input class="form-control" type="date" name="date_finished" id="date_finished">
+														<input class="form-control" type="date" name="date_finished" id="date_finished" value="<?php echo date('') ?>">
 													</div>
 
 												</div>
@@ -420,7 +424,7 @@ defined('BASEPATH') or die('Access Denied');
 
 													<div class="form-group add-assignedtech">
 														<label for="assigned_tech">Assigned Technician</label>
-														<input class="form-control" type="text" name="assigned_tech" id="assigned_tech">
+														<input class="form-control" type="text" name="assigned_tech[]">
 													</div>
 													
 												</div>
@@ -442,7 +446,9 @@ defined('BASEPATH') or die('Access Denied');
 
 						<div class="card-footer">
 							<button type="submit" class="btn btn-success text-bold float-right"><i class="fas fa-check"></i> CONFIRM</button>
-						</div>		
+						</div>	
+
+						<?php echo form_close() ?>	
 					</div>
 				</div>
 			</div>
