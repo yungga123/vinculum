@@ -932,6 +932,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$('.projectadd-submit').addClass('disabled');
+			$('.loading-projectadd').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -940,9 +943,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$('.projectadd-submit').removeClass('disabled');
+						$('.loading-projectadd').modal('hide');
 		 				toastr.success("Success! Project Report was added!");
 		 			} else {
+		 				$('.projectadd-submit').removeClass('disabled');
+						$('.loading-projectadd').modal('hide');
 		 				toastr.error(response.errors);
+		 				
 		 			}
 
 		 		}

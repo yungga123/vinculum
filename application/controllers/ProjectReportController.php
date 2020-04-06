@@ -419,13 +419,29 @@ class ProjectReportController extends CI_Controller {
 
 		$data = array();
 		foreach($fetch_data as $row) {
+			$dateRequested = '';
+			$dateImplemented = '';
+			$dateFinished = '';
+
+			if ($row->date_requested != '0000-00-00') {
+				$dateRequested = date_format(date_create($row->date_requested),'F d, Y');
+			}
+
+			if ($row->date_implemented != '0000-00-00') {
+				$dateImplemented = date_format(date_create($row->date_implemented),'F d, Y');
+			}
+
+			if ($row->date_finished != '0000-00-00') {
+				$dateFinished = date_format(date_create($row->date_finished),'F d, Y');
+			}
+
 			$sub_array = array();
 			$sub_array[] = $row->id;
 			$sub_array[] = $row->name;
 			$sub_array[] = $row->description;
-			$sub_array[] = date_format(date_create($row->date_requested),'F d, Y');
-			$sub_array[] = date_format(date_create($row->date_implemented),'F d, Y');
-			$sub_array[] = date_format(date_create($row->date_finished),'F d, Y');
+			$sub_array[] = $dateRequested;
+			$sub_array[] = $dateImplemented;
+			$sub_array[] = $dateFinished;
 
 			$sub_array[] = '
 
@@ -454,10 +470,17 @@ class ProjectReportController extends CI_Controller {
 		if($this->session->userdata('logged_in')) {
 
 
-			$results = $this->ProjectReportModel->getProjectReport($id);
+			
 			$data = [
 				'title' => 'Print',
-				'results' => $results
+				'results' => $this->ProjectReportModel->getProjectReport($id),
+				'results_petty_cash' => $this->ProjectReportModel->getPettyCash($id),
+				'results_transpo' => $this->ProjectReportModel->getTranspo($id),
+				'results_indirectItems' => $this->ProjectReportModel->getIndirectItems($id),
+				'results_directItems' => $this->ProjectReportModel->getDirectItems($id),
+				'results_toolRqstd' => $this->ProjectReportModel->getToolsRqstd($id),
+				'results_assignedIT' => $this->ProjectReportModel->getAssignedIT($id),
+				'results_assignedTech' => $this->ProjectReportModel->getAssignedTech($id)
 			];
 			$this->load->view('project_report/project_report_view',$data);
 

@@ -2,17 +2,40 @@
 defined('BASEPATH') or die('Access Denied');
 
 $results_project_report = array();
+$dateRequested = '';
+$dateImplemented = '';
+$dateFinished = '';
+
+
 
 foreach ($results as $row) {
+
+	if ($row->date_requested != '0000-00-00') {
+		$dateRequested = date_format(date_create($row->date_requested),'F d, Y');
+	}
+
+	if ($row->date_implemented != '0000-00-00') {
+		$dateImplemented = date_format(date_create($row->date_implemented),'F d, Y');
+	}
+
+	if ($row->date_finished != '0000-00-00') {
+		$dateFinished = date_format(date_create($row->date_finished),'F d, Y');
+	}
+
 	$results_project_report = [
 		'id' => $row->id,
 		'name' => $row->name,
 		'description' => $row->description,
-		'date_requested' => $row->date_requested,
-		'date_implemented' => $row->date_implemented,
-		'date_finished' => $row->date_finished
+		'date_requested' => $dateRequested,
+		'date_implemented' => $dateImplemented,
+		'date_finished' => $dateFinished
 	];
 }
+
+$results_project_report['total_petty_cash'] = 0;
+$results_project_report['total_transpo'] = 0;
+$results_project_report['total_indirectItems'] = 0;
+$results_project_report['total_directItems'] = 0;
 
 
 ?>
@@ -60,7 +83,7 @@ foreach ($results as $row) {
 
 <body>
 
-	<!-- Project Description -->
+	<!-- Title Page -->
 	<div class="row">
 		<div class="col-12 text-center mb-3">
 			<label style="font-size: 25px">PROJECT PLAN REPORT</label>
@@ -69,7 +92,7 @@ foreach ($results as $row) {
 		</div>
 	</div>
 
-	<!-- Petty Cash -->
+	<!-- Project Description -->
 	<div class="row">
 		<div class="col-6">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
@@ -91,40 +114,65 @@ foreach ($results as $row) {
 				<tbody>
 					<tr>
 						<td width="30%" style="font-weight: bold">Date Requested</td>
-						<td width="70%"><?php echo date_format(date_create($results_project_report['date_requested']),'F d, Y') ?></td>
+						<td width="70%"><?php echo $results_project_report['date_requested'] ?></td>
 					</tr>
 					<tr>
 						<td width="30%" style="font-weight: bold">Date Implemented</td>
-						<td width="70%"><?php echo date_format(date_create($results_project_report['date_implemented']),'F d, Y') ?></td>
+						<td width="70%"><?php echo $results_project_report['date_implemented'] ?></td>
 					</tr>
 					<tr>
 						<td width="30%" style="font-weight: bold">Date Finished</td>
-						<td width="70%"><?php echo date_format(date_create($results_project_report['date_finished']),'F d, Y') ?></td>
+						<td width="70%"><?php echo $results_project_report['date_finished'] ?></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 
-	<!-- Transpo -->
+	<!-- Petty Cash and Transpo -->
 	<div class="row">
 		<div class="col-6">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
 				<thead>
 					<tr class="text-center">
-						<th width="40%">Petty Cash</th>
-						<th width="30%">Date</th>
-						<th width="30%">Remarks</th>
+						<th width="25%">Petty Cash</th>
+						<th width="25%">Date</th>
+						<th width="50%">Remarks</th>
 					</tr>
 				</thead>
 				<tbody>
+					<?php if (count($results_petty_cash) == 0): ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php else: ?>
+						<?php foreach ($results_petty_cash as $row): ?>
+							<?php
+								$pettycashDate = '';
+								if ($row->date != '0000-00-00') {
+									$pettycashDate = date_format(date_create($row->date),'M d, Y');
+								}
+							?>
+							<tr>
+								<td><?php echo $row->petty_cash ?></td>
+								<td><?php echo $pettycashDate ?></td>
+								<td><?php echo $row->remarks ?></td>
+							</tr>
+
+							<?php $results_project_report['total_petty_cash'] = $row->petty_cash + $results_project_report['total_petty_cash'] ?>
+						<?php endforeach ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php endif ?>
+					
+					
 					<tr>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-					</tr>
-					<tr>
-						<td class="text-center text-bold" colspan="3">Total: 1000</td>
+						<td class="text-center text-bold" colspan="3">Total: <?php echo number_format($results_project_report['total_petty_cash'],2) ?></td>
 					</tr>
 				</tbody>
 
@@ -135,19 +183,43 @@ foreach ($results as $row) {
 			<table class="table table-bordered table-sm" style="font-size: 15px">
 				<thead>
 					<tr class="text-center">
-						<th width="40%">Transpo</th>
-						<th width="30%">Date</th>
-						<th width="30%">Remarks</th>
+						<th width="25%">Transpo</th>
+						<th width="25%">Date</th>
+						<th width="50%">Remarks</th>
 					</tr>
 				</thead>
 				<tbody>
+					<?php if (count($results_transpo) == 0): ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php else: ?>
+						<?php foreach ($results_transpo as $row): ?>
+							<?php 
+								$transpoDate = '';
+								if ($row->date != '0000-00-00') {
+									$transpoDate = date_format(date_create($row->date),'M d, Y');
+								}
+							?>
+							<tr>
+								<td><?php echo $row->transpo ?></td>
+								<td><?php echo $transpoDate ?></td>
+								<td><?php echo $row->remarks ?></td>
+							</tr>
+
+							<?php $results_project_report['total_transpo'] = $row->transpo + $results_project_report['total_transpo'] ?>
+						<?php endforeach ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php endif ?>
+					
 					<tr>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-					</tr>
-					<tr>
-						<td class="text-center text-bold" colspan="3">Total: 1000</td>
+						<td class="text-center text-bold" colspan="3">Total: <?php echo number_format($results_project_report['total_transpo'],2) ?></td>
 					</tr>
 				</tbody>
 
@@ -159,27 +231,49 @@ foreach ($results as $row) {
 	<div class="row">
 		<div class="col-12">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead>
-					<tr class="text-center">
-						<th width="45%">Indirect Item</th>
-						<th width="10%">Qty</th>
-						<th width="10%">Amount</th>
-						<th width="10%">Consumed</th>
-						<th width="10%">Returns</th>
-						<th width="15%">Remarks</th>
+				<thead class="text-center" >
+					<tr>
+						<th width="35%" rowspan="2" class="align-middle">Indirect Item</th>
+						<th width="10%" rowspan="2" class="align-middle">Qty</th>
+						<th width="10%" rowspan="2" class="align-middle">Amount (1u)</th>
+						<th width="15%" colspan="2" class="align-middle">Consumed</th>
+						<th width="15%" colspan="2" class="align-middle">Returns</th>
+						<th width="15%" rowspan="2" class="align-middle">Remarks</th>
+					</tr>
+					<tr>
+						<th>Qty</th>
+						<th>Amt</th>
+						<th>Qty</th>
+						<th>Amt</th>
 					</tr>
 				</thead>
 				<tbody>
+					<?php if (count($results_indirectItems) == 0): ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php else: ?>
+						<?php foreach ($results_indirectItems as $row): ?>
+							<tr>
+								<td><?php echo $row->indirect_item ?></td>
+								<td><?php echo number_format($row->qty,2) ?></td>
+								<td><?php echo number_format($row->amt,2) ?></td>
+								<td><?php echo number_format($row->consumed,2) ?></td>
+								<td><?php echo number_format($row->consumed*$row->amt,2) ?></td>
+								<td><?php echo number_format($row->returns,2) ?></td>
+								<td><?php echo number_format($row->returns*$row->amt,2) ?></td>
+								<td><?php echo $row->remarks ?></td>
+							</tr>
+						<?php endforeach ?>
+					<?php endif ?>
+					
 					<tr>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-					</tr>
-					<tr>
-						<td class="text-center text-bold" colspan="6">Total: 1000</td>
+						<td class="text-center text-bold" colspan="8">Total Released: <?php echo number_format($results_project_report['total_indirectItems'],2) ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -192,25 +286,60 @@ foreach ($results as $row) {
 			<table class="table table-bordered table-sm" style="font-size: 15px">
 				<thead>
 					<tr class="text-center">
-						<th width="45%">Direct Item</th>
-						<th width="10%">Qty</th>
-						<th width="10%">Amount</th>
-						<th width="10%">Consumed</th>
-						<th width="10%">Returns</th>
-						<th width="15%">Remarks</th>
+						<th width="35%" rowspan="2" class="align-middle">Direct Item</th>
+						<th width="10%" rowspan="2" class="align-middle">Qty</th>
+						<th width="10%" rowspan="2" class="align-middle">Amount (1u)</th>
+						<th width="15%" colspan="2" class="align-middle">Consumed</th>
+						<th width="15%" colspan="2" class="align-middle">Returns</th>
+						<th width="15%" rowspan="2" class="align-middle">Remarks</th>
+					</tr>
+
+					<tr class="text-center">
+						<th>Qty</th>
+						<th>Amt</th>
+						<th>Qty</th>
+						<th>Amt</th>
 					</tr>
 				</thead>
 				<tbody>
+					<?php if (count($results_directItems) == 0): ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php else: ?>
+						<?php foreach ($results_directItems as $row): ?>
+							<tr>
+								<td><?php echo $row->direct_item ?></td>
+								<td><?php echo $row->qty ?></td>
+								<td><?php echo $row->amt ?></td>
+								<td><?php echo $row->consumed ?></td>
+								<td><?php echo number_format($row->consumed*$row->amt,2) ?></td>
+								<td><?php echo $row->returns ?></td>
+								<td><?php echo number_format($row->returns*$row->amt,2) ?></td>
+								<td><?php echo $row->remarks ?></td>
+							</tr>
+						<?php endforeach ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php endif ?>
+					
 					<tr>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-					</tr>
-					<tr>
-						<td class="text-center text-bold" colspan="6">Total: 1000</td>
+						<td class="text-center text-bold" colspan="8">Total: <?php echo number_format($results_project_report['total_directItems'],2) ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -230,12 +359,87 @@ foreach ($results as $row) {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
-						<td>/</td>
+					<?php if (count($results_toolRqstd) == 0): ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php else: ?>
+						<?php foreach ($results_toolRqstd as $row): ?>
+							<tr>
+								<td><?php echo $row->tool_rqstd ?></td>
+								<td><?php echo $row->qty ?></td>
+								<td><?php echo $row->returns ?></td>
+								<td><?php echo $row->remarks ?></td>
+							</tr>
+						<?php endforeach ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
+					<?php endif ?>
+					
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- Assigned IT and Assigned Tech-->
+	<div class="row">
+		<div class="col-6">
+			<table class="table table-bordered table-sm" style="font-size: 15px">
+				<thead>
+					<tr class="text-center">
+						<th width="50%">Assigned IT</th>
 					</tr>
+				</thead>
+				<tbody>
+					<?php if (count($results_assignedIT) == 0): ?>
+						<tr>
+							<td>/</td>
+						</tr>
+					<?php else: ?>
+						<?php foreach ($results_assignedIT as $row): ?>
+							<tr>
+								<td><?php echo $row->assigned_it ?></td>
+							</tr>
+						<?php endforeach ?>
+						<tr>
+							<td>/</td>
+						</tr>
+					<?php endif ?>
+					
+				</tbody>
+			</table>
+		</div>
+
+		<div class="col-6">
+			<table class="table table-bordered table-sm" style="font-size: 15px">
+				<thead>
+					<tr class="text-center">
+						<th width="50%">Assigned Technician</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php if (count($results_assignedTech) == 0): ?>
+						<tr>
+							<td>/</td>
+						</tr>
+					<?php else: ?>
+						<?php foreach ($results_assignedTech as $row): ?>
+							<tr>
+								<td><?php echo $row->assigned_tech ?></td>
+							</tr>
+						<?php endforeach ?>
+						<tr>
+							<td>/</td>
+						</tr>
+					<?php endif ?>
+					
 				</tbody>
 			</table>
 		</div>

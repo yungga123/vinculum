@@ -445,8 +445,9 @@ date_default_timezone_set('Asia/Manila');
 						</div>
 
 						<div class="card-footer">
-							<button type="submit" class="btn btn-success text-bold float-right"><i class="fas fa-check"></i> CONFIRM</button>
-						</div>	
+							<button type="submit" class="btn btn-success text-bold float-right projectadd-submit"><i class="fas fa-check"></i> CONFIRM</button>
+
+						</div>
 
 						<?php echo form_close() ?>	
 					</div>
@@ -456,3 +457,22 @@ date_default_timezone_set('Asia/Manila');
 	</section>
 
 </div>
+
+<div class="modal fade loading-projectadd">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="d-flex justify-content-center mt-4">
+					<div class="spinner-border" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+				<br>
+				<label style="font-size: 28px;" class="text-success">LOADING... PLEASE WAIT...</label>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+  <!-- /.modal -->

@@ -18,6 +18,42 @@ class ProjectReportModel extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	public function getPettyCash($id) {
+		$this->db->where('pr_id',$id);
+		return $this->db->get('project_report_pettycash')->result();
+	}
+
+	public function getTranspo($id) {
+		$this->db->where('pr_id',$id);
+		return $this->db->get('project_report_transpo')->result();
+	}
+
+	public function getIndirectItems($id) {
+		$this->db->where('pr_id',$id);
+		return $this->db->get('project_report_indirect_item')->result();
+	}
+
+	public function getToolsRqstd($id) {
+		$this->db->where('pr_id',$id);
+		return $this->db->get('project_report_tools_rqstd')->result();
+	}
+
+	public function getAssignedIT($id) {
+		$this->db->where('pr_id',$id);
+		return $this->db->get('project_report_assigned_it')->result();
+	}
+
+	public function getAssignedTech($id) {
+		$this->db->where('pr_id',$id);
+		return $this->db->get('project_report_assigned_tech')->result();
+	}
+
+	public function getDirectItems($id) {
+		$this->db->where('pr_id',$id);
+		return $this->db->get('project_report_direct_item')->result();
+	}
+
+
 	public function insert_projectreport($data){
 		$this->db->insert('project_report',$data);
 	}
