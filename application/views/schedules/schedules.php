@@ -118,7 +118,7 @@ defined('BASEPATH') or die('Access Denied');
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary text-bold" data-dismiss="modal">CLOSE</button>
-				<button type="submit" class="btn btn-success text-bold">CONFIRM</button>
+				<button type="submit" class="btn btn-success text-bold submit-button">CONFIRM</button>
 			</div>
 			<?php echo form_close() ?>
 		</div>

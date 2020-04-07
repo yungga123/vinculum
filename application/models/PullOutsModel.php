@@ -7,6 +7,12 @@ class PullOutsModel extends CI_Model {
 		return $this->db->insert('pulled_out', $data);
 	}
 
+	public function decreasedByPullout($stocks,$item_code) {
+		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
+		
+		return $this->db->query("UPDATE items SET stocks = (stocks - ".$stocks.") WHERE itemCode = '".$item_code."'");
+	}
+
 	public function viewPullout() {
 		// SELECT id,pulled_out.item_code,itemName,itemType,itemSupplierPrice,itemPrice,stocks FROM items INNER JOIN pulled_out ON pulled_out.item_code=items.itemCode
 

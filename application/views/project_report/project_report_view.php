@@ -86,9 +86,9 @@ $results_project_report['total_directItems'] = 0;
 	<!-- Title Page -->
 	<div class="row">
 		<div class="col-12 text-center mb-3">
-			<label style="font-size: 25px">PROJECT PLAN REPORT</label>
+			<label style="font-size: 25px">VTSF-PR-01</label>
 			<br>
-			<label>Project Report No. <?php echo $results_project_report['id'] ?></label>
+			<label>Form No. <?php echo $results_project_report['id'] ?></label>
 		</div>
 	</div>
 
@@ -269,11 +269,25 @@ $results_project_report['total_directItems'] = 0;
 								<td><?php echo number_format($row->returns*$row->amt,2) ?></td>
 								<td><?php echo $row->remarks ?></td>
 							</tr>
+
+							<?php
+								$results_project_report['total_indirectItems'] = ($row->consumed*$row->amt) + $results_project_report['total_indirectItems']
+							?>
 						<?php endforeach ?>
+						<tr>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+							<td>/</td>
+						</tr>
 					<?php endif ?>
 					
 					<tr>
-						<td class="text-center text-bold" colspan="8">Total Released: <?php echo number_format($results_project_report['total_indirectItems'],2) ?></td>
+						<td class="text-center text-bold" colspan="8">Total Consumed: <?php echo number_format($results_project_report['total_indirectItems'],2) ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -325,6 +339,9 @@ $results_project_report['total_directItems'] = 0;
 								<td><?php echo number_format($row->returns*$row->amt,2) ?></td>
 								<td><?php echo $row->remarks ?></td>
 							</tr>
+							<?php
+								$results_project_report['total_directItems'] = ($row->consumed*$row->amt) + $results_project_report['total_directItems']
+							?>
 						<?php endforeach ?>
 						<tr>
 							<td>/</td>
@@ -339,7 +356,7 @@ $results_project_report['total_directItems'] = 0;
 					<?php endif ?>
 					
 					<tr>
-						<td class="text-center text-bold" colspan="8">Total: <?php echo number_format($results_project_report['total_directItems'],2) ?></td>
+						<td class="text-center text-bold" colspan="8">Total Consumed: <?php echo number_format($results_project_report['total_directItems'],2) ?></td>
 					</tr>
 				</tbody>
 			</table>

@@ -260,6 +260,15 @@ class PullOutsController extends CI_Controller {
 	public function confirm_pullouts() {
 
 		if($this->session->userdata('logged_in')) {
+			$this->load->model('PullOutsModel');
+			$selectQuery = $this->db->query("SELECT item_code,stocks_to_pullout FROM pulled_out");
+			$results = $selectQuery->result();
+
+			foreach ($results as $row) {
+				$itemCode = $row->item_code;
+				$stocks = $row->stocks_to_pullout;
+				$this->PullOutsModel->decreasedByPullout($stocks,$itemCode);
+			}
 
 			$this->load->model('ConfirmedPullOutsModel');
 			$this->ConfirmedPullOutsModel->insert();

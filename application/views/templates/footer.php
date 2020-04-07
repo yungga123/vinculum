@@ -1,6 +1,25 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+
+<div class="modal fade loading-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-body text-center">
+				<div class="d-flex justify-content-center mt-4">
+					<div class="spinner-border" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+				<br>
+				<label style="font-size: 28px;" class="text-success">LOADING... PLEASE WAIT...</label>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+  <!-- /.modal -->
 	
 	<footer class="main-footer">
 	    <strong>Copyright &copy; 2017-2019 <a href="http://www.vinculumtechonologies.com">Vinculum Techonologies Corporation</a>.</strong>
@@ -133,49 +152,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 			} );
 
-			//click pullout item
-		    $('#form-pullout').submit(function(e) {
-			 	e.preventDefault();
-
-
-			 	var me = $(this);
-			 	var succ = '';
-
-			 	toastr.options = {
-					"closeButton": false,
-					"debug": false,
-					"newestOnTop": false,
-					"progressBar": true,
-					"positionClass": "toast-top-right",
-					"preventDuplicates": true,
-					"onclick": null,
-					"showDuration": "300",
-					"hideDuration": "1000",
-					"timeOut": "5000",
-					"extendedTimeOut": "1000",
-					"showEasing": "swing",
-					"hideEasing": "linear",
-					"showMethod": "fadeIn",
-					"hideMethod": "fadeOut"
-				}
-
-			 	//ajax
-			 	$.ajax({
-			 		url: me.attr('action'),
-			 		type: 'post',
-			 		data: me.serialize(),
-			 		dataType: 'json',
-			 		success: function(response) {
-			 			if (response.success == true) {
-			 				toastr.success("Success! it is now for pending. Click to Refresh ");
-			 				me[0].reset();
-			 			} else {
-			 				toastr.error(response.errors);
-			 			}
-
-			 		}
-			 	});
-		 	});
+			
 		});
 	</script>
 
@@ -232,6 +209,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- Forms AJAX -->
 	<script>
+		<?php if ($this->uri->segment(1) == 'addnewitem'): ?>
 		//Form for Adding Item
 		$('#form-register-item').submit(function(e) {
 		 	e.preventDefault();
@@ -258,6 +236,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -266,17 +247,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Added! " + a);
 		 				me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
-
-
+		<?php endif ?>
+		
+		<?php if ($this->uri->segment(1) == 'masterlistofitems'): ?>
 		//Form for updating item
 		$('#form-update-item').submit(function(e) {
 		 	e.preventDefault();
@@ -302,6 +290,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -310,8 +301,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Updated! Please refresh this page.");
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
@@ -344,6 +341,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -352,11 +352,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Stocks Added! Please refresh this page.");
 		 				$('.addstocks').modal('hide');
 		 				$('#AS_Quantity').val("");
 		 				me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
@@ -364,6 +370,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });
 
+		//click pullout item
+	    $('#form-pullout').submit(function(e) {
+		 	e.preventDefault();
+
+		 	var me = $(this);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.success("Success! it is now for pending. Click to Refresh ");
+		 				me[0].reset();
+		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+	 	});
+		<?php endif ?>
+
+		<?php if ($this->uri->segment(1) == 'customers-add'): ?>
 		//Form Add Customer
 		$('#form-customer-add').submit(function(e) {
 		 	e.preventDefault();
@@ -389,6 +448,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -397,16 +459,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Customer Added! "+a);
 		 				me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
-
+		<?php endif ?>
+		
+		<?php if ($this->uri->segment(1) == 'customers-update'): ?>
 		//Form Update Customer
 		$('#form-customer-update').submit(function(e) {
 		 	e.preventDefault();
@@ -432,6 +502,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -440,56 +513,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.success("Customer Updated! "+a);
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
+		<?php endif ?>
 
-		//Form Insert Pullout
-		$('#form-insert-pullout').submit(function(e) {
-		 	e.preventDefault();
-		 	var a = '<a href="<?php echo site_url("pending-pullouts") ?>"><u>View Here</u></a>';
-		 	var me = $(this);
-
-		 	toastr.options = {
-				"closeButton": false,
-				"debug": false,
-				"newestOnTop": false,
-				"progressBar": true,
-				"positionClass": "toast-top-right",
-				"preventDuplicates": false,
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			}
-
-		 	//ajax
-		 	$.ajax({
-		 		url: me.attr('action'),
-		 		type: 'post',
-		 		data: me.serialize(),
-		 		dataType: 'json',
-		 		success: function(response) {
-		 			if (response.success == true) {
-		 				toastr.success("Pullout Success "+a);
-		 			} else {
-		 				toastr.error(response.errors);
-		 			}
-
-		 		}
-		 	});
-		 });
-
+		<?php if ($this->uri->segment(1) == 'Pull-Out-item'): ?>
 		//Get Search Pullout Item
 		$('#form-item-search').submit(function(e) {
 		 	e.preventDefault();
@@ -514,6 +552,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -522,6 +563,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				$("#search-result").empty();
 		 				$.each(response.data,function(index,value){
 		 					$("#search-result").append(value);
@@ -537,6 +581,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				  		});
 
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				$("#search-result").empty();
 			 			$("#search-result").append(response.data);
 		 			}
@@ -545,6 +591,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 });
 
 		 //Form Less Price Pullout
+
+		 //Form Insert Pullout
+		$('#form-insert-pullout').submit(function(e) {
+		 	e.preventDefault();
+		 	var a = '<a href="<?php echo site_url("pending-pullouts") ?>"><u>View Here</u></a>';
+		 	var me = $(this);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.success("Pullout Success "+a);
+		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+		<?php endif ?>
+
+		<?php if ($this->uri->segment(1) == 'pending-pullouts'): ?>
+		//Form Less Pullout
 		$('#form-less-pullout').submit(function(e) {
 		 	e.preventDefault();
 		 	var a = '<a href="<?php echo site_url("pending-pullouts") ?>"><u>Refresh!</u></a>';
@@ -568,6 +666,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -576,15 +677,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Success! Please refresh this page."+a);
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
-
+		<?php endif ?>
+		
+		<?php if ($this->uri->segment(1) == 'sales-dispatch'): ?>
 		//Form Sales Dispatch
 		$('#form-salesdispatch').submit(function(e) {
 		 	e.preventDefault();
@@ -611,6 +720,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -619,16 +731,78 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Dispatch Added! " + a);
 						 me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
+		<?php endif ?>
 
+		<?php if ($this->uri->segment(1) == 'salesdispatch-table'): ?>
+		//Sales Dispatch Update
+		$('#form_updatesalesdispatch').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 
+		 	var me = $(this);
+		 	var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.success("Successfully Updated! Please Refresh");
+		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+		<?php endif ?>
+
+		<?php if ($this->uri->segment(1) == 'specific_confirmed_pullouts' || $this->uri->segment(1) == 'confirmed-pullouts'): ?>
 		//Form Return Pullouts
 		$('#form-return-pullouts').submit(function(e) {
 		 	e.preventDefault();
@@ -655,6 +829,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -663,16 +840,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Success! Please Refresh this page.");
 						 me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
-
 
 		//Form Confirmed Request Delete
 		$('#form-request-delete').submit(function(e) {
@@ -700,6 +882,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -708,16 +893,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Success! Item was set for request to delete.");
-						 me[0].reset();
+						me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
+			
+		<?php endif ?>
+		
 
+		<?php if ($this->uri->segment(1) == 'technicians'): ?>
 		//Form Add Technicians
 		$('#form-add-tech').submit(function(e) {
 		 	e.preventDefault();
@@ -744,6 +940,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -752,15 +951,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Technician was added! Please refresh this page.");
-						 me[0].reset();
+						me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
 
 		 		}
 		 	});
 		 });
+		<?php endif ?>
 
 		//Form Edit Technicians
 		$('#form-edit-tech').submit(function(e) {
@@ -788,6 +992,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -796,9 +1003,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Technician was updated! View now at technicians table.");
 						 //me[0].reset();
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
 
@@ -806,6 +1017,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });
 
+		<?php if ($this->uri->segment(1) == 'schedules'): ?>
 		//Form Add Event
 		$('#form-add-event').submit(function(e) {
 		 	e.preventDefault();
@@ -832,6 +1044,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -844,10 +1059,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 				
 						me[0].reset();
 
+						$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 						window.setTimeout(function() {
 						    window.location = '<?php echo site_url('schedules') ?>';
 						}, 5000);
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
 
@@ -881,6 +1101,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -893,10 +1116,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 				
 						me[0].reset();
 
+						$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+
 						window.setTimeout(function() {
 						    window.location = '<?php echo site_url('schedules') ?>';
 						}, 5000);
 		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
 
@@ -904,8 +1132,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 
 
-		 });
+		 });	
+		<?php endif ?>
+		
 
+		<?php if ($this->uri->segment(1) == 'project-report-update'): ?>
+		//Form Edit Project Report
+		$('#form-update-projectreport').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	// var a = '<a href="<?php //echo site_url("salesdispatch-table") ?>"><u>Go to Dispatch Table</u></a>';
+		 	var me = $(this);
+		 	//var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.success("Success! Project Report was updated!");
+		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.error(response.errors);
+		 				
+		 			}
+
+		 		}
+		 	});
+		 });
+		<?php endif ?>
+		
+		<?php if ($this->uri->segment(1) == 'project-report'): ?>
 		//Form Add Project Report
 		$('#form-add-projectreport').submit(function(e) {
 		 	e.preventDefault();
@@ -932,8 +1216,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$('.projectadd-submit').addClass('disabled');
-			$('.loading-projectadd').modal();
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
 
 		 	//ajax
 		 	$.ajax({
@@ -943,21 +1227,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$('.projectadd-submit').removeClass('disabled');
-						$('.loading-projectadd').modal('hide');
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Project Report was added!");
 		 			} else {
-		 				$('.projectadd-submit').removeClass('disabled');
-						$('.loading-projectadd').modal('hide');
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 				
 		 			}
 
 		 		}
 		 	});
-
-		 	
-		 });
+		 });	
+		<?php endif ?>
+		
 	</script>
 
 
@@ -1178,7 +1462,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</script>
 
 
-   <!-- Sales Dispatch Table-->
+   	<!-- Sales Dispatch Table-->
 	<script type="text/javascript">
 		var salesdispatchTable = $('#salesdispatchTable').DataTable({
             responsive: true,
@@ -1242,51 +1526,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			 		}
 			 	});
 			} );
-	</script>
-
-	<!-- Sales Dispatch Update -->
-	<script type="text/javascript">
-		$('#form_updatesalesdispatch').submit(function(e) {
-			 	e.preventDefault();
-			 	
-			 
-			 	var me = $(this);
-			 	var succ = '';
-
-			 	toastr.options = {
-					"closeButton": false,
-					"debug": false,
-					"newestOnTop": false,
-					"progressBar": true,
-					"positionClass": "toast-top-right",
-					"preventDuplicates": true,
-					"onclick": null,
-					"showDuration": "300",
-					"hideDuration": "1000",
-					"timeOut": "5000",
-					"extendedTimeOut": "1000",
-					"showEasing": "swing",
-					"hideEasing": "linear",
-					"showMethod": "fadeIn",
-					"hideMethod": "fadeOut"
-				}
-
-			 	//ajax
-			 	$.ajax({
-			 		url: me.attr('action'),
-			 		type: 'post',
-			 		data: me.serialize(),
-			 		dataType: 'json',
-			 		success: function(response) {
-			 			if (response.success == true) {
-			 				toastr.success("Successfully Updated! Please Refresh");
-			 			} else {
-			 				toastr.error(response.errors);
-			 			}
-
-			 		}
-			 	});
-			 });
 	</script>
 
 	<!-- Scheduled Calendar Notif -->

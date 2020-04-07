@@ -8,33 +8,8 @@ class ProjectReportController extends CI_Controller {
         $this->load->model("ProjectReportModel");
     }
 
-    public function index() {
-    	if($this->session->userdata('logged_in')) {
-
-			$this->load->helper('site_helper');
-			$data = html_variable();
-			$data['title'] = 'Project Report';
-			$data['project_report'] = ' menu-open';
-			$data['project_report_href'] = ' active';
-			$data['project_report_add'] = ' active';
-			
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/navbar');
-			$this->load->view('project_report/project_report');
-			$this->load->view('templates/footer');
-		} else {
-			redirect('','refresh');
-		}
-    }
-
-    public function addProjReportValidate() {
-
-    	$validate = [
-			'success' => false,
-			'errors' => ''
-		];
-
-		$rules = [
+    function validation_rules() {
+    	$rules = [
 			[
 				'field' => 'project_name',
 				'label' => 'Project Name',
@@ -280,10 +255,39 @@ class ProjectReportController extends CI_Controller {
 			]
 
 		];
-		
+
+		return $rules;
+    }
+
+    public function index() {
+    	if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Project Report';
+			$data['project_report'] = ' menu-open';
+			$data['project_report_href'] = ' active';
+			$data['project_report_add'] = ' active';
+			
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('project_report/project_report');
+			$this->load->view('templates/footer');
+		} else {
+			redirect('','refresh');
+		}
+    }
+
+    public function addProjReportValidate() {
+
+    	$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
 		$this->form_validation->set_error_delimiters('<p>• ','</p>');
 
-		$this->form_validation->set_rules($rules);
+		$this->form_validation->set_rules($this->validation_rules());
 
 		if ($this->form_validation->run()) {
 
@@ -398,7 +402,7 @@ class ProjectReportController extends CI_Controller {
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
-			$data['title'] = 'Project Report';
+			$data['title'] = 'Project Report List';
 			$data['project_report'] = ' menu-open';
 			$data['project_report_href'] = ' active';
 			$data['project_report_list'] = ' active';
@@ -445,11 +449,11 @@ class ProjectReportController extends CI_Controller {
 
 			$sub_array[] = '
 
-			<a href="'.'#'.'" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a> 
+			<a href="'.site_url('project-report-update/'.$row->id).'" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
 
-			<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+			<button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
 
-			<a href="'.site_url('project-report-view/'.$row->id).'" class="btn btn-success btn-sm" target="_blank"><i class="fas fa-search"></i></a>
+			<a href="'.site_url('project-report-view/'.$row->id).'" class="btn btn-success btn-xs" target="_blank"><i class="fas fa-search"></i></a>
 
 			';
 
@@ -487,6 +491,65 @@ class ProjectReportController extends CI_Controller {
 		} else {
 			redirect('', 'refresh');
 		}
-	} 
+	}
+
+	public function project_report_update($id) {
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Project Report Update';
+			$data['project_report'] = ' menu-open';
+			$data['project_report_href'] = ' active';
+			$data['project_report_list'] = ' active';
+
+			$data['project_details'] = $this->ProjectReportModel->getProjectReport($id);
+			$data['petty_cash'] = $this->ProjectReportModel->getPettyCash($id);
+			$data['transpo'] = $this->ProjectReportModel->getTranspo($id);
+			$data['indirect_items'] = $this->ProjectReportModel->getIndirectItems($id);
+			$data['direct_items'] = $this->ProjectReportModel->getDirectItems($id);
+			$data['tools_rqstd'] = $this->ProjectReportModel->getToolsRqstd($id);
+			$data['assigned_it'] = $this->ProjectReportModel->getAssignedIT($id);
+			$data['assigned_tech'] = $this->ProjectReportModel->getAssignedTech($id);
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('project_report/project_report_edit');
+			$this->load->view('templates/footer');
+		} else {
+			redirect('','refresh');
+		}
+	}
+
+	public function projectReportUpdateValidate() {
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($this->validation_rules());
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			$this->ProjectReportModel->updateProjectReport(
+				$this->input->post('project_id'),
+				[
+					'name' => $this->input->post('project_name'),
+					'description' => $this->input->post('project_description'),
+					'date_requested' => $this->input->post('date_requested'),
+					'date_implemented' => $this->input->post('date_implemented'),
+					'date_finished' => $this->input->post('date_finished')
+				]
+			);
+
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
 
 }

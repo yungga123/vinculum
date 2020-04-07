@@ -86,6 +86,11 @@ class ProjectReportModel extends CI_Model {
 		$this->db->insert('project_report_transpo',$data);
 	}
 
+	public function updateProjectReport($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report',$data);
+	}
+
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "project_report";
 	var $select_column = array(
