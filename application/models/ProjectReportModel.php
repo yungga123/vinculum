@@ -91,6 +91,218 @@ class ProjectReportModel extends CI_Model {
 		$this->db->update('project_report',$data);
 	}
 
+	//for update petty cash
+	public function updatePettyCash($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report_pettycash',$data);
+	}
+
+	public function removePettyCash($id,$pr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('pr_id',$pr_id);
+		$this->db->delete('project_report_pettycash');
+	}
+
+	public function getNewAddedPettyCash($pr_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('project_report_pettycash');
+		$this->db->where('pr_id',$pr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+	//end
+
+
+	//for update transpo
+	public function updateTranspo($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report_transpo',$data);
+	}
+
+	public function removeTranspo($id,$pr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('pr_id',$pr_id);
+		$this->db->delete('project_report_transpo');
+	}
+
+	public function getNewAddedTranspo($pr_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('project_report_transpo');
+		$this->db->where('pr_id',$pr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+	//end
+
+	//for update indirect item
+	public function updateIndirectItem($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report_indirect_item',$data);
+	}
+
+	public function removeIndirectItem($id,$pr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('pr_id',$pr_id);
+		$this->db->delete('project_report_indirect_item');
+	}
+
+	public function getNewAddedIndirectItem($pr_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('project_report_indirect_item');
+		$this->db->where('pr_id',$pr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+	//end
+
+	//for update direct item
+	public function updateDirectItem($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report_direct_item',$data);
+	}
+
+	public function removeDirectItem($id,$pr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('pr_id',$pr_id);
+		$this->db->delete('project_report_direct_item');
+	}
+
+	public function getNewAddedDirectItem($pr_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('project_report_direct_item');
+		$this->db->where('pr_id',$pr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+	//end
+
+	//for update tools requested
+	public function updateToolsRqstd($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report_tools_rqstd',$data);
+	}
+
+	public function removeToolsRqstd($id,$pr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('pr_id',$pr_id);
+		$this->db->delete('project_report_tools_rqstd');
+	}
+
+	public function getNewAddedToolsRqstd($pr_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('project_report_tools_rqstd');
+		$this->db->where('pr_id',$pr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+	//end
+
+	//for update assigned it
+	public function updateAssignedIT($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report_assigned_it',$data);
+	}
+
+	public function removeAssignedIT($id,$pr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('pr_id',$pr_id);
+		$this->db->delete('project_report_assigned_it');
+	}
+
+	public function getNewAddedAssignedIT($pr_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('project_report_assigned_it');
+		$this->db->where('pr_id',$pr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+	//end
+
+
+	//for update assigned tech
+	public function updateAssignedTech($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('project_report_assigned_tech',$data);
+	}
+
+	public function removeAssignedTech($id,$pr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('pr_id',$pr_id);
+		$this->db->delete('project_report_assigned_tech');
+	}
+
+	public function getNewAddedAssignedTech($pr_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('project_report_assigned_tech');
+		$this->db->where('pr_id',$pr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+	//end
+
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "project_report";
 	var $select_column = array(

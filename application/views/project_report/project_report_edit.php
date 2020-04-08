@@ -97,8 +97,8 @@ foreach ($project_details as $row) {
 
 										<div class="card-body">
 											<?php foreach ($petty_cash as $row): ?>
-											<input type="text" name="petty_id[]" value="<?php echo $row->id ?>">
 											<div class="row add-petty">
+												<input type="hidden" name="petty_id[]" value="<?php echo $row->id ?>">
 												<div class="col-sm-6">
 													<div class="form-group">
 														<label for="petty_cash">Petty Cash</label>
@@ -146,7 +146,7 @@ foreach ($project_details as $row) {
 										<div class="card-body">
 											<?php foreach ($transpo as $row): ?>
 											<div class="row add-transpo">
-
+												<input type="hidden" name="transpo_id[]" value="<?php echo $row->id ?>">
 												<div class="col-sm-6">
 													
 													<div class="form-group">
@@ -198,6 +198,7 @@ foreach ($project_details as $row) {
 										<div class="card-body">
 											<?php foreach ($indirect_items as $row): ?>
 											<div class="row add-indirect">
+												<input type="hidden" name="indirect_item_id[]" value="<?php echo $row->id ?>">
 												<div class="col-sm-3">
 													
 													<div class="form-group">
@@ -278,6 +279,7 @@ foreach ($project_details as $row) {
 										<div class="card-body">
 											<?php foreach ($direct_items as $row): ?>
 											<div class="row add-direct">
+												<input type="hidden" name="direct_item_id[]" value="<?php echo $row->id ?>">
 												<div class="col-sm-3">
 													
 													<div class="form-group">
@@ -358,7 +360,7 @@ foreach ($project_details as $row) {
 											<?php foreach ($tools_rqstd as $row): ?>
 											<div class="row add-tool-rqstd">
 												<div class="col-sm-6">
-													
+													<input type="hidden" name="tool_rqstd_id[]" value="<?php echo $row->id ?>">
 													<div class="form-group">
 														<label for="tool_requested">Tool Requested</label>
 														<input class="form-control" type="text" name="tool_requested[]" value="<?php echo $row->tool_rqstd ?>">
@@ -418,6 +420,7 @@ foreach ($project_details as $row) {
 												<div class="card-body">
 													<?php foreach ($assigned_it as $row): ?>
 													<div class="form-group add-assignedit">
+														<input type="hidden" name="assigned_it_id[]" value="<?php echo $row->id ?>">
 														<label for="assigned_it">Assigned IT</label>
 														<input class="form-control" type="text" name="assigned_it[]" value="<?php echo $row->assigned_it ?>">
 													</div>
@@ -444,6 +447,7 @@ foreach ($project_details as $row) {
 												<div class="card-body">
 													<?php foreach ($assigned_tech as $row): ?>
 													<div class="form-group add-assignedtech">
+														<input type="hidden" name="assigned_tech_id[]" value="<?php echo $row->id ?>">
 														<label for="assigned_tech">Assigned Technician</label>
 														<input class="form-control" type="text" name="assigned_tech[]" value="<?php echo $row->assigned_tech ?>">
 													</div>

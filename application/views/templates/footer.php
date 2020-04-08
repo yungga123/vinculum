@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
 
 	<!-- Angular JS -->
-<!-- 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/angularjs/angular.min.js"></script> -->
+<!-- 	<script src="<?php //echo base_url('assets/AdminLTE/') ?>plugins/angularjs/angular.min.js"></script> -->
 
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
@@ -1804,12 +1804,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php endif ?>
 
 	<!-- Project Report Form Clone/Declone -->
-	<?php if ($this->uri->segment(1)=='project-report'): ?>
+	<?php if ($this->uri->segment(1)=='project-report' || $this->uri->segment(1)=='project-report-update'): ?>
 	<script>
 		$(document).ready(function(){
 			$('.add-petty-btn').click(function(){
 
 				var newfield = $('.add-petty:last').clone();
+				newfield.find('input').val('');
 
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-petty:last");
@@ -1818,6 +1819,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('.add-transpo-btn').click(function(){
 
 				var newfield = $('.add-transpo:last').clone();
+				newfield.find('input').val('');
 
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-transpo:last");
@@ -1826,6 +1828,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('.add-indirect-btn').click(function(){
 
 				var newfield = $('.add-indirect:last').clone();
+				newfield.find('input').val('');
 
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-indirect:last");
@@ -1834,6 +1837,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('.add-direct-btn').click(function(){
 
 				var newfield = $('.add-direct:last').clone();
+				newfield.find('input').val('');
 
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-direct:last");
@@ -1842,6 +1846,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('.add-tool-rqstd-btn').click(function(){
 
 				var newfield = $('.add-tool-rqstd:last').clone();
+				newfield.find('input').val('');
 
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-tool-rqstd:last");
@@ -1850,6 +1855,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('.add-assignedit-btn').click(function(){
 
 				var newfield = $('.add-assignedit:last').clone();
+				newfield.find('input').val('');
 
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-assignedit:last");
@@ -1858,6 +1864,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('.add-assignedtech-btn').click(function(){
 
 				var newfield = $('.add-assignedtech:last').clone();
+				newfield.find('input').val('');
 
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-assignedtech:last");
