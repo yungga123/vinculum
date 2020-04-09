@@ -311,7 +311,8 @@ class ProjectReportModel extends CI_Model {
 		"description",
 		"date_requested",
 		"date_implemented",
-		"date_finished"
+		"date_finished",
+		"is_deleted"
 	);
 	var $order_column = array(
 		"id",
@@ -319,7 +320,8 @@ class ProjectReportModel extends CI_Model {
 		"description",
 		"date_requested",
 		"date_implemented",
-		"date_finished"
+		"date_finished",
+		"is_deleted"
 	);
 
 	public function projectReport_query(){
@@ -333,6 +335,7 @@ class ProjectReportModel extends CI_Model {
 			$this->db->or_like("date_requested", $_POST["search"]["value"]);
 			$this->db->or_like("date_implemented", $_POST["search"]["value"]);
 			$this->db->or_like("date_finished", $_POST["search"]["value"]);
+			$this->db->having('is_deleted', 0);
 		}
 
 		if (isset($_POST["order"])) {
@@ -341,11 +344,13 @@ class ProjectReportModel extends CI_Model {
 			$this->db->order_by("id","DESC");
 		}
 
+		
 	}
 
 	public function projectReport_datatable() {
 
 		$this->projectReport_query();
+
 		if($_POST["length"] != -1) {
 			$this->db->limit($_POST["length"],$_POST["start"]);
 		}
@@ -362,6 +367,7 @@ class ProjectReportModel extends CI_Model {
 	public function get_all_projectReport_data() {
 		$this->db->select("*");
 		$this->db->from($this->table);
+		$this->db->where('is_deleted',0);
 		return $this->db->count_all_results();
 	}
 //*****************end*********************

@@ -184,8 +184,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php if ($this->uri->segment(1) == "project-report-list"): ?>
 	<script>
 		$(document).ready( function () {
-			//Datatable for Customers Table
-		    var customers_table = $("#projectReport_table").DataTable({
+			//Datatable for Project Report Table
+		    var project_report_table = $("#projectReport_table").DataTable({
 		    	responsive: true,
 		    	"processing": true,
 		    	"serverSide": true,
@@ -202,7 +202,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            ]
 		    });
 		    //end of datatable
+
+		    //Fetching Data in Table Confirmed Pullout
+			$('#projectReport_table tbody').on('click','.btn-projectreport-del',function(){
+
+				var data = project_report_table.row($(this).parents('tr')).data();
+				var rowdata = project_report_table.row(this).data();
+
+				if (data == undefined) {
+					$('#del_pr_id').val(rowdata[0]);
+				} else if (rowdata == undefined) {
+					$('#del_pr_id').val(data[0]);
+				}
+
+			});
 	  	});
+
+
 	</script>
 	<?php endif ?>
 	
@@ -1241,7 +1257,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });	
 		<?php endif ?>
-		
+
+		<?php if ($this->uri->segment(1) == 'project-report-list'): ?>
+		//Form Delete Project Report
+		$('#form-del-projectreport').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.success("Success! Project Report was deleted! Refreshing in 5 seconds.");
+		 				me[0].reset();
+		 				window.setTimeout(function() {
+						    window.location = '<?php echo site_url('project-report-list') ?>';
+						}, 5000);
+		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.error(response.errors);
+		 			}
+		 		}
+		 	});
+		 });		
+		<?php endif ?>
 	</script>
 
 

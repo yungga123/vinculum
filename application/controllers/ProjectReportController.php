@@ -451,7 +451,7 @@ class ProjectReportController extends CI_Controller {
 
 			<a href="'.site_url('project-report-update/'.$row->id).'" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
 
-			<button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+			<button class="btn btn-danger btn-xs btn-projectreport-del" data-toggle="modal" data-target=".modal-projectreport-del"><i class="fas fa-trash"></i></button>
 
 			<a href="'.site_url('project-report-view/'.$row->id).'" class="btn btn-success btn-xs" target="_blank"><i class="fas fa-search"></i></a>
 
@@ -819,6 +819,44 @@ class ProjectReportController extends CI_Controller {
 			// end of update existing assigned tech
 			
 
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
+
+	public function deleteProjectReport() {
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'del_pr_id',
+				'label' => 'Project ID',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select project to delete.'
+				]
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+
+			$this->ProjectReportModel->updateProjectReport(
+				$this->input->post('del_pr_id'),
+				[
+					'is_deleted' => '1'
+				]
+			);
 		} else {
 			$validate['errors'] = validation_errors();
 		}

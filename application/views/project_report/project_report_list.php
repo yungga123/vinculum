@@ -45,5 +45,28 @@ defined('BASEPATH') or die('Access Denied');
 			</div>
 		</div>
 	</section>
+</div>
 
+
+
+<!-- Modal -->
+<div class="modal fade modal-projectreport-del" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <label class="text-bold text-danger" style="font-size: 25px">Do you want to delete this project report?</label>
+        <?php echo form_open('ProjectReportController/deleteProjectReport',["id" => "form-del-projectreport"]) ?>
+        <div class="form-group">
+        	<label for="del_pr_id">Project ID</label>
+        	<input class="form-control text-bold text-center" type="text" name="del_pr_id" id="del_pr_id" value="" readonly>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> No</button>
+        <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> Yes</button>
+      </div>
+      <?php echo form_close() ?>
+    </div>
+  </div>
 </div>
