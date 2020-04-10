@@ -26,11 +26,11 @@ defined('BASEPATH') or die('Access Denied');
 						<div class="card-body">
 							<a  href="<?php echo site_url('customers-add') ?>" class="btn btn-success"><i class="fas fa-plus"></i> Add Customer</a>
 
-							<button class="btn btn-primary"><i class="fas fa-print"></i> Print Customer Database</button>
+							<a href="<?php echo site_url('customers-print') ?>" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Print Customer Database</a>
 
-							<button class="btn btn-warning"><i class="fas fa-print"></i> Print Customer Details</button>
+							<button type="button" class="btn btn-warning"><i class="fas fa-print"></i> Print Customer Details</button>
 
-							<button class="btn btn-info"><i class="fas fa-folder"></i> Add Customer File</button>
+							<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modal-addcustomer-info"><i class="fas fa-folder"></i> Add Customer File</button>
 						</div>
 					</div>
 				</div>
@@ -64,4 +64,47 @@ defined('BASEPATH') or die('Access Denied');
 		</div>
 	</section>
 
-</div>	
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-addcustomer-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <label style="font-size: 22px">Under operations, you can click <span class="text-success">"Add File"</span> Button</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-addcustomer-file" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<div class="text-center">
+      		<label style="font-size: 25px">Add a file to the customer.</label>
+      	</div>
+      	<?php echo form_open_multipart('CustomersController/upload_customer_file',["id" => "form-customerfileadd"]) ?>
+      	<div class="form-group mt-3 text-center">
+      		<label for="file_customer_id">Customer ID</label>
+      		<input class="form-control text-bold text-center" type="text" name="file_customer_id" id="file_customer_id" readonly>
+      	</div>
+
+		<div class="custom-file">
+			<input type="file" class="custom-file-input" name="file_customer_file" id="file_customer_file">
+			<label class="custom-file-label" for="file_customer_file">Choose file</label>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+
+        <button type="submit" class="btn btn-success text-bold"><i class="fas fa-upload"></i> Upload</button>
+      </div>
+      <?php echo form_close() ?>
+    </div>
+  </div>
+</div>

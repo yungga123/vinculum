@@ -2,7 +2,7 @@
 defined('BASEPATH') or die('Access Denied');
 
 class DispatchFormController extends CI_Controller {
-public function addDispatch() {
+	public function addDispatch() {
 
 		if($this->session->userdata('logged_in')) {
 			$this->load->helper('site_helper');
@@ -135,6 +135,7 @@ public function addDispatch() {
 			redirect('','refresh');
 		}
 	}
+
 	public function printDispatch($id) {
 
 		if($this->session->userdata('logged_in')) {
@@ -162,8 +163,8 @@ public function addDispatch() {
 		} else {
 			redirect('', 'refresh');
 		}
-
 	}
+
 	public function updateDispatchValidate() {
 		$validate = [
 			'success' => false,
@@ -320,7 +321,8 @@ public function addDispatch() {
 		}
 
 		echo json_encode($validate);
-}
+	}
+
 	public function addDispatchValidate() {
 
 		$validate = [
@@ -484,9 +486,9 @@ public function addDispatch() {
 		}
 
 		echo json_encode($validate);
-
 	}
-public function deleteDispatch($id) {
+
+	public function deleteDispatch($id) {
 
 		if($this->session->userdata('logged_in')) {
 

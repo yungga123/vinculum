@@ -44,7 +44,10 @@ class CustomersController extends CI_Controller {
 			$sub_array[] = '
 
 			<a href="'.site_url('customers-update/'.$row->CustomerID).'" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> 
-			<button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+
+			<button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+
+			<button type="button" class="btn btn-success btn-sm btn-addcustomerfile" data-toggle="modal" data-target=".modal-addcustomer-file"><i class="fas fa-plus"></i> Add File</button>
 
 			';
 
@@ -305,7 +308,82 @@ class CustomersController extends CI_Controller {
 		$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
-
 	}
+
+	public function customers_print() {
+
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->model('CustomersModel');
+			$results = $this->CustomersModel->getVtCustomersByID();
+			$data = [
+				'title' => 'Print Customers',
+				'results' => $results
+			];
+			$this->load->view('customers/customers_print',$data);
+
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
+	public function upload_customer_file() {
+
+		// File Upload path file url: file:///C:/xampp/htdocs/vinculum/user_guide/libraries/file_uploading.html
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'file_customer_id',
+				'label' => 'Customer ID',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Please select customer.']
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		$uploadPath = './customer_files/'.$this->input->post('file_customer_id').'/';
+
+        $config['upload_path']          = $uploadPath;
+        $config['allowed_types']        = 'jpg|png|xlsx|docx|rtf|html|jpeg|pptx|ppt|doc|xlx|pdf';
+        $config['max_size']             = 51200;
+
+        if (!is_dir($uploadPath)) {
+			mkdir($uploadPath, 0777, TRUE);
+		}
+
+       	$this->load->library('upload', $config);
+
+       	if ($this->form_validation->run()) {
+
+       		if ( ! $this->upload->do_upload('file_customer_file')) {
+
+	            $error = $this->upload->display_errors('<p>• ', '</p>');
+
+	            $validate['errors'] = $error;
+
+	        } else {
+	        	$validate['success'] = true;
+	            $data = array('upload_data' => $this->upload->data());
+	        }
+
+		} 
+		else {
+
+		$validate['errors'] = validation_errors();
+
+		}
+
+        echo json_encode($validate);
+    }
+
+
 	
 }

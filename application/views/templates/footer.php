@@ -71,6 +71,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.js"></script>
 	<!-- overlayScrollbars -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
+	<?php if ($this->uri->segment(1)=='customers'): ?>
+	<!-- bs-custom-file-input -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+	<?php endif ?>
+
 	<!-- AdminLTE App -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
 	<!-- Date Range Picker -->
@@ -177,6 +183,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	            ]
 		    });
 		    //end of datatable
+
+		    //Fetching Data in Customers Data Table
+			$('#customers_table tbody').on('click','.btn-addcustomerfile',function(){
+
+				var data = customers_table.row($(this).parents('tr')).data();
+				var rowdata = customers_table.row(this).data();
+
+				if (data == undefined) {
+					$('#file_customer_id').val(rowdata[0]);
+				} else if (rowdata == undefined) {
+					$('#file_customer_id').val(data[0]);
+				}
+
+			});
 	  	});
 	</script>
 
@@ -1309,6 +1329,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 	});
 		 });		
 		<?php endif ?>
+
+		<?php if ($this->uri->segment(1) == 'customers'): ?>
+		//Form Add Customer File
+		$('#form-customerfileadd').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+
+		 	var formData = new FormData(me[0]);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').addClass('disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: formData,
+		 		cache: false,
+		 		processData: false,
+       			contentType: false,
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.success("Success! File added");
+		 				me[0].reset();
+		 			} else {
+		 				$(':submit').removeClass('disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.error(response.errors);
+		 			}
+		 		}
+		 	});
+		 });		
+		<?php endif ?>
 	</script>
 
 
@@ -2016,7 +2090,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 	<?php endif ?>
+
+
+	<!-- Customers File Selection -->
+	<?php if ($this->uri->segment(1)=='customers'): ?>
+	<script type="text/javascript">
+		$(document).ready(function () {
+		  bsCustomFileInput.init();
+		});
+	</script>
+	<?php endif ?>
 	
+			
 	
 </body>
 </html>

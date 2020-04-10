@@ -50,7 +50,8 @@ class CustomersModel extends CI_Model {
 		"InstallationDate",
 		"Interest",
 		"Type",
-		"Notes"
+		"Notes",
+		"is_deleted"
 	);
 	var $order_column = array(
 		"CustomerID",
@@ -63,7 +64,8 @@ class CustomersModel extends CI_Model {
 		"InstallationDate",
 		"Interest",
 		"Type",
-		"Notes"
+		"Notes",
+		"is_deleted"
 	);
 
 	public function customervt_query(){
@@ -83,6 +85,7 @@ class CustomersModel extends CI_Model {
 			$this->db->or_like("Interest", $_POST["search"]["value"]);
 			$this->db->or_like("Type", $_POST["search"]["value"]);
 			$this->db->or_like("Notes", $_POST["search"]["value"]);
+			$this->db->having("is_deleted",0);
 		}
 
 		if (isset($_POST["order"])) {
@@ -112,6 +115,7 @@ class CustomersModel extends CI_Model {
 	public function get_all_customervt_data() {
 		$this->db->select("*");
 		$this->db->from($this->table);
+		$this->db->where('is_deleted',0);
 		return $this->db->count_all_results();
 	}
 //*****************end*********************
@@ -126,6 +130,12 @@ class CustomersModel extends CI_Model {
 
 	public function getVtCustomers($id) {
 		$this->db->where('CustomerID', $id);
+		return $this->db->get('customer_vt')->result();
+	}
+
+	public function getVtCustomersByID() {
+		$this->db->where('is_deleted',0);
+		$this->db->order_by('CustomerID','DESC');
 		return $this->db->get('customer_vt')->result();
 	}
 
