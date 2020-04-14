@@ -31,7 +31,7 @@ class CustomersController extends CI_Controller {
 		foreach($fetch_data as $row) {
 			$sub_array = array();
 			$sub_array[] = $row->CustomerID;
-			$sub_array[] = $row->CompanyName;
+			$sub_array[] = '<a href="'.site_url('customer-details/').$row->CustomerID.'" target="_blank">'.$row->CompanyName.'</a>';
 			$sub_array[] = $row->ContactPerson;
 			$sub_array[] = $row->Address;
 			$sub_array[] = $row->ContactNumber;
@@ -384,6 +384,26 @@ class CustomersController extends CI_Controller {
         echo json_encode($validate);
     }
 
+    public function customer_details($id){
+    	if($this->session->userdata('logged_in')) {
 
-	
+			$this->load->helper('site_helper');
+			$this->load->helper('directory');
+			$this->load->model('CustomersModel');
+
+			$data = html_variable();
+			$data['title'] = 'Customer Details';
+			$data['results'] = $this->CustomersModel->getVtCustomers($id);
+			$data['files'] = directory_map('./customer_files/'.$id);
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('customers/customer_details');
+			$this->load->view('templates/footer');
+
+		} else {
+			redirect('', 'refresh');
+		}
+    }
+
+    
 }

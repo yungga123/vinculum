@@ -272,7 +272,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -283,13 +283,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Added! " + a);
 		 				me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -326,7 +326,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -337,12 +337,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Updated! Please refresh this page.");
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -377,7 +377,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -388,7 +388,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Stocks Added! Please refresh this page.");
@@ -396,7 +396,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 				$('#AS_Quantity').val("");
 		 				me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -430,7 +430,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -441,13 +441,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Success! it is now for pending. Click to Refresh ");
 		 				me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -484,7 +484,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -495,13 +495,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Customer Added! "+a);
 		 				me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -538,7 +538,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -549,11 +549,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Customer Updated! "+a);
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
@@ -588,7 +588,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -599,7 +599,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				$("#search-result").empty();
@@ -617,7 +617,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				  		});
 
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				$("#search-result").empty();
 			 			$("#search-result").append(response.data);
@@ -652,7 +652,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -663,11 +663,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Pullout Success "+a);
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
@@ -702,7 +702,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -713,12 +713,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Success! Please refresh this page."+a);
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -756,7 +756,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -767,13 +767,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Dispatch Added! " + a);
 						 me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -811,7 +811,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -822,12 +822,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Successfully Updated! Please Refresh");
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -865,7 +865,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -876,13 +876,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Success! Please Refresh this page.");
 						 me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -918,7 +918,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -930,13 +930,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		success: function(response) {
 		 			if (response.success == true) {
 
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success("Success! Item was set for request to delete.");
 						me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);
@@ -976,7 +976,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -987,12 +987,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Technician was added! Please refresh this page.");
 						me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
@@ -1028,7 +1028,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -1039,12 +1039,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Technician was updated! View now at technicians table.");
 						 //me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
@@ -1080,7 +1080,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -1095,14 +1095,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 				
 						me[0].reset();
 
-						$(':submit').removeClass('disabled');
+						$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 						window.setTimeout(function() {
 						    window.location = '<?php echo site_url('schedules') ?>';
 						}, 5000);
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
@@ -1137,7 +1137,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -1152,14 +1152,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 				
 						me[0].reset();
 
-						$(':submit').removeClass('disabled');
+						$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 
 						window.setTimeout(function() {
 						    window.location = '<?php echo site_url('schedules') ?>';
 						}, 5000);
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
@@ -1199,7 +1199,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -1210,11 +1210,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Project Report was updated!");
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 				
@@ -1252,7 +1252,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -1263,11 +1263,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Project Report was added!");
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 				
@@ -1302,7 +1302,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled','disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -1313,7 +1313,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Project Report was deleted! Refreshing in 5 seconds.");
 		 				me[0].reset();
@@ -1321,7 +1321,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						    window.location = '<?php echo site_url('project-report-list') ?>';
 						}, 5000);
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
@@ -1356,7 +1356,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				"hideMethod": "fadeOut"
 			}
 
-			$(':submit').addClass('disabled');
+			$(':submit').attr('disabled', 'disabled');
 			$('.loading-modal').modal();
 
 		 	//ajax
@@ -1370,12 +1370,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-		 				$(':submit').removeClass('disabled');
 						$('.loading-modal').modal('hide');
+						$(':submit').removeAttr('disabled', 'disabled');
 		 				toastr.success("Success! File added");
 		 				me[0].reset();
 		 			} else {
-		 				$(':submit').removeClass('disabled');
+		 				$(':submit').removeAttr('disabled', 'disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.error(response.errors);
 		 			}
