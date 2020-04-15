@@ -19,6 +19,7 @@ class TechniciansController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('technicians/technicians');
 			$this->load->view('templates/footer');
+			$this->load->view('technicians/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -111,6 +112,7 @@ class TechniciansController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('technicians/technicians_edit');
 			$this->load->view('templates/footer');
+			$this->load->view('technicians/script');
 		} else {
 			redirect('','refresh');
 		}

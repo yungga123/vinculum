@@ -24,6 +24,7 @@ class SalesDispatchController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('Forms/sales_dispatch/sales_dispatch');
 			$this->load->view('templates/footer');
+			$this->load->view('forms/script');
 		} else {
 			redirect('', 'refresh');
 		}
@@ -46,6 +47,7 @@ class SalesDispatchController extends CI_Controller {
 		$this->load->view('templates/navbar');
 		$this->load->view('Forms/sales_dispatch/salesDispatchTable');
 		$this->load->view('templates/footer');
+		$this->load->view('forms/script');
 	}
 
 	public function update_sales_dispatch($id) {

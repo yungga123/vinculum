@@ -23,6 +23,7 @@ class SchedulesController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('schedules/schedules');
 			$this->load->view('templates/footer');
+			$this->load->view('schedules/script');
 		} else {
 			redirect('','refresh');
 		}

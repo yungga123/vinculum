@@ -26,6 +26,7 @@ class DispatchFormController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('forms/dispatch');
 			$this->load->view('templates/footer');
+			$this->load->view('forms/script');
 
 		} else {
 			redirect('', 'refresh');
@@ -63,6 +64,7 @@ class DispatchFormController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('forms/dispatchtable');
 			$this->load->view('templates/footer');
+			$this->load->view('forms/script');
 
 
 		} else {

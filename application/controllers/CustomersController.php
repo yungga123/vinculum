@@ -15,6 +15,7 @@ class CustomersController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('customers/customers_table');
 			$this->load->view('templates/footer');
+			$this->load->view('customers/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -76,6 +77,7 @@ class CustomersController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('customers/customers_add');
 			$this->load->view('templates/footer');
+			$this->load->view('customers/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -200,6 +202,7 @@ class CustomersController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('customers/customers_update');
 			$this->load->view('templates/footer');
+			$this->load->view('customers/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -399,6 +402,7 @@ class CustomersController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('customers/customer_details');
 			$this->load->view('templates/footer');
+			$this->load->view('customers/script');
 
 		} else {
 			redirect('', 'refresh');

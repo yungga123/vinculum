@@ -25,6 +25,7 @@ class ItemsController extends CI_Controller
 			$this->load->view('templates/navbar');
 			$this->load->view('items/items_masterlist/items_masterlist');
 			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -48,6 +49,7 @@ class ItemsController extends CI_Controller
 			$this->load->view('templates/navbar');
 			$this->load->view('items/items_masterlist/items_masterlist');
 			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -66,6 +68,7 @@ class ItemsController extends CI_Controller
 		$this->load->view('templates/navbar');
 		$this->load->view('items/items_masterlist/new_item');
 		$this->load->view('templates/footer');
+		$this->load->view('items/items_masterlist/script');
 	}
 
 

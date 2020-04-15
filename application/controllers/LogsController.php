@@ -25,6 +25,7 @@ class LogsController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('items/history/items_logs');
 			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -153,6 +154,7 @@ class LogsController extends CI_Controller {
 				$this->load->view('templates/navbar');
 				$this->load->view('items/history/items_logs');
 				$this->load->view('templates/footer');
+				$this->load->view('items/items_masterlist/script');
 			} else {
 				redirect('logs');
 			}

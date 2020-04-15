@@ -273,6 +273,7 @@ class ProjectReportController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('project_report/project_report');
 			$this->load->view('templates/footer');
+			$this->load->view('project_report/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -411,6 +412,7 @@ class ProjectReportController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('project_report/project_report_list');
 			$this->load->view('templates/footer');
+			$this->load->view('project_report/script');
 		} else {
 			redirect('','refresh');
 		}
@@ -516,6 +518,7 @@ class ProjectReportController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('project_report/project_report_edit');
 			$this->load->view('templates/footer');
+			$this->load->view('project_report/script');
 		} else {
 			redirect('','refresh');
 		}

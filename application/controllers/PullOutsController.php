@@ -23,6 +23,7 @@ class PullOutsController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('items/item_pullout/item_pullout');
 			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
 		} else {
 			redirect('', 'refresh');
 		}
@@ -47,6 +48,7 @@ class PullOutsController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('items/item_pullout/pullouts_pending');
 			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
 		} else {
 			redirect('', 'refresh');
 		}
@@ -316,6 +318,7 @@ class PullOutsController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('items/item_pullout/confirmed_pullouts');
 			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
 		} else {
 			redirect('', 'refresh');
 		}
@@ -375,6 +378,7 @@ class PullOutsController extends CI_Controller {
 				$this->load->view('templates/navbar');
 				$this->load->view('items/item_pullout/confirmed_pullouts');
 				$this->load->view('templates/footer');
+				$this->load->view('items/items_masterlist/script');
 				
 			} else {
 				$this->session->set_flashdata('fail', form_error('cpullout_start_date'));
@@ -503,6 +507,7 @@ class PullOutsController extends CI_Controller {
 			$this->load->view('templates/navbar');
 			$this->load->view('items/item_pullout/return_history');
 			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
 
 		} else {
 			redirect('','refresh');
@@ -557,6 +562,7 @@ class PullOutsController extends CI_Controller {
 				$this->load->view('templates/navbar');
 				$this->load->view('items/item_pullout/return_history');
 				$this->load->view('templates/footer');
+				$this->load->view('items/items_masterlist/script');
 				
 			} else {
 				$this->session->set_flashdata('fail', form_error('rpullout_start_date'));
