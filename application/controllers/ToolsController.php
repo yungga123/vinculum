@@ -1,0 +1,168 @@
+<?php
+defined('BASEPATH') or die('Access Denied');
+
+class ToolsController extends CI_Controller {
+	public function __construct() {
+        Parent::__construct();
+        $this->load->model('ToolsModel');
+    }
+
+    function validation_rules() {
+    	$rules = [
+			[
+				'field' => 'tool_code',
+				'label' => 'Tool Code',
+				'rules' => 'trim|required|max_length[500]|is_unique[tools.code]',
+				'errors' => [
+					'required' => 'Please provide Tool Code.',
+					'max_length' => 'Tool Code maximum characters is 500.',
+					'is_unique' => 'Tool Code is already existing.'
+				]
+			],
+			[
+				'field' => 'tool_model',
+				'label' => 'Tool Model',
+				'rules' => 'trim|max_length[500]',
+				'errors' => [
+					'max_length' => 'Tool Model maximum characters is 500.'
+				]
+			],
+			[
+				'field' => 'tool_description',
+				'label' => 'Tool Description',
+				'rules' => 'trim|max_length[1000]',
+				'errors' => [
+					'max_length' => 'Tool Description maximum characters is 1000.'
+				]
+			],
+			[
+				'field' => 'tool_type',
+				'label' => 'Tool Type',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'tool_quantity',
+				'label' => 'Tool Quantity',
+				'rules' => 'trim|max_length[11]|is_natural',
+				'errors' => [
+					'max_length' => 'Tool Quantity maximum characters is 11.',
+					'is_natural' => 'Tool Quantity must contain a valid number.'
+				]
+			],
+			[
+				'field' => 'tool_price',
+				'label' => 'Tool Price',
+				'rules' => 'trim|max_length[18]|numeric',
+				'errors' => [
+					'max_length' => 'Tool Price maximum characters is 18.',
+					'numeric' => 'Tool Price must be numeric'
+				]
+			]
+
+		];
+
+		return $rules;
+    }
+
+    public function index() {
+    	if($this->session->userdata('logged_in')) {
+    		$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Dashboard';
+			$data['ul_tools'] = ' active';
+			$data['listof_tools'] = ' active';
+			$data['ul_tools_treeview'] = ' menu-open';
+
+			$this->load->view('templates/header',$data);
+			$this->load->view('templates/navbar');
+			$this->load->view('tools/tools');
+			$this->load->view('templates/footer');
+			$this->load->view('tools/script');
+
+		} else {
+			redirect('','refresh');
+		}
+    }
+
+    public function get_tools() {
+
+		$fetch_data = $this->ToolsModel->tools_datatable();
+		$data = array();
+		foreach($fetch_data as $row) {
+			$sub_array = array();
+			$sub_array[] = $row->code;
+			$sub_array[] = $row->model;
+			$sub_array[] = $row->description;
+			$sub_array[] = $row->type;
+			$sub_array[] = $row->quantity;
+			$sub_array[] = $row->price;
+			$sub_array[] = '
+
+				  	<a href="#" class="btn btn-warning btn-sm" title="Edit"><i class="fas fa-edit"></i></a> 
+
+					<button type="button" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>			
+			';
+
+			$data[] = $sub_array;
+		}
+
+		$output = array(
+			"draw"	=>	intval($_POST["draw"]),
+			"recordsTotal" => $this->ToolsModel->get_all_tools_data(),
+			"recordsFiltered" => $this->ToolsModel->filter_tools_data(),
+			"data" => $data
+		);
+
+		echo json_encode($output);
+    }
+
+    public function add_tools() {
+    	if($this->session->userdata('logged_in')) {
+    		$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Dashboard';
+			$data['ul_tools'] = ' active';
+			$data['listof_tools'] = ' active';
+			$data['ul_tools_treeview'] = ' menu-open';
+
+			$this->load->view('templates/header',$data);
+			$this->load->view('templates/navbar');
+			$this->load->view('tools/addtools');
+			$this->load->view('templates/footer');
+			$this->load->view('tools/script');
+
+		} else {
+			redirect('','refresh');
+		}
+    }
+
+    public function add_tools_validate() {
+    	$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = $this->validation_rules();
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			$this->ToolsModel->insert([
+				'code' => $this->input->post('tool_code'),
+				'model' => $this->input->post('tool_model'),
+				'description' => $this->input->post('tool_description'),
+				'type' => $this->input->post('tool_type'),
+				'quantity' => $this->input->post('tool_quantity'),
+				'price' => $this->input->post('tool_price')
+			]);
+		} 
+		else {
+		$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+    }
+}

@@ -112,3 +112,7 @@ $route['project-report'] = 'ProjectReportController';
 $route['project-report-list'] = 'ProjectReportController/projectReportList';
 $route['project-report-view/(:any)'] = 'ProjectReportController/projectReportView/$1';
 $route['project-report-update/(:any)'] = 'ProjectReportController/project_report_update/$1';
+
+//Tools Controller
+$route['tools'] = 'ToolsController';
+$route['addtools'] = 'ToolsController/add_tools';

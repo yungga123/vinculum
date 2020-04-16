@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') or die('No direct script access allowed.');
 
-
-class ItemsController extends CI_Controller
-{	
+class ItemsController extends CI_Controller {
 
 	public function items_masterlist() {
 		if($this->session->userdata('logged_in')) {
@@ -444,38 +442,6 @@ class ItemsController extends CI_Controller
 
 		echo json_encode($validate);
 	}
-
-	// public function get_ActualStocks() {
-
-	// 	$this->load->model('ItemsModel');
-	// 	$fetch_data = $this->ItemsModel->itemActualStocks_datatable();
-	// 	$data = array();
-	// 	foreach($fetch_data as $row) {
-	// 		$sub_array = array();
-	// 		$sub_array[] = $row->itemCode;
-	// 		$sub_array[] = $row->itemName;
-	// 		$sub_array[] = $row->itemType;
-	// 		$sub_array[] = $row->itemSupplierPrice;
-	// 		$sub_array[] = $row->itemPrice;
-	// 		$sub_array[] = $row->stocks;
-	// 		$sub_array[] = date_format(date_create($row->date_of_purchase),"M j, Y");
-	// 		$sub_array[] = $row->location;
-	// 		$sub_array[] = $row->supplier;
-	// 		$sub_array[] = $row->encoder;
-	// 		$sub_array[] = '<button type="button" class="btn btn-primary btn-xs btn_select"><i class="fas fa-external-link-alt"></i>
- //         Pullout</button>';
-	// 		$data[] = $sub_array;
-	// 	}
-
-	// 	$output = array(
-	// 		"draw"	=>	intval($_POST["draw"]),
-	// 		"recordsTotal" => $this->ItemsModel->get_all_itemActualStocks_data(),
-	// 		"recordsFiltered" => $this->ItemsModel->filter_itemActualStocks_data(),
-	// 		"data" => $data
-	// 	);
-
-	// 	echo json_encode($output);
-	// }
 
 	public function print_items() {
 		$this->load->model('ItemsModel');

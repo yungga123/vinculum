@@ -121,7 +121,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            </ul>
           	</li>
 
-          	<li class="nav-item has-treeview">
+          	<li class="nav-item has-treeview<?php echo $ul_tools_treeview ?>">
 	            <a href="#" class="nav-link<?php echo $ul_tools ?>">
 	              <i class="nav-icon fas fa-wrench"></i>
 	              <p>
@@ -129,10 +129,10 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	                <i class="fas fa-angle-left right"></i>
 	              </p>
 	            </a>
-	            <ul class="nav nav-treeview" style="display: none;">
+	            <ul class="nav nav-treeview">
 
 	              <li class="nav-item">
-	                <a href="#" class="nav-link<?php echo $listof_tools ?>">
+	                <a href="<?php echo site_url('tools') ?>" class="nav-link<?php echo $listof_tools ?>">
 	                  <i class="far fa-circle nav-icon"></i>
 	                  <p>List of Tools</p>
 	                </a>
@@ -169,111 +169,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            </a>
           	</li>
 
-          	<li class="nav-header">SALES</li>
-
-          	<li class="nav-item has-treeview">
-		        <a href="#" class="nav-link<?php echo $ul_reports ?>">
-		          <i class="nav-icon fas fa-chart-line"></i>
-		          <p>
-		            Reports
-		            <i class="fas fa-angle-left right"></i>
-		          </p>
-		        </a>
-		        <ul class="nav nav-treeview" style="display: none;">
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $daily_reports ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Daily</p>
-		            </a>
-		          </li>
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $weekly_reports ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Weekly</p>
-		            </a>
-		          </li>
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $monthly_reports ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Monthly</p>
-		            </a>
-		          </li>
-
-		        </ul>
-	      	</li>
-
-	    	<li class="nav-item has-treeview">
-		        <a href="#" class="nav-link<?php echo $ul_salesforms ?>">
-		          <i class="nav-icon fas fa-file"></i>
-		          <p>
-		            Sales Forms
-		            <i class="fas fa-angle-left right"></i>
-		          </p>
-		        </a>
-		        <ul class="nav nav-treeview" style="display: none;">
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $make_quote ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Make Quotation</p>
-		            </a>
-		          </li>
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $make_drform ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Make DR Form</p>
-		            </a>
-		          </li>
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $make_warrantyform ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Make Warranty Form</p>
-		            </a>
-		          </li>
-
-		        </ul>
-	    	</li>
-
-	    	<li class="nav-item has-treeview">
-		        <a href="#" class="nav-link<?php echo $ul_formslisting ?>">
-		          <i class="nav-icon fas fa-list-alt"></i>
-		          <p>
-		            Forms Listing
-		            <i class="fas fa-angle-left right"></i>
-		          </p>
-		        </a>
-		        <ul class="nav nav-treeview" style="display: none;">
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $list_quote ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>List of Quotations</p>
-		            </a>
-		          </li>
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $list_drform ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>List of DR Forms</p>
-		            </a>
-		          </li>
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $list_warrantyform ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>List of Warranty Forms</p>
-		            </a>
-		          </li>
-
-		        </ul>
-	    	</li>
-
-	    	<li class="nav-header">PROJECTS AND SERVICES</li>
+          	<li class="nav-header">PROJECTS AND SERVICES</li>
 
 	    	<li class="nav-item has-treeview<?php echo $project_report ?>">
 	            <a href="javascript:void(0)" class="nav-link <?php echo $project_report_href ?>">
@@ -405,6 +301,109 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		        </ul>
 	    	</li>
 
+          	<li class="nav-header">SALES</li>
+
+          	<li class="nav-item has-treeview">
+		        <a href="#" class="nav-link<?php echo $ul_reports ?>">
+		          <i class="nav-icon fas fa-chart-line"></i>
+		          <p>
+		            Reports
+		            <i class="fas fa-angle-left right"></i>
+		          </p>
+		        </a>
+		        <ul class="nav nav-treeview" style="display: none;">
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $daily_reports ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Daily</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $weekly_reports ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Weekly</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $monthly_reports ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Monthly</p>
+		            </a>
+		          </li>
+
+		        </ul>
+	      	</li>
+
+	    	<li class="nav-item has-treeview">
+		        <a href="#" class="nav-link<?php echo $ul_salesforms ?>">
+		          <i class="nav-icon fas fa-file"></i>
+		          <p>
+		            Sales Forms
+		            <i class="fas fa-angle-left right"></i>
+		          </p>
+		        </a>
+		        <ul class="nav nav-treeview" style="display: none;">
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $make_quote ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Make Quotation</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $make_drform ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Make DR Form</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $make_warrantyform ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Make Warranty Form</p>
+		            </a>
+		          </li>
+
+		        </ul>
+	    	</li>
+
+	    	<li class="nav-item has-treeview">
+		        <a href="#" class="nav-link<?php echo $ul_formslisting ?>">
+		          <i class="nav-icon fas fa-list-alt"></i>
+		          <p>
+		            Forms Listing
+		            <i class="fas fa-angle-left right"></i>
+		          </p>
+		        </a>
+		        <ul class="nav nav-treeview" style="display: none;">
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $list_quote ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>List of Quotations</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $list_drform ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>List of DR Forms</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="#" class="nav-link<?php echo $list_warrantyform ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>List of Warranty Forms</p>
+		            </a>
+		          </li>
+
+		        </ul>
+	    	</li>
         </ul>
 
       </nav>

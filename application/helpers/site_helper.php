@@ -54,6 +54,7 @@ if(!function_exists('html_variable')) {
 			'project_report_href' => '',
 			'project_report_add' => '',
 			'project_report_list' => '',
+			'ul_tools_treeview' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];
