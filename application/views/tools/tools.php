@@ -57,3 +57,62 @@ defined('BASEPATH') or die('Access Denied');
 		</div>
 	</section>
 </div>
+
+
+<div class="modal fade modal-edit-tool" id="modal-1">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+
+			<div id="tool_loading">
+                
+            </div>
+
+			<div class="modal-header">
+				<label style="font-size:24px">Edit Tools</label>
+			</div>
+			<div class="modal-body">
+				<?php echo form_open('ToolsController/edit_tools_validate',["id" => "form-edittools"]) ?>
+				<div class="form-group">
+					<label for="tool_code">Tool Code</label>
+					<input class="form-control" type="text" name="tool_code" id="tool_code" readonly>
+				</div>
+
+				<div class="form-group">
+					<label for="tool_model">Model</label>
+					<input class="form-control" type="text" name="tool_model" id="tool_model">
+				</div>
+
+				<div class="form-group">
+					<label for="tool_description">Description</label>
+					<input class="form-control" type="text" name="tool_description" id="tool_description">
+				</div>
+
+				<div class="form-group">
+					<label for="tool_type">Type</label>
+					<select class="form-control" name="tool_type" id="tool_type">
+						<option value="">--- Please Select ---</option>
+						<option>Hand Tools</option>
+						<option>Power Tools</option>
+						<option>Utility</option>
+						<option>Others</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="tool_quantity">Quantity</label>
+					<input class="form-control" type="text" name="tool_quantity" id="tool_quantity">
+				</div>
+
+				<div class="form-group">
+					<label for="tool_price">Price</label>
+					<input class="form-control" type="text" name="tool_price" id="tool_price">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary text-bold" data-dismiss="modal">CLOSE</button>
+				<button type="submit" class="btn btn-primary text-bold">SUBMIT</button>
+			</div>
+			<?php echo form_close() ?>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

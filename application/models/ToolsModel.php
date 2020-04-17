@@ -7,6 +7,16 @@ class ToolsModel extends CI_Model {
 		$this->db->insert('tools',$data);
 	}
 
+	public function select_where_id($id) {
+		$this->db->where('code',$id);
+		return $this->db->get('tools')->result();
+	}
+
+	public function update($id,$data) {
+		$this->db->where('code',$id);
+		$this->db->update('tools',$data);
+	}
+
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "tools";
 	var $select_column = array(

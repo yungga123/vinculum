@@ -7,17 +7,30 @@ class ToolsController extends CI_Controller {
         $this->load->model('ToolsModel');
     }
 
-    function validation_rules() {
+    function validation_rules($usage) {
+    	$tool_rule = '';
+    	$tool_errors = array();
+    	if ($usage == 'add') {
+    		$tool_rule = 'trim|required|max_length[500]|is_unique[tools.code]';
+    		$tool_errors = [
+					'required' => 'Please provide Tool Code.',
+					'max_length' => 'Tool Code maximum characters is 500.',
+					'is_unique' => 'Tool Code is already existing.'
+				];
+    	} elseif ($usage == 'edit') {
+    		$tool_rule = 'trim|required|max_length[500]';
+    		$tool_errors = [
+					'required' => 'Please provide Tool Code.',
+					'max_length' => 'Tool Code maximum characters is 500.'
+				];
+    	}
+
     	$rules = [
 			[
 				'field' => 'tool_code',
 				'label' => 'Tool Code',
-				'rules' => 'trim|required|max_length[500]|is_unique[tools.code]',
-				'errors' => [
-					'required' => 'Please provide Tool Code.',
-					'max_length' => 'Tool Code maximum characters is 500.',
-					'is_unique' => 'Tool Code is already existing.'
-				]
+				'rules' => $tool_rule,
+				'errors' => $tool_errors
 			],
 			[
 				'field' => 'tool_model',
@@ -98,7 +111,7 @@ class ToolsController extends CI_Controller {
 			$sub_array[] = $row->price;
 			$sub_array[] = '
 
-				  	<a href="#" class="btn btn-warning btn-sm" title="Edit"><i class="fas fa-edit"></i></a> 
+				  	<button type="button" class="btn btn-warning btn-sm btn-select" title="Edit" data-toggle="modal" data-target=".modal-edit-tool"><i class="fas fa-edit"></i></button> 
 
 					<button type="button" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>			
 			';
@@ -142,7 +155,7 @@ class ToolsController extends CI_Controller {
 			'errors' => ''
 		];
 
-		$rules = $this->validation_rules();
+		$rules = $this->validation_rules('add');
 		
 		$this->form_validation->set_error_delimiters('<p>• ','</p>');
 
@@ -159,6 +172,54 @@ class ToolsController extends CI_Controller {
 				'quantity' => $this->input->post('tool_quantity'),
 				'price' => $this->input->post('tool_price')
 			]);
+		} 
+		else {
+		$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+    }
+
+    public function get_tools_details($id) {
+
+    	$validate = [
+    		'success' => false,
+    		'data' => ''
+    	];
+
+    	$results = $this->ToolsModel->select_where_id($id);
+
+    	if (count($results != 0)) {
+    		$validate['success'] = true;
+    		$validate['data'] = $results;
+    	}
+
+    	echo json_encode($validate);
+    }
+
+    public function edit_tools_validate() {
+    	$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = $this->validation_rules('edit');
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+			$id = $this->input->post('tool_code');
+			$data = [
+				'model' => $this->input->post('tool_model'),
+				'description' => $this->input->post('tool_description'),
+				'type' => $this->input->post('tool_type'),
+				'quantity' => $this->input->post('tool_quantity'),
+				'price' => $this->input->post('tool_price')
+			];
+
+			$this->ToolsModel->update($id,$data);
 		} 
 		else {
 		$validate['errors'] = validation_errors();
