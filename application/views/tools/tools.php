@@ -59,7 +59,7 @@ defined('BASEPATH') or die('Access Denied');
 </div>
 
 
-<div class="modal fade modal-edit-tool" id="modal-1">
+<div class="modal fade modal-edit-tool">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 
@@ -111,6 +111,27 @@ defined('BASEPATH') or die('Access Denied');
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary text-bold" data-dismiss="modal">CLOSE</button>
 				<button type="submit" class="btn btn-primary text-bold">SUBMIT</button>
+			</div>
+			<?php echo form_close() ?>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade modal-delete-tool">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<?php echo form_open('ToolsController/delete_tool_validate',["id" => "form-deletetool"]) ?>
+			<div class="modal-body text-center">
+				<label style="font-size: 22px">DELETE THIS TOOL?</label>
+
+				<div class="form-group">
+					<label for="tool_delete_code">Tool Code</label>
+					<input class="form-control text-center text-bold" type="text" name="tool_delete_code" id="tool_delete_code" readonly>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger text-bold" data-dismiss="modal">NO</button>
+				<button type="submit" class="btn btn-success text-bold">YES</button>
 			</div>
 			<?php echo form_close() ?>
 		</div><!-- /.modal-content -->

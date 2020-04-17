@@ -113,7 +113,7 @@ class ToolsController extends CI_Controller {
 
 				  	<button type="button" class="btn btn-warning btn-sm btn-select" title="Edit" data-toggle="modal" data-target=".modal-edit-tool"><i class="fas fa-edit"></i></button> 
 
-					<button type="button" class="btn btn-danger btn-sm" title="Delete"><i class="fas fa-trash"></i></button>			
+					<button type="button" class="btn btn-danger btn-sm btn-delete" title="Delete" data-toggle="modal" data-target=".modal-delete-tool"><i class="fas fa-trash"></i></button>			
 			';
 
 			$data[] = $sub_array;
@@ -217,6 +217,43 @@ class ToolsController extends CI_Controller {
 				'type' => $this->input->post('tool_type'),
 				'quantity' => $this->input->post('tool_quantity'),
 				'price' => $this->input->post('tool_price')
+			];
+
+			$this->ToolsModel->update($id,$data);
+		} 
+		else {
+		$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+    }
+
+    public function delete_tool_validate() {
+    	$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'tool_delete_code',
+				'label' => 'Tool Code',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select tool to delete'
+				]
+			]
+
+		];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+			$id = $this->input->post('tool_delete_code');
+			$data = [
+				'is_deleted' => 1
 			];
 
 			$this->ToolsModel->update($id,$data);
