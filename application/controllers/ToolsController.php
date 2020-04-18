@@ -263,4 +263,21 @@ class ToolsController extends CI_Controller {
 		}
 		echo json_encode($validate);
     }
+
+    public function print_tools() {
+    	if($this->session->userdata('logged_in')) {
+
+    		$results = $this->ToolsModel->select_all();
+
+	    	$data = [
+	    		'title' => 'Print Tools',
+	    		'results' => $results
+	    	];
+
+	    	$this->load->view('tools/printtools',$data);
+
+    	} else {
+    		redirect('','refresh');
+    	}
+    }
 }

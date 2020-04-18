@@ -7,6 +7,11 @@ class ToolsModel extends CI_Model {
 		$this->db->insert('tools',$data);
 	}
 
+	public function select_all() {
+		$this->db->where('is_deleted',0);
+		return $this->db->get('tools')->result();
+	}
+
 	public function select_where_id($id) {
 		$this->db->where('code',$id);
 		return $this->db->get('tools')->result();

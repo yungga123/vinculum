@@ -26,7 +26,7 @@ defined('BASEPATH') or die('Access Denied');
 
 						<div class="card-body">
 							<a href="<?php echo site_url('addtools') ?>" class="btn btn-block btn-success text-bold"><i class="fas fa-plus"></i> ADD TOOLS</a>
-							<button type="button" class="btn btn-block btn-warning text-bold"><i class="fas fa-print"></i> PRINT TOOLS</button>
+							<a href="<?php echo site_url('printtools') ?>" class="btn btn-block btn-warning text-bold" target="_blank"><i class="fas fa-print"></i> PRINT TOOLS</a>
 						</div>
 					</div>
 				</div>
