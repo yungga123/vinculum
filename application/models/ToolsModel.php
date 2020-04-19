@@ -8,7 +8,6 @@ class ToolsModel extends CI_Model {
 	}
 
 	public function select_all() {
-		$this->db->where('is_deleted',0);
 		return $this->db->get('tools')->result();
 	}
 
@@ -22,6 +21,11 @@ class ToolsModel extends CI_Model {
 		$this->db->update('tools',$data);
 	}
 
+	public function delete($id) {
+		$this->db->where('code',$id);
+		$this->db->delete('tools');
+	}
+
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "tools";
 	var $select_column = array(
@@ -30,8 +34,7 @@ class ToolsModel extends CI_Model {
 		"description",
 		"type",
 		"quantity",
-		"price",
-		"is_deleted"
+		"price"
 	);
 	var $order_column = array(
 		"code",
@@ -54,7 +57,6 @@ class ToolsModel extends CI_Model {
 			$this->db->or_like("type", $_POST["search"]["value"]);
 			$this->db->or_like("quantity", $_POST["search"]["value"]);
 			$this->db->or_like("price", $_POST["search"]["value"]);
-			$this->db->having("is_deleted",0);
 		}
 
 		if (isset($_POST["order"])) {

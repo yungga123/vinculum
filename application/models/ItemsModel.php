@@ -155,4 +155,14 @@ class ItemsModel extends CI_Model {
 		$this->db->or_like('itemName',$search_word);
 		return $this->db->get('items')->result();
 	}
+
+	public function select_direct_items() {
+		$this->db->where('itemType','Direct');
+		return $this->db->get('items')->result();
+	}
+
+	public function select_indirect_items() {
+		$this->db->where('itemType','Indirect');
+		return $this->db->get('items')->result();
+	}
 }
