@@ -12,7 +12,10 @@ class ServiceReportController extends CI_Controller {
         if($this->session->userdata('logged_in')) {
 
             $this->load->model('CustomersModel');
+            $this->load->model('ItemsModel');
             $results_customers = $this->CustomersModel->getVtCustomersByID();
+            $results_direct_items = $this->ItemsModel->select_direct_items();
+            $results_indirect_items = $this->ItemsModel->select_indirect_items();
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
@@ -21,7 +24,8 @@ class ServiceReportController extends CI_Controller {
 			$data['ul_servicereport'] = ' active';
             $data['encode_sr'] = ' active';
             $data['results_customers'] = $results_customers;
-
+            $data['results_direct_items'] = $results_direct_items;
+            $data['results_indirect_items'] = $results_indirect_items;
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
