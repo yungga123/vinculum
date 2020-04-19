@@ -77,10 +77,7 @@ date_default_timezone_set('Asia/Manila');
 							<div class="form-group">
 								<label for="date_of_purchase">Date Added</label>
 								<div class="input-group">
-									<input class="form-control" type="date" id="date_of_purchase" name="date_of_purchase" placeholder="Select Date" value="<?php echo date('Y-m-d') ?>" readonly>
-									<div id="resetDate" class="input-group-addon">
-										<i class="fa fa-remove"></i>
-									</div>
+									<input class="form-control" type="date" id="date_of_purchase" name="date_of_purchase" placeholder="Select Date" value="<?php echo date('Y-m-d') ?>">
 								</div>									      
 							</div>							
 							<div class="form-group">

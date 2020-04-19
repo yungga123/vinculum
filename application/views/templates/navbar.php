@@ -221,7 +221,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				            <i class="fas fa-angle-left right"></i>
 				          </p>
 				        </a>
-				        <ul class="nav nav-treeview" style="display">
+				        <ul class="nav nav-treeview">
 				          <li class="nav-item">
 				            <a href="<?php echo site_url('dispatchform') ?>" class="nav-link<?php echo $Generate_dispatch ?>">
 				              <i class="far fa-circle nav-icon"></i>
@@ -249,7 +249,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				              <p>Sales Dispatch</p>
 				              <i class="fas fa-angle-left right"></i>
 				            </a>
-				            <ul class="nav nav-treeview" style="display:">
+				            <ul class="nav nav-treeview">
 					          <li class="nav-item">
 					            <a href="<?php echo site_url('sales-dispatch') ?>" class="nav-link<?php echo $Generate_sales_dispatch ?>">
 					              <i class="far fa-circle nav-icon"></i>
@@ -275,7 +275,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		        </ul>
 	    	</li>
 
-	    	<li class="nav-item has-treeview">
+	    	<li class="nav-item has-treeview<?php echo $li_servicereport ?>">
 		        <a href="#" class="nav-link<?php echo $ul_servicereport ?>">
 		          <i class="nav-icon fas fa-screwdriver"></i>
 		          <p>
@@ -283,10 +283,10 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		            <i class="fas fa-angle-left right"></i>
 		          </p>
 		        </a>
-		        <ul class="nav nav-treeview" style="display: none;">
+		        <ul class="nav nav-treeview">
 
 		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $encode_sr ?>">
+		            <a href="<?php echo site_url('service-report') ?>" class="nav-link<?php echo $encode_sr ?>">
 		              <i class="far fa-circle nav-icon"></i>
 		              <p>Encode SR</p>
 		            </a>

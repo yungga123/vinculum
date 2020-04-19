@@ -47,6 +47,7 @@ if(!function_exists('html_variable')) {
 			'sales_dispatch_list' => '',
 			'salesdispatch' => '',
 			'servicecall' => '',
+			'li_servicereport' => '',
 			'ul_servicereport' => '',
 			'encode_sr' => '',
 			'sr_listing' => '',

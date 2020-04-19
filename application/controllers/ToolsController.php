@@ -180,7 +180,7 @@ class ToolsController extends CI_Controller {
     }
 
     public function get_tools_details($id) {
-
+		
     	$validate = [
     		'success' => false,
     		'data' => ''
@@ -232,7 +232,7 @@ class ToolsController extends CI_Controller {
 			'success' => false,
 			'errors' => ''
 		];
-
+		
 		$rules = [
 			[
 				'field' => 'tool_delete_code',

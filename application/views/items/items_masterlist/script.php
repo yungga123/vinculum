@@ -134,7 +134,7 @@ defined('BASEPATH') or die('Access Denied');
 
 	<!-- AJAX FORMS -->
 	<script>
-		<?php if ($this->uri->segment(1) == 'masterlistofitems'): ?>
+		
 		//Form for updating item
 		$('#form-update-item').submit(function(e) {
 		 	e.preventDefault();
@@ -290,9 +290,7 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 	 	});
-		<?php endif ?>
 
-		<?php if ($this->uri->segment(1) == 'Pull-Out-item'): ?>
 		//Get Search Pullout Item
 		$('#form-item-search').submit(function(e) {
 		 	e.preventDefault();
@@ -404,9 +402,7 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
-		<?php endif ?>
 
-		<?php if ($this->uri->segment(1) == 'pending-pullouts'): ?>
 		//Form Less Pullout
 		$('#form-less-pullout').submit(function(e) {
 		 	e.preventDefault();
@@ -456,9 +452,7 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
-		<?php endif ?>
 
-		<?php if ($this->uri->segment(1) == 'specific_confirmed_pullouts' || $this->uri->segment(1) == 'confirmed-pullouts'): ?>
 		//Form Return Pullouts
 		$('#form-return-pullouts').submit(function(e) {
 		 	e.preventDefault();
@@ -565,8 +559,6 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
-			
-		<?php endif ?>
 	</script>
 
 	<!-- Normal DataTables -->
