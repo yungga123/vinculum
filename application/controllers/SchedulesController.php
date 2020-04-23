@@ -6,7 +6,7 @@ class SchedulesController extends CI_Controller {
 	public function __construct() {
         Parent::__construct();
         $this->load->model("CalendarModel");
-    }
+	}
 
 	public function index() {
 

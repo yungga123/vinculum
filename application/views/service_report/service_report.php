@@ -22,6 +22,7 @@ defined('BASEPATH') or die('Access Denied');
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-12">
+                            <?php echo form_open('ServiceReportController/add_sr_validate',["id" => "form-add-sr"]) ?>
                             <!-- Service Report Information -->
                             <div class="row">
                                 <div class="col-sm-12">
@@ -169,18 +170,20 @@ defined('BASEPATH') or die('Access Denied');
 
                                         <div class="card-body">
                                             <div class="row add-tools">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-8">
                                                     <div class="form-group">
                                                     <label for="tools[]">Tools</label>
                                                     <select class="form-control" name="tools[]">
                                                         <option value="">--- Please Select tools ---</option>
-                                                        <option></option>
-                                                        <option></option>
+
+                                                        <?php foreach ($results_tools as $row) { ?>
+                                                            <option value="<?php echo $row->code ?>"><?php echo $row->model.' -- '.$row->description ?></option>
+                                                        <?php } ?>
                                                     </select>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-4">
                                                     <div class="form-group">
                                                     <label for="tools_qty[]">Quantity</label>
                                                     <input type="text" name="tools_qty[]" class="form-control" >
@@ -206,9 +209,10 @@ defined('BASEPATH') or die('Access Denied');
                 <!-- Submit Button -->
                 <div class="card-footer">
                     <div class="float-right">
-                        <button type="button" class="btn btn-success text-bold"><i class="fas fa-check "></i> SUBMIT</button>
+                        <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check "></i> SUBMIT</button>
                     </div>
                 </div>
+                <?php echo form_close() ?>
             </div>
 
         </div>

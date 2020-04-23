@@ -26,6 +26,8 @@ class ToolsModel extends CI_Model {
 		$this->db->delete('tools');
 	}
 
+	
+
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "tools";
 	var $select_column = array(
