@@ -116,7 +116,29 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
-		 </script>
+	</script>
+
+	<!-- Data Table For Service Report -->
+	<script>
+		$(document).ready(function(){
+		    var project_report_table = $("#service_report_table").DataTable({
+		    	responsive: true,
+		    	"processing": true,
+		    	"serverSide": true,
+	            "order":[],
+	            "ajax":{
+	                url: "<?php echo site_url('ServiceReportController/get_service_report') ?>",
+	                type: "POST"
+	            },
+	            "columnDefs": [
+	                {
+	                   "targets": [],
+	                    "orderable": false, 
+	                }
+	            ]
+		    });
+		});
+	</script>
 
 
 </body>

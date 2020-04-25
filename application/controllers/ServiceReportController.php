@@ -45,6 +45,14 @@ class ServiceReportController extends CI_Controller {
 				'rules' => 'trim'
 			],
 			[
+				'field' => 'direct_item_returns[]',
+				'label' => 'Direct Item Returns',
+				'rules' => 'trim|is_natural',
+				'errors' => [
+					'is_natural' => 'Direct Item Returns must be a natural number.'
+				]
+			],
+			[
 				'field' => 'direct_item_qty[]',
 				'label' => 'Direct Item Quantity',
 				'rules' => 'trim|is_natural',
@@ -66,6 +74,14 @@ class ServiceReportController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'indirect_item_returns[]',
+				'label' => 'Indirect Item Returns',
+				'rules' => 'trim|is_natural',
+				'errors' => [
+					'is_natural' => 'Indirect Item Returns must be a natural number.'
+				]
+			],
+			[
 				'field' => 'tools[]',
 				'label' => 'Direct Item',
                 'rules' => 'trim'
@@ -76,6 +92,14 @@ class ServiceReportController extends CI_Controller {
 				'rules' => 'trim|is_natural',
 				'errors' => [
 					'is_natural' => 'Tools Quantity must be a natural number.'
+				]
+			],
+			[
+				'field' => 'tools_returns[]',
+				'label' => 'Tools Returns',
+				'rules' => 'trim|is_natural',
+				'errors' => [
+					'is_natural' => 'Tools Returns must be a natural number.'
 				]
 			]
         ];
@@ -156,7 +180,8 @@ class ServiceReportController extends CI_Controller {
 						[
 							'sr_id' => $sr_id,
 							'direct_item_id' => $this->input->post('direct_item')[$i],
-							'qty_rqstd' => $this->input->post('direct_item_qty')[$i]
+							'qty_rqstd' => $this->input->post('direct_item_qty')[$i],
+							'returns' => $this->input->post('direct_item_returns')[$i]
 						]
 					);
 				}
@@ -171,7 +196,8 @@ class ServiceReportController extends CI_Controller {
 						[
 							'sr_id' => $sr_id,
 							'indirect_item_id' => $this->input->post('indirect_item')[$i],
-							'qty_rqstd' => $this->input->post('indirect_item_qty')[$i]
+							'qty_rqstd' => $this->input->post('indirect_item_qty')[$i],
+							'returns' => $this->input->post('indirect_item_returns')[$i]
 						]
 					);
 
@@ -187,7 +213,8 @@ class ServiceReportController extends CI_Controller {
 						[
 							'sr_id' => $sr_id,
 							'tools_id' => $this->input->post('tools')[$i],
-							'qty_rqstd' => $this->input->post('tools_qty')[$i]
+							'qty_rqstd' => $this->input->post('tools_qty')[$i],
+							'returns' => $this->input->post('tools_returns')[$i]
 						]
 					);
 				}
@@ -198,8 +225,100 @@ class ServiceReportController extends CI_Controller {
 			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
+   }
 
-	
+   public function service_report_table() {
+
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+            $data['title'] = 'Service Report';
+            $data['li_servicereport'] = ' menu-open';
+			$data['ul_servicereport'] = ' active';
+			$data['sr_listing'] = ' active';
+			
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('service_report/service_report_table');
+			$this->load->view('templates/footer');
+			$this->load->view('service_report/script');
+		} else {
+			redirect('','refresh');
+		}
+
+   }
+
+   public function get_service_report() {
+	   	$fetch_data = $this->ServiceReportModel->service_report_datatable();
+
+
+		$data = array();
+		foreach($fetch_data as $row) {
+
+			$date_requested = '';
+			$date_implemented = '';
+
+			if ($row->date_requested != '0000-00-00') {
+				$date_requested = $row->date_requested;
+			}
+
+			if ($row->date_implemented != '0000-00-00') {
+				$date_implemented = $row->date_implemented;
+			}
+
+			$sub_array = array();
+			$sub_array[] = $row->sr_id;
+			$sub_array[] = $row->CompanyName;
+			$sub_array[] = $row->description;
+			$sub_array[] = date_format(date_create($date_requested), 'F d, Y');
+			$sub_array[] = date_format(date_create($date_implemented), 'F d, Y');
+
+			$sub_array[] = '
+
+			<a href="#" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
+
+			<button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+
+			<a href="'.site_url('service-report-view/'.$row->sr_id).'" class="btn btn-success btn-xs" target="_blank"><i class="fas fa-search"></i></a>
+
+			';
+
+			$data[] = $sub_array;
+		}
+
+		$output = array(
+			"draw"	=>	intval($_POST["draw"]),
+			"recordsTotal" => $this->ServiceReportModel->get_all_service_report_data(),
+			"recordsFiltered" => $this->ServiceReportModel->filter_service_report_data(),
+			"data" => $data
+		);
+
+		echo json_encode($output);
+   }
+
+   public function service_report_view($id) {
+	   if($this->session->userdata('logged_in')) {
+		
+		$results_sr = $this->ServiceReportModel->service_report_view($id);
+		$results_direct_item = $this->ServiceReportModel->service_report_directItem_view($id);
+		$results_indirect_item = $this->ServiceReportModel->service_report_indirectItem_view($id);
+		$results_tools = $this->ServiceReportModel->service_report_tools_view($id);
+
+		$data = [
+			'title' => 'Service Report View',
+			'results_sr' => $results_sr,
+			'results_direct_item' => $results_direct_item,
+			'results_indirect_item' => $results_indirect_item,
+			'results_tools' => $results_tools
+		];
+		
+		$this->load->view('service_report/service_report_view',$data);
+
+
+	   } else {
+		   redirect('','refresh');
+	   }
    }
 
 }

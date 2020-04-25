@@ -120,3 +120,5 @@ $route['printtools'] = 'ToolsController/print_tools';
 
 //Service Report Controller
 $route['service-report'] = 'ServiceReportController';
+$route['service-report-list'] = 'ServiceReportController/service_report_table';
+$route['service-report-view/(:any)'] = 'ServiceReportController/service_report_view/$1';

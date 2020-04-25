@@ -293,7 +293,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		          </li>
 
 		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $sr_listing ?>">
+		            <a href="<?php echo site_url('service-report-list') ?>" class="nav-link<?php echo $sr_listing ?>">
 		              <i class="far fa-circle nav-icon"></i>
 		              <p>SR Listing</p>
 		            </a>

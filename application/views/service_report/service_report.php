@@ -82,7 +82,7 @@ defined('BASEPATH') or die('Access Denied');
 
                                         <div class="card-body">
                                             <div class="row add-direct">
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label for="direct_item[]">Direct Item</label>
                                                         <select type="text" name="direct_item[]" class="form-control">
@@ -99,6 +99,13 @@ defined('BASEPATH') or die('Access Denied');
                                                     <div class="form-group">
                                                         <label for="direct_item_qty[]">Quantity</label>
                                                         <input type="text" name="direct_item_qty[]" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="direct_item_returns[]">Returns</label>
+                                                        <input type="text" name="direct_item_returns[]" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,7 +133,7 @@ defined('BASEPATH') or die('Access Denied');
 
                                         <div class="card-body">
                                             <div class="row add-indirect">
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-4">
                                                     <div class="form-group">
                                                         <label for="indirect_item[]">Indirect Item</label>
                                                         <select type="text" name="indirect_item[]" class="form-control">
@@ -143,6 +150,13 @@ defined('BASEPATH') or die('Access Denied');
                                                     <div class="form-group">
                                                         <label for="indirect_item_qty[]">Quantity</label>
                                                         <input type="text" name="indirect_item_qty[]" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="indirect_item_returns[]">Returns</label>
+                                                        <input type="text" name="indirect_item_returns[]" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,7 +184,7 @@ defined('BASEPATH') or die('Access Denied');
 
                                         <div class="card-body">
                                             <div class="row add-tools">
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-4">
                                                     <div class="form-group">
                                                     <label for="tools[]">Tools</label>
                                                     <select class="form-control" name="tools[]">
@@ -187,6 +201,13 @@ defined('BASEPATH') or die('Access Denied');
                                                     <div class="form-group">
                                                     <label for="tools_qty[]">Quantity</label>
                                                     <input type="text" name="tools_qty[]" class="form-control" >
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                    <label for="tools_returns[]">Returns</label>
+                                                    <input type="text" name="tools_returns[]" class="form-control" >
                                                     </div>
                                                 </div>
                                             </div>
