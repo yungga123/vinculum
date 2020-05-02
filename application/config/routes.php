@@ -122,3 +122,4 @@ $route['printtools'] = 'ToolsController/print_tools';
 $route['service-report'] = 'ServiceReportController';
 $route['service-report-list'] = 'ServiceReportController/service_report_table';
 $route['service-report-view/(:any)'] = 'ServiceReportController/service_report_view/$1';
+$route['service-report-update/(:any)'] = 'ServiceReportController/update_service_report/$1';

@@ -28,6 +28,7 @@ class ServiceReportModel extends CI_Model {
 		$this->db->select('
 
 			a.id as sr_id,
+			b.CustomerID as customer_id,
 			b.CompanyName as customer_name,
 			a.description as description,
 			a.date_requested as date_requested,
@@ -45,6 +46,7 @@ class ServiceReportModel extends CI_Model {
 
 	public function service_report_directItem_view($id) {
 		$this->db->select('
+			a.id as id,
 			a.sr_id as sr_id,
 			a.direct_item_id as direct_item_id,
 			c.itemName as direct_item,
@@ -64,6 +66,7 @@ class ServiceReportModel extends CI_Model {
 
 	public function service_report_indirectItem_view($id) {
 		$this->db->select('
+			a.id as id,
 			a.sr_id as sr_id,
 			a.indirect_item_id as indirect_item_id,
 			c.itemName as indirect_item,
@@ -83,6 +86,7 @@ class ServiceReportModel extends CI_Model {
 
 	public function service_report_tools_view($id) {
 		$this->db->select('
+			a.id as id,
 			a.sr_id as sr_id,
 			a.tools_id as tools_id,
 			c.model as tools_model,
@@ -99,6 +103,98 @@ class ServiceReportModel extends CI_Model {
 		return $this->db->get()->result();
 
 	}
+
+	public function update_service_report($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('service_report',$data);
+	}
+
+	//updating sr_direct_item
+	public function update_sr_direct_item($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('service_report_direct_item',$data);
+	}
+
+	public function get_new_added_sr_direct_item($sr_id) {
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('service_report_direct_item');
+		$this->db->where('sr_id',$sr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+
+	public function remove_sr_direct_item($id,$sr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('sr_id',$sr_id);
+		$this->db->delete('service_report_direct_item');
+	}
+	// end of updating sr_direct_item
+
+	//updating sr_indirect_item
+	public function update_sr_indirect_item($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('service_report_indirect_item',$data);
+	}
+
+	public function get_new_added_sr_indirect_item($sr_id) {
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('service_report_indirect_item');
+		$this->db->where('sr_id',$sr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+
+	public function remove_sr_indirect_item($id,$sr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('sr_id',$sr_id);
+		$this->db->delete('service_report_indirect_item');
+	}
+	// end of updating sr_indirect_item
+
+	//updating sr_tools
+	public function update_sr_tools($id,$data) {
+		$this->db->where('id',$id);
+		$this->db->update('service_report_tools',$data);
+	}
+
+	public function get_new_added_sr_tools($sr_id) {
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('service_report_tools');
+		$this->db->where('sr_id',$sr_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+
+	public function remove_sr_tools($id,$sr_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('sr_id',$sr_id);
+		$this->db->delete('service_report_tools');
+	}
+	// end of updating sr_tools
     
     //*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
     var $table = "service_report as a";

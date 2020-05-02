@@ -70,6 +70,7 @@ defined('BASEPATH') or die('Access Denied');
 
 	<!-- Form AJAX -->
 	<script>
+
 		//Form Add Service Report
 		$('#form-add-sr').submit(function(e) {
 		 	e.preventDefault();
@@ -116,6 +117,55 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
+
+		
+		//Form Update
+		$('#form-update-sr').submit(function(e) {
+			e.preventDefault();
+			
+			var me = $(this);
+
+			toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+			$.ajax({
+				url: me.attr('action'),
+				type: 'post',
+				data: me.serialize(),
+				dataType: 'json',
+				success: function(response) {
+					if (response.success == true) {
+						$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+						toastr.success("Success! Service Report was updated!");
+						//me[0].reset();
+					} else {
+						$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+						toastr.error(response.errors);
+					}
+				}
+			});
+		});
+	
 	</script>
 
 	<!-- Data Table For Service Report -->

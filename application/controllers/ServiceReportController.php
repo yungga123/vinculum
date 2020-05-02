@@ -276,7 +276,7 @@ class ServiceReportController extends CI_Controller {
 
 			$sub_array[] = '
 
-			<a href="#" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
+			<a href="'.site_url('service-report-update/'.$row->sr_id).'" class="btn btn-warning btn-xs" target="_blank"><i class="fas fa-edit"></i></a> 
 
 			<button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
 
@@ -319,6 +319,188 @@ class ServiceReportController extends CI_Controller {
 	   } else {
 		   redirect('','refresh');
 	   }
+   }
+
+   	public function update_service_report($id) {
+
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->model('CustomersModel');
+            $this->load->model('ItemsModel');
+            $this->load->model('ToolsModel');
+            $results_customers = $this->CustomersModel->getVtCustomersByID();
+            $results_direct_items = $this->ItemsModel->select_direct_items();
+            $results_indirect_items = $this->ItemsModel->select_indirect_items();
+			$results_tools = $this->ToolsModel->select_all();
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Service Report Update';
+			$data['li_servicereport'] = ' menu-open';
+			$data['ul_servicereport'] = ' active';
+			$data['sr_listing'] = ' active';
+			$data['results_customers'] = $results_customers;
+            $data['results_direct_items'] = $results_direct_items;
+            $data['results_indirect_items'] = $results_indirect_items;
+			$data['results_tools'] = $results_tools;
+			$data['results_direct_items_view'] = $this->ServiceReportModel->service_report_directItem_view($id);
+			$data['results_indirect_items_view'] = $this->ServiceReportModel->service_report_indirectItem_view($id);
+			$data['results_tools_view'] = $this->ServiceReportModel->service_report_tools_view($id);
+			$data['results_service_report_view'] = $this->ServiceReportModel->service_report_view($id);
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('service_report/service_report_update');
+			$this->load->view('templates/footer');
+			$this->load->view('service_report/script');
+
+		} else {
+			redirect('','refresh');
+		}
+
+   }
+
+   public function service_report_update_validate() {
+	   $validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$sr_id = $this->input->post('sr_id');
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($this->validation_rules());
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			//Update Service Report
+			$this->ServiceReportModel->update_service_report(
+				$sr_id,
+				[
+					'customer_name' => $this->input->post('customer_name'),
+					'description' => $this->input->post('description'),
+					'date_requested' => $this->input->post('date_requested'),
+					'date_implemented' => $this->input->post('date_implemented')
+				]
+			);
+			//end of Update Service Report
+
+			//update existing direct item
+			$direct_item_id_data = array();
+
+			for ($i=0; $i < count($this->input->post('direct_item_id')) ; $i++) {
+
+				$direct_item_sub_data = array();
+				
+				if ($this->input->post('direct_item_id')[$i] != '') {
+					$this->ServiceReportModel->update_sr_direct_item(
+						$this->input->post('direct_item_id')[$i],
+						[
+							'direct_item_id' => $this->input->post('direct_item')[$i],
+							'qty_rqstd' => $this->input->post('direct_item_qty')[$i],
+							'returns' => $this->input->post('direct_item_returns')[$i]
+						]
+					);
+
+					$direct_item_sub_data[] = $this->input->post('direct_item_id')[$i];
+					$direct_item_id_data[] = $direct_item_sub_data;
+				} else {
+					$this->ServiceReportModel->insert_sr_direct_item(
+						[
+							'sr_id' => $sr_id,
+							'direct_item_id' => $this->input->post('direct_item')[$i],
+							'qty_rqstd' => $this->input->post('direct_item_qty')[$i],
+							'returns' => $this->input->post('direct_item_returns')[$i]
+						]
+					);
+
+					$direct_item_sub_data[] = $this->ServiceReportModel->get_new_added_sr_direct_item($sr_id);
+					$direct_item_id_data[] = $direct_item_sub_data;
+				}
+			}
+			$this->ServiceReportModel->remove_sr_direct_item($direct_item_id_data,$sr_id);
+			//end of update existing direct item
+
+			//update existing indirect item
+			$indirect_item_id_data = array();
+
+			for ($i=0; $i < count($this->input->post('indirect_item_id')) ; $i++) {
+
+				$indirect_item_sub_data = array();
+				
+				if ($this->input->post('indirect_item_id')[$i] != '') {
+					$this->ServiceReportModel->update_sr_indirect_item(
+						$this->input->post('indirect_item_id')[$i],
+						[
+							'indirect_item_id' => $this->input->post('indirect_item')[$i],
+							'qty_rqstd' => $this->input->post('indirect_item_qty')[$i],
+							'returns' => $this->input->post('indirect_item_returns')[$i]
+						]
+					);
+
+					$indirect_item_sub_data[] = $this->input->post('indirect_item_id')[$i];
+					$indirect_item_id_data[] = $indirect_item_sub_data;
+				} else {
+					$this->ServiceReportModel->insert_sr_indirect_item(
+						[
+							'sr_id' => $sr_id,
+							'indirect_item_id' => $this->input->post('indirect_item')[$i],
+							'qty_rqstd' => $this->input->post('indirect_item_qty')[$i],
+							'returns' => $this->input->post('indirect_item_returns')[$i]
+						]
+					);
+
+					$indirect_item_sub_data[] = $this->ServiceReportModel->get_new_added_sr_indirect_item($sr_id);
+					$indirect_item_id_data[] = $indirect_item_sub_data;
+				}
+			}
+			$this->ServiceReportModel->remove_sr_indirect_item($indirect_item_id_data,$sr_id);
+			//end of update existing indirect item
+
+			//update existing tools
+			$tools_id_data = array();
+
+			for ($i=0; $i < count($this->input->post('tools_id')) ; $i++) {
+
+				$tools_sub_data = array();
+				
+				if ($this->input->post('tools_id')[$i] != '') {
+					$this->ServiceReportModel->update_sr_tools(
+						$this->input->post('tools_id')[$i],
+						[
+							'tools_id' => $this->input->post('tools')[$i],
+							'qty_rqstd' => $this->input->post('tools_qty')[$i],
+							'returns' => $this->input->post('tools_returns')[$i]
+						]
+					);
+
+					$tools_sub_data[] = $this->input->post('tools_id')[$i];
+					$tools_id_data[] = $tools_sub_data;
+				} else {
+					$this->ServiceReportModel->insert_sr_tools(
+						[
+							'sr_id' => $sr_id,
+							'tools_id' => $this->input->post('tools')[$i],
+							'qty_rqstd' => $this->input->post('tools_qty')[$i],
+							'returns' => $this->input->post('tools_returns')[$i]
+						]
+					);
+
+					$tools_sub_data[] = $this->ServiceReportModel->get_new_added_sr_tools($sr_id);
+					$tools_id_data[] = $tools_sub_data;
+				}
+			}
+			$this->ServiceReportModel->remove_sr_tools($tools_id_data,$sr_id);
+			//end of update existing tools
+
+
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+		
    }
 
 }
