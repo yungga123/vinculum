@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2020 at 11:30 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: May 03, 2020 at 01:41 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -135,7 +136,7 @@ INSERT INTO `calendar_events` (`ID`, `title`, `start`, `end`, `description`, `ty
 (88, 'Paul Ramos', '2018-11-25 09:00:00', '2018-11-25 10:00:00', 'Rental Php 15,000.00', 'installation'),
 (89, 'Leonora', '2018-10-24 08:00:00', '2018-10-24 12:00:00', 'CCTV INSTALLATION', 'installation'),
 (90, 'Titch', '2018-10-24 08:00:00', '2018-10-12 12:00:00', 'Moldings & Collect payment', 'installation'),
-(91, 'PO', '2018-10-24 13:00:00', '2018-10-24 14:00:00', '17" LCD Monitor', 'installation'),
+(91, 'PO', '2018-10-24 13:00:00', '2018-10-24 14:00:00', '17\" LCD Monitor', 'installation'),
 (92, 'Atty. Kelly', '2018-10-25 08:00:00', '2018-10-25 12:00:00', 'Dash Cam Installation', 'installation'),
 (93, 'AM PM', '2018-10-29 08:00:00', '2018-10-29 17:00:00', 'CCTV INSTALLATION', 'installation'),
 (94, 'Versatiles', '2018-10-24 14:00:00', '2018-10-24 17:00:00', 'Additional 1 Cam', 'installation'),
@@ -144,7 +145,7 @@ INSERT INTO `calendar_events` (`ID`, `title`, `start`, `end`, `description`, `ty
 (97, 'Philteq', '2018-11-08 08:00:00', '2018-11-08 09:00:00', 'CP 62K', 'installation'),
 (98, 'Ms. Genelyn - Clinic', '2018-11-09 07:00:00', '2018-11-09 04:00:00', 'CCTV INSTALLATION 4ch packages', 'installation'),
 (99, 'Aaron Lorenzo', '2018-11-09 09:00:00', '2018-11-09 12:00:00', 'Service : recabling and replace 1 camera', 'installation'),
-(100, 'AM PM', '2018-11-09 09:00:00', '2018-11-09 10:00:00', 'Install Monitor 32"', 'installation'),
+(100, 'AM PM', '2018-11-09 09:00:00', '2018-11-09 10:00:00', 'Install Monitor 32\"', 'installation'),
 (101, 'Lanie Nicdao', '2018-11-10 10:00:00', '2018-11-10 12:00:00', 'Service', 'installation'),
 (102, 'Gabrielle', '2018-11-10 09:00:00', '2018-11-10 17:00:00', 'CCTV INSTALLATION 4 ch packages', 'installation'),
 (103, 'UCPB Makati', '2018-11-12 09:00:00', '2018-11-13 17:00:00', 'CCTV INSTALLATION & Doorlock', 'installation'),
@@ -162,7 +163,7 @@ INSERT INTO `calendar_events` (`ID`, `title`, `start`, `end`, `description`, `ty
 (116, 'Anne - Divisoria', '2018-11-14 09:00:00', '2018-11-14 12:00:00', 'Continue Installation of Speaker', 'installation'),
 (117, 'CARLSON', '2018-11-14 10:00:00', '2018-11-14 12:00:00', 'SERVICE', 'installation'),
 (118, 'Euromerika', '2018-11-14 13:00:00', '2018-11-14 15:00:00', 'Delivery Items', 'installation'),
-(119, 'TECHNICIAN''S Training', '2018-11-17 09:00:00', '2018-11-17 17:00:00', 'Training at office', 'installation'),
+(119, 'TECHNICIAN\'S Training', '2018-11-17 09:00:00', '2018-11-17 17:00:00', 'Training at office', 'installation'),
 (120, 'SMI', '2018-11-17 15:00:00', '2018-11-17 17:00:00', 'Service: Replace DVR & HDD', 'installation'),
 (121, 'UCPB Q.C.', '2018-11-19 08:00:00', '2018-11-19 18:00:00', 'Continue Installation', 'installation'),
 (122, 'ALTES', '2018-11-19 08:00:00', '2018-11-19 17:00:00', 'Continuation', 'installation'),
@@ -228,7 +229,7 @@ INSERT INTO `calendar_events` (`ID`, `title`, `start`, `end`, `description`, `ty
 (182, 'UCPB Mindoro', '2018-12-11 05:00:00', '2018-12-11 17:00:00', 'CCTV Installation & Doorlock', 'installation'),
 (183, 'UCPB Main', '2018-12-11 08:00:00', '2018-12-11 17:00:00', 'Testing Online CCTV', 'installation'),
 (184, 'Great Depot Quezon City', '2018-12-12 13:00:00', '2018-12-12 17:00:00', 'CCTV INSTALLATION', 'installation'),
-(185, 'Vinculum''s Team Building 2018', '2018-12-15 07:00:00', '2018-12-16 10:00:00', 'Team Building (Maragondon Beach)', 'installation'),
+(185, 'Vinculum\'s Team Building 2018', '2018-12-15 07:00:00', '2018-12-16 10:00:00', 'Team Building (Maragondon Beach)', 'installation'),
 (186, 'Special Holiday', '2018-12-08 08:00:00', '2018-12-08 17:00:00', 'Special Holiday', 'installation'),
 (187, 'MBA Aguirre Ave', '2018-12-08 08:00:00', '2018-12-08 12:00:00', 'Replace 1 DVR and Hdd', 'installation'),
 (189, 'Great Depot Pasig', '2018-12-13 13:00:00', '2018-12-13 17:00:00', 'Demo', 'installation'),
@@ -384,7 +385,6 @@ INSERT INTO `calendar_events` (`ID`, `title`, `start`, `end`, `description`, `ty
 (353, 'ACAI', '2019-01-25 08:00:00', '2019-01-25 19:00:00', 'Continue Installation', 'installation'),
 (354, 'GRANITE', '2019-01-25 08:00:00', '2019-01-25 17:00:00', 'Installation 4 Cameras', 'installation'),
 (358, 'RENT', '2020-04-13 00:00:00', '2020-04-13 23:59:00', 'PAYABLES OF RENT (P30,000.00)', 'payables'),
-(359, 'COVID OUTBREAK', '2020-03-11 00:00:00', '2020-04-15 23:59:00', 'Expected Resume of work is April 15, 2020', 'holiday'),
 (360, 'RUFFY BIAZON', '2020-03-29 00:00:00', '2020-04-03 23:59:00', 'INSTALLATION OF CAMS', 'installation'),
 (361, 'MERALCO BILL', '2020-03-31 00:00:00', '2020-03-31 23:59:00', 'Pay Today', 'payables'),
 (362, 'MBA BAYANAN', '2020-03-31 00:00:00', '2020-03-31 23:59:00', '2 CAMS NO VIEWING', 'service');
@@ -499,7 +499,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (197, '2018-06-29 13:30:03', '2018-06-29 13:29:51', 'VTACPS01', 'Power Supply 1A', 'CCTV', '100.00', '180.00', 1, 0, '0.00', 0),
 (198, '2018-06-29 13:56:05', '2018-06-29 13:54:36', 'VTSEB01', 'Stainless Exit Button', 'Biometrics and Access Control', '200.00', '500.00', 1, 0, '0.00', 0),
 (199, '2018-06-29 13:56:05', '2018-06-29 13:54:53', 'VTHDMIC630', 'HDMI Extender Cat6 30m', 'CCTV', '1000.00', '2000.00', 1, 0, '0.00', 0),
-(200, '2018-06-29 13:56:05', '2018-06-29 13:55:11', 'VT24MAB', '24" Monitor (Any)', 'CCTV', '3500.00', '7000.00', 1, 0, '0.00', 0),
+(200, '2018-06-29 13:56:05', '2018-06-29 13:55:11', 'VT24MAB', '24\" Monitor (Any)', 'CCTV', '3500.00', '7000.00', 1, 0, '0.00', 0),
 (201, '2018-06-29 14:24:46', '2018-06-29 14:24:38', 'VTVGA1', 'VGA Cord 1.5m', 'CCTV', '100.00', '200.00', 1, 0, '0.00', 0),
 (203, '2018-07-02 11:12:49', '2018-07-02 11:11:13', 'VTACPS02', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 2, 0, '0.00', 0),
 (204, '2018-07-02 11:12:49', '2018-07-02 11:11:45', '060205', 'DC Connector Female', 'CCTV', '8.00', '25.00', 4, 0, '0.00', 0),
@@ -789,7 +789,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (559, '2018-09-27 10:51:35', '2018-09-27 04:51:20', 'VTA8WS', '8 Way Splitter', 'CCTV', '80.00', '160.00', 1, 23, '0.00', 0),
 (560, '2018-09-28 11:04:16', '2018-09-28 04:51:22', 'DH-HACHDW1000RN-0360B-S3', 'DH-HACHDW1000RN-0360B-S3', 'CCTV', '400.00', '1000.00', 14, 23, '0.00', 0),
 (561, '2018-09-28 11:04:16', '2018-09-28 04:52:35', 'DH-HACHFW1000RN-0360B-S3', 'DH-HACHFW1000RN-0360B-S3', 'CCTV', '415.00', '1000.00', 2, 23, '0.00', 0),
-(562, '2018-09-28 11:04:16', '2018-09-28 04:57:50', '19INCHMONITOR', 'AOC 19" MONITOR', 'CCTV', '0.00', '5500.00', 1, 23, '0.00', 0),
+(562, '2018-09-28 11:04:16', '2018-09-28 04:57:50', '19INCHMONITOR', 'AOC 19\" MONITOR', 'CCTV', '0.00', '5500.00', 1, 23, '0.00', 0),
 (563, '2018-09-28 11:04:16', '2018-09-28 04:59:57', 'SKYHAWK2TB', '2TB SKYHAWK WD HDD', 'CCTV', '0.00', '3661.00', 1, 23, '0.00', 0),
 (564, '2018-09-28 11:04:16', '2018-09-28 05:02:15', 'PSUPPLY5A', 'Power Supply 5A', 'CCTV', '350.00', '950.00', 1, 23, '0.00', 0),
 (565, '2018-09-28 11:04:16', '2018-09-28 05:03:27', 'VTA4WS', '4 Way Splitter', 'CCTV', '75.00', '150.00', 1, 23, '0.00', 0),
@@ -932,7 +932,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (735, '2018-10-16 10:15:33', '2018-10-16 04:07:42', 'VIDEOBALUN', 'Video Balun', 'CCTV', '80.00', '200.00', 3, 23, '0.00', 0),
 (736, '2018-10-16 10:15:33', '2018-10-16 04:08:41', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '25.00', 5, 23, '0.00', 0),
 (737, '2018-10-16 10:15:33', '2018-10-16 04:09:14', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 5, 23, '0.00', 0),
-(738, '2018-10-16 10:15:33', '2018-10-16 04:09:54', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'Uncategorized', '2540.00', '3500.00', 1, 23, '0.00', 0),
+(738, '2018-10-16 10:15:33', '2018-10-16 04:09:54', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'Uncategorized', '2540.00', '3500.00', 1, 23, '0.00', 0),
 (739, '2018-10-16 10:15:33', '2018-10-16 04:10:27', 'POWSUP12V4A', 'Power Supply 4A', 'CCTV', '300.00', '480.00', 1, 23, '0.00', 0),
 (740, '2018-10-16 10:15:33', '2018-10-16 04:11:00', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 1, 23, '0.00', 0),
 (741, '2018-10-16 10:15:33', '2018-10-16 04:12:52', 'HDMI3M', 'HDMI Cable 3 Meters', 'CCTV', '150.00', '300.00', 1, 23, '0.00', 0),
@@ -959,7 +959,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (773, '2018-10-16 14:10:08', '2018-10-16 08:09:46', '4F03594PAF63FCB', 'DH-HAC-HDBW1200EN-0360B-S3A', 'CCTV', '1519.25', '1975.00', 1, 32, '0.00', 0),
 (774, '2018-10-16 15:50:41', '2018-10-16 09:29:01', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 'CCTV', '965.00', '1200.00', 4, 33, '0.00', 0),
 (775, '2018-10-16 15:50:41', '2018-10-16 09:29:10', '300221242', 'DS-7204HQHI-K1 TURBO HD DVR', 'CCTV', '2315.00', '3100.00', 1, 33, '0.00', 0),
-(776, '2018-10-16 15:50:41', '2018-10-16 09:29:26', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'Uncategorized', '2540.00', '3500.00', 1, 33, '0.00', 0),
+(776, '2018-10-16 15:50:41', '2018-10-16 09:29:26', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'Uncategorized', '2540.00', '3500.00', 1, 33, '0.00', 0),
 (777, '2018-10-16 15:50:41', '2018-10-16 09:44:50', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 'CCTV', '100.00', '250.00', 5, 33, '0.00', 0),
 (778, '2018-10-16 15:50:41', '2018-10-16 09:50:27', 'POWSUP12V3A', 'Power Supply 3Amp', 'CCTV', '250.00', '500.00', 1, 33, '0.00', 0),
 (781, '2018-10-16 17:48:12', '2018-10-16 11:41:39', 'BNCCONNECTORC', 'BNC Connector Coupler', 'CCTV', '10.00', '25.00', 3, 34, '0.00', 0),
@@ -982,7 +982,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (801, '2018-10-18 11:49:32', '2018-10-18 05:42:22', '4WAYSPLITTER', '4 Way Splitter', 'CCTV', '50.00', '100.00', 2, 23, '0.00', 0),
 (802, '2018-10-18 11:49:32', '2018-10-18 05:43:01', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 'CCTV', '965.00', '1200.00', 2, 23, '0.00', 0),
 (803, '2018-10-18 11:49:32', '2018-10-18 05:44:38', '300221242', 'DS-7204HQHI-K1 TURBO HD DVR', 'CCTV', '2315.00', '3100.00', 1, 23, '0.00', 0),
-(804, '2018-10-18 11:49:32', '2018-10-18 05:45:53', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, 23, '0.00', 0),
+(804, '2018-10-18 11:49:32', '2018-10-18 05:45:53', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, 23, '0.00', 0),
 (805, '2018-10-18 11:49:32', '2018-10-18 05:46:28', 'POWSUP12V1A', 'Power Supply 1A', 'CCTV', '90.00', '180.00', 2, 23, '0.00', 0),
 (806, '2018-10-18 11:49:32', '2018-10-18 05:47:42', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 'CCTV', '100.00', '250.00', 3, 23, '0.00', 0),
 (812, '2018-10-18 11:51:32', '2018-10-18 05:51:07', 'POWSUP12V2A', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 1, 23, '0.00', 0),
@@ -1024,11 +1024,11 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (853, '2018-10-24 09:21:54', '2018-10-24 09:19:46', 'POWSUP12V3A', 'Power Supply 3Amp', 'CCTV', '250.00', '500.00', 1, 23, '0.00', 0),
 (854, '2018-10-24 09:21:54', '2018-10-24 09:20:15', 'HIKVISION4WAYSPLITTER', 'Hikvision 4 way splitter', 'CCTV', '100.00', '200.00', 1, 23, '0.00', 0),
 (855, '2018-10-24 09:21:54', '2018-10-24 09:20:37', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 'CCTV', '100.00', '250.00', 2, 23, '0.00', 0),
-(856, '2018-10-24 09:21:54', '2018-10-24 09:21:03', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, 23, '0.00', 0),
+(856, '2018-10-24 09:21:54', '2018-10-24 09:21:03', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, 23, '0.00', 0),
 (857, '2018-10-24 09:21:54', '2018-10-24 09:21:23', '300221242', 'DS-7204HQHI-K1 TURBO HD DVR', 'CCTV', '2315.00', '3100.00', 1, 23, '0.00', 0),
 (859, '2018-10-24 09:24:02', '2018-10-24 09:23:54', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 1, 23, '0.00', 0),
 (860, '2018-10-25 10:00:24', '2018-10-25 09:55:52', '164726', 'HDMI Transmitter NVR/DVR 30m', 'CCTV', '925.00', '1500.00', 1, 23, '0.00', 0),
-(861, '2018-10-25 10:00:24', '2018-10-25 09:56:14', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 2, 23, '0.00', 0),
+(861, '2018-10-25 10:00:24', '2018-10-25 09:56:14', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 2, 23, '0.00', 0),
 (862, '2018-10-25 10:00:24', '2018-10-25 09:56:49', '300221242', 'DS-7204HQHI-K1 TURBO HD DVR', 'CCTV', '2315.00', '3100.00', 2, 23, '0.00', 0),
 (863, '2018-10-25 10:00:24', '2018-10-25 09:57:14', 'POWSUP12V3A', 'Power Supply 3Amp', 'CCTV', '250.00', '500.00', 2, 23, '0.00', 0),
 (864, '2018-10-25 10:00:24', '2018-10-25 09:57:32', 'HIKVISION4WAYSPLITTER', 'Hikvision 4 way splitter', 'CCTV', '100.00', '200.00', 2, 23, '0.00', 0),
@@ -1083,7 +1083,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (925, '2018-10-29 14:59:33', '2018-10-29 14:54:17', '300221242', 'DS-7204HQHI-K1 TURBO HD DVR', 'CCTV', '2315.00', '3100.00', 1, 23, '0.00', 0),
 (926, '2018-10-29 14:59:33', '2018-10-29 14:54:59', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 'CCTV', '965.00', '1200.00', 2, 23, '0.00', 0),
 (927, '2018-10-29 14:59:33', '2018-10-29 14:55:19', '360A3', 'Fisheye 360Cam 2mp', 'CCTV', '1300.00', '2500.00', 1, 23, '0.00', 0),
-(928, '2018-10-29 14:59:33', '2018-10-29 14:55:39', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, 23, '0.00', 0),
+(928, '2018-10-29 14:59:33', '2018-10-29 14:55:39', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, 23, '0.00', 0),
 (929, '2018-10-29 14:59:33', '2018-10-29 14:56:00', 'POWSUP12V3A', 'Power Supply 3Amp', 'CCTV', '250.00', '500.00', 1, 23, '0.00', 0),
 (930, '2018-10-29 14:59:33', '2018-10-29 14:56:13', 'HIKVISION4WAYSPLITTER', 'Hikvision 4 way splitter', 'CCTV', '100.00', '200.00', 1, 23, '0.00', 0),
 (931, '2018-10-29 14:59:33', '2018-10-29 14:57:51', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 'CCTV', '100.00', '250.00', 3, 23, '0.00', 0),
@@ -1096,7 +1096,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (938, '2018-10-29 15:17:48', '2018-10-29 15:14:56', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '25.00', 8, 23, '0.00', 0),
 (939, '2018-10-29 15:17:48', '2018-10-29 15:17:01', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 'CCTV', '965.00', '1200.00', 2, 23, '0.00', 0),
 (940, '2018-10-29 15:17:48', '2018-10-29 15:17:36', '300509583', 'DS-2CE16DOT-IRPF', 'CCTV', '570.00', '1000.00', 6, 23, '0.00', 0),
-(947, '2018-10-29 16:54:24', '2018-10-29 16:54:16', 'S17LCDM', 'Samsung 17" LCD Monitor', 'Uncategorized', '1600.00', '2100.00', 2, 23, '0.00', 0),
+(947, '2018-10-29 16:54:24', '2018-10-29 16:54:16', 'S17LCDM', 'Samsung 17\" LCD Monitor', 'Uncategorized', '1600.00', '2100.00', 2, 23, '0.00', 0),
 (948, '2018-10-30 13:59:08', '2018-10-30 13:50:35', 'ST3000VX010', 'Skyhawk 3TB Hdd', 'CCTV', '4500.00', '6000.00', 1, 23, '0.00', 0),
 (949, '2018-10-30 13:59:08', '2018-10-30 13:50:59', 'POWSUP12V4A', 'Power Supply 4A', 'CCTV', '300.00', '480.00', 1, 23, '0.00', 0),
 (950, '2018-10-30 13:59:08', '2018-10-30 13:51:12', 'POWSUP12V2A', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 1, 23, '0.00', 0),
@@ -1161,7 +1161,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (1036, '2018-11-08 09:32:08', '2018-11-08 09:25:35', 'VTAGM1', 'Amax Golf Mic', 'CCTV', '150.00', '450.00', 1, 25, '0.00', 0),
 (1037, '2018-11-08 09:32:08', '2018-11-08 09:26:01', 'BNC2RCACON', 'BNC to RCA Connector', 'CCTV', '10.00', '25.00', 2, 25, '0.00', 0),
 (1038, '2018-11-08 09:32:08', '2018-11-08 09:26:22', 'BNCCONNECTORSTG', 'BNC Connector Screw Type - G', 'CCTV', '10.00', '30.00', 4, 41, '0.00', 0),
-(1039, '2018-11-08 09:32:08', '2018-11-08 09:31:33', 'ITECHIE24LEDMONITOR', 'Itechie LED Monitor 24"', 'Uncategorized', '3993.00', '5200.00', 1, 23, '0.00', 0),
+(1039, '2018-11-08 09:32:08', '2018-11-08 09:31:33', 'ITECHIE24LEDMONITOR', 'Itechie LED Monitor 24\"', 'Uncategorized', '3993.00', '5200.00', 1, 23, '0.00', 0),
 (1040, '2018-11-08 09:32:08', '2018-11-08 09:31:46', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 1, 23, '0.00', 0),
 (1041, '2018-11-08 09:34:28', '2018-11-08 09:33:28', 'BNCCONNECTORSTG', 'BNC Connector Screw Type - G', 'CCTV', '10.00', '30.00', 5, 23, '0.00', 0),
 (1042, '2018-11-08 14:02:13', '2018-11-08 14:02:02', 'UBRACKET', 'U Bracket for Access Control', 'Biometrics and Access Control', '0.00', '1000.00', 1, 23, '0.00', 0),
@@ -1329,9 +1329,9 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (1253, '2018-12-11 16:42:40', '2018-12-10 15:29:23', '300509583', 'HikVision - DS-2CE16D0T-IRPF (2mp Bullet)', 'CCTV', '570.00', '990.00', 5, 55, '0.00', 0),
 (1254, '2018-12-11 16:42:40', '2018-12-10 15:29:44', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 'CCTV', '965.00', '930.00', 3, 55, '0.00', 0),
 (1255, '2018-12-11 16:42:40', '2018-12-10 15:32:23', 'POWSUP12V10APB', 'Power Supply 10A 8ch with Panel Box', 'CCTV', '900.00', '1200.00', 1, 55, '0.00', 0),
-(1256, '2018-12-11 16:42:40', '2018-12-10 15:33:01', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '2900.00', 1, 55, '0.00', 0),
+(1256, '2018-12-11 16:42:40', '2018-12-10 15:33:01', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '2900.00', 1, 55, '0.00', 0),
 (1257, '2018-12-11 16:42:40', '2018-12-10 15:34:35', '300221241', 'DS-7208HQHI-KI Hilvision 8CH DVR 1080p', 'CCTV', '3525.00', '4600.00', 1, 55, '0.00', 0),
-(1258, '2018-12-11 16:42:40', '2018-12-10 15:36:43', '32INLCDMONITOR', '32" LCD Monitor', 'CCTV', '6500.00', '6500.00', 1, 55, '0.00', 0),
+(1258, '2018-12-11 16:42:40', '2018-12-10 15:36:43', '32INLCDMONITOR', '32\" LCD Monitor', 'CCTV', '6500.00', '6500.00', 1, 55, '0.00', 0),
 (1259, '2018-12-11 16:42:40', '2018-12-10 15:44:33', 'BNCCONNECTORSTS', 'BNC Connector Screw Type - S', 'CCTV', '10.00', '15.00', 16, 55, '0.00', 0),
 (1260, '2018-12-11 16:42:40', '2018-12-10 15:44:47', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '15.00', 8, 55, '0.00', 0),
 (1268, '2018-12-11 16:47:05', '2018-12-11 16:46:56', '300609134', 'HikVision - DS-2CE56C0T-IRPF (1mp Dome)', 'CCTV', '465.00', '800.00', 1, 32, '0.00', 0),
@@ -1375,7 +1375,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (1327, '2018-12-22 11:10:54', '2018-12-22 11:03:52', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '15.00', 2, 23, '0.00', 0),
 (1328, '2018-12-22 11:10:54', '2018-12-22 11:04:08', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 2, 23, '0.00', 0),
 (1329, '2018-12-22 11:10:54', '2018-12-22 11:04:33', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 1, 23, '0.00', 0),
-(1330, '2018-12-22 11:10:54', '2018-12-22 11:05:30', '19INCHLCDMONITORWIDE', 'DELL 19" LCD MONITOR WIDE', 'CCTV', '1400.00', '1820.00', 1, 23, '0.00', 0),
+(1330, '2018-12-22 11:10:54', '2018-12-22 11:05:30', '19INCHLCDMONITORWIDE', 'DELL 19\" LCD MONITOR WIDE', 'CCTV', '1400.00', '1820.00', 1, 23, '0.00', 0),
 (1331, '2018-12-22 11:10:54', '2018-12-22 11:06:34', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 'CCTV', '100.00', '250.00', 4, 23, '0.00', 0),
 (1332, '2018-12-22 11:10:54', '2018-12-22 11:07:21', 'BNCCONNECTORC', 'BNC Connector Coupler', 'CCTV', '10.00', '25.00', 4, 23, '0.00', 0),
 (1333, '2018-12-22 11:10:54', '2018-12-22 11:07:46', 'POWSUP12V2A', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 1, 23, '0.00', 0),
@@ -1403,7 +1403,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (1367, '2018-12-22 14:43:45', '2018-12-22 14:13:12', 'DS7216HUHIK2', 'Hikvision DS-7216HUHI-K2 16ch DVR1080P', 'CCTV', '11190.00', '14600.00', 1, 23, '0.00', 0),
 (1368, '2018-12-22 14:43:45', '2018-12-22 14:37:44', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '15.00', 3, 23, '0.00', 0),
 (1369, '2018-12-22 14:43:45', '2018-12-22 14:38:48', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 3, 23, '0.00', 0),
-(1370, '2018-12-26 07:54:59', '2018-12-22 14:47:23', '19INLCDMONITORSTYPE', 'DELL 19" LCD MONITOR SQUAD TYPE', 'CCTV', '1300.00', '1690.00', 1, 23, '0.00', 0),
+(1370, '2018-12-26 07:54:59', '2018-12-22 14:47:23', '19INLCDMONITORSTYPE', 'DELL 19\" LCD MONITOR SQUAD TYPE', 'CCTV', '1300.00', '1690.00', 1, 23, '0.00', 0),
 (1371, '2018-12-26 07:54:59', '2018-12-22 15:09:02', '300221242', 'HikVision - DS-7204HQHI-K1 TURBO HD 4CH-DVR', 'CCTV', '2313.00', '3000.00', 1, 23, '0.00', 0),
 (1372, '2018-12-26 07:54:59', '2018-12-22 15:10:04', 'POWSUP12V1A', 'Power Supply 1A', 'CCTV', '90.00', '200.00', 1, 23, '0.00', 0),
 (1373, '2018-12-26 07:54:59', '2018-12-22 15:10:47', 'POWSUP12V2A', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 1, 23, '0.00', 0),
@@ -1444,7 +1444,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (1425, '2018-12-27 09:25:30', '2018-12-27 09:10:14', 'SOLIT5PB10', 'Romoss SOLIT5 Power Bank 10000mah', 'Uncategorized', '525.00', '700.00', 1, 23, '0.00', 0),
 (1426, '2018-12-27 09:25:30', '2018-12-27 09:11:14', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 'CCTV', '100.00', '250.00', 3, 23, '0.00', 0),
 (1427, '2018-12-27 09:25:30', '2018-12-27 09:17:28', 'VGA30M', 'VGA 30 Meters', 'CCTV', '1000.00', '1300.00', 1, 23, '0.00', 0),
-(1428, '2018-12-27 09:25:30', '2018-12-27 09:19:26', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '2900.00', 1, 23, '0.00', 0),
+(1428, '2018-12-27 09:25:30', '2018-12-27 09:19:26', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '2900.00', 1, 23, '0.00', 0),
 (1431, '2018-12-27 10:05:21', '2018-12-27 09:27:06', 'VIDEOBALUN', 'AMAX Video Balun', 'CCTV', '80.00', '200.00', 12, 23, '0.00', 0),
 (1432, '2018-12-27 10:05:21', '2018-12-27 09:33:18', 'BNC2RCACON', 'BNC to RCA Connector', 'CCTV', '10.00', '25.00', 3, 23, '0.00', 0),
 (1433, '2018-12-28 16:23:24', '2018-12-27 10:06:27', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 11, 23, '0.00', 0),
@@ -1466,7 +1466,7 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (1453, '2018-12-29 07:35:21', '2018-12-29 07:05:18', 'VIDEOBALUN', 'AMAX Video Balun', 'CCTV', '80.00', '200.00', 8, 23, '0.00', 0),
 (1454, '2018-12-29 07:35:21', '2018-12-29 07:06:06', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '15.00', 10, 23, '0.00', 0),
 (1455, '2018-12-29 07:35:21', '2018-12-29 07:06:23', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 10, 23, '0.00', 0),
-(1456, '2018-12-29 07:35:21', '2018-12-29 07:08:45', '19INCHLCDMONITORWIDE', 'DELL 19" LCD MONITOR WIDE', 'CCTV', '1400.00', '1820.00', 1, 23, '0.00', 0),
+(1456, '2018-12-29 07:35:21', '2018-12-29 07:08:45', '19INCHLCDMONITORWIDE', 'DELL 19\" LCD MONITOR WIDE', 'CCTV', '1400.00', '1820.00', 1, 23, '0.00', 0),
 (1457, '2018-12-29 07:35:21', '2018-12-29 07:10:00', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 1, 23, '0.00', 0),
 (1458, '2018-12-29 07:35:21', '2018-12-29 07:10:27', 'POWSUP12V2A', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 2, 23, '0.00', 0),
 (1459, '2018-12-29 07:35:21', '2018-12-29 07:10:55', 'BNCCONNECTORC', 'BNC Connector Coupler', 'CCTV', '10.00', '25.00', 2, 23, '0.00', 0),
@@ -1646,13 +1646,17 @@ INSERT INTO `confirmed_pullouts` (`id`, `confirm_date`, `date_of_pullout`, `item
 (1673, '2019-01-21 08:08:46', '2019-01-19 10:05:28', 'RJ45', 'RJ 45', 'Network Management', '2.00', '0.00', 8, 23, '0.00', 0),
 (1674, '2019-01-21 08:08:46', '2019-01-19 10:18:37', 'WD10PURX-78E5EYO', 'WD 1TB Hdd', 'CCTV', '2550.00', '3500.00', 1, 23, '0.00', 0),
 (1675, '2020-03-21 12:30:16', '2020-03-18 18:09:21', 'DCMALE', 'DC Connector - Male', 'Direct', '6.00', '20.00', 1, 18, '80.00', 1),
-(1676, '2020-03-21 12:30:16', '2020-03-18 18:10:00', 'DCFEMALE', 'DC Connector - Female', 'Direct', '8.00', '20.00', 3, 18, '60.00', 0),
+(1676, '2020-03-21 12:30:16', '2020-03-18 18:10:00', 'DCFEMALE', 'DC Connector - Female', 'Direct', '8.00', '20.00', 3, 18, '60.00', 1),
 (1677, '2020-03-21 12:30:16', '2020-03-18 18:10:26', 'DS-7204HQHI-K1', 'DS-7204HQHI-K1 4CH DVR', 'Direct', '2313.00', '3100.00', 1, 3, '10.00', 0),
-(1678, '2020-03-21 12:30:16', '2020-03-19 12:46:20', 'DS-1LN5E-E/E', 'Cat 5e UTP Cable Grey Hikvision', 'Direct', '10.00', '25.00', 82, 143, '500.00', 0),
-(1679, '2020-03-21 12:30:16', '2020-03-19 13:26:01', '32INLCDMONITOR', '32" LCD Monitor', 'Direct', '6500.00', '6500.00', 7, 363, '0.00', 0),
+(1678, '2020-03-21 12:30:16', '2020-03-19 12:46:20', 'DS-1LN5E-E/E', 'Cat 5e UTP Cable Grey Hikvision', 'Direct', '10.00', '25.00', 82, 143, '500.00', 1),
+(1679, '2020-03-21 12:30:16', '2020-03-19 13:26:01', '32INLCDMONITOR', '32\" LCD Monitor', 'Direct', '6500.00', '6500.00', 7, 363, '0.00', 0),
 (1680, '2020-03-21 12:30:16', '2020-03-19 13:54:48', 'WD10PURX', '1TB WESTERN DIGITAL HDD', 'Direct', '2550.00', '3500.00', 2, 363, '0.00', 0),
 (1681, '2020-03-23 14:55:32', '2020-03-23 11:07:15', 'DS-7208HGHI-K1', 'DS-7208HGHI-K1 8Channel DVR', 'Direct', '2190.00', '2900.00', 1, 377, '0.00', 0),
-(1682, '2020-03-27 15:57:58', '2020-03-27 15:57:26', '43INCHSMNTR', '43 Inches monitor AVISION', 'Direct', '10043.00', '13100.00', 12, 130, '0.00', 1);
+(1682, '2020-03-27 15:57:58', '2020-03-27 15:57:26', '43INCHSMNTR', '43 Inches monitor AVISION', 'Direct', '10043.00', '13100.00', 12, 130, '0.00', 1),
+(1683, '2020-04-07 19:28:59', '2020-03-28 16:17:30', 'YH280U', 'YH280U U-Bracket', 'Direct', '250.00', '350.00', 1, 201, '0.00', 0),
+(1684, '2020-04-07 19:28:59', '2020-03-28 16:18:00', '12UDATACABINET', '12U Data Cabinet', 'Indirect', '7300.00', '9500.00', 5, 350, '0.00', 0),
+(1686, '2020-04-07 19:31:08', '2020-04-07 19:30:50', 'WD10PURX', '1TB WESTERN DIGITAL HDD', 'Direct', '2550.00', '3500.00', 9, 201, '0.00', 0),
+(1687, '2020-04-07 20:03:03', '2020-04-07 20:02:56', 'WD10PURX', '1TB WESTERN DIGITAL HDD', 'Direct', '2550.00', '3500.00', 9, 4, '0.00', 0);
 
 -- --------------------------------------------------------
 
@@ -1743,392 +1747,393 @@ CREATE TABLE `customer_vt` (
   `Address` varchar(255) DEFAULT NULL,
   `CityAddress` int(11) DEFAULT NULL,
   `ContactNumber` varchar(255) DEFAULT NULL,
-  `EmailAddress` mediumtext,
-  `Website` mediumtext,
+  `EmailAddress` mediumtext DEFAULT NULL,
+  `Website` mediumtext DEFAULT NULL,
   `InstallationDate` date DEFAULT NULL,
-  `Interest` mediumtext,
+  `Interest` mediumtext DEFAULT NULL,
   `Type` varchar(255) DEFAULT NULL,
-  `Notes` varchar(255) DEFAULT NULL
+  `Notes` varchar(255) DEFAULT NULL,
+  `is_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer_vt`
 --
 
-INSERT INTO `customer_vt` (`CustomerID`, `CompanyName`, `ContactPerson`, `Address`, `CityAddress`, `ContactNumber`, `EmailAddress`, `Website`, `InstallationDate`, `Interest`, `Type`, `Notes`) VALUES
-(1, 'EarthChem Apartment', 'Ms. Gillian', 'Evangelista, Makati City', 74, '0977-812-8188', 'gillian.earthchem@gmail.com#mailto:gillian.earthchem@gmail.com#', NULL, '2017-08-08', 'CCTV Installation', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(2, '7-11 Tunasan', 'Mr. Phillip Bascon', 'National Hiway, Tunasan, Muntinlupa City', 87, NULL, 'st273@s.philseven.com#mailto:st273@s.philseven.com#', NULL, '2016-07-23', 'CCTV Installation: 9 – Dome/Bullet Camera 720P HD\r\nAudio\r\n\r\nCables \r\nCentralized Power Supply\r\nAHD DVR Full HD 16Ch\r\nWestern Digital PurpleHDD 2TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(3, '24-7 Computer Shop', 'Jerial Dela Cruz', 'Tierra Market, Quezon City', 103, '0917-819-8090', NULL, NULL, '2015-09-12', 'CCTV Installation: 720P Bullet Camera (SmartEye)\r\nSiamese Cable 20M', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(4, 'Aaron Lorenzo', 'Aaron Lorenzo', 'Tramo St. cor Lopez Jaena St., San Dionisio, Paranaque City', 98, '0918-567-8673 / 0998-867-7966', 'ronaldaaron@gmail.com#mailto:ronaldaaron@gmail.com#', NULL, '2016-12-10', 'CCTV Installation: 2 – Dome Camera 720p\r\n2 – Bullet Camera 720P\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(5, 'Romualdo Dizon', ' Romualdo Dizon', '2 A Magiting Teachers village west Quezon City', 103, '0999-404-4080', NULL, NULL, '2016-11-19', 'CCTV Installation: 3 – Bullet High- Definition\r\n2 – Dome High- Definition \r\n\r\n5 – Cables\r\n1 – Power Supply\r\n1 - 8CH AHD DVR Full HD \r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(6, 'Boo''s Cafeville', 'Loyd Kawai', 'Boo''s cafeville bar and resto A.Mabini st. Caloocan complex 2nd floor', 29, '0995-295-8373', NULL, NULL, '2016-11-28', 'CCTV Installation: 4 – Dome Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(7, 'Ariel Pimping', 'Ariel Pimping', 'L9 B16 Duhat st. Talon 5 Las Pinas City', 67, '0917-561-9024', 'mariaisabelatienza5@gmail.com#mailto:mariaisabelatienza5@gmail.com#', NULL, '2016-07-07', 'CCTV Installation: 4 – Siamese Cables\r\n4- Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(8, 'Myrna Aguirre (Residence)', 'Philip Bascon', '207 Mango drive Ayala Alabang Village Muntinlupa City', 87, '0917-819-0629', NULL, NULL, '2016-12-21', 'CCTV Installation: 9 – Bullet Camera 1080P\r\n1 – 16 Channel DVR\r\n\r\n1 – 2TB Harddisk WD \r\n1 – Coaxial Cables\r\n1 – Centralized Power Supply\r\n1 – Automated Voltage \r\n    Regulator', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(9, 'Benjamin "Jun" Lorcha (Residence)', 'ka "Jun" Lorcha', 'Parkhomes, Tunasan, Muntinlupa City', 87, '0918-939-8723', NULL, NULL, '2016-11-17', 'CCTV Installation: AMD A4-6300  \r\nAMD A4-6300 Dual Core 3.7GHz\r\nAMD A68/70 Motherboard\r\n4GB Memory DDR3\r\n500GB HDD 7200rpm\r\nMicro ATX Casing w/650 watts PSU\r\nMonitor AOC 19”', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(10, 'Ado’s Panciteria (Office)', 'Sir Mark Ado Castillo', 'Malinao, Pasig City', 100, '+63 928-595-3966', NULL, NULL, '2016-02-15', 'CCTV Installation: 3– 720P DOME CAMERA \r\n1 - Weatherproof Bullet 720P CAMERA\r\n\r\n3 - Siamese Cable 20 Meters', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(11, 'Erez', 'Erez', '9 Diamond Street South green Park Village Phase 7 Merville Paranaque City', 98, '0917-869-9304', 'Fuchserez@gmail.com#mailto:Fuchserez@gmail.com#', NULL, '2017-01-23', '720p 6 cams', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(12, 'Anna & Dennis Lamano', 'Ka Anna Lamano', '#94 Paseo De Manila St. Las Villas de Manila, Binan, Laguna', 16, '0917-845-0543', NULL, NULL, '2016-08-24', 'CCTV Installation: 5 – Bullet Weather-proof HD 1080P\r\n5 – Dome 720P HD\r\n\r\n5 – Siamese Cables\r\n5 – Patch cables\r\n8CH – Centralized Power Supply\r\n1 - AHD DVR Full HD 16Ch\r\n1 - HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(13, 'Child''s Mind Learning Center', 'Jun Majarais', '#203 Isabel St. Lakeview, Putatan, Muntinlupa City', 87, '0971-840-4617', NULL, NULL, '2016-06-02', 'CCTV Installation: 20 – Dome type 720P HD\r\n4 – Bullet type 720p HD\r\n\r\n2 – Cables Siamese/Coaxial\r\n2 – Centralized Power Supply\r\n2 - AHD DVR Full HD 16Ch\r\n2 - HDD 2TB\r\n2 - Audio', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(14, 'Arnold Mendoza', 'Arnold', 'Quarry Road, Infront of manila Spring, Pantok Binangonan Rizal', NULL, '(02) 234 0105 / 0908-816-1228', NULL, NULL, '2016-04-11', 'CCTV Installation: 3 - Weatherproof Bullet HD 960P\r\n1 – Dome 960P HD\r\n\r\n4 – Siamese Cable 50 Meters\r\n4- Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(15, 'Myrna Aguirre Pawnshop (Tunasan)', 'Fe Carmona', 'Unit 101 6/f MB Aguirre Bldg. Km9 National Road, Tunasan Muntinlupa city', 87, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(16, 'Gerorge Vinson', 'Sir Arthur', '022 Menchelina St. Batingan, Binangonan, Rizal', NULL, '0995-295-8373', NULL, NULL, '2017-07-01', 'CCTV Installation: VT-PWDHPD1MP\r\nVT-PWDHPB1MP\r\nVT-ACSED4CH720\r\nVT-PSHH1TB\r\nPower Supply\r\nCables', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(17, 'Rowena Hapie', 'Ma''am Rowena', 'Malabon Public Market, Malabon City', 75, '0921-542-2696', NULL, NULL, '2016-10-03', 'CCTV Installation: 2 – Bullet/Dome High-Definition\r\n\r\n2 – Siamese Cables\r\n2 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD \r\n1 – MONITOR (FREE)', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(18, 'Ado''s Panciteria (Resto)', 'Ado''s (look for Mac or Anne) / Mr. Eric Castillo', 'Malinao, Pasig City', 100, '0928-595-3966', NULL, NULL, '2017-01-19', 'CCTV Installation: 1 TB to 2TB Free \r\nCables\r\n1 – 16CH HD DVR\r\n5 – 720P DOME CAMERA', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(19, 'Hummus Elijah', 'Arik Herskovitz', 'Hummus Elijah, 7850 Makati Avenue, Makati, 1209 Metro Manila', 74, '0927-153-6277', NULL, NULL, '2016-05-06', 'CCTV Installation: 7 – Dome 720P HD\r\n1 – Audio\r\n1 - Monitor\r\n\r\n1 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 8Ch\r\n1-  HDD 2TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(20, 'Aris Bernardo  T. Portugal', 'Aris', 'Don Elpidio Cor.Don Matias St. Don Antonio Heights Quezon City Metro Manila Philippines', 103, '0917-628-1053', NULL, NULL, '2015-09-07', 'CCTV Installation: 3 – 720P DOME CAMERA \r\n4 - Weatherproof IR CAMERA\r\n1 – Varifocal (Upgraded)\r\n\r\n8 - Siamese Cable 20 Meters\r\n1 - Centralized Power Supply\r\n8 - AHD DVR\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(21, 'Babyleth Sadang', 'Babyleth', 'Katarungan Village Muntinlupa City', 87, '0927-730-1861', NULL, NULL, '2016-02-03', 'CCTV Installation of 4 cameras (Package)', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(22, 'Beni''s Falafel', 'Beni''s', 'Makati City Philippines', 74, '0915-520-1300', NULL, NULL, '2015-12-09', 'CCTV Installation: 1-16CH DVR upgraded\r\n6-720P HD IR Dome/2-Bullet Camera\r\n1-2TB HDD upgraded\r\n8-Siamese Cables\r\n1 – Centralized Power Supply', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(23, 'Bong Eusebio', 'Bong', 'B12 L28 P5 Marycris Exec Homes Magalasang 2G Imus Cavite', 35, '0918-567-8673 / 0998-867-7966', NULL, NULL, '2016-12-13', 'CCTV Installation: 2 – Dome/Bullet Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk WD \r\n2 – Cables\r\n2 – 1A Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(24, 'Chelsea Crisologo', 'Chelsea', 'P18-12 10-5 Villamor 183 Pasay City', NULL, '0915-381-0092', NULL, NULL, '2016-06-27', 'CCTV Installation: 2 – Dome 960P HD\r\n1 – Bullet 960P HD\r\n\r\n3 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(25, 'Christopher Angon', 'Maricel Angon', 'Pasig City', 100, '0998-565-9715', NULL, NULL, '2016-09-04', 'CCTV Installation: 4 – 2 MP 3.6mm Bullet Camera\r\n4 – Cables\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 1 Terabyte WD \r\n1- Centralized 8 Channel PS', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(26, 'Crispi Galarido', 'Crispi', 'Marilao Metrogate, Loma de Gato, Marilao Bulacan', NULL, '0916-338-2585', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(27, 'Donna Baltazar', 'Donna', 'B5 L12 Tinidad St. Ireneville 1 Subd.Parañaque City', 98, '0937-373-4799', NULL, NULL, '2016-10-11', 'CCTV Installation: 8 – Bullet/Dome High-Definition\r\n\r\n8 – Siamese Cables\r\n1 – 8 WAY POWER SUPPLY\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(28, 'EarthChem Office', 'EarthChem', 'Makati City', NULL, '09778128188', NULL, NULL, '2016-09-09', 'CCTV Installation: 5 – Dome HD\r\n2 – Bullet HD\r\n\r\n6 – Cables\r\n1 – Centralized Power Supply\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 2TB WD', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(29, 'EarthChem Warehouse', 'EarthChem', 'Parañaque City', 98, '09778128188', NULL, NULL, '2017-08-08', 'CCTV installation: 2pcs VT-ACSEPB2MP\r\n1unit VT-ACTVD16CH1080\r\n1lot Cables', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(30, 'Engert', 'Engert', 'B39 L11a Lancewood St.Greenwod executive Village Cainta, Rizal Philippines 1990', 98, '(02)3598518', NULL, NULL, '2016-06-09', 'CCTV Installation: INTERCOM SYSTEM UNIT', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(31, 'Enrique Cuevas', 'Enrique', 'Blk 15 Lot 107, Brgy. Dagat-dagatan, Caloocan City', 29, '09777010411', 'kjcrose@yahoo.com#mailto:kjcrose@yahoo.com#', NULL, '2016-05-06', 'CCTV Installation: 2 - Weatherproof Bullet HD 720P\r\n6 – Dome 720P HD\r\n1 – Fisheye HD 360\r\n\r\n1 – Cables Coaxial\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 16Ch\r\n1-  HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(32, 'EPDA (Residence)', 'EPDA', 'B719A L1 P3 EPDA st. Metrogate Loma de gato Marilao Bulacan', NULL, '09257071563', NULL, NULL, '2017-02-07', 'CCTV Installation: 1 - Cable wire 30 meters\r\n1 – Cable wire 20 meters\r\n3 – Cable wires 10 meters', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(33, 'Myrna Aguirre Pawnshop (Bayanan)', 'Lovella Montero', '146-B National road. Brgy. Bayanan', 87, '09433208577', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(34, 'Ernesto De Castro', 'Ernesto', '46 North Road Coronado Heights Subd. Barangka Ibaba Mandaluyong City', 78, '09175328832', 'ernest.declaro@gmail.com#mailto:ernest.declaro@gmail.com#', NULL, '2016-08-07', 'CCTV Installation: 3 – Bullet 720 HD\r\n\r\n3 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(35, 'Euromerica Trade Phils', 'Roma', 'Cervantes St. Bormaheco Compound Km 17 West Service Road SSH Parañaque City', 98, '(02) 824 3950', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(36, 'Evelyn Alosangay', 'Evelyn', 'b12 l18 Northgate Royale Subd. Bulacan', NULL, '091266099 68', NULL, NULL, '2016-09-15', 'CCTV Installation: 4 – Dome/Bullet AHD\r\n4 – Siamese Cables\r\n1 – Power Supply Adaptor\r\n1 - AHD DVR Full HD 4Ch\r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(37, 'Francisco', 'Francisco', '53 Laguna De Bay St. Southway Sucat Parañaque City', 98, '09175763621', NULL, NULL, '2015-08-18', 'CCTV Installation: 3 – 720P DOME CAMERA \r\n1 -  Weatherproof IR CAMERA\r\n\r\n4 - Siamese Cable 20 Meters\r\n4 - DC Power Supply\r\n1- SE-4004 AHD DVR\r\n1- Seagate HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(38, 'Gerard M. Dela Cruz', 'Gerard', '#36 Driod St. Cubao Quezon City', 103, '09125324564', NULL, NULL, '2016-04-24', 'CCTV installation: 4 FULL HD CH DVR\r\n500GB upgraded 1 terabyte\r\n1- 960P dome type camera\r\n2- 960P bullet type camera\r\n3- Siamese Cables\r\n+ 1TVT Additional Camera 5-31-18', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(39, 'Gian Navarro', 'Gian', 'Unit 216 North Flair Towers Reliance St. MandaluyongCity', 78, '09209239110\r\n09209239110', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(40, 'Pamantasan ng Lungsod Ng Muntinlupa City', 'Dean Choi Mesina/ Mr.Ghiebert Octavio', 'Pamantasan ng Lungsod Ng Muntinlupa City', 87, NULL, NULL, NULL, NULL, NULL, 'Government', NULL),
-(41, 'Glenn Garfin (Phil. Arena)', 'Glenn Garfin', 'Tierraa Market, Tandang sora Ave.Cor Commonwlth Ave. Diliman Quezon City', 103, '09272881993', 'Garfinglenn10@gmail.com#mailto:Garfinglenn10@gmail.com#', NULL, '2015-06-27', 'CCTV Installation: 4 – 720P DOME CAMERA \r\n\r\n4 - Siamese Cable 20 Meters\r\n4 - DC Power Supply\r\n1-SE-1008 DVR\r\n1-Seagate HDD 500GB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(42, 'Glenda Buenavista', 'Glenda', 'B714 L19 P3 San Diego St.Metrogate Loma De Gato marilao Bulacan', NULL, '09228449853/09285502877', NULL, NULL, '2015-04-19', 'CCTV Installation: 5-SE-1230 800TVL DOME CAMERA and 3-SE-2230 BULLET CAMERA\r\n\r\n8-Siamese Cable 20 Meters\r\n1-Centralized Power Supply\r\n1-SE-8008 HD DVR\r\n1-Seagate HDD 1 TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(43, 'Gilbert Perfinan', 'Gilbert', '0230-08 Phase 3, Villa Elister Subdivision, Bgry. Duale Limay, Bataan', NULL, '0922-831-1309', NULL, NULL, '2016-12-21', 'CCTV Installation: 6 – Bullet Camera 1080P\r\n2 – Dome Camera 1080P\r\n1 – 8 Channel DVR\r\n\r\n1 – 2TB Harddisk WD \r\n8 – Cables\r\n1 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(44, 'Golden Acres (Kapilya)', 'Robert Peralta', 'Golden Acres Las Piñas City', 67, '09063924079', NULL, NULL, '2016-02-25', 'CCTV Installation: 1 – AOC Monitor\r\n4 - Weatherproof Bullet 720P\r\n\r\n4 – Rj59 Cable 20 Meters	\r\n4 - Power Supply	\r\n1 - AHD DVR	\r\n1-  HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(45, 'Hilter Manila', 'Hilter', 'B1 L4  Park Subd,Molino 1 Bacoor Cavity City', 35, '09175323198', NULL, NULL, '2015-10-01', 'CCTV installation: Bullet Camera\r\nACDC Adapter\r\nCentralized Power Supply\r\nVarifocal Camera', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(46, 'Irelyn Vicencio', 'Irelyn', 'B5L19 Bellazona Subd, Molino 3 Bacoor Cavite City', 35, '09369261522', NULL, NULL, '2016-06-06', 'CCTV Installation: 2 – Dome type 720P HD\r\n1 – Bullet type 720p HD\r\n\r\n4 – Cables Siamese\r\n1 – Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1 - HDD 1TB\r\n1 - Fisheye', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(47, 'Melts Grilled Cheeserry (BGC)', 'James Torres/ Jeff Perdiz', 'Melts Grilled Cheesery, Uptown Mall Taguig City', 128, '0917-544-2897', NULL, NULL, '2016-04-20', 'CCTV of 5 cameras', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(48, 'Jay Retoriano', 'Jay', 'B19 6&8 Guinhawa South Tagaytay City', 126, '09178436764', 'retorianolaw@gmail.com#mailto:retorianolaw@gmail.com#', NULL, '2016-03-05', 'CCTV Installation: 4 – 960P  Weatherproof Bullet CAMERA \r\n\r\n4 – Cat5e Cable 20 Meters\r\n4 - Power Supply\r\n1- 4CH AHD DVR\r\n1-  HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(49, 'Jean Gesacula', 'Jean', 'B7 L3 Bayfair Putatan Muntilupa City', 87, NULL, NULL, NULL, '2016-10-16', 'CCTV Installation: 5 – Bullet High- Definition \r\n\r\n5 – Siamese Cables\r\n1 – 16 Centralized Power Supply\r\n1 - AHD 16CH DVR Full HD NVSIP\r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(50, 'Jen Evangalista', 'Jen', 'siniloan Laguna', NULL, '09178525704/09277809450 or look for Ms Cha (0975-239-4758)', 'jen_evangelista0601@yahoo.com#mailto:jen_evangelista0601@yahoo.com#', NULL, '2016-11-20', 'CCTV Installation: 2 – 1080P BULLET CAMERA\r\n2 – 1080P DOME CAMERA\r\n1- 8CH Channel DVR\r\n1 – AOC 20” LED Monitor\r\n4 - ACDC Adapter\r\n1- HDD 2 Terabytes \r\n4 - 30m Sets Siamese cable', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(51, 'Mina Co', 'Mina Co', '347-D A. Bonifacio San Jose Quezon City Cor. Malibay St. (Durable Hardware', 103, '0908-504-9212', NULL, NULL, '2018-03-04', 'CCTV Installation: 2 - 720P Dome and Bullet Camera', 'Residential', NULL),
-(52, 'Joey Eustaquio', 'Joey', '#6 Getty St. Filinvest Subd.Marcos Hi way Antipolo', 4, '09204890185', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(53, 'Jose Winston Leal', 'Jose', 'Barangka CANDABA Pampanga', NULL, '09294932016', NULL, NULL, '2016-05-06', 'CCTV Installation: 6 – Dome 720P HD\r\n1 – Audio\r\n1 - Monitor\r\n\r\n1 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 8Ch\r\n1-  HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(54, 'Joseph Santidad', 'Joseph', 'Unit 1508A 15/F New YORK Mansions 84 mantreal St. Cubao Quezon CITY', 103, '09173850527', 'upgrade.enterprise@gmail.com#mailto:upgrade.enterprise@gmail.com#', NULL, '2015-10-28', 'CCTV Installation: 14 – 720P BULLET CAMERA\r\n1 – 720P Varifocal CAMERA\r\n1- 16CH Channel DVR\r\n1 – Centralized Power Supply\r\n1- HDD 2 Terabytes \r\ncables and accessories', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(55, 'Jovie Quimpan', 'Jovie', 'Stall#13 Poblacion Market Muntinlupa City', 87, '094771770978', NULL, NULL, '2017-01-03', 'CCTV Installation: 2 Bullet Camera 720p', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(56, 'Jun Dequito', 'Jun', 'Nagcarlan Laguna', NULL, '09985333860', NULL, NULL, '2016-12-21', 'CCTV Installation: 5 – Bullet Camera 1080P\r\n3 – Dome Camera 1080P\r\n1 – 8 Channel DVR\r\n\r\n1 – 2TB Harddisk WD \r\n8 – Cables\r\n1 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(57, 'Jun Geling', 'Jun', 'Taytay Rizal', NULL, '(02)660-1455', 'Cisel2006@yahoo.com#mailto:Cisel2006@yahoo.com#', NULL, '2016-08-17', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables\r\n4 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(58, 'Jun Majarais', 'Jun', '#203 Isable St. Lakeviw Putatan Muntinlupa City', 87, '09178404617', NULL, NULL, '2016-06-02', 'CCTV Installation: 20 – Dome type 720P HD\r\n4 – Bullet type 720p HD\r\n\r\n2 – Cables Siamese/Coaxial\r\n2 – Centralized Power Supply\r\n2 - AHD DVR Full HD 16Ch\r\n2 - HDD 2TB\r\n2 - Audio', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(59, 'Jun San Diego', 'Jun', '3-A Oak St. PIV multinational Village Parañaque City', 98, '0917-8461976', NULL, NULL, '2015-12-05', 'CCTV Installation: 1-8CH DVR\r\n8-720P HD IR Dome/Bullet Camera\r\n1-2TB HDD upgraded\r\n8-Siamese Cables\r\n1 – Centralized Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(60, 'Karen Vicente', 'Karen', '#5 MRT Avenue Lower Bicutan Taguig City', 128, '0917-890-7654', NULL, NULL, '2016-08-30', 'CCTV Installation: 4 – Dome/Bullet AHD 2MP Fine\r\n4 – Siamese Cables\r\n1 – Power Supply Adaptor\r\n1 - AHD DVR Full HD 4Ch\r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(61, 'SGV2 Gasoline and Service Station', 'Kath Villanueva', '#80 Sen .Gil Puyat, San Isidro Makati City (UniOil Gas Station)', 74, '02-945-4273', NULL, NULL, '2016-08-21', 'CCTV Installation:  4 – 720p 3.6mm Bullet Camera\r\n4 – Cables\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 2 TeraByte Seagate', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(62, 'Kaye Romualdo', 'Kaye', 'Tandang Sora Quezon City', 103, '0917-819-8090', NULL, NULL, '2015-08-21', 'CCTV Installation: 8 – 720P DOME CAMERA \r\n\r\n8 - Siamese Cable 20 Meters\r\n1 - Centralized Power Supply\r\n1- SE-4008 AHD DVR\r\n1- Seagate HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(64, 'Spin-Off (Carmona)', 'Leo Estallo', 'Carmona Cavite', 35, '(02)533-9592/0917-584-9489', NULL, NULL, '2016-04-11', 'CCTV installation: 4– Dome 720P HD\r\n\r\n1 -Siamese Cable 60 Meters	\r\n4- Power Supply	\r\n1 - AHD DVR Full HD 8Ch Free swap', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(65, 'EPDA (GreenForbes)', 'Leony', 'Commercial Building Greenforbes Marilao Bulacan', NULL, '0925-707-1563', 'epda.trading@yahoo.com#mailto:epda.trading@yahoo.com#', NULL, '2015-07-06', 'CCTV Installation: 5- DOME CAMERA and 3- BULLET CAMERA\r\n\r\n8-Siamese Cable 20 Meters/2-10M\r\n8 Power Supply\r\n1-SE-1008 DVR\r\n1-Seagate HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(66, 'Liza Atienza', 'Liza', 'Blk1A9 Lot4 Apartment A St. Juana1 Binan ,Laguna', NULL, '0946-570-1541', NULL, NULL, '2015-12-08', 'CCTV Installation: Dome camera\r\nAudio \r\nSiamese cables\r\n\r\n+ Relocation', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(67, 'Leonardo M Garcia', 'L.M', 'Villa Olympia Sub. San Pedro Laguna', NULL, '0920-907-0276', NULL, NULL, '2016-03-28', 'CCTV Installation: 3 - Weatherproof Bullet HD\r\n\r\n3 – Siamese Cable 50 Meters\r\n3 - Power Supply\r\n1 - AHD DVR Full HD\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(68, 'Loyd Kawai', 'Loyd', 'A.Mabini St. Caloocan City', 29, '0995-295-8373', 'Loyd-013@yahoo.com#mailto:Loyd-013@yahoo.com#', NULL, '2016-11-28', 'CCTV installation: 4 – Dome Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(69, 'Luisa Tiu', 'Luisa', '667 f. Torres St, Sta.Cruz Manila', 80, '0916-625-9221', 'Paochie_09@yahoo.com#mailto:Paochie_09@yahoo.com#', NULL, NULL, NULL, 'Commercial', NULL),
-(70, 'Lynita Castillo (Residence)', 'Lynita', '126 A. Luna St. Malinao Pasig City', 100, '(02)696-1408', NULL, NULL, '2015-11-13', 'CCTV Installation: 1-720P Fisheye camera 360\r\n4- 720p Dome Camera\r\n1-8CH DVR\r\n1-CPS \r\n1Terabyte HDD\r\n1-Monitor', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(71, 'Marlon Oliveros', 'Marlon', '97 Luklukan Compound Binangonan Rizal', NULL, '0995-481-8081', 'Sarah_oliveros32@yahoo.com#mailto:Sarah_oliveros32@yahoo.com#', NULL, '2016-08-20', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables\r\n4 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(72, 'Mau Marfil', 'Mau', 'B3 L9 Pacita 2 P1 main road Street', NULL, NULL, NULL, NULL, '2016-12-17', 'CCTV Installation: 3 – Dome/Bullet Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n3 – Cables\r\n3 – Power Supply\r\n1-	HDD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(73, 'Mc Kevin Alger', 'Mc Kevin', '365 10TH St. Ave. Grace Park Caloocan City', 29, '0906-705-0233', 'mckvn.alger@gmail.com#mailto:mckvn.alger@gmail.com#', NULL, '2016-04-05', 'CCTV Installation: 1 - Weatherproof Bullet HD 960P\r\n1 – Dome 960P\r\n\r\n3 – Siamese Cable 50 Meters\r\n3- Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(74, 'Melody Garcia/Jimmy Gozales', 'Melody', 'B14 L30A Walnut St P6 Greenwods Executive Village Pasig City Metro Manila', 80, '0917-807-3355', '', '', '2015-11-16', 'CCTV Installation: 4 – 720P DOME CAMERA 2 - Weatherproof Bullet 720P CAMERA2- Sound Monitoring8 - Siamese Cable 20 Meters8 - Power Supply8 - AHD DVR1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(75, 'Michelle Lavarias', 'Michelle', 'L1 B212 Peseta Cor. Schilling United North Fairview Subd,Quezon City', 103, '0928-300-3296/(02)4902030', NULL, NULL, '2016-10-16', 'CCTV Installation: 5 – Bullet High- Definition \r\n\r\n5 – Siamese Cables\r\n1 – 16 Centralized Power Supply\r\n1 - AHD 16CH DVR Full HD NVSIP\r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(76, 'Microtech Global Solution Corp', NULL, '27th Floor 2705 tycoon Center Bldg. Pearl Drive Ortigas Center Pasig City', 100, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(77, 'Miel Facundo', 'Miel', 'B1 L1 Neptune St. William Village 2 Subd, Malolos Bulacan', NULL, NULL, NULL, NULL, '2016-07-05', 'CCTV Installation:2 – Bullet/Dome HD\r\n\r\n2 – Siamese CablEs\r\n2 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD\r\n1 - Audio', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(78, 'Milina Esperida', 'Milina', '16A Binhagan St. San Jose Quezon City', 103, NULL, NULL, NULL, '2016-04-23', 'CCTV Installation: 4 FULL HD CH DVR\r\n500GB upgraded 1 tera\r\n1- 960P dome type camera\r\n1- 960P bullet type camera\r\n2- Siamese Cables', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(79, 'Miraflor Quipot', 'Mr.Von Andrew', 'San Antonio South  Peak filinvest San  Pedro', 115, '0999-814-4099', NULL, NULL, '2017-07-17', 'UPS 650v 1 Intex Maestro Red', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(80, 'Morales', 'Melody', '13 San Marcelino ST, San Antonio Valley 10 Sucat Parañaque City', 98, NULL, NULL, NULL, '2016-01-25', 'CCTV Installation: 8 Cameras', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(81, 'Mylene Malate', 'Mylene', 'B7 L9 Roseville Subd. Amuntay Road Poblacion Zone 3Dasmariñas city', 41, '0917-983-2931', NULL, NULL, '2016-11-07', 'CCTV Installation: 5 – Bullet High- Definition\r\n3 – Dome High- Definition \r\n\r\n8 – Cables\r\n1 – Power Supply\r\n1 - AHD 8CH DVR Full HD SmartEye\r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(82, 'Nanie Sandig', 'Nanie', 'B38L7 Advocacy St. P1 Homes Loma De Gato Marilao Bulacan', NULL, '0915-125-4266', NULL, NULL, '2016-11-11', 'CCTV Installation: 4 – HD CCTV\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(83, 'Omar (Apartment)', 'Omar', 'Love Homes Purok 3 Macabiling Sta Rosa Laguna', NULL, NULL, NULL, NULL, '2015-10-28', 'CCTV Installation: 14 – 720P BULLET CAMERA\r\n1 – 720P Varifocal CAMERA\r\n1- 16CH Channel DVR\r\n1 – Centralized Power Supply\r\n1- HDD 2 Terabytes \r\ncables and accessories', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(84, 'Pabs Guansing (Residence)', 'Pabs Guansing', 'ParkHomes Subd, Tunasan Muntinlupa City', 87, '0918-939-9596', NULL, NULL, '2016-03-24', 'CCTV Installation: 3 - Weatherproof Bullet HD\r\n\r\n3 – Siamese Cable 50 Meters	\r\n3- Power Supply	\r\n1 - AHD DVR Full HD	\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(85, 'Paolo De leon', 'Paolo', '#3 Grant St. filinvest East Homes Antipolo City', 4, '0998-537-7297', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(86, 'Paul Lee', 'Paul', 'Unit 18m 18th Floor Celadon Park Tower 2 Felix Huertas St. Sta Cruz Manila', 80, '0922-894-1348', NULL, NULL, '2016-10-26', 'CCTV Installation: 2 – Dome High- Definition \r\n\r\n2 – Siamese Cables\r\n2 – Power Supply\r\n1 - AHD 4CH DVR Full HD \r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(88, 'Philip Michael Bernales', 'Philip Michael Bernales', 'Road22 4B Bahay Toro Project 8 Quezon City', 103, '0977-829-8927', NULL, NULL, '2016-02-26', 'CCTV Installation: 2– 720P DOME CAMERA \r\n1 - Weatherproof Bullet 720P CAMERA\r\n\r\n3 - Siamese Cable 20 Meters\r\n3 - Power Supply\r\n1 – 4Ch AHD DVR\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(89, 'Pio Magno', 'Pio', 'Purok 3 San Roque San Isidro Nueva Ecija', NULL, NULL, NULL, NULL, '2016-04-20', 'CCTV Installation: 3 – Full HD Dome CAMERA\r\n1- HDD 2 Terabytes upgraded\r\n1- 4 Channel DVR\r\n3 –  Power Supply\r\n3 - 30m Sets Siamese cable', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(90, 'Pueblo De Oro', 'RDR Edsel Manapsal', 'Sto Tomas Batangas', 12, '0995-667-6576', NULL, NULL, '2016-08-18', 'CCTV Installation: •	4CH HD DVR\r\n•	4 Bullet HD Camera\r\n•	1 TB HDD', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(91, 'Quench (Water Station)', NULL, 'GreenHeights Muntinlupa City', 87, '09178592480', NULL, NULL, '2017-01-18', 'CCTV Installation: 1 – Dome Camera 960p\r\n1 – Bullet Camera 1080p\r\n1 – 4 Channel DVR\r\n\r\n1 – 2TB Harddisk\r\n2 – Cables\r\n2 – Power Supply 12V', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(92, 'Rachel Delmo', 'Rachel', '#149 Butong Cabuyao Laguna', NULL, NULL, NULL, NULL, '2016-09-17', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables	\r\n4 - Power Supply	\r\n1 - AHD 4CH DVR Full HD	\r\n1 - HDD 1TB WD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(93, 'Rely Perilla', 'Rely', '#5 Fiddlewood St, Greenwods Pasig City', 100, '09178749806', 'rperilla@fpgins.com.ph#mailto:rperilla@fpgins.com.ph#', NULL, '2016-07-16', 'CCTV Installation: 2 – Bullet Weather-proof HD 720P\r\n2 – Dome 720P HD\r\n\r\n4 – Siamese Cables	\r\n8 – Centralized Power Supply	\r\n1 - AHD DVR Full HD 8Ch	\r\n1 - HDD 2TB\r\n1  -  Audio Connection	\r\n 4  -  Bullet Weather-proof HD 720P', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(94, 'Rene Arellano', 'Rene', '4 Irid Barangka Ibaba Mandaluyong City', 78, '0922-871-3738', NULL, NULL, '2015-09-20', 'CCTV Installation: 3 – 720P BULLET CAMERA\r\n1 – 720P Dome Camera \r\n\r\n4 - Siamese Cable 20 Meters	\r\n4 - DC Power Supply	\r\n1- 4Ch DVR	\r\n1-Seagate HDD 1Tera', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(95, 'Reynan Pascual', 'Sir Bong Pascual', '33E. Saint Michael St. Don Bosco Village Better living Parañaque City', 98, '0917-882-5020', '', '', '2016-07-05', 'CCTV Installation: 3 – Bullet/Dome HD3 – Siamese CablEs 3 - Power Supply 1 - AHD 4CH DVR Full HD 1 - HDD 1TB WD1 - Audio', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(96, 'Ric Ejanda', 'Ric', '41-B Mabini St. Makati City', 74, '0908-277-7251', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(97, 'Richard Desigano', 'Richard', 'Mabalang Silang Cavite', 35, '09284545302', NULL, NULL, '2016-10-09', 'CCTV Installation: 2 – Bullet High-Definition 720p\r\n2 – Dome High-Definition 720p\r\n\r\n4 – 20m Siamese Cables	\r\n1 - Power Supply	\r\n1 - AHD 4CH DVR Full HD	\r\n1 - HDD 1TB WD \r\n1 – MONITOR (FREE)', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(98, 'Richard Simon', 'Richard', 'Ashly Unit 16 Thailand Betterling Subd. Don Bosco', 98, NULL, NULL, NULL, '2016-09-21', 'CCTV Installation: 4 – Bullet/Dome High-Definition\r\n\r\n4 – Siamese Cables\r\n4 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 2TB SEAGATE (PROMO)\r\n1 - AUDIO', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(99, 'Oman', 'Ricky Lumbao', 'Filinvest , Batasan hills, Quezon city', 103, NULL, 'rdlumbao@yahoo.com#mailto:rdlumbao@yahoo.com#', NULL, '2015-08-08', 'CCTV Installation: 2 – Varifocal Bullet Camera 2.8mm – 12mm\r\n3 – Bullet Camera 3.6mm\r\n1 - Varifocal Dome Camera 2.8mm – 12mm\r\n2 – Dome Camera 3.6mm\r\n\r\nCables accessories	\r\nCentralized Power Supply	\r\n1-SE-1008 DVR	\r\n1-Seagate HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(100, 'Rob Streegan', 'Rob', 'Rosario Complex,Laguna', NULL, '0920-924-6266', 'marie.streengan1@gmail.com#mailto:marie.streengan1@gmail.com#', NULL, '2016-12-23', 'CCTV Installation: 2 – Dome Camera 1080p\r\n2 – Bullet Camera 1080p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk WD \r\n4 – Cables\r\n4 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(101, 'Roel Adorable', 'Roel', '#30 Ireland St. Betterliving, Parañaque City', 98, '09178142345', NULL, NULL, '2015-08-03', 'CCTV Installation: 2- DOME CAMERA and 3- BULLET CAMERA 1-Varifocal\r\n\r\n8-Siamese Cable 20 Meters/2-10M	\r\n1-Centralized Power Supply	\r\n1-SE-1008 DVR	\r\n1-Seagate HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(102, 'Romualdo Dizon', 'Romualdo', '2A Magigiting Cor.Mahinhin Teachers Village Quezon City', 103, '0999-404-4080', 'rsdizon1216@yahoo.com#mailto:rsdizon1216@yahoo.com#', NULL, '2016-11-19', 'CCTV Installation: 3 – Bullet High- Definition\r\n2 – Dome High- Definition \r\n\r\n5 – Cables	\r\n1 – Power Supply	\r\n1 - 8CH AHD DVR Full HD 	\r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(103, 'Rowena Hapie', 'Rowena', 'Malabong Public Market Malabon City', 75, '0921-542-2926', 'hapie rowena@yahoo.com#mailto:hapie rowena@yahoo.com#', NULL, '2017-01-31', 'CCTV Installation: 2 – Dome Camera 720p\r\n2 – Cables\r\n2 – Power Supply 12v\r\n1 – 17” Monitor\r\n1 – 1TB Harddisk WD\r\n1 – 4 Channel DVR', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(104, 'Servina 18 (Kapilya)', 'Ka Elmer', 'Severina Ave. Parañaque City', 98, NULL, NULL, NULL, '2016-05-11', 'CCTV Installation: 1 – Dell Monitor\r\n4 - Weatherproof Bullet 720P\r\n\r\n4 – Rj59 Cable 20 Meters	\r\n4 - Power Supply	\r\n1 - AHD DVR	\r\n1-  HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(105, 'SMI', 'Leo Garcia', 'B23 Marilag St. United San Pedro Sub, Philippines', NULL, '(02)868-3696', NULL, NULL, '2016-03-28', 'CCTV Installation: 3 - Weatherproof Bullet HD\r\n\r\n3 – Siamese Cable 50 Meters	\r\n3 - Power Supply	\r\n1 - AHD DVR Full HD	\r\n1-  HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(106, 'Swanee Coffee Shop', 'Susan '' Swanee'' Brito', 'Metrogate Marilao Bulacan', NULL, NULL, 'susanbrito18@yahoo.com.ph#mailto:susanbrito18@yahoo.com.ph#', NULL, '2015-11-20', 'CCTV Installation: 4- 720p Dome Camera\r\n1-8CH DVR\r\n1-CPS \r\n1Terabyte HDD\r\n1-Monitor', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(107, 'Tempwell Company', 'Sir Mel Camacho', 'Lot 1 Bach St. Cor. Bachner St., Jade Heights, Victoria Homes, Tunasan Muntinlupa City', NULL, '0922-895-4686', NULL, NULL, '2015-10-18', 'CCTV Installation: 4 – 720P BULLET CAMERA\r\n2 – 720P DOME CAMERA\r\n1- 8 Channel DVR\r\n1 – AOC LED Monitor\r\n6 –  Power Supply\r\n1- HDD 2 Terabytes \r\n6 - 30m Sets Siamese cable', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(108, 'Tess Torres', 'Tess', 'B17 L30 P3 Verona St. Italia Bacoor Cavite City', 35, '0939-955-6138', NULL, NULL, '2015-10-17', 'CCTV Installation: 1 – 720P Varifocal BULLET CAMERA\r\n1 – 720P Varifocal DOME CAMERA\r\n1- 16 Channel DVR\r\n1 – Samsung 21” LED Monitor\r\n1 – Centralized Power Supply\r\n1- HDD 2 Terabytes \r\n1 – 720P Dome camera\r\n2 – 720P Bullet camera\r\n1 - Fisheye Camera\r\n6 - 30m Sets Siamese cable', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(109, 'The Laundry Man', 'Mr.Jerome Tan', '#44 Aguilar St. SFDM Quezon City', NULL, NULL, NULL, NULL, '2015-02-14', 'CCTV Installation: 8-SE-1230 800TVL DOME CAMERA and/or SE-2230 BULLET CAMERA\r\n\r\n8-Siamese Cable 10 Meters	\r\n8-Power Adaptor 12v 1A	\r\n1-SE-1008 DVR	\r\n1-Seagate HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(110, 'Timothy De Leon', 'Timothy', '#12 Ubas Town And Country Antipolo City', 4, '0998-568-9187/0917-110-1202', 'dlpaultimothy@gmail.com#mailto:dlpaultimothy@gmail.com#', NULL, NULL, NULL, 'Residential', NULL),
-(111, 'True Temp', 'Mr.Jomar Echon', '27 A National Highway Mercado St.Plantero Laguna', NULL, '0917-837-6306', 'truetempcorp@yahoo.com#mailto:truetempcorp@yahoo.com#', NULL, '2016-10-03', 'CCTV installation: RG6 – Coaxial Cable\r\n\r\nPower Supply 12V DC\r\n\r\nBNC Connectors', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(112, 'SGV1 Gasoline and Services Station', 'Ms. Kath Villanueva', '#1922 FB Harisson St.Coener Porvenir St. Pasay City (UniOil Gas Station FB Harrison)', 99, '0917-511-5022', NULL, NULL, '2017-02-24', 'CCTV Installation: 1 – Bullet Camera 1MP', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(113, 'Verawood (Triple Z)', 'Mr.Joey Corpuz', 'B2 L6 R.M, Teosejo Subd.Tunasasan Muntinlupa City', 87, '(02) 808-9206/0977-853-1455', NULL, NULL, '2016-08-15', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables	\r\n4 - Power Supply	\r\n1 - AHD 4CH DVR Full HD	\r\n1 - HDD 1TB WD', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(114, 'Wille De Jesus', 'Wille', 'L12B601 Albatross St. Phase IV Heritage Homes Loma De Gato Marilao Bulacan', NULL, '0917-526-1027', NULL, NULL, '2015-02-28', 'CCTV Installation: 2-SE-2230 Bullet Camera\r\n4-Siamese Cable 10m\r\n2-Power adaptor\r\n1-SE-1004 DVR \r\n1-Samsung HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(115, 'SPIN-OFF (Southwoods)', 'Sir. Leo Estello', 'Villa Olympia, San Pedro, Laguna', 16, '0917-584-9489', NULL, NULL, '2016-04-11', 'CCTV installation', 'Commercial', 'INSTALLATION OF CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(116, 'Ernesto De Claro', NULL, '#46 North Road Coronado Heights Subd., Barangka Ibaba Mandaluyong City. (Near Barangay Hall)', 78, '0917-532-8832', 'ernesto.declaro@gmail.com#mailto:ernesto.declaro@gmail.com#', NULL, NULL, 'CCTV Installation', 'Residential', NULL),
-(117, 'All Day Resort and Swimming Pools', 'Maria Lech Ponelas Lee', 'Binagonan rizal', NULL, '0917-883-3068', NULL, NULL, '2017-03-01', 'CCTV Installation', 'Residential', 'INSTALLATION OF CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(118, 'Eric Bamboa', NULL, 'Blk 3 Lot 22 Ph.8 Buenaventura Steet., Bahayang Pagasa Subdivision, Imus Cavite', 35, '0928-148-5045', NULL, NULL, '2017-03-06', 'CCTV Installation', 'Residential', 'NSTALLATION OF 4 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(119, 'Benjamin "Jun" Lorcha (Residential', 'Sir. Jun', 'Park Homes Tunasan Muntinlupa City', 87, '0918-939-8723', NULL, NULL, '2017-01-31', 'CCTV installation: 3 ? Bullet Camera 1MP\r\n2 – Dome Camera 1MP\r\n100m ? Cables\r\n1 – Power Supply 12v', 'Residential', 'INSTALLATION OF CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(121, 'The Old Spaghetti House (Nuvali)', 'Ceniza Y. Dauag', 'Sta. Rosa Laguna, Nuvali', NULL, '0908-558-0976', NULL, NULL, '2017-03-08', 'CCTV Installation: Accessories ( baluns, connectors, terminators, brackets)', 'Commercial', 'NSTALLATION OF 6 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(124, 'Hubert Lao', 'Sir. Hubert', '#2 Diamond Street, San Bartolome Novaliches', NULL, '0916-780-0082', NULL, NULL, '2017-02-20', 'CCTV Installation: 2 – Dome Camera 1MP\r\n\r\n1 – Coaxial Cables\r\n2 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 3 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(125, 'Nino Eulogio', 'Nino Eulogio', 'Blk 40 Lot 55, Villa Zaragosa Subd., Turo, Bocaue, Bulacan', NULL, '0908-820-6620', NULL, NULL, '2017-02-18', 'CCTV installation: 2 – Dome 1MP\r\n2 – Bullet 1MP\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Residential', 'CONTINUATION INSTALLATION of 3 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(126, 'Sylvia Angeles', 'Belle', 'Cupang, Muntinlupa City', 87, '0998-957-0320', NULL, NULL, '2017-01-06', 'CCTV Installation: 3 – Bullet Camera 1080P\r\n5 – Dome Camera 1080P\r\n1 – 8 Channel DVR\r\n\r\n1 – 2TB Harddisk  \r\n8 – Cables\r\n1 – Power Supply', 'Residential', 'NSTALLATION OF 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(127, 'Myrna Aguirre Pawnshop (Putatan)', 'Lilybelle Edaw', '#66 National Road, Brgy. Putatan, Muntinlupa City', NULL, NULL, 'marcienealyssa@yahoo.com#mailto:marcienealyssa@yahoo.com#', NULL, NULL, 'CCTV Installation:', NULL, 'INSTALLATION OF 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(128, 'TaskUs (Door Alarm)', 'Sir Carlo', 'T. De Castro Bldg. 2 Palico 1 Aguinaldo Highway Imus Cavite', 57, '0917-533-5241', NULL, NULL, '2017-02-20', 'CCTV installation: 2 – Dome Camera 1MP\r\n\r\n1 – Coaxial Cables\r\n2 – Power Supply', 'Commercial', 'INSTALLATION OF 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.'),
-(129, 'Carlson Innotech Corporation', 'Mellisa Malinay', 'Blk 9 Lot 26 Sto. Nino Ave. Sto Nino Village          \r\nPhase 4 Tunasan, Muntinlupa City, Metro Manila', 87, '(02)779-5031', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(130, 'Arlene Ngo', 'Tetay', '#47 Thomas St. Multinational Village Parañaque City / 3rd Floor IDM Bldg. 155 Neil Armstrong Avenue, Moonwalk Village Parañaque 1709', 98, '0998-997-1345', 'lynngo54@yahoo.com#mailto:lynngo54@yahoo.com#', NULL, NULL, NULL, 'Residential', NULL);
-INSERT INTO `customer_vt` (`CustomerID`, `CompanyName`, `ContactPerson`, `Address`, `CityAddress`, `ContactNumber`, `EmailAddress`, `Website`, `InstallationDate`, `Interest`, `Type`, `Notes`) VALUES
-(131, 'Allysa Baldovino', 'Ms. Allysa', 'Blk 1 Zagala Street Lagro, Quezon City', 103, '0916-385-0426', 'marceine_allysa@yahoo.com#mailto:marceine_allysa@yahoo.com#', 'marcienealyssa@yahoo.com#mailto:marcienealyssa@yahoo.com#', NULL, 'CCTV Installation', 'Commercial', 'INSTALLATION OF 5 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(132, 'Catherine Alfaro Roquino', 'Ms. Catherine', '59 Visayas St. Ext. Zone 3, Central Signal Village Taguig City', 128, '0917-563-5751', NULL, NULL, NULL, 'Cctv Installation', 'Commercial', 'INSTALLATION OF 2 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(133, 'Hummus Elijah', 'Ms. Elijah', 'Makati Avenue', 74, '0917-326-2422', NULL, NULL, NULL, 'Cctv Installation', 'Commercial', 'INSTALLATION OF 2 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(134, 'Titch Philippines Inc.', 'Noreen L. Macasarte', 'Unit 1I La Fuerza Compound 2241 Chino Roces Ave. Makati City', 74, '632 894-0203', 'Noreen@titch.com#mailto:Noreen@titch.com#', NULL, NULL, 'Cctv Installation', 'Commercial', 'NSTALLATION OF 2 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(135, 'KAPILYA ng Lower Bicutan', 'Ka June', 'Lower Bicutan', NULL, '0915-513-7007', NULL, NULL, NULL, 'CCTV INSTALLATION', 'Commercial', 'NSTALLATION OF 1 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(136, 'Ms. Christel', 'Ms. Christel', 'Citta Italia, Imus Cavite', 35, '0949-992-6105', NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'INSTALLATION OF 4 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation'),
-(138, 'NBB Trucking', 'Mr. Sonny / Crisanto Agunoy', 'SeaBreeze Saint Francis', NULL, '09277343075', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(139, 'KM31 Diner (Old Building)', 'Ms. Lisa', 'Partoza building, National Highway Tunasan, Muntinlupa city', 87, '(02) 861-3053; 862-2920; 862-0714 Local 109 ; 110', 'acctg.weathertech@gmail.com', '', NULL, 'CCTV Installation', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(140, 'John Dizon', 'John dizon', 'Blk 3 Lot 8 Renault St. Veraville 3A Talon 5 Las Piñas City', 67, NULL, NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(141, 'Myrna Aguirre Pawnshop(Sta. Rosa, Laguna)', 'Susan', '114 Dr. Zavalla St. Kanluran Balibago Sta. Rosa Laguna', 116, '0926-704-1483', NULL, NULL, NULL, 'CCTV Installation of 8 cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(142, 'SPIST', 'Ms. Erlinda Manzanero', 'Tia Maria Bldg. Agunaldo Highway, Anabu 2A Imus City', NULL, '0922-840-4275', 'Manzanero_Erlinda@yahoo.com#mailto:Manzanero_Erlinda@yahoo.com#', NULL, NULL, 'CCTV Installation of 8 cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(143, 'Manuel Ursabia / FLPG Merch', 'Manuel Ursabia', '#26 Cor. Hondrades St. Tugatog , Malabon', 75, '0917-309-1851', NULL, NULL, NULL, 'CCTV Installation of 2 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(145, 'Dr. Chito Randal', 'Dr. Chito', 'No.148 in front of Digman Elementary School, Bacoor City, Cavite of Calabarzon', 6, NULL, NULL, NULL, NULL, 'CCTV Installation of 5 Cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(146, 'Barby Ohara', 'Ms. Barby', '2105A West Tower Philippine Stock Exchange Center Ortigas, Pasig City', 100, '0917-510-1209', NULL, NULL, NULL, 'CCTV Installation of 8 Cameras & Biometrics', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(147, 'Lucky 10 Bakery', 'Ms. Antonette', 'Block 52, Lot 2 Soldiers Hills Village,', 87, '0998-882-4382', 'markehnol@gmail.com#mailto:markehnol@gmail.com#', NULL, NULL, 'CCTV installation 2 package of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(149, 'Erlyn Lumibao', 'Ma''am Erlyn', 'L2 Blk12 Southern Yemen St., BetterLiving', NULL, '09189387238', 'erlyn_lumibao@yahoo.com#mailto:erlyn_lumibao@yahoo.com#', NULL, NULL, 'CCTV Installation of 6 Cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(150, 'San Pablo Colleges', 'OIC Cervana', '3a Hermanos Belen Street, San Pablo City, 4000 Laguna', NULL, '0995-550-8362', 'rdrforce@yahoo.com', '', NULL, '', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(151, 'Richard Pagsinuhin', 'Richard', '73 France Street Corner Michael Rua Better Living', NULL, '0998-863-2061', 'Ricargoservices@yahoo.com#mailto:Ricargoservices@yahoo.com#', NULL, NULL, NULL, 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(152, 'Servite School (Batangas)', 'Sister Mercy', 'Poblacion 5, Laurel Batangas City', 12, '0949-930-5058 / ( 043 ) 740-2760', 'Servite99@yahoo.com#mailto:Servite99@yahoo.com#', NULL, NULL, 'CCTV Installation Of 4 Camera''s', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(153, 'Teddy Santiago', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Residential', NULL),
-(154, 'Caroline Madarang', 'Ms. Carol', 'Camella Homes, Soldiers Hills, Putatan, Muntinlupa City', 87, NULL, 'Mh-shoe@hotmail.com#mailto:Mh-shoe@hotmail.com#', NULL, NULL, 'CCTV Installation Of 2 packages', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(155, 'Fokusi Facade Inc.', 'Ms. Anne / Sir Archie', '5 Carlo Drive Sta. Maria Industrial Estate, Taguig City Philippines', 128, '886-9566 / 09267113266', '', '', NULL, 'CCTV Installation Of 6 cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(156, 'Doris Calingasan', 'Ms. Doris Calingasan', '1124 Gomez Street Tayug, Pangasinan / Batanggas', 147, '0928-521-6857', NULL, NULL, NULL, 'CCTV Installation of 4 Cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(157, 'EPDA TRADING MANILA', 'Ms. Lourdes', '1511 - 1513, Herrera Street, Sta. Cruz, Manila City, 1014, Metro Manila', 80, '02) 251 5158', NULL, NULL, NULL, 'CCTV Installation', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(158, 'Hubert Lao', 'Mr. Hubert', '#2 Diamond Street. San Bartolome Novaliches', NULL, '0916-780-0082', NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(159, 'Jolly Litimco', 'Ms. Jolly', '171 F Strella Street San Juan Malolos Bulacan', NULL, '0917-253-5735', NULL, NULL, NULL, 'CCTV Installation of  8 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(160, 'Tingloy Police Station', NULL, 'Batangas', 12, NULL, NULL, NULL, NULL, 'CCTV Installation.', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(161, 'Reagan Barber Shop', 'Mr. Reagan', 'People''s Market Tunasan, Muntinlupa City', 87, NULL, NULL, NULL, NULL, 'CCTV installation of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(162, 'Derudz Car Wash', 'Marvin De Mesa Deriquito', 'Alabang Muntinlupa City', 87, NULL, NULL, NULL, NULL, 'CCTV installation of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(163, 'Servite School (Tunasan)', NULL, 'Tunasan Muntinlupa City', 87, '0949-930-5058 / (043)740-2760', NULL, NULL, NULL, 'CCTV installation of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(164, 'Portofino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(166, 'Academia Institution De San Pedro', 'Veronica Sibuyo', 'Blk. 8 Lot1 Phase 3, Pacita Complex, San Pedro Laguna', NULL, '869-2774 /  0908-295-7879', 'veronicasibuyo@gmail.com#mailto:veronicasibuyo@gmail.com#', NULL, NULL, NULL, 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(167, 'Composite Trading Construction Inc', 'Ma''am Catherine Joy', 'Unit B, 3rd flr. No. 298 JCR Building P.Tuazon , San Roque, Cubao, Quezon City', 103, '0916-358-7789 / (02)351-7668', NULL, NULL, NULL, 'CCTV Installation', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(169, 'Alvin Gacus', 'Alvin Gacus', '1915 Kahilum 2 St. Brgy. 867 Pandacan Manila', NULL, '0936 603 1010', NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(170, 'Diccion Law Firm (SureMiles)', 'Jonathan', 'Pasig', NULL, '0927 937 7250', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(171, 'Creole', 'Ms. Cindy', 'Tanza, Navotas City', 90, NULL, NULL, NULL, NULL, 'CCTV Installations of 2 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(172, 'Rose Villatima Ewican', 'Ms. Rose', 'Tunasan Public Market, Tunasan Muntinlupa City', 87, '0999-038-3713', NULL, NULL, NULL, 'CCTV of 3 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(173, 'Arthur Santos', 'Arthur Santos', ' 39-B Ninong Macario St., BF Homes Phase 1, Barangay 169, Caloocan City', NULL, '09228875856', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(174, 'Paulina Uy', 'Ms. Paulina', 'Venus St. Remarville Subd., Bagbag Q.C', 103, NULL, NULL, NULL, NULL, 'CCTV Installations of 2 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(175, 'Tolitz Store', 'Tolitz Store', 'Blk7 lot28 Lumang Kalsada St. San Nicolas 3 Green Valley Bacoor City, Cavite', 35, '0919-232-4833', NULL, NULL, '2017-07-10', 'CCTV of 5 cameras(July 10,2017), with Additional 3 cameras (August 11,2017)', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(176, 'Jeff John Lord Tayag', 'Jeff John Lord Tayag', 'Blk 1 Lot 17 Phase 1, St. Mary St. Sto. Niño Village, Tunasan', 87, '0917-514-7016', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(177, 'Jowin Tabuloc', 'Ms. Jowin Tabuloc', 'A-19 K-Square Townhomes Cenacle Drive Culiat Q.C', NULL, '0917-844-9801', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(178, 'Jerome Marquez', 'Hubert Marquez', 'AEC Bldg., Blk11 Lot17 Las Maria Cor Sampaguita St Pembo  Makati City', NULL, '0956-672-0598', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Others', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(179, 'Jinky Binasahan', 'Mr. Jimmy Gonzales', 'Metropolis Binangonan, Rizal', NULL, '213-4657', '', '', NULL, 'CCTV Installation 2 Channel Package', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(180, 'WERR INTERNATIONAL', 'Mr. Gerald Gonzales', 'Bruger, Putatan Muntinlupa City', 87, '0917-880-0708/697-8450', NULL, NULL, NULL, 'CCTV installation 1 Cam & 8chnl DVR', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(181, 'PETRON GAS STATION NAIA 1', 'Mr. James Paul Dais', 'Pasay City', 99, '0998-794-0948', NULL, NULL, NULL, 'CCTV 16 Channel Packages', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(182, 'SPIN-OFF LAUNDRY MACARIA', 'Sir Leo', 'Phase 3,B16,L2 Macaria Ave, Athletic Drive, San Francisco, Binan Laguna. (Infront of Burzillian Bation Resto)', 16, NULL, NULL, NULL, NULL, 'CCTV Installation of 4 Channel Packages', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(183, 'EQUILIBRIUM (Main Office)', 'Sir Earlon Elicerio', 'Tunasan, Muntinlupa City', 87, '862-3041/42/43', NULL, NULL, NULL, 'Cabling', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(184, 'Jun Villanueva', 'Mr. Jun', 'L5 B3 Unit B6 Suburban Terraces Residences Sierra Madre Circle Suburban Subd. Brgy. San Juan Cainta Rizal.', 113, NULL, NULL, NULL, NULL, 'CCTV Installation of 2 Channel Packages', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(186, 'Doris M. Delgado', 'Ms. Doris', '#38 Gold St. R. Medina Subd, Parañaque City', 98, '4788003 / 09063088377', NULL, NULL, NULL, 'Installation of CCTV 2 packges inc: 1 dahua dome 2mp; 1 dahua bullet 2mp; 1tb skyhawk hdd; 4 ch dvr penta; powersupply 1a; 20m siamese cables', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(187, 'SQM Health and Willness Corporation', 'Andy Flores', 'GF Unit, Avida Makati West Tower, Vakal St, Makati City', 74, '0956-601-7555', NULL, NULL, NULL, 'Installation of CCTV 2 packges incl: 2 dahua dome 1mp, 1 tb skyhawk hdd, 1 4 ch dvr penta, powersupply 1a, siamese cables', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation'),
-(188, 'Pam Diaz', 'Ms. Pam', 'Blk2 Lot32 Ph4 Summerhills. Molino 4, Bacoor, Cavite', 6, '0917-864-1437', NULL, NULL, '2017-08-03', 'Installation of CCTV 2packages include: 1 Dahua Dome 1mp/ 1 dahua bullet 1mp, 1TB Skyhawk HDD, 4 Ch Penta DVR, 1power supply 1a, 2 20m siamese cables w/ free 17" del monitor(add: 1 cam bullet 1080p - Aug.15, 2017)', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(189, 'Dhen Dhen Salon', 'Ms. Dhen Guavez', '9671 Kamagong St. San Antonio, Village Makati City', 74, '0927-251-4788/556-5413', NULL, NULL, '2017-08-15', 'CCTV Installation 4 chnl Packges w/ Monitor and Audio.', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.'),
-(190, 'Molito', NULL, 'Star Bucks Madrigal', NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(191, 'Paul Michael and Maria Lech Lee', 'Maria Lech Lee', 'Unit 18M, 18th Floor, Celadon Park Tower 2 ( back of SM San Lazaro) Felix Huertas St. Sta. Cruz, Manila', 80, '0922 894 1338', NULL, NULL, '2017-08-21', NULL, 'Commercial', NULL),
-(192, 'NAGATSU-SANPLA Precision Mold Phils. Inc', 'MS. Cherry Montero', 'Unit4, Starts Rental Factory, Lot3D, Auto Park Avenue,Greenfield Automotive Park, Sant Rosa, Laguna, Philippines 4026', 116, '0917-1234-4836 / (049) 539-2746', '', '', NULL, 'CCTV Installation 16 channel Packages', 'Commercial', ''),
-(193, 'Generica', 'Jeriel Dela Cruz', 'Tierra Market Bldng., (beside Mcdonald Tandang sora corner commonwealth ave.)', NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(194, 'Erick Jordan L. Taganas', 'Erick Jordan L. Taganas', '862 Gonzalo, Puyat St. Brgy. Quiapo Manila', 80, '0917-133-1108 or 964-2547', NULL, NULL, NULL, 'CCTV Installation of 6 Cameras', 'Residential', NULL),
-(195, 'Primo', NULL, 'MMG2 Compound Magsaysay Rd San Antonio San Pedro Laguna', NULL, '0998-792-6064', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(196, 'Ian Tan', 'Mr. Ian', 'Brgy. May iba Sta. Teresa, Rizal', 147, '09176349824', 'iantan_datacenter@yahoo.com#mailto:iantan_datacenter@yahoo.com#', NULL, '2017-09-13', 'CCTV Installation 2 Cameras', 'Residential', NULL),
-(197, 'Gilane Rodil', 'Ms. Gilane', 'Digman, Bacoor Cavite', NULL, '0917-888-4354', NULL, NULL, NULL, 'CCTV Installation: Additional 4 Cameras', 'Residential', NULL),
-(200, 'E-Bingo (Visayas Ave.)', 'Rodwick Ocumen', 'Wilcon Visayas ( 2nd Floor)', NULL, '0933-532-4417', NULL, NULL, '2017-09-17', NULL, 'Commercial', NULL),
-(201, 'AMAIA Steps', 'Rex De Leon', 'AMAIA Steps Nuvali Canlubang, Laguna', NULL, '0933-392-4589', NULL, NULL, NULL, 'CCTV Installation 5 IP Cameras', 'Commercial', NULL),
-(202, 'Daisy T. Dela Cruz', 'Maam Daisy', '78 Sampaguita St. East Bagong Barrio Caloocan City', NULL, '0912-000-6813', NULL, NULL, '2017-09-23', NULL, 'Residential', NULL),
-(203, 'Lani Nicdao', 'Maam Lani', 'Blk 4 Lot 10 Ph.4 Sun Valley Subdivision Antipolo City', 4, '0919-620-1588', NULL, NULL, '2017-09-26', NULL, 'Residential', NULL),
-(204, 'KRUGER M & E INDUSTRIES CORP.', 'Greys G. Laurenciana', 'FAPI Compound, E. Rodriguez Ave., Tunasan Muntinlupa City', 87, '(02)862-2892', NULL, NULL, NULL, 'Biometric Attendance: MB200', 'Commercial', NULL),
-(205, 'Neil & Neits Hardware (San Vicente)', NULL, 'San Vicente , San Pedro Laguna.', NULL, '0919-804-4665', NULL, NULL, '2017-10-06', 'CCTV', 'Commercial', NULL),
-(206, 'I Juander', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Industrial', NULL),
-(207, 'Neil & Neitz Hardware (Calendola)', 'Mr Neil', 'Calendola , San Pedro Laguna', 115, '0919-804-4665', NULL, NULL, '2017-10-10', 'CCTV Installation 4CH Package (Dahua Brand)', 'Commercial', NULL),
-(209, 'Maricel Manalo', 'Maricel', 'Market Muntinlupa city', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation of 3 cameras', 'Residential', NULL),
-(210, 'Joselyn Nofuente', 'Joselyn Nofuente', 'Blk 19 Lot19 Mc Kinley St. Springtime Country, Jubilation.', 16, '0932-6642-580', NULL, NULL, '2017-08-20', 'CCTV 2 Cameras', 'Residential', NULL),
-(211, 'Slingshot Design Studio Inc', 'Mr. Gin Guillena', 'Tunasan, Muntinlupa City', 87, '02-553-3435', NULL, NULL, '2017-11-08', 'CCTV 4 Cameras', 'Commercial', NULL),
-(212, 'TRIPLE Z', NULL, 'Tiosejo, Tunasan, Muntinlupa City', 87, '0977-853-1455', NULL, NULL, NULL, 'Cignal Installation', 'Commercial', NULL),
-(213, 'Maam Riss', 'Maam Riss', '26/f Tower 2 The Enterprise Center Paseo De Roxas cor. Ayala Ave Makati City', NULL, '0917-849-3590', NULL, NULL, NULL, NULL, NULL, NULL),
-(214, 'Cecille Eusebio', 'Ka Cecille', 'Silang, Cavite', NULL, '0917-862-9726', NULL, NULL, '2017-11-18', NULL, 'Residential', NULL),
-(215, 'Ka Joel', NULL, 'Better Living Subdivision Paranaque City Ethopia St. Annex 43 Vatican St. Blk 4 Lot 5', NULL, '0926-119-7781', NULL, NULL, '2017-11-18', NULL, 'Commercial', NULL),
-(216, 'Skieron Air System Inc.', 'Mr. Lito Pacatang', 'Pacita Complex , San Pedro Laguna', NULL, '986-4713', NULL, NULL, '2017-11-22', NULL, 'Commercial', NULL),
-(217, 'Jian Cabales', 'Jian', '525 Fround Floor Hotel Rosemarie, Edsa, Pasay City', 99, '0921-659-0242', NULL, NULL, NULL, 'CCTV Installation : 3 Cameras', 'Residential', NULL),
-(218, 'INFORMATICS COMPUTER INSTITUTE ALABANG', 'Ms. Ann Abalin', 'South Station Alabang, Muntinlupa City', 87, '771-0401-03', NULL, NULL, '2018-03-22', 'CCTV Installation: Additional 2 cameras', 'Commercial', NULL),
-(219, 'Iya Latupan', NULL, 'B12 L6 San Marino Classic Brgy. Salawag Dasmarinas Cavite', NULL, '0917-566-4922', NULL, NULL, '2017-12-01', NULL, 'Residential', NULL),
-(220, 'GEORGIA CLUB', 'Ms. Belle', 'Sta. Rosa Laguna', NULL, NULL, NULL, NULL, NULL, 'E.FENCE', 'Commercial', NULL),
-(222, 'SQM Health and Wellness Corp.', 'Sir Christopher', 'GF Unit, Avida Makati West Tower, Yakal St. Makati City', NULL, '0917-509-7111', NULL, NULL, NULL, 'Access Control', 'Commercial', NULL),
-(223, 'BOLTON INTERNATIONAL', 'Sir Greg Seneres', '10th Flr. Netcube Building 30th St. 3rd Avenue BGC Taguig City', 128, '0917-894-4003', NULL, NULL, NULL, 'Recabling', 'Commercial', NULL),
-(224, 'Shiela Dela Cruz', 'Ms Shiela', 'Buendia Kanan, Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation of 2 Cameras', 'Residential', NULL),
-(225, 'GJ Caparros', 'GJ Caparros', '3878 Daffodils Street Sun Valley Paranaque City', 98, '0916-234-7886', NULL, NULL, '2017-11-18', 'Cctv Installation Of 16 Cameras', 'Residential', NULL),
-(226, 'Sigmatec Incorp.', 'Abby Gail Villaflor', 'B136 L1 C. Arellano Katarungan Village Poblacion', 87, '576-8913', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(227, 'Tomas De Silva (ParkHomes)', 'Tomas', 'Parkhomes Subd, Grand Canyon', NULL, '0919-863-3687', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(228, 'Tomas De Silva (Silang)', 'Tomas', 'Silang Cavite', NULL, '0919-863-3687', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(229, 'Cerritos Heights Home Owner Association', 'Sir Marlon Cortez', 'Clubhouse, Cerritos Heights, Bacoor Cavite', NULL, '0998-590-0720', NULL, NULL, '2018-01-18', 'Cctv Installation of 6 Cameras', 'Commercial', NULL),
-(230, 'Ehia Puembuestro', NULL, '111 J. Luna St. Kapalaran Taytay,Rizal', NULL, '0906-287-7778', NULL, NULL, '2018-01-24', 'CCTV Installation of 4cams', 'Residential', NULL),
-(231, 'Higiadzo System Inc', 'Ms. Ceniza Dauag / Ma''am Charity', '335 Katipunan Ave. Loyola Quezon City (SM Moa Chikos Peruvian Roast Chicken)', NULL, '02-426-1635 / 0908-558-0976 / 0917-882-8674/ +639055093033', NULL, NULL, '2018-01-25', 'CCTV  Re-installation', 'Commercial', NULL),
-(232, 'Efren Cruz', 'Efren', '#8 Lot 6 M. Suarez St. Brgy. Maybunga, Pasig City', NULL, '0908-898-0560', NULL, NULL, '2018-01-27', 'CCTV Installation 4 Cameras.', 'Residential', NULL),
-(233, 'Isidro Almario Boladas', 'Isidro', 'RMT, Tunasan, Muntinlupa City', NULL, NULL, NULL, NULL, NULL, 'Cignal', 'Residential', NULL),
-(234, 'Equilibrium (Banista and Coffee Academy of Asia Inc.)', 'Sir Elicerio / Earlon', '18th Floor, Atlanta Centre 31 Annapolis St. Greenhills San Juan City', NULL, '862-3041 to 43', NULL, NULL, NULL, 'CCTV Installation 7 cameras', 'Commercial', NULL),
-(235, 'St. Michael Hospital', 'Ms. Gilane', '220 Molino II Bacoor Cavite', NULL, '09178884354', NULL, NULL, NULL, 'CCTV 2 Camera', 'Commercial', NULL),
-(236, 'Genetron', 'Donna Librado', 'Tunasan, Muntinlupa City', NULL, '808-4344', '', '', NULL, '', 'Commercial', ''),
-(237, 'Myrna Aguirre Pawnshop (Main)', 'Ms. Susan', 'President Ave., Parañaque City (Main)', NULL, '842-4046', NULL, NULL, NULL, 'CCTV Service Maintenance for 25 Branches', 'Commercial', NULL),
-(238, 'Jun Mercado', 'Jun', 'Blk 9 Lot 23B Vida Doria St. BF Resort Village Talon, Las Piñas City', 67, '0918-900-7108', NULL, NULL, '2018-02-05', 'CCTV Installation: 4 Camera', 'Residential', NULL),
-(239, 'IGCP', 'George Abante', 'AXA Bldg., Makati City', NULL, '0908-898-0560, 0917-816-7840', NULL, NULL, '2018-02-09', 'Patch Panel Management, Access Control and Biometrics', 'Commercial', NULL),
-(240, 'Myrna Aguirre Pawnshop(Poblacion)', 'Aiza Rofa', '#54 Rizal St. Extension Katihan, Poblacion, Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(241, 'Muntinlupa Coliseum', NULL, 'Tunasan, Muntinlupa City', NULL, '0917-859-2480', NULL, NULL, '2018-02-13', 'CCTV Installation of 16cameras', 'Commercial', NULL),
-(242, 'LizardBear Tasking Inc. (Access Control/Face ID-Lizzy''s Lagoon)', 'Wilfredo Carlo Cardenas', 'TaskUs Batangas - Lizzy''s Lagoon', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation: Truck  (GPS)', 'Others', NULL),
-(244, 'Noel Almarez', 'Noel', 'Lot 58 Block 72 A. Bonifacio Ave. Upper Bicutan Taguig City (near Aquabest & Angels burger)', NULL, '0947-446-8849', NULL, NULL, NULL, 'CCTV Installtion 6 cameras (Dahua Brand)', 'Residential', NULL),
-(245, 'Bimbo Baliuag', 'Bimbo', 'B8 L1, Magnolia St. Cor. Rose St. Phase 2E, Greenwoods Executive Village, Cainta.', NULL, '0917-862-8604', NULL, NULL, '2018-02-23', 'Cctv Installation of 8 Camera''s', 'Residential', NULL),
-(246, 'Edgar Sosa (Apartment)', 'Edgar', 'Tiosejo, Tunasan, Muntinlupa City', NULL, '862-6197', NULL, NULL, '2018-02-26', 'CCTV Installation 3 Cameras', 'Commercial', NULL),
-(247, 'Mac Herman', 'Mac Herman', '802 Primorose Street Lakeview Homes Tibayan Putatan, Muntinlupa City', 87, '0917-519-6094', NULL, NULL, '2018-02-25', 'CCTV Installation: 2 720P Smart eye Bullet Camera', 'Residential', NULL),
-(248, 'Ludy Alegria', 'Ludy', 'A-12 Saint Joseph, Saint Matthew Street, Pulang Lupa Dos Las Piñas City', NULL, '0908-814-7440', NULL, NULL, '2018-02-27', 'CCTV 3 Cameras', 'Residential', NULL),
-(249, 'Versatiles', 'Paul Arciaga', 'Putatan National Road Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, '2018-03-02', 'Cctv Installation of 8 Cameras''s.', 'Commercial', NULL),
-(250, 'Mark Galicia', 'Mark', '40 Saudi Arabia St. Betterliving Subd., Parañaque City', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation 4 Ch Camera', 'Commercial', NULL),
-(251, 'SPIST', 'Ms. Erlinda Manzanero', 'Anabu 2, Imus , Cavite', NULL, '0922-840-4275', NULL, NULL, '2018-03-07', 'CCTV Installation: Additional 3 cameras & upgrade DVR', 'Commercial', NULL),
-(252, 'GreatSpan', 'Wilson Tang', 'Tower 2 16F Insular Life Bldg., Filinvest Alabang Muntinlupa City', NULL, '0975-124-4434', NULL, NULL, '2018-03-09', 'CCTV Installation of 8 cameras built in mic', 'Commercial', NULL),
-(253, 'Edwin Temelo (7-eleven)', 'Edwin', '#78 Grant St. Cor. Benefit GSIS Village, Project 8 Novaliches, Quezon City ( 7 - eleven store)', NULL, '0997-593-7197', NULL, NULL, '2018-03-10', 'CCTV Installation of 10 cameras', 'Commercial', NULL),
-(254, 'Cristy Vilgera', 'Cristy', 'Blk 21, Lot 22c A. Gatmaitan St. BF Resort Village, Talon 2, Las Pinas City', NULL, '0917-145-0980', NULL, NULL, '2018-03-12', 'CCTV Installation 4Ch Package', 'Residential', NULL),
-(255, 'MUMUSO (Starmall Bulacan)', 'Engr. Jonas', 'Upper GF, UGF-0040, Brgy. Kaypian, San Jose Del monte Bulacan', NULL, '0917-148-7537', NULL, NULL, '2018-03-22', 'CCTV 16 CH package', 'Commercial', NULL),
-(256, 'Swanee (Residence)', 'Ms. Susan Brito', 'Metrogate, Marilao Bulacan', NULL, NULL, NULL, NULL, '2018-04-03', 'CCTV Installation : TVT 8ch Package', 'Residential', NULL),
-(257, 'KAT CASANDRA MANUEL', 'KAT', 'Mabical, Floridablanca, Pampanga (Sweet Pastry / Residential)', NULL, '0917-795-5554', NULL, NULL, '2018-04-06', 'CCTV Installation 8ch & 16ch Dahua', 'Residential', NULL),
-(258, 'Lex Kabigting', 'Rachel', '#21 Trinidad St. BFHEVA Parañaque City', NULL, '0920-906-6378', NULL, NULL, '2018-04-06', 'CCTV 8ch Package dahua', 'Residential', NULL),
-(259, 'MCGPI', 'Ms. Maricor', 'Unit H 6th Floor Westgate Tower Investment Drive Madrigal Business Park Ayala Alabang', NULL, '0917-503-8461 / 833-7051', NULL, NULL, '2018-04-17', 'Installation of Biometrics and Door access alarms', 'Commercial', NULL),
-(260, 'EFRAIM PATULOT', 'EFRAIM', 'RMC Uding''s Comp. East Service Rd. Alabang, Muntinlupa City (Inside SBCA Compound)', NULL, '0906-552-4417', NULL, NULL, '2018-04-23', 'CCTV Installation: 2 ch', 'Residential', NULL),
-(261, 'ESPINOSA JUNKSHOP', 'Mr. Oscar', 'Phase IV Sto. Niño Ave., Sto. Niño Village, Tunasan, Muntinlupa City', NULL, '0928-866-8950 / 0939-562-9883 / 478-3254', NULL, NULL, '2018-04-24', 'CCTV: 2 Ch', 'Commercial', NULL),
-(262, 'Equilibrium (Warehouse)', 'Sir Earlon', 'RMT Complex Tunasan, Muntinlupa City', NULL, '862-3041-43', NULL, NULL, '2018-04-25', 'CCTV Installation of 6 cameras (+4 cameras customer provided)', 'Commercial', NULL),
-(263, 'TaskUs Inc Lumina (Biometrics)', 'Ms. Babylyn Rosal / Hailey Cuevas', 'T.De Castro Bldg., 2 Palico 1 Emilio Aguinaldo Highway Imus Cavite', NULL, '0917-533-5241', NULL, NULL, '2018-04-27', 'Biometrics Door Access Control', 'Commercial', NULL),
-(264, 'Jowin Tabuloc 2', 'Ms. Jowin', 'B6 L10 Centrina Eleganza Residence #57 Brgy. Culiat Tandang Sora Q.C', NULL, '0917-844-9801', NULL, NULL, NULL, 'CCTV Installation', 'Residential', NULL),
-(265, 'WING BITES PARAÑAQUE', 'Mr. Jayson Sandig / Mr. Majarais', 'Wingbites Parañaque, Parañaque City (Beside Philippine Veterans Bank)', NULL, '0998-555-8841', NULL, NULL, '2018-05-08', 'CCTV Installation 4ch package (TVT Brand)', 'Commercial', NULL),
-(266, 'PH BASCON 1', 'Ms. Susan', 'Unit C D''Grand Bldg., #42 San Beda Homes Alabang Zapote Rd. Talon 2 LPC', NULL, '0922-823-6431', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(267, 'Jun Mercado - Apartment', 'Sir Jun', 'Tiosejo, Tunasan, Muntinlupa City', NULL, '0918-900-7108', NULL, NULL, '2018-05-10', 'CCTV 4 Channel Package', 'Residential', NULL),
-(268, 'Gilbert Mamaril', 'Gilbert', 'Blk 21 Lot 5 Cerretos heights Gate 2, Bacoor Cavite (Gate 2 kaliwa LandMark)', NULL, '0928-554-8228', NULL, NULL, '2018-05-11', 'CCTV Installation (Dahua)', 'Residential', NULL),
-(269, 'E-Bingo (Regalado)', 'Ms Anika', 'L24 B43 Sitio Manuel Hotel, Regalado Ave Fairview, Quezon City', NULL, '0956-231-6261', NULL, NULL, '2018-05-17', 'CCTV', 'Commercial', NULL),
-(270, 'E-Bingo (Muzon)', 'Ms Anika', 'Sjdm building 3rd floor bingo carriedo street brgy muzon san jose del monte city, bulacan', NULL, NULL, NULL, NULL, '2018-05-15', 'CCTV Installation TVT', 'Commercial', NULL),
-(271, 'JGC Muntinlupa', 'Sir Joel Zafe', 'Poblacion, Muntinlupa City', NULL, '0998-962-3608 / 798-03-59', NULL, NULL, '2018-05-16', 'CCTV Installation (DVR only Hikvision)', 'Commercial', NULL),
-(272, 'D&L (Manggahan)', 'Engr. Gerald Ubas', 'Manggahan, Bagumbayan, Pasig City', NULL, '0995-0538789', NULL, NULL, '2018-05-16', 'CCTV & Door Access Installation', 'Commercial', NULL),
-(273, 'Lyna & Feliz lauroz café elibs', 'Ms. Theena', 'Stall#14 Pre-departure area 3rd Level, Naia Terminal 3', NULL, '0998-794-0948', NULL, NULL, '2018-05-17', 'CCTV Installation', 'Commercial', NULL),
-(274, 'UCPB Makati', 'Sir Rodale', 'National Life Insurance Bldg., Ayala Ave., Makati city', NULL, '0917-916-6787', NULL, NULL, '2018-05-21', 'CCTV Installation', 'Commercial', NULL),
-(275, 'Melts Grilled Cheesery - Molito', 'Ms. Lhot', 'Molito, Alabang , Muntinlupa City', NULL, '0995-448-6273 / 0935-685-0632', NULL, NULL, '2018-05-23', 'CCTV Installation - Wireless NVR Kit 8ch', 'Commercial', NULL),
-(276, 'Susana Alvarez', 'Heidi Alavrez', 'Blk 8 Lot 19 Iris St. Camella Homes 1 , Muntinlupa City', 87, '0975-593-0828', '', '', '2018-06-06', 'CCTV Installation only', 'Residential', ''),
-(277, 'UCPB Sta.Rosa', 'Mr. Rodale Pineda / Ms. Joan', 'GF Ventura Center, SRE 2 Commercial, Sta. Rosa Tagaytay Road, Brgy. Don Jose Sta. Rosa City Laguna, (LANDMARKS: Phonex Gasoline Station, Robinsons Bank,  Smart office,)', NULL, NULL, NULL, NULL, '2018-06-07', 'CCTV Installation : 2 chnel - Hikvision', 'Commercial', NULL),
-(278, 'Maggie V. Meliton', 'Maggie', '#85 -13 E. Bernadez st. Philam Life Vill. Las Pinas', NULL, '0917-857-7036', NULL, NULL, '2018-06-07', 'CCTV Installation: w/ additional 2cams - Rover', 'Residential', NULL),
-(279, 'Menzi Orellana (Apartment)', 'Menzi', '103 Danflor Compound, National H-way Putatan, Muntinlupa City', NULL, '0917-770-6734', NULL, NULL, '2018-06-08', 'CCTV Installation: 4ch package TVT', 'Commercial', NULL),
-(280, 'Melchor Abonalla', 'Melchor', '0824 Derham St. Parkhomes Subd., Tunasan, Muntinlupa City', NULL, NULL, NULL, NULL, '2018-04-09', 'CCTV Installation 4ch package TVT', 'Residential', NULL),
-(281, 'Myrna Aguirre Pawnshop(PASAY)', NULL, 'No.330 Merville Access Road, pasay City', NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(282, 'Myrna Aguirre Pawnshop (San Andres)', 'Jackielyn Rivera', 'no.617 San Andres st. Malate, Manila', 80, '0933-879-9139', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(283, 'Myrna Aguirre Pawnshop ( Pablo Ocampo Ave )', 'Esperanza M. Ramos', 'unit 117 Vito Cruz Tower, 702 Pablo Ocampo Sr. Ave, NBrgy. 719 Zone 078 Malate, Manila', 80, '0933-879-9136', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(284, 'Myrna Aguirre Pawnshop( San Antonio Valley Parañaque )', '', 'L3 & 4  B9 Finansia Homes San Antonio Valley, Paranaque City', NULL, NULL, '', '', '2018-06-28', '', 'Commercial', ''),
-(285, 'Myrna Aguirre Pawnshop( San Vicente )', NULL, 'San Vicente  Biñan', NULL, NULL, NULL, NULL, '2018-06-28', NULL, 'Commercial', NULL),
-(286, 'Myrna Aguirre Pawnshop( Santos Ave)', 'Janice Subito', 'Unit 4 Puregold Jr. A. Santos Ave San Dionisio, Paranaque City', NULL, NULL, '', '', '2018-06-28', '', 'Commercial', ''),
-(287, 'Maggie V. Meliton (2)', 'Maggie', '#26 Davao St. Philam Life Vill. Las Pinas City', NULL, '0917-857-7036', NULL, NULL, '2018-07-04', 'Cctv Installation of 4 Camera', 'Residential', NULL),
-(288, 'Maggie V. Meliton 3', 'Maggie', '#19 Simonete Delos Reyes', NULL, '0917-857-7036', NULL, NULL, '2018-07-07', 'Cctv Installation of 4 Camera''s', 'Residential', NULL),
-(289, 'Menzi Orellana ( Brazilia)', 'Menzi Orellana', 'Orellana Residence, B1 L1 Campo Grande Street Brazilia Tunasan, Muntinlupa City', NULL, '0917-770-6734', NULL, NULL, NULL, NULL, 'Residential', NULL),
-(290, 'ELIBS Pasalubong', 'Ms. Theena / Sir Arnel', 'NAIA Terminal 1', 99, '0998-794-0948 / 0932-476-0536', NULL, NULL, '2018-07-12', 'CCTV Installation', NULL, NULL),
-(291, 'UCPB (Imus)', 'Mr. Kiel Eggar L. Garcia', 'Km21 Sonrise Bldg. Tanzang Luma Gen. Aguinaldo Imus, Cavite', 35, '(046)456-5887 / 450-1102', NULL, NULL, '2018-07-17', NULL, 'Commercial', 'Access Control Installation'),
-(292, 'Myrna Aguirre Pawnshop(Pacita Ave)', 'A. Garido', 'No.61 Pacita Ave. Pacita Complex San pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(293, 'Myrna Aguirre Pawnshop(Brgy. Nueva)', 'Joy Espulgar', 'G/F Avilles Bldg. No. 181 National Highway brgy. Nueva San pedro Laguna', NULL, '0925-725-2111', NULL, NULL, NULL, NULL, NULL, NULL),
-(294, 'Myrna Aguirre Pawnshop(Balibago II)', 'Amy Tejada', '#3425 J.P Rizal Prk II Brgy. Balibago Sta. Rosa Laguna', NULL, '0925-720-9372', NULL, NULL, NULL, NULL, NULL, NULL),
-(295, 'Myrna Aguirre Pawnshop(Balibago I)', 'Amy Tejada', 'Unit 5/6F MB Aguirre Bldg. Purok 6 Feley Reyes St. Balibago Sta. Rosa Laguna', NULL, '0933-818-5554', NULL, NULL, NULL, NULL, NULL, NULL),
-(296, 'Myrna Aguirre Pawnshop(Bel-Air)', 'Angelica Bataller', 'Tagaytay Rd. Sitio Ani Sta Cruz Sta. Rosa Laguna', NULL, '0925-720-8875', '', '', NULL, '', '', ''),
-(297, 'Myrna Aguirre Pawnshop(Landayan)', NULL, 'Km. 31 National Highway Brgy. Landayan San Pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(298, 'Myrna Aguirre Pawnshop(Platero )', NULL, 'National Highway Corner Mercado St.Brgy. Platero Biñan Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(299, 'Myrna Aguirre Pawnshop(Pacita I)', NULL, 'Bldg. 2 Model 7, Pacita Commercial Complex Ntl. Highway San pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(300, 'Myrna Aguirre Pawnshop(San Pedro III)', 'Loida Rañada', '#23 National Highway Garcia St. Nueva San Pedro (Baba HBC, Kaliwa MBA, near Generika Drugstore)', NULL, '', '', '', NULL, '', '', ''),
-(301, 'Myrna Aguirre Pawnshop(Aguirre Ave)', 'Roselyn Olivera', '333 Aguirre Ave BF Homes Parañaque City', NULL, '0933-879-9135', NULL, NULL, NULL, NULL, NULL, NULL),
-(302, 'Myrna Aguirre Pawnshop(President''s Ave)', 'Rose Anajao', '15 President''s Ave BF Homes Parañaque City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(303, 'Myrna Aguirre Pawnshop(Filipinas Ave)', 'Agencia de Emp de Mba Inc', 'Richland Commercial Bldg. Filipinas Ave. Brgy San isidro Parañaque City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(304, 'Myrna Aguirre Pawnshop(Better Living Subd.)', NULL, '#112B Doña Soledad St. Better living Subd. Parañaque City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(305, 'Myrna Aguirre Pawnshop(Makati)', 'Fely Macawile', 'No.1802 Dian St. Palanan, Makati City', NULL, '0925-720-7639', NULL, NULL, NULL, NULL, NULL, NULL),
-(306, 'Myrna Aguirre Pawnshop(San antonio)', NULL, 'Puregold price club bldg. Magsaysay st. corner ntl. Highway san antonio san pedro laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(307, 'D&L Industries Inc (Calamba Laguna)', 'Engr. Ubas', 'Calamba, Laguna', NULL, '0995-053-8789', NULL, NULL, NULL, 'Biometrics and Door Access Control / CCTV', NULL, NULL),
-(308, 'FILM DEVELOPMENT COUNCIL OF THE PHILIPPINES', 'Ms. Kim', '855 T.M Kalaw Street, Ermita Manila', 80, '0917-316-5617', 'bac@fdcp.ph#mailto:bac@fdcp.ph#', NULL, NULL, 'MB200 Time Attendance', 'Government', NULL),
-(309, 'Brightaire Trading Construction & Industrial Supply', 'Ms. Joy Abania', 'MC Building National Rd, Bayanan, Muntinlupa City', 87, '550-10-73', 'brightaire_constructionsupplies@yahoo.com#mailto:brightaire_constructionsupplies@yahoo.com#', NULL, NULL, NULL, NULL, NULL),
-(310, 'Ralph Orellana', 'Ralph Orellana', 'B23 L7 - A Santan St. Doña Rosario Bayview Subd. Sucat Muntinlupa City', NULL, '0998-962-7102', NULL, NULL, NULL, NULL, NULL, NULL),
-(311, 'TaskUs Batangas', 'Ms. Babylyn Rosal', 'Apacible Street, Poblacion Batangas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(312, 'UCPB Batangas', 'Mr. Rodale B. Pineda', 'Unit 9 & 10 G/F K-Pointe Commercial Center Sabang, Lipa City', NULL, '09176449060', NULL, NULL, NULL, NULL, NULL, NULL),
-(313, 'Ronald Catalan', 'Sir Ronald Catalan', 'Blk 62 Lot 21, Soldiers Hills Village, Putatan Muntinlupa City', 87, '0939-932-6243 / 697-2600', 'ronald_catalan@yahoo.com', '', NULL, 'Installation: 3 Cameras TVT 1080P', 'Residential', ''),
-(314, 'Aurora Miashita', 'Mary Joy Dela Cruz', 'B32 L12 Molave St. Joseph Village 10 Phase', NULL, '02-834-2844', NULL, NULL, NULL, NULL, 'Commercial', NULL),
-(315, 'Ronald Catalan', 'Sir Ronald Catalan', 'Blk 62 Lot 21, Soldiers Hills Village, Putatan Muntinlupa City', 87, '0939-932-6243 / 697-2600', 'ronald_catalan@yahoo.com#mailto:ronald_catalan@yahoo.com#', NULL, '2018-08-11', 'Installation: 3 Cameras TVT 1080P', 'Residential', NULL),
-(316, 'Theena Dais', 'Arnel Perez', '2745C Gaitos Street San Roque, Pasay City', 99, '0998-794-0948', 'teresapasalubong@yahoo.com#mailto:teresapasalubong@yahoo.com#', NULL, NULL, 'Additional 3 Cameras and replace DVR', 'Others', NULL),
-(317, 'UCPB Gen. Ortigas', 'Mr. Rodale', '22F One Corporate Centre Meralco Ave. Ortigas, Pasig City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(318, 'Egay Santiago', 'Ms. Egay Santiago', 'Blk4 L24 Ascension Hills, Subdivision Botong Francisco Ave., San Isidro Angono, Rizal (near landmark Shell Station)', NULL, '09239073208', NULL, NULL, NULL, NULL, NULL, NULL),
-(319, 'Weathertech (New Building)', 'Ms. Lisa', 'Lodora Subdivision Tunasan, Muntinlupa City', 87, '(02) 861-3053; 862-2920; 862-0714 Local 109; 110', 'acctg.weathertech@gmail.com#mailto:acctg.weathertech@gmail.com#', NULL, NULL, NULL, NULL, NULL),
-(320, 'EKASY CONSTRUCTIONS', 'Lily Gonzales', 'National Hiway, Bayanan Muntinlupa City', NULL, '0995-996-4449', NULL, NULL, NULL, NULL, NULL, NULL),
-(321, 'The Mondrian Residences', 'Mr. David Lipango', 'Alabang', NULL, '659-0668/09428432564', NULL, NULL, NULL, NULL, NULL, NULL),
-(322, 'Idetective', 'Ms. Faye Ann', 'Festival Mall, Alabang Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(323, 'Mark Wang', 'Mark Wang', 'Ayala Malls Southpark 3rd Floor Stall no. 60 Alabang Muntinlupa City (Near Kidzoona)', NULL, '0946-944-7231', NULL, NULL, NULL, NULL, NULL, NULL),
-(324, 'Chickos Peruvian Roast Chicken Inc.', 'Ms. Jomalyn Estrada', 'SM MOA Pasay City', NULL, '0906-408-2807', NULL, NULL, NULL, NULL, NULL, NULL),
-(325, 'Edgar Sosa', 'Sir Edgar', 'Katarungan Village, Muntinlupa City', NULL, '862-6197', NULL, NULL, NULL, NULL, NULL, NULL),
-(326, 'Avadon', 'Ms. Janneth', 'Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(327, 'PH Bascon 2', 'Ms. Offelia', 'No. 15 Saging St. PH1 CAA Road BF International Las Piñas City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(328, 'PH Bascon 3', 'Ms. Offelia', 'Lot 35 B 5 Unit B The Gran Bldg. Naga Road Sav-7 Pulang Lupa Dos Las Piñas City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(329, 'UCPB Gen. Angeles', 'Mr. Rodale B. Pineda', '22F One Corporate Center, J. Vaaargas Cor. Meralco Ave. Ortigas Center, Pasig City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(330, 'FNB Gen. Merchandise Yamaha', 'Ramil/Paul', 'Bayanan Muntinlupa City', NULL, '659-3292 / 659-3592', NULL, NULL, NULL, NULL, NULL, NULL),
-(331, 'Great Depot', 'Ms. Rita', 'Unit 101 South Center Tower Madrigal Business Park, Alabang Muntinlupa City', NULL, '850-2455', NULL, NULL, NULL, NULL, NULL, NULL),
-(332, 'D&L Industries Inc. (Main)', 'Mr. Gerald Ubas', '#65 Calle Industria, Bagumbayan, Pasig City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(333, 'LGC/Lee Group of Companies', 'Mr .Lindy Napigkit', 'Alabang Via duct Junction Opposite Liwasan ng mga Bayani, Alabang Muntinlupa City', NULL, '807-2060/0910-928-0880', NULL, NULL, NULL, NULL, NULL, NULL),
-(334, 'FNB Gen. Merchandise (Bahay)', NULL, 'B8 L18 St. Anthony Street JPA Subd. Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(335, 'E-Bingo Lazatin Branch', 'Madam Anika', 'Orchids Garden, Lazatin Blvd. Brgy. San Juan, San Fernando City of Pampanga', NULL, '09562316261', 'toprankbingo@gmail.com#mailto:toprankbingo@gmail.com#', NULL, NULL, NULL, NULL, NULL),
-(336, 'Martindale Technologies', 'Ms. Michelle Bernales', 'Unit 602 Page 1 Bldg. Acacia Ave. Madrigal Business Park', NULL, '0995-257-5141', 'm.bernales@martindaletechnologies.com#mailto:m.bernales@martindaletechnologies.com#', NULL, NULL, NULL, NULL, NULL),
-(337, 'JP Sebastian', 'Sir Richard', 'Freedom Hills Putatan Muntinlupa City', NULL, '0948-239-8501', NULL, NULL, NULL, NULL, NULL, NULL),
-(338, 'Mylene Malate (SM Dasma)', 'Ms. Mylene Malate', 'SM Dasma (Upper ground floor, Gabriel Archangel Toddler Playschool, near Kidzoona, in front of LBC and Getaway Tours. Almost infront of Etude House', NULL, '0917-983-2931', NULL, NULL, NULL, NULL, NULL, NULL),
-(339, 'Raul Tuazon', 'Mr. Raul Tuazon', '221 Balibago Corner Malvar St. Ayala Alabang Village, Alabang Muntinlupa City', NULL, '0932-725-4390', 'carson.it2015@gmail.com#mailto:carson.it2015@gmail.com#', NULL, NULL, NULL, NULL, NULL),
-(340, 'Tempwell Victoria', 'Sir. Mel', 'Lot 1 Bach St. Cor. Bachner St., Jade Heights, Victoria Homes, Tunasan Muntinlupa City', NULL, '0927-489-0800', '', '', NULL, '', '', ''),
-(341, 'Kristoffer Tavaranza', 'Sir. Kristoffer', 'Blk5 Lot 30 Brgy. San Antonio, San Pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(342, 'Atty. Kelly Dela Rosa', 'Atty. Dela Rosa', '313 Isabel St. Lakeview Homes, Putatan, Muntinlupa City', NULL, '(02)862-449 / 09178850128', 'kelly_delarosa@yahoo.com#mailto:kelly_delarosa@yahoo.com#', NULL, NULL, NULL, NULL, NULL),
-(343, 'Universal Staffing Services Inc.', 'Mr. JP', '5477 Boyle Street, Palanan, Makati', NULL, '(02) 833-6880', 'hr@inustaff.us', '', NULL, '', '', ''),
-(344, 'Leonora Pajarillo', 'Ms. Shiela Grace De Guzman', 'Buendia Kanan, Tunasan, Muntinlupa City', NULL, NULL, '', '', NULL, '', '', ''),
-(345, 'MCGPI Lipa 1 (Event Center)', 'Ms. Maricor', 'Sen. Claro M Recto Elementary School Brgy. 7, Lipa City Batangas', NULL, NULL, '', '', NULL, '', '', ''),
-(346, 'MCGPI Lipa 2 (Office)', 'Ms. Maricor', 'Sen. Claro M Recto Elementary School Brgy. 7, Lipa City Batangas', NULL, NULL, '', '', NULL, '', '', ''),
-(347, 'Mel Anthony Endozo', 'Mr. Mel', 'Better Living, Parañaque City (Beside Iglesia Ni Cristo)', NULL, '09178250770', '', '', NULL, '', '', ''),
-(348, 'AM/PM Carwash', 'Mr. Arnold Galman', '79 National Road Putatan Muntinlupa City', NULL, NULL, '', '', NULL, '', '', ''),
-(349, 'Keni Abe Canteen', 'Ms. Katherine', 'Soldiers hills, Putatan, Muntinlupa City', NULL, NULL, '', '', NULL, '', '', ''),
-(350, 'ALTernative Electronics Solutions (ALTES)', 'Mr. Louie Valco', 'Sta. Rosa Laguna', NULL, '0917-514-6590', '', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(351, 'Genelyn Estrada Le Dental Clinic', 'Ms. Genelyn Estrada', 'Upper Ground Floor Vista Mall Daang Hari Molino, Bacoor', NULL, NULL, '', '', NULL, 'CCTV Installation', '', ''),
-(352, 'Gabriel Assuncion', 'Sir. Gabriel', 'Address 31 Kamagong St. Soldiers Hills, Putatan Muntinlupa City', NULL, NULL, '', '', NULL, 'CCTV Installation', '', ''),
-(353, 'UCPB Makati Branch II', 'Sir. Rodale', 'UCPB Gen. GF OPL Building, C. Palanka St. Corner Legazpi Village Makati City', NULL, '', '', '', NULL, 'CCTV and EM Lock Installation', '', ''),
-(354, 'Anne & Emily Bridal Boutique', 'Ms. Anne', 'D8 Mall 2nd Floor 2E-10, Divisoria', NULL, NULL, '', '', NULL, '', '', ''),
-(355, 'UCPB QUEZON CITY', 'Sir. Rodale', '3rd Floor Unit 301 P.B.D 2 Building #27 Don A. Roces Ave. Bgy. Paligsahan, Diliman Quezon City', NULL, NULL, 'bulacan@ucpbgen.com', '', NULL, 'CCTV and Access Control Installation', 'Commercial', ''),
-(356, 'Lizardo Law Firm', 'Elito Chan', 'Ayala Malls Southpark, Muntinlupa City (In front of COMELEC)', NULL, NULL, '', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(357, 'UCPB Bulacan', 'Ronald Natividad', '2nd Floor Space E, The Cabanas Kilometers 44/45 MacArthur Highway Barangay Longos, Malolos City', NULL, '', 'bulacan@ucpbgen.com', '', NULL, 'CCTV and Access Control Installation', 'Commercial', ''),
-(358, 'UCPB Angeles', 'Anthony Arenas', '2nd Floor 408 Business Center Units, 7-9, Sto. Rosario St. Sto. Domingo, Angeles City', NULL, '', '', '', NULL, 'CCTV and Access Control Installation', 'Commercial', ''),
-(359, 'UCPB Dagupan', 'Ernie Llanilla', 'Unit 214 Metroplaza Commercial Complex AB Fernandez Avenue Dagupan City Pangasinan', NULL, '', '', '', NULL, 'CCTV and Access Control Installation', 'Commercial', ''),
-(360, 'Jonathan Matamorosa', 'Jonathan', 'Block 8 Lot 7 Araya Residences, Sta. Rosa Laguna', NULL, '', '', '', NULL, 'CCTV Installation', 'Residential', ''),
-(362, 'Sherwin Paras', 'Sir Sherwin', '0694 Ibayong Street Brgy. Parada Sta. Maria, Bulacan', NULL, NULL, 'sherwinparas@gmail.com', '', NULL, 'CCTV Installation', 'Residential', ''),
-(363, 'Arca Galleon Agriventures Inc.', 'Precy Capangpangan', '67 Dao Road, Pilar Village, Las Piñas City', NULL, '0995-991-5322', '', '', NULL, 'CCTV Supply', 'Commercial', 'Loob ng Subdivision, Dulo ng Street, Black Gate'),
-(364, 'Rosanna Segovia', 'Ms. Rosanna', '2808 Tagumpay St. Bruger Subdivision Putatan Muntinlupa City', NULL, '09777494801', '', '', NULL, 'CCTV Installation', 'Residential', ''),
-(365, 'Melody Amado', 'Ms. Melody', 'Dalmacio Apt. 2750 B Liwayway St. Bruger Subdivision, Putatan Muntinlupa City (Beside Boss Burger)', NULL, '09568555886', '', '', NULL, 'CCTV Installation', 'Residential', ''),
-(366, 'UCPB Mindoro', 'Sir Justina Macapagal', '2nd Floor Baniway Bldg., J.P. Street, Vicente South Calapan City, Oriental Mindoro', NULL, '', '', '', NULL, 'CCTV and Access Control Installation', 'Commercial', ''),
-(367, 'New Muntinlupa Hardware', 'Lily Gonzales', 'Tunasan, Muntinlupa City', NULL, '09959964449', '', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(368, 'Great Depot Q.C.', 'Merashell Dela Chica', 'Golf Driving Range Logistical Command Camp Aguinaldo Q.C.', NULL, '850-2455', 'merashell.delachica@gmail.com', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(369, 'Khem Vasquez Villaron', 'Ms Khem', 'B5 L8 Banuyo St. Central Ph2 Camella Springville', NULL, '09214226015', '', '', NULL, 'CCTV Installation', 'Residential', ''),
-(370, 'Cafe Tribu', 'Arnel Labada', 'San Antonio, San Pedro Laguna (Near Puregold)', NULL, '0908-419-1255', '', '', NULL, 'CCTV Installation', 'Commercial', 'Package for 2 Channel'),
-(371, 'Mark Tionloc', 'Sir Mark', 'B6 L7 Centrina Eleganza Brgy. Culiat Tandang Sora Quezon City', NULL, '09175620954', 'docfei76@gmail.com', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(372, 'Pedro Trozado', 'Sir Pedro', 'Putatan Muntinlupa City', NULL, '0949-926-5319', '', '', NULL, 'Power Supply 18CH 30A', 'Residential', ''),
-(373, 'BussBarr Corp.', 'Zid Avadenio', 'Acacia Ave., MAdrigal Business Park, ALabang Muntinlupa City', NULL, '0927-551-8229', '', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(374, 'Star 8 Green Corp.', 'Mr. Inigo', 'Unit 22 Las Piñas Commercial Complex, 30 Alabang-Zapote Rd., Talon Uno Las Piñas City', NULL, '0917-877-0140', '', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(375, 'Ginme Calicdan / Napoleon Calicdan', 'Ms Ginme', 'Calicdan Residence, San Pio St. Poblacion Urbiztondo-Pangasinan (Near Pius V. Church)', NULL, '0926-876-1780 / 0948-778-9273', '', '', NULL, 'CCTV Installation', 'Residential', ''),
-(376, 'Bong Bernal', 'Sir Joey', 'B16 L19 St. Raymond Homes, Calendola San Pedro Laguna', NULL, '0977-883-0031', '', '', NULL, 'CCTV Installation', 'Residential', ''),
-(377, 'AJ Mendoza', 'Sir AJ', 'Southview Homes 3, San Pedro Laguna', NULL, '0922-818-0784', '', '', NULL, 'CCTV Accessories Supply only', '', ''),
-(378, 'Marc Angel Dayrit', 'Sir Marc', 'Banaba Cerca Cavite South, Indang Cavite', NULL, '', '', '', NULL, 'CCTV Installation', '', ''),
-(379, 'Crisanta Rubio / Regalado Fuentes', 'Ms Crisanta', 'B11 L7 Genesis St. Adelina 1 San Pedro Laguna', NULL, '0905-303-0350', '', '', NULL, 'CCTV Installation', '', ''),
-(380, 'Great Depot Pasig', 'Merashell Dela Chica', 'Unit 101 South Center Power Madrigal Business PArk Alabang Muntinlupa City', NULL, '850-2455', '', '', NULL, 'CCTV Installation', '', ''),
-(381, 'Margaret Joy Lao', 'Ms Margaret', '143 Malolos Ave. Brgy. 150 Bagong Barrio, Caloocan', NULL, '09235222311', '', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(382, 'Ailyn Baluarte Garbo', 'Ms. Ailyn', '#24 Mata St. Brgy. 181, Villamor Pasay', NULL, '0999-861-5511', 'ailyn_b22@yahoo.com', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(383, 'Oliver Ojeda', 'Sir Oliver', 'Tagaytay City', NULL, '0917-655-1364', 'oliverojeda@gmail.com', '', NULL, 'Biometrics Supply only', '', 'LX16'),
-(384, 'Allegiance Cargo Advantage Inc. (ACAI)', 'Mr. Lloyd Librado', 'Allegiance Cargo Advantage Inc. Bldg. 2B Sunblest Compound KM23 West Service Rd. Cupang Muntinlupa City', NULL, '0920-602-1060', 'nilinodeon_dimaangay@acai.com.ph', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(385, 'Granite Industrial Corporation', 'Sir RJ Cabral', 'Las Piñas', NULL, '0923-672-6466', '', '', NULL, 'CCTV Installation', 'Commercial', ''),
-(386, 'DozenMaker Inc.', 'Mr KFC', 'Muntinlupa City', NULL, '8-7000', 'kfc@gmail.com', 'www.kfc.com', NULL, 'CCTV Installation', 'Commercial, Fast Food Chain', 'Date of Installation: August 2, 2019');
-INSERT INTO `customer_vt` (`CustomerID`, `CompanyName`, `ContactPerson`, `Address`, `CityAddress`, `ContactNumber`, `EmailAddress`, `Website`, `InstallationDate`, `Interest`, `Type`, `Notes`) VALUES
-(387, 'DozenMaker Inc. 2', 'Ka Roel', 'Muntinlupa Area', NULL, '0992-669-6697', 'kfc@gmail.com', 'www.kfc.com', NULL, 'CCTV', 'Commercial, Fast Food Chain', 'Date of Installation: August 2, 2019'),
-(388, 'Ragnarok M: Eternal Love', 'Mr. Gravity', 'Laguna Area', NULL, '5555555', 'ragnarokm@gmail.com', 'www.ragnarokm.com', NULL, 'CCTV', 'Commercial', 'August 3, 2019(Date of Installation)');
+INSERT INTO `customer_vt` (`CustomerID`, `CompanyName`, `ContactPerson`, `Address`, `CityAddress`, `ContactNumber`, `EmailAddress`, `Website`, `InstallationDate`, `Interest`, `Type`, `Notes`, `is_deleted`) VALUES
+(1, 'EarthChem Apartment', 'Ms. Gillian', 'Evangelista, Makati City', 74, '0977-812-8188', 'gillian.earthchem@gmail.com#mailto:gillian.earthchem@gmail.com#', NULL, '2017-08-08', 'CCTV Installation', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(2, '7-11 Tunasan', 'Mr. Phillip Bascon', 'National Hiway, Tunasan, Muntinlupa City', 87, NULL, 'st273@s.philseven.com#mailto:st273@s.philseven.com#', NULL, '2016-07-23', 'CCTV Installation: 9 – Dome/Bullet Camera 720P HD\r\nAudio\r\n\r\nCables \r\nCentralized Power Supply\r\nAHD DVR Full HD 16Ch\r\nWestern Digital PurpleHDD 2TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(3, '24-7 Computer Shop', 'Jerial Dela Cruz', 'Tierra Market, Quezon City', 103, '0917-819-8090', NULL, NULL, '2015-09-12', 'CCTV Installation: 720P Bullet Camera (SmartEye)\r\nSiamese Cable 20M', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(4, 'Aaron Lorenzo', 'Aaron Lorenzo', 'Tramo St. cor Lopez Jaena St., San Dionisio, Paranaque City', 98, '0918-567-8673 / 0998-867-7966', 'ronaldaaron@gmail.com#mailto:ronaldaaron@gmail.com#', NULL, '2016-12-10', 'CCTV Installation: 2 – Dome Camera 720p\r\n2 – Bullet Camera 720P\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(5, 'Romualdo Dizon', ' Romualdo Dizon', '2 A Magiting Teachers village west Quezon City', 103, '0999-404-4080', NULL, NULL, '2016-11-19', 'CCTV Installation: 3 – Bullet High- Definition\r\n2 – Dome High- Definition \r\n\r\n5 – Cables\r\n1 – Power Supply\r\n1 - 8CH AHD DVR Full HD \r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(6, 'Boo\'s Cafeville', 'Loyd Kawai', 'Boo\'s cafeville bar and resto A.Mabini st. Caloocan complex 2nd floor', 29, '0995-295-8373', NULL, NULL, '2016-11-28', 'CCTV Installation: 4 – Dome Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(7, 'Ariel Pimping', 'Ariel Pimping', 'L9 B16 Duhat st. Talon 5 Las Pinas City', 67, '0917-561-9024', 'mariaisabelatienza5@gmail.com#mailto:mariaisabelatienza5@gmail.com#', NULL, '2016-07-07', 'CCTV Installation: 4 – Siamese Cables\r\n4- Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(8, 'Myrna Aguirre (Residence)', 'Philip Bascon', '207 Mango drive Ayala Alabang Village Muntinlupa City', 87, '0917-819-0629', NULL, NULL, '2016-12-21', 'CCTV Installation: 9 – Bullet Camera 1080P\r\n1 – 16 Channel DVR\r\n\r\n1 – 2TB Harddisk WD \r\n1 – Coaxial Cables\r\n1 – Centralized Power Supply\r\n1 – Automated Voltage \r\n    Regulator', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(9, 'Benjamin \"Jun\" Lorcha (Residence)', 'ka \"Jun\" Lorcha', 'Parkhomes, Tunasan, Muntinlupa City', 87, '0918-939-8723', NULL, NULL, '2016-11-17', 'CCTV Installation: AMD A4-6300  \r\nAMD A4-6300 Dual Core 3.7GHz\r\nAMD A68/70 Motherboard\r\n4GB Memory DDR3\r\n500GB HDD 7200rpm\r\nMicro ATX Casing w/650 watts PSU\r\nMonitor AOC 19”', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(10, 'Ado’s Panciteria (Office)', 'Sir Mark Ado Castillo', 'Malinao, Pasig City', 100, '+63 928-595-3966', NULL, NULL, '2016-02-15', 'CCTV Installation: 3– 720P DOME CAMERA \r\n1 - Weatherproof Bullet 720P CAMERA\r\n\r\n3 - Siamese Cable 20 Meters', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(11, 'Erez', 'Erez', '9 Diamond Street South green Park Village Phase 7 Merville Paranaque City', 98, '0917-869-9304', 'Fuchserez@gmail.com#mailto:Fuchserez@gmail.com#', NULL, '2017-01-23', '720p 6 cams', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(12, 'Anna & Dennis Lamano', 'Ka Anna Lamano', '#94 Paseo De Manila St. Las Villas de Manila, Binan, Laguna', 16, '0917-845-0543', NULL, NULL, '2016-08-24', 'CCTV Installation: 5 – Bullet Weather-proof HD 1080P\r\n5 – Dome 720P HD\r\n\r\n5 – Siamese Cables\r\n5 – Patch cables\r\n8CH – Centralized Power Supply\r\n1 - AHD DVR Full HD 16Ch\r\n1 - HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(13, 'Child\'s Mind Learning Center', 'Jun Majarais', '#203 Isabel St. Lakeview, Putatan, Muntinlupa City', 87, '0971-840-4617', NULL, NULL, '2016-06-02', 'CCTV Installation: 20 – Dome type 720P HD\r\n4 – Bullet type 720p HD\r\n\r\n2 – Cables Siamese/Coaxial\r\n2 – Centralized Power Supply\r\n2 - AHD DVR Full HD 16Ch\r\n2 - HDD 2TB\r\n2 - Audio', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(14, 'Arnold Mendoza', 'Arnold', 'Quarry Road, Infront of manila Spring, Pantok Binangonan Rizal', NULL, '(02) 234 0105 / 0908-816-1228', NULL, NULL, '2016-04-11', 'CCTV Installation: 3 - Weatherproof Bullet HD 960P\r\n1 – Dome 960P HD\r\n\r\n4 – Siamese Cable 50 Meters\r\n4- Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(15, 'Myrna Aguirre Pawnshop (Tunasan)', 'Fe Carmona', 'Unit 101 6/f MB Aguirre Bldg. Km9 National Road, Tunasan Muntinlupa city', 87, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(16, 'Gerorge Vinson', 'Sir Arthur', '022 Menchelina St. Batingan, Binangonan, Rizal', NULL, '0995-295-8373', NULL, NULL, '2017-07-01', 'CCTV Installation: VT-PWDHPD1MP\r\nVT-PWDHPB1MP\r\nVT-ACSED4CH720\r\nVT-PSHH1TB\r\nPower Supply\r\nCables', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(17, 'Rowena Hapie', 'Ma\'am Rowena', 'Malabon Public Market, Malabon City', 75, '0921-542-2696', NULL, NULL, '2016-10-03', 'CCTV Installation: 2 – Bullet/Dome High-Definition\r\n\r\n2 – Siamese Cables\r\n2 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD \r\n1 – MONITOR (FREE)', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(18, 'Ado\'s Panciteria (Resto)', 'Ado\'s (look for Mac or Anne) / Mr. Eric Castillo', 'Malinao, Pasig City', 100, '0928-595-3966', NULL, NULL, '2017-01-19', 'CCTV Installation: 1 TB to 2TB Free \r\nCables\r\n1 – 16CH HD DVR\r\n5 – 720P DOME CAMERA', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(19, 'Hummus Elijah', 'Arik Herskovitz', 'Hummus Elijah, 7850 Makati Avenue, Makati, 1209 Metro Manila', 74, '0927-153-6277', NULL, NULL, '2016-05-06', 'CCTV Installation: 7 – Dome 720P HD\r\n1 – Audio\r\n1 - Monitor\r\n\r\n1 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 8Ch\r\n1-  HDD 2TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(20, 'Aris Bernardo  T. Portugal', 'Aris', 'Don Elpidio Cor.Don Matias St. Don Antonio Heights Quezon City Metro Manila Philippines', 103, '0917-628-1053', NULL, NULL, '2015-09-07', 'CCTV Installation: 3 – 720P DOME CAMERA \r\n4 - Weatherproof IR CAMERA\r\n1 – Varifocal (Upgraded)\r\n\r\n8 - Siamese Cable 20 Meters\r\n1 - Centralized Power Supply\r\n8 - AHD DVR\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(21, 'Babyleth Sadang', 'Babyleth', 'Katarungan Village Muntinlupa City', 87, '0927-730-1861', NULL, NULL, '2016-02-03', 'CCTV Installation of 4 cameras (Package)', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(22, 'Beni\'s Falafel', 'Beni\'s', 'Makati City Philippines', 74, '0915-520-1300', NULL, NULL, '2015-12-09', 'CCTV Installation: 1-16CH DVR upgraded\r\n6-720P HD IR Dome/2-Bullet Camera\r\n1-2TB HDD upgraded\r\n8-Siamese Cables\r\n1 – Centralized Power Supply', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(23, 'Bong Eusebio', 'Bong', 'B12 L28 P5 Marycris Exec Homes Magalasang 2G Imus Cavite', 35, '0918-567-8673 / 0998-867-7966', NULL, NULL, '2016-12-13', 'CCTV Installation: 2 – Dome/Bullet Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk WD \r\n2 – Cables\r\n2 – 1A Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(24, 'Chelsea Crisologo', 'Chelsea', 'P18-12 10-5 Villamor 183 Pasay City', NULL, '0915-381-0092', NULL, NULL, '2016-06-27', 'CCTV Installation: 2 – Dome 960P HD\r\n1 – Bullet 960P HD\r\n\r\n3 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(25, 'Christopher Angon', 'Maricel Angon', 'Pasig City', 100, '0998-565-9715', NULL, NULL, '2016-09-04', 'CCTV Installation: 4 – 2 MP 3.6mm Bullet Camera\r\n4 – Cables\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 1 Terabyte WD \r\n1- Centralized 8 Channel PS', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(26, 'Crispi Galarido', 'Crispi', 'Marilao Metrogate, Loma de Gato, Marilao Bulacan', NULL, '0916-338-2585', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(27, 'Donna Baltazar', 'Donna', 'B5 L12 Tinidad St. Ireneville 1 Subd.Parañaque City', 98, '0937-373-4799', NULL, NULL, '2016-10-11', 'CCTV Installation: 8 – Bullet/Dome High-Definition\r\n\r\n8 – Siamese Cables\r\n1 – 8 WAY POWER SUPPLY\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(28, 'EarthChem Office', 'EarthChem', 'Makati City', NULL, '09778128188', NULL, NULL, '2016-09-09', 'CCTV Installation: 5 – Dome HD\r\n2 – Bullet HD\r\n\r\n6 – Cables\r\n1 – Centralized Power Supply\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 2TB WD', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(29, 'EarthChem Warehouse', 'EarthChem', 'Parañaque City', 98, '09778128188', NULL, NULL, '2017-08-08', 'CCTV installation: 2pcs VT-ACSEPB2MP\r\n1unit VT-ACTVD16CH1080\r\n1lot Cables', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(30, 'Engert', 'Engert', 'B39 L11a Lancewood St.Greenwod executive Village Cainta, Rizal Philippines 1990', 98, '(02)3598518', NULL, NULL, '2016-06-09', 'CCTV Installation: INTERCOM SYSTEM UNIT', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(31, 'Enrique Cuevas', 'Enrique', 'Blk 15 Lot 107, Brgy. Dagat-dagatan, Caloocan City', 29, '09777010411', 'kjcrose@yahoo.com#mailto:kjcrose@yahoo.com#', NULL, '2016-05-06', 'CCTV Installation: 2 - Weatherproof Bullet HD 720P\r\n6 – Dome 720P HD\r\n1 – Fisheye HD 360\r\n\r\n1 – Cables Coaxial\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 16Ch\r\n1-  HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(32, 'EPDA (Residence)', 'EPDA', 'B719A L1 P3 EPDA st. Metrogate Loma de gato Marilao Bulacan', NULL, '09257071563', NULL, NULL, '2017-02-07', 'CCTV Installation: 1 - Cable wire 30 meters\r\n1 – Cable wire 20 meters\r\n3 – Cable wires 10 meters', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(33, 'Myrna Aguirre Pawnshop (Bayanan)', 'Lovella Montero', '146-B National road. Brgy. Bayanan', 87, '09433208577', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(34, 'Ernesto De Castro', 'Ernesto', '46 North Road Coronado Heights Subd. Barangka Ibaba Mandaluyong City', 78, '09175328832', 'ernest.declaro@gmail.com#mailto:ernest.declaro@gmail.com#', NULL, '2016-08-07', 'CCTV Installation: 3 – Bullet 720 HD\r\n\r\n3 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(35, 'Euromerica Trade Phils', 'Roma', 'Cervantes St. Bormaheco Compound Km 17 West Service Road SSH Parañaque City', 98, '(02) 824 3950', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(36, 'Evelyn Alosangay', 'Evelyn', 'b12 l18 Northgate Royale Subd. Bulacan', NULL, '091266099 68', NULL, NULL, '2016-09-15', 'CCTV Installation: 4 – Dome/Bullet AHD\r\n4 – Siamese Cables\r\n1 – Power Supply Adaptor\r\n1 - AHD DVR Full HD 4Ch\r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(37, 'Francisco', 'Francisco', '53 Laguna De Bay St. Southway Sucat Parañaque City', 98, '09175763621', NULL, NULL, '2015-08-18', 'CCTV Installation: 3 – 720P DOME CAMERA \r\n1 -  Weatherproof IR CAMERA\r\n\r\n4 - Siamese Cable 20 Meters\r\n4 - DC Power Supply\r\n1- SE-4004 AHD DVR\r\n1- Seagate HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(38, 'Gerard M. Dela Cruz', 'Gerard', '#36 Driod St. Cubao Quezon City', 103, '09125324564', NULL, NULL, '2016-04-24', 'CCTV installation: 4 FULL HD CH DVR\r\n500GB upgraded 1 terabyte\r\n1- 960P dome type camera\r\n2- 960P bullet type camera\r\n3- Siamese Cables\r\n+ 1TVT Additional Camera 5-31-18', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(39, 'Gian Navarro', 'Gian', 'Unit 216 North Flair Towers Reliance St. MandaluyongCity', 78, '09209239110\r\n09209239110', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(40, 'Pamantasan ng Lungsod Ng Muntinlupa City', 'Dean Choi Mesina/ Mr.Ghiebert Octavio', 'Pamantasan ng Lungsod Ng Muntinlupa City', 87, NULL, NULL, NULL, NULL, NULL, 'Government', NULL, 0),
+(41, 'Glenn Garfin (Phil. Arena)', 'Glenn Garfin', 'Tierraa Market, Tandang sora Ave.Cor Commonwlth Ave. Diliman Quezon City', 103, '09272881993', 'Garfinglenn10@gmail.com#mailto:Garfinglenn10@gmail.com#', NULL, '2015-06-27', 'CCTV Installation: 4 – 720P DOME CAMERA \r\n\r\n4 - Siamese Cable 20 Meters\r\n4 - DC Power Supply\r\n1-SE-1008 DVR\r\n1-Seagate HDD 500GB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(42, 'Glenda Buenavista', 'Glenda', 'B714 L19 P3 San Diego St.Metrogate Loma De Gato marilao Bulacan', NULL, '09228449853/09285502877', NULL, NULL, '2015-04-19', 'CCTV Installation: 5-SE-1230 800TVL DOME CAMERA and 3-SE-2230 BULLET CAMERA\r\n\r\n8-Siamese Cable 20 Meters\r\n1-Centralized Power Supply\r\n1-SE-8008 HD DVR\r\n1-Seagate HDD 1 TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(43, 'Gilbert Perfinan', 'Gilbert', '0230-08 Phase 3, Villa Elister Subdivision, Bgry. Duale Limay, Bataan', NULL, '0922-831-1309', NULL, NULL, '2016-12-21', 'CCTV Installation: 6 – Bullet Camera 1080P\r\n2 – Dome Camera 1080P\r\n1 – 8 Channel DVR\r\n\r\n1 – 2TB Harddisk WD \r\n8 – Cables\r\n1 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(44, 'Golden Acres (Kapilya)', 'Robert Peralta', 'Golden Acres Las Piñas City', 67, '09063924079', NULL, NULL, '2016-02-25', 'CCTV Installation: 1 – AOC Monitor\r\n4 - Weatherproof Bullet 720P\r\n\r\n4 – Rj59 Cable 20 Meters	\r\n4 - Power Supply	\r\n1 - AHD DVR	\r\n1-  HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(45, 'Hilter Manila', 'Hilter', 'B1 L4  Park Subd,Molino 1 Bacoor Cavity City', 35, '09175323198', NULL, NULL, '2015-10-01', 'CCTV installation: Bullet Camera\r\nACDC Adapter\r\nCentralized Power Supply\r\nVarifocal Camera', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(46, 'Irelyn Vicencio', 'Irelyn', 'B5L19 Bellazona Subd, Molino 3 Bacoor Cavite City', 35, '09369261522', NULL, NULL, '2016-06-06', 'CCTV Installation: 2 – Dome type 720P HD\r\n1 – Bullet type 720p HD\r\n\r\n4 – Cables Siamese\r\n1 – Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1 - HDD 1TB\r\n1 - Fisheye', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(47, 'Melts Grilled Cheeserry (BGC)', 'James Torres/ Jeff Perdiz', 'Melts Grilled Cheesery, Uptown Mall Taguig City', 128, '0917-544-2897', NULL, NULL, '2016-04-20', 'CCTV of 5 cameras', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(48, 'Jay Retoriano', 'Jay', 'B19 6&8 Guinhawa South Tagaytay City', 126, '09178436764', 'retorianolaw@gmail.com#mailto:retorianolaw@gmail.com#', NULL, '2016-03-05', 'CCTV Installation: 4 – 960P  Weatherproof Bullet CAMERA \r\n\r\n4 – Cat5e Cable 20 Meters\r\n4 - Power Supply\r\n1- 4CH AHD DVR\r\n1-  HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(49, 'Jean Gesacula', 'Jean', 'B7 L3 Bayfair Putatan Muntilupa City', 87, NULL, NULL, NULL, '2016-10-16', 'CCTV Installation: 5 – Bullet High- Definition \r\n\r\n5 – Siamese Cables\r\n1 – 16 Centralized Power Supply\r\n1 - AHD 16CH DVR Full HD NVSIP\r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(50, 'Jen Evangalista', 'Jen', 'siniloan Laguna', NULL, '09178525704/09277809450 or look for Ms Cha (0975-239-4758)', 'jen_evangelista0601@yahoo.com#mailto:jen_evangelista0601@yahoo.com#', NULL, '2016-11-20', 'CCTV Installation: 2 – 1080P BULLET CAMERA\r\n2 – 1080P DOME CAMERA\r\n1- 8CH Channel DVR\r\n1 – AOC 20” LED Monitor\r\n4 - ACDC Adapter\r\n1- HDD 2 Terabytes \r\n4 - 30m Sets Siamese cable', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(51, 'Mina Co', 'Mina Co', '347-D A. Bonifacio San Jose Quezon City Cor. Malibay St. (Durable Hardware', 103, '0908-504-9212', NULL, NULL, '2018-03-04', 'CCTV Installation: 2 - 720P Dome and Bullet Camera', 'Residential', NULL, 0),
+(52, 'Joey Eustaquio', 'Joey', '#6 Getty St. Filinvest Subd.Marcos Hi way Antipolo', 4, '09204890185', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(53, 'Jose Winston Leal', 'Jose', 'Barangka CANDABA Pampanga', NULL, '09294932016', NULL, NULL, '2016-05-06', 'CCTV Installation: 6 – Dome 720P HD\r\n1 – Audio\r\n1 - Monitor\r\n\r\n1 – Cables Siamese\r\n1 – Centralized Power Supply\r\n1 - AHD DVR Full HD 8Ch\r\n1-  HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(54, 'Joseph Santidad', 'Joseph', 'Unit 1508A 15/F New YORK Mansions 84 mantreal St. Cubao Quezon CITY', 103, '09173850527', 'upgrade.enterprise@gmail.com#mailto:upgrade.enterprise@gmail.com#', NULL, '2015-10-28', 'CCTV Installation: 14 – 720P BULLET CAMERA\r\n1 – 720P Varifocal CAMERA\r\n1- 16CH Channel DVR\r\n1 – Centralized Power Supply\r\n1- HDD 2 Terabytes \r\ncables and accessories', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(55, 'Jovie Quimpan', 'Jovie', 'Stall#13 Poblacion Market Muntinlupa City', 87, '094771770978', NULL, NULL, '2017-01-03', 'CCTV Installation: 2 Bullet Camera 720p', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(56, 'Jun Dequito', 'Jun', 'Nagcarlan Laguna', NULL, '09985333860', NULL, NULL, '2016-12-21', 'CCTV Installation: 5 – Bullet Camera 1080P\r\n3 – Dome Camera 1080P\r\n1 – 8 Channel DVR\r\n\r\n1 – 2TB Harddisk WD \r\n8 – Cables\r\n1 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(57, 'Jun Geling', 'Jun', 'Taytay Rizal', NULL, '(02)660-1455', 'Cisel2006@yahoo.com#mailto:Cisel2006@yahoo.com#', NULL, '2016-08-17', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables\r\n4 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(58, 'Jun Majarais', 'Jun', '#203 Isable St. Lakeviw Putatan Muntinlupa City', 87, '09178404617', NULL, NULL, '2016-06-02', 'CCTV Installation: 20 – Dome type 720P HD\r\n4 – Bullet type 720p HD\r\n\r\n2 – Cables Siamese/Coaxial\r\n2 – Centralized Power Supply\r\n2 - AHD DVR Full HD 16Ch\r\n2 - HDD 2TB\r\n2 - Audio', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(59, 'Jun San Diego', 'Jun', '3-A Oak St. PIV multinational Village Parañaque City', 98, '0917-8461976', NULL, NULL, '2015-12-05', 'CCTV Installation: 1-8CH DVR\r\n8-720P HD IR Dome/Bullet Camera\r\n1-2TB HDD upgraded\r\n8-Siamese Cables\r\n1 – Centralized Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(60, 'Karen Vicente', 'Karen', '#5 MRT Avenue Lower Bicutan Taguig City', 128, '0917-890-7654', NULL, NULL, '2016-08-30', 'CCTV Installation: 4 – Dome/Bullet AHD 2MP Fine\r\n4 – Siamese Cables\r\n1 – Power Supply Adaptor\r\n1 - AHD DVR Full HD 4Ch\r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(61, 'SGV2 Gasoline and Service Station', 'Kath Villanueva', '#80 Sen .Gil Puyat, San Isidro Makati City (UniOil Gas Station)', 74, '02-945-4273', NULL, NULL, '2016-08-21', 'CCTV Installation:  4 – 720p 3.6mm Bullet Camera\r\n4 – Cables\r\n1 - AHD 8CH DVR Full HD\r\n1 - HDD 2 TeraByte Seagate', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(62, 'Kaye Romualdo', 'Kaye', 'Tandang Sora Quezon City', 103, '0917-819-8090', NULL, NULL, '2015-08-21', 'CCTV Installation: 8 – 720P DOME CAMERA \r\n\r\n8 - Siamese Cable 20 Meters\r\n1 - Centralized Power Supply\r\n1- SE-4008 AHD DVR\r\n1- Seagate HDD 2TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(64, 'Spin-Off (Carmona)', 'Leo Estallo', 'Carmona Cavite', 35, '(02)533-9592/0917-584-9489', NULL, NULL, '2016-04-11', 'CCTV installation: 4– Dome 720P HD\r\n\r\n1 -Siamese Cable 60 Meters	\r\n4- Power Supply	\r\n1 - AHD DVR Full HD 8Ch Free swap', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(65, 'EPDA (GreenForbes)', 'Leony', 'Commercial Building Greenforbes Marilao Bulacan', NULL, '0925-707-1563', 'epda.trading@yahoo.com#mailto:epda.trading@yahoo.com#', NULL, '2015-07-06', 'CCTV Installation: 5- DOME CAMERA and 3- BULLET CAMERA\r\n\r\n8-Siamese Cable 20 Meters/2-10M\r\n8 Power Supply\r\n1-SE-1008 DVR\r\n1-Seagate HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(66, 'Liza Atienza', 'Liza', 'Blk1A9 Lot4 Apartment A St. Juana1 Binan ,Laguna', NULL, '0946-570-1541', NULL, NULL, '2015-12-08', 'CCTV Installation: Dome camera\r\nAudio \r\nSiamese cables\r\n\r\n+ Relocation', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(67, 'Leonardo M Garcia', 'L.M', 'Villa Olympia Sub. San Pedro Laguna', NULL, '0920-907-0276', NULL, NULL, '2016-03-28', 'CCTV Installation: 3 - Weatherproof Bullet HD\r\n\r\n3 – Siamese Cable 50 Meters\r\n3 - Power Supply\r\n1 - AHD DVR Full HD\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(68, 'Loyd Kawai', 'Loyd', 'A.Mabini St. Caloocan City', 29, '0995-295-8373', 'Loyd-013@yahoo.com#mailto:Loyd-013@yahoo.com#', NULL, '2016-11-28', 'CCTV installation: 4 – Dome Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(69, 'Luisa Tiu', 'Luisa', '667 f. Torres St, Sta.Cruz Manila', 80, '0916-625-9221', 'Paochie_09@yahoo.com#mailto:Paochie_09@yahoo.com#', NULL, NULL, NULL, 'Commercial', NULL, 0),
+(70, 'Lynita Castillo (Residence)', 'Lynita', '126 A. Luna St. Malinao Pasig City', 100, '(02)696-1408', NULL, NULL, '2015-11-13', 'CCTV Installation: 1-720P Fisheye camera 360\r\n4- 720p Dome Camera\r\n1-8CH DVR\r\n1-CPS \r\n1Terabyte HDD\r\n1-Monitor', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(71, 'Marlon Oliveros', 'Marlon', '97 Luklukan Compound Binangonan Rizal', NULL, '0995-481-8081', 'Sarah_oliveros32@yahoo.com#mailto:Sarah_oliveros32@yahoo.com#', NULL, '2016-08-20', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables\r\n4 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(72, 'Mau Marfil', 'Mau', 'B3 L9 Pacita 2 P1 main road Street', NULL, NULL, NULL, NULL, '2016-12-17', 'CCTV Installation: 3 – Dome/Bullet Camera 720p\r\n1 – 4 Channel DVR\r\n\r\n3 – Cables\r\n3 – Power Supply\r\n1-	HDD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(73, 'Mc Kevin Alger', 'Mc Kevin', '365 10TH St. Ave. Grace Park Caloocan City', 29, '0906-705-0233', 'mckvn.alger@gmail.com#mailto:mckvn.alger@gmail.com#', NULL, '2016-04-05', 'CCTV Installation: 1 - Weatherproof Bullet HD 960P\r\n1 – Dome 960P\r\n\r\n3 – Siamese Cable 50 Meters\r\n3- Power Supply\r\n1 - AHD DVR Full HD 4Ch\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(74, 'Melody Garcia/Jimmy Gozales', 'Melody', 'B14 L30A Walnut St P6 Greenwods Executive Village Pasig City Metro Manila', 80, '0917-807-3355', '', '', '2015-11-16', 'CCTV Installation: 4 – 720P DOME CAMERA 2 - Weatherproof Bullet 720P CAMERA2- Sound Monitoring8 - Siamese Cable 20 Meters8 - Power Supply8 - AHD DVR1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(75, 'Michelle Lavarias', 'Michelle', 'L1 B212 Peseta Cor. Schilling United North Fairview Subd,Quezon City', 103, '0928-300-3296/(02)4902030', NULL, NULL, '2016-10-16', 'CCTV Installation: 5 – Bullet High- Definition \r\n\r\n5 – Siamese Cables\r\n1 – 16 Centralized Power Supply\r\n1 - AHD 16CH DVR Full HD NVSIP\r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(76, 'Microtech Global Solution Corp', NULL, '27th Floor 2705 tycoon Center Bldg. Pearl Drive Ortigas Center Pasig City', 100, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(77, 'Miel Facundo', 'Miel', 'B1 L1 Neptune St. William Village 2 Subd, Malolos Bulacan', NULL, NULL, NULL, NULL, '2016-07-05', 'CCTV Installation:2 – Bullet/Dome HD\r\n\r\n2 – Siamese CablEs\r\n2 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 1TB WD\r\n1 - Audio', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(78, 'Milina Esperida', 'Milina', '16A Binhagan St. San Jose Quezon City', 103, NULL, NULL, NULL, '2016-04-23', 'CCTV Installation: 4 FULL HD CH DVR\r\n500GB upgraded 1 tera\r\n1- 960P dome type camera\r\n1- 960P bullet type camera\r\n2- Siamese Cables', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(79, 'Miraflor Quipot', 'Mr.Von Andrew', 'San Antonio South  Peak filinvest San  Pedro', 115, '0999-814-4099', NULL, NULL, '2017-07-17', 'UPS 650v 1 Intex Maestro Red', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(80, 'Morales', 'Melody', '13 San Marcelino ST, San Antonio Valley 10 Sucat Parañaque City', 98, NULL, NULL, NULL, '2016-01-25', 'CCTV Installation: 8 Cameras', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(81, 'Mylene Malate', 'Mylene', 'B7 L9 Roseville Subd. Amuntay Road Poblacion Zone 3Dasmariñas city', 41, '0917-983-2931', NULL, NULL, '2016-11-07', 'CCTV Installation: 5 – Bullet High- Definition\r\n3 – Dome High- Definition \r\n\r\n8 – Cables\r\n1 – Power Supply\r\n1 - AHD 8CH DVR Full HD SmartEye\r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(82, 'Nanie Sandig', 'Nanie', 'B38L7 Advocacy St. P1 Homes Loma De Gato Marilao Bulacan', NULL, '0915-125-4266', NULL, NULL, '2016-11-11', 'CCTV Installation: 4 – HD CCTV\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(83, 'Omar (Apartment)', 'Omar', 'Love Homes Purok 3 Macabiling Sta Rosa Laguna', NULL, NULL, NULL, NULL, '2015-10-28', 'CCTV Installation: 14 – 720P BULLET CAMERA\r\n1 – 720P Varifocal CAMERA\r\n1- 16CH Channel DVR\r\n1 – Centralized Power Supply\r\n1- HDD 2 Terabytes \r\ncables and accessories', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(84, 'Pabs Guansing (Residence)', 'Pabs Guansing', 'ParkHomes Subd, Tunasan Muntinlupa City', 87, '0918-939-9596', NULL, NULL, '2016-03-24', 'CCTV Installation: 3 - Weatherproof Bullet HD\r\n\r\n3 – Siamese Cable 50 Meters	\r\n3- Power Supply	\r\n1 - AHD DVR Full HD	\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(85, 'Paolo De leon', 'Paolo', '#3 Grant St. filinvest East Homes Antipolo City', 4, '0998-537-7297', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(86, 'Paul Lee', 'Paul', 'Unit 18m 18th Floor Celadon Park Tower 2 Felix Huertas St. Sta Cruz Manila', 80, '0922-894-1348', NULL, NULL, '2016-10-26', 'CCTV Installation: 2 – Dome High- Definition \r\n\r\n2 – Siamese Cables\r\n2 – Power Supply\r\n1 - AHD 4CH DVR Full HD \r\n1 - HDD 1TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(88, 'Philip Michael Bernales', 'Philip Michael Bernales', 'Road22 4B Bahay Toro Project 8 Quezon City', 103, '0977-829-8927', NULL, NULL, '2016-02-26', 'CCTV Installation: 2– 720P DOME CAMERA \r\n1 - Weatherproof Bullet 720P CAMERA\r\n\r\n3 - Siamese Cable 20 Meters\r\n3 - Power Supply\r\n1 – 4Ch AHD DVR\r\n1-  HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(89, 'Pio Magno', 'Pio', 'Purok 3 San Roque San Isidro Nueva Ecija', NULL, NULL, NULL, NULL, '2016-04-20', 'CCTV Installation: 3 – Full HD Dome CAMERA\r\n1- HDD 2 Terabytes upgraded\r\n1- 4 Channel DVR\r\n3 –  Power Supply\r\n3 - 30m Sets Siamese cable', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(90, 'Pueblo De Oro', 'RDR Edsel Manapsal', 'Sto Tomas Batangas', 12, '0995-667-6576', NULL, NULL, '2016-08-18', 'CCTV Installation: •	4CH HD DVR\r\n•	4 Bullet HD Camera\r\n•	1 TB HDD', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(91, 'Quench (Water Station)', NULL, 'GreenHeights Muntinlupa City', 87, '09178592480', NULL, NULL, '2017-01-18', 'CCTV Installation: 1 – Dome Camera 960p\r\n1 – Bullet Camera 1080p\r\n1 – 4 Channel DVR\r\n\r\n1 – 2TB Harddisk\r\n2 – Cables\r\n2 – Power Supply 12V', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(92, 'Rachel Delmo', 'Rachel', '#149 Butong Cabuyao Laguna', NULL, NULL, NULL, NULL, '2016-09-17', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables	\r\n4 - Power Supply	\r\n1 - AHD 4CH DVR Full HD	\r\n1 - HDD 1TB WD', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(93, 'Rely Perilla', 'Rely', '#5 Fiddlewood St, Greenwods Pasig City', 100, '09178749806', 'rperilla@fpgins.com.ph#mailto:rperilla@fpgins.com.ph#', NULL, '2016-07-16', 'CCTV Installation: 2 – Bullet Weather-proof HD 720P\r\n2 – Dome 720P HD\r\n\r\n4 – Siamese Cables	\r\n8 – Centralized Power Supply	\r\n1 - AHD DVR Full HD 8Ch	\r\n1 - HDD 2TB\r\n1  -  Audio Connection	\r\n 4  -  Bullet Weather-proof HD 720P', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(94, 'Rene Arellano', 'Rene', '4 Irid Barangka Ibaba Mandaluyong City', 78, '0922-871-3738', NULL, NULL, '2015-09-20', 'CCTV Installation: 3 – 720P BULLET CAMERA\r\n1 – 720P Dome Camera \r\n\r\n4 - Siamese Cable 20 Meters	\r\n4 - DC Power Supply	\r\n1- 4Ch DVR	\r\n1-Seagate HDD 1Tera', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(95, 'Reynan Pascual', 'Sir Bong Pascual', '33E. Saint Michael St. Don Bosco Village Better living Parañaque City', 98, '0917-882-5020', '', '', '2016-07-05', 'CCTV Installation: 3 – Bullet/Dome HD3 – Siamese CablEs 3 - Power Supply 1 - AHD 4CH DVR Full HD 1 - HDD 1TB WD1 - Audio', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(96, 'Ric Ejanda', 'Ric', '41-B Mabini St. Makati City', 74, '0908-277-7251', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(97, 'Richard Desigano', 'Richard', 'Mabalang Silang Cavite', 35, '09284545302', NULL, NULL, '2016-10-09', 'CCTV Installation: 2 – Bullet High-Definition 720p\r\n2 – Dome High-Definition 720p\r\n\r\n4 – 20m Siamese Cables	\r\n1 - Power Supply	\r\n1 - AHD 4CH DVR Full HD	\r\n1 - HDD 1TB WD \r\n1 – MONITOR (FREE)', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(98, 'Richard Simon', 'Richard', 'Ashly Unit 16 Thailand Betterling Subd. Don Bosco', 98, NULL, NULL, NULL, '2016-09-21', 'CCTV Installation: 4 – Bullet/Dome High-Definition\r\n\r\n4 – Siamese Cables\r\n4 - Power Supply\r\n1 - AHD 4CH DVR Full HD\r\n1 - HDD 2TB SEAGATE (PROMO)\r\n1 - AUDIO', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(99, 'Oman', 'Ricky Lumbao', 'Filinvest , Batasan hills, Quezon city', 103, NULL, 'rdlumbao@yahoo.com#mailto:rdlumbao@yahoo.com#', NULL, '2015-08-08', 'CCTV Installation: 2 – Varifocal Bullet Camera 2.8mm – 12mm\r\n3 – Bullet Camera 3.6mm\r\n1 - Varifocal Dome Camera 2.8mm – 12mm\r\n2 – Dome Camera 3.6mm\r\n\r\nCables accessories	\r\nCentralized Power Supply	\r\n1-SE-1008 DVR	\r\n1-Seagate HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(100, 'Rob Streegan', 'Rob', 'Rosario Complex,Laguna', NULL, '0920-924-6266', 'marie.streengan1@gmail.com#mailto:marie.streengan1@gmail.com#', NULL, '2016-12-23', 'CCTV Installation: 2 – Dome Camera 1080p\r\n2 – Bullet Camera 1080p\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk WD \r\n4 – Cables\r\n4 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(101, 'Roel Adorable', 'Roel', '#30 Ireland St. Betterliving, Parañaque City', 98, '09178142345', NULL, NULL, '2015-08-03', 'CCTV Installation: 2- DOME CAMERA and 3- BULLET CAMERA 1-Varifocal\r\n\r\n8-Siamese Cable 20 Meters/2-10M	\r\n1-Centralized Power Supply	\r\n1-SE-1008 DVR	\r\n1-Seagate HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(102, 'Romualdo Dizon', 'Romualdo', '2A Magigiting Cor.Mahinhin Teachers Village Quezon City', 103, '0999-404-4080', 'rsdizon1216@yahoo.com#mailto:rsdizon1216@yahoo.com#', NULL, '2016-11-19', 'CCTV Installation: 3 – Bullet High- Definition\r\n2 – Dome High- Definition \r\n\r\n5 – Cables	\r\n1 – Power Supply	\r\n1 - 8CH AHD DVR Full HD 	\r\n1 - HDD 2TB Western Digital', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(103, 'Rowena Hapie', 'Rowena', 'Malabong Public Market Malabon City', 75, '0921-542-2926', 'hapie rowena@yahoo.com#mailto:hapie rowena@yahoo.com#', NULL, '2017-01-31', 'CCTV Installation: 2 – Dome Camera 720p\r\n2 – Cables\r\n2 – Power Supply 12v\r\n1 – 17” Monitor\r\n1 – 1TB Harddisk WD\r\n1 – 4 Channel DVR', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(104, 'Servina 18 (Kapilya)', 'Ka Elmer', 'Severina Ave. Parañaque City', 98, NULL, NULL, NULL, '2016-05-11', 'CCTV Installation: 1 – Dell Monitor\r\n4 - Weatherproof Bullet 720P\r\n\r\n4 – Rj59 Cable 20 Meters	\r\n4 - Power Supply	\r\n1 - AHD DVR	\r\n1-  HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(105, 'SMI', 'Leo Garcia', 'B23 Marilag St. United San Pedro Sub, Philippines', NULL, '(02)868-3696', NULL, NULL, '2016-03-28', 'CCTV Installation: 3 - Weatherproof Bullet HD\r\n\r\n3 – Siamese Cable 50 Meters	\r\n3 - Power Supply	\r\n1 - AHD DVR Full HD	\r\n1-  HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(106, 'Swanee Coffee Shop', 'Susan \' Swanee\' Brito', 'Metrogate Marilao Bulacan', NULL, NULL, 'susanbrito18@yahoo.com.ph#mailto:susanbrito18@yahoo.com.ph#', NULL, '2015-11-20', 'CCTV Installation: 4- 720p Dome Camera\r\n1-8CH DVR\r\n1-CPS \r\n1Terabyte HDD\r\n1-Monitor', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(107, 'Tempwell Company', 'Sir Mel Camacho', 'Lot 1 Bach St. Cor. Bachner St., Jade Heights, Victoria Homes, Tunasan Muntinlupa City', NULL, '0922-895-4686', NULL, NULL, '2015-10-18', 'CCTV Installation: 4 – 720P BULLET CAMERA\r\n2 – 720P DOME CAMERA\r\n1- 8 Channel DVR\r\n1 – AOC LED Monitor\r\n6 –  Power Supply\r\n1- HDD 2 Terabytes \r\n6 - 30m Sets Siamese cable', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(108, 'Tess Torres', 'Tess', 'B17 L30 P3 Verona St. Italia Bacoor Cavite City', 35, '0939-955-6138', NULL, NULL, '2015-10-17', 'CCTV Installation: 1 – 720P Varifocal BULLET CAMERA\r\n1 – 720P Varifocal DOME CAMERA\r\n1- 16 Channel DVR\r\n1 – Samsung 21” LED Monitor\r\n1 – Centralized Power Supply\r\n1- HDD 2 Terabytes \r\n1 – 720P Dome camera\r\n2 – 720P Bullet camera\r\n1 - Fisheye Camera\r\n6 - 30m Sets Siamese cable', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(109, 'The Laundry Man', 'Mr.Jerome Tan', '#44 Aguilar St. SFDM Quezon City', NULL, NULL, NULL, NULL, '2015-02-14', 'CCTV Installation: 8-SE-1230 800TVL DOME CAMERA and/or SE-2230 BULLET CAMERA\r\n\r\n8-Siamese Cable 10 Meters	\r\n8-Power Adaptor 12v 1A	\r\n1-SE-1008 DVR	\r\n1-Seagate HDD 1TB', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(110, 'Timothy De Leon', 'Timothy', '#12 Ubas Town And Country Antipolo City', 4, '0998-568-9187/0917-110-1202', 'dlpaultimothy@gmail.com#mailto:dlpaultimothy@gmail.com#', NULL, NULL, NULL, 'Residential', NULL, 0),
+(111, 'True Temp', 'Mr.Jomar Echon', '27 A National Highway Mercado St.Plantero Laguna', NULL, '0917-837-6306', 'truetempcorp@yahoo.com#mailto:truetempcorp@yahoo.com#', NULL, '2016-10-03', 'CCTV installation: RG6 – Coaxial Cable\r\n\r\nPower Supply 12V DC\r\n\r\nBNC Connectors', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(112, 'SGV1 Gasoline and Services Station', 'Ms. Kath Villanueva', '#1922 FB Harisson St.Coener Porvenir St. Pasay City (UniOil Gas Station FB Harrison)', 99, '0917-511-5022', NULL, NULL, '2017-02-24', 'CCTV Installation: 1 – Bullet Camera 1MP', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(113, 'Verawood (Triple Z)', 'Mr.Joey Corpuz', 'B2 L6 R.M, Teosejo Subd.Tunasasan Muntinlupa City', 87, '(02) 808-9206/0977-853-1455', NULL, NULL, '2016-08-15', 'CCTV Installation: 4 – Bullet/Dome HD\r\n\r\n4 – Siamese Cables	\r\n4 - Power Supply	\r\n1 - AHD 4CH DVR Full HD	\r\n1 - HDD 1TB WD', 'Commercial', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(114, 'Wille De Jesus', 'Wille', 'L12B601 Albatross St. Phase IV Heritage Homes Loma De Gato Marilao Bulacan', NULL, '0917-526-1027', NULL, NULL, '2015-02-28', 'CCTV Installation: 2-SE-2230 Bullet Camera\r\n4-Siamese Cable 10m\r\n2-Power adaptor\r\n1-SE-1004 DVR \r\n1-Samsung HDD 1TB', 'Residential', 'CONTINUATION INSTALLATION of 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(115, 'SPIN-OFF (Southwoods)', 'Sir. Leo Estello', 'Villa Olympia, San Pedro, Laguna', 16, '0917-584-9489', NULL, NULL, '2016-04-11', 'CCTV installation', 'Commercial', 'INSTALLATION OF CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(116, 'Ernesto De Claro', NULL, '#46 North Road Coronado Heights Subd., Barangka Ibaba Mandaluyong City. (Near Barangay Hall)', 78, '0917-532-8832', 'ernesto.declaro@gmail.com#mailto:ernesto.declaro@gmail.com#', NULL, NULL, 'CCTV Installation', 'Residential', NULL, 0),
+(117, 'All Day Resort and Swimming Pools', 'Maria Lech Ponelas Lee', 'Binagonan rizal', NULL, '0917-883-3068', NULL, NULL, '2017-03-01', 'CCTV Installation', 'Residential', 'INSTALLATION OF CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(118, 'Eric Bamboa', NULL, 'Blk 3 Lot 22 Ph.8 Buenaventura Steet., Bahayang Pagasa Subdivision, Imus Cavite', 35, '0928-148-5045', NULL, NULL, '2017-03-06', 'CCTV Installation', 'Residential', 'NSTALLATION OF 4 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(119, 'Benjamin \"Jun\" Lorcha (Residential', 'Sir. Jun', 'Park Homes Tunasan Muntinlupa City', 87, '0918-939-8723', NULL, NULL, '2017-01-31', 'CCTV installation: 3 ? Bullet Camera 1MP\r\n2 – Dome Camera 1MP\r\n100m ? Cables\r\n1 – Power Supply 12v', 'Residential', 'INSTALLATION OF CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(121, 'The Old Spaghetti House (Nuvali)', 'Ceniza Y. Dauag', 'Sta. Rosa Laguna, Nuvali', NULL, '0908-558-0976', NULL, NULL, '2017-03-08', 'CCTV Installation: Accessories ( baluns, connectors, terminators, brackets)', 'Commercial', 'NSTALLATION OF 6 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(124, 'Hubert Lao', 'Sir. Hubert', '#2 Diamond Street, San Bartolome Novaliches', NULL, '0916-780-0082', NULL, NULL, '2017-02-20', 'CCTV Installation: 2 – Dome Camera 1MP\r\n\r\n1 – Coaxial Cables\r\n2 – Power Supply', 'Residential', 'CONTINUATION INSTALLATION of 3 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(125, 'Nino Eulogio', 'Nino Eulogio', 'Blk 40 Lot 55, Villa Zaragosa Subd., Turo, Bocaue, Bulacan', NULL, '0908-820-6620', NULL, NULL, '2017-02-18', 'CCTV installation: 2 – Dome 1MP\r\n2 – Bullet 1MP\r\n1 – 4 Channel DVR\r\n\r\n1 – 1TB Harddisk\r\n4 – Cables\r\n4 – Power Supply 12V', 'Residential', 'CONTINUATION INSTALLATION of 3 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(126, 'Sylvia Angeles', 'Belle', 'Cupang, Muntinlupa City', 87, '0998-957-0320', NULL, NULL, '2017-01-06', 'CCTV Installation: 3 – Bullet Camera 1080P\r\n5 – Dome Camera 1080P\r\n1 – 8 Channel DVR\r\n\r\n1 – 2TB Harddisk  \r\n8 – Cables\r\n1 – Power Supply', 'Residential', 'NSTALLATION OF 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(127, 'Myrna Aguirre Pawnshop (Putatan)', 'Lilybelle Edaw', '#66 National Road, Brgy. Putatan, Muntinlupa City', NULL, NULL, 'marcienealyssa@yahoo.com#mailto:marcienealyssa@yahoo.com#', NULL, NULL, 'CCTV Installation:', NULL, 'INSTALLATION OF 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(128, 'TaskUs (Door Alarm)', 'Sir Carlo', 'T. De Castro Bldg. 2 Palico 1 Aguinaldo Highway Imus Cavite', 57, '0917-533-5241', NULL, NULL, '2017-02-20', 'CCTV installation: 2 – Dome Camera 1MP\r\n\r\n1 – Coaxial Cables\r\n2 – Power Supply', 'Commercial', 'INSTALLATION OF 8 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 0),
+(129, 'Carlson Innotech Corporation', 'Mellisa Malinay', 'Blk 9 Lot 26 Sto. Nino Ave. Sto Nino Village          \r\nPhase 4 Tunasan, Muntinlupa City, Metro Manila', 87, '(02)779-5031', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0);
+INSERT INTO `customer_vt` (`CustomerID`, `CompanyName`, `ContactPerson`, `Address`, `CityAddress`, `ContactNumber`, `EmailAddress`, `Website`, `InstallationDate`, `Interest`, `Type`, `Notes`, `is_deleted`) VALUES
+(130, 'Arlene Ngo', 'Tetay', '#47 Thomas St. Multinational Village Parañaque City / 3rd Floor IDM Bldg. 155 Neil Armstrong Avenue, Moonwalk Village Parañaque 1709', 98, '0998-997-1345', 'lynngo54@yahoo.com#mailto:lynngo54@yahoo.com#', NULL, NULL, NULL, 'Residential', NULL, 0),
+(131, 'Allysa Baldovino', 'Ms. Allysa', 'Blk 1 Zagala Street Lagro, Quezon City', 103, '0916-385-0426', 'marceine_allysa@yahoo.com#mailto:marceine_allysa@yahoo.com#', 'marcienealyssa@yahoo.com#mailto:marcienealyssa@yahoo.com#', NULL, 'CCTV Installation', 'Commercial', 'INSTALLATION OF 5 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(132, 'Catherine Alfaro Roquino', 'Ms. Catherine', '59 Visayas St. Ext. Zone 3, Central Signal Village Taguig City', 128, '0917-563-5751', NULL, NULL, NULL, 'Cctv Installation', 'Commercial', 'INSTALLATION OF 2 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(133, 'Hummus Elijah', 'Ms. Elijah', 'Makati Avenue', 74, '0917-326-2422', NULL, NULL, NULL, 'Cctv Installation', 'Commercial', 'INSTALLATION OF 2 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(134, 'Titch Philippines Inc.', 'Noreen L. Macasarte', 'Unit 1I La Fuerza Compound 2241 Chino Roces Ave. Makati City', 74, '632 894-0203', 'Noreen@titch.com#mailto:Noreen@titch.com#', NULL, NULL, 'Cctv Installation', 'Commercial', 'NSTALLATION OF 2 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(135, 'KAPILYA ng Lower Bicutan', 'Ka June', 'Lower Bicutan', NULL, '0915-513-7007', NULL, NULL, NULL, 'CCTV INSTALLATION', 'Commercial', 'NSTALLATION OF 1 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(136, 'Ms. Christel', 'Ms. Christel', 'Citta Italia, Imus Cavite', 35, '0949-992-6105', NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'INSTALLATION OF 4 CCTV CAMERA Note:Ocular is the best and strategic location of the camera before installation', 0),
+(138, 'NBB Trucking', 'Mr. Sonny / Crisanto Agunoy', 'SeaBreeze Saint Francis', NULL, '09277343075', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(139, 'KM31 Diner (Old Building)', 'Ms. Lisa', 'Partoza building, National Highway Tunasan, Muntinlupa city', 87, '(02) 861-3053; 862-2920; 862-0714 Local 109 ; 110', 'acctg.weathertech@gmail.com', '', NULL, 'CCTV Installation', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(140, 'John Dizon', 'John dizon', 'Blk 3 Lot 8 Renault St. Veraville 3A Talon 5 Las Piñas City', 67, NULL, NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(141, 'Myrna Aguirre Pawnshop(Sta. Rosa, Laguna)', 'Susan', '114 Dr. Zavalla St. Kanluran Balibago Sta. Rosa Laguna', 116, '0926-704-1483', NULL, NULL, NULL, 'CCTV Installation of 8 cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(142, 'SPIST', 'Ms. Erlinda Manzanero', 'Tia Maria Bldg. Agunaldo Highway, Anabu 2A Imus City', NULL, '0922-840-4275', 'Manzanero_Erlinda@yahoo.com#mailto:Manzanero_Erlinda@yahoo.com#', NULL, NULL, 'CCTV Installation of 8 cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(143, 'Manuel Ursabia / FLPG Merch', 'Manuel Ursabia', '#26 Cor. Hondrades St. Tugatog , Malabon', 75, '0917-309-1851', NULL, NULL, NULL, 'CCTV Installation of 2 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(145, 'Dr. Chito Randal', 'Dr. Chito', 'No.148 in front of Digman Elementary School, Bacoor City, Cavite of Calabarzon', 6, NULL, NULL, NULL, NULL, 'CCTV Installation of 5 Cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(146, 'Barby Ohara', 'Ms. Barby', '2105A West Tower Philippine Stock Exchange Center Ortigas, Pasig City', 100, '0917-510-1209', NULL, NULL, NULL, 'CCTV Installation of 8 Cameras & Biometrics', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(147, 'Lucky 10 Bakery', 'Ms. Antonette', 'Block 52, Lot 2 Soldiers Hills Village,', 87, '0998-882-4382', 'markehnol@gmail.com#mailto:markehnol@gmail.com#', NULL, NULL, 'CCTV installation 2 package of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(149, 'Erlyn Lumibao', 'Ma\'am Erlyn', 'L2 Blk12 Southern Yemen St., BetterLiving', NULL, '09189387238', 'erlyn_lumibao@yahoo.com#mailto:erlyn_lumibao@yahoo.com#', NULL, NULL, 'CCTV Installation of 6 Cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(150, 'San Pablo Colleges', 'OIC Cervana', '3a Hermanos Belen Street, San Pablo City, 4000 Laguna', NULL, '0995-550-8362', 'rdrforce@yahoo.com', '', NULL, '', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(151, 'Richard Pagsinuhin', 'Richard', '73 France Street Corner Michael Rua Better Living', NULL, '0998-863-2061', 'Ricargoservices@yahoo.com#mailto:Ricargoservices@yahoo.com#', NULL, NULL, NULL, 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(152, 'Servite School (Batangas)', 'Sister Mercy', 'Poblacion 5, Laurel Batangas City', 12, '0949-930-5058 / ( 043 ) 740-2760', 'Servite99@yahoo.com#mailto:Servite99@yahoo.com#', NULL, NULL, 'CCTV Installation Of 4 Camera\'s', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(153, 'Teddy Santiago', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(154, 'Caroline Madarang', 'Ms. Carol', 'Camella Homes, Soldiers Hills, Putatan, Muntinlupa City', 87, NULL, 'Mh-shoe@hotmail.com#mailto:Mh-shoe@hotmail.com#', NULL, NULL, 'CCTV Installation Of 2 packages', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(155, 'Fokusi Facade Inc.', 'Ms. Anne / Sir Archie', '5 Carlo Drive Sta. Maria Industrial Estate, Taguig City Philippines', 128, '886-9566 / 09267113266', '', '', NULL, 'CCTV Installation Of 6 cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(156, 'Doris Calingasan', 'Ms. Doris Calingasan', '1124 Gomez Street Tayug, Pangasinan / Batanggas', 147, '0928-521-6857', NULL, NULL, NULL, 'CCTV Installation of 4 Cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(157, 'EPDA TRADING MANILA', 'Ms. Lourdes', '1511 - 1513, Herrera Street, Sta. Cruz, Manila City, 1014, Metro Manila', 80, '02) 251 5158', NULL, NULL, NULL, 'CCTV Installation', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(158, 'Hubert Lao', 'Mr. Hubert', '#2 Diamond Street. San Bartolome Novaliches', NULL, '0916-780-0082', NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(159, 'Jolly Litimco', 'Ms. Jolly', '171 F Strella Street San Juan Malolos Bulacan', NULL, '0917-253-5735', NULL, NULL, NULL, 'CCTV Installation of  8 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(160, 'Tingloy Police Station', NULL, 'Batangas', 12, NULL, NULL, NULL, NULL, 'CCTV Installation.', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(161, 'Reagan Barber Shop', 'Mr. Reagan', 'People\'s Market Tunasan, Muntinlupa City', 87, NULL, NULL, NULL, NULL, 'CCTV installation of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(162, 'Derudz Car Wash', 'Marvin De Mesa Deriquito', 'Alabang Muntinlupa City', 87, NULL, NULL, NULL, NULL, 'CCTV installation of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(163, 'Servite School (Tunasan)', NULL, 'Tunasan Muntinlupa City', 87, '0949-930-5058 / (043)740-2760', NULL, NULL, NULL, 'CCTV installation of 4 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(164, 'Portofino', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(166, 'Academia Institution De San Pedro', 'Veronica Sibuyo', 'Blk. 8 Lot1 Phase 3, Pacita Complex, San Pedro Laguna', NULL, '869-2774 /  0908-295-7879', 'veronicasibuyo@gmail.com#mailto:veronicasibuyo@gmail.com#', NULL, NULL, NULL, 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(167, 'Composite Trading Construction Inc', 'Ma\'am Catherine Joy', 'Unit B, 3rd flr. No. 298 JCR Building P.Tuazon , San Roque, Cubao, Quezon City', 103, '0916-358-7789 / (02)351-7668', NULL, NULL, NULL, 'CCTV Installation', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(169, 'Alvin Gacus', 'Alvin Gacus', '1915 Kahilum 2 St. Brgy. 867 Pandacan Manila', NULL, '0936 603 1010', NULL, NULL, NULL, 'CCTV Installation', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(170, 'Diccion Law Firm (SureMiles)', 'Jonathan', 'Pasig', NULL, '0927 937 7250', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(171, 'Creole', 'Ms. Cindy', 'Tanza, Navotas City', 90, NULL, NULL, NULL, NULL, 'CCTV Installations of 2 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(172, 'Rose Villatima Ewican', 'Ms. Rose', 'Tunasan Public Market, Tunasan Muntinlupa City', 87, '0999-038-3713', NULL, NULL, NULL, 'CCTV of 3 Cameras', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(173, 'Arthur Santos', 'Arthur Santos', ' 39-B Ninong Macario St., BF Homes Phase 1, Barangay 169, Caloocan City', NULL, '09228875856', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(174, 'Paulina Uy', 'Ms. Paulina', 'Venus St. Remarville Subd., Bagbag Q.C', 103, NULL, NULL, NULL, NULL, 'CCTV Installations of 2 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(175, 'Tolitz Store', 'Tolitz Store', 'Blk7 lot28 Lumang Kalsada St. San Nicolas 3 Green Valley Bacoor City, Cavite', 35, '0919-232-4833', NULL, NULL, '2017-07-10', 'CCTV of 5 cameras(July 10,2017), with Additional 3 cameras (August 11,2017)', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(176, 'Jeff John Lord Tayag', 'Jeff John Lord Tayag', 'Blk 1 Lot 17 Phase 1, St. Mary St. Sto. Niño Village, Tunasan', 87, '0917-514-7016', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(177, 'Jowin Tabuloc', 'Ms. Jowin Tabuloc', 'A-19 K-Square Townhomes Cenacle Drive Culiat Q.C', NULL, '0917-844-9801', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(178, 'Jerome Marquez', 'Hubert Marquez', 'AEC Bldg., Blk11 Lot17 Las Maria Cor Sampaguita St Pembo  Makati City', NULL, '0956-672-0598', NULL, NULL, NULL, 'CCTV Installations of 4 cameras', 'Others', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(179, 'Jinky Binasahan', 'Mr. Jimmy Gonzales', 'Metropolis Binangonan, Rizal', NULL, '213-4657', '', '', NULL, 'CCTV Installation 2 Channel Package', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(180, 'WERR INTERNATIONAL', 'Mr. Gerald Gonzales', 'Bruger, Putatan Muntinlupa City', 87, '0917-880-0708/697-8450', NULL, NULL, NULL, 'CCTV installation 1 Cam & 8chnl DVR', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(181, 'PETRON GAS STATION NAIA 1', 'Mr. James Paul Dais', 'Pasay City', 99, '0998-794-0948', NULL, NULL, NULL, 'CCTV 16 Channel Packages', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(182, 'SPIN-OFF LAUNDRY MACARIA', 'Sir Leo', 'Phase 3,B16,L2 Macaria Ave, Athletic Drive, San Francisco, Binan Laguna. (Infront of Burzillian Bation Resto)', 16, NULL, NULL, NULL, NULL, 'CCTV Installation of 4 Channel Packages', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(183, 'EQUILIBRIUM (Main Office)', 'Sir Earlon Elicerio', 'Tunasan, Muntinlupa City', 87, '862-3041/42/43', NULL, NULL, NULL, 'Cabling', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(184, 'Jun Villanueva', 'Mr. Jun', 'L5 B3 Unit B6 Suburban Terraces Residences Sierra Madre Circle Suburban Subd. Brgy. San Juan Cainta Rizal.', 113, NULL, NULL, NULL, NULL, 'CCTV Installation of 2 Channel Packages', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(186, 'Doris M. Delgado', 'Ms. Doris', '#38 Gold St. R. Medina Subd, Parañaque City', 98, '4788003 / 09063088377', NULL, NULL, NULL, 'Installation of CCTV 2 packges inc: 1 dahua dome 2mp; 1 dahua bullet 2mp; 1tb skyhawk hdd; 4 ch dvr penta; powersupply 1a; 20m siamese cables', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(187, 'SQM Health and Willness Corporation', 'Andy Flores', 'GF Unit, Avida Makati West Tower, Vakal St, Makati City', 74, '0956-601-7555', NULL, NULL, NULL, 'Installation of CCTV 2 packges incl: 2 dahua dome 1mp, 1 tb skyhawk hdd, 1 4 ch dvr penta, powersupply 1a, siamese cables', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation', 0),
+(188, 'Pam Diaz', 'Ms. Pam', 'Blk2 Lot32 Ph4 Summerhills. Molino 4, Bacoor, Cavite', 6, '0917-864-1437', NULL, NULL, '2017-08-03', 'Installation of CCTV 2packages include: 1 Dahua Dome 1mp/ 1 dahua bullet 1mp, 1TB Skyhawk HDD, 4 Ch Penta DVR, 1power supply 1a, 2 20m siamese cables w/ free 17\" del monitor(add: 1 cam bullet 1080p - Aug.15, 2017)', 'Residential', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(189, 'Dhen Dhen Salon', 'Ms. Dhen Guavez', '9671 Kamagong St. San Antonio, Village Makati City', 74, '0927-251-4788/556-5413', NULL, NULL, '2017-08-15', 'CCTV Installation 4 chnl Packges w/ Monitor and Audio.', 'Commercial', 'Note:Ocular is the best and strategic location of the camera before installation.', 0),
+(190, 'Molito', NULL, 'Star Bucks Madrigal', NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(191, 'Paul Michael and Maria Lech Lee', 'Maria Lech Lee', 'Unit 18M, 18th Floor, Celadon Park Tower 2 ( back of SM San Lazaro) Felix Huertas St. Sta. Cruz, Manila', 80, '0922 894 1338', NULL, NULL, '2017-08-21', NULL, 'Commercial', NULL, 0),
+(192, 'NAGATSU-SANPLA Precision Mold Phils. Inc', 'MS. Cherry Montero', 'Unit4, Starts Rental Factory, Lot3D, Auto Park Avenue,Greenfield Automotive Park, Sant Rosa, Laguna, Philippines 4026', 116, '0917-1234-4836 / (049) 539-2746', '', '', NULL, 'CCTV Installation 16 channel Packages', 'Commercial', '', 0),
+(193, 'Generica', 'Jeriel Dela Cruz', 'Tierra Market Bldng., (beside Mcdonald Tandang sora corner commonwealth ave.)', NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(194, 'Erick Jordan L. Taganas', 'Erick Jordan L. Taganas', '862 Gonzalo, Puyat St. Brgy. Quiapo Manila', 80, '0917-133-1108 or 964-2547', NULL, NULL, NULL, 'CCTV Installation of 6 Cameras', 'Residential', NULL, 0),
+(195, 'Primo', NULL, 'MMG2 Compound Magsaysay Rd San Antonio San Pedro Laguna', NULL, '0998-792-6064', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(196, 'Ian Tan', 'Mr. Ian', 'Brgy. May iba Sta. Teresa, Rizal', 147, '09176349824', 'iantan_datacenter@yahoo.com#mailto:iantan_datacenter@yahoo.com#', NULL, '2017-09-13', 'CCTV Installation 2 Cameras', 'Residential', NULL, 0),
+(197, 'Gilane Rodil', 'Ms. Gilane', 'Digman, Bacoor Cavite', NULL, '0917-888-4354', NULL, NULL, NULL, 'CCTV Installation: Additional 4 Cameras', 'Residential', NULL, 0),
+(200, 'E-Bingo (Visayas Ave.)', 'Rodwick Ocumen', 'Wilcon Visayas ( 2nd Floor)', NULL, '0933-532-4417', NULL, NULL, '2017-09-17', NULL, 'Commercial', NULL, 0),
+(201, 'AMAIA Steps', 'Rex De Leon', 'AMAIA Steps Nuvali Canlubang, Laguna', NULL, '0933-392-4589', NULL, NULL, NULL, 'CCTV Installation 5 IP Cameras', 'Commercial', NULL, 0),
+(202, 'Daisy T. Dela Cruz', 'Maam Daisy', '78 Sampaguita St. East Bagong Barrio Caloocan City', NULL, '0912-000-6813', NULL, NULL, '2017-09-23', NULL, 'Residential', NULL, 0),
+(203, 'Lani Nicdao', 'Maam Lani', 'Blk 4 Lot 10 Ph.4 Sun Valley Subdivision Antipolo City', 4, '0919-620-1588', NULL, NULL, '2017-09-26', NULL, 'Residential', NULL, 0),
+(204, 'KRUGER M & E INDUSTRIES CORP.', 'Greys G. Laurenciana', 'FAPI Compound, E. Rodriguez Ave., Tunasan Muntinlupa City', 87, '(02)862-2892', NULL, NULL, NULL, 'Biometric Attendance: MB200', 'Commercial', NULL, 0),
+(205, 'Neil & Neits Hardware (San Vicente)', NULL, 'San Vicente , San Pedro Laguna.', NULL, '0919-804-4665', NULL, NULL, '2017-10-06', 'CCTV', 'Commercial', NULL, 0),
+(206, 'I Juander', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Industrial', NULL, 0),
+(207, 'Neil & Neitz Hardware (Calendola)', 'Mr Neil', 'Calendola , San Pedro Laguna', 115, '0919-804-4665', NULL, NULL, '2017-10-10', 'CCTV Installation 4CH Package (Dahua Brand)', 'Commercial', NULL, 0),
+(209, 'Maricel Manalo', 'Maricel', 'Market Muntinlupa city', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation of 3 cameras', 'Residential', NULL, 0),
+(210, 'Joselyn Nofuente', 'Joselyn Nofuente', 'Blk 19 Lot19 Mc Kinley St. Springtime Country, Jubilation.', 16, '0932-6642-580', NULL, NULL, '2017-08-20', 'CCTV 2 Cameras', 'Residential', NULL, 0),
+(211, 'Slingshot Design Studio Inc', 'Mr. Gin Guillena', 'Tunasan, Muntinlupa City', 87, '02-553-3435', NULL, NULL, '2017-11-08', 'CCTV 4 Cameras', 'Commercial', NULL, 0),
+(212, 'TRIPLE Z', NULL, 'Tiosejo, Tunasan, Muntinlupa City', 87, '0977-853-1455', NULL, NULL, NULL, 'Cignal Installation', 'Commercial', NULL, 0),
+(213, 'Maam Riss', 'Maam Riss', '26/f Tower 2 The Enterprise Center Paseo De Roxas cor. Ayala Ave Makati City', NULL, '0917-849-3590', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(214, 'Cecille Eusebio', 'Ka Cecille', 'Silang, Cavite', NULL, '0917-862-9726', NULL, NULL, '2017-11-18', NULL, 'Residential', NULL, 0),
+(215, 'Ka Joel', NULL, 'Better Living Subdivision Paranaque City Ethopia St. Annex 43 Vatican St. Blk 4 Lot 5', NULL, '0926-119-7781', NULL, NULL, '2017-11-18', NULL, 'Commercial', NULL, 0),
+(216, 'Skieron Air System Inc.', 'Mr. Lito Pacatang', 'Pacita Complex , San Pedro Laguna', NULL, '986-4713', NULL, NULL, '2017-11-22', NULL, 'Commercial', NULL, 0),
+(217, 'Jian Cabales', 'Jian', '525 Fround Floor Hotel Rosemarie, Edsa, Pasay City', 99, '0921-659-0242', NULL, NULL, NULL, 'CCTV Installation : 3 Cameras', 'Residential', NULL, 0),
+(218, 'INFORMATICS COMPUTER INSTITUTE ALABANG', 'Ms. Ann Abalin', 'South Station Alabang, Muntinlupa City', 87, '771-0401-03', NULL, NULL, '2018-03-22', 'CCTV Installation: Additional 2 cameras', 'Commercial', NULL, 0),
+(219, 'Iya Latupan', NULL, 'B12 L6 San Marino Classic Brgy. Salawag Dasmarinas Cavite', NULL, '0917-566-4922', NULL, NULL, '2017-12-01', NULL, 'Residential', NULL, 0),
+(220, 'GEORGIA CLUB', 'Ms. Belle', 'Sta. Rosa Laguna', NULL, NULL, NULL, NULL, NULL, 'E.FENCE', 'Commercial', NULL, 0),
+(222, 'SQM Health and Wellness Corp.', 'Sir Christopher', 'GF Unit, Avida Makati West Tower, Yakal St. Makati City', NULL, '0917-509-7111', NULL, NULL, NULL, 'Access Control', 'Commercial', NULL, 0),
+(223, 'BOLTON INTERNATIONAL', 'Sir Greg Seneres', '10th Flr. Netcube Building 30th St. 3rd Avenue BGC Taguig City', 128, '0917-894-4003', NULL, NULL, NULL, 'Recabling', 'Commercial', NULL, 0),
+(224, 'Shiela Dela Cruz', 'Ms Shiela', 'Buendia Kanan, Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation of 2 Cameras', 'Residential', NULL, 0),
+(225, 'GJ Caparros', 'GJ Caparros', '3878 Daffodils Street Sun Valley Paranaque City', 98, '0916-234-7886', NULL, NULL, '2017-11-18', 'Cctv Installation Of 16 Cameras', 'Residential', NULL, 0),
+(226, 'Sigmatec Incorp.', 'Abby Gail Villaflor', 'B136 L1 C. Arellano Katarungan Village Poblacion', 87, '576-8913', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(227, 'Tomas De Silva (ParkHomes)', 'Tomas', 'Parkhomes Subd, Grand Canyon', NULL, '0919-863-3687', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(228, 'Tomas De Silva (Silang)', 'Tomas', 'Silang Cavite', NULL, '0919-863-3687', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(229, 'Cerritos Heights Home Owner Association', 'Sir Marlon Cortez', 'Clubhouse, Cerritos Heights, Bacoor Cavite', NULL, '0998-590-0720', NULL, NULL, '2018-01-18', 'Cctv Installation of 6 Cameras', 'Commercial', NULL, 0),
+(230, 'Ehia Puembuestro', NULL, '111 J. Luna St. Kapalaran Taytay,Rizal', NULL, '0906-287-7778', NULL, NULL, '2018-01-24', 'CCTV Installation of 4cams', 'Residential', NULL, 0),
+(231, 'Higiadzo System Inc', 'Ms. Ceniza Dauag / Ma\'am Charity', '335 Katipunan Ave. Loyola Quezon City (SM Moa Chikos Peruvian Roast Chicken)', NULL, '02-426-1635 / 0908-558-0976 / 0917-882-8674/ +639055093033', NULL, NULL, '2018-01-25', 'CCTV  Re-installation', 'Commercial', NULL, 0),
+(232, 'Efren Cruz', 'Efren', '#8 Lot 6 M. Suarez St. Brgy. Maybunga, Pasig City', NULL, '0908-898-0560', NULL, NULL, '2018-01-27', 'CCTV Installation 4 Cameras.', 'Residential', NULL, 0),
+(233, 'Isidro Almario Boladas', 'Isidro', 'RMT, Tunasan, Muntinlupa City', NULL, NULL, NULL, NULL, NULL, 'Cignal', 'Residential', NULL, 0),
+(234, 'Equilibrium (Banista and Coffee Academy of Asia Inc.)', 'Sir Elicerio / Earlon', '18th Floor, Atlanta Centre 31 Annapolis St. Greenhills San Juan City', NULL, '862-3041 to 43', NULL, NULL, NULL, 'CCTV Installation 7 cameras', 'Commercial', NULL, 0),
+(235, 'St. Michael Hospital', 'Ms. Gilane', '220 Molino II Bacoor Cavite', NULL, '09178884354', NULL, NULL, NULL, 'CCTV 2 Camera', 'Commercial', NULL, 0),
+(236, 'Genetron', 'Donna Librado', 'Tunasan, Muntinlupa City', NULL, '808-4344', '', '', NULL, '', 'Commercial', '', 0),
+(237, 'Myrna Aguirre Pawnshop (Main)', 'Ms. Susan', 'President Ave., Parañaque City (Main)', NULL, '842-4046', NULL, NULL, NULL, 'CCTV Service Maintenance for 25 Branches', 'Commercial', NULL, 0),
+(238, 'Jun Mercado', 'Jun', 'Blk 9 Lot 23B Vida Doria St. BF Resort Village Talon, Las Piñas City', 67, '0918-900-7108', NULL, NULL, '2018-02-05', 'CCTV Installation: 4 Camera', 'Residential', NULL, 0),
+(239, 'IGCP', 'George Abante', 'AXA Bldg., Makati City', NULL, '0908-898-0560, 0917-816-7840', NULL, NULL, '2018-02-09', 'Patch Panel Management, Access Control and Biometrics', 'Commercial', NULL, 0),
+(240, 'Myrna Aguirre Pawnshop(Poblacion)', 'Aiza Rofa', '#54 Rizal St. Extension Katihan, Poblacion, Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(241, 'Muntinlupa Coliseum', NULL, 'Tunasan, Muntinlupa City', NULL, '0917-859-2480', NULL, NULL, '2018-02-13', 'CCTV Installation of 16cameras', 'Commercial', NULL, 0),
+(242, 'LizardBear Tasking Inc. (Access Control/Face ID-Lizzy\'s Lagoon)', 'Wilfredo Carlo Cardenas', 'TaskUs Batangas - Lizzy\'s Lagoon', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation: Truck  (GPS)', 'Others', NULL, 0),
+(244, 'Noel Almarez', 'Noel', 'Lot 58 Block 72 A. Bonifacio Ave. Upper Bicutan Taguig City (near Aquabest & Angels burger)', NULL, '0947-446-8849', NULL, NULL, NULL, 'CCTV Installtion 6 cameras (Dahua Brand)', 'Residential', NULL, 0),
+(245, 'Bimbo Baliuag', 'Bimbo', 'B8 L1, Magnolia St. Cor. Rose St. Phase 2E, Greenwoods Executive Village, Cainta.', NULL, '0917-862-8604', NULL, NULL, '2018-02-23', 'Cctv Installation of 8 Camera\'s', 'Residential', NULL, 0),
+(246, 'Edgar Sosa (Apartment)', 'Edgar', 'Tiosejo, Tunasan, Muntinlupa City', NULL, '862-6197', NULL, NULL, '2018-02-26', 'CCTV Installation 3 Cameras', 'Commercial', NULL, 0),
+(247, 'Mac Herman', 'Mac Herman', '802 Primorose Street Lakeview Homes Tibayan Putatan, Muntinlupa City', 87, '0917-519-6094', NULL, NULL, '2018-02-25', 'CCTV Installation: 2 720P Smart eye Bullet Camera', 'Residential', NULL, 0),
+(248, 'Ludy Alegria', 'Ludy', 'A-12 Saint Joseph, Saint Matthew Street, Pulang Lupa Dos Las Piñas City', NULL, '0908-814-7440', NULL, NULL, '2018-02-27', 'CCTV 3 Cameras', 'Residential', NULL, 0),
+(249, 'Versatiles', 'Paul Arciaga', 'Putatan National Road Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, '2018-03-02', 'Cctv Installation of 8 Cameras\'s.', 'Commercial', NULL, 0),
+(250, 'Mark Galicia', 'Mark', '40 Saudi Arabia St. Betterliving Subd., Parañaque City', NULL, NULL, NULL, NULL, NULL, 'CCTV Installation 4 Ch Camera', 'Commercial', NULL, 0),
+(251, 'SPIST', 'Ms. Erlinda Manzanero', 'Anabu 2, Imus , Cavite', NULL, '0922-840-4275', NULL, NULL, '2018-03-07', 'CCTV Installation: Additional 3 cameras & upgrade DVR', 'Commercial', NULL, 0),
+(252, 'GreatSpan', 'Wilson Tang', 'Tower 2 16F Insular Life Bldg., Filinvest Alabang Muntinlupa City', NULL, '0975-124-4434', NULL, NULL, '2018-03-09', 'CCTV Installation of 8 cameras built in mic', 'Commercial', NULL, 0),
+(253, 'Edwin Temelo (7-eleven)', 'Edwin', '#78 Grant St. Cor. Benefit GSIS Village, Project 8 Novaliches, Quezon City ( 7 - eleven store)', NULL, '0997-593-7197', NULL, NULL, '2018-03-10', 'CCTV Installation of 10 cameras', 'Commercial', NULL, 0),
+(254, 'Cristy Vilgera', 'Cristy', 'Blk 21, Lot 22c A. Gatmaitan St. BF Resort Village, Talon 2, Las Pinas City', NULL, '0917-145-0980', NULL, NULL, '2018-03-12', 'CCTV Installation 4Ch Package', 'Residential', NULL, 0),
+(255, 'MUMUSO (Starmall Bulacan)', 'Engr. Jonas', 'Upper GF, UGF-0040, Brgy. Kaypian, San Jose Del monte Bulacan', NULL, '0917-148-7537', NULL, NULL, '2018-03-22', 'CCTV 16 CH package', 'Commercial', NULL, 0),
+(256, 'Swanee (Residence)', 'Ms. Susan Brito', 'Metrogate, Marilao Bulacan', NULL, NULL, NULL, NULL, '2018-04-03', 'CCTV Installation : TVT 8ch Package', 'Residential', NULL, 0),
+(257, 'KAT CASANDRA MANUEL', 'KAT', 'Mabical, Floridablanca, Pampanga (Sweet Pastry / Residential)', NULL, '0917-795-5554', NULL, NULL, '2018-04-06', 'CCTV Installation 8ch & 16ch Dahua', 'Residential', NULL, 0),
+(258, 'Lex Kabigting', 'Rachel', '#21 Trinidad St. BFHEVA Parañaque City', NULL, '0920-906-6378', NULL, NULL, '2018-04-06', 'CCTV 8ch Package dahua', 'Residential', NULL, 0),
+(259, 'MCGPI', 'Ms. Maricor', 'Unit H 6th Floor Westgate Tower Investment Drive Madrigal Business Park Ayala Alabang', NULL, '0917-503-8461 / 833-7051', NULL, NULL, '2018-04-17', 'Installation of Biometrics and Door access alarms', 'Commercial', NULL, 0),
+(260, 'EFRAIM PATULOT', 'EFRAIM', 'RMC Uding\'s Comp. East Service Rd. Alabang, Muntinlupa City (Inside SBCA Compound)', NULL, '0906-552-4417', NULL, NULL, '2018-04-23', 'CCTV Installation: 2 ch', 'Residential', NULL, 0),
+(261, 'ESPINOSA JUNKSHOP', 'Mr. Oscar', 'Phase IV Sto. Niño Ave., Sto. Niño Village, Tunasan, Muntinlupa City', NULL, '0928-866-8950 / 0939-562-9883 / 478-3254', NULL, NULL, '2018-04-24', 'CCTV: 2 Ch', 'Commercial', NULL, 0),
+(262, 'Equilibrium (Warehouse)', 'Sir Earlon', 'RMT Complex Tunasan, Muntinlupa City', NULL, '862-3041-43', NULL, NULL, '2018-04-25', 'CCTV Installation of 6 cameras (+4 cameras customer provided)', 'Commercial', NULL, 0),
+(263, 'TaskUs Inc Lumina (Biometrics)', 'Ms. Babylyn Rosal / Hailey Cuevas', 'T.De Castro Bldg., 2 Palico 1 Emilio Aguinaldo Highway Imus Cavite', NULL, '0917-533-5241', NULL, NULL, '2018-04-27', 'Biometrics Door Access Control', 'Commercial', NULL, 0),
+(264, 'Jowin Tabuloc 2', 'Ms. Jowin', 'B6 L10 Centrina Eleganza Residence #57 Brgy. Culiat Tandang Sora Q.C', NULL, '0917-844-9801', NULL, NULL, NULL, 'CCTV Installation', 'Residential', NULL, 0),
+(265, 'WING BITES PARAÑAQUE', 'Mr. Jayson Sandig / Mr. Majarais', 'Wingbites Parañaque, Parañaque City (Beside Philippine Veterans Bank)', NULL, '0998-555-8841', NULL, NULL, '2018-05-08', 'CCTV Installation 4ch package (TVT Brand)', 'Commercial', NULL, 0),
+(266, 'PH BASCON 1', 'Ms. Susan', 'Unit C D\'Grand Bldg., #42 San Beda Homes Alabang Zapote Rd. Talon 2 LPC', NULL, '0922-823-6431', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(267, 'Jun Mercado - Apartment', 'Sir Jun', 'Tiosejo, Tunasan, Muntinlupa City', NULL, '0918-900-7108', NULL, NULL, '2018-05-10', 'CCTV 4 Channel Package', 'Residential', NULL, 0),
+(268, 'Gilbert Mamaril', 'Gilbert', 'Blk 21 Lot 5 Cerretos heights Gate 2, Bacoor Cavite (Gate 2 kaliwa LandMark)', NULL, '0928-554-8228', NULL, NULL, '2018-05-11', 'CCTV Installation (Dahua)', 'Residential', NULL, 0),
+(269, 'E-Bingo (Regalado)', 'Ms Anika', 'L24 B43 Sitio Manuel Hotel, Regalado Ave Fairview, Quezon City', NULL, '0956-231-6261', NULL, NULL, '2018-05-17', 'CCTV', 'Commercial', NULL, 0),
+(270, 'E-Bingo (Muzon)', 'Ms Anika', 'Sjdm building 3rd floor bingo carriedo street brgy muzon san jose del monte city, bulacan', NULL, NULL, NULL, NULL, '2018-05-15', 'CCTV Installation TVT', 'Commercial', NULL, 0),
+(271, 'JGC Muntinlupa', 'Sir Joel Zafe', 'Poblacion, Muntinlupa City', NULL, '0998-962-3608 / 798-03-59', NULL, NULL, '2018-05-16', 'CCTV Installation (DVR only Hikvision)', 'Commercial', NULL, 0),
+(272, 'D&L (Manggahan)', 'Engr. Gerald Ubas', 'Manggahan, Bagumbayan, Pasig City', NULL, '0995-0538789', NULL, NULL, '2018-05-16', 'CCTV & Door Access Installation', 'Commercial', NULL, 0),
+(273, 'Lyna & Feliz lauroz café elibs', 'Ms. Theena', 'Stall#14 Pre-departure area 3rd Level, Naia Terminal 3', NULL, '0998-794-0948', NULL, NULL, '2018-05-17', 'CCTV Installation', 'Commercial', NULL, 0),
+(274, 'UCPB Makati', 'Sir Rodale', 'National Life Insurance Bldg., Ayala Ave., Makati city', NULL, '0917-916-6787', NULL, NULL, '2018-05-21', 'CCTV Installation', 'Commercial', NULL, 0),
+(275, 'Melts Grilled Cheesery - Molito', 'Ms. Lhot', 'Molito, Alabang , Muntinlupa City', NULL, '0995-448-6273 / 0935-685-0632', NULL, NULL, '2018-05-23', 'CCTV Installation - Wireless NVR Kit 8ch', 'Commercial', NULL, 0),
+(276, 'Susana Alvarez', 'Heidi Alavrez', 'Blk 8 Lot 19 Iris St. Camella Homes 1 , Muntinlupa City', 87, '0975-593-0828', '', '', '2018-06-06', 'CCTV Installation only', 'Residential', '', 0),
+(277, 'UCPB Sta.Rosa', 'Mr. Rodale Pineda / Ms. Joan', 'GF Ventura Center, SRE 2 Commercial, Sta. Rosa Tagaytay Road, Brgy. Don Jose Sta. Rosa City Laguna, (LANDMARKS: Phonex Gasoline Station, Robinsons Bank,  Smart office,)', NULL, NULL, NULL, NULL, '2018-06-07', 'CCTV Installation : 2 chnel - Hikvision', 'Commercial', NULL, 0),
+(278, 'Maggie V. Meliton', 'Maggie', '#85 -13 E. Bernadez st. Philam Life Vill. Las Pinas', NULL, '0917-857-7036', NULL, NULL, '2018-06-07', 'CCTV Installation: w/ additional 2cams - Rover', 'Residential', NULL, 0),
+(279, 'Menzi Orellana (Apartment)', 'Menzi', '103 Danflor Compound, National H-way Putatan, Muntinlupa City', NULL, '0917-770-6734', NULL, NULL, '2018-06-08', 'CCTV Installation: 4ch package TVT', 'Commercial', NULL, 0),
+(280, 'Melchor Abonalla', 'Melchor', '0824 Derham St. Parkhomes Subd., Tunasan, Muntinlupa City', NULL, NULL, NULL, NULL, '2018-04-09', 'CCTV Installation 4ch package TVT', 'Residential', NULL, 0),
+(281, 'Myrna Aguirre Pawnshop(PASAY)', NULL, 'No.330 Merville Access Road, pasay City', NULL, NULL, NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(282, 'Myrna Aguirre Pawnshop (San Andres)', 'Jackielyn Rivera', 'no.617 San Andres st. Malate, Manila', 80, '0933-879-9139', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(283, 'Myrna Aguirre Pawnshop ( Pablo Ocampo Ave )', 'Esperanza M. Ramos', 'unit 117 Vito Cruz Tower, 702 Pablo Ocampo Sr. Ave, NBrgy. 719 Zone 078 Malate, Manila', 80, '0933-879-9136', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(284, 'Myrna Aguirre Pawnshop( San Antonio Valley Parañaque )', '', 'L3 & 4  B9 Finansia Homes San Antonio Valley, Paranaque City', NULL, NULL, '', '', '2018-06-28', '', 'Commercial', '', 0),
+(285, 'Myrna Aguirre Pawnshop( San Vicente )', NULL, 'San Vicente  Biñan', NULL, NULL, NULL, NULL, '2018-06-28', NULL, 'Commercial', NULL, 0),
+(286, 'Myrna Aguirre Pawnshop( Santos Ave)', 'Janice Subito', 'Unit 4 Puregold Jr. A. Santos Ave San Dionisio, Paranaque City', NULL, NULL, '', '', '2018-06-28', '', 'Commercial', '', 0),
+(287, 'Maggie V. Meliton (2)', 'Maggie', '#26 Davao St. Philam Life Vill. Las Pinas City', NULL, '0917-857-7036', NULL, NULL, '2018-07-04', 'Cctv Installation of 4 Camera', 'Residential', NULL, 0),
+(288, 'Maggie V. Meliton 3', 'Maggie', '#19 Simonete Delos Reyes', NULL, '0917-857-7036', NULL, NULL, '2018-07-07', 'Cctv Installation of 4 Camera\'s', 'Residential', NULL, 0),
+(289, 'Menzi Orellana ( Brazilia)', 'Menzi Orellana', 'Orellana Residence, B1 L1 Campo Grande Street Brazilia Tunasan, Muntinlupa City', NULL, '0917-770-6734', NULL, NULL, NULL, NULL, 'Residential', NULL, 0),
+(290, 'ELIBS Pasalubong', 'Ms. Theena / Sir Arnel', 'NAIA Terminal 1', 99, '0998-794-0948 / 0932-476-0536', NULL, NULL, '2018-07-12', 'CCTV Installation', NULL, NULL, 0),
+(291, 'UCPB (Imus)', 'Mr. Kiel Eggar L. Garcia', 'Km21 Sonrise Bldg. Tanzang Luma Gen. Aguinaldo Imus, Cavite', 35, '(046)456-5887 / 450-1102', NULL, NULL, '2018-07-17', NULL, 'Commercial', 'Access Control Installation', 0),
+(292, 'Myrna Aguirre Pawnshop(Pacita Ave)', 'A. Garido', 'No.61 Pacita Ave. Pacita Complex San pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(293, 'Myrna Aguirre Pawnshop(Brgy. Nueva)', 'Joy Espulgar', 'G/F Avilles Bldg. No. 181 National Highway brgy. Nueva San pedro Laguna', NULL, '0925-725-2111', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(294, 'Myrna Aguirre Pawnshop(Balibago II)', 'Amy Tejada', '#3425 J.P Rizal Prk II Brgy. Balibago Sta. Rosa Laguna', NULL, '0925-720-9372', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(295, 'Myrna Aguirre Pawnshop(Balibago I)', 'Amy Tejada', 'Unit 5/6F MB Aguirre Bldg. Purok 6 Feley Reyes St. Balibago Sta. Rosa Laguna', NULL, '0933-818-5554', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(296, 'Myrna Aguirre Pawnshop(Bel-Air)', 'Angelica Bataller', 'Tagaytay Rd. Sitio Ani Sta Cruz Sta. Rosa Laguna', NULL, '0925-720-8875', '', '', NULL, '', '', '', 0),
+(297, 'Myrna Aguirre Pawnshop(Landayan)', NULL, 'Km. 31 National Highway Brgy. Landayan San Pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(298, 'Myrna Aguirre Pawnshop(Platero )', NULL, 'National Highway Corner Mercado St.Brgy. Platero Biñan Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(299, 'Myrna Aguirre Pawnshop(Pacita I)', NULL, 'Bldg. 2 Model 7, Pacita Commercial Complex Ntl. Highway San pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(300, 'Myrna Aguirre Pawnshop(San Pedro III)', 'Loida Rañada', '#23 National Highway Garcia St. Nueva San Pedro (Baba HBC, Kaliwa MBA, near Generika Drugstore)', NULL, '', '', '', NULL, '', '', '', 0),
+(301, 'Myrna Aguirre Pawnshop(Aguirre Ave)', 'Roselyn Olivera', '333 Aguirre Ave BF Homes Parañaque City', NULL, '0933-879-9135', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(302, 'Myrna Aguirre Pawnshop(President\'s Ave)', 'Rose Anajao', '15 President\'s Ave BF Homes Parañaque City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(303, 'Myrna Aguirre Pawnshop(Filipinas Ave)', 'Agencia de Emp de Mba Inc', 'Richland Commercial Bldg. Filipinas Ave. Brgy San isidro Parañaque City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(304, 'Myrna Aguirre Pawnshop(Better Living Subd.)', NULL, '#112B Doña Soledad St. Better living Subd. Parañaque City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(305, 'Myrna Aguirre Pawnshop(Makati)', 'Fely Macawile', 'No.1802 Dian St. Palanan, Makati City', NULL, '0925-720-7639', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(306, 'Myrna Aguirre Pawnshop(San antonio)', NULL, 'Puregold price club bldg. Magsaysay st. corner ntl. Highway san antonio san pedro laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(307, 'D&L Industries Inc (Calamba Laguna)', 'Engr. Ubas', 'Calamba, Laguna', NULL, '0995-053-8789', NULL, NULL, NULL, 'Biometrics and Door Access Control / CCTV', NULL, NULL, 0),
+(308, 'FILM DEVELOPMENT COUNCIL OF THE PHILIPPINES', 'Ms. Kim', '855 T.M Kalaw Street, Ermita Manila', 80, '0917-316-5617', 'bac@fdcp.ph#mailto:bac@fdcp.ph#', NULL, NULL, 'MB200 Time Attendance', 'Government', NULL, 0),
+(309, 'Brightaire Trading Construction & Industrial Supply', 'Ms. Joy Abania', 'MC Building National Rd, Bayanan, Muntinlupa City', 87, '550-10-73', 'brightaire_constructionsupplies@yahoo.com#mailto:brightaire_constructionsupplies@yahoo.com#', NULL, NULL, NULL, NULL, NULL, 0),
+(310, 'Ralph Orellana', 'Ralph Orellana', 'B23 L7 - A Santan St. Doña Rosario Bayview Subd. Sucat Muntinlupa City', NULL, '0998-962-7102', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(311, 'TaskUs Batangas', 'Ms. Babylyn Rosal', 'Apacible Street, Poblacion Batangas', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(312, 'UCPB Batangas', 'Mr. Rodale B. Pineda', 'Unit 9 & 10 G/F K-Pointe Commercial Center Sabang, Lipa City', NULL, '09176449060', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(313, 'Ronald Catalan', 'Sir Ronald Catalan', 'Blk 62 Lot 21, Soldiers Hills Village, Putatan Muntinlupa City', 87, '0939-932-6243 / 697-2600', 'ronald_catalan@yahoo.com', '', NULL, 'Installation: 3 Cameras TVT 1080P', 'Residential', '', 0),
+(314, 'Aurora Miashita', 'Mary Joy Dela Cruz', 'B32 L12 Molave St. Joseph Village 10 Phase', NULL, '02-834-2844', NULL, NULL, NULL, NULL, 'Commercial', NULL, 0),
+(315, 'Ronald Catalan', 'Sir Ronald Catalan', 'Blk 62 Lot 21, Soldiers Hills Village, Putatan Muntinlupa City', 87, '0939-932-6243 / 697-2600', 'ronald_catalan@yahoo.com#mailto:ronald_catalan@yahoo.com#', NULL, '2018-08-11', 'Installation: 3 Cameras TVT 1080P', 'Residential', NULL, 0),
+(316, 'Theena Dais', 'Arnel Perez', '2745C Gaitos Street San Roque, Pasay City', 99, '0998-794-0948', 'teresapasalubong@yahoo.com#mailto:teresapasalubong@yahoo.com#', NULL, NULL, 'Additional 3 Cameras and replace DVR', 'Others', NULL, 0),
+(317, 'UCPB Gen. Ortigas', 'Mr. Rodale', '22F One Corporate Centre Meralco Ave. Ortigas, Pasig City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(318, 'Egay Santiago', 'Ms. Egay Santiago', 'Blk4 L24 Ascension Hills, Subdivision Botong Francisco Ave., San Isidro Angono, Rizal (near landmark Shell Station)', NULL, '09239073208', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(319, 'Weathertech (New Building)', 'Ms. Lisa', 'Lodora Subdivision Tunasan, Muntinlupa City', 87, '(02) 861-3053; 862-2920; 862-0714 Local 109; 110', 'acctg.weathertech@gmail.com#mailto:acctg.weathertech@gmail.com#', NULL, NULL, NULL, NULL, NULL, 0),
+(320, 'EKASY CONSTRUCTIONS', 'Lily Gonzales', 'National Hiway, Bayanan Muntinlupa City', NULL, '0995-996-4449', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(321, 'The Mondrian Residences', 'Mr. David Lipango', 'Alabang', NULL, '659-0668/09428432564', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(322, 'Idetective', 'Ms. Faye Ann', 'Festival Mall, Alabang Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(323, 'Mark Wang', 'Mark Wang', 'Ayala Malls Southpark 3rd Floor Stall no. 60 Alabang Muntinlupa City (Near Kidzoona)', NULL, '0946-944-7231', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(324, 'Chickos Peruvian Roast Chicken Inc.', 'Ms. Jomalyn Estrada', 'SM MOA Pasay City', NULL, '0906-408-2807', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(325, 'Edgar Sosa', 'Sir Edgar', 'Katarungan Village, Muntinlupa City', NULL, '862-6197', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(326, 'Avadon', 'Ms. Janneth', 'Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(327, 'PH Bascon 2', 'Ms. Offelia', 'No. 15 Saging St. PH1 CAA Road BF International Las Piñas City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(328, 'PH Bascon 3', 'Ms. Offelia', 'Lot 35 B 5 Unit B The Gran Bldg. Naga Road Sav-7 Pulang Lupa Dos Las Piñas City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(329, 'UCPB Gen. Angeles', 'Mr. Rodale B. Pineda', '22F One Corporate Center, J. Vaaargas Cor. Meralco Ave. Ortigas Center, Pasig City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(330, 'FNB Gen. Merchandise Yamaha', 'Ramil/Paul', 'Bayanan Muntinlupa City', NULL, '659-3292 / 659-3592', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(331, 'Great Depot', 'Ms. Rita', 'Unit 101 South Center Tower Madrigal Business Park, Alabang Muntinlupa City', NULL, '850-2455', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(332, 'D&L Industries Inc. (Main)', 'Mr. Gerald Ubas', '#65 Calle Industria, Bagumbayan, Pasig City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(333, 'LGC/Lee Group of Companies', 'Mr .Lindy Napigkit', 'Alabang Via duct Junction Opposite Liwasan ng mga Bayani, Alabang Muntinlupa City', NULL, '807-2060/0910-928-0880', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(334, 'FNB Gen. Merchandise (Bahay)', NULL, 'B8 L18 St. Anthony Street JPA Subd. Tunasan Muntinlupa City', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(335, 'E-Bingo Lazatin Branch', 'Madam Anika', 'Orchids Garden, Lazatin Blvd. Brgy. San Juan, San Fernando City of Pampanga', NULL, '09562316261', 'toprankbingo@gmail.com#mailto:toprankbingo@gmail.com#', NULL, NULL, NULL, NULL, NULL, 0),
+(336, 'Martindale Technologies', 'Ms. Michelle Bernales', 'Unit 602 Page 1 Bldg. Acacia Ave. Madrigal Business Park', NULL, '0995-257-5141', 'm.bernales@martindaletechnologies.com#mailto:m.bernales@martindaletechnologies.com#', NULL, NULL, NULL, NULL, NULL, 0),
+(337, 'JP Sebastian', 'Sir Richard', 'Freedom Hills Putatan Muntinlupa City', NULL, '0948-239-8501', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(338, 'Mylene Malate (SM Dasma)', 'Ms. Mylene Malate', 'SM Dasma (Upper ground floor, Gabriel Archangel Toddler Playschool, near Kidzoona, in front of LBC and Getaway Tours. Almost infront of Etude House', NULL, '0917-983-2931', NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(339, 'Raul Tuazon', 'Mr. Raul Tuazon', '221 Balibago Corner Malvar St. Ayala Alabang Village, Alabang Muntinlupa City', NULL, '0932-725-4390', 'carson.it2015@gmail.com#mailto:carson.it2015@gmail.com#', NULL, NULL, NULL, NULL, NULL, 0),
+(340, 'Tempwell Victoria', 'Sir. Mel', 'Lot 1 Bach St. Cor. Bachner St., Jade Heights, Victoria Homes, Tunasan Muntinlupa City', NULL, '0927-489-0800', '', '', NULL, '', '', '', 0),
+(341, 'Kristoffer Tavaranza', 'Sir. Kristoffer', 'Blk5 Lot 30 Brgy. San Antonio, San Pedro Laguna', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0),
+(342, 'Atty. Kelly Dela Rosa', 'Atty. Dela Rosa', '313 Isabel St. Lakeview Homes, Putatan, Muntinlupa City', NULL, '(02)862-449 / 09178850128', 'kelly_delarosa@yahoo.com#mailto:kelly_delarosa@yahoo.com#', NULL, NULL, NULL, NULL, NULL, 0),
+(343, 'Universal Staffing Services Inc.', 'Mr. JP', '5477 Boyle Street, Palanan, Makati', NULL, '(02) 833-6880', 'hr@inustaff.us', '', NULL, '', '', '', 0),
+(344, 'Leonora Pajarillo', 'Ms. Shiela Grace De Guzman', 'Buendia Kanan, Tunasan, Muntinlupa City', NULL, NULL, '', '', NULL, '', '', '', 0),
+(345, 'MCGPI Lipa 1 (Event Center)', 'Ms. Maricor', 'Sen. Claro M Recto Elementary School Brgy. 7, Lipa City Batangas', NULL, NULL, '', '', NULL, '', '', '', 0),
+(346, 'MCGPI Lipa 2 (Office)', 'Ms. Maricor', 'Sen. Claro M Recto Elementary School Brgy. 7, Lipa City Batangas', NULL, NULL, '', '', NULL, '', '', '', 0),
+(347, 'Mel Anthony Endozo', 'Mr. Mel', 'Better Living, Parañaque City (Beside Iglesia Ni Cristo)', NULL, '09178250770', '', '', NULL, '', '', '', 0),
+(348, 'AM/PM Carwash', 'Mr. Arnold Galman', '79 National Road Putatan Muntinlupa City', NULL, NULL, '', '', NULL, '', '', '', 0),
+(349, 'Keni Abe Canteen', 'Ms. Katherine', 'Soldiers hills, Putatan, Muntinlupa City', NULL, NULL, '', '', NULL, '', '', '', 0),
+(350, 'ALTernative Electronics Solutions (ALTES)', 'Mr. Louie Valco', 'Sta. Rosa Laguna', NULL, '0917-514-6590', '', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(351, 'Genelyn Estrada Le Dental Clinic', 'Ms. Genelyn Estrada', 'Upper Ground Floor Vista Mall Daang Hari Molino, Bacoor', NULL, NULL, '', '', NULL, 'CCTV Installation', '', '', 0),
+(352, 'Gabriel Assuncion', 'Sir. Gabriel', 'Address 31 Kamagong St. Soldiers Hills, Putatan Muntinlupa City', NULL, NULL, '', '', NULL, 'CCTV Installation', '', '', 0),
+(353, 'UCPB Makati Branch II', 'Sir. Rodale', 'UCPB Gen. GF OPL Building, C. Palanka St. Corner Legazpi Village Makati City', NULL, '', '', '', NULL, 'CCTV and EM Lock Installation', '', '', 0),
+(354, 'Anne & Emily Bridal Boutique', 'Ms. Anne', 'D8 Mall 2nd Floor 2E-10, Divisoria', NULL, NULL, '', '', NULL, '', '', '', 0),
+(355, 'UCPB QUEZON CITY', 'Sir. Rodale', '3rd Floor Unit 301 P.B.D 2 Building #27 Don A. Roces Ave. Bgy. Paligsahan, Diliman Quezon City', NULL, NULL, 'bulacan@ucpbgen.com', '', NULL, 'CCTV and Access Control Installation', 'Commercial', '', 0),
+(356, 'Lizardo Law Firm', 'Elito Chan', 'Ayala Malls Southpark, Muntinlupa City (In front of COMELEC)', NULL, NULL, '', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(357, 'UCPB Bulacan', 'Ronald Natividad', '2nd Floor Space E, The Cabanas Kilometers 44/45 MacArthur Highway Barangay Longos, Malolos City', NULL, '', 'bulacan@ucpbgen.com', '', NULL, 'CCTV and Access Control Installation', 'Commercial', '', 0),
+(358, 'UCPB Angeles', 'Anthony Arenas', '2nd Floor 408 Business Center Units, 7-9, Sto. Rosario St. Sto. Domingo, Angeles City', NULL, '', '', '', NULL, 'CCTV and Access Control Installation', 'Commercial', '', 0),
+(359, 'UCPB Dagupan', 'Ernie Llanilla', 'Unit 214 Metroplaza Commercial Complex AB Fernandez Avenue Dagupan City Pangasinan', NULL, '', '', '', NULL, 'CCTV and Access Control Installation', 'Commercial', '', 0),
+(360, 'Jonathan Matamorosa', 'Jonathan', 'Block 8 Lot 7 Araya Residences, Sta. Rosa Laguna', NULL, '', '', '', NULL, 'CCTV Installation', 'Residential', '', 0),
+(362, 'Sherwin Paras', 'Sir Sherwin', '0694 Ibayong Street Brgy. Parada Sta. Maria, Bulacan', NULL, NULL, 'sherwinparas@gmail.com', '', NULL, 'CCTV Installation', 'Residential', '', 0),
+(363, 'Arca Galleon Agriventures Inc.', 'Precy Capangpangan', '67 Dao Road, Pilar Village, Las Piñas City', NULL, '0995-991-5322', '', '', NULL, 'CCTV Supply', 'Commercial', 'Loob ng Subdivision, Dulo ng Street, Black Gate', 0),
+(364, 'Rosanna Segovia', 'Ms. Rosanna', '2808 Tagumpay St. Bruger Subdivision Putatan Muntinlupa City', NULL, '09777494801', '', '', NULL, 'CCTV Installation', 'Residential', '', 0),
+(365, 'Melody Amado', 'Ms. Melody', 'Dalmacio Apt. 2750 B Liwayway St. Bruger Subdivision, Putatan Muntinlupa City (Beside Boss Burger)', NULL, '09568555886', '', '', NULL, 'CCTV Installation', 'Residential', '', 0),
+(366, 'UCPB Mindoro', 'Sir Justina Macapagal', '2nd Floor Baniway Bldg., J.P. Street, Vicente South Calapan City, Oriental Mindoro', NULL, '', '', '', NULL, 'CCTV and Access Control Installation', 'Commercial', '', 0),
+(367, 'New Muntinlupa Hardware', 'Lily Gonzales', 'Tunasan, Muntinlupa City', NULL, '09959964449', '', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(368, 'Great Depot Q.C.', 'Merashell Dela Chica', 'Golf Driving Range Logistical Command Camp Aguinaldo Q.C.', NULL, '850-2455', 'merashell.delachica@gmail.com', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(369, 'Khem Vasquez Villaron', 'Ms Khem', 'B5 L8 Banuyo St. Central Ph2 Camella Springville', NULL, '09214226015', '', '', NULL, 'CCTV Installation', 'Residential', '', 0),
+(370, 'Cafe Tribu', 'Arnel Labada', 'San Antonio, San Pedro Laguna (Near Puregold)', NULL, '0908-419-1255', '', '', NULL, 'CCTV Installation', 'Commercial', 'Package for 2 Channel', 0),
+(371, 'Mark Tionloc', 'Sir Mark', 'B6 L7 Centrina Eleganza Brgy. Culiat Tandang Sora Quezon City', NULL, '09175620954', 'docfei76@gmail.com', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(372, 'Pedro Trozado', 'Sir Pedro', 'Putatan Muntinlupa City', NULL, '0949-926-5319', '', '', NULL, 'Power Supply 18CH 30A', 'Residential', '', 0),
+(373, 'BussBarr Corp.', 'Zid Avadenio', 'Acacia Ave., MAdrigal Business Park, ALabang Muntinlupa City', NULL, '0927-551-8229', '', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(374, 'Star 8 Green Corp.', 'Mr. Inigo', 'Unit 22 Las Piñas Commercial Complex, 30 Alabang-Zapote Rd., Talon Uno Las Piñas City', NULL, '0917-877-0140', '', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(375, 'Ginme Calicdan / Napoleon Calicdan', 'Ms Ginme', 'Calicdan Residence, San Pio St. Poblacion Urbiztondo-Pangasinan (Near Pius V. Church)', NULL, '0926-876-1780 / 0948-778-9273', '', '', NULL, 'CCTV Installation', 'Residential', '', 0),
+(376, 'Bong Bernal', 'Sir Joey', 'B16 L19 St. Raymond Homes, Calendola San Pedro Laguna', NULL, '0977-883-0031', '', '', NULL, 'CCTV Installation', 'Residential', '', 0),
+(377, 'AJ Mendoza', 'Sir AJ', 'Southview Homes 3, San Pedro Laguna', NULL, '0922-818-0784', '', '', NULL, 'CCTV Accessories Supply only', '', '', 0),
+(378, 'Marc Angel Dayrit', 'Sir Marc', 'Banaba Cerca Cavite South, Indang Cavite', NULL, '', '', '', NULL, 'CCTV Installation', '', '', 0),
+(379, 'Crisanta Rubio / Regalado Fuentes', 'Ms Crisanta', 'B11 L7 Genesis St. Adelina 1 San Pedro Laguna', NULL, '0905-303-0350', '', '', NULL, 'CCTV Installation', '', '', 0),
+(380, 'Great Depot Pasig', 'Merashell Dela Chica', 'Unit 101 South Center Power Madrigal Business PArk Alabang Muntinlupa City', NULL, '850-2455', '', '', NULL, 'CCTV Installation', '', '', 0);
+INSERT INTO `customer_vt` (`CustomerID`, `CompanyName`, `ContactPerson`, `Address`, `CityAddress`, `ContactNumber`, `EmailAddress`, `Website`, `InstallationDate`, `Interest`, `Type`, `Notes`, `is_deleted`) VALUES
+(381, 'Margaret Joy Lao', 'Ms Margaret', '143 Malolos Ave. Brgy. 150 Bagong Barrio, Caloocan', NULL, '09235222311', '', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(382, 'Ailyn Baluarte Garbo', 'Ms. Ailyn', '#24 Mata St. Brgy. 181, Villamor Pasay', NULL, '0999-861-5511', 'ailyn_b22@yahoo.com', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(383, 'Oliver Ojeda', 'Sir Oliver', 'Tagaytay City', NULL, '0917-655-1364', 'oliverojeda@gmail.com', '', NULL, 'Biometrics Supply only', '', 'LX16', 0),
+(384, 'Allegiance Cargo Advantage Inc. (ACAI)', 'Mr. Lloyd Librado', 'Allegiance Cargo Advantage Inc. Bldg. 2B Sunblest Compound KM23 West Service Rd. Cupang Muntinlupa City', NULL, '0920-602-1060', 'nilinodeon_dimaangay@acai.com.ph', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(385, 'Granite Industrial Corporation', 'Sir RJ Cabral', 'Las Piñas', NULL, '0923-672-6466', '', '', NULL, 'CCTV Installation', 'Commercial', '', 0),
+(386, 'DozenMaker Inc.', 'Mr KFC', 'Muntinlupa City', NULL, '8-7000', 'kfc@gmail.com', 'www.kfc.com', NULL, 'CCTV Installation', 'Commercial, Fast Food Chain', 'Date of Installation: August 2, 2019', 0),
+(387, 'DozenMaker Inc. 2', 'Ka Roel', 'Muntinlupa Area', NULL, '0992-669-6697', 'kfc@gmail.com', 'www.kfc.com', NULL, 'CCTV', 'Commercial, Fast Food Chain', 'Date of Installation: August 2, 2019', 0),
+(388, 'Ragnarok M: Eternal Love M', 'Mr. Gravity', 'Laguna Area', NULL, '5555555', 'ragnarokm@gmail.com', 'www.ragnarokm.com', '0000-00-00', 'CCTV', 'Commercial', 'August 3, 2019(Date of Installation)', 0);
 
 -- --------------------------------------------------------
 
@@ -2246,7 +2251,7 @@ INSERT INTO `delete_history` (`id`, `date_time`, `item_code`, `item_name`, `item
 (93, '2018-10-10 11:19:46', 'SIAMESEPRE20M', '20 Meters Premade Siamese Cable', 'CCTV', '0.00', '280.00'),
 (94, '2018-10-10 11:45:41', '0503139171', 'Headphones', 'Network Management', '0.00', '0.00'),
 (95, '2018-11-20 17:40:47', 'DS-1LN5E-S', 'Hikvision CAT5e UTP Cable', 'Network Management', '10.00', '20.00'),
-(96, '2018-12-10 11:39:45', 'SO0009748566', 'iTechie "24 inch LED TV', 'Uncategorized', '3993.00', '5190.90'),
+(96, '2018-12-10 11:39:45', 'SO0009748566', 'iTechie \"24 inch LED TV', 'Uncategorized', '3993.00', '5190.90'),
 (97, '2019-12-13 13:41:18', 'SIOMAICONDENSED', 'Steamed Siomai', 'MDVR', '10.00', '25.00');
 
 -- --------------------------------------------------------
@@ -2261,7 +2266,7 @@ CREATE TABLE `dispatch_forms` (
   `DispatchDate` date DEFAULT NULL,
   `TimeIn` time DEFAULT NULL,
   `TimeOut` time DEFAULT NULL,
-  `Remarks` mediumtext,
+  `Remarks` mediumtext DEFAULT NULL,
   `AssignedTechnicians1` varchar(255) DEFAULT NULL,
   `AssignedTechnicians2` varchar(255) DEFAULT NULL,
   `AssignedTechnicians3` varchar(255) DEFAULT NULL,
@@ -2325,7 +2330,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (41, 134, '2017-03-22', '09:00:00', NULL, 'INSTALLATION OF 2 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Neilvin Dalanhon - ID# 09010417', NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (42, 130, '2017-03-23', '09:00:00', NULL, 'Installation', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (43, 130, '2017-03-28', '10:00:00', NULL, 'Continuation installation', 'Jerome Malaga - ID# 05051116', 'Neilvin Dalanhon - ID# 09010417', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(44, 125, '2017-03-26', NULL, NULL, 'SERVICE: No Video 2 Camera''s', 'Ginelou Niño Garzon - ID# 1', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(44, 125, '2017-03-26', NULL, NULL, 'SERVICE: No Video 2 Camera\'s', 'Ginelou Niño Garzon - ID# 1', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (45, 135, '2017-03-26', '13:00:00', NULL, 'INSTALLATION OF 1 CCTV CAMERA Note: Ocular is the best and strategic location of the camera before the installation.', 'Ginelou Niño Garzon - ID# 1', 'Marvin Lucas - ID# 2', 'Geraldson Anova - ID# 06091316', NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (46, 136, '2017-03-29', '10:00:00', NULL, 'CCTV Installation of 4 cameras', 'Jerome Malaga - ID# 05051116', 'Neilvin Dalanhon - ID# 09010417', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (47, 107, '2017-03-30', '08:00:00', NULL, 'Service: Check up & Troubleshoot (No video)', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
@@ -2366,7 +2371,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (83, 140, '2017-04-22', NULL, NULL, 'Continuation of installation', 'Alexander Nebria - ID# 04080315', 'Jovic Labenia - ID# 07100216', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (84, 145, '2017-04-22', NULL, NULL, 'Continuation of Installation', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', 'Jordan Niel - Freelance #002', 'Jovic Labenia - ID# 07100216', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (85, 140, '2017-04-23', NULL, NULL, 'Continuation of Intallation.', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(86, 146, '2017-04-23', NULL, NULL, 'CCTV INSTALLATION OF 8 Camera''s And Biometrics', 'Alexander Nebria - ID# 04080315', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(86, 146, '2017-04-23', NULL, NULL, 'CCTV INSTALLATION OF 8 Camera\'s And Biometrics', 'Alexander Nebria - ID# 04080315', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (87, NULL, '2017-04-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (88, 140, '2017-04-24', NULL, NULL, 'Continuation of Installation.', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (89, 107, '2017-04-24', NULL, NULL, 'Continuation of Installation', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -2378,12 +2383,12 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (95, 139, '2017-04-25', NULL, NULL, 'Service', 'Jerome Malaga - ID# 05051116', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (96, 147, '2017-04-26', NULL, NULL, 'CCTV Installation of 2 package of 4 cameras', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Jordan Niel - Freelance #002', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (97, 107, '2017-04-26', NULL, NULL, 'continuation of installation', 'Sherwin Manicap - ID# 12032817', NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(98, 147, '2017-04-27', NULL, NULL, 'CCTV Installation  of 2 Package of 4 Camera''s', 'Jerome Malaga - ID# 05051116', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(98, 147, '2017-04-27', NULL, NULL, 'CCTV Installation  of 2 Package of 4 Camera\'s', 'Jerome Malaga - ID# 05051116', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (99, 145, '2017-04-27', NULL, NULL, 'additional 5 camera and 16ch DVR', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', 'Jordan Niel - Freelance #002', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (100, 145, '2017-04-29', NULL, NULL, 'Continuation of Installation', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (101, 12, '2017-04-29', NULL, NULL, 'Service', 'Jerome Malaga - ID# 05051116', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (102, 139, '2017-04-29', '09:30:00', '10:30:00', 'Service ( Check up of Telephone line & Cabling)', 'Jerome Malaga - ID# 05051116', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(103, 149, '2017-04-30', NULL, NULL, 'CCTV Installation  of 6 Camera''s', 'Ginelou Niño Garzon - ID# 1', 'Jovic Labenia - ID# 07100216', 'Mark Anthony - ID# 13043017', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(103, 149, '2017-04-30', NULL, NULL, 'CCTV Installation  of 6 Camera\'s', 'Ginelou Niño Garzon - ID# 1', 'Jovic Labenia - ID# 07100216', 'Mark Anthony - ID# 13043017', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (104, 139, '2017-05-02', NULL, NULL, 'Service: 1 Telephone line', 'Jerome Malaga - ID# 05051116', 'Mak Anthony Rasco - ID# 13043017', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (105, 12, '2017-05-02', NULL, NULL, 'Service: No Video Channel 12 & Relocation of camera', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (106, 146, '2017-05-03', NULL, NULL, 'continuation of installation', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -2392,27 +2397,27 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (109, 159, '2017-05-03', NULL, NULL, 'Service', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (110, 67, '2017-05-03', NULL, NULL, 'Service (Not Online)', 'Jomarie Gajo - ID# 10011317', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (111, 96, '2017-05-04', NULL, NULL, 'Service : Damage DVR', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(112, 150, '2017-05-04', NULL, NULL, 'CCTV Installation  of 10 Camera''s  And  Rehabilitation of 2 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(112, 150, '2017-05-04', NULL, NULL, 'CCTV Installation  of 10 Camera\'s  And  Rehabilitation of 2 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (113, 139, '2017-05-05', NULL, NULL, 'Service', 'Sherwin Manicap - ID# 12032817', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'1', '00:00:00', '', ''),
 (114, 141, '2017-05-04', NULL, NULL, 'Service (checking 4 cameras)', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (115, 141, '2017-05-05', NULL, NULL, 'Service: (Ayala & Sta. Rosa)', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (116, 96, '2017-05-05', NULL, NULL, 'Service : Damage Dvr', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (117, 105, '2017-05-05', NULL, NULL, 'Service : Additional 1 Camera , Internet Trouble Shoot ( Not Online).', 'Jomarie Gajo - ID# 10011317', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(118, 151, '2017-05-06', NULL, NULL, 'CCTV Installation  of 6 Camera''s', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(118, 151, '2017-05-06', NULL, NULL, 'CCTV Installation  of 6 Camera\'s', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (119, 115, '2017-05-07', NULL, NULL, 'Service', 'Alexander Nebria - ID# 04080315', 'Geraldson Anova - ID# 06091316', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (120, 79, '2017-05-07', NULL, NULL, 'Service.', 'Alexander Nebria - ID# 04080315', 'Geraldson Anova - ID# 06091316', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (121, 8, '2017-05-07', NULL, NULL, 'Service', 'Alexander Nebria - ID# 04080315', 'Geraldson Anova - ID# 06091316', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (122, 142, '2017-05-08', NULL, NULL, 'Service (no video 2nd floor)', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 003', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (123, 96, '2017-05-08', NULL, NULL, 'Service : Damage - DVR (Aquaeous)', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(124, 117, '2017-05-09', NULL, NULL, 'CCTV Installation  of 2 Camera''s\r\nMa''am Delia Ponelas - (0917-883-3068)', 'Sherwin Manicap - ID# 12032817', 'Jomarie Gajo - ID# 10011317', 'Sonny Crucillo - Freelance#002', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(124, 117, '2017-05-09', NULL, NULL, 'CCTV Installation  of 2 Camera\'s\r\nMa\'am Delia Ponelas - (0917-883-3068)', 'Sherwin Manicap - ID# 12032817', 'Jomarie Gajo - ID# 10011317', 'Sonny Crucillo - Freelance#002', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (125, 151, '2017-05-09', NULL, NULL, 'Installation.', 'Jomarie Gajo - ID# 10011317', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo - Freelance#002', NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (126, 101, '2017-05-09', NULL, NULL, 'Service', 'Hajji Marasigan - ID# 08101116', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (127, 47, '2017-05-11', NULL, NULL, 'Service : Internet Viewing', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 003', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (128, 22, '2017-05-11', NULL, NULL, 'Service: Internet Viewing.', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 003', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (129, 151, '2017-05-11', NULL, NULL, 'Follow up  Installation (Cabling DVR to Router)', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 002', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(130, 152, '2017-05-12', NULL, NULL, 'CCTV Installation of 4 Camera''s .', 'Jerome Malaga - ID# 05051116', 'Mark Anthony Rasco - ID# 13043017', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(131, 90, '2017-05-12', NULL, NULL, 'Service : 2 Camera''s No Power', 'Jerome Malaga - ID# 05051116', 'Mark Anthony Rasco - ID# 13043017', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(132, 153, '2017-05-14', NULL, NULL, 'CCTV Installation for 6 Camera''s .', 'Alexander Nebria - ID# 04080315', 'Jovic Labenia - ID# 07100216', 'Mark Anthony Rasco - ID# 13043017', 'Sherwin Manicap - ID# 12032817', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(130, 152, '2017-05-12', NULL, NULL, 'CCTV Installation of 4 Camera\'s .', 'Jerome Malaga - ID# 05051116', 'Mark Anthony Rasco - ID# 13043017', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(131, 90, '2017-05-12', NULL, NULL, 'Service : 2 Camera\'s No Power', 'Jerome Malaga - ID# 05051116', 'Mark Anthony Rasco - ID# 13043017', 'Jovic Labenia - ID# 07100216', 'Sherwin Manicap - ID# 12032817', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
+(132, 153, '2017-05-14', NULL, NULL, 'CCTV Installation for 6 Camera\'s .', 'Alexander Nebria - ID# 04080315', 'Jovic Labenia - ID# 07100216', 'Mark Anthony Rasco - ID# 13043017', 'Sherwin Manicap - ID# 12032817', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (133, 112, '2017-05-15', NULL, NULL, 'Service Relocation of 1 camera', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 002', 'Melchor S. Aquino', NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (134, NULL, '2017-05-15', NULL, NULL, 'CCTV Installation of 2 packages', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Melchor S. Aquino', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (135, 154, '2017-05-15', NULL, NULL, 'CCTV Installation of 2 packages', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', 'Mark Anthony Rasco - ID# 13043017', 'Sonny Crucillo Jr', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -2430,8 +2435,8 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (147, 90, '2017-05-23', NULL, NULL, 'Service : 1 camera for checking', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Mark Anthony Rasco - ID# 13043017', 'Sonny Crucillo Jr & Melchor Aquino', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (148, 155, '2017-05-24', NULL, NULL, 'CCTV Installation of 6 Cameras', 'Jerome Malaga - ID# 05051116', 'Sherwin Manicap - ID# 12032817', 'Mark Anthony Rasco - ID# 13043017', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (149, 107, '2017-05-24', NULL, NULL, 'Continuation Installation', 'Jovic Labenia - ID# 07100216', 'Sonny Crucillo # Freelance 002', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(150, 155, '2017-05-25', NULL, NULL, 'Cctv Installation of 5 Camera''s .', 'Jerome Malaga - ID# 05051116', 'Sherwin Manicap - ID# 12032817', 'Mark Anthony Rasco - ID# 13043017', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(151, 155, '2017-05-26', NULL, NULL, 'Cctv Installation of 6 Camera''s', 'Sherwin Manicap - ID# 12032817', 'Jovic Labenia - ID# 07100216', 'Mark Anthony Rasco - ID# 13043017', 'Sonny Crucillo Jr & Melchor Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(150, 155, '2017-05-25', NULL, NULL, 'Cctv Installation of 5 Camera\'s .', 'Jerome Malaga - ID# 05051116', 'Sherwin Manicap - ID# 12032817', 'Mark Anthony Rasco - ID# 13043017', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(151, 155, '2017-05-26', NULL, NULL, 'Cctv Installation of 6 Camera\'s', 'Sherwin Manicap - ID# 12032817', 'Jovic Labenia - ID# 07100216', 'Mark Anthony Rasco - ID# 13043017', 'Sonny Crucillo Jr & Melchor Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (152, 155, '2017-05-27', NULL, NULL, 'Continue Installation (1camera for troubleshoot).', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 002', 'Mark Anthony Rasco - ID# 13043017', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (153, 90, '2017-05-27', NULL, NULL, 'Continue Service (1 camera no power)', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Melchor S. Aquino', NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (154, 128, '2017-05-29', NULL, NULL, 'Service: Blur 1 Camera for checking', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 002', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2453,7 +2458,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (170, 106, '2017-06-03', NULL, NULL, 'Service', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (171, 125, '2017-06-02', NULL, NULL, 'Service', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (172, 159, '2017-06-03', NULL, NULL, 'Service', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(173, 160, '2017-06-03', NULL, NULL, 'Cctv Installation Of 2 Camera''s.', 'Ginelou Niño Garzon - ID# 1', 'Marvin Lucas - ID# 2', 'Geraldson Anova - ID# 06091316', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(173, 160, '2017-06-03', NULL, NULL, 'Cctv Installation Of 2 Camera\'s.', 'Ginelou Niño Garzon - ID# 1', 'Marvin Lucas - ID# 2', 'Geraldson Anova - ID# 06091316', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (174, 150, '2017-06-03', NULL, NULL, 'Continuation of installation', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Melchor S. Aquino', 'Mark Anthony S. Crucillo Jr.', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (175, 149, '2017-06-03', NULL, NULL, 'Service', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 002', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (176, 47, '2017-06-05', NULL, NULL, 'Service', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2468,18 +2473,18 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (185, 133, '2017-06-09', NULL, NULL, 'servce', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (186, 150, '2017-06-10', NULL, NULL, 'Continuation of Installation', 'Alexander Nebria - ID# 04080315', 'Mark Anthony Rasco - ID# 13043017', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (187, 107, '2017-06-10', NULL, NULL, 'Continuation of Installation', 'Jerome Malaga - ID# 05051116', 'Sonny Crucillo # Freelance 002', 'Melchor S. Aquino', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(188, 162, '2017-06-10', NULL, NULL, 'Cctv Installation of 4 Camera''s', 'Alexander Nebria - ID# 04080315', 'Mark Anthony Rasco - ID# 13043017', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(188, 162, '2017-06-10', NULL, NULL, 'Cctv Installation of 4 Camera\'s', 'Alexander Nebria - ID# 04080315', 'Mark Anthony Rasco - ID# 13043017', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (189, 162, '2017-06-13', NULL, NULL, 'Service: Cam 2 Red viewing', 'Alexander Nebria - ID# 04080315', 'Mark Anthony Rasco - ID# 13043017', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (190, 47, '2017-06-13', NULL, NULL, 'Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (191, 22, '2017-06-13', NULL, NULL, 'Service: How to playback', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (192, 133, '2017-06-13', NULL, NULL, 'Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(193, 163, '2017-06-14', NULL, NULL, 'Cctv Installation of 4 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(193, 163, '2017-06-14', NULL, NULL, 'Cctv Installation of 4 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (194, 121, '2017-06-14', NULL, NULL, 'Service: No recording', 'Alexander Nebria - ID# 04080315', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (195, 107, '2017-06-15', NULL, NULL, 'Continuation of installation', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (196, 139, '2017-06-15', NULL, NULL, 'Service : 1 camera blinking', 'Jovic Labenia - ID# 07100216', 'Melchor Aquino Freelance # 003', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (197, 107, '2017-06-16', NULL, NULL, NULL, 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Melchor S. Aquino', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (198, 164, '2017-06-16', NULL, NULL, NULL, 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', 'Mark Anthony Rasco - ID# 13043017', NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(199, 166, '2017-06-17', NULL, NULL, 'Installation Of 12 Camera''s And Biometrics.', 'Alexander Nebria - ID# 04080315', 'Mark Anthony Rasco - ID# 13043017', 'Sherwin Manicap - ID# 12032817', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(199, 166, '2017-06-17', NULL, NULL, 'Installation Of 12 Camera\'s And Biometrics.', 'Alexander Nebria - ID# 04080315', 'Mark Anthony Rasco - ID# 13043017', 'Sherwin Manicap - ID# 12032817', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (200, 107, '2017-06-17', NULL, NULL, 'Continuation of Installation', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (201, 166, '2017-06-19', NULL, NULL, 'Continuation of Installation', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', 'Mark Anthony Rasco - ID# 13043017', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (202, 79, '2017-06-19', NULL, NULL, 'Service: Interference', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2494,7 +2499,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (211, 2, '2017-06-22', NULL, NULL, 'Service : 1 channel not working', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (212, 107, '2017-06-22', NULL, NULL, 'Continuation of Installation', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (213, 146, '2017-06-22', NULL, NULL, 'Service: Not viewing on Mobile Phone / Online problem', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(214, 169, '2017-06-23', NULL, NULL, 'Cctv Installation of 4 Camera''s .', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Sonny Crucillo - Freelance#002', 'Mark Anthony  Rasco', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(214, 169, '2017-06-23', NULL, NULL, 'Cctv Installation of 4 Camera\'s .', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Sonny Crucillo - Freelance#002', 'Mark Anthony  Rasco', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (215, 170, '2017-06-23', NULL, NULL, 'Intallation Of Door Access', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (216, 21, '2017-06-24', NULL, NULL, 'Service : Alarming & Playback Problem', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (217, 150, '2017-06-24', NULL, NULL, 'Service : 1 camera interference', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
@@ -2513,7 +2518,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (230, 170, '2017-06-30', NULL, NULL, 'Continuation of Installation', 'Alexander Nebria - ID# 04080315', 'Sherwin Manicap - ID# 12032817', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (231, 170, '2017-06-30', NULL, NULL, 'Continuation of Installation .', 'Sherwin Manicap - ID# 12032817', 'Sonny Crucillo # Freelance 002', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (232, 155, '2017-07-01', NULL, NULL, 'Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(233, 173, '2017-07-01', NULL, NULL, 'CCTV Installation Of 4 Camera''s.', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Mark Anthony Rasco - ID# 13043017', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(233, 173, '2017-07-01', NULL, NULL, 'CCTV Installation Of 4 Camera\'s.', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Mark Anthony Rasco - ID# 13043017', 'Melchor S. Aquino', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (234, 117, '2017-07-04', NULL, NULL, 'Service: 1 Camera Blackout (outside near gate)', 'Jomarie Gajo - ID# 10011317', 'Mark Anthony Rasco - ID# 13043017', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (235, 159, '2017-07-05', NULL, NULL, 'For Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (236, 61, '2017-07-05', NULL, NULL, 'For Service : HDD Recording', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2538,11 +2543,11 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (254, 167, '2017-07-14', NULL, NULL, 'Service', 'Alexander Nebria - ID# 04080315', 'Mark Anthony Rasco - ID# 13043017', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (255, 79, '2017-07-14', NULL, NULL, 'Service', 'Jerome Malaga - ID# 05051116', 'Melchor Aquino Freelance # 003', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (257, 79, '2017-07-15', NULL, NULL, 'Service: Channel 5 No video', 'Jerome Malaga - ID# 05051116', 'Melchor Aquino Freelance # 003', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(258, 176, '2017-07-17', NULL, NULL, 'Cctv Installation of 4 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(258, 176, '2017-07-17', NULL, NULL, 'Cctv Installation of 4 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (259, 47, '2017-07-19', NULL, NULL, 'Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (260, 121, '2017-07-15', NULL, NULL, 'Service: Internet Cable Wiring…', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(261, 177, '2017-07-16', NULL, NULL, 'Cctv Installation of 7 Camera''s', 'Ginelou Niño Garzon - ID# 1', 'Mark Anthony Rasco - ID# 13043017', 'Alexander Nebria - ID# 04080315', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(262, 159, '2017-07-18', NULL, NULL, 'Cctv Installation of 2 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(261, 177, '2017-07-16', NULL, NULL, 'Cctv Installation of 7 Camera\'s', 'Ginelou Niño Garzon - ID# 1', 'Mark Anthony Rasco - ID# 13043017', 'Alexander Nebria - ID# 04080315', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(262, 159, '2017-07-18', NULL, NULL, 'Cctv Installation of 2 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (263, 176, '2017-07-18', NULL, NULL, 'continuation of installation', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (264, 177, '2017-07-18', NULL, NULL, 'additional 1 camera', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (265, NULL, '2017-07-19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
@@ -2667,7 +2672,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (384, 12, '2017-09-16', NULL, NULL, 'Service : 1 Camera Not Working .', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (385, 37, '2017-09-16', NULL, NULL, ' Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (386, 10, '2017-09-17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(387, 200, '2017-09-17', NULL, NULL, 'Cctv Installation of 8 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(387, 200, '2017-09-17', NULL, NULL, 'Cctv Installation of 8 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (388, 192, '2017-09-18', NULL, NULL, 'Continue Installation', 'Jovic Labenia - ID# 07100216', 'Melchor Aquino Freelance # 003', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (389, 195, '2017-09-18', NULL, NULL, 'Continue Installation', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (390, 201, '2017-09-18', NULL, NULL, 'Continue Installations', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -2693,7 +2698,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (410, 201, '2017-09-22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (411, 195, '2017-09-22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (412, NULL, '2017-09-22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(413, 202, '2017-09-23', NULL, NULL, 'Cctv Installatoin of 2 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(413, 202, '2017-09-23', NULL, NULL, 'Cctv Installatoin of 2 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (414, 42, '2017-09-23', NULL, NULL, 'Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (415, 90, '2017-09-23', NULL, NULL, 'Service', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (416, 129, '2017-09-23', NULL, NULL, 'Service', 'Jomarie Gajo - ID# 10011317', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2704,7 +2709,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (421, 182, '2017-09-26', NULL, NULL, 'Service: Relocate 1 Camera.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (422, 128, '2017-09-26', NULL, NULL, 'Service:', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (423, 195, '2017-09-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(424, 203, '2017-09-26', NULL, NULL, 'Cctv Installation Of 11 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(424, 203, '2017-09-26', NULL, NULL, 'Cctv Installation Of 11 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (425, 203, '2017-09-27', NULL, NULL, 'Continue Installation of CCTV', 'Jerome Malaga - ID# 05051116', 'Melchor Aquino Freelance # 003', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (426, 195, '2017-09-27', NULL, NULL, 'Conyinue Installation of CCTV', 'CJ España', 'Jorwin Claveria - Freelance', 'Jose Castro - Freelance', 'Jovic Labenia - ID# 07100216', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (427, 37, '2017-09-27', NULL, NULL, 'Install 1TB Hdd', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -2737,7 +2742,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (454, 133, '2017-10-09', NULL, NULL, 'Service: 1 Camera for Move', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (455, 12, '2017-10-09', NULL, NULL, 'Service: Camera 12 for checking (no viewing)', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (456, 91, '2017-10-09', NULL, NULL, 'Service: Trouble Shoot Internet Connection.', 'Jovic Labenia - ID# 07100216', 'Melchor Aquino Freelance # 003', NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(457, 207, '2017-10-10', NULL, NULL, 'Cctv Installation of 4 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(457, 207, '2017-10-10', NULL, NULL, 'Cctv Installation of 4 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (458, 204, '2017-10-11', NULL, NULL, 'Delivery of MB200 & Tutorial', 'Jomarie Gajo - ID# 10011317', NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (459, 203, '2017-10-11', NULL, NULL, 'Continue Installation', 'Jerome Malaga - ID# 05051116', 'Christian Jay Espana', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (460, 84, '2017-10-11', NULL, NULL, 'Service: Relocate DVR', 'Jovic Labenia - ID# 07100216', 'Melchor Aquino Freelance # 003', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2761,7 +2766,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (478, 195, '2017-10-19', NULL, NULL, 'detach Scaffolding', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (479, 207, '2017-10-19', NULL, NULL, 'Service: To Online DVR', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (480, 58, '2017-10-19', NULL, NULL, 'Service.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(481, 117, '2017-10-20', NULL, NULL, 'Service: Black out 1 camera "located near the POOL" (All day Resort) look for Ma''am Delia Ponelas', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
+(481, 117, '2017-10-20', NULL, NULL, 'Service: Black out 1 camera \"located near the POOL\" (All day Resort) look for Ma\'am Delia Ponelas', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (482, 170, '2017-10-21', NULL, NULL, 'Service: Door access for mount.', 'Sherwin Manicap - ID# 12032817', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (483, 128, '2017-10-21', NULL, NULL, 'Service: Door alarm', 'Sherwin Manicap - ID# 12032817', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (484, 209, '2017-10-23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
@@ -2830,8 +2835,8 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (548, 218, '2017-11-25', NULL, NULL, 'CCTV Installation : Additional 2 Cameras / Recabling', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (549, 40, '2017-11-27', NULL, NULL, NULL, 'Jovic Labenia - ID# 07100216', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (550, 133, '2017-11-28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(551, 218, '2017-11-29', NULL, NULL, 'Cctv Installation of 2 Camera''s.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(552, 219, '2017-12-01', NULL, NULL, 'Cctv Intallation of 4 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(551, 218, '2017-11-29', NULL, NULL, 'Cctv Installation of 2 Camera\'s.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(552, 219, '2017-12-01', NULL, NULL, 'Cctv Intallation of 4 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (553, 164, '2017-11-30', NULL, NULL, 'E. Fence Repair and Troubleshooting', 'CJ España', 'Jovic Labenia - ID# 07100216', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (554, 220, '2017-12-01', NULL, NULL, 'E.Fence', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (555, 4, '2017-12-02', NULL, NULL, 'CCTV Installation 1 Camera', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -2844,30 +2849,30 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (561, 223, '2017-12-06', NULL, NULL, 'Recabling', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (562, 224, '2017-12-06', NULL, NULL, 'CCTV Installation of 2 Cameras', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (563, 220, '2017-12-07', NULL, NULL, 'Installation: E.Fence', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
-(564, 32, '2017-12-08', NULL, NULL, 'Service : All Camera''s Blurred Viewing on Monitor.', 'CJ España', 'Jerome Malaga - ID# 05051116', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(565, 79, '2017-12-08', NULL, NULL, 'Service: All Camera''s No Viewing / Not Working', 'CJ España', 'Jerome Malaga - ID# 05051116', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
+(564, 32, '2017-12-08', NULL, NULL, 'Service : All Camera\'s Blurred Viewing on Monitor.', 'CJ España', 'Jerome Malaga - ID# 05051116', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
+(565, 79, '2017-12-08', NULL, NULL, 'Service: All Camera\'s No Viewing / Not Working', 'CJ España', 'Jerome Malaga - ID# 05051116', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (566, 220, '2017-12-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (567, 139, '2017-12-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (568, 222, '2017-12-11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (569, 222, '2017-12-13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (570, 202, '2017-12-13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (571, 130, '2017-12-16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(572, 225, '2017-12-18', NULL, NULL, 'Cctv Installation of 16 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(572, 225, '2017-12-18', NULL, NULL, 'Cctv Installation of 16 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (573, 225, '2017-12-19', NULL, NULL, 'Installation of 16 Cameras', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (574, 225, '2017-12-20', NULL, NULL, 'Continue Installation', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (575, 225, '2017-12-21', NULL, NULL, 'Continuation of Installation.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (576, 225, '2017-12-22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (577, 225, '2018-01-04', NULL, NULL, 'Ins. HDD & VGA', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (578, 197, '2018-01-04', NULL, NULL, 'Ins. Additional 1 Camera & Relocation.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(579, 226, '2018-01-04', NULL, NULL, 'For Checking 10 Camera''s.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(579, 226, '2018-01-04', NULL, NULL, 'For Checking 10 Camera\'s.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (580, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(581, 214, '2018-12-06', NULL, NULL, 'Cctv Installation of 8 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(581, 214, '2018-12-06', NULL, NULL, 'Cctv Installation of 8 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (582, 139, '2017-12-05', NULL, NULL, 'Service: Extend cable internet .', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (583, 273, '2018-07-03', '09:40:00', '12:14:00', 'Patch Cable to Modem From DVR in Lynas Relocation of Camera or server covering the hotspot (Cashier) - Feliz', 'Jerome Malaga - ID# 05051116', 'Jerald Madragon', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (584, 226, '2018-01-06', NULL, NULL, 'Service. CCTV repair / maintenance', 'Jerome Malaga - ID# 05051116', 'Christian Jay Espana', NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (585, 139, '2018-12-08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(586, 227, '2017-01-11', NULL, NULL, 'Cctv Installation of 8 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(587, 125, '2018-01-15', NULL, NULL, 'Cctv Installation of 3 camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(586, 227, '2017-01-11', NULL, NULL, 'Cctv Installation of 8 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(587, 125, '2018-01-15', NULL, NULL, 'Cctv Installation of 3 camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (588, 225, '2018-01-13', NULL, NULL, 'Service: Return Camera', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (589, 90, '2018-01-13', NULL, NULL, 'Service: cable check', 'Jerome Malaga - ID# 05051116', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (590, 156, '2018-01-13', NULL, NULL, 'Service: DVR error', 'Jerome Malaga - ID# 05051116', NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
@@ -2886,15 +2891,15 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (603, 207, '2018-01-25', NULL, NULL, 'Service: For Checking HDD Recording', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (604, 231, '2018-01-25', NULL, NULL, 'CCTV Re-installation', 'Jerome Malaga - ID# 05051116', 'Christian Jay Espana', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (605, 233, '2018-01-25', NULL, NULL, 'Service Cignal', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(606, 156, '2018-01-25', NULL, NULL, 'No Viewing All Camera''s & Hdd No Recording', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(607, 129, '2017-01-26', NULL, NULL, 'Service: Other Camera''s Not Working', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(606, 156, '2018-01-25', NULL, NULL, 'No Viewing All Camera\'s & Hdd No Recording', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(607, 129, '2017-01-26', NULL, NULL, 'Service: Other Camera\'s Not Working', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (608, 82, '2018-01-27', NULL, NULL, 'Service:', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (609, 232, '2018-01-27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (610, 205, '2018-01-26', '14:00:00', '14:15:00', 'Service: For Checking HDD Recording', 'CJ Espana', 'Jovic Labenia - ID# 07100216', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (611, 164, '2018-01-26', NULL, NULL, 'Service: Electric fence', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (612, 234, '2018-01-29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (613, 164, '2018-01-29', NULL, NULL, 'Service. E.Fence Repair', 'Jovic Labenia - ID# 07100216', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(614, 156, '2018-01-30', NULL, NULL, 'No Viewing All Camera''s & Hdd No Recording', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(614, 156, '2018-01-30', NULL, NULL, 'No Viewing All Camera\'s & Hdd No Recording', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (615, 234, '2018-01-30', NULL, NULL, 'Continue CCTV Installation.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (616, 163, '2018-01-30', NULL, NULL, 'Service : 1 Camera not working', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (617, 12, '2018-01-31', NULL, NULL, 'Service: for change user account & password', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2922,7 +2927,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (639, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (640, NULL, NULL, NULL, NULL, 'Patch Panel Management', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (641, 68, '2018-02-09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(642, 69, '2018-02-09', '16:10:00', '19:10:00', 'Installation of Additional Two Camera''s.', 'CJ Espana', 'Mark Antaran', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(642, 69, '2018-02-09', '16:10:00', '19:10:00', 'Installation of Additional Two Camera\'s.', 'CJ Espana', 'Mark Antaran', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (643, 69, '2018-02-10', '09:49:00', '21:20:00', 'Installation CCTV: Add 2 Cameras', 'CJ España', 'mark antaran', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (644, 239, '2018-02-10', '09:20:00', '12:00:00', 'Continuation Installation', 'Jovic Labenia - ID# 07100216', 'CJ Espana', 'Mark Antaran', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (645, 130, '2018-02-12', NULL, NULL, 'Service: Magnetic lock loose', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -2950,7 +2955,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (667, 16, '2018-02-22', '07:36:00', '20:30:00', 'Service: online mobile app', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Mark Antaran', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (668, 56, '2018-02-22', '11:30:00', '15:00:00', 'Service: Recabling 2 cameras', 'CJ España', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (669, 237, '2018-02-21', NULL, NULL, 'Service: Replace power supply (@ Unit 101 6/F MB Aguirre Bldg., Nat. Rd. Tunasan Muntinlupa City)', 'CJ España', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(670, 245, '2018-02-23', '07:22:00', '18:00:00', 'Cctv Installation of 8 Camera''s. - Replace 4cams existing 4 cams new cable. Additional Task: 2 internet cable for cabling', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Mark Antaran', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(670, 245, '2018-02-23', '07:22:00', '18:00:00', 'Cctv Installation of 8 Camera\'s. - Replace 4cams existing 4 cams new cable. Additional Task: 2 internet cable for cabling', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Mark Antaran', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (671, 11, '2018-02-23', '12:40:00', '12:50:00', 'Service: All Camera No Viewing.', 'N/A', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (672, 245, '2018-02-24', NULL, NULL, 'Continuation of Installation of 8ch', 'Jerome Malaga - ID# 05051116', 'Jovic Labenia - ID# 07100216', 'Mark Antaran', 'CJ Espana', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (673, 220, '2018-02-24', NULL, NULL, 'Continuation of Installation of E.Fence', 'CJ España', 'mark antaran', NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -2968,7 +2973,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (685, 220, '2018-03-01', NULL, NULL, 'Continue Installation efence', 'CJ España', 'Jovic Labenia - ID# 07100216', 'Mark Antaran', NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (686, 225, '2018-03-01', NULL, NULL, 'Service: Replace 1 Camera.', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (687, 235, '2018-03-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(688, 249, '2018-03-02', '09:30:00', '19:05:00', 'Cctv Installation of 8 Camera''s', 'Jovic Labenia - ID# 07100216', 'Mark Antaran', 'CJ Espana', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(688, 249, '2018-03-02', '09:30:00', '19:05:00', 'Cctv Installation of 8 Camera\'s', 'Jovic Labenia - ID# 07100216', 'Mark Antaran', 'CJ Espana', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (689, 140, '2018-03-02', '11:15:00', '12:10:00', 'Service: Online Problem', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (690, 239, '2018-03-02', '15:00:00', '19:00:00', 'Continue ..', 'CJ Espana', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (691, 235, '2018-03-03', '09:03:00', '16:18:00', NULL, 'Jovic Labenia - ID# 07100216', 'Mark Antaran', 'CJ Espana', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -3113,7 +3118,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `TimeIn`, `TimeOut`, `Remarks`, `AssignedTechnicians1`, `AssignedTechnicians2`, `AssignedTechnicians3`, `AssignedTechnicians4`, `AssignedTechnicians5`, `AssignedTechnicians6`, `AssignedTechnicians7`, `AssignedTechnicians8`, `WithPermit`, `Installation`, `RepairOrService`, `Warranty`, `dispatch_out`, `sr_number`, `remarks2`) VALUES
 (830, 29, '2018-05-08', NULL, NULL, 'Service : 1 camera (cam 7) static', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (831, 237, '2018-05-08', '09:00:00', '13:30:00', 'Service: DR.A Santos Branch (Change Set-up CCTV Camera and DVR)', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(832, 237, '2018-05-09', '10:10:00', '16:35:00', 'Service: Change Set-up CCTV''s (San Vicente Branch)', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
+(832, 237, '2018-05-09', '10:10:00', '16:35:00', 'Service: Change Set-up CCTV\'s (San Vicente Branch)', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (833, 29, '2018-05-09', NULL, NULL, 'Service: Static Cam 7', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (834, 266, '2018-05-09', NULL, NULL, 'Service: Noisy DVR', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (835, 267, '2018-05-10', NULL, NULL, 'Installation of CCTV 4 Channel', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -3161,8 +3166,8 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (877, 272, '2018-05-29', '13:32:00', '14:42:00', 'Continue Installation', 'N/A', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (878, 256, '2018-05-29', '11:00:00', '14:00:00', 'Service: Replace 1 camera Bullet', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (879, 31, '2018-05-29', '13:00:00', '16:30:00', 'Service: No Video 2 Cameras', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(880, 112, '2018-05-30', '18:45:00', '19:10:00', 'Service Maintenance - Check up CCTV''s', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(881, 272, '2018-05-30', '10:10:00', '17:40:00', 'Continue Installation of CCTV''s and Access Control', 'N/A', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(880, 112, '2018-05-30', '18:45:00', '19:10:00', 'Service Maintenance - Check up CCTV\'s', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
+(881, 272, '2018-05-30', '10:10:00', '17:40:00', 'Continue Installation of CCTV\'s and Access Control', 'N/A', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (882, 31, '2018-05-30', NULL, NULL, 'Service: 2 cameras no video', 'Jerome Malaga - ID# 05051116', NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (883, 38, '2018-05-31', '16:20:00', '20:30:00', 'Additional 1 CCTV Camera & Upgrade DVR', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (884, 272, '2018-05-31', NULL, '14:23:00', 'Continue Installation', 'N/A', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
@@ -3190,9 +3195,9 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (906, 79, '2018-06-11', NULL, NULL, 'Service: For Default Password', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (907, 280, '2018-06-13', '14:15:00', '17:20:00', 'Continue Installation of CCTV : 4ch', 'Ernie Tan', 'Jerald Madragon', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (908, 205, '2018-06-12', '10:55:00', '14:10:00', 'Service: No Monitoring', 'Ernie Tan', 'Jerald Madragon', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
-(909, 280, '2018-06-12', NULL, NULL, 'Cctv Installation Of 5 Camera''s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
+(909, 280, '2018-06-12', NULL, NULL, 'Cctv Installation Of 5 Camera\'s', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (910, 205, '2018-06-12', NULL, NULL, 'No Display in Momniltor', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(911, 280, '2018-06-13', NULL, NULL, 'Installation of CCTV''s 4cameras', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(911, 280, '2018-06-13', NULL, NULL, 'Installation of CCTV\'s 4cameras', NULL, NULL, NULL, NULL, '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (912, 79, '2018-06-13', NULL, NULL, 'Service : Password - Cancelled', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (913, 205, '2018-06-13', '16:30:00', '17:55:00', 'Service: 4cams no viewing', 'Jerome Malaga - ID# 05051116', 'Ernie Tan', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (914, 235, '2018-06-14', '11:26:00', '15:23:00', 'Service : No Internet Connection.', 'Jerome Malaga - ID# 05051116', 'Ernie Tan', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
@@ -3238,7 +3243,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (954, 279, '2018-07-05', NULL, NULL, 'Continue', NULL, NULL, NULL, NULL, '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (955, 279, '2018-07-06', '08:45:00', '17:00:00', 'Continue Installation.', 'Jovic Labenia - ID# 07100216', 'Ernie Tan', 'N/A', 'N/A', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (956, 32, '2018-07-06', '13:00:00', '17:40:00', 'Service: 4 Cams No Viewing.', 'Jerome Malaga - ID# 05051116', 'Jerald Madragon', 'N/A', 'N/A', '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
-(957, 288, '2018-07-07', '11:00:00', '17:07:00', 'Cctv Installation of 4 Camera''s', 'Jovic Labenia - ID# 07100216', 'Ernie Tan', 'Jerome Malaga - ID# 05051116', 'Jerald Madragon', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
+(957, 288, '2018-07-07', '11:00:00', '17:07:00', 'Cctv Installation of 4 Camera\'s', 'Jovic Labenia - ID# 07100216', 'Ernie Tan', 'Jerome Malaga - ID# 05051116', 'Jerald Madragon', '', '', '', '', '', b'1', b'0', b'0', '00:00:00', '', ''),
 (958, 128, '2018-07-07', '11:15:00', '12:14:00', 'Service : Door Alarm No Longer Alarm Trigger.', 'Jerome Malaga - ID# 05051116', 'N/A', 'N/A', 'N/A', '', '', '', '', '', b'0', b'1', b'0', '00:00:00', '', ''),
 (959, 139, '2018-07-09', '09:00:00', '17:00:00', 'Continue Installation', 'Jovic Labenia - ID# 07100216', 'Jerald Madragon', 'N/A', 'N/A', '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
 (960, 4, '2018-07-09', '13:55:00', '15:10:00', 'Service : No viewing one camera.', 'Jerome Malaga - ID# 05051116', 'Ernie Tan', 'N/A', 'N/A', '', '', '', '', '', b'0', b'0', b'0', '00:00:00', '', ''),
@@ -3852,7 +3857,7 @@ INSERT INTO `dispatch_forms` (`Dispatch_ID`, `CustomerName`, `DispatchDate`, `Ti
 (1567, 201, '2020-03-06', '00:00:00', '00:00:00', 'Delivery of camera', 'ID Number: 01021415 Ginelou Nino T Garzon', '', '', '', '', '', 'ID Number: TR009 Joven B Felipe', '', 'Yes', b'0', b'1', b'0', '00:00:00', '201', ''),
 (1568, 2, '2020-03-08', '00:00:00', '00:00:00', '', 'ID Number: 01021415 Ginelou Nino T Garzon', 'ID Number: 02021415 Marvin G Lucas', 'ID Number: 03022017 Joel  Abrio', 'ID Number: 15070218 Reynan  Jardin', 'ID Number: 22100418 Geran Roel  Angco', 'ID Number: 23150218 Carlo  Temporosa', 'ID Number: 24120518 John Carlo  Amoranto', 'ID Number: 25120518 John Isaac D Mallanes', 'Yes', b'1', b'0', b'0', '00:00:00', '', ''),
 (1569, 166, '2020-03-08', '00:00:00', '00:00:00', 'NO VIEW 4839 Cameras', 'ID Number: 01021415 Ginelou Nino T Garzon', 'ID Number: 15070218 Reynan  Jardin', 'ID Number: TR011 Al R Santa Lucia', 'ID Number: TR010 Jeorge M Reyno', 'ID Number: 22100418 Geran Roel  Angco', 'ID Number: 22100418 Geran Roel  Angco', 'ID Number: 22100418 Geran Roel  Angco', 'ID Number: 22100418 Geran Roel  Angco', 'No', b'1', b'0', b'0', '00:00:00', '', ''),
-(1570, 166, '2020-03-08', '00:00:00', '00:00:00', '', 'ID Number: 01021415 Ginelou Nino T Garzon', 'ID Number: 15070218 Reynan  Jardin', 'ID Number: 20100418 Timothy Paul B Abaya', 'ID Number: TR010 Jeorge M Reyno', 'ID Number: TR011 Al R Santa Lucia', 'ID Number: 25120518 John Isaac D Mallanes', 'ID Number: 25120518 John Isaac D Mallanes', 'ID Number: TR009 Joven B Felipe', 'Yes', b'0', b'1', b'0', '00:00:00', '', ''),
+(1570, 166, '2020-03-08', '00:00:00', '00:00:00', '', 'ID Number: 02021415 Marvin G Lucas', 'ID Number: 15070218 Reynan  Jardin', 'ID Number: 20100418 Timothy Paul B Abaya', 'ID Number: TR010 Jeorge M Reyno', 'ID Number: TR011 Al R Santa Lucia', 'ID Number: 25120518 John Isaac D Mallanes', 'ID Number: 25120518 John Isaac D Mallanes', 'ID Number: TR009 Joven B Felipe', 'Yes', b'0', b'1', b'0', '00:00:00', '', ''),
 (1571, 348, '2020-03-19', '00:00:00', '00:00:00', '2 cams fu vius', 'ID Number: 01021415 Ginelou Nino T Garzon', 'ID Number: 03022017 Joel  Abrio', '', '', '', '', '', '', 'Yes', b'0', b'1', b'0', '00:00:00', '', ''),
 (1572, 348, '2020-03-19', '00:00:00', '00:00:00', '2 cams fu vius', 'ID Number: 01021415 Ginelou Nino T Garzon', 'ID Number: 03022017 Joel  Abrio', '', '', '', '', '', '', 'Yes', b'0', b'1', b'0', '00:00:00', '', ''),
 (1573, 7, '2020-03-19', '00:00:00', '00:00:00', 'sdxf sdf', 'ID Number: 15070218 Reynan  Jardin', 'ID Number: 15070218 Reynan  Jardin', '', '', '', '', '', '', 'Yes', b'0', b'1', b'0', '00:00:00', '', '');
@@ -3890,14 +3895,14 @@ INSERT INTO `items` (`itemCode`, `itemName`, `itemType`, `itemSupplierPrice`, `i
 ('15.6PHILIPSMONITOR', '15.6 inches Philips Monitor', 'Indirect', '2800.00', '3650.00', 5, '2019-04-23', 'SHOWROOM', 'PCWorx', 'Irish'),
 ('164726', 'HDMI Transmitter NVR/DVR 30m', 'Direct', '925.00', '1500.00', 0, '2018-08-22', '', 'Lazada', 'yungga'),
 ('16INCHESLEDMONITOR', '16 Inches LED Monitor', 'Indirect', '1500.00', '1950.00', 4, '2019-02-23', 'SHOWROOM', 'RG&CV Trading Company', 'Irish'),
-('17INLCDMONITORSTYPE', 'DELL 17" LCD MONITOR SQUAD TYPE', 'Direct', '1200.00', '1560.00', 0, '2018-12-08', '', 'CYN CYR ENTERPRISES', 'Ice'),
+('17INLCDMONITORSTYPE', 'DELL 17\" LCD MONITOR SQUAD TYPE', 'Direct', '1200.00', '1560.00', 0, '2018-12-08', '', 'CYN CYR ENTERPRISES', 'Ice'),
 ('19INCHDELLMNTR', 'Dell 19inches Monitor', 'Direct', '1900.00', '2500.00', 0, '2019-02-20', '', 'MIP Desktop&Laptop Computers Trading & Services', 'Irish'),
-('19INCHLCDMONITORWIDE', 'DELL 19" LCD MONITOR WIDE', 'Direct', '1400.00', '1820.00', 0, '2018-12-08', '', 'CYN CYR ENTERPRISES', 'Ice'),
+('19INCHLCDMONITORWIDE', 'DELL 19\" LCD MONITOR WIDE', 'Direct', '1400.00', '1820.00', 0, '2018-12-08', '', 'CYN CYR ENTERPRISES', 'Ice'),
 ('19INCHSAMSUNGMNTR', '19 inches samsung monitor', 'Direct', '1500.00', '2000.00', 0, '2019-03-23', '', 'Interpeople Laptop', 'Irish'),
-('19INLCDMONITORSTYPE', 'DELL 19" LCD MONITOR SQUAD TYPE', 'Direct', '1300.00', '1690.00', 0, '2018-12-08', '', 'CYN CYR ENTERPRISES', 'Ice'),
+('19INLCDMONITORSTYPE', 'DELL 19\" LCD MONITOR SQUAD TYPE', 'Direct', '1300.00', '1690.00', 0, '2018-12-08', '', 'CYN CYR ENTERPRISES', 'Ice'),
 ('201808110002', 'NK-611A(WHITE) 1MP/720P Dome Camera', 'Direct', '600.00', '800.00', 2, '2018-10-06', '', '', 'yungga'),
 ('300611039DEMO', 'HikVision DS-2CE56H0T-ITPF - 5MP Dome Camera', 'Direct', '0.00', '0.00', 0, '2018-10-10', '', 'USTDI', 'yungga'),
-('32INLCDMONITOR', '32" LCD Monitor', 'Direct', '6500.00', '6500.00', 112, '2018-12-10', '', '', 'Irish'),
+('32INLCDMONITOR', '32\" LCD Monitor', 'Direct', '6500.00', '6500.00', 112, '2018-12-10', '', '', 'Irish'),
 ('3399173300818', 'F18 Access Control', 'Direct', '5600.00', '8400.00', 0, '2018-07-12', '3399173300818', '', 'yungga'),
 ('360A3', 'Fisheye 360Cam 2mp', 'Direct', '1300.00', '2500.00', 0, '2018-10-27', '', 'AMAX', 'JLA'),
 ('377RC07HTQ1D', 'Toshiba Disk Drive (MQ01ABD100)', 'Direct', '2900.00', '3800.00', 1, '2018-07-19', '377RC07HTQ1D', 'PSSI', 'josh'),
@@ -3934,7 +3939,7 @@ INSERT INTO `items` (`itemCode`, `itemName`, `itemType`, `itemSupplierPrice`, `i
 ('AMAXIPCAMERA', 'Amax IP Camera', 'Direct', '0.00', '0.00', 1, '2019-01-21', '', '', 'Irish'),
 ('AMX300SCables', 'Siamese Cable 300m', 'Direct', '2700.00', '5500.00', 0, '2018-11-15', '', 'Amax', 'Irish'),
 ('AMXC6305m', 'Amax CAT6 UTP Cable 305m', 'Direct', '12.00', '25.00', 0, '2018-10-29', '', 'AMAX', 'JLA'),
-('AOCLEDMNTR', 'AOC Monitor 23.6" Integrated Speakers Monitor', 'Direct', '7450.00', '9700.00', 0, '2019-02-04', '', 'LAZADA', 'Irish'),
+('AOCLEDMNTR', 'AOC Monitor 23.6\" Integrated Speakers Monitor', 'Direct', '7450.00', '9700.00', 0, '2019-02-04', '', 'LAZADA', 'Irish'),
 ('AT980DEMO', 'GSM Repeater', 'Direct', '0.00', '0.00', 1, '2018-10-10', '', '', 'yungga'),
 ('BACKUPBATTERY', 'Back up Battery for EM Lock', 'Direct', '500.00', '650.00', 0, '2019-03-07', '', 'HYE', 'Irish'),
 ('BNC2RCACON', 'BNC to RCA Connector', 'Direct', '10.00', '25.00', 1, '2018-10-06', '', '', 'yungga'),
@@ -4076,7 +4081,7 @@ INSERT INTO `items` (`itemCode`, `itemName`, `itemType`, `itemSupplierPrice`, `i
 ('KCS-222', 'KCS-222 Amplifier', 'Direct', '5995.00', '7800.00', 0, '2019-03-11', '', 'Makee Electronics Center', 'Irish'),
 ('KG7542DEMO', 'KG7542 Camera for MDVR', 'Direct', '0.00', '0.00', 1, '2019-05-08', '', '', 'Irish'),
 ('KONZERTKS-55V', 'KONZERTKS-SSV 2 way speaker', 'Direct', '2305.00', '3000.00', 1, '2019-04-03', '', 'LAZADA', 'Irish'),
-('KONZERTSG-8W', 'Konzert SG-8W 8" Speaker', 'Direct', '692.67', '900.47', 1, '2019-04-01', '', 'LAZADA', 'Irish'),
+('KONZERTSG-8W', 'Konzert SG-8W 8\" Speaker', 'Direct', '692.67', '900.47', 1, '2019-04-01', '', 'LAZADA', 'Irish'),
 ('KONZERTSPEAKER', 'Konzert Speaker 100watts', 'Direct', '2384.00', '3100.00', 0, '2019-04-01', '', 'LAZADA', 'Irish'),
 ('KONZERTSPEAKERAMPLI', 'Konzert Speaker/Amplifier KCS-212', 'Direct', '4253.00', '5550.00', 0, '2019-04-01', '', 'LAZADA', 'Irish'),
 ('KR601E', 'KR601E (Wiegand)', 'Direct', '1050.00', '1575.00', 0, '2018-09-25', '', 'ACTIV8', 'yungga'),
@@ -4085,12 +4090,12 @@ INSERT INTO `items` (`itemCode`, `itemName`, `itemType`, `itemSupplierPrice`, `i
 ('LBRACKET', 'L-Bracket (Spare)', 'Direct', '0.00', '0.00', 0, '2018-10-10', '', '', 'yungga'),
 ('LX16', 'LX16 Biometrics Time Attendance', 'Direct', '2600.00', '3350.00', 0, '2018-10-11', '', 'PSSI', 'NINO'),
 ('MAGNETICCONTACT', 'MAGNETIC CONTACTS H0-03A', 'Direct', '350.00', '460.00', 1, '2019-05-08', '', 'PSSI', 'Irish'),
-('MASSLDMNTR32', 'Mass LED Monitor 32"', 'Direct', '4500.00', '6000.00', 0, '2019-01-18', '', '', 'Irish'),
+('MASSLDMNTR32', 'Mass LED Monitor 32\"', 'Direct', '4500.00', '6000.00', 0, '2019-01-18', '', '', 'Irish'),
 ('MB-200WID', 'MB-200 with ID', 'Direct', '6500.00', '8500.00', 0, '2019-03-23', '', 'HYE', 'Irish'),
 ('MDVRAVIATIONCONNECTOR12M', 'MDVR Aviation Connector 12m', 'Direct', '315.00', '410.00', 2, '2019-05-08', '', 'PSSI', 'Irish'),
 ('MDVRAVIATIONCONNECTOR15M', 'MDVR Aviation Connector 15m', 'Direct', '0.00', '0.00', 4, '2019-03-05', '', 'KCA', 'Irish'),
 ('MINIUPS', 'Mini UPS 5V', 'Direct', '1000.00', '1300.00', 4, '2019-05-04', '', 'PSSI', 'Irish'),
-('MTSBSHLEDMNTR23INCH', 'Mitsubishi LED Monitor with Built in Speaker 23"', 'Direct', '3700.00', '4900.00', 0, '2019-01-21', '', 'PC Green Trading', 'Irish'),
+('MTSBSHLEDMNTR23INCH', 'Mitsubishi LED Monitor with Built in Speaker 23\"', 'Direct', '3700.00', '4900.00', 0, '2019-01-21', '', 'PC Green Trading', 'Irish'),
 ('MUSHROOMMIC', 'MUSHROOM MIC', 'Direct', '185.00', '250.00', 0, '2019-03-08', '', 'HYE', 'Irish'),
 ('NECPHONEDEMO', 'NEC Telephone', 'Direct', '0.00', '0.00', 1, '2018-10-10', '', '', 'yungga'),
 ('NK-611A', 'Amax NK-611A 720P Dome Type', 'Direct', '0.00', '0.00', 0, '2019-01-21', '', 'Amax', 'Irish'),
@@ -4112,6 +4117,7 @@ INSERT INTO `items` (`itemCode`, `itemName`, `itemType`, `itemSupplierPrice`, `i
 ('PS-DA1202', 'Power Supply 2amp', 'Direct', '120.00', '250.00', 5, '2019-02-16', '', 'HYE', 'Irish'),
 ('PS-DA1204', '4amp Power Supply', 'Direct', '280.00', '350.00', 0, '2019-02-14', '', 'HYE', 'Irish'),
 ('PS-DA1205', 'Power Supply 5amp', 'Direct', '300.00', '750.00', 1, '2019-02-27', '', 'HYE', 'Irish'),
+('PVCCONNECTOR', 'PVC CONNECTOR', 'Indirect', '10.00', '15.00', 100, '2020-04-19', 'stante', 'FNB GEN MERCHANDISE', 'Irish'),
 ('RFID', 'RFID Cards', 'Direct', '25.00', '50.00', 0, '2018-10-06', '', '', 'yungga'),
 ('RFIDCARDW/OUTNO', 'RFID Card without number', 'Direct', '21.00', '30.00', 0, '2019-03-23', '', 'HYE', 'Irish'),
 ('RG6WITHPOWER', 'RG^ with power', 'Direct', '1900.00', '2500.00', 0, '2019-03-26', '', 'HYE', 'Irish'),
@@ -4164,7 +4170,7 @@ INSERT INTO `items` (`itemCode`, `itemName`, `itemType`, `itemSupplierPrice`, `i
 ('VTEMD', 'Motion Detector', 'Direct', '0.00', '0.00', 1, '2018-10-10', '', '', 'yungga'),
 ('WD-10PURX', '1TB Hard Disk Western Digital', 'Direct', '2465.00', '3250.00', 0, '2019-04-27', '', 'Precious Island Corp.', 'Irish'),
 ('WD10EURX', '1TB WD HDD', 'Direct', '1950.00', '2900.00', 9, '2019-04-12', '', 'ISS-I', 'Irish'),
-('WD10PURX', '1TB WESTERN DIGITAL HDD', 'Direct', '2550.00', '3500.00', 39, '2019-02-27', '', 'HYE', 'Irish'),
+('WD10PURX', '1TB WESTERN DIGITAL HDD', 'Direct', '2550.00', '3500.00', 30, '2019-02-27', '', 'HYE', 'Irish'),
 ('WD10PURX-78', 'Western Digital 1TB HDD', 'Direct', '2510.00', '3260.00', 0, '2019-02-20', '', 'Arrowtek', 'Irish'),
 ('WD10PURX-78E5EYO', 'WD 1TB Hdd', 'Direct', '2550.00', '3500.00', 0, '2019-01-03', '', 'HYE', 'JLA'),
 ('WD20PURX-78P6ZY0', 'WD20PURX-78P6ZY0 (2TB HDD)', 'Direct', '3540.00', '4485.00', 0, '2018-10-05', '', 'PHILTEQ Enterprise Inc.', 'yungga'),
@@ -4284,7 +4290,8 @@ INSERT INTO `item_in_logs` (`id`, `item_code`, `quantity`, `date_purchased`) VAL
 (75, 'DIESELBAG0025', 1, '2019-12-13'),
 (76, 'SIOMAICONDENSED', 100, '2019-12-13'),
 (77, 'SDFJO', 23, '2020-02-24'),
-(78, 'HYERG6WOPWR', 53, '2020-03-02');
+(78, 'HYERG6WOPWR', 53, '2020-03-02'),
+(79, 'PVCCONNECTOR', 100, '2020-04-19');
 
 -- --------------------------------------------------------
 
@@ -4298,15 +4305,18 @@ CREATE TABLE `project_report` (
   `description` varchar(1000) NOT NULL,
   `date_requested` date NOT NULL,
   `date_implemented` date NOT NULL,
-  `date_finished` date NOT NULL
+  `date_finished` date NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `project_report`
 --
 
-INSERT INTO `project_report` (`id`, `name`, `description`, `date_requested`, `date_implemented`, `date_finished`) VALUES
-(4, 'EKIS FOUNDATION', 'INSTALLATION OF 8 CAMERAS', '2020-04-02', '2020-04-02', '2020-04-02');
+INSERT INTO `project_report` (`id`, `name`, `description`, `date_requested`, `date_implemented`, `date_finished`, `is_deleted`) VALUES
+(4, 'EKIS FOUNDATION inc', 'INSTALLATION OF 8 CAMERAS', '2020-04-02', '2020-04-02', '2020-04-02', 0),
+(5, 'RENILLA MANDAC', 'Installation of 4 Analog Cameras', '2020-04-06', '2020-04-07', '0000-00-00', 0),
+(6, 'fwefwefsdf', 'sdfsdfsdf', '2020-04-06', '2020-04-06', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -4325,7 +4335,11 @@ CREATE TABLE `project_report_assigned_it` (
 --
 
 INSERT INTO `project_report_assigned_it` (`id`, `assigned_it`, `pr_id`) VALUES
-(1, 'Reynan Jardin', 4);
+(1, 'Reynan Jardin', 4),
+(2, 'Timothy Paul Abaya', 5),
+(3, 'wefwfafa awerf awe', 6),
+(4, 'wefwfafa awerf awe', 6),
+(5, 'Timothy Paul Abaya', 4);
 
 -- --------------------------------------------------------
 
@@ -4345,9 +4359,18 @@ CREATE TABLE `project_report_assigned_tech` (
 
 INSERT INTO `project_report_assigned_tech` (`id`, `assigned_tech`, `pr_id`) VALUES
 (1, 'Al Sta Lucia', 4),
-(2, 'Dexter Carinal', 4),
-(3, 'Joseph Dela Cruz', 4),
-(4, 'Marvin Evasco', 4);
+(5, 'Al Sta Lucia', 5),
+(6, 'John Dexter Carinal', 5),
+(7, 'Kevin Buniol', 5),
+(8, 'Reymon Ambet', 5),
+(9, 'awefadwfsaf', 6),
+(10, 'asdfsdf', 6),
+(11, 'asdfsdf', 6),
+(12, 'asdfsdf', 6),
+(13, 'asdfsdf', 6),
+(14, 'Dexter Carinal', 4),
+(15, 'Joseph Dela Cruz', 4),
+(16, 'Christian Cawaling', 4);
 
 -- --------------------------------------------------------
 
@@ -4371,9 +4394,24 @@ CREATE TABLE `project_report_direct_item` (
 --
 
 INSERT INTO `project_report_direct_item` (`id`, `direct_item`, `qty`, `amt`, `consumed`, `returns`, `remarks`, `pr_id`) VALUES
-(10, 'CAM BULLET', '5.00', '0.00', '0.00', '0.00', '', 4),
-(11, 'CAM DOME', '5.00', '0.00', '0.00', '0.00', '', 4),
-(12, 'CAM FISHEYE', '5.00', '0.00', '0.00', '0.00', '', 4);
+(10, '', '5.00', '0.00', '0.00', '0.00', '', 4),
+(13, 'DS-2CE16D0T-IRPF', '3.00', '0.00', '0.00', '0.00', '', 5),
+(14, 'DS-2CE56D0T-IRPF', '1.00', '0.00', '0.00', '0.00', '', 5),
+(15, 'DS-7204HGHI-K1', '1.00', '0.00', '0.00', '0.00', '', 5),
+(16, 'SKYHAWK 1TB HDD', '1.00', '0.00', '0.00', '0.00', '', 5),
+(17, '10A 9CH CPS', '1.00', '0.00', '0.00', '0.00', '', 5),
+(18, 'CAT5E PATCH CABLE (mtrs)', '150.00', '0.00', '0.00', '0.00', '', 5),
+(19, 'RJ45', '4.00', '0.00', '0.00', '0.00', '', 5),
+(20, 'DC Male', '5.00', '0.00', '0.00', '0.00', '', 5),
+(21, 'DC Female', '5.00', '0.00', '0.00', '0.00', '', 5),
+(22, 'Video Balun', '5.00', '0.00', '0.00', '0.00', '', 5),
+(23, 'Monitor w/ VGA', '1.00', '0.00', '0.00', '0.00', '', 5),
+(24, '703 Bullet Bracket', '1.00', '0.00', '0.00', '0.00', '', 5),
+(25, '702 Bullet Bracket', '1.00', '0.00', '0.00', '0.00', '', 5),
+(26, 'fewef', '2.00', '0.00', '0.00', '0.00', '', 6),
+(27, 'fewef', '3.00', '0.00', '0.00', '0.00', '', 6),
+(28, 'fewef', '4.00', '0.00', '0.00', '0.00', '', 6),
+(29, 'fewef', '5.00', '0.00', '0.00', '0.00', '', 6);
 
 -- --------------------------------------------------------
 
@@ -4397,8 +4435,18 @@ CREATE TABLE `project_report_indirect_item` (
 --
 
 INSERT INTO `project_report_indirect_item` (`id`, `indirect_item`, `qty`, `amt`, `consumed`, `returns`, `remarks`, `pr_id`) VALUES
-(7, 'ELECTRICAL TAPE', '5.00', '0.00', '0.00', '0.00', '', 4),
-(8, 'PVC MOLDINGS', '4.00', '0.00', '0.00', '0.00', '', 4);
+(7, 'ELECTRICAL TAPE', '5.00', '25.00', '3.00', '2.00', 'USED IN ELECTRICAL CONDUITS', 4),
+(8, 'PVC MOLDINGS', '4.00', '120.00', '2.00', '3.00', '', 4),
+(9, 'Flexible Hose 1/2 (mtrs)', '21.00', '0.00', '0.00', '0.00', '', 5),
+(10, 'PVC Moldings', '1.00', '0.00', '0.00', '0.00', '', 5),
+(11, 'Amco Box', '2.00', '0.00', '0.00', '0.00', '', 5),
+(12, 'Blank Plate', '2.00', '0.00', '0.00', '0.00', '', 5),
+(13, 'Square Box w/ Cover', '1.00', '0.00', '0.00', '0.00', '', 5),
+(14, 'Junction Box w/ Cover', '2.00', '0.00', '0.00', '0.00', '', 5),
+(15, 'wefwef', '2.00', '0.00', '0.00', '0.00', '', 6),
+(16, 'wefwef', '3.00', '0.00', '0.00', '0.00', '', 6),
+(17, 'wefwef', '4.00', '0.00', '0.00', '0.00', '', 6),
+(18, 'wefwef', '5.00', '0.00', '0.00', '0.00', '', 6);
 
 -- --------------------------------------------------------
 
@@ -4419,8 +4467,9 @@ CREATE TABLE `project_report_pettycash` (
 --
 
 INSERT INTO `project_report_pettycash` (`id`, `petty_cash`, `date`, `remarks`, `pr_id`) VALUES
-(7, '500.00', '2020-04-02', 'Gasoline and Indirect Items', 4),
-(8, '500.00', '2020-04-02', 'Indirect Items', 4);
+(7, '0.00', '2020-04-02', 'Gasoline and Indirect Items shimmering shining', 4),
+(9, '1000.00', '2020-04-06', 'For Tolls', 5),
+(10, '124123.00', '0000-00-00', '', 6);
 
 -- --------------------------------------------------------
 
@@ -4444,7 +4493,15 @@ CREATE TABLE `project_report_tools_rqstd` (
 INSERT INTO `project_report_tools_rqstd` (`id`, `tool_rqstd`, `qty`, `returns`, `remarks`, `pr_id`) VALUES
 (2, 'BARENA', '1.00', '0.00', '', 4),
 (3, 'E-LADDER', '1.00', '0.00', '', 4),
-(4, 'PORTABLE LADDER', '1.00', '0.00', '', 4);
+(5, '16 Ft. Ladder', '1.00', '0.00', '', 5),
+(6, 'Ordinary Drill', '1.00', '0.00', '', 5),
+(7, 'Hammer', '1.00', '0.00', '', 5),
+(8, 'Extension Wire', '1.00', '0.00', '', 5),
+(9, 'fwefwef', '5.00', '0.00', 'fwef', 6),
+(10, 'fwefwef', '5.00', '0.00', 'fwefwef', 6),
+(11, 'fwefwef', '5.00', '0.00', 'fwef', 6),
+(12, 'fwefwef', '5.00', '0.00', 'fwefwef', 6),
+(13, 'fwefwef', '5.00', '0.00', 'fwefwe', 6);
 
 -- --------------------------------------------------------
 
@@ -4465,8 +4522,12 @@ CREATE TABLE `project_report_transpo` (
 --
 
 INSERT INTO `project_report_transpo` (`id`, `transpo`, `date`, `remarks`, `pr_id`) VALUES
-(7, '500.00', '2020-04-02', 'To Site', 4),
-(8, '500.00', '2020-04-02', 'To Office', 4);
+(9, '2000.00', '2020-04-06', 'For Gasoline', 5),
+(10, '412412.00', '0000-00-00', '', 6),
+(19, '500.00', '2020-04-02', 'To Site', 4),
+(20, '500.00', '2020-04-02', 'To Office', 4),
+(21, '1000.00', '2020-04-02', 'To Office', 4),
+(22, '5484.00', '0000-00-00', 'gergerg', 4);
 
 -- --------------------------------------------------------
 
@@ -4482,14 +4543,6 @@ CREATE TABLE `pulled_out` (
   `pullout_to` int(11) NOT NULL,
   `discount` decimal(18,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pulled_out`
---
-
-INSERT INTO `pulled_out` (`id`, `item_code`, `date_of_punch`, `stocks_to_pullout`, `pullout_to`, `discount`) VALUES
-(1, 'YH280U', '2020-03-28 16:17:30', 1, 201, '0.00'),
-(2, '12UDATACABINET', '2020-03-28 16:18:00', 5, 350, '0.00');
 
 -- --------------------------------------------------------
 
@@ -4686,7 +4739,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (93, '2018-06-29 13:27:18', 'VTACPS02', 'Power Supply 2A', 'Uncategorized', '150.00', '280.00', 1, '0000-00-00', '', '', ''),
 (94, '2018-06-29 13:50:19', 'VTSEB01', 'Stainless Exit Button', 'Biometrics Time Attendance', '200.00', '500.00', 1, '0000-00-00', '', '', ''),
 (95, '2018-06-29 13:51:42', 'VTHDMIC630', 'HDMI Extender Cat6 30m', 'Uncategorized', '1000.00', '2000.00', 1, '0000-00-00', '', '', ''),
-(96, '2018-06-29 13:52:46', 'VT24MAB', '24" Monitor (Any)', 'Uncategorized', '3500.00', '7000.00', 1, '0000-00-00', '', '', ''),
+(96, '2018-06-29 13:52:46', 'VT24MAB', '24\" Monitor (Any)', 'Uncategorized', '3500.00', '7000.00', 1, '0000-00-00', '', '', ''),
 (97, '2018-06-29 13:54:08', 'VTAGM1', 'Amax Golf Mic', 'Uncategorized', '150.00', '450.00', 4, '0000-00-00', '', '', ''),
 (98, '2018-06-29 13:59:58', 'VTACPS01', 'Power Supply 1A', 'Uncategorized', '100.00', '180.00', 2, '0000-00-00', '', '', ''),
 (99, '2018-06-29 14:00:46', 'VTACPS01', 'Power Supply 1A', 'Uncategorized', '100.00', '180.00', 1, '0000-00-00', '', '', ''),
@@ -4934,7 +4987,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (341, '2018-09-27 10:52:14', 'VTACPS02', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 1, '0000-00-00', '', '', ''),
 (342, '2018-09-28 10:51:07', 'DH-HACHDW1000RN-0360B-S3', 'DH-HACHDW1000RN-0360B-S3', 'CCTV', '400.00', '1000.00', 14, '2018-09-28', '', '', 'YUNGGA'),
 (343, '2018-09-28 10:52:13', 'DH-HACHFW1000RN-0360B-S3', 'DH-HACHFW1000RN-0360B-S3', 'CCTV', '415.00', '1000.00', 2, '2018-09-28', '', '', 'YUNGGA'),
-(344, '2018-09-28 10:57:28', '19INCHMONITOR', 'AOC 19" MONITOR', 'CCTV', '0.00', '5500.00', 1, '2018-09-28', '', '', 'YUNGGA'),
+(344, '2018-09-28 10:57:28', '19INCHMONITOR', 'AOC 19\" MONITOR', 'CCTV', '0.00', '5500.00', 1, '2018-09-28', '', '', 'YUNGGA'),
 (345, '2018-09-28 10:59:46', 'SKYHAWK2TB', '2TB SKYHAWK WD HDD', 'CCTV', '0.00', '3661.00', 1, '2018-09-28', '', '', 'YUNGGA'),
 (346, '2018-09-28 11:01:53', 'PSUPPLY5A', 'Power Supply 5A', 'CCTV', '350.00', '950.00', 1, '2018-09-28', '', '', 'yungga'),
 (347, '2018-09-28 11:03:12', 'VTA4WS', '4 Way Splitter', 'CCTV', '75.00', '150.00', 1, '0000-00-00', '', '', ''),
@@ -5116,7 +5169,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (522, '2018-10-11 16:20:24', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 50, '0000-00-00', '', '', ''),
 (523, '2018-10-11 16:22:48', 'VIDEOBALUN', 'Video Balun', 'CCTV', '80.00', '200.00', 30, '0000-00-00', '', '', ''),
 (524, '2018-10-11 16:39:46', 'DS-1LN5E-S', 'Hikvision CAT5e UTP Cable', 'Network Management', '10.00', '14.00', 610, '2018-10-11', '', 'USTDI', 'Joel'),
-(525, '2018-10-11 16:45:45', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'Uncategorized', '2540.00', '3500.00', 3, '2018-10-11', '', 'Philteq', 'Vin'),
+(525, '2018-10-11 16:45:45', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'Uncategorized', '2540.00', '3500.00', 3, '2018-10-11', '', 'Philteq', 'Vin'),
 (526, '2018-10-11 16:52:53', 'TVI-4CH2D2B-2MP', 'KIT', 'CCTV', '5950.00', '7800.00', 3, '2018-10-11', '', 'Philteq', 'Vin'),
 (527, '2018-10-11 16:54:45', 'TVI-4CH2D2B-2MP', 'KIT', 'CCTV', '5950.00', '7800.00', 1, '0000-00-00', '', '', ''),
 (528, '2018-10-11 16:58:51', 'DS-2CE56D0T-IRRMM 2MP Dome', 'DS-2CE56D0T-IRMMF 3.6mm lens 4-in-1 Eco Series', 'CCTV', '660.00', '870.00', 5, '2018-10-11', '', 'Philteq', 'Vin'),
@@ -5149,7 +5202,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (555, '2018-10-17 10:41:46', 'VTEGPSA', 'GPS Antenna', 'CCTV', '0.00', '0.00', 1, '0000-00-00', '', '', ''),
 (556, '2018-10-17 10:53:18', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 2, '0000-00-00', '', '', ''),
 (557, '2018-10-17 10:53:59', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '25.00', 2, '0000-00-00', '', '', ''),
-(558, '2018-10-18 13:25:39', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, '0000-00-00', '', '', ''),
+(558, '2018-10-18 13:25:39', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, '0000-00-00', '', '', ''),
 (559, '2018-10-18 13:28:50', 'VIDEOBALUN', 'Video Balun', 'CCTV', '80.00', '200.00', 1, '0000-00-00', '', '', ''),
 (560, '2018-10-18 13:29:31', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '25.00', 1, '0000-00-00', '', '', ''),
 (561, '2018-10-18 13:29:54', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 1, '0000-00-00', '', '', ''),
@@ -5176,7 +5229,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (582, '2018-10-18 15:24:07', 'AID650', '650VA/360W', 'Uncategorized', '1350.00', '1800.00', 1, '0000-00-00', '', '', ''),
 (583, '2018-10-18 15:37:04', '300609197', 'DS-2CE56DOT-IRMMF', 'CCTV', '660.00', '900.00', 12, '2018-10-18', '', 'Philteq', 'Joel'),
 (584, '2018-10-18 15:40:35', '300219538', 'DS-7216HQHI-k2', 'CCTV', '6682.00', '8700.00', 1, '2018-10-18', '', 'Philteq', 'Joel'),
-(585, '2018-10-18 15:43:05', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 3, '0000-00-00', '', '', ''),
+(585, '2018-10-18 15:43:05', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 3, '0000-00-00', '', '', ''),
 (586, '2018-10-18 15:45:55', 'WD40PUKZ-85TTDY0', '4TB Hdd Western Digital', 'CCTV', '6150.00', '7500.00', 2, '2018-10-18', '', 'Philteq', 'Joel'),
 (587, '2018-10-20 08:13:35', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 'CCTV', '100.00', '250.00', 1, '0000-00-00', '', '', ''),
 (588, '2018-10-20 08:14:26', 'BNCCONNECTORC', 'BNC Connector Coupler', 'CCTV', '10.00', '25.00', 2, '0000-00-00', '', '', ''),
@@ -5235,7 +5288,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (641, '2018-10-27 14:31:07', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 3, '0000-00-00', '', '', ''),
 (642, '2018-10-27 14:31:29', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '25.00', 1, '0000-00-00', '', '', ''),
 (643, '2018-10-27 14:32:08', 'BNCCONNECTORSTG', 'BNC Connector Screw Type - G', 'CCTV', '10.00', '30.00', 2, '0000-00-00', '', '', ''),
-(644, '2018-10-29 14:19:02', 'S17LCDM', 'Samsung 17" LCD Monitor', 'Uncategorized', '1600.00', '2100.00', 2, '2018-10-29', '', 'MIP', 'JLA'),
+(644, '2018-10-29 14:19:02', 'S17LCDM', 'Samsung 17\" LCD Monitor', 'Uncategorized', '1600.00', '2100.00', 2, '2018-10-29', '', 'MIP', 'JLA'),
 (645, '2018-10-29 14:19:37', 'DS-1LN5E-S', 'Hikvision CAT5e UTP Cable', 'Network Management', '10.00', '14.00', 1, '0000-00-00', '', '', ''),
 (646, '2018-10-29 14:24:28', '360A3', 'Fisheye 360Cam 2mp', 'CCTV', '1300.00', '2500.00', 1, '2018-10-27', '', 'AMAX', 'JLA'),
 (647, '2018-10-29 14:25:04', 'POWSUP12V4A', 'Power Supply 4A', 'CCTV', '300.00', '480.00', 1, '0000-00-00', '', '', ''),
@@ -5280,7 +5333,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (686, '2018-11-06 16:03:23', 'VIDEOBALUN', 'Video Balun', 'CCTV', '80.00', '200.00', 5, '0000-00-00', '', '', ''),
 (687, '2018-11-06 16:04:38', 'DHHACHCVR1200RN', 'DH-HAC-HFW1200RN Bullet 2mp', 'CCTV', '650.00', '850.00', 2, '0000-00-00', '', '', ''),
 (688, '2018-11-06 16:07:23', 'DHHACHFW1200BN', 'DHHACHFW1200BN Bullet 2mp Varifocal', 'CCTV', '1120.00', '2000.00', 1, '2018-11-06', '', 'PSSI', 'JLA'),
-(689, '2018-11-08 09:29:00', 'ITECHIE24LEDMONITOR', 'Itechie LED Monitor 24"', 'Uncategorized', '3993.00', '5200.00', 1, '2018-11-08', '', 'Lazada', 'JLA'),
+(689, '2018-11-08 09:29:00', 'ITECHIE24LEDMONITOR', 'Itechie LED Monitor 24\"', 'Uncategorized', '3993.00', '5200.00', 1, '2018-11-08', '', 'Lazada', 'JLA'),
 (690, '2018-11-08 09:31:17', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 1, '0000-00-00', '', '', ''),
 (691, '2018-11-08 09:35:50', 'VTAGM1', 'Amax Golf Mic', 'CCTV', '150.00', '450.00', 1, '0000-00-00', '', '', ''),
 (692, '2018-11-09 15:17:27', '300509583', 'DS-2CE16DOT-IRPF', 'CCTV', '570.00', '1000.00', 2, '0000-00-00', '', '', ''),
@@ -5392,7 +5445,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (797, '2018-11-26 11:46:00', 'ST1000VX005', 'Seagate Skyhawk 1TB HDD', 'CCTV', '0.00', '3500.00', 1, '0000-00-00', '', '', ''),
 (798, '2018-11-26 11:51:13', '300507922', 'DS-2CE16COT-IRPF (Hikvision 1mp Bullet)', 'CCTV', '438.00', '900.00', 1, '0000-00-00', '', '', ''),
 (799, '2018-11-26 17:39:42', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 'CCTV', '965.00', '1200.00', 4, '0000-00-00', '', '', ''),
-(800, '2018-11-26 17:40:04', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, '0000-00-00', '', '', ''),
+(800, '2018-11-26 17:40:04', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, '0000-00-00', '', '', ''),
 (801, '2018-11-26 17:40:45', '300609134', 'DS-2CE56C0T-IRPF (HikVision Dome 1MP)', 'CCTV', '465.00', '800.00', 1, '0000-00-00', '', '', ''),
 (802, '2018-12-03 11:32:17', 'DHI-XVR4116HS', 'Dahua', 'CCTV', '3600.00', '4680.00', 1, '0000-00-00', '', '', ''),
 (803, '2018-12-03 11:33:50', 'DH-HAC-HFW1000RN', 'DH-HAC-HFW1000RN', 'CCTV', '600.00', '800.00', 4, '0000-00-00', '', '', ''),
@@ -5404,21 +5457,21 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (809, '2018-12-03 11:42:36', 'POWSUP12V20A', 'Power Supply 12V 20A', 'CCTV', '1200.00', '1560.00', 1, '2018-12-03', '', 'AMAX Trading', 'yungga'),
 (810, '2018-12-03 11:43:00', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '25.00', 50, '0000-00-00', '', '', ''),
 (811, '2018-12-03 11:43:20', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 2, '0000-00-00', '', '', ''),
-(812, '2018-12-08 10:57:02', 'S17LCDM', 'Samsung 17" LCD Monitor', 'Uncategorized', '1600.00', '2100.00', 1, '0000-00-00', '', '', ''),
-(813, '2018-12-08 11:02:18', '17INLCDMONITORSTYPE', '17" LCD Monitor S. Type', 'CCTV', '1200.00', '1560.00', 2, '2018-12-08', '', '', 'Reynan'),
+(812, '2018-12-08 10:57:02', 'S17LCDM', 'Samsung 17\" LCD Monitor', 'Uncategorized', '1600.00', '2100.00', 1, '0000-00-00', '', '', ''),
+(813, '2018-12-08 11:02:18', '17INLCDMONITORSTYPE', '17\" LCD Monitor S. Type', 'CCTV', '1200.00', '1560.00', 2, '2018-12-08', '', '', 'Reynan'),
 (814, '2018-12-08 11:02:52', 'DELLMONITOR17', 'LED Monitor 17inches', 'Uncategorized', '2500.00', '2500.00', 1, '0000-00-00', '', '', ''),
-(815, '2018-12-08 11:06:38', '19INCHLCDMONITORWIDE', '19" LCD Monitor Wide', 'CCTV', '1400.00', '1820.00', 1, '2018-12-08', '', '', 'yungga'),
+(815, '2018-12-08 11:06:38', '19INCHLCDMONITORWIDE', '19\" LCD Monitor Wide', 'CCTV', '1400.00', '1820.00', 1, '2018-12-08', '', '', 'yungga'),
 (816, '2018-12-08 11:07:29', 'SF400', 'SF 400 Access Control', 'Biometrics and Access Control', '0.00', '0.00', 1, '0000-00-00', '', '', ''),
-(817, '2018-12-08 11:09:33', '17INLCDMONITORSTYPE', '17" LCD Monitor S. Type', 'CCTV', '1200.00', '1560.00', 1, '0000-00-00', '', '', ''),
-(818, '2018-12-08 11:09:54', '19INCHLCDMONITORWIDE', '19" LCD Monitor Wide', 'CCTV', '1400.00', '1820.00', 1, '0000-00-00', '', '', ''),
-(819, '2018-12-08 11:10:47', '19INLCDMONITORSTYPE', 'LCD Monitor 19" S. Type', 'CCTV', '1300.00', '1690.00', 1, '2018-12-08', '', '', 'yungga'),
+(817, '2018-12-08 11:09:33', '17INLCDMONITORSTYPE', '17\" LCD Monitor S. Type', 'CCTV', '1200.00', '1560.00', 1, '0000-00-00', '', '', ''),
+(818, '2018-12-08 11:09:54', '19INCHLCDMONITORWIDE', '19\" LCD Monitor Wide', 'CCTV', '1400.00', '1820.00', 1, '0000-00-00', '', '', ''),
+(819, '2018-12-08 11:10:47', '19INLCDMONITORSTYPE', 'LCD Monitor 19\" S. Type', 'CCTV', '1300.00', '1690.00', 1, '2018-12-08', '', '', 'yungga'),
 (820, '2018-12-08 11:11:30', 'DCMALE', 'DC Connector - Male', 'CCTV', '8.00', '25.00', 30, '0000-00-00', '', '', ''),
 (821, '2018-12-08 11:12:22', 'VGA30M', 'VGA 30 Meters', 'CCTV', '1000.00', '1300.00', 1, '2018-12-08', '', '', 'yungga'),
 (822, '2018-12-08 11:12:41', 'VIDEOBALUN', 'Video Balun', 'CCTV', '80.00', '200.00', 5, '0000-00-00', '', '', ''),
 (823, '2018-12-08 11:13:17', 'ACCE1670SWU156LEDMONITOR', 'AOC 15.6 Led Monitor', 'CCTV', '2800.00', '4200.00', 1, '0000-00-00', '', '', ''),
 (824, '2018-12-08 11:14:31', 'TVI-4CH2D2B-2MP', 'KIT', 'CCTV', '5950.00', '7800.00', 1, '0000-00-00', '', '', ''),
 (825, '2018-12-08 11:14:57', 'TVI-8CH4D4B-2MP', '8CH Kit 2mp Hikvision', 'CCTV', '10350.00', '13500.00', 1, '0000-00-00', '', '', ''),
-(826, '2018-12-08 11:15:26', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, '0000-00-00', '', '', ''),
+(826, '2018-12-08 11:15:26', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 'CCTV', '2540.00', '3500.00', 1, '0000-00-00', '', '', ''),
 (827, '2018-12-08 11:16:46', 'BNCCONNECTORSTS', 'BNC Connector Screw Type - S', 'CCTV', '10.00', '25.00', 10, '0000-00-00', '', '', ''),
 (828, '2018-12-08 11:17:00', 'DCFEMALE', 'DC Connector - Female', 'CCTV', '8.00', '25.00', 30, '0000-00-00', '', '', ''),
 (829, '2018-12-08 11:17:23', 'RJ45', 'RJ 45', 'Network Management', '2.00', '15.00', 50, '0000-00-00', '', '', ''),
@@ -5440,13 +5493,13 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (845, '2018-12-08 11:49:38', 'SIAMESE100M', 'Siamese Cable 100 Meters', 'CCTV', '900.00', '1170.00', 1, '2018-12-08', '', '', 'yungga'),
 (846, '2018-12-08 11:50:25', 'SIAMESE200M', 'Siamese Cable 200 Meters', 'CCTV', '1800.00', '2340.00', 1, '2018-12-08', '', '', 'yungga'),
 (847, '2018-12-08 11:50:58', '300509583', 'DS-2CE16DOT-IRPF', 'CCTV', '570.00', '1200.00', 4, '0000-00-00', '', '', ''),
-(848, '2018-12-10 11:34:21', 'SO0009748566', 'iTechie "24 inch LED TV', 'Uncategorized', '3993.00', '5190.90', 0, '2018-12-10', '', '', 'Ice'),
-(849, '2018-12-10 11:38:51', 'SO0009748566', 'iTechie "24 inch LED TV', 'Uncategorized', '3993.00', '5190.90', 1, '0000-00-00', '', '', ''),
+(848, '2018-12-10 11:34:21', 'SO0009748566', 'iTechie \"24 inch LED TV', 'Uncategorized', '3993.00', '5190.90', 0, '2018-12-10', '', '', 'Ice'),
+(849, '2018-12-10 11:38:51', 'SO0009748566', 'iTechie \"24 inch LED TV', 'Uncategorized', '3993.00', '5190.90', 1, '0000-00-00', '', '', ''),
 (850, '2018-12-10 15:25:49', '300509583', 'HikVision - DS-2CE16D0T-IRPF (2mp Bullet)', 'CCTV', '570.00', '1200.00', 1, '0000-00-00', '', '', ''),
 (851, '2018-12-10 15:27:43', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 'CCTV', '965.00', '930.00', 1, '0000-00-00', '', '', ''),
 (852, '2018-12-10 15:31:44', 'POWSUP12V10APB', 'Power Supply 10A 9ch with Panel Box', 'CCTV', '900.00', '1500.00', 1, '0000-00-00', '', '', ''),
 (853, '2018-12-10 15:34:13', '300221241', 'DS-7208HQHI-KI Hilvision 8CH DVR 1080p', 'CCTV', '3525.00', '4600.00', 1, '0000-00-00', '', '', ''),
-(854, '2018-12-10 15:36:30', '32INLCDMONITOR', '32" LCD Monitor', 'CCTV', '6500.00', '6500.00', 1, '2018-12-10', '', '', 'Irish'),
+(854, '2018-12-10 15:36:30', '32INLCDMONITOR', '32\" LCD Monitor', 'CCTV', '6500.00', '6500.00', 1, '2018-12-10', '', '', 'Irish'),
 (855, '2018-12-11 16:36:06', '300219536', 'DS-7216HQHI-K1 HIKVISION 16CH DVR', 'CCTV', '6094.00', '8000.00', 1, '2018-12-11', '', 'Precious Island Corp.', 'Irish'),
 (856, '2018-12-11 16:38:32', '300609134', 'HikVision - DS-2CE56C0T-IRPF (1mp Dome)', 'CCTV', '465.00', '800.00', 5, '0000-00-00', '', '', ''),
 (857, '2018-12-11 16:57:18', 'ST2000VX003', 'Seagate 2TB/64MB HDD', 'CCTV', '3420.00', '4446.00', 1, '0000-00-00', '', '', ''),
@@ -5525,7 +5578,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (930, '2018-12-28 16:15:46', 'VIDEOBALUN', 'AMAX Video Balun', 'CCTV', '80.00', '200.00', 3, '0000-00-00', '', '', ''),
 (931, '2018-12-28 16:52:11', 'VIDEOBALUN', 'AMAX Video Balun', 'CCTV', '80.00', '200.00', 3, '0000-00-00', '', '', ''),
 (932, '2018-12-29 07:03:12', 'ST1000VX005', 'Seagate Skyhawk 1TB HDD', 'CCTV', '0.00', '3500.00', 1, '0000-00-00', '', '', ''),
-(933, '2018-12-29 07:08:12', '19INCHLCDMONITORWIDE', 'DELL 19" LCD MONITOR WIDE', 'CCTV', '1400.00', '1820.00', 1, '0000-00-00', '', '', ''),
+(933, '2018-12-29 07:08:12', '19INCHLCDMONITORWIDE', 'DELL 19\" LCD MONITOR WIDE', 'CCTV', '1400.00', '1820.00', 1, '0000-00-00', '', '', ''),
 (934, '2018-12-29 07:09:44', 'VGA1P5M', 'VGA 1.5m', 'CCTV', '80.00', '200.00', 1, '0000-00-00', '', '', ''),
 (935, '2018-12-29 07:40:55', 'BNC2RCACON', 'BNC to RCA Connector', 'CCTV', '10.00', '25.00', 3, '0000-00-00', '', '', ''),
 (936, '2018-12-29 07:47:12', 'POWSUP12V1A', 'Power Supply 1A', 'CCTV', '90.00', '200.00', 1, '0000-00-00', '', '', ''),
@@ -5630,8 +5683,8 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (1035, '2019-01-18 14:14:55', 'LX16', 'LX16 Biometrics Time Attendance', 'Biometrics and Access Control', '2570.00', '3350.00', 1, '0000-00-00', '', '', ''),
 (1036, '2019-01-18 14:17:13', 'POWSUP12V1A', 'Power Supply 1A', 'CCTV', '90.00', '200.00', 5, '0000-00-00', '', '', ''),
 (1037, '2019-01-18 14:17:35', 'POWSUP12V2A', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 5, '0000-00-00', '', '', ''),
-(1038, '2019-01-18 14:24:01', 'ACELEDMNTR24INCH', 'Ace LED Monitor 24"', 'Uncategorized', '4130.00', '5400.00', 2, '2019-01-18', '', 'LAZADA', 'Irish'),
-(1039, '2019-01-18 15:17:22', 'MASSLDMNTR32', 'Mass LED Monitor 32"', 'Uncategorized', '4500.00', '6000.00', 1, '2019-01-18', '', '', 'Irish'),
+(1038, '2019-01-18 14:24:01', 'ACELEDMNTR24INCH', 'Ace LED Monitor 24\"', 'Uncategorized', '4130.00', '5400.00', 2, '2019-01-18', '', 'LAZADA', 'Irish'),
+(1039, '2019-01-18 15:17:22', 'MASSLDMNTR32', 'Mass LED Monitor 32\"', 'Uncategorized', '4500.00', '6000.00', 1, '2019-01-18', '', '', 'Irish'),
 (1040, '2019-01-19 09:45:03', 'BNCCONNECTORC', 'BNC Connector Coupler', 'CCTV', '10.00', '25.00', 2, '0000-00-00', '', '', ''),
 (1041, '2019-01-19 10:15:16', 'VIDEOBALUN-ERA-200P', 'Video Balun HD/CVI/TVI Screw Type', 'Accessories', '100.00', '250.00', 3, '0000-00-00', '', '', ''),
 (1042, '2019-01-21 08:09:38', 'POWSUP12V2A', 'Power Supply 2A', 'CCTV', '150.00', '280.00', 1, '0000-00-00', '', '', ''),
@@ -5648,7 +5701,7 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (1053, '2019-01-21 13:44:34', 'SE-218MAHD', 'Smart Eye Dome type 720P', 'CCTV', '0.00', '0.00', 1, '2019-01-21', '', '', 'Irish'),
 (1054, '2019-01-21 13:49:15', 'TD-7421AS', 'TVT Camera', 'CCTV', '0.00', '0.00', 1, '2019-01-21', '', '', 'Irish'),
 (1055, '2019-01-21 13:49:57', 'AMAXIPCAMERA', 'Amax IP Camera', 'CCTV', '0.00', '0.00', 1, '2019-01-21', '', '', 'Irish'),
-(1056, '2019-01-21 15:12:45', 'MTSBSHLEDMNTR23INCH', 'Mitsubishi LED Monitor with Built in Speaker 23"', 'Uncategorized', '3700.00', '4900.00', 1, '2019-01-21', '', 'PC Green Trading', 'Irish'),
+(1056, '2019-01-21 15:12:45', 'MTSBSHLEDMNTR23INCH', 'Mitsubishi LED Monitor with Built in Speaker 23\"', 'Uncategorized', '3700.00', '4900.00', 1, '2019-01-21', '', 'PC Green Trading', 'Irish'),
 (1057, '2019-01-21 15:14:42', 'PHILFLEXCOAXIALRG6', 'Coaxial RG6 without power', 'Uncategorized', '2500.00', '3250.00', 300, '2019-01-21', '', 'Activ8', 'Irish'),
 (1058, '2019-01-23 16:49:01', 'DH-HAC-HFW1000RMN-0306B', 'DH-HAC-HFW1000RMN-0306B Bullet type 1080P', 'CCTV', '660.00', '900.00', 2, '2019-01-23', '', 'HYE', 'Irish'),
 (1059, '2019-01-23 16:49:59', 'DH-HAC-HDW1200MN-0306B', 'DH-HAC-HFW1000RMN-0306B Dome Type 1080P', 'CCTV', '660.00', '900.00', 1, '2019-01-23', '', 'HYE', 'Irish'),
@@ -5682,7 +5735,8 @@ INSERT INTO `register_history` (`id`, `date_time`, `itemCode`, `itemName`, `item
 (1087, '2020-01-27 18:11:46', '15.6PHILIPSMONITOR', '15.6 inches Philips Monitor', 'Indirect', '2800.00', '3650.00', 4, '2019-04-23', 'SHOWROOM', 'PCWorx', 'Irish'),
 (1088, '2020-01-27 18:12:04', '16INCHESLEDMONITOR', '16 Inches LED Monitor', 'Direct', '1500.00', '1950.00', 4, '2019-02-23', 'SHOWROOM', 'RG&CV Trading Company', 'Irish'),
 (1089, '2020-02-24 11:30:24', 'SDFJO', 'FJIEWO', 'Direct', '378729.00', '23487.00', 23, '2020-02-24', 'DFVDFV', 'DMFLKV', 'MDLKC'),
-(1090, '2020-03-02 16:36:22', 'HYERG6WOPWR', 'RG6 Without Power', 'Direct', '11.00', '17.00', 53, '2020-03-02', 'SHOWROOM', 'HYE', 'Cen');
+(1090, '2020-03-02 16:36:22', 'HYERG6WOPWR', 'RG6 Without Power', 'Direct', '11.00', '17.00', 53, '2020-03-02', 'SHOWROOM', 'HYE', 'Cen'),
+(1091, '2020-04-19 06:04:52', 'PVCCONNECTOR', 'PVC CONNECTOR', 'Indirect', '10.00', '15.00', 100, '2020-04-19', '', 'FNB GEN MERCHANDISE', 'Irish');
 
 -- --------------------------------------------------------
 
@@ -5750,7 +5804,7 @@ CREATE TABLE `sales_dispatch` (
 INSERT INTO `sales_dispatch` (`id`, `dispatch_date`, `dispatch_time`, `assigned_sales`, `address`, `customer_1`, `purpose_1`, `time_in_1`, `time_out_1`, `customer_2`, `purpose_2`, `time_in_2`, `time_out_2`, `customer_3`, `purpose_3`, `time_in_3`, `time_out_3`, `customer_4`, `purpose_4`, `time_in_4`, `time_out_4`, `contact_1`, `contact_2`, `contact_3`, `contact_4`) VALUES
 (13, '2019-05-11', '13:00:00', 'Hajji R Marasigan', 'Muntinlupa Area', '', '', '00:00:00', '00:00:00', '', '', '00:00:00', '00:00:00', '', '', '00:00:00', '00:00:00', '', '', '00:00:00', '00:00:00', '', '', '', ''),
 (14, '2019-05-11', '01:01:00', 'John Joel A Guevarra', 'Laguna Area', '', 'After Sales Support', '00:00:00', '00:00:00', '', '', '00:00:00', '00:00:00', '', '', '00:00:00', '00:00:00', '', '', '00:00:00', '00:00:00', '', '', '', ''),
-(15, '2019-05-21', '08:00:00', 'Hajji R Marasigan', 'Muntinlupa Area', 'Child''s Mind Learning Center', 'Ocular/Site Visit', '01:00:00', '04:00:00', 'Ayala Malls', 'After Sales Support', '13:00:00', '14:00:00', 'Ayala Malls', 'Meeting', '03:00:00', '04:00:00', 'Grind Meat', 'After Sales Support', '01:00:00', '17:00:00', '584984', '', '', '');
+(15, '2019-05-21', '08:00:00', 'Hajji R Marasigan', 'Muntinlupa Area', 'Child\'s Mind Learning Center', 'Ocular/Site Visit', '01:00:00', '04:00:00', 'Ayala Malls', 'After Sales Support', '13:00:00', '14:00:00', 'Ayala Malls', 'Meeting', '03:00:00', '04:00:00', 'Grind Meat', 'After Sales Support', '01:00:00', '17:00:00', '584984', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -5828,6 +5882,92 @@ INSERT INTO `service_call` (`id`, `customer_id`, `concerned_problem`, `date_serv
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `service_report`
+--
+
+CREATE TABLE `service_report` (
+  `id` int(11) NOT NULL,
+  `customer_name` varchar(500) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `date_requested` date NOT NULL,
+  `date_implemented` date NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `service_report`
+--
+
+INSERT INTO `service_report` (`id`, `customer_name`, `description`, `date_requested`, `date_implemented`, `is_deleted`) VALUES
+(1, '387', 'sdf lksjdofjskdf ksjf s', '2020-05-02', '2020-05-02', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_report_direct_item`
+--
+
+CREATE TABLE `service_report_direct_item` (
+  `id` int(11) NOT NULL,
+  `sr_id` int(11) NOT NULL,
+  `direct_item_id` varchar(255) NOT NULL,
+  `qty_rqstd` int(11) NOT NULL,
+  `returns` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `service_report_direct_item`
+--
+
+INSERT INTO `service_report_direct_item` (`id`, `sr_id`, `direct_item_id`, `qty_rqstd`, `returns`) VALUES
+(1, 1, '360A3', 10, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_report_indirect_item`
+--
+
+CREATE TABLE `service_report_indirect_item` (
+  `id` int(11) NOT NULL,
+  `sr_id` int(11) NOT NULL,
+  `indirect_item_id` varchar(255) NOT NULL,
+  `qty_rqstd` int(11) NOT NULL,
+  `returns` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `service_report_indirect_item`
+--
+
+INSERT INTO `service_report_indirect_item` (`id`, `sr_id`, `indirect_item_id`, `qty_rqstd`, `returns`) VALUES
+(1, 1, '12UDATACABINET', 2, 324235);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service_report_tools`
+--
+
+CREATE TABLE `service_report_tools` (
+  `id` int(11) NOT NULL,
+  `sr_id` int(11) NOT NULL,
+  `tools_id` varchar(255) NOT NULL,
+  `qty_rqstd` int(11) NOT NULL,
+  `returns` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `service_report_tools`
+--
+
+INSERT INTO `service_report_tools` (`id`, `sr_id`, `tools_id`, `qty_rqstd`, `returns`) VALUES
+(1, 1, 'FSCREW09', 12412512, 12412),
+(4, 1, 'FSCREW09', 32, 12);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `technicians`
 --
 
@@ -5853,6 +5993,7 @@ INSERT INTO `technicians` (`id`, `lastname`, `firstname`, `middlename`) VALUES
 ('20100418', 'Abaya', 'Timothy Paul', 'Borre'),
 ('22100418', 'Angco', 'Geran Roel', ''),
 ('23150218', 'Temporosa', 'Carlo', ''),
+('234234', 'asdasfas', 'fasfa', 'ga'),
 ('24120518', 'Amoranto', 'John Carlo', ''),
 ('25120518', 'Mallanes', 'John Isaac', 'Dalaza'),
 ('TR009', 'Felipe', 'Joven', 'Balijonda'),
@@ -5869,107 +6010,110 @@ CREATE TABLE `tools` (
   `code` varchar(500) NOT NULL,
   `model` varchar(500) NOT NULL,
   `description` varchar(1000) NOT NULL,
+  `type` varchar(255) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` decimal(18,2) NOT NULL
+  `price` decimal(18,2) NOT NULL,
+  `is_deleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tools`
 --
 
-INSERT INTO `tools` (`code`, `model`, `description`, `quantity`, `price`) VALUES
-('BCUTTER1', 'AVIATION SNIP BUTTERFLY CUTTER', 'BLACK W YELLOW', 1, '0.00'),
-('BLOWER01', 'BLOWER', 'BLACK DECKER ORANGE', 1, '0.00'),
-('CRIMPER1', 'CRIMPER', 'OUBAO TOOL GREEN', 1, '0.00'),
-('CRIMPER2', 'CRIMPER', 'LOTUS YELLOW W GRAY', 1, '0.00'),
-('CRIMPER3', 'CRIMPER', 'RED', 1, '0.00'),
-('CRIMPER4', 'CRIMPER', 'GREEN HANDLE', 1, '0.00'),
-('CTROWEL1', 'CEMENT TROWEL', 'BROWN HANDLE', 1, '0.00'),
-('CTROWEL2', 'CEMENT TROWEL', 'BLUE W ORANGE HANDLE', 1, '0.00'),
-('EDRILL01', 'ELECTRIC DRILL', 'BLACK + DECKER ORANGE', 1, '0.00'),
-('EDRILL02', 'ELECTRIC DRILL', 'METABO GREEN', 1, '0.00'),
-('EDRILL03', 'ELECTRIC DRILL', 'BOSCH', 1, '0.00'),
-('EDRILL04', 'ELECTRIC DRILL', 'BOSCH GSB500 RE', 1, '0.00'),
-('FSCREW01', 'FLAT SCREW', 'CRESTON (YELLOW)', 1, '46.25'),
-('FSCREW02', 'FLAT SCREW', 'CRESTON (YELLOW)', 1, '46.25'),
-('FSCREW03', 'FLAT SCREW', 'ROSCO TRANSPARENT BLUE', 1, '0.00'),
-('FSCREW04', 'FLAT SCREW', 'RUBICON BLACK,YELLOW', 1, '0.00'),
-('FSCREW05', 'FLAT SCREW', 'ACE EAGLE BLUE', 1, '60.00'),
-('FSCREW06', 'FLAT SCREW', 'ACE EAGLE BLUE', 1, '60.00'),
-('FSCREW07', 'FLAT SCREW', 'LONG BLUE GREEN', 1, '0.00'),
-('FSCREW08', 'FLAT SCREW', 'SMALL BLACK W RED', 1, '0.00'),
-('FSCREW09', 'FLAT SCREW', 'YELLOW W BLACK', 1, '0.00'),
-('GLUEGUN1', 'GLUE GUN', 'CRESTON', 1, '0.00'),
-('GOGGLES1', 'SAFETY SUNGLASS', 'ACE CLEAR W BLACK', 1, '100.00'),
-('GOGGLES2', 'SAFETY SUNGLASS', 'ACE CLEAR W BLACK', 1, '100.00'),
-('GOGGLES3', 'SAFETY GLASSES', 'ACECLEAR', 1, '90.00'),
-('GOGGLES4', 'SAFETY GLASSES', 'ACE CLEAR', 1, '90.00'),
-('GOGGLES5', 'SAFETY GLASSES', 'BLUE', 1, '0.00'),
-('GOGGLES6', 'SAFETY GLASSES', 'BLUE', 1, '0.00'),
-('GRINDER1', 'GRINDER', 'MAKTEC MT954 ORANGE', 1, '0.00'),
-('GRINDER2', 'GRINDER', 'BLACK+DECKER ORANGE', 1, '0.00'),
-('GUNTCKR1', 'GUN TUCKER', 'BLACK W RED', 1, '0.00'),
-('HAMMER01', 'HAMMER', 'ACE TRAMONTINA MASTER', 1, '0.00'),
-('HAMMER02', 'HAMMER', 'ACE TRAMONTINA MASTER', 1, '0.00'),
-('HAMMER03', 'HAMMER', 'BROWN', 1, '0.00'),
-('HAMMER04', 'HAMMER', 'BROWN HANDLE', 1, '0.00'),
-('HAMMER05', 'HAMMER', 'BALCK HANDLE', 1, '0.00'),
-('HRDHAT02', 'HARD HAT', 'ACE (BLUE)', 1, '0.00'),
-('HRDHAT03', 'HARD HAT', 'WHITE', 1, '0.00'),
-('HRDHAT04', 'HARD HAT', 'SPIDER KING (BLUE)', 1, '0.00'),
-('HRDHAT05', 'HARD HAT', 'MSA (WHITE)', 1, '0.00'),
-('HRDHAT06', 'HARD HAT', 'ACE (BLUE)', 1, '0.00'),
-('HRDHAT07', 'HARD HAT', 'SPIDERKING (BLUE)', 1, '0.00'),
-('LDDR0001', '16 fT LADDER', 'SURESTEP', 1, '0.00'),
-('LDDR0002', '16 fT LADDER', 'SURESTEP', 1, '0.00'),
-('LDDR0003', '16 fT LADDER', 'STEPGUARD', 1, '0.00'),
-('LNPLRS01', 'LONG NOSE PLIERS', 'TACTIX BLACK W ORANGE', 1, '0.00'),
-('LNPLRS02', 'LONG NOSE PLIERS', 'BLACK W RED', 1, '0.00'),
-('LNPLRS03', 'MINI LONG NOSE', 'ACE EAGLE MINI LONG NOSE ORANGE W BLUE', 1, '150.00'),
-('LNPLRS04', 'MINI LONG NOSE', 'ACE EAGLE MINI LONG NOSE ORANGE W BLUE', 1, '150.00'),
-('LSQUARE1', 'L- SQUARE', 'STAINLESS', 1, '0.00'),
-('LTESTER1', 'NETWORK CABLE TESTER', 'RJ45 + RJ11', 1, '0.00'),
-('LTESTER2', 'LAN TESTER', 'NETWORK TOOLS', 1, '0.00'),
-('LVLBAR01', 'LEVEL BAR', 'MMT 39" INCH', 1, '0.00'),
-('METER002', 'METER', 'GRAY 3M', 1, '0.00'),
-('PLIERS01', 'PLIERS', 'CRESTON (YELLOW)', 1, '160.00'),
-('PLIERS02', 'PLIERS', 'BLACK', 1, '0.00'),
-('PSCREW01', 'PHILIPSCREW', 'CRESTON (YELLOW)', 1, '46.25'),
-('PSCREW02', 'PHILIPSCREW', 'CRESTON (YELLOW)', 1, '46.25'),
-('PSCREW03', 'PHILIPSCREW', 'STANLEY (YELLOW)', 1, '0.00'),
-('PSCREW04', 'PHILIPSCREW', '(NAVY BLUE,ORANGE)', 1, '0.00'),
-('PSCREW05', 'PHILIPSCREW', '(RED W/ YELLOW)', 1, '0.00'),
-('PSCREW06', 'PHILIPSCREW', '(ACE EAGLE,ORANGE)', 1, '60.00'),
-('PSCREW07', 'PHILIPSCREW', 'ACE EAGLE ORANGE', 1, '60.00'),
-('PSCREW08', 'PHILIPSCREW', 'CRESTON TRANPARENT W RED', 1, '0.00'),
-('RVEST001', 'REFLECTORIZED VEST', 'SUPER TUFF (NEON GREEN W BLACK)', 1, '0.00'),
-('RVEST002', 'REFLECTORIZED VEST', 'SUPER TUFF (NEON GREEN W GRAY)', 1, '0.00'),
-('RVEST003', 'REFLECTORIZED VEST', 'orange', 1, '0.00'),
-('RVEST004', 'REFLECTORIZED VEST', 'ACE (ORANGE)', 1, '150.00'),
-('RVEST005', 'REFLECTORIZED VEST', 'ACE (NEON GREEN W GRAY)', 1, '150.00'),
-('RVEST006', 'REFLECTORIZED VEST', 'ACE (ORANGE)', 1, '150.00'),
-('RVEST007', 'REFLECTORIZED VEST', 'ACE (NEON GREEN0', 1, '150.00'),
-('RVEST008', 'REFLECTORIZED VEST', 'NITE GEAR ORANGE', 1, '150.00'),
-('RVEST009', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST010', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST011', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST012', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST013', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST014', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST015', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST016', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST017', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST018', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVEST019', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', 1, '150.00'),
-('RVTGUN01', 'RIVET GUN', 'MMT BLACK W YELLOW', 1, '0.00'),
-('RVTGUN02', 'RIVET GUN', 'OKURA BLACK W BLUE', 1, '0.00'),
-('SPATULA1', 'SPATULA', 'YELLOW ORANGE', 1, '0.00'),
-('VACCUM01', 'VACCUM', 'BLAST VAC 2 RED', 1, '0.00'),
-('VACCUM02', 'VACCUM', 'SILVER', 1, '0.00'),
-('WLDRILL1', 'WIRE LESS DRILL', 'STANLEY GRAY', 1, '0.00'),
-('WLDRILL2', 'WIRE LESS DRILL', 'STANLEY ORANGE', 1, '0.00'),
-('WMASK001', 'WELDING MASK', 'CRESTON (YELLOW)', 1, '0.00'),
-('WOODSAW1', 'WOOD SAW', 'POWER HOUSE BLACK W YELLOW', 1, '0.00');
+INSERT INTO `tools` (`code`, `model`, `description`, `type`, `quantity`, `price`, `is_deleted`) VALUES
+('BCUTTER1', 'AVIATION SNIP BUTTERFLY CUTTER', 'BLACK W YELLOW', 'Hand Tools', 1, '500.00', 1),
+('BLOWER01', 'BLOWER', 'BLACK DECKER ORANGE', 'Hand Tools', 5, '300.00', 0),
+('CRIMPER1', 'CRIMPER', 'OUBAO TOOL GREEN', '', 1, '0.00', 1),
+('CRIMPER2', 'CRIMPER', 'LOTUS YELLOW W GRAY', '', 1, '0.00', 0),
+('CRIMPER3', 'CRIMPER', 'RED', '', 1, '0.00', 0),
+('CRIMPER4', 'CRIMPER', 'GREEN HANDLE', '', 1, '0.00', 0),
+('CTROWEL1', 'CEMENT TROWEL', 'BROWN HANDLE', '', 1, '0.00', 0),
+('CTROWEL2', 'CEMENT TROWEL', 'BLUE W ORANGE HANDLE', '', 1, '0.00', 0),
+('EDRILL01', 'ELECTRIC DRILL', 'BLACK + DECKER ORANGE', '', 1, '0.00', 0),
+('EDRILL02', 'ELECTRIC DRILL', 'METABO GREEN', '', 1, '0.00', 0),
+('EDRILL03', 'ELECTRIC DRILL', 'BOSCH (Good)', '', 1, '0.00', 0),
+('EDRILL04', 'ELECTRIC DRILL', 'BOSCH GSB500 RE', 'Power Tools', 1, '0.00', 0),
+('FSCREW01', 'FLAT SCREW', 'CRESTON (YELLOW)', '', 1, '46.25', 0),
+('FSCREW02', 'FLAT SCREW', 'CRESTON (YELLOW)', '', 1, '46.25', 0),
+('FSCREW03', 'FLAT SCREW', 'ROSCO TRANSPARENT BLUE', '', 1, '0.00', 0),
+('FSCREW04', 'FLAT SCREW', 'RUBICON BLACK,YELLOW', '', 1, '0.00', 0),
+('FSCREW05', 'FLAT SCREW', 'ACE EAGLE BLUE', '', 1, '60.00', 0),
+('FSCREW06', 'FLAT SCREW', 'ACE EAGLE BLUE', '', 1, '60.00', 0),
+('FSCREW07', 'FLAT SCREW', 'LONG BLUE GREEN', '', 1, '0.00', 0),
+('FSCREW08', 'FLAT SCREW', 'SMALL BLACK W RED', '', 1, '0.00', 0),
+('FSCREW09', 'FLAT SCREW', 'YELLOW W BLACK', '', 1, '0.00', 0),
+('GLUEGUN1', 'GLUE GUN', 'CRESTON', '', 1, '0.00', 0),
+('GOGGLES1', 'SAFETY SUNGLASS', 'ACE CLEAR W BLACK', '', 1, '100.00', 0),
+('GOGGLES2', 'SAFETY SUNGLASS', 'ACE CLEAR W BLACK', '', 1, '100.00', 0),
+('GOGGLES3', 'SAFETY GLASSES', 'ACECLEAR', '', 1, '90.00', 0),
+('GOGGLES4', 'SAFETY GLASSES', 'ACE CLEAR', '', 1, '90.00', 0),
+('GOGGLES5', 'SAFETY GLASSES', 'BLUE', '', 1, '0.00', 0),
+('GOGGLES6', 'SAFETY GLASSES', 'BLUE', '', 1, '0.00', 0),
+('GRINDER1', 'GRINDER', 'MAKTEC MT954 ORANGE', '', 1, '0.00', 0),
+('GRINDER2', 'GRINDER', 'BLACK+DECKER ORANGE', '', 1, '0.00', 0),
+('GUNTCKR1', 'GUN TUCKER', 'BLACK W RED', '', 1, '0.00', 0),
+('HAMMER01', 'HAMMER', 'ACE TRAMONTINA MASTER', '', 1, '0.00', 0),
+('HAMMER02', 'HAMMER', 'ACE TRAMONTINA MASTER', '', 1, '0.00', 0),
+('HAMMER03', 'HAMMER', 'BROWN', '', 1, '0.00', 0),
+('HAMMER04', 'HAMMER', 'BROWN HANDLE', '', 1, '0.00', 0),
+('HAMMER05', 'HAMMER', 'BALCK HANDLE', '', 1, '0.00', 0),
+('HRDHAT02', 'HARD HAT', 'ACE (BLUE)', '', 1, '0.00', 0),
+('HRDHAT03', 'HARD HAT', 'WHITE', '', 1, '0.00', 0),
+('HRDHAT04', 'HARD HAT', 'SPIDER KING (BLUE)', '', 1, '0.00', 0),
+('HRDHAT05', 'HARD HAT', 'MSA (WHITE)', '', 1, '0.00', 0),
+('HRDHAT06', 'HARD HAT', 'ACE (BLUE)', '', 1, '0.00', 0),
+('HRDHAT07', 'HARD HAT', 'SPIDERKING (BLUE)', '', 1, '0.00', 0),
+('KEMERUT', 'CHINCNCIJ', 'DSFSDF DSFAS SDFASDFG FDSAGSD G DSFG', 'Power Tools', 5, '2000.00', 0),
+('LDDR0001', '16 fT LADDER', 'SURESTEP', '', 1, '0.00', 0),
+('LDDR0002', '16 fT LADDER', 'SURESTEP', '', 1, '0.00', 0),
+('LDDR0003', '16 fT LADDER', 'STEPGUARD', '', 1, '0.00', 0),
+('LNPLRS01', 'LONG NOSE PLIERS', 'TACTIX BLACK W ORANGE', '', 1, '0.00', 0),
+('LNPLRS02', 'LONG NOSE PLIERS', 'BLACK W RED', '', 1, '0.00', 0),
+('LNPLRS03', 'MINI LONG NOSE', 'ACE EAGLE MINI LONG NOSE ORANGE W BLUE', '', 1, '150.00', 0),
+('LNPLRS04', 'MINI LONG NOSE', 'ACE EAGLE MINI LONG NOSE ORANGE W BLUE', '', 1, '150.00', 0),
+('LSQUARE1', 'L- SQUARE', 'STAINLESS', '', 1, '0.00', 0),
+('LTESTER1', 'NETWORK CABLE TESTER', 'RJ45 + RJ11', '', 1, '0.00', 0),
+('LTESTER2', 'LAN TESTER', 'NETWORK TOOLS', '', 1, '0.00', 0),
+('LVLBAR01', 'LEVEL BAR', 'MMT 39\" INCH', '', 1, '0.00', 0),
+('METER002', 'METER', 'GRAY 3M', '', 1, '0.00', 0),
+('PLIERS01', 'PLIERS', 'CRESTON (YELLOW)', '', 1, '160.00', 0),
+('PLIERS02', 'PLIERS', 'BLACK', '', 1, '0.00', 0),
+('PSCREW01', 'PHILIPSCREW', 'CRESTON (YELLOW)', '', 1, '46.25', 0),
+('PSCREW02', 'PHILIPSCREW', 'CRESTON (YELLOW)', '', 1, '46.25', 0),
+('PSCREW03', 'PHILIPSCREW', 'STANLEY (YELLOW)', '', 1, '0.00', 0),
+('PSCREW04', 'PHILIPSCREW', '(NAVY BLUE,ORANGE)', '', 1, '0.00', 0),
+('PSCREW05', 'PHILIPSCREW', '(RED W/ YELLOW)', '', 1, '0.00', 0),
+('PSCREW06', 'PHILIPSCREW', '(ACE EAGLE,ORANGE)', '', 1, '60.00', 0),
+('PSCREW07', 'PHILIPSCREW', 'ACE EAGLE ORANGE', '', 1, '60.00', 0),
+('PSCREW08', 'PHILIPSCREW', 'CRESTON TRANPARENT W RED', '', 1, '0.00', 0),
+('RVEST001', 'REFLECTORIZED VEST', 'SUPER TUFF (NEON GREEN W BLACK)', '', 1, '0.00', 0),
+('RVEST002', 'REFLECTORIZED VEST', 'SUPER TUFF (NEON GREEN W GRAY)', '', 1, '0.00', 0),
+('RVEST003', 'REFLECTORIZED VEST', 'orange', '', 1, '0.00', 0),
+('RVEST004', 'REFLECTORIZED VEST', 'ACE (ORANGE)', '', 1, '150.00', 0),
+('RVEST005', 'REFLECTORIZED VEST', 'ACE (NEON GREEN W GRAY)', '', 1, '150.00', 0),
+('RVEST006', 'REFLECTORIZED VEST', 'ACE (ORANGE)', '', 1, '150.00', 0),
+('RVEST007', 'REFLECTORIZED VEST', 'ACE (NEON GREEN0', '', 1, '150.00', 0),
+('RVEST008', 'REFLECTORIZED VEST', 'NITE GEAR ORANGE', '', 1, '150.00', 0),
+('RVEST009', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST010', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST011', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST012', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST013', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST014', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST015', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST016', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST017', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST018', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVEST019', 'REFLECTORIZED VEST', 'NITE GEAR (ORANGE)', '', 1, '150.00', 0),
+('RVTGUN01', 'RIVET GUN', 'MMT BLACK W YELLOW', '', 1, '0.00', 0),
+('RVTGUN02', 'RIVET GUN', 'OKURA BLACK W BLUE', '', 1, '0.00', 0),
+('SPATULA1', 'SPATULA', 'YELLOW ORANGE', '', 1, '0.00', 0),
+('VACCUM01', 'VACCUM', 'BLAST VAC 2 RED', '', 1, '0.00', 0),
+('VACCUM02', 'VACCUM', 'SILVER', '', 1, '0.00', 0),
+('WLDRILL1', 'WIRE LESS DRILL', 'STANLEY GRAY', '', 1, '0.00', 0),
+('WLDRILL2', 'WIRE LESS DRILL', 'STANLEY ORANGE', '', 1, '0.00', 0),
+('WMASK001', 'WELDING MASK', 'CRESTON (YELLOW)', '', 1, '0.00', 0),
+('WOODSAW1', 'WOOD SAW', 'POWER HOUSE BLACK W YELLOW', '', 1, '0.00', 0);
 
 -- --------------------------------------------------------
 
@@ -6089,11 +6233,11 @@ INSERT INTO `warranty_items` (`id`, `warranty_slip`, `item_code`, `item_name`, `
 (38, 'VTE-09-181012', '300509583', 'Hikvision 2MP Bullet', 1, '1000.00', '1000.00'),
 (39, 'VTE-010-181016', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 4, '1200.00', '4800.00'),
 (40, 'VTE-010-181016', '300221242', 'DS-7204HQHI-K1 TURBO HD DVR', 1, '3100.00', '3100.00'),
-(41, 'VTE-010-181016', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 1, '3500.00', '3500.00'),
+(41, 'VTE-010-181016', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 1, '3500.00', '3500.00'),
 (42, 'VTE-010-181016', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 4, '250.00', '1000.00'),
 (46, 'VTE-011-181016', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 4, '1200.00', '4800.00'),
 (47, 'VTE-011-181016', '300221242', 'DS-7204HQHI-K1 TURBO HD DVR', 1, '3100.00', '3100.00'),
-(48, 'VTE-011-181016', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 1, '3500.00', '3500.00'),
+(48, 'VTE-011-181016', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 1, '3500.00', '3500.00'),
 (49, 'VTE-011-181016', 'SIAMESEPRE18M', '18 Meters Premade Siamese Cable', 5, '250.00', '1250.00'),
 (50, 'VTE-012-181022', 'POWSUP12V5A', 'Power Supply 5A', 1, '700.00', '700.00'),
 (51, 'VTE-012-181022', 'HIKVISION8WAYSPLITTER', 'Hikvision 8way Splitter', 1, '250.00', '250.00'),
@@ -6150,15 +6294,15 @@ INSERT INTO `warranty_items` (`id`, `warranty_slip`, `item_code`, `item_name`, `
 (111, 'VTE-029-181210', '300509583', 'HikVision - DS-2CE16D0T-IRPF (2mp Bullet)', 5, '990.00', '4950.00'),
 (112, 'VTE-029-181210', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 3, '930.00', '2790.00'),
 (113, 'VTE-029-181210', 'POWSUP12V10APB', 'Power Supply 10A 8ch with Panel Box', 1, '1200.00', '1200.00'),
-(114, 'VTE-029-181210', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 1, '2900.00', '2900.00'),
+(114, 'VTE-029-181210', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 1, '2900.00', '2900.00'),
 (115, 'VTE-029-181210', '300221241', 'DS-7208HQHI-KI Hilvision 8CH DVR 1080p', 1, '4600.00', '4600.00'),
-(116, 'VTE-029-181210', '32INLCDMONITOR', '32" LCD Monitor', 1, '6500.00', '6500.00'),
+(116, 'VTE-029-181210', '32INLCDMONITOR', '32\" LCD Monitor', 1, '6500.00', '6500.00'),
 (118, 'VTE-030-181210', '300509583', 'HikVision - DS-2CE16D0T-IRPF (2mp Bullet)', 5, '990.00', '4950.00'),
 (119, 'VTE-030-181210', '300611034', 'DS-2CE56D0T-IRPF (HIKVISION 2MP Dome Camera)', 3, '930.00', '2790.00'),
 (120, 'VTE-030-181210', 'POWSUP12V10APB', 'Power Supply 10A 8ch with Panel Box', 1, '1200.00', '1200.00'),
-(121, 'VTE-030-181210', 'WD10PURZ-85U8XY0', 'WD Purple 3.5'' 1TB SATA HDD', 1, '2900.00', '2900.00'),
+(121, 'VTE-030-181210', 'WD10PURZ-85U8XY0', 'WD Purple 3.5\' 1TB SATA HDD', 1, '2900.00', '2900.00'),
 (122, 'VTE-030-181210', '300221241', 'DS-7208HQHI-KI Hilvision 8CH DVR 1080p', 1, '4600.00', '4600.00'),
-(123, 'VTE-030-181210', '32INLCDMONITOR', '32" LCD Monitor', 1, '6500.00', '6500.00'),
+(123, 'VTE-030-181210', '32INLCDMONITOR', '32\" LCD Monitor', 1, '6500.00', '6500.00'),
 (124, 'VTE-030-181210', 'BNCCONNECTORSTS', 'BNC Connector Screw Type - S', 16, '15.00', '240.00'),
 (125, 'VTE-030-181210', 'DCMALE', 'DC Connector - Male', 8, '15.00', '120.00'),
 (126, 'VTE-031-181230', 'SIAMESE100M', 'Siamese Cable 100 Meters', 1, '1700.00', '1700.00'),
@@ -6387,6 +6531,30 @@ ALTER TABLE `service_call`
   ADD KEY `customer_id` (`customer_id`);
 
 --
+-- Indexes for table `service_report`
+--
+ALTER TABLE `service_report`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `service_report_direct_item`
+--
+ALTER TABLE `service_report_direct_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `service_report_indirect_item`
+--
+ALTER TABLE `service_report_indirect_item`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `service_report_tools`
+--
+ALTER TABLE `service_report_tools`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `technicians`
 --
 ALTER TABLE `technicians`
@@ -6439,146 +6607,199 @@ ALTER TABLE `warranty_slip`
 --
 ALTER TABLE `accounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `calendar_events`
 --
 ALTER TABLE `calendar_events`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=363;
+
 --
 -- AUTO_INCREMENT for table `client_inquiry`
 --
 ALTER TABLE `client_inquiry`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `confirmed_pullouts`
 --
 ALTER TABLE `confirmed_pullouts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1683;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1688;
+
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
 --
 -- AUTO_INCREMENT for table `customer_files`
 --
 ALTER TABLE `customer_files`
   MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `customer_vt`
 --
 ALTER TABLE `customer_vt`
   MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=389;
+
 --
 -- AUTO_INCREMENT for table `delete_history`
 --
 ALTER TABLE `delete_history`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+
 --
 -- AUTO_INCREMENT for table `dispatch_forms`
 --
 ALTER TABLE `dispatch_forms`
   MODIFY `Dispatch_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1574;
+
 --
 -- AUTO_INCREMENT for table `item_in_logs`
 --
 ALTER TABLE `item_in_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+
 --
 -- AUTO_INCREMENT for table `project_report`
 --
 ALTER TABLE `project_report`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `project_report_assigned_it`
 --
 ALTER TABLE `project_report_assigned_it`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `project_report_assigned_tech`
 --
 ALTER TABLE `project_report_assigned_tech`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT for table `project_report_direct_item`
 --
 ALTER TABLE `project_report_direct_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `project_report_indirect_item`
 --
 ALTER TABLE `project_report_indirect_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `project_report_pettycash`
 --
 ALTER TABLE `project_report_pettycash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT for table `project_report_tools_rqstd`
 --
 ALTER TABLE `project_report_tools_rqstd`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
 -- AUTO_INCREMENT for table `project_report_transpo`
 --
 ALTER TABLE `project_report_transpo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `pulled_out`
 --
 ALTER TABLE `pulled_out`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `quote_items`
 --
 ALTER TABLE `quote_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `register_history`
 --
 ALTER TABLE `register_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1091;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1092;
+
 --
 -- AUTO_INCREMENT for table `return_history`
 --
 ALTER TABLE `return_history`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `sales_dispatch`
 --
 ALTER TABLE `sales_dispatch`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT for table `sales_funnel`
 --
 ALTER TABLE `sales_funnel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `service_call`
 --
 ALTER TABLE `service_call`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1005;
+
+--
+-- AUTO_INCREMENT for table `service_report`
+--
+ALTER TABLE `service_report`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `service_report_direct_item`
+--
+ALTER TABLE `service_report_direct_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `service_report_indirect_item`
+--
+ALTER TABLE `service_report_indirect_item`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `service_report_tools`
+--
+ALTER TABLE `service_report_tools`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `tools_pullout`
 --
 ALTER TABLE `tools_pullout`
   MODIFY `toolpullout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `warranty_items`
 --
 ALTER TABLE `warranty_items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+
 --
 -- AUTO_INCREMENT for table `warranty_list`
 --
 ALTER TABLE `warranty_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `warranty_slip`
 --
 ALTER TABLE `warranty_slip`
   MODIFY `warranty_no` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --
@@ -6618,6 +6839,7 @@ ALTER TABLE `warranty_list`
 --
 ALTER TABLE `warranty_slip`
   ADD CONSTRAINT `warranty_slip_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
