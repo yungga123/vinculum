@@ -30,6 +30,12 @@ class CustomersController extends CI_Controller {
 
 		$data = array();
 		foreach($fetch_data as $row) {
+			$installationDate = '';
+
+			if ($row->InstallationDate != '0000-00-00') {
+				$installationDate = date_format(date_create($row->InstallationDate),'F d, Y');
+			}
+
 			$sub_array = array();
 			$sub_array[] = $row->CustomerID;
 			$sub_array[] = '<a href="'.site_url('customer-details/').$row->CustomerID.'" target="_blank">'.$row->CompanyName.'</a>';
@@ -38,7 +44,7 @@ class CustomersController extends CI_Controller {
 			$sub_array[] = $row->ContactNumber;
 			$sub_array[] = $row->EmailAddress;
 			$sub_array[] = $row->Website;
-			$sub_array[] = date_format(date_create($row->InstallationDate),'F d, Y');
+			$sub_array[] = $installationDate;
 			$sub_array[] = $row->Interest;
 			$sub_array[] = $row->Type;
 			$sub_array[] = $row->Notes;
@@ -49,6 +55,8 @@ class CustomersController extends CI_Controller {
 			<button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
 
 			<button type="button" class="btn btn-success btn-sm btn-addcustomerfile" data-toggle="modal" data-target=".modal-addcustomer-file"><i class="fas fa-plus"></i> Add File</button>
+
+			<a href="'.site_url('customers-addbranch/'.$row->CustomerID).'" class="btn btn-sm btn-primary text-bold" target="_blank"><i class="fas fa-code-branch"></i> Add Branch</a>
 
 			';
 
@@ -409,5 +417,75 @@ class CustomersController extends CI_Controller {
 		}
     }
 
+	public function customer_addbranch($id) {
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+			$this->load->model('CustomersModel');
+			$results = $this->CustomersModel->getVtCustomers($id);
+
+			$data = html_variable();
+			$data['title'] = 'Customer Add Branch';
+			$data['results'] = $results;
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('customers/customers_addbranch');
+			$this->load->view('templates/footer');
+			$this->load->view('customers/script');
+
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
+	public function customer_addbranch_validate() {
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'branch_contact',
+				'label' => 'Branch Contact',
+				'rules' => '',
+				'errors' => [
+					'' => ''
+				]
+			]
+		];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$validate['success'] = true;
+
+			$data = [
+				'CompanyName' => $this->input->post('customer_name'),
+				'ContactPerson' => $this->input->post('contact_person'),
+				'Address' => $this->input->post('customer_address'),
+				'ContactNumber' => $this->input->post('contact_number'),
+				'EmailAddress' => $this->input->post('email_address'),
+				'Website' => $this->input->post('customer_website'),
+				'InstallationDate' => $this->input->post('installation_date'),
+				'Interest' => $this->input->post('customer_interest'),
+				'Type' => $this->input->post('customer_type'),
+				'Notes' => $this->input->post('customer_notes')
+			];
+
+
+			$this->load->model('CustomersModel');
+			$this->CustomersModel->add_vtCustomer($data);
+
+
+		} 
+		else {
+		$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
     
 }

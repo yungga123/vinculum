@@ -17,26 +17,42 @@ defined('BASEPATH') or die('Access Denied');
 
 	<section class="content">
 		<div class="container-fluid">
+
 			<div class="row">
-				<div class="col-sm-12">
-					<div class="card">
-						<div class="card-header">
-							<p style="font-weight: bold;">Menu Selection</p>
+				<div class="col-sm-3">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<p style="font-weight: bold;">Menu Selection</p>
+								</div>
+								<div class="card-body">
+
+									<a href="<?php echo site_url('customers-print') ?>" class="btn btn-primary btn-block text-bold" target="_blank"><i class="fas fa-print"></i> Print Customer Database</a>
+									
+									<button type="button" class="btn btn-warning btn-block text-bold" data-toggle="modal" data-target=".modal-customerdetail-info"><i class="fas fa-print"></i> Print Customer Details</button>
+
+									<button type="button" class="btn btn-info btn-block text-bold" data-toggle="modal" data-target=".modal-addcustomer-info"><i class="fas fa-folder"></i> Add Customer File</button>
+								</div>
+							</div>
 						</div>
-						<div class="card-body">
-							<a  href="<?php echo site_url('customers-add') ?>" class="btn btn-success"><i class="fas fa-plus"></i> Add Customer</a>
+					</div>
 
-							<a href="<?php echo site_url('customers-print') ?>" class="btn btn-primary" target="_blank"><i class="fas fa-print"></i> Print Customer Database</a>
-							
-							<button type="button" class="btn btn-warning" data-toggle="modal" data-target=".modal-customerdetail-info"><i class="fas fa-print"></i> Print Customer Details</button>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card">
+								<div class="card-header">
+									<label>Customer Adding</label>
+								</div>
 
-							<button type="button" class="btn btn-info" data-toggle="modal" data-target=".modal-addcustomer-info"><i class="fas fa-folder"></i> Add Customer File</button>
+								<div class="card-body">
+									<a  href="<?php echo site_url('customers-add') ?>" class="btn btn-success btn-block text-bold"><i class="fas fa-plus"></i> Add Customer</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-9">
 					<div class="card">
 						<div class="card-body">
 							<table id="customers_table" class="table table-bordered table-hover" style="width: 100%">
