@@ -242,6 +242,7 @@ defined('BASEPATH') or die('Access Denied');
 		 				me[0].reset();
 		 			} else {
 		 				$(':submit').removeAttr('disabled','disabled');
+						
 						$('.loading-modal').modal('hide');
 
 		 				toastr.error(response.errors);

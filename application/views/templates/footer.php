@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<div class="modal fade loading-modal">
+<div class="modal loading-modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-body text-center">
