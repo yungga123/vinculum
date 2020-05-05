@@ -448,9 +448,27 @@ class CustomersController extends CI_Controller {
 			[
 				'field' => 'branch_contact',
 				'label' => 'Branch Contact',
-				'rules' => '',
+				'rules' => 'required|max_length[500]',
 				'errors' => [
-					'' => ''
+					'required' => 'Please provide Branch Contact.',
+					'max_length' => 'Branch Contact max limit is 500.'
+				]
+			],
+			[
+				'field' => 'branch_address',
+				'label' => 'Branch Address',
+				'rules' => 'required|max_length[1000]',
+				'errors' => [
+					'required' => 'Please provide Branch Address.',
+					'max_length' => 'Branch Address max limit is 1000.'
+				]
+			],
+			[
+				'field' => 'additional_notes',
+				'label' => 'Additional Notes',
+				'rules' => 'max_length[1000]',
+				'errors' => [
+					'max_length' => 'Additional Notes max limit is 1000.'
 				]
 			]
 		];
@@ -462,25 +480,7 @@ class CustomersController extends CI_Controller {
 		if ($this->form_validation->run()) {
 
 			$validate['success'] = true;
-
-			$data = [
-				'CompanyName' => $this->input->post('customer_name'),
-				'ContactPerson' => $this->input->post('contact_person'),
-				'Address' => $this->input->post('customer_address'),
-				'ContactNumber' => $this->input->post('contact_number'),
-				'EmailAddress' => $this->input->post('email_address'),
-				'Website' => $this->input->post('customer_website'),
-				'InstallationDate' => $this->input->post('installation_date'),
-				'Interest' => $this->input->post('customer_interest'),
-				'Type' => $this->input->post('customer_type'),
-				'Notes' => $this->input->post('customer_notes')
-			];
-
-
-			$this->load->model('CustomersModel');
-			$this->CustomersModel->add_vtCustomer($data);
-
-
+			
 		} 
 		else {
 		$validate['errors'] = validation_errors();

@@ -37,11 +37,12 @@ defined('BASEPATH') or die('Access Denied');
 				}
 
 			});
+
+
 	  	});
 	</script>
 
 	<script>
-		<?php if ($this->uri->segment(1) == 'customers-add'): ?>
 		//Form Add Customer
 		$('#form-customer-add').submit(function(e) {
 		 	e.preventDefault();
@@ -93,9 +94,7 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
-		<?php endif ?>
 		
-		<?php if ($this->uri->segment(1) == 'customers-update'): ?>
 		//Form Update Customer
 		$('#form-customer-update').submit(function(e) {
 		 	e.preventDefault();
@@ -144,9 +143,9 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
-		<?php endif ?>
+		
 
-		<?php if ($this->uri->segment(1) == 'customers'): ?>
+	
 		//Form Add Customer File
 		$('#form-customerfileadd').submit(function(e) {
 		 	e.preventDefault();
@@ -197,8 +196,61 @@ defined('BASEPATH') or die('Access Denied');
 		 			}
 		 		}
 		 	});
-		 });		
-		<?php endif ?>
+		});
+
+		//Form Customer Add Branch
+
+		$('#form-customer-addbranch').submit(function(e) {
+		 	e.preventDefault();
+		 	var a = '<a href="<?php echo site_url("customers") ?>"><u>View Here</u></a>';
+		 	var me = $(this);
+		 	var succ = '';
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.success("Customer Added! "+a);
+		 				me[0].reset();
+		 			} else {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		}); 
+	
 	</script>
 
 	<!-- Customers File Selection -->

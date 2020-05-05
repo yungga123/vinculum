@@ -115,6 +115,8 @@ defined('BASEPATH') or die('Access Denied');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
+                                    <?php echo form_open('CustomersController/customer_addbranch_validate',["id" => "form-customer-addbranch"]) ?>
+                                    <input type="hidden" value="<?php echo $this->uri->segment(2) ?>">
                                     <div class="form-group">
                                         <label for="branch_contact">Branch Contact</label>
                                         <input type="text" name="branch_contact" id="branch_contact" class="form-control" aria-describedby="helpId">
@@ -140,6 +142,7 @@ defined('BASEPATH') or die('Access Denied');
 
                         <div class="card-footer">
                             <button type="submit" class="btn btn-success text-bold float-right"><i class="fas fa-check"></i> CONFIRM</button>
+                            <?php echo form_close() ?>
                         </div>
                     </div>
                 </div>
