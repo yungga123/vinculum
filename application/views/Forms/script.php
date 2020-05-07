@@ -284,6 +284,9 @@ defined('BASEPATH') or die('Access Denied');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -292,9 +295,15 @@ defined('BASEPATH') or die('Access Denied');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+						$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Dispatch Added! " + a);
 		 				me[0].reset();
 		 			} else {
+						$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.error(response.errors);
 		 			}
 
@@ -328,6 +337,9 @@ defined('BASEPATH') or die('Access Denied');
 				"hideMethod": "fadeOut"
 			}
 
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
 		 	//ajax
 		 	$.ajax({
 		 		url: me.attr('action'),
@@ -336,9 +348,16 @@ defined('BASEPATH') or die('Access Denied');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
+
+						$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
 		 				toastr.success("Updated! Please refresh this page. " + a );
 
 		 			} else {
+						$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+						
 		 				toastr.error(response.errors);
 		 			}
 

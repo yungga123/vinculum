@@ -61,6 +61,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
                       <th>Category</th>
                       <th>Suppliers Price</th>
                       <th>SRP</th>
+                      <th>Stocks</th>
                       <th>Location</th>
                       <th>Supplier</th>
                       <th>Encoder</th>
@@ -73,7 +74,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
 	                      <td><?php echo $row->itemName ?></td>
 	                      <td><?php echo $row->itemType ?></td>
 	                      <td><?php echo $row->itemSupplierPrice ?></td>
-	                      <td><?php echo $row->itemPrice ?></td>
+                        <td><?php echo $row->itemPrice ?></td>
+                        <td><?php echo $row->stocks ?></td>
 	                      <td><?php echo $row->location ?></td>
 	                      <td><?php echo $row->supplier ?></td>
 	                      <td><?php echo $row->encoder ?></td>

@@ -56,7 +56,7 @@ defined('BASEPATH') or die('Access Denied');
 	        right : 'dayGridMonth,timeGridWeek,timeGridDay'
 	      },
 	      events: [
-	      	<?php foreach ($results as $row): ?>
+	      	<?php foreach ($results as $row) { ?>
 	      		{
 	      		  id 			: '<?php echo $row->ID ?>',
 		          title          : "<?php echo addslashes($row->title) ?>",
@@ -92,7 +92,7 @@ defined('BASEPATH') or die('Access Denied');
 			      }
 			      
 		        },
-	      	<?php endforeach ?>
+			<?php } ?>
 	      	
 	      ],
 	      eventClick: function(info) {
