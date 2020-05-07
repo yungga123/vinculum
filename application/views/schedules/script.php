@@ -59,7 +59,7 @@ defined('BASEPATH') or die('Access Denied');
 	      	<?php foreach ($results as $row): ?>
 	      		{
 	      		  id 			: '<?php echo $row->ID ?>',
-		          title          : "<?php echo $row->title ?>",
+		          title          : "<?php echo addslashes($row->title) ?>",
 		          start          : "<?php echo $row->start ?>",
 		          end            : "<?php echo $row->end ?>",
 		          backgroundColor: "<?php 
@@ -87,7 +87,7 @@ defined('BASEPATH') or die('Access Denied');
 
 			          ?>",
 			      	extendedProps: {
-			        description		: '<?php echo $row->description ?>',
+			        description		: '<?php echo addslashes($row->description) ?>',
 			      	type 			: '<?php echo $row->type ?>'
 			      }
 			      
