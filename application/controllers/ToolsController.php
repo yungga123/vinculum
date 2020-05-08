@@ -81,7 +81,7 @@ class ToolsController extends CI_Controller {
     	if($this->session->userdata('logged_in')) {
     		$this->load->helper('site_helper');
 			$data = html_variable();
-			$data['title'] = 'Dashboard';
+			$data['title'] = 'Tools';
 			$data['ul_tools'] = ' active';
 			$data['listof_tools'] = ' active';
 			$data['ul_tools_treeview'] = ' menu-open';
@@ -133,7 +133,7 @@ class ToolsController extends CI_Controller {
     	if($this->session->userdata('logged_in')) {
     		$this->load->helper('site_helper');
 			$data = html_variable();
-			$data['title'] = 'Dashboard';
+			$data['title'] = 'Add Tools';
 			$data['ul_tools'] = ' active';
 			$data['listof_tools'] = ' active';
 			$data['ul_tools_treeview'] = ' menu-open';
