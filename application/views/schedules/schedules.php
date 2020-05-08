@@ -94,8 +94,8 @@ defined('BASEPATH') or die('Access Denied');
 				<div class="form-group">
 					<label for="event_daterange">Date Range</label>
 					<input class="form-control" type="text" name="event_daterange" id="event_daterange" readonly>
-					<input type="hidden" name="event_sd" id="event_sd">
-					<input type="hidden" name="event_ed" id="event_ed">
+					<input type="hidden" name="event_sd" id="event_sd" value="<?php echo date('Y-m-d 00:00:00') ?>">
+					<input type="hidden" name="event_ed" id="event_ed" value="<?php echo date('Y-m-d 23:59:00') ?>">
 				</div>
 
 				<div class="form-group">
