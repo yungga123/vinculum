@@ -90,7 +90,7 @@ foreach ($results as $row) {
 	if ($row->AssignedTechnicians6 == '') {
 		$assignedTech6 = 'N/A';
 	} else {
-		$assignedTech6 = $row->AssignedTechnicians5;
+		$assignedTech6 = $row->AssignedTechnicians6;
 	}
 
 	if ($row->AssignedTechnicians7 == '') {
