@@ -29,6 +29,14 @@ class ProjectReportController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'customer_name',
+				'label' => 'Customer Name',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select customer name.'
+				]
+			],
+			[
 				'field' => 'date_requested',
 				'label' => 'Date Requested',
 				'rules' => 'trim|required',
@@ -261,14 +269,15 @@ class ProjectReportController extends CI_Controller {
 
     public function index() {
     	if($this->session->userdata('logged_in')) {
-
+			$this->load->model('CustomersModel');
+			
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Project Report';
 			$data['project_report'] = ' menu-open';
 			$data['project_report_href'] = ' active';
 			$data['project_report_add'] = ' active';
-			
+			$data['result_customers'] = $this->CustomersModel->getVtCustomersByID();			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('project_report/project_report');

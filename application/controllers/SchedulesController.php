@@ -132,11 +132,10 @@ class SchedulesController extends CI_Controller {
 				[
 					'field' => 'event_title_edit',
 					'label' => 'Title',
-					'rules' => 'trim|max_length[500]|required|alpha_numeric_spaces',
+					'rules' => 'trim|max_length[500]|required',
 					'errors' => [
 						'max_length' => 'Title character limit is 500',
-						'required' => 'Please provide title.',
-						'alpha_numeric_spaces' => 'Title must only contain letters, numbers and spaces.'
+						'required' => 'Please provide title.'
 					]
 				],
 				[

@@ -53,6 +53,16 @@ date_default_timezone_set('Asia/Manila');
 														<label for="project_description">Project Description</label>
 														<input class="form-control" type="text" name="project_description" id="project_description">
 													</div>
+
+													<div class="form-group">
+														<label for="customer_name">Customer Name</label>
+														<select class="form-control" name="customer_name" id="customer_name">
+															<option value="">--- Please Select ---</option>
+															<?php foreach ($result_customers as $row) { ?>
+															<option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName.' --- '.$row->CustomerID ?></option>
+															<?php } ?>
+														</select>
+													</div>
 												</div>
 
 												<div class="col-sm-6">
