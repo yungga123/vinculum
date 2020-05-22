@@ -33,8 +33,7 @@ defined('BASEPATH') or die('Access Denied');
                                         <th>Description</th>
                                         <th>Date Requested</th>
                                         <th>Date Implemented</th>
-                                        <th>Requested By</th>
-                                        <th>Prepared By</th>
+                                        <th>Received By</th>
                                         <th>Checked By</th>
                                         <th>Operation</th>
 			            			</tr>

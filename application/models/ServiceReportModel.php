@@ -33,8 +33,7 @@ class ServiceReportModel extends CI_Model {
 			a.description as description,
 			a.date_requested as date_requested,
 			a.date_implemented as date_implemented,
-			a.requested_by as requested_by,
-			a.prepared_by as prepared_by,
+			a.received_by as received_by,
 			a.checked_by as checked_by,
 
 		');
@@ -169,8 +168,7 @@ class ServiceReportModel extends CI_Model {
 		"description",
 		"date_requested",
 		"date_implemented",
-		"requested_by",
-		"prepared_by",
+		"received_by",
 		"checked_by",
 		"a.is_deleted"
 	);
@@ -180,8 +178,7 @@ class ServiceReportModel extends CI_Model {
         "description",
         "date_requested",
 		"date_implemented",
-		"requested_by",
-		"prepared_by",
+		"received_by",
 		"checked_by"
 	);
 
@@ -196,7 +193,9 @@ class ServiceReportModel extends CI_Model {
             $this->db->or_like("CompanyName", $_POST["search"]["value"]);
             $this->db->or_like("description", $_POST["search"]["value"]);
             $this->db->or_like("date_requested", $_POST["search"]["value"]);
-            $this->db->or_like("date_implemented", $_POST["search"]["value"]);
+			$this->db->or_like("date_implemented", $_POST["search"]["value"]);
+			$this->db->or_like("received_by", $_POST["search"]["value"]);
+			$this->db->or_like("checked_by", $_POST["search"]["value"]);
             $this->db->having('a.is_deleted',0);
 		}
 

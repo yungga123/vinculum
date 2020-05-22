@@ -35,19 +35,11 @@ class ServiceReportController extends CI_Controller {
 				]
 			],
 			[
-				'field' => 'prepared_by',
-				'label' => 'Prepared By',
+				'field' => 'received_by',
+				'label' => 'Received By',
 				'rules' => 'trim|max_length[500]',
 				'errors' => [
-					'max_length' => 'Prepared by field exceeds character limit.'
-				]
-			],
-			[
-				'field' => 'requested_by',
-				'label' => 'Requested By',
-				'rules' => 'trim|max_length[500]',
-				'errors' => [
-					'max_length' => 'Requested by field exceeds character limit.'
+					'max_length' => 'Received by field exceeds character limit.'
 				]
 			],
 			[
@@ -198,8 +190,7 @@ class ServiceReportController extends CI_Controller {
                     'description' => $this->input->post('description'),
                     'date_requested' => $this->input->post('date_requested'),
 					'date_implemented' => $this->input->post('date_implemented'),
-					'requested_by' => $this->input->post('requested_by'),
-					'prepared_by' => $this->input->post('prepared_by'),
+					'received_by' => $this->input->post('received_by'),
 					'checked_by' => $this->input->post('checked_by')
                 ]
 			);
@@ -309,8 +300,7 @@ class ServiceReportController extends CI_Controller {
 			$sub_array[] = $row->description;
 			$sub_array[] = date_format(date_create($date_requested), 'F d, Y');
 			$sub_array[] = date_format(date_create($date_implemented), 'F d, Y');
-			$sub_array[] = $row->requested_by;
-			$sub_array[] = $row->prepared_by;
+			$sub_array[] = $row->received_by;
 			$sub_array[] = $row->checked_by;
 
 			$sub_array[] = '
@@ -414,8 +404,7 @@ class ServiceReportController extends CI_Controller {
 					'description' => $this->input->post('description'),
 					'date_requested' => $this->input->post('date_requested'),
 					'date_implemented' => $this->input->post('date_implemented'),
-					'requested_by' => $this->input->post('requested_by'),
-					'prepared_by' => $this->input->post('prepared_by'),
+					'received_by' => $this->input->post('received_by'),
 					'checked_by' => $this->input->post('checked_by')
 				]
 			);

@@ -9,3 +9,22 @@ SQL UPDATE:
 Added 3 columns in 'service_report' table (requested_by,checked_by,prepared_by)
 Modified service_report subtables
 Service Report from selection of items to manual typing
+
+5/22/2020
+SQL UPDATE:
+Removed 1 column in 'service_report' table. Current table:
++------------------+---------------+------+-----+---------+----------------+
+| Field            | Type          | Null | Key | Default | Extra          |
++------------------+---------------+------+-----+---------+----------------+
+| id               | int(11)       | NO   | PRI | NULL    | auto_increment |
+| customer_name    | varchar(500)  | NO   |     | NULL    |                |
+| description      | varchar(1000) | NO   |     | NULL    |                |
+| date_requested   | date          | NO   |     | NULL    |                |
+| date_implemented | date          | NO   |     | NULL    |                |
+| received_by      | varchar(500)  | NO   |     | NULL    |                |
+| checked_by       | varchar(500)  | NO   |     | NULL    |                |
+| is_deleted       | tinyint(1)    | NO   |     | NULL    |                |
++------------------+---------------+------+-----+---------+----------------+
+
+System Update:
+- Requested By is replaced with Received By and Prepared by is removed. (Service Report Module)

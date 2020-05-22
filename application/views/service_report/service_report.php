@@ -74,13 +74,8 @@ defined('BASEPATH') or die('Access Denied');
                                                         <div class="col-sm-6">
 
                                                             <div class="form-group">
-                                                                <label for="requested_by">Requested By</label>
-                                                                <input type="text" name="requested_by" id="requested_by" class="form-control">
-                                                            </div>
-
-                                                            <div class="form-group">
-                                                                <label for="prepared_by">Prepared By</label>
-                                                                <input type="text" name="prepared_by" id="prepared_by" class="form-control">
+                                                                <label for="received_by">Received By</label>
+                                                                <input type="text" name="received_by" id="received_by" class="form-control">
                                                             </div>
 
                                                             <div class="form-group">

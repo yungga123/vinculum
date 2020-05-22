@@ -9,8 +9,7 @@ foreach ($results_sr as $row) {
     $data['description'] = $row->description;
     $data['date_requested'] = $row->date_requested;
     $data['date_implemented'] = $row->date_implemented;
-    $data['requested_by'] = $row->requested_by;
-    $data['prepared_by'] = $row->prepared_by;
+    $data['received_by'] = $row->received_by;
     $data['checked_by'] = $row->checked_by;
 }
 
@@ -252,23 +251,17 @@ foreach ($results_sr as $row) {
     <!-- Footer Signature -->
     <div class="row">
         <div class="col-sm-6">
-            Requested By:
+            Received By:
             <br>
             <br>
-            <u><?php echo $data['requested_by'] ?></u>
-            <br>
-            <br>
-            Checked By:
-            <br>
-            <br>
-            <u><?php echo $data['checked_by'] ?></u>
+            <u><?php echo $data['received_by'] ?></u>
         </div>
 
         <div class="col-sm-6">
             Checked By:
             <br>
             <br>
-            <u><?php echo $data['prepared_by'] ?></u>
+            <u><?php echo $data['checked_by'] ?></u>
         </div>
     </div>
 </body>
