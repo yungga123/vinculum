@@ -26,5 +26,23 @@ Removed 1 column in 'service_report' table. Current table:
 | is_deleted       | tinyint(1)    | NO   |     | NULL    |                |
 +------------------+---------------+------+-----+---------+----------------+
 
+Modifications in 'project_report' table:
++------------------+---------------+------+-----+---------+----------------+
+| Field            | Type          | Null | Key | Default | Extra          |
++------------------+---------------+------+-----+---------+----------------+
+| id               | int(11)       | NO   | PRI | NULL    | auto_increment |
+| name             | varchar(1000) | NO   |     | NULL    |                |
+| customer_id      | int(11)       | NO   |     | NULL    |                |
+| description      | varchar(1000) | NO   |     | NULL    |                |
+| date_requested   | date          | NO   |     | NULL    |                |
+| date_implemented | date          | NO   |     | NULL    |                |
+| date_finished    | date          | NO   |     | NULL    |                |
+| prepared_by      | varchar(500)  | NO   |     | NULL    |                |
+| checked_by       | varchar(500)  | NO   |     | NULL    |                |
+| is_deleted       | tinyint(1)    | NO   |     | NULL    |                |
++------------------+---------------+------+-----+---------+----------------+
+
+
 System Update:
 - Requested By is replaced with Received By and Prepared by is removed. (Service Report Module)
+- Project Report added checked by, prepared by, and customer name

@@ -450,6 +450,42 @@ date_default_timezone_set('Asia/Manila');
 									</div>
 									<!-- End of Assigned Personnels -->
 
+									<div class="row">
+
+										<!-- Prepared By -->
+										<div class="col-sm-6">
+											<div class="card">
+												<div class="card-header text-center">
+													<label>Prepared By</label>
+												</div>
+
+												<div class="card-body">
+													<div class="form-group">
+														<label for="prepared_by">Prepared By</label>
+														<input type="text" name="prepared_by" id="prepared_by" class="form-control">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Checked By -->
+										<div class="col-sm-6">
+											<div class="card">
+												<div class="card-header text-center">
+													<label>Checked By</label>
+												</div>
+
+												<div class="card-body">
+													<div class="form-group">
+														<label for="checked_by">Checked By</label>
+														<input type="text" name="checked_by" id="checked_by" class="form-control">
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+
 								</div>
 							</div>
 						</div>

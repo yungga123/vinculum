@@ -29,11 +29,14 @@ defined('BASEPATH') or die('Access Denied');
 			            		<thead>
 			            			<tr>
 			            				<th>Project ID</th>
-			            				<th>Project Name</th>
+										<th>Project Name</th>
+										<th>Customer Name</th>
 			            				<th>Project Description</th>
 			            				<th>Date Requested</th>
 			            				<th>Date Implemented</th>
-			            				<th>Date Finished</th>
+										<th>Date Finished</th>
+										<th>Prepared By</th>
+										<th>Checked By</th>
 			            				<th>Operation</th>
 			            			</tr>
 			            		</thead>

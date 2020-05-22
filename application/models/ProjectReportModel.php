@@ -12,9 +12,21 @@ class ProjectReportModel extends CI_Model {
 	}
 
 	public function getProjectReport($id) {
-		$this->db->select('*');
-		$this->db->from('project_report');
-		$this->db->where('id',$id);
+		$this->db->select('
+			a.id,
+			a.name,
+			a.customer_id,
+			b.CompanyName,
+			a.description,
+			a.date_requested,
+			a.date_implemented,
+			a.date_finished,
+			a.prepared_by,
+			a.checked_by
+		');
+		$this->db->from('project_report as a');
+		$this->db->join('customer_vt as b','a.customer_id=b.CustomerID','left');
+		$this->db->where('a.id',$id);
 		return $this->db->get()->result();
 	}
 
@@ -304,30 +316,38 @@ class ProjectReportModel extends CI_Model {
 	//end
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
-	var $table = "project_report";
+	var $table = "project_report as a";
+	var $join_table = "customer_vt as b";
 	var $select_column = array(
-		"id",
-		"name",
-		"description",
-		"date_requested",
-		"date_implemented",
-		"date_finished",
-		"is_deleted"
+		"a.id",
+		"a.name",
+		"b.CompanyName",
+		"a.description",
+		"a.date_requested",
+		"a.date_implemented",
+		"a.date_finished",
+		"a.prepared_by",
+		"a.checked_by",
+		"a.is_deleted"
 	);
 	var $order_column = array(
-		"id",
-		"name",
-		"description",
-		"date_requested",
-		"date_implemented",
-		"date_finished",
-		"is_deleted"
+		"a.id",
+		"a.name",
+		"b.CompanyName",
+		"a.description",
+		"a.date_requested",
+		"a.date_implemented",
+		"a.date_finished",
+		"a.prepared_by",
+		"a.checked_by",
+		"a.is_deleted"
 	);
 
 	public function projectReport_query(){
 
 		$this->db->select($this->select_column);
 		$this->db->from($this->table);
+		$this->db->join($this->join_table,'a.customer_id=b.CustomerID','left');
 
 		if(isset($_POST["search"]["value"])){
 			$this->db->like("id", $_POST["search"]["value"]);

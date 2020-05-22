@@ -7,9 +7,12 @@ foreach ($project_details as $row) {
 	$data = [
 		'project_name' => $row->name,
 		'project_description' => $row->description,
+		'customer_name' => $row->customer_id,
 		'date_requested' => $row->date_requested,
 		'date_implemented' => $row->date_implemented,
-		'date_finished' => $row->date_finished
+		'date_finished' => $row->date_finished,
+		'prepared_by' => $row->prepared_by,
+		'checked_by' => $row->checked_by
 	];
 }
 
@@ -61,6 +64,18 @@ foreach ($project_details as $row) {
 													<div class="form-group">
 														<label for="project_description">Project Description</label>
 														<input class="form-control" type="text" name="project_description" id="project_description" value="<?php echo $data['project_description'] ?>">
+													</div>
+
+													<div class="form-group">
+														<label for="customer_name">Customer Name</label>
+														<select class="form-control" name="customer_name" id="customer_name">
+															<option value="">---Please Select---</option>
+															<?php foreach ($customers as $row) { ?>
+																<option value="<?php echo $row->CustomerID ?>" <?php if ($data['customer_name'] == $row->CustomerID) {
+																	echo 'selected';
+																} ?>><?php echo $row->CompanyName.' - '.$row->CustomerID ?></option>
+															<?php } ?>
+														</select>
 													</div>
 												</div>
 
@@ -464,6 +479,42 @@ foreach ($project_details as $row) {
 										</div>
 									</div>
 									<!-- End of Assigned Personnels -->
+
+									<div class="row">
+
+										<!-- Prepared By -->
+										<div class="col-sm-6">
+											<div class="card">
+												<div class="card-header text-center">
+													<label>Prepared By</label>
+												</div>
+
+												<div class="card-body">
+													<div class="form-group">
+														<label for="prepared_by">Prepared By</label>
+														<input type="text" name="prepared_by" id="prepared_by" class="form-control" value="<?php echo $data['prepared_by'] ?>">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Checked By -->
+										<div class="col-sm-6">
+											<div class="card">
+												<div class="card-header text-center">
+													<label>Checked By</label>
+												</div>
+
+												<div class="card-body">
+													<div class="form-group">
+														<label for="checked_by">Checked By</label>
+														<input type="text" name="checked_by" id="checked_by" class="form-control" value="<?php echo $data['checked_by'] ?>">
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
 								</div>
 
 								

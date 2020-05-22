@@ -58,6 +58,22 @@ class ProjectReportController extends CI_Controller {
 				'rules' => 'trim'
 			],
 			[
+				'field' => 'prepared_by',
+				'label' => 'Prepared By',
+				'rules' => 'trim|max_length[500]',
+				'errors' => [
+					'max_length' => 'Prepared By field exceeds maximum character limit.'
+				]
+			],
+			[
+				'field' => 'checked_by',
+				'label' => 'Checked By',
+				'rules' => 'trim|max_length[500]',
+				'errors' => [
+					'max_length' => 'Checked By field exceeds maximum character limit.'
+				]
+			],
+			[
 				'field' => 'petty_cash[]',
 				'label' => 'Petty Cash',
 				'rules' => 'trim|numeric|max_length[18]',
@@ -315,9 +331,12 @@ class ProjectReportController extends CI_Controller {
 			$this->ProjectReportModel->insert_projectreport([
 				'name' => $this->input->post('project_name'),
 				'description' => $this->input->post('project_description'),
+				'customer_id' => $this->input->post('customer_name'),
 				'date_requested' => $this->input->post('date_requested'),
 				'date_implemented' => $this->input->post('date_implemented'),
-				'date_finished' => $this->input->post('date_finished')
+				'date_finished' => $this->input->post('date_finished'),
+				'prepared_by' => $this->input->post('prepared_by'),
+				'checked_by' => $this->input->post('checked_by')
 			]);
 
 			$results = $this->ProjectReportModel->get_project_report();
@@ -453,10 +472,13 @@ class ProjectReportController extends CI_Controller {
 			$sub_array = array();
 			$sub_array[] = $row->id;
 			$sub_array[] = $row->name;
+			$sub_array[] = $row->CompanyName;
 			$sub_array[] = $row->description;
 			$sub_array[] = $dateRequested;
 			$sub_array[] = $dateImplemented;
 			$sub_array[] = $dateFinished;
+			$sub_array[] = $row->prepared_by;
+			$sub_array[] = $row->checked_by;
 
 			$sub_array[] = '
 
@@ -507,6 +529,8 @@ class ProjectReportController extends CI_Controller {
 	public function project_report_update($id) {
 		if($this->session->userdata('logged_in')) {
 
+			$this->load->model('CustomersModel');
+
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Project Report Update';
@@ -522,6 +546,7 @@ class ProjectReportController extends CI_Controller {
 			$data['tools_rqstd'] = $this->ProjectReportModel->getToolsRqstd($id);
 			$data['assigned_it'] = $this->ProjectReportModel->getAssignedIT($id);
 			$data['assigned_tech'] = $this->ProjectReportModel->getAssignedTech($id);
+			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -555,9 +580,12 @@ class ProjectReportController extends CI_Controller {
 				[
 					'name' => $this->input->post('project_name'),
 					'description' => $this->input->post('project_description'),
+					'customer_id' => $this->input->post('customer_name'),
 					'date_requested' => $this->input->post('date_requested'),
 					'date_implemented' => $this->input->post('date_implemented'),
-					'date_finished' => $this->input->post('date_finished')
+					'date_finished' => $this->input->post('date_finished'),
+					'prepared_by' => $this->input->post('prepared_by'),
+					'checked_by' => $this->input->post('checked_by')
 				]
 			);
 			//end of update project information

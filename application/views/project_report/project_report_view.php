@@ -25,10 +25,13 @@ foreach ($results as $row) {
 	$results_project_report = [
 		'id' => $row->id,
 		'name' => $row->name,
+		'customer_name' => $row->CompanyName,
 		'description' => $row->description,
 		'date_requested' => $dateRequested,
 		'date_implemented' => $dateImplemented,
-		'date_finished' => $dateFinished
+		'date_finished' => $dateFinished,
+		'prepared_by' => $row->prepared_by,
+		'checked_by' => $row->checked_by
 	];
 }
 
@@ -77,6 +80,20 @@ $results_project_report['total_directItems'] = 0;
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+	<style type="text/css">
+		@media print {
+			.table-bordered td, .table-bordered th {
+				border: 1px solid #000000 !important;
+			}
+
+			.table thead th {
+				vertical-align: bottom !important;
+				border-bottom: 2px solid #000000 !important;
+			}
+		}
+		
+	</style>
+
   
 </head>
 
@@ -98,12 +115,16 @@ $results_project_report['total_directItems'] = 0;
 			<table class="table table-bordered table-sm" style="font-size: 15px">
 				<tbody>
 					<tr>
-						<td width="20%" style="font-weight: bold">Project Name</td>
-						<td width="80%"><?php echo $results_project_report['name'] ?></td>
+						<td width="25%" style="font-weight: bold">Project Name</td>
+						<td width="75%"><?php echo $results_project_report['name'] ?></td>
 					</tr>
 					<tr>
-						<td width="20%" style="font-weight: bold">Description</td>
-						<td width="80%"><?php echo $results_project_report['description'] ?></td>
+						<td width="25%" style="font-weight: bold">Description</td>
+						<td width="75%"><?php echo $results_project_report['description'] ?></td>
+					</tr>
+					<tr>
+						<td width="25%" style="font-weight: bold">Customer Name</td>
+						<td width="75%"><?php echo $results_project_report['customer_name'] ?></td>
 					</tr>
 				</tbody>
 			</table>
@@ -133,19 +154,20 @@ $results_project_report['total_directItems'] = 0;
 	<div class="row">
 		<div class="col-6">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead>
+				<tbody>
+
 					<tr class="text-center">
 						<th width="25%">Petty Cash</th>
 						<th width="25%">Date</th>
 						<th width="50%">Remarks</th>
 					</tr>
-				</thead>
-				<tbody>
+				
+				
 					<?php if (count($results_petty_cash) == 0): ?>
 						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
+							<td>No records</td>
+							<td>No records</td>
+							<td>No records</td>
 						</tr>
 					<?php else: ?>
 						<?php foreach ($results_petty_cash as $row): ?>
@@ -163,11 +185,6 @@ $results_project_report['total_directItems'] = 0;
 
 							<?php $results_project_report['total_petty_cash'] = $row->petty_cash + $results_project_report['total_petty_cash'] ?>
 						<?php endforeach ?>
-						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-						</tr>
 					<?php endif ?>
 					
 					
@@ -181,19 +198,19 @@ $results_project_report['total_directItems'] = 0;
 
 		<div class="col-6">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead>
+				<tbody>
+
 					<tr class="text-center">
 						<th width="25%">Transpo</th>
 						<th width="25%">Date</th>
 						<th width="50%">Remarks</th>
 					</tr>
-				</thead>
-				<tbody>
+				
 					<?php if (count($results_transpo) == 0): ?>
 						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
+							<td>No records</td>
+							<td>No records</td>
+							<td>No records</td>
 						</tr>
 					<?php else: ?>
 						<?php foreach ($results_transpo as $row): ?>
@@ -211,11 +228,6 @@ $results_project_report['total_directItems'] = 0;
 
 							<?php $results_project_report['total_transpo'] = $row->transpo + $results_project_report['total_transpo'] ?>
 						<?php endforeach ?>
-						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-						</tr>
 					<?php endif ?>
 					
 					<tr>
@@ -231,31 +243,27 @@ $results_project_report['total_directItems'] = 0;
 	<div class="row">
 		<div class="col-12">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead class="text-center" >
-					<tr>
+
+				<tbody>
+					<tr class="text-center">
 						<th width="35%" rowspan="2" class="align-middle">Indirect Item</th>
 						<th width="10%" rowspan="2" class="align-middle">Qty</th>
-						<th width="10%" rowspan="2" class="align-middle">Amount (1u)</th>
+						<th width="10%" rowspan="2" class="align-middle">Amount</th>
 						<th width="15%" colspan="2" class="align-middle">Consumed</th>
 						<th width="15%" colspan="2" class="align-middle">Returns</th>
 						<th width="15%" rowspan="2" class="align-middle">Remarks</th>
 					</tr>
-					<tr>
+					<tr class="text-center">
 						<th>Qty</th>
 						<th>Amt</th>
 						<th>Qty</th>
 						<th>Amt</th>
 					</tr>
-				</thead>
-				<tbody>
+				
+				
 					<?php if (count($results_indirectItems) == 0): ?>
 						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
+							<td colspan="6">No records</td>
 						</tr>
 					<?php else: ?>
 						<?php foreach ($results_indirectItems as $row): ?>
@@ -274,16 +282,6 @@ $results_project_report['total_directItems'] = 0;
 								$results_project_report['total_indirectItems'] = ($row->consumed*$row->amt) + $results_project_report['total_indirectItems']
 							?>
 						<?php endforeach ?>
-						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-						</tr>
 					<?php endif ?>
 					
 					<tr>
@@ -298,11 +296,11 @@ $results_project_report['total_directItems'] = 0;
 	<div class="row">
 		<div class="col-12">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead>
+				<tbody>
 					<tr class="text-center">
 						<th width="35%" rowspan="2" class="align-middle">Direct Item</th>
 						<th width="10%" rowspan="2" class="align-middle">Qty</th>
-						<th width="10%" rowspan="2" class="align-middle">Amount (1u)</th>
+						<th width="10%" rowspan="2" class="align-middle">Amount</th>
 						<th width="15%" colspan="2" class="align-middle">Consumed</th>
 						<th width="15%" colspan="2" class="align-middle">Returns</th>
 						<th width="15%" rowspan="2" class="align-middle">Remarks</th>
@@ -314,18 +312,11 @@ $results_project_report['total_directItems'] = 0;
 						<th>Qty</th>
 						<th>Amt</th>
 					</tr>
-				</thead>
-				<tbody>
+				
+				
 					<?php if (count($results_directItems) == 0): ?>
 						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
+							<td colspan="8">No records</td>
 						</tr>
 					<?php else: ?>
 						<?php foreach ($results_directItems as $row): ?>
@@ -343,16 +334,6 @@ $results_project_report['total_directItems'] = 0;
 								$results_project_report['total_directItems'] = ($row->consumed*$row->amt) + $results_project_report['total_directItems']
 							?>
 						<?php endforeach ?>
-						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-						</tr>
 					<?php endif ?>
 					
 					<tr>
@@ -367,21 +348,18 @@ $results_project_report['total_directItems'] = 0;
 	<div class="row">
 		<div class="col-12">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead>
+				<tbody>
 					<tr class="text-center">
 						<th width="50%">Tools Requested</th>
 						<th width="10%">Qty</th>
 						<th width="10%">Returns</th>
 						<th width="30%">Remarks</th>
 					</tr>
-				</thead>
-				<tbody>
+				
+				
 					<?php if (count($results_toolRqstd) == 0): ?>
 						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
+							<td colspan="4">No records</td>
 						</tr>
 					<?php else: ?>
 						<?php foreach ($results_toolRqstd as $row): ?>
@@ -392,12 +370,6 @@ $results_project_report['total_directItems'] = 0;
 								<td><?php echo $row->remarks ?></td>
 							</tr>
 						<?php endforeach ?>
-						<tr>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-							<td>/</td>
-						</tr>
 					<?php endif ?>
 					
 				</tbody>
@@ -406,18 +378,18 @@ $results_project_report['total_directItems'] = 0;
 	</div>
 
 	<!-- Assigned IT and Assigned Tech-->
-	<div class="row">
+	<div class="row mb-4">
 		<div class="col-6">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead>
+				<tbody>
 					<tr class="text-center">
 						<th width="50%">Assigned IT</th>
 					</tr>
-				</thead>
-				<tbody>
+				
+				
 					<?php if (count($results_assignedIT) == 0): ?>
 						<tr>
-							<td>/</td>
+							<td>No records</td>
 						</tr>
 					<?php else: ?>
 						<?php foreach ($results_assignedIT as $row): ?>
@@ -425,9 +397,6 @@ $results_project_report['total_directItems'] = 0;
 								<td><?php echo $row->assigned_it ?></td>
 							</tr>
 						<?php endforeach ?>
-						<tr>
-							<td>/</td>
-						</tr>
 					<?php endif ?>
 					
 				</tbody>
@@ -436,15 +405,15 @@ $results_project_report['total_directItems'] = 0;
 
 		<div class="col-6">
 			<table class="table table-bordered table-sm" style="font-size: 15px">
-				<thead>
+				<tbody>
 					<tr class="text-center">
 						<th width="50%">Assigned Technician</th>
 					</tr>
-				</thead>
-				<tbody>
+				
+				
 					<?php if (count($results_assignedTech) == 0): ?>
 						<tr>
-							<td>/</td>
+							<td>No records</td>
 						</tr>
 					<?php else: ?>
 						<?php foreach ($results_assignedTech as $row): ?>
@@ -452,16 +421,27 @@ $results_project_report['total_directItems'] = 0;
 								<td><?php echo $row->assigned_tech ?></td>
 							</tr>
 						<?php endforeach ?>
-						<tr>
-							<td>/</td>
-						</tr>
 					<?php endif ?>
 					
 				</tbody>
 			</table>
 		</div>
 	</div>
-
+	
+	<div class="row">
+		<div class="col-6">
+			Prepared By:
+			<br>
+			<br>
+			<u><?php echo $results_project_report['prepared_by'] ?></u>
+		</div>
+		<div class="col-6">
+			Checked By:
+			<br>
+			<br>
+			<u><?php echo $results_project_report['checked_by'] ?></u>
+		</div>
+	</div>
 </body>
 
 
