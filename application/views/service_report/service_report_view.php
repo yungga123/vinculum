@@ -9,6 +9,9 @@ foreach ($results_sr as $row) {
     $data['description'] = $row->description;
     $data['date_requested'] = $row->date_requested;
     $data['date_implemented'] = $row->date_implemented;
+    $data['requested_by'] = $row->requested_by;
+    $data['prepared_by'] = $row->prepared_by;
+    $data['checked_by'] = $row->checked_by;
 }
 
 ?>
@@ -50,17 +53,33 @@ foreach ($results_sr as $row) {
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    <style type="text/css">
+        @media print {
+            .table-bordered td, .table-bordered th {
+                border: 1px solid #000000 !important;
+            }
+
+            .table thead th {
+                vertical-align: bottom !important;
+                border-bottom: 2px solid #000000 !important;
+            }
+        }
+        
+    </style>
   
 </head>
 
 
 <body>
+
+    <!-- Title Page -->
     <div class="row">
         <div class="col-12 text-center">
             <label style="font-size: 25px">VT-SR</label>
         </div>
     </div>
 
+    <!-- SR ID -->
     <div class="row">
         <div class="col-12">
             <div class="text-right">
@@ -69,6 +88,7 @@ foreach ($results_sr as $row) {
         </div>
     </div>
 
+    <!-- SR Main Description -->
     <div class="row">
         <div class="col-6">
             <table class="table table-bordered table-sm">
@@ -110,77 +130,80 @@ foreach ($results_sr as $row) {
             </table>
         </div>
     </div>
-
+    
+    <!-- Direct Items List -->
     <div class="row">
         <div class="col-12">
             <table class="table table-bordered table-sm">
-
-                <thead>
-                    <tr>
-                        <th colspan="5" class="text-center">DIRECT ITEMS</th>
-                    </tr>
-                    <tr>
-                        <th width="50%">Direct Item</th>
-                        <th>Requests</th>
-                        <th>Returns</th>
-                        <th>Request Price</th>
-                        <th>Return Price</th>
-                    </tr>
-                </thead>
-
                 <tbody>
+                    <tr>
+                        <th colspan="6" class="text-center">DIRECT ITEMS</th>
+                    </tr>
+                    <tr>
+                        <th width="40%">Direct Item</th>
+                        <th>Requests</th>
+                        <th>Amount</th>
+                        <th>Returns</th>
+                        <th>Consumed</th>
+                        <th>Price of Consumed</th>
+                    </tr>
+
+                
                     <?php if (count($results_direct_item) != 0) { ?>
                         <?php foreach ($results_direct_item as $row) { ?>
                             <tr>
                                 <td><?php echo $row->direct_item ?></td>
                                 <td><?php echo $row->qty_rqstd ?></td>
+                                <td><?php echo $row->amt ?></td>
                                 <td><?php echo $row->returns ?></td>
-                                <td><?php echo number_format($row->qty_rqstd*$row->direct_item_price,2) ?></td>
-                                <td><?php echo number_format($row->returns*$row->direct_item_price,2) ?></td>
+                                <td><?php echo ($row->qty_rqstd - $row->returns) ?></td>
+                                <td><?php echo number_format(($row->qty_rqstd - $row->returns)*$row->amt,2) ?></td>
                             </tr>
                         <?php } ?>
                     <?php } else { ?>
                         <tr>
-                            <td colspan="5" class="text-center">NO DIRECT ITEM REQUESTS</td>
+                            <td colspan="6" class="text-center">NO DIRECT ITEM REQUESTS</td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
-
+    
+    <!-- Indirect Items List -->
     <div class="row">
         <div class="col-12">
             <table class="table table-bordered table-sm">
 
-                <thead>
-                    <tr>
-                        <th colspan="5" class="text-center">INDIRECT ITEMS</th>
-                    </tr>
-                    <tr>
-                        <th width="50%">Indirect Item</th>
-                        <th>Requests</th>
-                        <th>Returns</th>
-                        <th>Request Price</th>
-                        <th>Return Price</th>
-                    </tr>
-                </thead>
-
                 <tbody>
+                    <tr>
+                        <th colspan="6" class="text-center">INDIRECT ITEMS</th>
+                    </tr>
+                    <tr>
+                        <th width="40%">Indirect Item</th>
+                        <th>Requests</th>
+                        <th>Amount</th>
+                        <th>Returns</th>
+                        <th>Consumed</th>
+                        <th>Consumation Price</th>
+                    </tr>
+
+                
                     <?php if (count($results_indirect_item) != 0) { ?>
                         <?php foreach ($results_indirect_item as $row) { ?>
                             <tr>
                                 <td><?php echo $row->indirect_item ?></td>
                                 <td><?php echo $row->qty_rqstd ?></td>
+                                <td><?php echo $row->amt ?></td>
                                 <td><?php echo $row->returns ?></td>
-                                <td><?php echo number_format($row->qty_rqstd*$row->indirect_item_price,2) ?></td>
-                                <td><?php echo number_format($row->returns*$row->indirect_item_price,2) ?></td>
+                                <td><?php echo $row->qty_rqstd - $row->returns ?></td>
+                                <td><?php echo number_format(($row->qty_rqstd - $row->returns)*$row->amt,2) ?></td>
                             </tr>
                         <?php } ?>
                         
                     <?php } else { ?>
                         <tr>
-                            <td colspan="5" class="text-center">NO INDIRECT ITEM REQUESTS</td>
+                            <td colspan="6" class="text-center">NO INDIRECT ITEM REQUESTS</td>
                         </tr>
                     <?php } ?>
                      
@@ -189,39 +212,34 @@ foreach ($results_sr as $row) {
             </table>
         </div>
     </div>
-
-    <div class="row">
+    
+    <!-- Tools List -->
+    <div class="row mb-5">
         <div class="col-12">
             <table class="table table-bordered table-sm">
-
-                <thead>
+                <tbody>
                     <tr>
-                        <th colspan="5" class="text-center">TOOLS</th>
+                        <th colspan="3" class="text-center">TOOLS</th>
                     </tr>
                     <tr>
                         <th width="50%">Tools</th>
                         <th>Requests</th>
                         <th>Returns</th>
-                        <th>Request Price</th>
-                        <th>Return Price</th>
                     </tr>
-                </thead>
 
-                <tbody>
+                
                     <?php if (count($results_tools) != 0) { ?>
                         <?php foreach ($results_tools as $row) { ?>
                             <tr>
-                                <td><?php echo $row->tools_model ?></td>
+                                <td><?php echo $row->tools ?></td>
                                 <td><?php echo $row->qty_rqstd ?></td>
                                 <td><?php echo $row->returns ?></td>
-                                <td><?php echo number_format($row->qty_rqstd*$row->tools_price,2) ?></td>
-                                <td><?php echo number_format($row->returns*$row->tools_price,2) ?></td>
                             </tr>
                         <?php } ?>
                         
                     <?php } else { ?>
                         <tr>
-                            <td colspan="5" class="text-center">NO TOOLS REQUESTS</td>
+                            <td colspan="3" class="text-center">NO TOOLS REQUESTS</td>
                         </tr>
                     <?php } ?>
                      
@@ -230,9 +248,30 @@ foreach ($results_sr as $row) {
             </table>
         </div>
     </div>
+    
+    <!-- Footer Signature -->
+    <div class="row">
+        <div class="col-sm-6">
+            Requested By:
+            <br>
+            <br>
+            <u><?php echo $data['requested_by'] ?></u>
+            <br>
+            <br>
+            Checked By:
+            <br>
+            <br>
+            <u><?php echo $data['checked_by'] ?></u>
+        </div>
+
+        <div class="col-sm-6">
+            Checked By:
+            <br>
+            <br>
+            <u><?php echo $data['prepared_by'] ?></u>
+        </div>
+    </div>
 </body>
-
-
 
 
 

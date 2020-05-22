@@ -35,6 +35,30 @@ class ServiceReportController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'prepared_by',
+				'label' => 'Prepared By',
+				'rules' => 'trim|max_length[500]',
+				'errors' => [
+					'max_length' => 'Prepared by field exceeds character limit.'
+				]
+			],
+			[
+				'field' => 'requested_by',
+				'label' => 'Requested By',
+				'rules' => 'trim|max_length[500]',
+				'errors' => [
+					'max_length' => 'Requested by field exceeds character limit.'
+				]
+			],
+			[
+				'field' => 'checked_by',
+				'label' => 'Checked By',
+				'rules' => 'trim|max_length[500]',
+				'errors' => [
+					'max_length' => 'Checked by field exceeds character limit.'
+				]
+			],
+			[
 				'field' => 'date_implemented',
 				'label' => 'Date Requested',
 				'rules' => 'trim'
@@ -47,17 +71,25 @@ class ServiceReportController extends CI_Controller {
 			[
 				'field' => 'direct_item_returns[]',
 				'label' => 'Direct Item Returns',
-				'rules' => 'trim|is_natural',
+				'rules' => 'trim|greater_than_equal_to[0]',
 				'errors' => [
-					'is_natural' => 'Direct Item Returns must be a natural number.'
+					'greater_than_equal_to' => 'Direct Item Returns must be a number greater than or equal to 0.'
 				]
 			],
 			[
 				'field' => 'direct_item_qty[]',
 				'label' => 'Direct Item Quantity',
-				'rules' => 'trim|is_natural',
+				'rules' => 'trim|greater_than[0]',
 				'errors' => [
-					'is_natural' => 'Direct Item Quantity must be a natural number.'
+					'greater_than' => 'Direct Item Quantity must be a number greater than 0.'
+				]
+			],
+			[
+				'field' => 'direct_item_amt[]',
+				'label' => 'Direct Item Amount',
+				'rules' => 'trim|greater_than_equal_to[0]',
+				'errors' => [
+					'greater_than_equal_to' => 'Direct Item Amount must be a number greater than or equal to 0.'
 				]
 			],
 			[
@@ -68,17 +100,25 @@ class ServiceReportController extends CI_Controller {
 			[
 				'field' => 'indirect_item_qty[]',
 				'label' => 'Indirect Item Quantity',
-				'rules' => 'trim|is_natural',
+				'rules' => 'trim|greater_than[0]',
 				'errors' => [
-					'is_natural' => 'Indirect Item Quantity must be a natural number.'
+					'greater_than' => 'Indirect Item Quantity must be a number greater than 0.'
 				]
 			],
 			[
 				'field' => 'indirect_item_returns[]',
 				'label' => 'Indirect Item Returns',
-				'rules' => 'trim|is_natural',
+				'rules' => 'trim|greater_than_equal_to[0]',
 				'errors' => [
-					'is_natural' => 'Indirect Item Returns must be a natural number.'
+					'greater_than_equal_to' => 'Indirect Item Returns must be a number greater than or equal to 0.'
+				]
+			],
+			[
+				'field' => 'indirect_item_amt[]',
+				'label' => 'Indirect Item Amount',
+				'rules' => 'trim|greater_than_equal_to[0]',
+				'errors' => [
+					'greater_than_equal_to' => 'Indirect Item Amount must be a number greater than or equal to 0.'
 				]
 			],
 			[
@@ -89,17 +129,17 @@ class ServiceReportController extends CI_Controller {
 			[
 				'field' => 'tools_qty[]',
 				'label' => 'Tools Quantity',
-				'rules' => 'trim|is_natural',
+				'rules' => 'trim|greater_than[0]',
 				'errors' => [
-					'is_natural' => 'Tools Quantity must be a natural number.'
+					'greater_than' => 'Tools Quantity must be a number greater than 0.'
 				]
 			],
 			[
 				'field' => 'tools_returns[]',
 				'label' => 'Tools Returns',
-				'rules' => 'trim|is_natural',
+				'rules' => 'trim|greater_than_equal_to[0]',
 				'errors' => [
-					'is_natural' => 'Tools Returns must be a natural number.'
+					'greater_than_equal_to' => 'Tools Returns must be a number greater than or equal to 0.'
 				]
 			]
         ];
@@ -111,12 +151,7 @@ class ServiceReportController extends CI_Controller {
         if($this->session->userdata('logged_in')) {
             
             $this->load->model('CustomersModel');
-            $this->load->model('ItemsModel');
-            $this->load->model('ToolsModel');
             $results_customers = $this->CustomersModel->getVtCustomersByID();
-            $results_direct_items = $this->ItemsModel->select_direct_items();
-            $results_indirect_items = $this->ItemsModel->select_indirect_items();
-            $results_tools = $this->ToolsModel->select_all();
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
@@ -125,9 +160,6 @@ class ServiceReportController extends CI_Controller {
 			$data['ul_servicereport'] = ' active';
             $data['encode_sr'] = ' active';
             $data['results_customers'] = $results_customers;
-            $data['results_direct_items'] = $results_direct_items;
-            $data['results_indirect_items'] = $results_indirect_items;
-            $data['results_tools'] = $results_tools;
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -165,7 +197,10 @@ class ServiceReportController extends CI_Controller {
                     'customer_name' => $this->input->post('customer_name'),
                     'description' => $this->input->post('description'),
                     'date_requested' => $this->input->post('date_requested'),
-                    'date_implemented' => $this->input->post('date_implemented')
+					'date_implemented' => $this->input->post('date_implemented'),
+					'requested_by' => $this->input->post('requested_by'),
+					'prepared_by' => $this->input->post('prepared_by'),
+					'checked_by' => $this->input->post('checked_by')
                 ]
 			);
 			
@@ -179,9 +214,10 @@ class ServiceReportController extends CI_Controller {
 					$this->ServiceReportModel->insert_sr_direct_item(
 						[
 							'sr_id' => $sr_id,
-							'direct_item_id' => $this->input->post('direct_item')[$i],
+							'direct_item' => $this->input->post('direct_item')[$i],
 							'qty_rqstd' => $this->input->post('direct_item_qty')[$i],
-							'returns' => $this->input->post('direct_item_returns')[$i]
+							'returns' => $this->input->post('direct_item_returns')[$i],
+							'amt' => $this->input->post('direct_item_amt')[$i]
 						]
 					);
 				}
@@ -195,9 +231,10 @@ class ServiceReportController extends CI_Controller {
 					$this->ServiceReportModel->insert_sr_indirect_item(
 						[
 							'sr_id' => $sr_id,
-							'indirect_item_id' => $this->input->post('indirect_item')[$i],
+							'indirect_item' => $this->input->post('indirect_item')[$i],
 							'qty_rqstd' => $this->input->post('indirect_item_qty')[$i],
-							'returns' => $this->input->post('indirect_item_returns')[$i]
+							'returns' => $this->input->post('indirect_item_returns')[$i],
+							'amt' => $this->input->post('indirect_item_amt')[$i]
 						]
 					);
 
@@ -205,14 +242,13 @@ class ServiceReportController extends CI_Controller {
 				
 			}
 
-
 			for ($i=0; $i < $count_tools; $i++) { 
 
 				if (strlen($this->input->post('tools')[$i]) != 0) {
 					$this->ServiceReportModel->insert_sr_tools(
 						[
 							'sr_id' => $sr_id,
-							'tools_id' => $this->input->post('tools')[$i],
+							'tools' => $this->input->post('tools')[$i],
 							'qty_rqstd' => $this->input->post('tools_qty')[$i],
 							'returns' => $this->input->post('tools_returns')[$i]
 						]
@@ -273,10 +309,13 @@ class ServiceReportController extends CI_Controller {
 			$sub_array[] = $row->description;
 			$sub_array[] = date_format(date_create($date_requested), 'F d, Y');
 			$sub_array[] = date_format(date_create($date_implemented), 'F d, Y');
+			$sub_array[] = $row->requested_by;
+			$sub_array[] = $row->prepared_by;
+			$sub_array[] = $row->checked_by;
 
 			$sub_array[] = '
 
-			<a href="'.site_url('service-report-update/'.$row->sr_id).'" class="btn btn-warning btn-xs" target="_blank"><i class="fas fa-edit"></i></a> 
+			<a href="'.site_url('service-report-update/'.$row->sr_id).'" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
 
 			<button class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
 
@@ -326,12 +365,7 @@ class ServiceReportController extends CI_Controller {
 		if($this->session->userdata('logged_in')) {
 
 			$this->load->model('CustomersModel');
-            $this->load->model('ItemsModel');
-            $this->load->model('ToolsModel');
             $results_customers = $this->CustomersModel->getVtCustomersByID();
-            $results_direct_items = $this->ItemsModel->select_direct_items();
-            $results_indirect_items = $this->ItemsModel->select_indirect_items();
-			$results_tools = $this->ToolsModel->select_all();
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
@@ -340,9 +374,6 @@ class ServiceReportController extends CI_Controller {
 			$data['ul_servicereport'] = ' active';
 			$data['sr_listing'] = ' active';
 			$data['results_customers'] = $results_customers;
-            $data['results_direct_items'] = $results_direct_items;
-            $data['results_indirect_items'] = $results_indirect_items;
-			$data['results_tools'] = $results_tools;
 			$data['results_direct_items_view'] = $this->ServiceReportModel->service_report_directItem_view($id);
 			$data['results_indirect_items_view'] = $this->ServiceReportModel->service_report_indirectItem_view($id);
 			$data['results_tools_view'] = $this->ServiceReportModel->service_report_tools_view($id);
@@ -382,7 +413,10 @@ class ServiceReportController extends CI_Controller {
 					'customer_name' => $this->input->post('customer_name'),
 					'description' => $this->input->post('description'),
 					'date_requested' => $this->input->post('date_requested'),
-					'date_implemented' => $this->input->post('date_implemented')
+					'date_implemented' => $this->input->post('date_implemented'),
+					'requested_by' => $this->input->post('requested_by'),
+					'prepared_by' => $this->input->post('prepared_by'),
+					'checked_by' => $this->input->post('checked_by')
 				]
 			);
 			//end of Update Service Report
@@ -390,17 +424,18 @@ class ServiceReportController extends CI_Controller {
 			//update existing direct item
 			$direct_item_id_data = array();
 
-			for ($i=0; $i < count($this->input->post('direct_item_id')) ; $i++) {
+			for ($i=0; $i < count($this->input->post('direct_item')) ; $i++) {
 
 				$direct_item_sub_data = array();
 				
-				if ($this->input->post('direct_item_id')[$i] != '') {
+				if ($this->input->post('direct_item')[$i] != '') {
 					$this->ServiceReportModel->update_sr_direct_item(
 						$this->input->post('direct_item_id')[$i],
 						[
-							'direct_item_id' => $this->input->post('direct_item')[$i],
+							'direct_item' => $this->input->post('direct_item')[$i],
 							'qty_rqstd' => $this->input->post('direct_item_qty')[$i],
-							'returns' => $this->input->post('direct_item_returns')[$i]
+							'returns' => $this->input->post('direct_item_returns')[$i],
+							'amt' => $this->input->post('direct_item_amt')[$i]
 						]
 					);
 
@@ -410,9 +445,10 @@ class ServiceReportController extends CI_Controller {
 					$this->ServiceReportModel->insert_sr_direct_item(
 						[
 							'sr_id' => $sr_id,
-							'direct_item_id' => $this->input->post('direct_item')[$i],
+							'direct_item' => $this->input->post('direct_item')[$i],
 							'qty_rqstd' => $this->input->post('direct_item_qty')[$i],
-							'returns' => $this->input->post('direct_item_returns')[$i]
+							'returns' => $this->input->post('direct_item_returns')[$i],
+							'amt' => $this->input->post('direct_item_amt')[$i]
 						]
 					);
 
@@ -426,17 +462,18 @@ class ServiceReportController extends CI_Controller {
 			//update existing indirect item
 			$indirect_item_id_data = array();
 
-			for ($i=0; $i < count($this->input->post('indirect_item_id')) ; $i++) {
+			for ($i=0; $i < count($this->input->post('indirect_item')) ; $i++) {
 
 				$indirect_item_sub_data = array();
 				
-				if ($this->input->post('indirect_item_id')[$i] != '') {
+				if ($this->input->post('indirect_item')[$i] != '') {
 					$this->ServiceReportModel->update_sr_indirect_item(
 						$this->input->post('indirect_item_id')[$i],
 						[
-							'indirect_item_id' => $this->input->post('indirect_item')[$i],
+							'indirect_item' => $this->input->post('indirect_item')[$i],
 							'qty_rqstd' => $this->input->post('indirect_item_qty')[$i],
-							'returns' => $this->input->post('indirect_item_returns')[$i]
+							'returns' => $this->input->post('indirect_item_returns')[$i],
+							'amt' => $this->input->post('indirect_item_amt')[$i]
 						]
 					);
 
@@ -446,9 +483,10 @@ class ServiceReportController extends CI_Controller {
 					$this->ServiceReportModel->insert_sr_indirect_item(
 						[
 							'sr_id' => $sr_id,
-							'indirect_item_id' => $this->input->post('indirect_item')[$i],
+							'indirect_item' => $this->input->post('indirect_item')[$i],
 							'qty_rqstd' => $this->input->post('indirect_item_qty')[$i],
-							'returns' => $this->input->post('indirect_item_returns')[$i]
+							'returns' => $this->input->post('indirect_item_returns')[$i],
+							'amt' => $this->input->post('indirect_item_amt')[$i]
 						]
 					);
 
@@ -462,15 +500,15 @@ class ServiceReportController extends CI_Controller {
 			//update existing tools
 			$tools_id_data = array();
 
-			for ($i=0; $i < count($this->input->post('tools_id')) ; $i++) {
+			for ($i=0; $i < count($this->input->post('tools')) ; $i++) {
 
 				$tools_sub_data = array();
 				
-				if ($this->input->post('tools_id')[$i] != '') {
+				if ($this->input->post('tools')[$i] != '') {
 					$this->ServiceReportModel->update_sr_tools(
 						$this->input->post('tools_id')[$i],
 						[
-							'tools_id' => $this->input->post('tools')[$i],
+							'tools' => $this->input->post('tools')[$i],
 							'qty_rqstd' => $this->input->post('tools_qty')[$i],
 							'returns' => $this->input->post('tools_returns')[$i]
 						]
@@ -482,7 +520,7 @@ class ServiceReportController extends CI_Controller {
 					$this->ServiceReportModel->insert_sr_tools(
 						[
 							'sr_id' => $sr_id,
-							'tools_id' => $this->input->post('tools')[$i],
+							'tools' => $this->input->post('tools')[$i],
 							'qty_rqstd' => $this->input->post('tools_qty')[$i],
 							'returns' => $this->input->post('tools_returns')[$i]
 						]

@@ -33,6 +33,9 @@ class ServiceReportModel extends CI_Model {
 			a.description as description,
 			a.date_requested as date_requested,
 			a.date_implemented as date_implemented,
+			a.requested_by as requested_by,
+			a.prepared_by as prepared_by,
+			a.checked_by as checked_by,
 
 		');
 		$this->db->from('service_report as a');
@@ -45,62 +48,23 @@ class ServiceReportModel extends CI_Model {
 	}
 
 	public function service_report_directItem_view($id) {
-		$this->db->select('
-			a.id as id,
-			a.sr_id as sr_id,
-			a.direct_item_id as direct_item_id,
-			c.itemName as direct_item,
-			c.itemPrice as direct_item_price,
-			a.qty_rqstd as qty_rqstd,
-			a.returns as returns
-		');
-		$this->db->from('service_report_direct_item as a');
-		$this->db->join('service_report as b','a.sr_id=b.id','left');
-		$this->db->join('items as c','a.direct_item_id=c.itemCode','left');
 
-		$this->db->where('a.sr_id',$id);
-
-		return $this->db->get()->result();
+		$this->db->where('sr_id',$id);
+		return $this->db->get('service_report_direct_item')->result();
 
 	}
 
 	public function service_report_indirectItem_view($id) {
-		$this->db->select('
-			a.id as id,
-			a.sr_id as sr_id,
-			a.indirect_item_id as indirect_item_id,
-			c.itemName as indirect_item,
-			c.itemPrice as indirect_item_price,
-			a.qty_rqstd as qty_rqstd,
-			a.returns as returns
-		');
-		$this->db->from('service_report_indirect_item as a');
-		$this->db->join('service_report as b','a.sr_id=b.id','left');
-		$this->db->join('items as c','a.indirect_item_id=c.itemCode','left');
 
-		$this->db->where('a.sr_id',$id);
-
-		return $this->db->get()->result();
+		$this->db->where('sr_id',$id);
+		return $this->db->get('service_report_indirect_item')->result();
 
 	}
 
 	public function service_report_tools_view($id) {
-		$this->db->select('
-			a.id as id,
-			a.sr_id as sr_id,
-			a.tools_id as tools_id,
-			c.model as tools_model,
-			c.price as tools_price,
-			a.qty_rqstd as qty_rqstd,
-			a.returns as returns
-		');
-		$this->db->from('service_report_tools as a');
-		$this->db->join('service_report as b','a.sr_id=b.id','left');
-		$this->db->join('tools as c','a.tools_id=c.code','left');
 
-		$this->db->where('a.sr_id',$id);
-
-		return $this->db->get()->result();
+		$this->db->where('sr_id',$id);
+		return $this->db->get('service_report_tools')->result();
 
 	}
 
@@ -205,6 +169,9 @@ class ServiceReportModel extends CI_Model {
 		"description",
 		"date_requested",
 		"date_implemented",
+		"requested_by",
+		"prepared_by",
+		"checked_by",
 		"a.is_deleted"
 	);
 	var $order_column = array(
@@ -212,7 +179,10 @@ class ServiceReportModel extends CI_Model {
         "CompanyName",
         "description",
         "date_requested",
-        "date_implemented"
+		"date_implemented",
+		"requested_by",
+		"prepared_by",
+		"checked_by"
 	);
 
 	public function service_report_query(){

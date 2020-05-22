@@ -169,8 +169,8 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            </a>
           	</li>
 
-          	<li class="nav-header">PROJECTS AND SERVICES</li>
-
+			<li class="nav-header">PROJECTS AND SERVICES</li>
+			  
 	    	<li class="nav-item has-treeview<?php echo $project_report ?>">
 	            <a href="javascript:void(0)" class="nav-link <?php echo $project_report_href ?>">
 	              <i class="nav-icon fas fa-file-alt"></i>
@@ -194,7 +194,33 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	                </a>
 	              </li>
 	            </ul>
-	        </li>
+			</li>
+			
+			<li class="nav-item has-treeview<?php echo $li_servicereport ?>">
+		        <a href="#" class="nav-link<?php echo $ul_servicereport ?>">
+		          <i class="nav-icon fas fa-screwdriver"></i>
+		          <p>
+		            Service Report
+		            <i class="fas fa-angle-left right"></i>
+		          </p>
+		        </a>
+		        <ul class="nav nav-treeview">
+
+		          <li class="nav-item">
+		            <a href="<?php echo site_url('service-report') ?>" class="nav-link<?php echo $encode_sr ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Encode SR</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="<?php echo site_url('service-report-list') ?>" class="nav-link<?php echo $sr_listing ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>SR Listing</p>
+		            </a>
+		          </li>
+		        </ul>
+			</li>
 
 	    	<!-- FORMS -->
 	    	<li class="nav-item">
@@ -272,32 +298,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		            </a>
 		          </li>
 
-		        </ul>
-	    	</li>
-
-	    	<li class="nav-item has-treeview<?php echo $li_servicereport ?>">
-		        <a href="#" class="nav-link<?php echo $ul_servicereport ?>">
-		          <i class="nav-icon fas fa-screwdriver"></i>
-		          <p>
-		            Service Report
-		            <i class="fas fa-angle-left right"></i>
-		          </p>
-		        </a>
-		        <ul class="nav nav-treeview">
-
-		          <li class="nav-item">
-		            <a href="<?php echo site_url('service-report') ?>" class="nav-link<?php echo $encode_sr ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Encode SR</p>
-		            </a>
-		          </li>
-
-		          <li class="nav-item">
-		            <a href="<?php echo site_url('service-report-list') ?>" class="nav-link<?php echo $sr_listing ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>SR Listing</p>
-		            </a>
-		          </li>
 		        </ul>
 	    	</li>
 

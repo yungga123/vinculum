@@ -55,9 +55,6 @@ defined('BASEPATH') or die('Access Denied');
                                                         <input type="text" name="description" id="description" class="form-control" value="<?php echo $row->description ?>">
                                                     </div>
 
-                                                </div>
-
-                                                <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="date_requested">Date Requested</label>
                                                         <input type="date" name="date_requested" id="date_requested" class="form-control" value="<?php echo $row->date_requested ?>">
@@ -66,6 +63,24 @@ defined('BASEPATH') or die('Access Denied');
                                                     <div class="form-group">
                                                         <label for="date_implemented">Date Implemented</label>
                                                         <input type="date" name="date_implemented" id="date_implemented" class="form-control" value="<?php echo $row->date_implemented ?>">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="requested_by">Requested By</label>
+                                                        <input type="text" name="requested_by" id="requested_by" class="form-control" value="<?php echo $row->requested_by ?>">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="prepared_by">Prepared By</label>
+                                                        <input type="text" name="prepared_by" id="prepared_by" class="form-control" value="<?php echo $row->prepared_by ?>">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="checked_by">Checked By</label>
+                                                        <input type="text" name="checked_by" id="checked_by" class="form-control" value="<?php echo $row->checked_by ?>">
                                                     </div>
                                                     
                                                 </div>
@@ -89,31 +104,30 @@ defined('BASEPATH') or die('Access Denied');
                                         <div class="card-body">
                                             <?php foreach ($results_direct_items_view as $row) { ?>
                                             <div class="row add-direct">
-                                                <div class="col-sm-4">
-                                                    
+                                                <input type="hidden" name="direct_item_id[]" value="<?php echo $row->id ?>">
+                                                <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <input type="hidden" name="direct_item_id[]" value="<?php echo $row->id ?>">
+                                                        
                                                         <label for="direct_item[]">Direct Item</label>
-                                                        <select type="text" name="direct_item[]" class="form-control">
-                                                            <option value="">---Please Select Item---</option>
-
-                                                            <?php foreach ($results_direct_items as $row2) { ?>
-                                                                <option <?php if ($row->direct_item_id==$row2->itemCode) {
-                                                                    echo 'selected';
-                                                                } ?> value="<?php echo $row2->itemCode ?>"><?php echo $row2->itemName ?></option>
-                                                            <?php } ?>
-                                                        </select>
+                                                        <input class="form-control" type="text" name="direct_item[]" value="<?php echo $row->direct_item ?>">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="direct_item_qty[]">Quantity</label>
                                                         <input type="text" name="direct_item_qty[]" class="form-control" value="<?php echo $row->qty_rqstd ?>">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <label for="direct_item_amt[]">Amount</label>
+                                                        <input type="text" name="direct_item_amt[]" class="form-control" value="<?php echo $row->amt ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="direct_item_returns[]">Returns</label>
                                                         <input type="text" name="direct_item_returns[]" class="form-control" value="<?php echo $row->returns ?>">
@@ -146,33 +160,32 @@ defined('BASEPATH') or die('Access Denied');
                                             <?php foreach ($results_indirect_items_view as $row) { ?>
                                               
                                             <div class="row add-indirect">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-6">
                                                     <input type="hidden" name="indirect_item_id[]" value="<?php echo $row->id ?>">
                                                     <div class="form-group">
                                                         <label for="indirect_item[]">Indirect Item</label>
-                                                        <select type="text" name="indirect_item[]" class="form-control">
-                                                            <option value="">---Please Select Item---</option>
-
-                                                            <?php foreach ($results_indirect_items as $row2) { ?>
-                                                                <option <?php if ($row2->itemCode==$row->indirect_item_id) {
-                                                                    echo 'selected';
-                                                                } ?> value="<?php echo $row2->itemCode ?>"><?php echo $row2->itemName ?></option>
-                                                            <?php } ?>
-                                                        </select>
+                                                        <input type="text" name="indirect_item[]" class="form-control" value="<?php echo $row->indirect_item ?>">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="indirect_item_qty[]">Quantity</label>
                                                         <input type="text" name="indirect_item_qty[]" class="form-control" value="<?php echo $row->qty_rqstd ?>">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <label for="indirect_item_amt[]">Amount</label>
+                                                        <input type="text" name="indirect_item_amt[]" class="form-control" value="<?php echo $row->amt ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="indirect_item_returns[]">Returns</label>
-                                                        <input type="text" name="indirect_item_returns[]" class="form-control" value="<?php echo $row->returns ?>">
+                                                        <input type="text" name="indirect_item_returns[]" class="form-control" value="<?php echo $row->amt ?>">
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,30 +216,22 @@ defined('BASEPATH') or die('Access Denied');
                                         <div class="card-body">
                                             <?php foreach ($results_tools_view as $row) { ?>
                                             <div class="row add-tools">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-6">
                                                     <input type="hidden" name="tools_id[]" value="<?php echo $row->id ?>">
                                                     <div class="form-group">
-                                                    <label for="tools[]">Tools</label>
-                                                    <select class="form-control" name="tools[]">
-                                                        <option value="">--- Please Select tools ---</option>
-
-                                                        <?php foreach ($results_tools as $row2) { ?>
-                                                            <option <?php if ($row2->code==$row->tools_id) {
-                                                                echo 'selected';
-                                                            } ?> value="<?php echo $row2->code ?>"><?php echo $row2->model.' -- '.$row2->description ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                        <label for="tools[]">Tools</label>
+                                                        <input type="text" class="form-control" name="tools[]" value="<?php echo $row->tools ?>">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <div class="form-group">
                                                     <label for="tools_qty[]">Quantity</label>
                                                     <input type="text" name="tools_qty[]" class="form-control" value="<?php echo $row->qty_rqstd ?>">
                                                     </div>
                                                 </div>
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <div class="form-group">
                                                     <label for="tools_returns[]">Returns</label>
                                                     <input type="text" name="tools_returns[]" class="form-control" value="<?php echo $row->returns ?>">
