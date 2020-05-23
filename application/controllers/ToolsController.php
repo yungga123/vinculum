@@ -188,7 +188,7 @@ class ToolsController extends CI_Controller {
 
     	$results = $this->ToolsModel->select_where_id($id);
 
-    	if (count($results != 0)) {
+    	if (count($results) != 0) {
     		$validate['success'] = true;
     		$validate['data'] = $results;
     	}
