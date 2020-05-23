@@ -98,6 +98,7 @@ defined('BASEPATH') or die('Access Denied');
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Success! Project Report was added!");
+						me[0].reset();
 		 			} else {
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');

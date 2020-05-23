@@ -43,6 +43,10 @@ class ItemsController extends CI_Controller {
 			$data['ul_items'] = ' active';
 			$data['category'] = 'Indirect';
 
+			$this->load->model('CustomersModel');
+			$resultCustomers = $this->CustomersModel->getVtCustomersByName();
+			$data['resultCustomers'] = $resultCustomers;
+
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('items/items_masterlist/items_masterlist');

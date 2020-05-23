@@ -38,6 +38,20 @@ defined('BASEPATH') or die('No direct script access allowed.');
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <style type="text/css">
+		@media print {
+			.table-bordered td, .table-bordered th {
+				border: 1px solid #000000 !important;
+			}
+
+			.table thead th {
+				vertical-align: bottom !important;
+				border-bottom: 2px solid #000000 !important;
+			}
+		}
+		
+	</style>
 </head>
 
 
@@ -53,7 +67,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
               <div class="card-body table-responsive p-0">
                 <div class="table-responsive">
                   <table class="table table-sm table-bordered">
-                  <thead>
+                    <tbody>
                         <tr>
                           <th>Transaction ID</th>
                           <th>Item Code</th>
@@ -69,8 +83,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
                           <th>Encoder</th>
                           <th>Date Registered</th>
                         </tr>
-                    </thead>
-                  <tbody>
+                  
+                  
                     <?php foreach ($results as $row): ?>
                       <tr>
                         <td><?php echo $row->id ?></td>

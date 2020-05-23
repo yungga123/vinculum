@@ -114,9 +114,9 @@ foreach ($results as $row) {
 	}
 
 	if ($row->WithPermit == 'Yes') {
-		$with_permit = 'fas fa-check-square';
+		$with_permit = 'YES';
 	} else {
-		$with_permit = 'fas fa-times';
+		$with_permit = 'NO';
 	}
 
 	if ($row->Warranty) {
@@ -162,6 +162,20 @@ foreach ($results as $row) {
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  	<style type="text/css">
+		@media print {
+			.table-bordered td, .table-bordered th {
+				border: 1px solid #000000 !important;
+			}
+
+			.table thead th {
+				vertical-align: bottom !important;
+				border-bottom: 2px solid #000000 !important;
+			}
+		}
+		
+	</style>
 
   
 </head>
@@ -248,7 +262,8 @@ foreach ($results as $row) {
 							
 
 							<tr>
-								<td width="100%" class="" colspan="2">With Work Permit? <i class="<?php echo $with_permit ?>"></i></td>
+								<td class="text-bold" width="30%">Work Permit</td>
+								<td width="70%"><?php echo $with_permit ?></td>
 							</tr>
 
 							<tr>

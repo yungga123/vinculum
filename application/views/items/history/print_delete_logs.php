@@ -38,6 +38,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <style type="text/css">
+		@media print {
+			.table-bordered td, .table-bordered th {
+				border: 1px solid #000000 !important;
+			}
+
+			.table thead th {
+				vertical-align: bottom !important;
+				border-bottom: 2px solid #000000 !important;
+			}
+		}
+		
+	</style>
 </head>
 
 
@@ -53,18 +67,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
               <div class="card-body table-responsive p-0">
                 <div class="table-responsive">
                   <table class="table table-sm table-bordered">
-                  <thead>
-                        <tr>
-                          <th>Date</th>
-                          <th>Time</th>
-                          <th>Item Code</th>
-                          <th>Item Name</th>
-                          <th>Category</th>
-                          <th>Original Price</th>
-                          <th>Selling Price</th>
-                        </tr>
-                    </thead>
                   <tbody>
+                    <tr>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Item Code</th>
+                      <th>Item Name</th>
+                      <th>Category</th>
+                      <th>Original Price</th>
+                      <th>Selling Price</th>
+                    </tr>
+                  
                     <?php foreach ($results as $row): ?>
                       <tr>
                         <td><?php echo $row->dateLog ?></td>
