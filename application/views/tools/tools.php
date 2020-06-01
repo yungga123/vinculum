@@ -25,8 +25,13 @@ defined('BASEPATH') or die('Access Denied');
 						</div>
 
 						<div class="card-body">
+
 							<a href="<?php echo site_url('addtools') ?>" class="btn btn-block btn-success text-bold"><i class="fas fa-plus"></i> ADD TOOLS</a>
+
 							<a href="<?php echo site_url('printtools') ?>" class="btn btn-block btn-warning text-bold" target="_blank"><i class="fas fa-print"></i> PRINT TOOLS</a>
+
+							<a href="#" class="btn btn-block btn-primary text-bold" ><i class="fas fa-wrench"></i> PULLOUT TOOLS</a>
+
 						</div>
 					</div>
 				</div>
@@ -134,6 +139,62 @@ defined('BASEPATH') or die('Access Denied');
 				<button type="submit" class="btn btn-success text-bold">YES</button>
 			</div>
 			<?php echo form_close() ?>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade modal-pullout-tool">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			
+			<div class="modal-body text-center">
+				<label style="font-size: 22px">PULLOUT</label>
+				<?php echo form_open('ToolsController/pullout_tool_validate',["id" => "form-tool-pullouts"]) ?>
+				<div class="form-group">
+					<label for="tool_pullout_code">Tool Code</label>
+					<input class="form-control text-center text-bold" type="text" name="tool_pullout_code" id="tool_pullout_code" readonly>
+				</div>
+
+				<div class="form-group">
+					<label for="customer">Customer</label>
+					<select class="form-control text-center text-bold" name="customer" id="customer">
+						<option value="">--- Please Select ---</option>
+						<?php if (count($result_customers) != 0) { ?>
+							<?php foreach ($result_customers as $row) { ?>
+								<option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName.' - '.$row->CustomerID ?></option>
+							<?php } ?>
+						<?php } ?>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="personnel">Assigned Personnel</label>
+					<select class="form-control text-center text-bold" name="personnel" id="personnel">
+						<option value="">--- Please Select ---</option>
+						<?php if (count($result_technicians) != 0) { ?>
+							<?php foreach ($result_technicians as $row) {
+									$firstname = $row->firstname;
+									if ($row->middlename != '') { $middlename = substr($row->middlename,0,1).'.'; }
+									$lastname = $row->lastname;
+									$position = $row->position;
+								?>
+								
+								<option value="<?php echo $row->id ?>"><?php echo $firstname.' '.$middlename.' '.$lastname.' | ID: '.$row->id.' | '.$row->position ?></option>
+							<?php } ?>
+						<?php } ?>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="tool_pullout_stock">To Pullout</label>
+					<input class="form-control text-center text-bold" type="number" name="tool_pullout_stock" id="tool_pullout_stock">
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger text-bold" data-dismiss="modal">CLOSE</button>
+				<button type="submit" class="btn btn-success text-bold">PULLOUT</button>
+			</div>
+			
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

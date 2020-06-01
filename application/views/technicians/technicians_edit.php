@@ -5,12 +5,14 @@ $tech_id_edit = '';
 $tech_fname_edit = '';
 $tech_mname_edit = '';
 $tech_lname_edit = '';
+$tech_position_edit = '';
 
 foreach ($results as $row) {
 	$tech_id_edit = $row->id;
 	$tech_fname_edit = $row->firstname;
 	$tech_mname_edit = $row->middlename;
 	$tech_lname_edit = $row->lastname;
+	$tech_position_edit = $row->position;
 }
 ?>
 
@@ -56,6 +58,11 @@ foreach ($results as $row) {
 							<div class="form-group">
 								<label for="tech_lname">Last Name</label>
 								<input class="form-control" type="text" name="tech_lname" id="tech_lname" value="<?php echo $tech_lname_edit ?>">
+							</div>
+
+							<div class="form-group">
+								<label for="tech_position">Position</label>
+								<input class="form-control" type="text" name="tech_position" id="tech_position" value="<?php echo $tech_position_edit ?>">
 							</div>
 						</div>
 

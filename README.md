@@ -46,3 +46,18 @@ Modifications in 'project_report' table:
 System Update:
 - Requested By is replaced with Received By and Prepared by is removed. (Service Report Module)
 - Project Report added checked by, prepared by, and customer name
+
+6/1/2020
+SQL UPDATE 
+MariaDB [vinculum]> desc technicians;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | varchar(200) | NO   | PRI | NULL    |       |
+| lastname   | varchar(200) | NO   |     | NULL    |       |
+| firstname  | varchar(200) | NO   |     | NULL    |       |
+| middlename | varchar(200) | NO   |     | NULL    |       |
+| position   | varchar(500) | NO   |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+
+- Added Position table for 'technicians'

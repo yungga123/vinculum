@@ -68,6 +68,15 @@ class TechniciansController extends CI_Controller {
 					'required' => 'Please provide Last Name.',
 					'max_length' => 'Maximum length of Last Name is 200.'
 				]
+			],
+			[
+				'field' => 'tech_position',
+				'label' => 'Position',
+				'rules' => 'trim|required|max_length[200]',
+				'errors' => [
+					'required' => 'Please provide Position.',
+					'max_length' => 'Maximum length of Position is 200.'
+				]
 			]
 		];
 		
@@ -84,7 +93,8 @@ class TechniciansController extends CI_Controller {
 				'id' => $this->input->post('tech_id'),
 				'lastname' => $this->input->post('tech_lname'),
 				'firstname' => $this->input->post('tech_fname'),
-				'middlename' => $this->input->post('tech_mname')
+				'middlename' => $this->input->post('tech_mname'),
+				'position' => $this->input->post('tech_position')
 			];
 
 			$this->TechniciansModel->addTechnicians($data);
@@ -151,6 +161,15 @@ class TechniciansController extends CI_Controller {
 					'required' => 'Please provide Last Name.',
 					'max_length' => 'Maximum length of Last Name is 200.'
 				]
+			],
+			[
+				'field' => 'tech_position',
+				'label' => 'Last Name',
+				'rules' => 'trim|required|max_length[200]',
+				'errors' => [
+					'required' => 'Please provide Position.',
+					'max_length' => 'Maximum length of Position is 200.'
+				]
 			]
 		];
 		
@@ -166,7 +185,8 @@ class TechniciansController extends CI_Controller {
 			$data = [
 				'lastname' => $this->input->post('tech_lname'),
 				'firstname' => $this->input->post('tech_fname'),
-				'middlename' => $this->input->post('tech_mname')
+				'middlename' => $this->input->post('tech_mname'),
+				'position' => $this->input->post('tech_position')
 			];
 
 			$this->TechniciansModel->editTechnicians($id,$data);

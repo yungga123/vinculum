@@ -30,6 +30,7 @@ defined('BASEPATH') or die('Access Denied');
 			            			<tr>
 			            				<th>ID</th>
 			            				<th>Name</th>
+										<th>Position</th>
 			            				<th>Operation</th>
 			            			</tr>
 			            		</thead>
@@ -40,6 +41,7 @@ defined('BASEPATH') or die('Access Denied');
 			            				<tr>
 				            				<td><?php echo $row->id ?></td>
 				            				<td><?php echo $row->name ?></td>
+											<td><?php echo $row->position ?></td>
 				            				<td>
 				            					<a href="<?php echo site_url('technicians-edit/'.$row->id) ?>" class="btn btn-warning btn-sm text-bold"><i class="fas fa-edit"></i> EDIT</a>
 
@@ -93,6 +95,11 @@ defined('BASEPATH') or die('Access Denied');
 				<div class="form-group">
 					<label for="tech_lname">Last Name</label>
 					<input class="form-control" type="text" name="tech_lname" id="tech_lname">
+				</div>
+
+				<div class="form-group">
+					<label for="tech_position">Position</label>
+					<input class="form-control" type="text" name="tech_position" id="tech_position">
 				</div>
 			</div>
 

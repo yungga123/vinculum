@@ -14,6 +14,7 @@ class DashboardController extends CI_Controller {
 			$this->load->model('TechniciansModel');
 			$this->load->model('PulloutsModel');
 			$this->load->model('CalendarModel');
+			$this->load->model('ToolsModel');
 
 			$data = html_variable();
 			$data['title'] = 'Dashboard';
@@ -25,7 +26,9 @@ class DashboardController extends CI_Controller {
 			$data['customer_count'] = $this->CustomersModel->count_vtCustomer();
 			$data['technicians_count'] = $this->TechniciansModel->countTechnicians();
 			$data['pullouts_count'] = $this->PulloutsModel->countPullouts();
+			$data['tools_count'] = $this->ToolsModel->count_tools();
 			$data['results_today_event'] = $this->CalendarModel->get_events_by_date();
+			
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');

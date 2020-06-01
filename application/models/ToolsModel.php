@@ -26,6 +26,10 @@ class ToolsModel extends CI_Model {
 		$this->db->delete('tools');
 	}
 
+	public function count_tools() {
+		return $this->db->count_all('tools');
+	}
+
 	
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************

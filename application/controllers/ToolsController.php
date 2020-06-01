@@ -79,12 +79,17 @@ class ToolsController extends CI_Controller {
 
     public function index() {
     	if($this->session->userdata('logged_in')) {
+			$this->load->model('CustomersModel');
+			$this->load->model('TechniciansModel');
+
     		$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Tools';
 			$data['ul_tools'] = ' active';
 			$data['listof_tools'] = ' active';
 			$data['ul_tools_treeview'] = ' menu-open';
+			$data['result_customers'] = $this->CustomersModel->getVtCustomersByID();
+			$data['result_technicians'] = $this->TechniciansModel->getTechniciansByName();
 
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/navbar');
@@ -111,9 +116,11 @@ class ToolsController extends CI_Controller {
 			$sub_array[] = $row->price;
 			$sub_array[] = '
 
-				  	<button type="button" class="btn btn-warning btn-sm btn-select" title="Edit" data-toggle="modal" data-target=".modal-edit-tool"><i class="fas fa-edit"></i></button> 
+				  	<button type="button" class="btn btn-warning btn-xs btn-select" title="Edit" data-toggle="modal" data-target=".modal-edit-tool"><i class="fas fa-edit"></i></button> 
 
-					<button type="button" class="btn btn-danger btn-sm btn-delete" title="Delete" data-toggle="modal" data-target=".modal-delete-tool"><i class="fas fa-trash"></i></button>			
+					<button type="button" class="btn btn-danger btn-xs btn-delete" title="Delete" data-toggle="modal" data-target=".modal-delete-tool"><i class="fas fa-trash"></i></button>
+
+					<button type="button" class="btn btn-success btn-xs btn-pullout" title="Pullout" data-toggle="modal" data-target=".modal-pullout-tool"><i class="fas fa-sign-out-alt"></i></button>	
 			';
 
 			$data[] = $sub_array;
@@ -279,5 +286,46 @@ class ToolsController extends CI_Controller {
     	} else {
     		redirect('','refresh');
     	}
-    }
+	}
+	
+	public function pullout_tool_validate() {
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'tool_pullout_code',
+				'label' => 'Tool Code',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select tool.'
+				]
+			],
+			[
+				'field' => 'tool_pullout_stock',
+				'label' => 'To Pullout',
+				'rules' => 'trim|required|is_natural_no_zero|greater_than_equal_to[1]',
+				'errors' => [
+					'required' => 'To pullout field is required.',
+					'is_natural_no_zero' => 'Number must be natural and not zero.',
+					'greater_than_equal_to' => 'Available stock/s is 1.'
+				]
+			]
+		];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+		} 
+		else {
+		$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
 }

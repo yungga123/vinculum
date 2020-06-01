@@ -76,6 +76,19 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				}
 			   
 			} );
+
+			$('#tools_table tbody').on( 'click', '.btn-pullout', function () {
+		    	var data = tools_table.row($(this).parents('tr')).data();
+				var rowdata = tools_table.row(this).data();
+				var input_element = $('#tool_pullout_code');
+
+				if (data == undefined) {
+					input_element.val(rowdata[0]);
+				} else if (rowdata == undefined) {
+					input_element.val(data[0]);
+				}
+			   
+			} );
 	  	});
 
 	  	
@@ -220,6 +233,56 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 						$('.loading-modal').modal('hide');
 
 		 				toastr.success('Tool Successfully Deleted! Please refresh this page.');
+		 				me[0].reset();
+		 			} else {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		 });
+
+		//Form Pullout Tools
+		$('#form-tool-pullouts').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.success('Tool Successfully Pulled out!.');
 		 				me[0].reset();
 		 			} else {
 		 				$(':submit').removeAttr('disabled','disabled');
