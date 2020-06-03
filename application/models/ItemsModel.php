@@ -22,6 +22,16 @@ class ItemsModel extends CI_Model {
 		$this->db->order_by("itemName","asc");
 		return $this->db->get()->result();
 	}
+
+	public function getMasterItemsByStocks(){
+		// return $this->db->get('items')->result();
+		//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
+		$this->db->select("itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,location,supplier,encoder");
+		$this->db->from("items");
+		$this->db->where("stocks <>","0");
+		$this->db->order_by("itemName","asc");
+		return $this->db->get()->result();
+	}
 	
 
 	public function getSpecificMasterItems($item_code){

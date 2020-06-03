@@ -32,7 +32,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 						  			<div class="btn-group">
 						  				<a href="<?php echo base_url('index.php/addnewitem');?>" class="btn btn-primary"><i class="fas fa-plus"></i> Register New Item (Manual)</a>
 						  				<a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-qrcode"></i> Register New Item (Scanner)</a>
-						  				<a href="<?php echo site_url('print-items') ?>" class="btn btn-danger" target="_blank"><i class="fas fa-print"></i> Print</a>
+						  				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-printselect"><i class="fas fa-print"></i> Print</button>
 						  			</div>
 						  				
 						  		</div>
@@ -265,4 +265,23 @@ defined('BASEPATH') or die('No direct script access allowed.');
     </div>
   </div>
 </div>
-      
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-printselect" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Confirmation</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body text-center">
+				<a href="<?php echo site_url('print-items/all') ?>" class="btn btn-block btn-success text-bold" target="_blank"><i class="fas fa-print"></i> PRINT ALL ITEMS</a>
+
+				<a href="<?php echo site_url('print-items/stocks') ?>" class="btn btn-block btn-success text-bold" target="_blank"><i class="fas fa-print"></i> PRINT ONLY ITEMS ON STOCK</a>
+			</div>
+		</div>
+	</div>
+</div>

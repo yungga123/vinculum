@@ -68,19 +68,36 @@ defined('BASEPATH') or die('No direct script access allowed.');
                     </tr>
                   </thead>
                   <tbody>
-                  	<?php foreach ($results as $row): ?>
-                  		<tr>
-	                      <td><?php echo $row->itemCode ?></td>
-	                      <td><?php echo $row->itemName ?></td>
-	                      <td><?php echo $row->itemType ?></td>
-	                      <td><?php echo $row->itemSupplierPrice ?></td>
-                        <td><?php echo $row->itemPrice ?></td>
-                        <td><?php echo $row->stocks ?></td>
-	                      <td><?php echo $row->location ?></td>
-	                      <td><?php echo $row->supplier ?></td>
-	                      <td><?php echo $row->encoder ?></td>
-	                    </tr>
-                  	<?php endforeach ?>
+                    <?php if ($filter == 'all') { ?>
+                      <?php foreach ($results as $row): ?>
+                        <tr>
+                          <td><?php echo $row->itemCode ?></td>
+                          <td><?php echo $row->itemName ?></td>
+                          <td><?php echo $row->itemType ?></td>
+                          <td><?php echo $row->itemSupplierPrice ?></td>
+                          <td><?php echo $row->itemPrice ?></td>
+                          <td><?php echo $row->stocks ?></td>
+                          <td><?php echo $row->location ?></td>
+                          <td><?php echo $row->supplier ?></td>
+                          <td><?php echo $row->encoder ?></td>
+                        </tr>
+                      <?php endforeach ?>
+                    <?php } else { ?>
+                      <?php foreach ($results_stocks as $row): ?>
+                        <tr>
+                          <td><?php echo $row->itemCode ?></td>
+                          <td><?php echo $row->itemName ?></td>
+                          <td><?php echo $row->itemType ?></td>
+                          <td><?php echo $row->itemSupplierPrice ?></td>
+                          <td><?php echo $row->itemPrice ?></td>
+                          <td><?php echo $row->stocks ?></td>
+                          <td><?php echo $row->location ?></td>
+                          <td><?php echo $row->supplier ?></td>
+                          <td><?php echo $row->encoder ?></td>
+                        </tr>
+                      <?php endforeach ?>
+                    <?php } ?>
+                  	
                     
                   </tbody>
                 </table>

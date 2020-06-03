@@ -45,6 +45,18 @@ foreach ($final_price as $row) {
 								<div class="col-12">
 									<?php echo form_open('specific_confirmed_pullouts') ?>
 									<div class="form-group">
+										<label for="customer_print">Select Customer</label>
+										<select name="customer_print" id="customer_print" class="form-control" aria-describedby="helpId">
+											<option value="0">ALL</option>
+											<?php if (count($results_customers) != 0) { ?>
+												<?php foreach ($results_customers as $row) { ?>
+													<option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName.' - '.$row->CustomerID ?></option>
+												<?php } ?>
+											<?php } ?>
+										</select>
+										<small id="helpId" class="text-muted">The print is based on current date selection.</small>
+									</div>
+									<div class="form-group">
 										<input type="text" class="form-control" name="conpulledout_daterange" id="conpulledout_daterange" readonly>
 									</div>
 
@@ -68,7 +80,7 @@ foreach ($final_price as $row) {
 						</div>
 
 						<div class="card-body">
-							<a href="<?php echo site_url('print-pullout/'.$start_date.'/'.$end_date) ?>" class="btn btn-success btn-block text-bold" target="_blank"><i class="fas fa-print"></i> PRINT DATE COVERAGE</a>
+							<a href="<?php echo site_url('print-pullout/'.$start_date.'/'.$end_date.'/'.$customer) ?>" class="btn btn-success btn-block text-bold" target="_blank"><i class="fas fa-print"></i> PRINT THIS</a>
 
 							<a class="btn btn-primary btn-block text-bold" href="<?php echo site_url('return-history') ?>"><i class="fas fa-history"></i> RETURN OF ITEMS LOGS</a>
 						</div>
@@ -200,3 +212,6 @@ foreach ($final_price as $row) {
 	</div>
 	<!-- /.modal-dialog -->
 </div>
+
+
+

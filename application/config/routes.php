@@ -62,7 +62,7 @@ $route['login'] = 'LoginController';
 $route['masterlistofitems'] = 'ItemsController/items_masterlist';
 $route['masterlistofindirectitems'] = 'ItemsController/indirect_items_masterlist';
 $route['addnewitem'] = 'ItemsController/register_new_item';
-$route['print-items'] = 'ItemsController/print_items';
+$route['print-items/(:any)'] = 'ItemsController/print_items/$1';
 
 
 //Logs Controller
@@ -99,7 +99,7 @@ $route['Pull-Out-item'] = 'PullOutsController';
 $route['pending-pullouts'] = 'PullOutsController/pending_pullouts';
 $route['confirmed-pullouts'] = 'PullOutsController/confirmed_pullouts';
 $route['specific_confirmed_pullouts'] = 'PullOutsController/get_confirmed_pullouts';
-$route['print-pullout/(:any)/(:any)'] = 'PullOutsController/print_confirmed_pullout/$1/$2';
+$route['print-pullout/(:any)/(:any)/(:any)'] = 'PullOutsController/print_confirmed_pullout/$1/$2/$3';
 $route['return-history'] = 'PullOutsController/return_history';
 $route['specific-return-history'] = 'PullOutsController/specific_return_history';
 $route['print-return/(:any)/(:any)'] = 'PullOutsController/print_return_history/$1/$2';

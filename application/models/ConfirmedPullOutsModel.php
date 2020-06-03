@@ -50,7 +50,7 @@ class ConfirmedPullOutsModel extends CI_Model {
 		return $this->db->get('confirmed_pullouts')->result();
 	}
 
-	public function getSpecificConfirmedPullout($startDate,$endDate) {
+	public function getSpecificConfirmedPullout($startDate,$endDate,$customer) {
 		//SELECT DATE_FORMAT(confirm_date,'%b %d, %Y') as confirm_date,DATE_FORMAT(date_of_pullout,'%b %d, %Y %h:%i %p') as date_of_pullout,item_code,itemName,itemPrice,stocks_pulled_out,(itemPrice*stocks_pulled_out) AS total_price FROM confirmed_pullouts INNER JOIN items ON confirmed_pullouts.item_code=items.itemCode
 
 		date_default_timezone_set("Asia/Manila");
@@ -73,6 +73,9 @@ class ConfirmedPullOutsModel extends CI_Model {
 		$this->db->from('confirmed_pullouts');
 		$this->db->join('customer_vt','customer_vt.CustomerID=confirmed_pullouts.pullout_to','left');
 		$this->db->where($where);
+		if ($customer != 0) {
+			$this->db->where('pullout_to',$customer);
+		}
 		return $this->db->get()->result();	
 	}
 
@@ -81,19 +84,25 @@ class ConfirmedPullOutsModel extends CI_Model {
 		$this->db->delete('confirmed_pullouts');
 	}
 
-	public function cpullouts_total_price($startDate,$endDate) {
+	public function cpullouts_total_price($startDate,$endDate,$customer) {
 		$where = "date(confirm_date) BETWEEN '".$startDate."' AND '".$endDate."'";
 		$this->db->select('SUM(stocks_pulled_out*itemPrice) as total_price');
 		$this->db->from('confirmed_pullouts');
 		$this->db->where($where);
+		if ($customer != 0) {
+			$this->db->where('pullout_to',$customer);
+		}
 		return $this->db->get()->result();
 	}
 
-	public function cpullouts_final_price($startDate,$endDate) {
+	public function cpullouts_final_price($startDate,$endDate,$customer) {
 		$where = "date(confirm_date) BETWEEN '".$startDate."' AND '".$endDate."'";
 		$this->db->select('SUM((itemPrice*stocks_pulled_out)-discount) as final_price')
 				 ->from('confirmed_pullouts')
 				 ->where($where);
+		if ($customer != 0) {
+			$this->db->where('pullout_to',$customer);
+		}
 		return $this->db->get()->result();
 	}
 
