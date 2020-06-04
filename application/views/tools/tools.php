@@ -30,7 +30,7 @@ defined('BASEPATH') or die('Access Denied');
 
 							<a href="<?php echo site_url('printtools') ?>" class="btn btn-block btn-warning text-bold" target="_blank"><i class="fas fa-print"></i> PRINT TOOLS</a>
 
-							<a href="#" class="btn btn-block btn-primary text-bold" ><i class="fas fa-wrench"></i> PULLOUT TOOLS</a>
+							<a href="#" class="btn btn-block btn-primary text-bold" ><i class="fas fa-wrench"></i> LIST OF PULLOUT TOOLS</a>
 
 						</div>
 					</div>

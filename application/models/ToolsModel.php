@@ -30,6 +30,10 @@ class ToolsModel extends CI_Model {
 		return $this->db->count_all('tools');
 	}
 
+	public function insert_toolpullout($data) {
+		$this->db->insert('tools_pullout',$data);
+	}
+
 	
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************

@@ -16,8 +16,6 @@ if(!function_exists('html_variable')) {
 			'pullout_items' => '',
 			'listof_pullouts' => '',
 			'ul_tools' => '',
-			'listof_tools' => '',
-			'pullout_tools' => '',
 			'consumeables' => '',
 			'history' => '',
 			'listof_warranty' => '',
@@ -55,7 +53,6 @@ if(!function_exists('html_variable')) {
 			'project_report_href' => '',
 			'project_report_add' => '',
 			'project_report_list' => '',
-			'ul_tools_treeview' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];

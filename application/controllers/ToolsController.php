@@ -304,13 +304,29 @@ class ToolsController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'customer',
+				'label' => 'Customer',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select customer.'
+				]
+			],
+			[
+				'field' => 'personnel',
+				'label' => 'Assigned Personnel',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select assigned personnel.'
+				]
+			],
+			[
 				'field' => 'tool_pullout_stock',
 				'label' => 'To Pullout',
-				'rules' => 'trim|required|is_natural_no_zero|greater_than_equal_to[1]',
+				'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[1]',
 				'errors' => [
 					'required' => 'To pullout field is required.',
 					'is_natural_no_zero' => 'Number must be natural and not zero.',
-					'greater_than_equal_to' => 'Available stock/s is 1.'
+					'less_than_equal_to' => 'Available stock/s is 1.'
 				]
 			]
 		];
@@ -320,8 +336,35 @@ class ToolsController extends CI_Controller {
 		$this->form_validation->set_rules($rules);
 
 		if ($this->form_validation->run()) {
+			date_default_timezone_set('Asia/Manila');
 			$validate['success'] = true;
+			
+			$current_date = date('Y-m-d');
+			$current_time = date('H:i:s');
+			$tool_code = $this->input->post('tool_pullout_code');
+			$tools = $this->ToolsModel->select_where_id($tool_code);
 
+
+			$data = [
+				'tool_code' => $tool_code,
+				'customer' => $this->input->post('customer'),
+				'assigned_personnel' => $this->input->post('personnel'),
+				'quantity' => $this->input->post('tool_pullout_stock'),
+				'date_of_pullout' => $current_date,
+				'time_of_pullout' => $current_time
+			];
+
+			foreach ($tools as $row) {
+				$tool_quantity = $row->quantity;
+			}
+
+			$update_data = [
+				'quantity' => $tool_quantity - $this->input->post('tool_pullout_stock')
+			];
+
+			
+			$this->ToolsModel->insert_toolpullout($data);
+			$this->ToolsModel->update($tool_code,$update_data);
 		} 
 		else {
 		$validate['errors'] = validation_errors();

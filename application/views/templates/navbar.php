@@ -121,31 +121,13 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            </ul>
           	</li>
 
-          	<li class="nav-item has-treeview<?php echo $ul_tools_treeview ?>">
-	            <a href="#" class="nav-link<?php echo $ul_tools ?>">
+          	<li class="nav-item">
+	            <a href="<?php echo site_url('tools') ?>" class="nav-link<?php echo $ul_tools ?>">
 	              <i class="nav-icon fas fa-wrench"></i>
 	              <p>
 	                Tools
-	                <i class="fas fa-angle-left right"></i>
 	              </p>
 	            </a>
-	            <ul class="nav nav-treeview">
-
-	              <li class="nav-item">
-	                <a href="<?php echo site_url('tools') ?>" class="nav-link<?php echo $listof_tools ?>">
-	                  <i class="far fa-circle nav-icon"></i>
-	                  <p>List of Tools</p>
-	                </a>
-	              </li>
-
-	              <li class="nav-item">
-	                <a href="#" class="nav-link<?php echo $pullout_tools ?>">
-	                  <i class="far fa-circle nav-icon"></i>
-	                  <p>Pull-out Tools</p>
-	                </a>
-	              </li>
-
-	            </ul>
           	</li>
 
           	<li class="nav-item">
