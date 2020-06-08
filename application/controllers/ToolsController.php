@@ -23,7 +23,7 @@ class ToolsController extends CI_Controller {
 					'required' => 'Please provide Tool Code.',
 					'max_length' => 'Tool Code maximum characters is 500.'
 				];
-    	}
+		}
 
     	$rules = [
 			[
@@ -51,7 +51,10 @@ class ToolsController extends CI_Controller {
 			[
 				'field' => 'tool_type',
 				'label' => 'Tool Type',
-				'rules' => 'trim'
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select tool type.'
+				]
 			],
 			[
 				'field' => 'tool_quantity',
@@ -81,16 +84,12 @@ class ToolsController extends CI_Controller {
     	if($this->session->userdata('logged_in')) {
 			$this->load->model('CustomersModel');
 			$this->load->model('TechniciansModel');
-
     		$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Tools';
 			$data['ul_tools'] = ' active';
-			$data['listof_tools'] = ' active';
-			$data['ul_tools_treeview'] = ' menu-open';
 			$data['result_customers'] = $this->CustomersModel->getVtCustomersByID();
 			$data['result_technicians'] = $this->TechniciansModel->getTechniciansByName();
-
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/navbar');
 			$this->load->view('tools/tools');
@@ -294,6 +293,14 @@ class ToolsController extends CI_Controller {
 			'errors' => ''
 		];
 
+		$tool_code = $this->input->post('tool_pullout_code');
+
+		$tools = $this->ToolsModel->select_where_id($tool_code);
+
+		foreach ($tools as $row) {
+			$tool_quantity = $row->quantity;
+		}
+
 		$rules = [
 			[
 				'field' => 'tool_pullout_code',
@@ -322,11 +329,11 @@ class ToolsController extends CI_Controller {
 			[
 				'field' => 'tool_pullout_stock',
 				'label' => 'To Pullout',
-				'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[1]',
+				'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to['.$tool_quantity.']',
 				'errors' => [
 					'required' => 'To pullout field is required.',
 					'is_natural_no_zero' => 'Number must be natural and not zero.',
-					'less_than_equal_to' => 'Available stock/s is 1.'
+					'less_than_equal_to' => 'Available stock/s is '.$tool_quantity.'.'
 				]
 			]
 		];
@@ -341,9 +348,6 @@ class ToolsController extends CI_Controller {
 			
 			$current_date = date('Y-m-d');
 			$current_time = date('H:i:s');
-			$tool_code = $this->input->post('tool_pullout_code');
-			$tools = $this->ToolsModel->select_where_id($tool_code);
-
 
 			$data = [
 				'tool_code' => $tool_code,
@@ -354,9 +358,7 @@ class ToolsController extends CI_Controller {
 				'time_of_pullout' => $current_time
 			];
 
-			foreach ($tools as $row) {
-				$tool_quantity = $row->quantity;
-			}
+			
 
 			$update_data = [
 				'quantity' => $tool_quantity - $this->input->post('tool_pullout_stock')
@@ -371,4 +373,45 @@ class ToolsController extends CI_Controller {
 		}
 		echo json_encode($validate);
 	}
+
+	public function tools_pullout() {
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->helper('site_helper');
+			$this->load->model('TechniciansModel');
+			$this->load->model('CustomersModel');
+			$data = html_variable();
+			$data['title'] = 'Tools Pullout';
+			$data['ul_tools'] = ' active';
+			$data['results_tools_pullout'] = $this->ToolsModel->tools_pullout_select();
+			$data['results_technicians'] = $this->TechniciansModel->getTechnicians();
+			$data['results_customers'] = $this->CustomersModel->getVtCustomersByID();
+			
+			$this->load->view('templates/header',$data);
+			$this->load->view('templates/navbar');
+			$this->load->view('tools/tools_pullout');
+			$this->load->view('templates/footer');
+			$this->load->view('tools/script');
+
+		} else {
+			redirect('','refresh');
+		}
+	}
+
+	public function get_tools_pullout_details($id) {
+		$validate = [
+    		'success' => false,
+    		'data' => ''
+    	];
+
+    	$results = $this->ToolsModel->tools_pullout_select_id($id);
+
+    	if (count($results) != 0) {
+    		$validate['success'] = true;
+    		$validate['data'] = $results;
+    	}
+
+    	echo json_encode($validate);
+	}
+
 }

@@ -34,7 +34,47 @@ class ToolsModel extends CI_Model {
 		$this->db->insert('tools_pullout',$data);
 	}
 
-	
+	public function tools_pullout_select() {
+		$this->db->select('
+			a.toolpullout_id,
+			a.tool_code,
+			b.model as tool_model,
+			b.description as tool_description,
+			CONCAT(d.firstname," ",d.lastname) as assigned_to,
+			c.CompanyName as customer,
+			a.quantity,
+			a.date_of_pullout,
+			a.time_of_pullout
+		');
+		$this->db->from('tools_pullout as a');
+		$this->db->join('tools as b','a.tool_code=b.code','left');
+		$this->db->join('customer_vt as c','a.customer=c.CustomerID','left');
+		$this->db->join('technicians as d','a.assigned_personnel=d.id','left');
+		$this->db->where('a.is_deleted',0);
+		return $this->db->get()->result();
+	}
+
+	public function tools_pullout_select_id($id) {
+		$this->db->select('
+			a.toolpullout_id,
+			a.tool_code,
+			b.model as tool_model,
+			b.description as tool_description,
+			d.id as assigned_to_id,
+			CONCAT(d.firstname," ",d.lastname) as assigned_to,
+			c.CustomerID as customer_id,
+			c.CompanyName as customer,
+			a.quantity,
+			a.date_of_pullout,
+			a.time_of_pullout
+		');
+		$this->db->from('tools_pullout as a');
+		$this->db->join('tools as b','a.tool_code=b.code','left');
+		$this->db->join('customer_vt as c','a.customer=c.CustomerID','left');
+		$this->db->join('technicians as d','a.assigned_personnel=d.id','left');
+		$this->db->where('a.is_deleted',0);
+		return $this->db->get()->result();
+	}
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "tools";
