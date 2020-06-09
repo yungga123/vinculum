@@ -8,7 +8,10 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 			//ClientSide Datatable for Tools Pullout
 			var tools_pullout = $("#tools_pullout").DataTable({
-				responsive: true
+				responsive: true,
+				"oLanguage": {
+        			"sEmptyTable": "No pullouts for today."
+    			}
 			});
 
 			//Datatable for Tools
@@ -92,6 +95,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 			 				$('#tool_loading').removeClass('overlay d-flex justify-content-center align-items-center');
 							$('#tool_loading').empty();
 
+							$('#pullout_id').val(response.data[0].toolpullout_id);
 							$('#tool_code').val(response.data[0].tool_code);
 							$('#assigned_to').val(response.data[0].assigned_to_id);
 							$('#customer').val(response.data[0].customer_id);
@@ -338,6 +342,59 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		 		}
 		 	});
 		 });
+
+		//Form Return Tools
+		$('#form-toolsreturn').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.success('Tool Successfully Returned! The page will refresh in 2 seconds');
+		 				me[0].reset();
+						setTimeout(function(){
+							window.location.href = '<?php echo site_url('tools-pullout') ?>';
+						},2000);
+		 			} else {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.error(response.errors);
+		 			}
+
+		 		}
+		 	});
+		});
 	</script>
 
 </body>

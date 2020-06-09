@@ -4,7 +4,8 @@ defined('BASEPATH') or die('Access Denied');
 class ToolsController extends CI_Controller {
 	public function __construct() {
         Parent::__construct();
-        $this->load->model('ToolsModel');
+		$this->load->model('ToolsModel');
+		date_default_timezone_set('Asia/Manila');
     }
 
     function validation_rules($usage) {
@@ -343,7 +344,6 @@ class ToolsController extends CI_Controller {
 		$this->form_validation->set_rules($rules);
 
 		if ($this->form_validation->run()) {
-			date_default_timezone_set('Asia/Manila');
 			$validate['success'] = true;
 			
 			$current_date = date('Y-m-d');
@@ -412,6 +412,82 @@ class ToolsController extends CI_Controller {
     	}
 
     	echo json_encode($validate);
+	}
+
+	public function tools_pullout_return() {
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$pullout_id = $this->input->post('pullout_id');
+
+		$results = $this->ToolsModel->tools_pullout_select_id($pullout_id);
+
+		foreach ($results as $row) {
+			$pullout_quantity = $row->quantity;
+		}
+
+		$rules = [
+			[
+				'field' => 'tool_code',
+				'label' => 'Tool Code',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select tool to return.'
+				]
+			],
+			[
+				'field' => 'assigned_to',
+				'label' => 'Assigned To',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select where to assign.'
+				]
+			],
+			[
+				'field' => 'customer',
+				'label' => 'Customer',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select customer.'
+				]
+			],
+			[
+				'field' => 'quantity',
+				'label' => 'Quantity',
+				'rules' => 'trim|required|less_than_equal_to['.$pullout_quantity.']|is_natural_no_zero',
+				'errors' => [
+					'required' => 'Please select tool to return.',
+					'less_than_equal_to' => 'Quantity must be number and less than or equal to '.$pullout_quantity,
+					'is_natural_no_zero' => 'Must be a natural number and not 0'
+				]
+			]
+		];
+		
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			$data = [
+				'is_deleted' => '1',
+				'date_of_return' => date('Y-m-d H:i:s')
+			];
+
+			$this->ToolsModel->tools_pullout_update($pullout_id,$data);
+			$this->ToolsModel->update_quantity($this->input->post('tool_code'),$this->input->post('quantity'));
+		} else {
+
+			$validate['errors'] = validation_errors();
+
+		}
+
+		echo json_encode($validate);
+
 	}
 
 }

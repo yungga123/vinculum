@@ -21,6 +21,12 @@ class ToolsModel extends CI_Model {
 		$this->db->update('tools',$data);
 	}
 
+	public function update_quantity($id,$data) {
+		$this->db->set('quantity',$data.'+1',FALSE);
+		$this->db->where('code',$id);
+		$this->db->update('tools');
+	}
+
 	public function delete($id) {
 		$this->db->where('code',$id);
 		$this->db->delete('tools');
@@ -72,8 +78,14 @@ class ToolsModel extends CI_Model {
 		$this->db->join('tools as b','a.tool_code=b.code','left');
 		$this->db->join('customer_vt as c','a.customer=c.CustomerID','left');
 		$this->db->join('technicians as d','a.assigned_personnel=d.id','left');
+		$this->db->where('a.toolpullout_id',$id);
 		$this->db->where('a.is_deleted',0);
 		return $this->db->get()->result();
+	}
+
+	public function tools_pullout_update($id,$data) {
+		$this->db->where('toolpullout_id', $id);
+		$this->db->update('tools_pullout',$data);
 	}
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
