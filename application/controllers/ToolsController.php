@@ -421,6 +421,7 @@ class ToolsController extends CI_Controller {
 		];
 
 		$pullout_id = $this->input->post('pullout_id');
+		$pullout_quantity = '';
 
 		$results = $this->ToolsModel->tools_pullout_select_id($pullout_id);
 
@@ -485,9 +486,91 @@ class ToolsController extends CI_Controller {
 			$validate['errors'] = validation_errors();
 
 		}
-
 		echo json_encode($validate);
+	}
 
+	public function update_tools_pullout() {
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$pullout_id = $this->input->post('edit_pullout_id');
+		$pullout_quantity = '';
+
+		$results = $this->ToolsModel->tools_pullout_select_id($pullout_id);
+
+		foreach ($results as $row) {
+			$pullout_quantity = $row->quantity;
+		}
+
+		$rules = [
+			[
+				'field' => 'edit_pullout_id',
+				'label' => 'Pullout ID',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select item to edit.'
+				]
+			],
+			[
+				'field' => 'edit_tool_code',
+				'label' => 'Tool Code',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select item to edit.'
+				]
+			],
+			[
+				'field' => 'edit_assigned_to',
+				'label' => 'Assigned To',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select on Assigned To.'
+				]
+			],
+			[
+				'field' => 'edit_customer',
+				'label' => 'Customer',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select on customer.'
+				]
+			],
+			[
+				'field' => 'edit_quantity',
+				'label' => 'Quantity',
+				'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to['.$pullout_quantity.']',
+				'errors' => [
+					'required' => 'Please select item to edit.',
+					'is_natural_no_zero' => 'Quantity must be a natural number and not zero.',
+					'less_than_equal_to' => 'Quantity must be less than or equal to '.$pullout_quantity
+				]
+			]
+		];
+		
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$validate['success'] = true;
+
+			$data = [
+				'assigned_personnel' => $this->input->post('edit_assigned_to'),
+				'customer' => $this->input->post('edit_customer')
+			];
+
+			$this->ToolsModel->tools_pullout_update($pullout_id,$data);
+
+		} else {
+
+			$validate['errors'] = validation_errors();
+
+		}
+		echo json_encode($validate);
 	}
 
 }

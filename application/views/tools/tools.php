@@ -105,7 +105,7 @@ defined('BASEPATH') or die('Access Denied');
 
 				<div class="form-group">
 					<label for="tool_quantity">Quantity</label>
-					<input class="form-control" type="text" name="tool_quantity" id="tool_quantity">
+					<input class="form-control" type="text" name="tool_quantity" id="tool_quantity" readonly>
 				</div>
 
 				<div class="form-group">

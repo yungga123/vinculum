@@ -25,10 +25,13 @@ defined('BASEPATH') or die('Access Denied');
                         </div>
 
                         <div class="card-body">
-                            <button type="button" class="btn btn-primary text-bold btn-block">SAMPLE BUTTON</button>
-                            <button type="button" class="btn btn-primary text-bold btn-block">SAMPLE BUTTON</button>
-                            <button type="button" class="btn btn-primary text-bold btn-block">SAMPLE BUTTON</button>
-                            <button type="button" class="btn btn-primary text-bold btn-block">SAMPLE BUTTON</button>
+                            <button type="button" class="btn btn-warning text-bold btn-block" data-toggle="modal" data-target="#modal-editinfo"><i class="fas fa-edit"></i> EDIT TOOLS PULLOUT</button>
+                            <button type="button" class="btn btn-success text-bold btn-block" data-toggle="modal" data-target="#modal-pulloutinfo"><i class="fas fa-sign-out-alt"></i> RETURN OF TOOLS</button>
+                            <a href="#" class="btn btn-dark btn-block text-bold"><i class="fas fa-history"></i> HISTORY OF RETURNS</a>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="<?php echo site_url('tools') ?>" class="btn btn-primary btn-block text-bold"><i class="fas fa-table"></i> TOOLS TABLE</a>
                         </div>
                     </div>
                 </div>
@@ -69,7 +72,7 @@ defined('BASEPATH') or die('Access Denied');
                                             <td><?php echo date_format(date_create($row->date_of_pullout),'F d, Y') ?></td>
                                             <td><?php echo date_format(date_create($row->time_of_pullout),'h:i A') ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-warning text-bold btn-sm"><i class="fas fa-edit"></i></button>
+                                                <button type="button" class="btn btn-warning text-bold btn-sm btn-tooleditpullout" data-toggle="modal" data-target=".modal-editpullout"><i class="fas fa-edit"></i></button>
                                                 <button type="button" class="btn btn-success text-bold btn-sm btn-toolreturn" data-toggle="modal" data-target="#modal-toolreturn"><i class="fas fa-undo"></i></button>
                                             </td>
                                         </tr>
@@ -139,6 +142,107 @@ defined('BASEPATH') or die('Access Denied');
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> RETURN</button>
             </div>
             <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-editinfo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Tools Pullout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                Under operation, the <i class="fas fa-edit"></i> button shows you a modal to edit the selected pullout. You can edit the assigned IT or the customer.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-pulloutinfo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Return of Tools</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                Under operations, clicking <i class="fas fa-sign-out-alt"></i> will show a modal in returning the pullout tool.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for edit pullout -->
+<div class="modal fade modal-editpullout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Tool Pullout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body text-center">
+                <?php echo form_open('ToolsController/update_tools_pullout',["id" => "form-updatetoolspullout"]) ?>
+                <div class="form-group">
+                    <label for="edit_pullout_id">Pullout ID</label>
+                    <input type="text" class="form-control text-center text-bold" name="edit_pullout_id" id="edit_pullout_id" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_tool_code">Tool Code</label>
+                    <input type="text" class="form-control text-center text-bold" name="edit_tool_code" id="edit_tool_code" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_assigned_to">Assigned to</label>
+                    <select class="form-control text-center text-bold" name="edit_assigned_to" id="edit_assigned_to">
+                        <option value="">--- Please Select ---</option>
+                        <?php if (count($results_technicians) != 0) { ?>
+                            <?php foreach ($results_technicians as $row) { ?>
+                                <option value="<?php echo $row->id ?>"><?php echo $row->name.' | ID: '.$row->id.' | '.$row->position ?></option>
+                            <?php } ?>
+                        <?php } ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_customer">Customer</label>
+                    <select class="form-control text-center text-bold" name="edit_customer" id="edit_customer">
+                        <option value="">--- Please Select ---</option>
+                        <?php if (count($results_customers) != 0) {
+                            foreach ($results_customers as $row) { ?>
+                                <option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName.' - '.$row->CustomerID ?></option>
+                            <?php }
+                        } ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_quantity">Quantity</label>
+                    <input type="text" class="form-control text-center text-bold" name="edit_quantity" id="edit_quantity" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary text-bold" data-dismiss="modal">CLOSE</button>
+                <button type="submit" class="btn btn-success text-bold">SUBMIT</button>
+                <?php echo form_close() ?>
+            </div>
         </div>
     </div>
 </div>
