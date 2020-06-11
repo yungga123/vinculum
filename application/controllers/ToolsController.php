@@ -573,4 +573,49 @@ class ToolsController extends CI_Controller {
 		echo json_encode($validate);
 	}
 
+	public function return_history() {
+		if($this->session->userdata('logged_in')) {
+    		$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Tools Return History';
+			$data['ul_tools'] = ' active';
+			$this->load->view('templates/header',$data);
+			$this->load->view('templates/navbar');
+			$this->load->view('tools/return_history');
+			$this->load->view('templates/footer');
+			$this->load->view('tools/script');
+
+		} else {
+			redirect('','refresh');
+		}
+	}
+
+	public function get_return_history() {
+		$fetch_data = $this->ToolsModel->toolspullout_datatable();
+		$data = array();
+		foreach($fetch_data as $row) {
+			$sub_array = array();
+			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->toolpullout_id;lkjlkmlk
+			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->toolpullout_id;
+
+			$data[] = $sub_array;
+		}
+
+		$output = array(
+			"draw"	=>	intval($_POST["draw"]),
+			"recordsTotal" => $this->ToolsModel->get_all_toolspullout_data(),
+			"recordsFiltered" => $this->ToolsModel->filter_toolspullout_data(),
+			"data" => $data
+		);
+
+		echo json_encode($output);
+	}
+
 }

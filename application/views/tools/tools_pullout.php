@@ -27,10 +27,11 @@ defined('BASEPATH') or die('Access Denied');
                         <div class="card-body">
                             <button type="button" class="btn btn-warning text-bold btn-block" data-toggle="modal" data-target="#modal-editinfo"><i class="fas fa-edit"></i> EDIT TOOLS PULLOUT</button>
                             <button type="button" class="btn btn-success text-bold btn-block" data-toggle="modal" data-target="#modal-pulloutinfo"><i class="fas fa-sign-out-alt"></i> RETURN OF TOOLS</button>
-                            <a href="#" class="btn btn-dark btn-block text-bold"><i class="fas fa-history"></i> HISTORY OF RETURNS</a>
+                            
                         </div>
 
                         <div class="card-footer">
+                            <a href="<?php echo site_url('tool-return-history') ?>" class="btn btn-dark btn-block text-bold"><i class="fas fa-history"></i> HISTORY OF RETURNS</a>
                             <a href="<?php echo site_url('tools') ?>" class="btn btn-primary btn-block text-bold"><i class="fas fa-table"></i> TOOLS TABLE</a>
                         </div>
                     </div>
