@@ -16,7 +16,7 @@ class ToolsController extends CI_Controller {
     		$tool_errors = [
 					'required' => 'Please provide Tool Code.',
 					'max_length' => 'Tool Code maximum characters is 500.',
-					'is_unique' => 'Tool Code is already existing.'
+					'is_unique' => 'Tool Code is already existing or already broken/deleted. Please provide another code.'
 				];
     	} elseif ($usage == 'edit') {
     		$tool_rule = 'trim|required|max_length[500]';
@@ -60,10 +60,12 @@ class ToolsController extends CI_Controller {
 			[
 				'field' => 'tool_quantity',
 				'label' => 'Tool Quantity',
-				'rules' => 'trim|max_length[11]|is_natural',
+				'rules' => 'trim|max_length[11]|is_natural_no_zero|less_than_equal_to[1]|required',
 				'errors' => [
 					'max_length' => 'Tool Quantity maximum characters is 11.',
-					'is_natural' => 'Tool Quantity must contain a valid number.'
+					'is_natural_no_zero' => 'Quantity must be 1',
+					'less_than_equal_to' => 'Quantity must be 1',
+					'required' => 'Please enter quantity'
 				]
 			],
 			[
@@ -263,7 +265,7 @@ class ToolsController extends CI_Controller {
 				'is_deleted' => 1
 			];
 
-			$this->ToolsModel->update($id,$data);
+			$this->ToolsModel->delete($id,$data);
 		} 
 		else {
 		$validate['errors'] = validation_errors();
@@ -594,16 +596,28 @@ class ToolsController extends CI_Controller {
 		$fetch_data = $this->ToolsModel->toolspullout_datatable();
 		$data = array();
 		foreach($fetch_data as $row) {
+			$date_of_pullout = '';
+			$time_of_pullout = '';
+
+			if ($row->date_of_pullout != '0000-00-00') {
+				$date_of_pullout = date_format(date_create($row->date_of_pullout),'F d, Y');
+			}
+
+			if ($row->time_of_pullout != '00:00:00') {
+				$time_of_pullout = date_format(date_create($row->time_of_pullout),'h:i a');
+			}
+			
+			
 			$sub_array = array();
 			$sub_array[] = $row->toolpullout_id;
-			$sub_array[] = $row->toolpullout_id;
-			$sub_array[] = $row->toolpullout_id;
-			$sub_array[] = $row->toolpullout_id;
-			$sub_array[] = $row->toolpullout_id;
-			$sub_array[] = $row->toolpullout_id;
-			$sub_array[] = $row->toolpullout_id;lkjlkmlk
-			$sub_array[] = $row->toolpullout_id;
-			$sub_array[] = $row->toolpullout_id;
+			$sub_array[] = $row->tool_code;
+			$sub_array[] = $row->tool_model;
+			$sub_array[] = $row->tool_description;
+			$sub_array[] = $row->assigned_to;
+			$sub_array[] = $row->customer;
+			$sub_array[] = $row->quantity;
+			$sub_array[] = $date_of_pullout;
+			$sub_array[] = $time_of_pullout;
 
 			$data[] = $sub_array;
 		}

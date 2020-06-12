@@ -33,6 +33,25 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		    });
 		    //end of datatable
 
+			//Datatable for Tools Return History
+		    var tools_return_history = $("#tools_return_history").DataTable({
+		    	responsive: true,
+		    	"processing": true,
+		    	"serverSide": true,
+	            "order":[],
+	            "ajax":{
+	                url: "<?php echo site_url('ToolsController/get_return_history') ?>",
+	                type: "POST"
+	            },
+	            "columnDefs": [
+	                {
+	                   "targets": [],
+	                    "orderable": false, 
+	                }
+	            ]
+		    });
+		    //end of datatable
+
 		    $('#tools_table tbody').on( 'click', '.btn-select', function () {
 		    	var data = tools_table.row($(this).parents('tr')).data();
 				var rowdata = tools_table.row(this).data();

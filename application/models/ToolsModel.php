@@ -97,7 +97,8 @@ class ToolsModel extends CI_Model {
 		"description",
 		"type",
 		"quantity",
-		"price"
+		"price",
+		"is_deleted"
 	);
 	var $order_column = array(
 		"code",
@@ -120,6 +121,8 @@ class ToolsModel extends CI_Model {
 			$this->db->or_like("type", $_POST["search"]["value"]);
 			$this->db->or_like("quantity", $_POST["search"]["value"]);
 			$this->db->or_like("price", $_POST["search"]["value"]);
+			$this->db->having('is_deleted',0);
+
 		}
 
 		if (isset($_POST["order"])) {
@@ -155,7 +158,7 @@ class ToolsModel extends CI_Model {
 	//*****************end*********************
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE (TOOLS PULLOUT)*********************
-	var $table2 = "tools";
+	var $table2 = "tools_pullout as a";
 	var $select_column2 = array(
 		'a.toolpullout_id',
 		'a.tool_code',
@@ -165,7 +168,8 @@ class ToolsModel extends CI_Model {
 		'c.CompanyName as customer',
 		'a.quantity',
 		'a.date_of_pullout',
-		'a.time_of_pullout'
+		'a.time_of_pullout',
+		'a.is_deleted as is_deleted'
 	);
 	var $order_column2 = array(
 		"toolpullout_id",
@@ -176,7 +180,8 @@ class ToolsModel extends CI_Model {
 		"customer",
 		"quantity",
 		"date_of_pullout",
-		"time_of_pullout"
+		"time_of_pullout",
+		"is_deleted"
 	);
 
 
@@ -193,18 +198,20 @@ class ToolsModel extends CI_Model {
 			$this->db->or_like("a.tool_code", $_POST["search"]["value"]);
 			$this->db->or_like("b.model", $_POST["search"]["value"]);
 			$this->db->or_like("b.description", $_POST["search"]["value"]);
-			$this->db->or_like('CONCAT(d.firstname," ",d.lastname) as assigned_to', $_POST["search"]["value"]);
+			$this->db->or_like('d.firstname', $_POST["search"]["value"]);
+			$this->db->or_like('d.middlename', $_POST["search"]["value"]);
+			$this->db->or_like('d.lastname', $_POST["search"]["value"]);
 			$this->db->or_like("c.CompanyName", $_POST["search"]["value"]);
 			$this->db->or_like("a.quantity", $_POST["search"]["value"]);
 			$this->db->or_like("a.date_of_pullout", $_POST["search"]["value"]);
 			$this->db->or_like("'a.time_of_pullout'", $_POST["search"]["value"]);
-			$this->db->having('is_deleted',1);
+			$this->db->having('a.is_deleted',1);
 		}
 
 		if (isset($_POST["order"])) {
 			$this->db->order_by($this->order_column2[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
 		} else {
-			$this->db->order_by("code","ASC");
+			$this->db->order_by("a.toolpullout_id","ASC");
 		}
 
 	}
