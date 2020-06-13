@@ -265,7 +265,7 @@ class ToolsController extends CI_Controller {
 				'is_deleted' => 1
 			];
 
-			$this->ToolsModel->delete($id,$data);
+			$this->ToolsModel->update($id,$data);
 		} 
 		else {
 		$validate['errors'] = validation_errors();
