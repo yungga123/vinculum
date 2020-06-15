@@ -22,7 +22,7 @@ class ToolsModel extends CI_Model {
 	}
 
 	public function update_quantity($id,$data) {
-		$this->db->set('quantity',$data.'+1',FALSE);
+		$this->db->set('quantity',$data,FALSE);
 		$this->db->where('code',$id);
 		$this->db->update('tools');
 	}
