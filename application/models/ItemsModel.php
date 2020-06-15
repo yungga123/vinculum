@@ -14,21 +14,23 @@ class ItemsModel extends CI_Model {
 		$this->db->update('items',$data);
 	}
 
-	public function getMasterItems(){
+	public function getMasterItems($itemType){
 		// return $this->db->get('items')->result();
 		//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
 		$this->db->select("itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,location,supplier,encoder");
 		$this->db->from("items");
+		$this->db->where("itemType",$itemType);
 		$this->db->order_by("itemName","asc");
 		return $this->db->get()->result();
 	}
 
-	public function getMasterItemsByStocks(){
+	public function getMasterItemsByStocks($itemType){
 		// return $this->db->get('items')->result();
 		//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
 		$this->db->select("itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,location,supplier,encoder");
 		$this->db->from("items");
 		$this->db->where("stocks <>","0");
+		$this->db->where("itemType",$itemType);
 		$this->db->order_by("itemName","asc");
 		return $this->db->get()->result();
 	}

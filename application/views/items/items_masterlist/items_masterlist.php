@@ -278,9 +278,9 @@ defined('BASEPATH') or die('No direct script access allowed.');
 					</button>
 			</div>
 			<div class="modal-body text-center">
-				<a href="<?php echo site_url('print-items/all') ?>" class="btn btn-block btn-success text-bold" target="_blank"><i class="fas fa-print"></i> PRINT ALL ITEMS</a>
+				<a href="<?php echo site_url('print-items/all/'.$category) ?>" class="btn btn-block btn-success text-bold" target="_blank"><i class="fas fa-print"></i> PRINT ALL ITEMS</a>
 
-				<a href="<?php echo site_url('print-items/stocks') ?>" class="btn btn-block btn-success text-bold" target="_blank"><i class="fas fa-print"></i> PRINT ONLY ITEMS ON STOCK</a>
+				<a href="<?php echo site_url('print-items/stocks/'.$category) ?>" class="btn btn-block btn-success text-bold" target="_blank"><i class="fas fa-print"></i> PRINT ONLY ITEMS ON STOCK</a>
 			</div>
 		</div>
 	</div>

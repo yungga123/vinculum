@@ -447,10 +447,10 @@ class ItemsController extends CI_Controller {
 		echo json_encode($validate);
 	}
 
-	public function print_items($filter) {
+	public function print_items($filter,$itemType) {
 		$this->load->model('ItemsModel');
-		$results = $this->ItemsModel->getMasterItems();
-		$results_stocks = $this->ItemsModel->getMasterItemsByStocks();
+		$results = $this->ItemsModel->getMasterItems($itemType);
+		$results_stocks = $this->ItemsModel->getMasterItemsByStocks($itemType);
 		$data = [
 			'title' => 'Print',
 			'results' => $results,
