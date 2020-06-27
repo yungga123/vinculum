@@ -1,5 +1,16 @@
 <?php
-defined('BASEPATH') or die('No direct script access allowed.');
+defined('BASEPATH') or die('Access Denied');
+
+date_default_timezone_set('Asia/Manila');
+
+if ($client == '') {
+    $client = "ALL CUSTOMERS";
+}
+
+if ($assigned_to == '') {
+    $assigned_to = 'NO SPECIFIC';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -39,76 +50,88 @@ defined('BASEPATH') or die('No direct script access allowed.');
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  
-</head>
+  	<style type="text/css">
 
+        @page { 
+            size: landscape;
+          
+        }
+
+		@media print {
+			.table-bordered td, .table-bordered th {
+				border: 1px solid #000000 !important;
+			}
+
+			.table thead th {
+				vertical-align: bottom !important;
+				border-bottom: 2px solid #000000 !important;
+			}
+		}
+		
+	</style>
+</head>
 
 <body>
 	<div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Item Stocks</h3>
-                <div class="card-tools">Date Printed: <?php date_default_timezone_set("Asia/Manila"); echo date("F d, Y"); ?></div>
-              </div>
-              <!-- /.card-header -->
-              <div style="font-size: 14px" class="card-body p-0">
-                <table class="table table-sm table-bordered">
-                  <thead>
+		<div class="col-12 text-center">
+            <label>RETURN HISTORY</label>
+		</div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-sm table-bordered" style="font-size: 11px">
+                <tbody>
                     <tr>
-                      <th>Item Code</th>
-                      <th>Description</th>
-                      <th>Category</th>
-                      <th>Suppliers Price</th>
-                      <th>SRP</th>
-                      <th>Stocks</th>
-                      <th>Location</th>
-                      <th>Supplier</th>
-                      <th>Encoder</th>
+                        <td width="15%" class="text-bold">Client</td>
+                        <td width="35%"><?php echo $client ?></td>
+                        <td width="15%" class="text-bold">Assigned To</td>
+                        <td width="35%"><?php echo $assigned_to ?></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <?php if ($filter == 'all') { ?>
-                      <?php foreach ($results as $row): ?>
-                        <tr>
-                          <td><?php echo $row->itemCode ?></td>
-                          <td><?php echo $row->itemName ?></td>
-                          <td><?php echo $row->itemType ?></td>
-                          <td><?php echo $row->itemSupplierPrice ?></td>
-                          <td><?php echo $row->itemPrice ?></td>
-                          <td><?php echo $row->stocks ?></td>
-                          <td><?php echo $row->location ?></td>
-                          <td><?php echo $row->supplier ?></td>
-                          <td><?php echo $row->encoder ?></td>
-                        </tr>
-                      <?php endforeach ?>
-                    <?php } else { ?>
-                      <?php foreach ($results_stocks as $row): ?>
-                        <tr>
-                          <td><?php echo $row->itemCode ?></td>
-                          <td><?php echo $row->itemName ?></td>
-                          <td><?php echo $row->itemType ?></td>
-                          <td><?php echo $row->itemSupplierPrice ?></td>
-                          <td><?php echo $row->itemPrice ?></td>
-                          <td><?php echo $row->stocks ?></td>
-                          <td><?php echo $row->location ?></td>
-                          <td><?php echo $row->supplier ?></td>
-                          <td><?php echo $row->encoder ?></td>
-                        </tr>
-                      <?php endforeach ?>
-                    <?php } ?>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
+                    <tr>
+                        <td width="15%" class="text-bold">Date Coverage</td>
+                        <td width="35%"><?php echo date_format(date_create($start_date),'F d, Y') ?> to <?php echo date_format(date_create($end_date),'F d, Y') ?></td>
+                        <td width="15%" class="text-bold">Date Printed</td>
+                        <td width="35%"><?php echo date('F d, Y h:i A') ?></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-sm table-bordered" style="font-size: 11px">
+                <tbody>
+                    <tr class="text-bold">
+                        <td>Pullout ID</td>
+                        <td>Tool Code</td>
+                        <td>Tool Model</td>
+                        <td>Description</td>
+                        <td>Assigned To</td>
+                        <td>Customer</td>
+                        <td>Quantity</td>
+                        <td>Date of Pullout</td>
+                        <td>Time of Pullout</td>
+                    </tr>
+                    <?php foreach ($results as $row) { ?>
+                        <tr>
+                            <td><?php echo $row->toolpullout_id ?></td>
+                            <td><?php echo $row->tool_code ?></td>
+                            <td><?php echo $row->tool_model ?></td>
+                            <td><?php echo $row->tool_description ?></td>
+                            <td><?php echo $row->assigned_to ?></td>
+                            <td><?php echo $row->customer ?></td>
+                            <td><?php echo $row->quantity ?></td>
+                            <td><?php echo date_format(date_create($row->date_of_pullout),'F d, Y') ?></td>
+                            <td><?php echo date_format(date_create($row->time_of_pullout),'h:i A') ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
-
-
-
 
 
 <!-- jQuery -->

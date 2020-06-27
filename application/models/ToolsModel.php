@@ -88,6 +88,35 @@ class ToolsModel extends CI_Model {
 		$this->db->update('tools_pullout',$data);
 	}
 
+	public function get_tools_history_by_namedate($client,$assigned_to,$start_date,$end_date) {
+		$this->db->select('
+			a.toolpullout_id,
+			a.tool_code,
+			b.model as tool_model,
+			b.description as tool_description,
+			d.id as assigned_to_id,
+			CONCAT(d.firstname," ",d.lastname) as assigned_to,
+			c.CustomerID as customer_id,
+			c.CompanyName as customer,
+			a.quantity,
+			a.date_of_pullout,
+			a.time_of_pullout
+		');
+		$this->db->from('tools_pullout as a');
+		$this->db->join('tools as b','a.tool_code=b.code','left');
+		$this->db->join('customer_vt as c','a.customer=c.CustomerID','left');
+		$this->db->join('technicians as d','a.assigned_personnel=d.id','left');
+		if ($client != '') {
+			$this->db->where('c.CustomerID',$client);
+		}
+		if ($assigned_to != '') {
+			$this->db->where('d.id',$assigned_to);
+		}
+		$this->db->where("a.date_of_pullout BETWEEN '".$start_date."' AND '".$end_date."'");
+		$this->db->where('a.is_deleted',0);
+		return $this->db->get()->result();
+	}
+
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE (TOOLS TABLE)*********************
 	var $table = "tools";
@@ -155,6 +184,7 @@ class ToolsModel extends CI_Model {
 		$this->db->where('is_deleted',0);
 		return $this->db->count_all_results();
 	}
+
 	//*****************end*********************
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE (TOOLS PULLOUT)*********************

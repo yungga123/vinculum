@@ -577,10 +577,15 @@ class ToolsController extends CI_Controller {
 
 	public function return_history() {
 		if($this->session->userdata('logged_in')) {
+			$this->load->model('CustomersModel');
+			$this->load->model('TechniciansModel');
+
     		$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Tools Return History';
 			$data['ul_tools'] = ' active';
+			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
+			$data['technicians'] = $this->TechniciansModel->getTechniciansByName();
 			$this->load->view('templates/header',$data);
 			$this->load->view('templates/navbar');
 			$this->load->view('tools/return_history');
@@ -630,6 +635,61 @@ class ToolsController extends CI_Controller {
 		);
 
 		echo json_encode($output);
+	}
+
+	public function print_return_history() {
+		if ($this->session->userdata('logged_in')) {
+
+			$rules = [
+				[
+					'field' => 'start_date',
+					'label' => 'Start Date',
+					'rules' => 'trim|required',
+					'errors' => [
+						'required' => 'Please Select Start Date.'
+					]
+				],
+				[
+					'field' => 'end_date',
+					'label' => 'End Date',
+					'rules' => 'trim|required',
+					'errors' => [
+						'required' => 'Please Select End Date.'
+					]
+				]
+			];
+
+			$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+			$this->form_validation->set_rules($rules);
+
+			if ($this->form_validation->run()) {
+
+				$client = $this->input->post('customer_name');
+				$assigned_to = $this->input->post('assigned_to');
+				$start_date = $this->input->post('start_date');
+				$end_date = $this->input->post('end_date');
+				$results = $this->ToolsModel->get_tools_history_by_namedate($client,$assigned_to,$start_date,$end_date);
+
+				$data = [
+					'title' => 'Print Return History',
+					'results' => $results,
+					'client' => $client,
+					'assigned_to' => $assigned_to,
+					'start_date' => $start_date,
+					'end_date' => $end_date
+				];
+				$this->load->view('tools/return_history_print',$data);
+			} else {
+				// $this->session->set_flashdata('fail', form_error('start_date').' '.form_error('start_date'));
+				// redirect('tool-return-history');
+				echo 'Error!!! Cannot print, please refer to the information below:<br>'.validation_errors();
+			}
+			
+			
+		} else {
+			redirect('','refresh');
+		}
 	}
 
 }
