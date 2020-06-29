@@ -27,8 +27,14 @@ defined('BASEPATH') or die('Access Denied');
                         <div class="card-body">
                             <button href="#" class="btn btn-warning btn-block text-bold" data-toggle="modal" data-target="#modal-printreturn"><i class="fas fa-print"></i> PRINT HISTORY</button>
                         </div>
+                    </div>
 
-                        <div class="card-footer">
+                    <div class="card">
+                        <div class="card-header">
+                            Navigation
+                        </div>
+
+                        <div class="card-body">
                             <a href="<?php echo site_url('tools') ?>" class="btn btn-success btn-block text-bold"><i class="fas fa-wrench"></i> TOOLS LIST</a>
                             <a href="<?php echo site_url('tools-pullout') ?>" class="btn btn-primary btn-block text-bold"><i class="fas fa-sign-out-alt"></i> TOOLS PULLOUT LIST</a>
                         </div>

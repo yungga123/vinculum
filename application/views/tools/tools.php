@@ -30,8 +30,21 @@ defined('BASEPATH') or die('Access Denied');
 
 							<a href="<?php echo site_url('printtools') ?>" class="btn btn-block btn-warning text-bold" target="_blank"><i class="fas fa-print"></i> PRINT TOOLS</a>
 
-							<a href="<?php echo site_url('tools-pullout') ?>" class="btn btn-block btn-primary text-bold" ><i class="fas fa-wrench"></i> LIST OF PULLOUT TOOLS</a>
+							
 
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-header">
+							<label>Navigation</label>
+						</div>
+
+						<div class="card-body">
+							<a href="<?php echo site_url('tools-pullout') ?>" class="btn btn-primary btn-block text-bold"><i class="fas fa-sign-out-alt"></i> TOOLS PULLOUT LIST</a>
+
+							<a href="<?php echo site_url('tool-return-history') ?>" class="btn btn-dark btn-block text-bold"><i class="fas fa-history"></i> HISTORY OF RETURNS</a>
+                            
 						</div>
 					</div>
 				</div>

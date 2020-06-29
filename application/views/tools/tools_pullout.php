@@ -29,10 +29,16 @@ defined('BASEPATH') or die('Access Denied');
                             <button type="button" class="btn btn-success text-bold btn-block" data-toggle="modal" data-target="#modal-pulloutinfo"><i class="fas fa-sign-out-alt"></i> RETURN OF TOOLS</button>
                             
                         </div>
+                    </div>
 
-                        <div class="card-footer">
+                    <div class="card">
+                        <div class="card-header">
+                            <label>Navigation</label>
+                        </div>
+
+                        <div class="card-body">
+                            <a href="<?php echo site_url('tools') ?>" class="btn btn-success btn-block text-bold"><i class="fas fa-wrench"></i> TOOLS LIST</a>
                             <a href="<?php echo site_url('tool-return-history') ?>" class="btn btn-dark btn-block text-bold"><i class="fas fa-history"></i> HISTORY OF RETURNS</a>
-                            <a href="<?php echo site_url('tools') ?>" class="btn btn-primary btn-block text-bold"><i class="fas fa-table"></i> TOOLS TABLE</a>
                         </div>
                     </div>
                 </div>
