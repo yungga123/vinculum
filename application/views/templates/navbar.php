@@ -18,7 +18,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
         <a href="<?php echo site_url('customers') ?>" class="nav-link">Customers</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?php echo site_url('technicians') ?>" class="nav-link">Technicians</a>
+        <a href="<?php echo site_url('technicians') ?>" class="nav-link">Employee List</a>
       </li>
     </ul>
 
@@ -131,7 +131,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           	</li>
 
           	<li class="nav-item">
-	            <a href="#" class="nav-link<?php echo $consumeables ?>">
+	            <a href="<?php echo site_url('consumeables') ?>" class="nav-link<?php echo $consumeables ?>">
 	              <i class="nav-icon fas fa-cube"></i>
 	              <p>Consumeables</p>
 	            </a>
@@ -204,7 +204,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		        </ul>
 			</li>
 
-	    	<!-- FORMS -->
 	    	<li class="nav-item">
 	            <a href="<?php echo site_url('schedules') ?>" class="nav-link<?php echo $schedules ?>">
 	              <i class="nav-icon fas fa-calendar"></i>
@@ -386,6 +385,17 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 		        </ul>
 	    	</li>
+
+			<li class="nav-header">HUMAN RESOURCE</li>
+
+			<li class="nav-item">
+	            <a href="<?php echo site_url('payroll') ?>" class="nav-link<?php echo $li_payroll ?>">
+	              <i class="nav-icon fas fa-credit-card"></i>
+	              <p>
+	                Payroll
+	              </p>
+	            </a>
+          	</li>
         </ul>
 
       </nav>

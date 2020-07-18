@@ -107,6 +107,7 @@ $route['print-return/(:any)/(:any)'] = 'PullOutsController/print_return_history/
 //Technicians Controller
 $route['technicians'] = 'TechniciansController';
 $route['technicians-edit/(:any)'] = 'TechniciansController/technicians_edit/$1';
+$route['technicians-add'] = 'TechniciansController/add_tech';
 
 //Project Report Controller
 $route['project-report'] = 'ProjectReportController';
@@ -126,3 +127,12 @@ $route['service-report'] = 'ServiceReportController';
 $route['service-report-list'] = 'ServiceReportController/service_report_table';
 $route['service-report-view/(:any)'] = 'ServiceReportController/service_report_view/$1';
 $route['service-report-update/(:any)'] = 'ServiceReportController/update_service_report/$1';
+
+//Consumeables Controller
+$route['consumeables'] = 'ConsumeablesController';
+
+//Payroll Controller
+$route['payroll'] = 'PayrollController';
+$route['payroll-table'] = 'PayrollController/payroll_table';
+$route['payslip/(:any)'] = 'PayrollController/payslip_view/$1';
+$route['payslip-update/(:any)'] = 'PayrollController/update_payroll/$1';

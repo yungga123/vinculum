@@ -3,7 +3,7 @@ defined('BASEPATH') or die('Access Denied');
 ?>
 
 	<script>
-		<?php if ($this->uri->segment(1) == 'technicians'): ?>
+		<?php if ($this->uri->segment(1) == 'technicians-add'): ?>
 		//Form Add Technicians
 		$('#form-add-tech').submit(function(e) {
 		 	e.preventDefault();
@@ -43,7 +43,7 @@ defined('BASEPATH') or die('Access Denied');
 		 			if (response.success == true) {
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
-		 				toastr.success("Success! Technician was added! Please refresh this page.");
+		 				toastr.success("Success! Employee was added! Please refresh this page.");
 						me[0].reset();
 		 			} else {
 		 				$(':submit').removeAttr('disabled','disabled');
@@ -95,7 +95,7 @@ defined('BASEPATH') or die('Access Denied');
 		 			if (response.success == true) {
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
-		 				toastr.success("Success! Technician was updated! View now at technicians table.");
+		 				toastr.success("Success! Employee was updated! View now at employee list.");
 						 //me[0].reset();
 		 			} else {
 		 				$(':submit').removeAttr('disabled','disabled');

@@ -53,6 +53,7 @@ if(!function_exists('html_variable')) {
 			'project_report_href' => '',
 			'project_report_add' => '',
 			'project_report_list' => '',
+			'li_payroll' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];
