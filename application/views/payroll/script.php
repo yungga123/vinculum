@@ -199,7 +199,7 @@ defined('BASEPATH') or die('Access Denied');
                             $('.loading-modal').modal('hide');
 
                             toastr.success("Success! Payroll Updated. View now at Payroll Table");
-                            me[0].reset();
+                            //me[0].reset();
                         } else {
                             $(':submit').removeAttr('disabled','disabled');
                             $('.loading-modal').modal('hide');

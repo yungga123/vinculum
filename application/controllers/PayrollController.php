@@ -540,7 +540,7 @@ class PayrollController extends CI_Controller {
         }
     }
 
-    public function updatePayrollValodate($id) {
+    public function updatePayrollValidate($id) {
         $validate = [
 			'success' => false,
 			'errors' => ''
@@ -577,6 +577,8 @@ class PayrollController extends CI_Controller {
                 'awol' => $this->input->post('awol'),
                 'remarks' => $this->input->post('remarks')
             ];
+
+            $this->PayrollModel->update_payroll($id,$data);
 
 		} 
 		else {

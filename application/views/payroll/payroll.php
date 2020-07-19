@@ -28,7 +28,7 @@ defined('BASEPATH') or die('Access Denied');
                         <?php
                             
                             if ($payroll['case'] == 'update') {
-                                echo form_open();
+                                echo form_open('PayrollController/updatePayrollValidate/'.$this->uri->segment(2),["id" => "form-payroll-update"]);
                             } else {
                                 echo form_open('PayrollController/addPayrollValidate',["id" => "form-payroll"]);
                             }
@@ -81,14 +81,14 @@ defined('BASEPATH') or die('Access Denied');
                                                             <div class="form-group">
                                                                 <label for="daily_rate">Daily Rate</label>
                                                                 <input type="text" class="form-control" name="daily_rate" id="daily_rate" readonly <?php if ($payroll['case'] == 'update') {
-                                                                    echo 'value="'.number_format($payroll['basic_income_rate'],2).'"';
+                                                                    echo 'value="'.$payroll['basic_income_rate'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="sss_rate">SSS</label>
                                                                 <input type="text" class="form-control" name="sss_rate" id="sss_rate" readonly <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['sss_cont'],2).'"';
+                                                                    echo 'value="'.$payroll['sss_cont'].'"';
                                                                 } ?>>
                                                             </div>
 
@@ -96,7 +96,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                 <label for="pagibig_rate">PAG-IBIG</label>
                                                                 <input type="text"
                                                                     class="form-control" name="pagibig_rate" id="pagibig_rate" readonly <?php if ($payroll['case']=='update') {
-                                                                        echo 'value="'.number_format($payroll['pagibig_cont'],2).'"';
+                                                                        echo 'value="'.$payroll['pagibig_cont'].'"';
                                                                     } ?>>
                                                             </div>
                                                         </div>
@@ -104,14 +104,14 @@ defined('BASEPATH') or die('Access Denied');
                                                             <div class="form-group">
                                                                 <label for="philhealth_rate">PhilHealth</label>
                                                                 <input type="text" class="form-control" name="philhealth_rate" id="philhealth_rate" readonly <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['philhealth_cont'],2).'"';
+                                                                    echo 'value="'.$payroll['philhealth_cont'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="tax_rate">Tax Rate</label>
                                                                 <input type="text" class="form-control" name="tax_rate" id="tax_rate" readonly <?php if ($payroll['case']=='update') {
-                                                                        echo 'value="'.number_format($payroll['tax'],2).'"';
+                                                                        echo 'value="'.$payroll['tax'].'"';
                                                                     } ?>>
                                                             </div>
                                                         </div>
@@ -130,49 +130,49 @@ defined('BASEPATH') or die('Access Denied');
                                                             <div class="form-group">
                                                                 <label for="days_worked">Days Worked</label>
                                                                 <input type="text" class="form-control" name="days_worked" id="days_worked" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['basic_income_days'],2).'"';
+                                                                    echo 'value="'.$payroll['basic_income_days'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="hours_late">Hours Late</label>
                                                                 <input type="text" class="form-control" name="hours_late" id="hours_late" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['tardiness_hrs'],2).'"';
+                                                                    echo 'value="'.$payroll['tardiness_hrs'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="days_absent">Days Absent</label>
                                                                 <input type="text" class="form-control" name="days_absent" id="days_absent" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['tardiness_hrs'],2).'"';
+                                                                    echo 'value="'.$payroll['tardiness_hrs'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="cash_adv">Cash Advance</label>
                                                                 <input type="text" class="form-control" name="cash_adv" id="cash_adv" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['cash_adv'],2).'"';
+                                                                    echo 'value="'.$payroll['cash_adv'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="others">Other Deductions</label>
                                                                 <input type="text" class="form-control" name="others" id="others" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['other_deduction'],2).'"';
+                                                                    echo 'value="'.$payroll['other_deduction'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="addback">Addback</label>
                                                                 <input type="text" class="form-control" name="addback" id="addback" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['addback'],2).'"';
+                                                                    echo 'value="'.$payroll['addback'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="incentives">Incentives</label>
                                                                 <input type="text" class="form-control" name="incentives" id="incentives" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['incentives'],2).'"';
+                                                                    echo 'value="'.$payroll['incentives'].'"';
                                                                 } ?>>
                                                             </div>
                                                         </div>
@@ -180,49 +180,49 @@ defined('BASEPATH') or die('Access Denied');
                                                             <div class="form-group">
                                                                 <label for="ot_hrs">No. of OT Hours</label>
                                                                 <input type="text" class="form-control" name="ot_hrs" id="ot_hrs" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['overtime_hrs'],2).'"';
+                                                                    echo 'value="'.$payroll['overtime_hrs'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="night_diff_hrs">No. of Night Differential Hours</label>
                                                                 <input type="text" class="form-control" name="night_diff_hrs" id="night_diff_hrs" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['nightdiff_hrs'],2).'"';
+                                                                    echo 'value="'.$payroll['nightdiff_hrs'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="wdo">Working Day-off Days</label>
                                                                 <input type="text" class="form-control" name="wdo" id="wdo" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['wdo_days'],2).'"';
+                                                                    echo 'value="'.$payroll['wdo_days'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="reg_holiday">Regular Holidays</label>
                                                                 <input type="text" class="form-control" name="reg_holiday" id="reg_holiday" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['regday_days'],2).'"';
+                                                                    echo 'value="'.$payroll['regday_days'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="special_holiday">Special Holidays</label>
                                                                 <input type="text" class="form-control" name="special_holiday" id="special_holiday" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['spcday_days'],2).'"';
+                                                                    echo 'value="'.$payroll['spcday_days'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="vacation_leave">No. of Vacation Leaves</label>
                                                                 <input type="text" class="form-control" name="vacation_leave" id="vacation_leave" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['vl'],2).'"';
+                                                                    echo 'value="'.$payroll['vl'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="sick_leave">No. of Sick Leaves</label>
                                                                 <input type="text" class="form-control" name="sick_leave" id="sick_leave" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['sl'],2).'"';
+                                                                    echo 'value="'.$payroll['sl'].'"';
                                                                 } ?>>
                                                             </div>
                                                         </div>
@@ -245,14 +245,14 @@ defined('BASEPATH') or die('Access Denied');
                                                             <div class="form-group">
                                                                 <label for="commission">Commission</label>
                                                                 <input type="text" class="form-control" name="commission" id="commission" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['commission'],2).'"';
+                                                                    echo 'value="'.$payroll['commission'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="13th_month">13th Month Pay</label>
                                                                 <input type="text" class="form-control" name="13th_month" id="13th_month" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['13th_month'],2).'"';
+                                                                    echo 'value="'.$payroll['13th_month'].'"';
                                                                 } ?>>
                                                             </div>
                                                             
@@ -269,14 +269,14 @@ defined('BASEPATH') or die('Access Denied');
                                                             <div class="form-group">
                                                                 <label for="rest_day">No. of Rest Days</label>
                                                                 <input type="text" class="form-control" name="rest_day" id="rest_day" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['restday_days'],2).'"';
+                                                                    echo 'value="'.$payroll['restday_days'].'"';
                                                                 } ?>>
                                                             </div>
 
                                                             <div class="form-group">
                                                                 <label for="awol">No. of AWOLs</label>
                                                                 <input type="text" class="form-control" name="awol" id="awol" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.number_format($payroll['awol_days'],2).'"';
+                                                                    echo 'value="'.$payroll['awol_days'].'"';
                                                                 } ?>>
                                                             </div>
                                                         </div>
