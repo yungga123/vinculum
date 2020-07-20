@@ -313,6 +313,8 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Table';
             $data['li_payroll'] = ' active';
+            $data['start_date'] = '';
+            $data['end_date'] = '';
 
             $this->load->view('templates/header',$data);
             $this->load->view('templates/navbar');
@@ -585,5 +587,69 @@ class PayrollController extends CI_Controller {
 		    $validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
+    }
+
+    public function payroll_table_filter() {
+
+        if ($this->session->userdata('logged_in')) {
+
+            $start_date = $this->input->post('cutoff_filter_start');
+            $end_date = $this->input->post('cutoff_filter_end');
+
+            $this->load->helper('site_helper');
+
+            $data = html_variable();
+            $data['title'] = 'Payroll Table';
+            $data['li_payroll'] = ' active';
+            $data['payroll_filter'] = $this->PayrollModel->select_payroll_filter($start_date,$end_date);
+            $data['start_date'] = $start_date;
+            $data['end_date'] = $end_date;
+            $this->load->view('templates/header',$data);
+            $this->load->view('templates/navbar');
+            $this->load->view('payroll/payroll_table');
+            $this->load->view('templates/footer');
+            $this->load->view('payroll/script');
+            
+        } else {
+            redirect('','refresh');
+        }
+    }
+
+    public function payslip_print($start_date,$end_date) {
+        if($this->session->userdata('logged_in')) {
+
+
+            $results = $this->PayrollModel->select_payroll_filter($start_date,$end_date);
+
+
+			$data = [
+                'title' => 'Print Payroll',
+                'results' => $results
+            ];
+            
+			$this->load->view('payroll/payroll_print',$data);
+
+		} else {
+			redirect('', 'refresh');
+		}
+    }
+
+    public function payslip_print_all() {
+        if($this->session->userdata('logged_in')) {
+
+
+            $results = $this->PayrollModel->select_payroll_all();
+
+
+			$data = [
+                'title' => 'Print Payroll',
+                'results' => $results
+            ];
+            
+			$this->load->view('payroll/payroll_print',$data);
+
+		} else {
+			redirect('', 'refresh');
+		}
     }
 }

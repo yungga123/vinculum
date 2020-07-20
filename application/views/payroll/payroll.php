@@ -144,7 +144,7 @@ defined('BASEPATH') or die('Access Denied');
                                                             <div class="form-group">
                                                                 <label for="days_absent">Days Absent</label>
                                                                 <input type="text" class="form-control" name="days_absent" id="days_absent" <?php if ($payroll['case']=='update') {
-                                                                    echo 'value="'.$payroll['tardiness_hrs'].'"';
+                                                                    echo 'value="'.$payroll['absent_days'].'"';
                                                                 } ?>>
                                                             </div>
 

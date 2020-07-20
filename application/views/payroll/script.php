@@ -229,6 +229,12 @@ defined('BASEPATH') or die('Access Denied');
 	            ]
 		    });
             //end of datatable
+
+            var payroll_filter = $('#payroll_filter').DataTable({
+                responsive: true
+            });
+
+           
             
         });
         

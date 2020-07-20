@@ -67,6 +67,116 @@ class PayrollModel extends CI_Model {
         return $this->db->get()->result();
     }
 
+    public function select_payroll_filter($start_date,$end_date) {
+        $this->db->select([
+            "a.id as payroll_id",
+            "a.cutoff_start",
+            "a.cutoff_end",
+            "a.emp_id",
+            "a.days_worked",
+            "a.hours_late",
+            "a.days_absent",
+            "a.cash_adv",
+            "a.others",
+            "a.ot_hrs",
+            "a.night_diff_hrs",
+            "a.wdo",
+            "a.reg_holiday",
+            "a.special_holiday",
+            "a.addback",
+            "a.incentives",
+            "a.commission",
+            "a.13th_month as thirteenth_month",
+            "a.vacation_leave",
+            "a.sick_leave",
+            "a.rest_day",
+            "a.awol",
+            "a.remarks as notes",
+            "a.is_deleted",
+            "b.lastname",
+            "b.firstname",
+            "b.middlename",
+            "b.birthdate",
+            "b.contact_number",
+            "b.position",
+            "b.address",
+            "b.sss_number",
+            "b.tin_number",
+            "b.pagibig_number",
+            "b.phil_health_number",
+            "b.status",
+            "b.validity",
+            "b.date_hired",
+            "b.daily_rate",
+            "b.pag_ibig_rate",
+            "b.sss_rate",
+            "b.phil_health_rate",
+            "b.tax",
+            "b.remarks"
+        ]);
+
+        $this->db->from('payroll as a');
+        $this->db->join('technicians as b','a.emp_id=b.id','left');
+        $this->db->where('is_deleted',0);
+        $this->db->where('a.cutoff_start',$start_date);
+        $this->db->where('a.cutoff_end',$end_date);
+        return $this->db->get()->result();
+    }
+
+    public function select_payroll_all() {
+        $this->db->select([
+            "a.id as payroll_id",
+            "a.cutoff_start",
+            "a.cutoff_end",
+            "a.emp_id",
+            "a.days_worked",
+            "a.hours_late",
+            "a.days_absent",
+            "a.cash_adv",
+            "a.others",
+            "a.ot_hrs",
+            "a.night_diff_hrs",
+            "a.wdo",
+            "a.reg_holiday",
+            "a.special_holiday",
+            "a.addback",
+            "a.incentives",
+            "a.commission",
+            "a.13th_month as thirteenth_month",
+            "a.vacation_leave",
+            "a.sick_leave",
+            "a.rest_day",
+            "a.awol",
+            "a.remarks as notes",
+            "a.is_deleted",
+            "b.lastname",
+            "b.firstname",
+            "b.middlename",
+            "b.birthdate",
+            "b.contact_number",
+            "b.position",
+            "b.address",
+            "b.sss_number",
+            "b.tin_number",
+            "b.pagibig_number",
+            "b.phil_health_number",
+            "b.status",
+            "b.validity",
+            "b.date_hired",
+            "b.daily_rate",
+            "b.pag_ibig_rate",
+            "b.sss_rate",
+            "b.phil_health_rate",
+            "b.tax",
+            "b.remarks"
+        ]);
+
+        $this->db->from('payroll as a');
+        $this->db->join('technicians as b','a.emp_id=b.id','left');
+        $this->db->where('is_deleted',0);
+        return $this->db->get()->result();
+    }
+
     
     //*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
         var $table = "payroll as a";
@@ -252,4 +362,6 @@ class PayrollModel extends CI_Model {
             return $this->db->count_all_results();
         }
     //*****************end*********************
+
+
 }
