@@ -243,39 +243,33 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				          </li>
 				      </ul>
 		  		    </li>
-		          <!-- <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $dispatch ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Dispatch</p>
-		            </a>
-		          </li> -->
 
-		         <li class="nav-item has-treeview<?php echo $sales_menu_status; ?>">
-				            <a href="#" class="nav-link<?php echo $sales_dispatch ?>">
-				              <i class="nav-icon fas fa-road nav-icon"></i>
-				              <p>Sales Dispatch</p>
-				              <i class="fas fa-angle-left right"></i>
-				            </a>
-				            <ul class="nav nav-treeview">
-					          <li class="nav-item">
-					            <a href="<?php echo site_url('sales-dispatch') ?>" class="nav-link<?php echo $Generate_sales_dispatch ?>">
-					              <i class="far fa-circle nav-icon"></i>
-					              <p>Generate Sales Dispatch</p>
-					            </a>
-					          </li>
-					          <li class="nav-item">
-					            <a href="<?php echo site_url('salesdispatch-table') ?>" class="nav-link<?php echo $sales_dispatch_list ?>">
-					              <i class="far fa-circle nav-icon"></i>
-					              <p>Sales Dispatch List</p>
-					            </a>
-					          </li>
-					      </ul>
-				          </li>
+		         	<li class="nav-item has-treeview<?php echo $sales_menu_status; ?>">
+						<a href="#" class="nav-link<?php echo $sales_dispatch ?>">
+							<i class="nav-icon fas fa-road nav-icon"></i>
+							<p>Sales Dispatch</p>
+							<i class="fas fa-angle-left right"></i>
+						</a>
+						<ul class="nav nav-treeview">
+							<li class="nav-item">
+							<a href="<?php echo site_url('sales-dispatch') ?>" class="nav-link<?php echo $Generate_sales_dispatch ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Generate Sales Dispatch</p>
+							</a>
+							</li>
+							<li class="nav-item">
+							<a href="<?php echo site_url('salesdispatch-table') ?>" class="nav-link<?php echo $sales_dispatch_list ?>">
+								<i class="far fa-circle nav-icon"></i>
+								<p>Sales Dispatch List</p>
+							</a>
+							</li>
+						</ul>
+					</li>
 
 		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $servicecall ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Service Call</p>
+		            <a href="<?php echo site_url('joborder') ?>" class="nav-link<?php echo $servicecall ?>">
+		              <i class="fas fa-list-ul nav-icon"></i>
+		              <p>Job Order</p>
 		            </a>
 		          </li>
 
