@@ -9,9 +9,13 @@ defined('BASEPATH') or die('Access Denied');
         </div>
 
         <div class="card-body">
-            <div class="form-group">
-                <label for="customer">Select Customer</label>
-                <input type="text" name="customer" id="customer" class="form-control" placeholder="">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="customer">Select Customer</label>
+                        <input type="text" name="customer" id="customer" class="form-control" placeholder="">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

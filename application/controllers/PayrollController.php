@@ -215,7 +215,7 @@ class PayrollController extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
 
             $this->load->model('TechniciansModel');
-            $technicians = $this->TechniciansModel->getTechnicians();
+            $technicians = $this->TechniciansModel->getTechniciansByStatus();
             $this->load->helper('site_helper');
 
             $data = html_variable();
@@ -457,7 +457,7 @@ class PayrollController extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
 
             $this->load->model('TechniciansModel');
-            $technicians = $this->TechniciansModel->getTechnicians();
+            $technicians = $this->TechniciansModel->getTechniciansByStatus();
             $results = $this->PayrollModel->select_payroll($id);
             $this->load->helper('site_helper');
 

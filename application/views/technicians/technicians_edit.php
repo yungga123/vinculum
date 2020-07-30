@@ -21,6 +21,8 @@ $tech_pagibigrate_edit = '';
 $tech_sssrate_edit = '';
 $tech_philhealthrate_edit = '';
 $tech_tax_edit = '';
+$tech_sl_credit_edit = '';
+$tech_vl_credit_edit = '';
 $tech_remarks_edit = '';
 
 foreach ($results as $row) {
@@ -53,6 +55,8 @@ foreach ($results as $row) {
 	$tech_sssrate_edit = $row->sss_rate;
 	$tech_philhealthrate_edit = $row->phil_health_rate;
 	$tech_tax_edit = $row->tax;
+	$tech_sl_credit_edit = $row->sl_credit;
+	$tech_vl_credit_edit = $row->vl_credit;
 	$tech_remarks_edit = $row->remarks;
 }
 ?>
@@ -208,6 +212,23 @@ foreach ($results as $row) {
                                                     <div class="form-group">
                                                         <label for="tech_daily_rate">Daily Rate</label>
                                                         <input class="form-control" type="text" name="tech_daily_rate" id="tech_daily_rate" value="<?php echo $tech_dailyrate_edit ?>">
+													</div>
+													
+													<div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="tech_vl_credit">VL Credit</label>
+                                                                <input class="form-control" type="text" name="tech_vl_credit" id="tech_vl_credit" value="<?php echo $tech_vl_credit_edit ?>">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="tech_sl_credit">SL Credit</label>
+                                                                <input class="form-control" type="text" name="tech_sl_credit" id="tech_sl_credit" value="<?php echo $tech_sl_credit_edit ?>">
+                                                            </div>
+
+                                                        </div>
                                                     </div>
                                                     
                                                 </div>

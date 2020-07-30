@@ -46,6 +46,8 @@ defined('BASEPATH') or die('Access Denied');
 										<th>SSS Con.</th>
 										<th>Phil-Health Con.</th>
 										<th>Tax Rate</th>
+										<th>VL Credit</th>
+										<th>SL Credit</th>
 										<th>Other Remarks</th>
 			            				<th>Operation</th>
 			            			</tr>
@@ -90,6 +92,8 @@ defined('BASEPATH') or die('Access Denied');
 											<td><?php echo $row->sss_rate ?></td>
 											<td><?php echo $row->phil_health_rate ?></td>
 											<td><?php echo $row->tax ?></td>
+											<td><?php echo $row->vl_credit ?></td>
+											<td><?php echo $row->sl_credit ?></td>
 											<td><?php echo $row->remarks ?></td>
 				            				<td>
 				            					<a href="<?php echo site_url('technicians-edit/'.$row->id) ?>" class="btn btn-warning btn-sm text-bold"><i class="fas fa-edit"></i> EDIT</a>

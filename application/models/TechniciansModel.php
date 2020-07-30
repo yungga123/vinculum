@@ -29,8 +29,42 @@ class TechniciansModel extends CI_Model {
 			sss_rate,
 			phil_health_rate,
 			tax,
-			remarks");
+			sl_credit,
+			vl_credit,
+			remarks"
+		);
 		$this->db->from('technicians');
+		return $this->db->get()->result();
+	}
+
+	public function getTechniciansByStatus() {
+		
+		//select id,concat(firstname,' ',substring(middlename,1,1),'. ',lastname) as name from technicians
+
+		$this->db->select(
+			"id,concat(firstname,' ',substring(middlename,1,1),' ',lastname) as name,
+			position,
+			birthdate,
+			contact_number,
+			address,
+			sss_number,
+			tin_number,
+			pagibig_number,
+			phil_health_number,
+			status,
+			validity,
+			date_hired,
+			daily_rate,
+			pag_ibig_rate,
+			sss_rate,
+			phil_health_rate,
+			tax,
+			sl_credit,
+			vl_credit,
+			remarks"
+		);
+		$this->db->from('technicians');
+		$this->db->where('status <>', 'Resigned');
 		return $this->db->get()->result();
 	}
 

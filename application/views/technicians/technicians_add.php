@@ -154,6 +154,27 @@ defined('BASEPATH') or die('Access Denied');
                                                         <label for="tech_daily_rate">Daily Rate</label>
                                                         <input class="form-control" type="text" name="tech_daily_rate" id="tech_daily_rate">
                                                     </div>
+
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="tech_vl_credit">VL Credit</label>
+                                                                <input class="form-control" type="text" name="tech_vl_credit" id="tech_vl_credit">
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="tech_sl_credit">SL Credit</label>
+                                                                <input class="form-control" type="text" name="tech_sl_credit" id="tech_sl_credit">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    
+
+                                                    
                                                     
                                                 </div>
 

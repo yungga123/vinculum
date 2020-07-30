@@ -214,6 +214,16 @@ class TechniciansController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'tech_vl_credit',
+				'label' => 'VL Credit',
+				'rules' => 'trim|numeric'
+			],
+			[
+				'field' => 'tech_sl_credit',
+				'label' => 'SL Credit',
+				'rules' => 'trim|numeric'
+			],
+			[
 				'field' => 'tech_remarks',
 				'label' => 'Other Remarks',
 				'rules' => 'trim'
@@ -250,6 +260,8 @@ class TechniciansController extends CI_Controller {
 				'sss_rate' => $this->input->post('tech_sss_rate'),
 				'phil_health_rate' => $this->input->post('tech_phil_health_rate'),
 				'tax' => $this->input->post('tech_tax'),
+				'sl_credit' => $this->input->post('tech_sl_credit'),
+				'vl_credit' => $this->input->post('tech_vl_credit'),
 				'remarks' => $this->input->post('tech_remarks')
 			];
 
@@ -442,6 +454,22 @@ class TechniciansController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'tech_vl_credit',
+				'label' => 'VL Credit',
+				'rules' => 'trim|numeric',
+				'errors' => [
+					'numeric' => 'Tax rate must contain numbers only.'
+				]
+			],
+			[
+				'field' => 'tech_sl_credit',
+				'label' => 'SL Credit',
+				'rules' => 'trim|numeric',
+				'errors' => [
+					'numeric' => 'Tax rate must contain numbers only.'
+				]
+			],
+			[
 				'field' => 'tech_remarks',
 				'label' => 'Other Remarks',
 				'rules' => 'trim'
@@ -477,6 +505,8 @@ class TechniciansController extends CI_Controller {
 				'sss_rate' => $this->input->post('tech_sss_rate'),
 				'phil_health_rate' => $this->input->post('tech_phil_health_rate'),
 				'tax' => $this->input->post('tech_tax'),
+				'sl_credit' => $this->input->post('tech_sl_credit'),
+				'vl_credit' => $this->input->post('tech_vl_credit'),
 				'remarks' => $this->input->post('tech_remarks')
 			];
 
