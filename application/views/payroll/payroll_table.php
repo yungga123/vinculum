@@ -116,7 +116,7 @@ defined('BASEPATH') or die('Access Denied');
 
                                                 <button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
 
-                                                <a href="'.site_url('payslip/'.$row->payroll_id).'" class="btn btn-success btn-xs" target="_blank"><i class="fas fa-search"></i></a>
+                                                <a href="<?php echo site_url('payslip/'.$row->payroll_id) ?>" class="btn btn-success btn-xs" target="_blank"><i class="fas fa-search"></i></a>
 
                                             </td>
                                         </tr>
