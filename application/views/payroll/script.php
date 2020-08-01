@@ -176,7 +176,7 @@ defined('BASEPATH') or die('Access Denied');
                     "onclick": null,
                     "showDuration": "300",
                     "hideDuration": "1000",
-                    "timeOut": "5000",
+                    "timeOut": "3000",
                     "extendedTimeOut": "1000",
                     "showEasing": "swing",
                     "hideEasing": "linear",
@@ -198,7 +198,11 @@ defined('BASEPATH') or die('Access Denied');
                             $(':submit').removeAttr('disabled','disabled');
                             $('.loading-modal').modal('hide');
 
-                            toastr.success("Success! Payroll Updated. View now at Payroll Table");
+                            toastr.success("Success! Payroll Updated. View now at Payroll Table. You will be redirected to payroll table in 3 seconds.");
+
+                            window.setTimeout(function() {
+                                window.location = '<?php echo site_url('payroll-table') ?>';
+                            }, 3000);
                             //me[0].reset();
                         } else {
                             $(':submit').removeAttr('disabled','disabled');
@@ -206,7 +210,6 @@ defined('BASEPATH') or die('Access Denied');
 
                             toastr.error(response.errors);
                         }
-
                     }
                 });
             });

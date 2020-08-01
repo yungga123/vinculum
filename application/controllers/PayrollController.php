@@ -45,7 +45,7 @@ class PayrollController extends CI_Controller {
             ],
             [
                 'field' => 'days_worked',
-                'label' => 'Days Worked',
+                'label' => 'Working Days',
                 'rules' => 'trim|required|numeric',
                 'errors' => [
                     'required' => 'Please provide Days Worked.',
@@ -361,7 +361,7 @@ class PayrollController extends CI_Controller {
 
 			$sub_array[] = '
 
-			<a href="'.site_url('payslip-update/'.$row->payroll_id).'" class="btn btn-warning btn-xs" target="_blank"><i class="fas fa-edit"></i></a> 
+			<a href="'.site_url('payslip-update/'.$row->payroll_id).'" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
 
             <button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
             
