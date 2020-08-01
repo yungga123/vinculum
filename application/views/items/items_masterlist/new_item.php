@@ -30,7 +30,9 @@ date_default_timezone_set('Asia/Manila');
 						<div class="card-body">
 							<div class="form-group">
 								<label for="item_code" class="control-label">Item Code</label>
-								<input type="text" id="item_code" name="item_code" class="form-control" placeholder="Enter Item Code">
+								<input type="text" id="item_code" name="item_code" class="form-control" placeholder="Enter Item Code" value="<?php if ($this->uri->segment(1) == 'addnewitem-scan') {
+									echo $item_code;
+								} ?>">
 							</div>
 							<div class="form-group">
 								<label for="item_name" class="control-label">Item Name</label>

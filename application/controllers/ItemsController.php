@@ -60,7 +60,6 @@ class ItemsController extends CI_Controller {
 	}
 
 	public function register_new_item(){
-	
 
 		$this->load->helper('site_helper');
 		$data = html_variable();
@@ -71,6 +70,22 @@ class ItemsController extends CI_Controller {
 		$this->load->view('items/items_masterlist/new_item');
 		$this->load->view('templates/footer');
 		$this->load->view('items/items_masterlist/script');
+
+	}
+
+	public function register_new_item_by_scan(){
+
+		$this->load->helper('site_helper');
+		$data = html_variable();
+		$data['title'] = 'Register New Item';
+		$data['item_code'] = $this->input->post('itemCode');
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/navbar');
+		$this->load->view('items/items_masterlist/new_item');
+		$this->load->view('templates/footer');
+		$this->load->view('items/items_masterlist/script');
+		
 	}
 
 
@@ -679,4 +694,5 @@ class ItemsController extends CI_Controller {
 		}
 		echo json_encode($validate);
 	}
+
 }

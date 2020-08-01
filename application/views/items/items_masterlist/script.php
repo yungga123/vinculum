@@ -76,7 +76,6 @@ defined('BASEPATH') or die('Access Denied');
 
 	<!-- Form Add Item -->
 	<script>
-		<?php if ($this->uri->segment(1) == 'addnewitem'): ?>
 		//Form for Adding Item
 		$('#form-register-item').submit(function(e) {
 		 	e.preventDefault();
@@ -129,7 +128,6 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		 });
-		<?php endif ?>
 	</script>
 
 	<!-- AJAX FORMS -->
@@ -650,6 +648,12 @@ defined('BASEPATH') or die('Access Denied');
 
 			$('#rpullout_start_date').val(picker.startDate.format('YYYY-MM-DD'));
 			$('#rpullout_end_date').val(picker.endDate.format('YYYY-MM-DD'));
+		});
+	</script>
+
+	<script>
+		$("#modal_scan").on('shown.bs.modal', function () {
+			$('#itemCode').focus();
 		});
 	</script>
 	
