@@ -54,6 +54,7 @@ if(!function_exists('html_variable')) {
 			'project_report_add' => '',
 			'project_report_list' => '',
 			'li_payroll' => '',
+			'pullout_scan' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];

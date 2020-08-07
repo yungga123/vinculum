@@ -104,6 +104,7 @@ $route['print-pullout/(:any)/(:any)/(:any)'] = 'PullOutsController/print_confirm
 $route['return-history'] = 'PullOutsController/return_history';
 $route['specific-return-history'] = 'PullOutsController/specific_return_history';
 $route['print-return/(:any)/(:any)'] = 'PullOutsController/print_return_history/$1/$2';
+$route['pulloutbyscan'] = 'PullOutsController/pullout_scan';
 
 //Technicians Controller
 $route['technicians'] = 'TechniciansController';

@@ -27,7 +27,144 @@ class PullOutsController extends CI_Controller {
 		} else {
 			redirect('', 'refresh');
 		}
+	}
 
+	public function pullout_scan() {
+		if($this->session->userdata('logged_in')) {
+
+			$this->load->model('CustomersModel');
+			$results = $this->CustomersModel->getVtCustomersByID();
+
+			$this->load->helper('site_helper');
+
+			$data = html_variable();
+			$data['title'] = 'Scanned Item';
+			$data['items_menu_status'] = ' menu-open';
+			$data['items_menu_display'] = ' block';
+			$data['pullout_scan'] = ' active';
+			$data['ul_items'] = ' active';
+			$data['results'] = $results;
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('items/item_pullout/pullout_scan');
+			$this->load->view('templates/footer');
+			$this->load->view('items/items_masterlist/script');
+		} else {
+			redirect('', 'refresh');
+		}
+
+	}
+
+	public function get_scan() {
+		
+		$output['success'] = false;
+
+		$rules = [
+			[
+				'field' => 'scan_qty',
+				'label' => 'Quantity',
+				'rules' => 'trim|required|is_natural_no_zero'
+			],
+			[
+				'field' => 'scan_code',
+				'label' => 'Item Code',
+				'rules' => 'trim|required'
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$this->load->model('ItemsModel');
+			$results = $this->ItemsModel->getSpecificMasterItems($this->input->post('scan_code'));
+
+			$item = array();
+
+			if (count($results) != 0) {
+				$output['success'] = true;
+
+				foreach ($results as $row) {
+					$item['itemCode'] = $row->itemCode;
+					$item['itemName'] = $row->itemName;
+					$item['itemPrice'] = $row->itemPrice;
+				}
+				$output['item'] = $item;
+			}
+
+			$output['errors'] = 'Item not existing.';
+			
+		} else {
+			$output['errors'] = validation_errors();
+		}
+
+		echo json_encode($output);
+	}
+
+	public function confirm_scan() {
+		$validate['success'] = false;
+
+		$rules = [
+			[
+				'field' => 'scan_customer',
+				'label' => 'Pullout Item Code',
+				'rules' => 'trim|required',
+				'errors' => [
+					"required" => "Please select customer."
+				]
+			],
+			[
+				'field' => 'pullout_itemCode[]',
+				'label' => 'Pullout Item Code',
+				'rules' => 'trim|required',
+				'errors' => [
+					"required" => "Please scan atleast 1 item."
+				]
+			],
+			[
+				'field' => 'pullout_qty[]',
+				'label' => 'Pullout Quantity',
+				'rules' => 'trim|required',
+				'errors' => [
+					"required" => "Please scan atleast 1 item."
+				]
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+
+		if ($this->form_validation->run()) {
+
+			$validate['success'] = true;
+
+			$sub_array_itemCode = array();
+			$sub_array_qty = array();
+
+			for ($i=0; $i < count($this->input->post('pullout_itemCode')); $i++) { 
+				$sub_array_itemCode[$i] = $this->input->post('pullout_itemCode')[$i];
+			}
+
+			for ($i=0; $i < count($this->input->post('pullout_qty')); $i++) { 
+				$sub_array_qty[$i] = $this->input->post('pullout_qty')[$i];
+			}
+
+			$validate['item_codes'] = $sub_array_itemCode;
+			$validate['quantities'] = $sub_array_qty;
+
+			
+
+			
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+
+		echo json_encode($validate);
 	}
 
 	public function pending_pullouts() {
@@ -81,8 +218,6 @@ class PullOutsController extends CI_Controller {
 				 '<td>'.$row->supplier.'</td>'.
 				 '<td>'.$row->encoder.'</td>'.
 				 '</tr>';
-
-				
 				$data[] = $sub_array;
 			}
 		} else {

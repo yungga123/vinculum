@@ -294,7 +294,6 @@ defined('BASEPATH') or die('Access Denied');
 		 	e.preventDefault();
 		 	var me = $(this);
 		 	var succ = '';
-
 		 	toastr.options = {
 				"closeButton": false,
 				"debug": false,
@@ -556,7 +555,148 @@ defined('BASEPATH') or die('Access Denied');
 
 		 		}
 		 	});
-		 });
+		});
+		//Form Get Scan
+		$('#form-getscan').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.success("Success! Item appended.");
+
+						if ($('td.scan_code:contains("'+response.item.itemCode+'")').html() != undefined) {
+
+							
+
+							var itemVal = Number($('td.scan_code:contains("'+response.item.itemCode+'")').closest('tr').find('.scan_qty').html());
+							var actualVal = Number($('#scan_qty').val());
+
+							var updateVal = $('td.scan_code:contains("'+response.item.itemCode+'")').closest('tr').find('.scan_qty');
+
+							var inputVal = $('td.scan_code:contains("'+response.item.itemCode+'")').closest('tr').find('.pullout_qty');
+
+							updateVal.html(itemVal+actualVal);
+							inputVal.val(itemVal+actualVal);
+
+						} else {
+							$('#scan-body').append('<tr>'+
+							'<td class="scan_code">'+response.item.itemCode+'</td><input class="pullout_itemCode" name="pullout_itemCode[]" type="hidden" value="'+response.item.itemCode+'">'+
+							'<td>'+response.item.itemName+'</td>'+
+							'<td class="scan_qty">'+$('#scan_qty').val()+'</td><input class="pullout_qty" name="pullout_qty[]" type="hidden" value="'+$('#scan_qty').val()+'">'+
+							'<td>'+response.item.itemPrice+'</td>'+
+							'</tr>');
+						}
+						$('#scan_code').focus();
+						
+						$('#scan_cost').html((Number($('#scan_cost').html())+Number(response.item.itemPrice*Number($('#scan_qty').val()))).toFixed(2));
+						me[0].reset();
+		 			} else {
+						$('#scan_code').val('');
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.error(response.errors);
+						$('#scan_code').focus();
+						
+		 			}
+		 		}
+		 	});
+		});
+
+		//Form Confirm Scan
+		$('#form-confirm-scan').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+						toastr.success('Success! Double Check the details.');
+						//me[0].reset();
+						$.each(response.item_codes,function(key,value){
+							//alert(value+' - '+response.quantities[key]);
+							$('#sub_data').append('<tr>'+
+								'<td>'+value+'</td>'+
+								'<td></td>'+
+								'<td>'+response.quantities[key]+'</td>'+
+								'<td></td>'+
+								'<td></td>'+
+							'</tr>');
+						});
+
+						$('#modal-confirm-details').modal();
+
+
+		 			} else {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+
+		 				toastr.error(response.errors);
+						
+		 			}
+		 		}
+		 	});
+		});
+		
 	</script>
 
 	<!-- Normal DataTables -->
@@ -656,6 +796,13 @@ defined('BASEPATH') or die('Access Denied');
 			$('#itemCode').focus();
 		});
 	</script>
+
+	<?php if ($this->uri->segment(1) == 'pulloutbyscan') { ?>
+		<script>
+			$('#scan_code').focus();
+		</script>
+	<?php } ?>
+	
 	
 </body>
 </html>

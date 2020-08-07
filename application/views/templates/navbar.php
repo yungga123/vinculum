@@ -107,7 +107,14 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	              <li class="nav-item">
 	                <a href="<?php echo site_url('Pull-Out-item') ?>" class="nav-link<?php echo $pullout_items ?>">
 	                  <i class="far fa-circle nav-icon"></i>
-	                  <p>Pull-out Items</p>
+	                  <p>Pull-out Items (Manual)</p>
+	                </a>
+	              </li>
+
+				  <li class="nav-item">
+	                <a href="<?php echo site_url('pulloutbyscan') ?>" class="nav-link<?php echo $pullout_scan ?>">
+	                  <i class="far fa-circle nav-icon"></i>
+	                  <p>Pull-out Items (Scanner)</p>
 	                </a>
 	              </li>
 
@@ -117,6 +124,8 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	                  <p>Confirmed Pullouts</p>
 	                </a>
 	              </li>
+
+				  
 
 	            </ul>
           	</li>
