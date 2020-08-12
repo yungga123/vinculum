@@ -112,7 +112,7 @@ defined('BASEPATH') or die('Access Denied');
                                             <td><?php echo number_format($gross_pay,2) ?></td>
                                             <td><?php echo number_format($net_pay,2) ?></td>
                                             <td>
-                                                <a href="'.site_url('payslip-update/'.$row->payroll_id).'" class="btn btn-warning btn-xs" target="_blank"><i class="fas fa-edit"></i></a> 
+                                                <a href="<?php echo site_url('payslip-update/'.$row->payroll_id) ?>" class="btn btn-warning btn-xs" target="_blank"><i class="fas fa-edit"></i></a> 
 
                                                 <button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
 
