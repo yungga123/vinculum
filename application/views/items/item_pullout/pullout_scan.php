@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
+
+date_default_timezone_set('Asia/Manila');
 ?>
+
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -108,19 +111,20 @@ defined('BASEPATH') or die('Access Denied');
                         <span aria-hidden="true">&times;</span>
                     </button>
             </div>
+            <?php echo form_open('PullOutsController/submit_confirm_scan',["id" => "form-submit-scan"]) ?>
             <div class="modal-body">
                 <table class="table table-sm table-bordered">
-                    <tbody id="sub_data">
+                    <tbody>
                         <tr>
-                            <td width="20%">Customer Name</td>
-                            <td width="30%">Vinculum Technologies</td>
-                            <td width="20%">Date: </td>
-                            <td width="30%" colspan="2">07/07/2007</td>
+                            <td width="20%" class="text-bold">Customer Name</td>
+                            <td width="30%" id="customer-name">Vinculum Technologies</td>
+                            <td width="20%" class="text-bold">Date: </td>
+                            <td width="30%" colspan="2"><?php echo date('M d, Y') ?></td>
                         </tr>
                         <tr>
-                            <td colspan="5">Particulars</td>
+                            <td colspan="5" class="text-center text-bold">Particulars</td>
                         </tr>
-                        <tr>
+                        <tr class="text-center text-bold">
                             <td>Item Code</td>
                             <td>Description</td>
                             <td>Quantity</td>
@@ -128,12 +132,20 @@ defined('BASEPATH') or die('Access Denied');
                             <td>Total</td>
                         </tr>
                     </tbody>
+                    <tbody id="sub_data">
+                    </tbody>
                 </table>
+                <div class="data-form">
+                </div>
+                <div class="text-right text-bold">
+                    Total Price: <span id="scan_total_price"></span>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
-                <button type="button" class="btn btn-success"><i class="fas fa-check"></i> YES</button>
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
             </div>
+            <?php echo form_close() ?>
         </div>
     </div>
 </div>

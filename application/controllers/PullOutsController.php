@@ -60,11 +60,24 @@ class PullOutsController extends CI_Controller {
 		
 		$output['success'] = false;
 
+		$this->load->model('ItemsModel');
+		$results = $this->ItemsModel->getSpecificMasterItems($this->input->post('scan_code'));
+		$qty = 0;
+
+		if (count($results) != 0) {
+			foreach ($results as $row) {
+				$qty = $row->stocks;
+			}
+		}
+
 		$rules = [
 			[
 				'field' => 'scan_qty',
 				'label' => 'Quantity',
-				'rules' => 'trim|required|is_natural_no_zero'
+				'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to['.$qty.']',
+				'errors' => [
+					'less_than_equal_to' => $qty.' Available stock/s.'
+				]
 			],
 			[
 				'field' => 'scan_code',
@@ -79,8 +92,7 @@ class PullOutsController extends CI_Controller {
 
 		if ($this->form_validation->run()) {
 
-			$this->load->model('ItemsModel');
-			$results = $this->ItemsModel->getSpecificMasterItems($this->input->post('scan_code'));
+			
 
 			$item = array();
 
@@ -106,6 +118,8 @@ class PullOutsController extends CI_Controller {
 
 	public function confirm_scan() {
 		$validate['success'] = false;
+
+		$this->load->model('ItemsModel');
 
 		$rules = [
 			[
@@ -145,21 +159,87 @@ class PullOutsController extends CI_Controller {
 
 			$sub_array_itemCode = array();
 			$sub_array_qty = array();
+			$item = array();
 
 			for ($i=0; $i < count($this->input->post('pullout_itemCode')); $i++) { 
+				$sub_array_item = array();
 				$sub_array_itemCode[$i] = $this->input->post('pullout_itemCode')[$i];
+				$items = $this->ItemsModel->getSpecificMasterItems($sub_array_itemCode[$i]);
+				foreach ($items as $row) {
+					$sub_array_item[] = $row->itemName;
+					$sub_array_item[] = $row->itemPrice;
+				}
+
+				$item[] = $sub_array_item;
 			}
 
 			for ($i=0; $i < count($this->input->post('pullout_qty')); $i++) { 
 				$sub_array_qty[$i] = $this->input->post('pullout_qty')[$i];
 			}
 
+
 			$validate['item_codes'] = $sub_array_itemCode;
 			$validate['quantities'] = $sub_array_qty;
+			$validate['item'] = $item;
 
 			
+		} else {
+			$validate['errors'] = validation_errors();
+		}
 
-			
+		echo json_encode($validate);
+	}
+
+	public function submit_confirm_scan() {
+		$validate['success'] = false;
+
+		$rules = [
+			[
+				'field' => 'customer',
+				'label' => 'Select Customer',
+				'rules' => 'trim|required',
+				'errors' => [
+					"required" => "Please select customer."
+				]
+			],
+			[
+				'field' => 'item_code[]',
+				'label' => 'Item Code',
+				'rules' => 'trim|required',
+				'errors' => [
+					"required" => "An error occured at Item Code"
+				]
+			],
+			[
+				'field' => 'quantity[]',
+				'label' => 'Quantity',
+				'rules' => 'trim|required',
+				'errors' => [
+					"required" => "An error occured at Quantity"
+				]
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+
+			$validate['success'] = true;
+
+			date_default_timezone_set('Asia/Manila');
+			$this->load->model('PullOutsModel');
+
+			for ($i=0; $i < count($this->input->post('item_code')) ; $i++) { 
+				$this->PullOutsModel->addPullout([
+					'item_code' => $this->input->post('item_code')[$i],
+					'date_of_punch' => date('Y-m-d H:i:s'),
+					'stocks_to_pullout' => $this->input->post('quantity')[$i],
+					'pullout_to' => $this->input->post('customer')
+				]);
+			}
+
 		} else {
 			$validate['errors'] = validation_errors();
 		}

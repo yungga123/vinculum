@@ -182,7 +182,7 @@ defined('BASEPATH') or die('Access Denied');
 
 		 		}
 		 	});
-		 });
+		});
 
 		//Form AddStocks
 		$('#form-addStocks').submit(function(e) {
@@ -236,7 +236,7 @@ defined('BASEPATH') or die('Access Denied');
 
 		 		}
 		 	});
-		 });
+		});
 
 		//click pullout item
 	    $('#form-pullout').submit(function(e) {
@@ -348,11 +348,9 @@ defined('BASEPATH') or die('Access Denied');
 		 			}
 		 		}
 		 	});
-		 });
+		});
 
-		 //Form Less Price Pullout
-
-		 //Form Insert Pullout
+		//Form Insert Pullout
 		$('#form-insert-pullout').submit(function(e) {
 		 	e.preventDefault();
 		 	var a = '<a href="<?php echo site_url("pending-pullouts") ?>"><u>View Here</u></a>';
@@ -398,7 +396,7 @@ defined('BASEPATH') or die('Access Denied');
 
 		 		}
 		 	});
-		 });
+		});
 
 		//Form Less Pullout
 		$('#form-less-pullout').submit(function(e) {
@@ -448,7 +446,7 @@ defined('BASEPATH') or die('Access Denied');
 
 		 		}
 		 	});
-		 });
+		});
 
 		//Form Return Pullouts
 		$('#form-return-pullouts').submit(function(e) {
@@ -501,7 +499,7 @@ defined('BASEPATH') or die('Access Denied');
 
 		 		}
 		 	});
-		 });
+		});
 
 		//Form Confirmed Request Delete
 		$('#form-request-delete').submit(function(e) {
@@ -556,6 +554,7 @@ defined('BASEPATH') or die('Access Denied');
 		 		}
 		 	});
 		});
+
 		//Form Get Scan
 		$('#form-getscan').submit(function(e) {
 		 	e.preventDefault();
@@ -667,31 +666,94 @@ defined('BASEPATH') or die('Access Denied');
 		 		dataType: 'json',
 		 		success: function(response) {
 		 			if (response.success == true) {
-
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 						toastr.success('Success! Double Check the details.');
+						$('#sub_data').empty();
+						$('#scan_total_price').empty();
+						$('.data-form').empty();
 						//me[0].reset();
+						var total_val = 0;
 						$.each(response.item_codes,function(key,value){
-							//alert(value+' - '+response.quantities[key]);
 							$('#sub_data').append('<tr>'+
 								'<td>'+value+'</td>'+
-								'<td></td>'+
+								'<td>'+response.item[key][0]+'</td>'+
 								'<td>'+response.quantities[key]+'</td>'+
-								'<td></td>'+
-								'<td></td>'+
+								'<td>'+response.item[key][1]+'</td>'+
+								'<td>'+(Number(response.quantities[key])*Number(response.item[key][1])).toFixed(2)+'</td>'+
 							'</tr>');
+							total_val += (Number(response.quantities[key])*Number(response.item[key][1]));
+							$('.data-form').append(
+								'<input name="item_code[]" type="hidden" value="'+value+'">'+
+								'<input name="quantity[]" type="hidden" value="'+response.quantities[key]+'">'
+							);
 						});
-
+						$('.data-form').append(
+								'<input name="customer" type="hidden" value="'+$('#scan_customer option:selected').val()+'">'
+							);
+						$('#scan_total_price').html(total_val.toFixed(2));
+						$('#customer-name').html($('#scan_customer option:selected').text());
 						$('#modal-confirm-details').modal();
+		 			} else {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.error(response.errors);
+		 			}
+		 		}
+		 	});
+		});
 
+		//Form Submit Scan
+		$('#form-submit-scan').submit(function(e) {
+		 	e.preventDefault();
+		 	var me = $(this);
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+						toastr.success('Success! Items are on pending to pulloout. <u><a href="<?php echo site_url('pending-pullouts') ?>">View Here</a></u>');
+						$('#sub_data').empty();
+						$('#scan_total_price').empty();
+						$('.data-form').empty();
+						me[0].reset();
+
+						$('#sub_data').append(
+							'<tr>'+
+								'<td colspan="5" class="text-bold text-center text-success">SUCCESS!!! ITEMS NOW IN PENDING</td>'+
+							'</tr>'
+						);
 
 		 			} else {
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
-
 		 				toastr.error(response.errors);
-						
 		 			}
 		 		}
 		 	});
