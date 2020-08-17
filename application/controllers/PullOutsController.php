@@ -72,18 +72,19 @@ class PullOutsController extends CI_Controller {
 
 		$rules = [
 			[
+				'field' => 'scan_code',
+				'label' => 'Item Code',
+				'rules' => 'trim|required'
+			],
+			[
 				'field' => 'scan_qty',
 				'label' => 'Quantity',
 				'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to['.$qty.']',
 				'errors' => [
 					'less_than_equal_to' => $qty.' Available stock/s.'
 				]
-			],
-			[
-				'field' => 'scan_code',
-				'label' => 'Item Code',
-				'rules' => 'trim|required'
 			]
+			
 		];
 
 		$this->form_validation->set_error_delimiters('<p>• ','</p>');
@@ -91,8 +92,6 @@ class PullOutsController extends CI_Controller {
 		$this->form_validation->set_rules($rules);
 
 		if ($this->form_validation->run()) {
-
-			
 
 			$item = array();
 
@@ -106,8 +105,6 @@ class PullOutsController extends CI_Controller {
 				}
 				$output['item'] = $item;
 			}
-
-			$output['errors'] = 'Item not existing.';
 			
 		} else {
 			$output['errors'] = validation_errors();
