@@ -1,10 +1,11 @@
 <?php
 defined('BASEPATH') or die('No direct script access allowed.');
 
-class ItemsController extends CI_Controller {
-
-	public function items_masterlist() {
-		if($this->session->userdata('logged_in')) {
+class ItemsController extends CI_Controller
+{
+	public function items_masterlist()
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
@@ -25,14 +26,13 @@ class ItemsController extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('items/items_masterlist/script');
 		} else {
-			redirect('','refresh');
+			redirect('', 'refresh');
 		}
-
-		
 	}
 
-	public function indirect_items_masterlist() {
-		if($this->session->userdata('logged_in')) {
+	public function indirect_items_masterlist()
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
@@ -53,13 +53,12 @@ class ItemsController extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('items/items_masterlist/script');
 		} else {
-			redirect('','refresh');
+			redirect('', 'refresh');
 		}
-
-		
 	}
 
-	public function register_new_item(){
+	public function register_new_item()
+	{
 
 		$this->load->helper('site_helper');
 		$data = html_variable();
@@ -70,10 +69,10 @@ class ItemsController extends CI_Controller {
 		$this->load->view('items/items_masterlist/new_item');
 		$this->load->view('templates/footer');
 		$this->load->view('items/items_masterlist/script');
-
 	}
 
-	public function register_new_item_by_scan(){
+	public function register_new_item_by_scan()
+	{
 
 		$this->load->helper('site_helper');
 		$data = html_variable();
@@ -85,11 +84,11 @@ class ItemsController extends CI_Controller {
 		$this->load->view('items/items_masterlist/new_item');
 		$this->load->view('templates/footer');
 		$this->load->view('items/items_masterlist/script');
-		
 	}
 
 
-	public function register_new_item_validate() {
+	public function register_new_item_validate()
+	{
 		$validate = [
 			'success' => false,
 			'errors' => ''
@@ -181,7 +180,7 @@ class ItemsController extends CI_Controller {
 
 		];
 
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
@@ -231,8 +230,6 @@ class ItemsController extends CI_Controller {
 
 			$this->load->model('ItemsModel');
 			$this->ItemsModel->insertItems($data);
-			
-			
 		} else {
 			$validate['errors'] = validation_errors();
 		}
@@ -240,7 +237,8 @@ class ItemsController extends CI_Controller {
 		echo json_encode($validate);
 	}
 
-	public function update_new_item_validate() {
+	public function update_new_item_validate()
+	{
 		$validate = [
 			'success' => false,
 			'errors' => ''
@@ -330,7 +328,7 @@ class ItemsController extends CI_Controller {
 
 		];
 
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
@@ -351,9 +349,7 @@ class ItemsController extends CI_Controller {
 
 
 			$this->load->model('ItemsModel');
-			$this->ItemsModel->updateItems($item_code,$data);
-			
-			
+			$this->ItemsModel->updateItems($item_code, $data);
 		} else {
 			$validate['errors'] = validation_errors();
 		}
@@ -361,7 +357,8 @@ class ItemsController extends CI_Controller {
 		echo json_encode($validate);
 	}
 
-	public function fetch_masterlist($item_code) {
+	public function fetch_masterlist($item_code)
+	{
 
 		$this->load->model('ItemsModel');
 		$list_of_items = $this->ItemsModel->getSpecificMasterItems($item_code);
@@ -370,11 +367,11 @@ class ItemsController extends CI_Controller {
 
 
 		echo json_encode($itemArr);
-
 	}
 
 
-	public function get_masterlist($item_category) {
+	public function get_masterlist($item_category)
+	{
 
 		$button_edit = '<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-default">
           Launch Default Modal
@@ -386,7 +383,7 @@ class ItemsController extends CI_Controller {
 
 
 		$data = array();
-		foreach($fetch_data as $row) {
+		foreach ($fetch_data as $row) {
 			$sub_array = array();
 			$sub_array[] = $row->itemCode;
 			$sub_array[] = $row->itemName;
@@ -394,14 +391,14 @@ class ItemsController extends CI_Controller {
 			$sub_array[] = $row->itemSupplierPrice;
 			$sub_array[] = $row->itemPrice;
 			$sub_array[] = $row->stocks;
-			$sub_array[] = date_format(date_create($row->date_of_purchase),'F d, Y');
+			$sub_array[] = date_format(date_create($row->date_of_purchase), 'F d, Y');
 			$sub_array[] = $row->location;
 			$sub_array[] = $row->supplier;
 			$sub_array[] = $row->encoder;
 			$sub_array[] = '
 							<button type="button" class="btn btn-warning btn-xs btn_select" data-toggle="modal" data-target="#modal-edit-item" title="Edit"><i class="fas fa-edit"></i></button> 
 
-							<a href="'.site_url("ItemsController/delete_items/".$row->itemCode).'" class="btn btn-danger btn-xs" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i></a> 
+							<a href="' . site_url("ItemsController/delete_items/" . $row->itemCode) . '" class="btn btn-danger btn-xs" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i></a> 
 
 							<button class="btn btn-success btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks" title="Add Stocks"><i class="fas fa-plus"></i></button>
 
@@ -420,7 +417,8 @@ class ItemsController extends CI_Controller {
 		echo json_encode($output);
 	}
 
-	public function addStocksValidate() {
+	public function addStocksValidate()
+	{
 		$validate = [
 			'success' => false,
 			'errors' => ''
@@ -439,7 +437,7 @@ class ItemsController extends CI_Controller {
 			]
 		];
 
-		$this->form_validation->set_error_delimiters('<p>','</p>');
+		$this->form_validation->set_error_delimiters('<p>', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
@@ -453,8 +451,8 @@ class ItemsController extends CI_Controller {
 			$itemCode = $this->input->post('AS_ItemCode');
 			$stocksToAdd = $this->input->post('AS_Quantity');
 
-			$this->ItemsModel->addStock($itemCode,$stocksToAdd);
-			$this->RegisterHistoryModel->existingRegisteredHistory($itemCode,$stocksToAdd);
+			$this->ItemsModel->addStock($itemCode, $stocksToAdd);
+			$this->RegisterHistoryModel->existingRegisteredHistory($itemCode, $stocksToAdd);
 		} else {
 			$validate['errors'] = validation_errors();
 		}
@@ -462,7 +460,8 @@ class ItemsController extends CI_Controller {
 		echo json_encode($validate);
 	}
 
-	public function print_items($filter,$itemType) {
+	public function print_items($filter, $itemType)
+	{
 		$this->load->model('ItemsModel');
 		$results = $this->ItemsModel->getMasterItems($itemType);
 		$results_stocks = $this->ItemsModel->getMasterItemsByStocks($itemType);
@@ -472,41 +471,42 @@ class ItemsController extends CI_Controller {
 			'results_stocks' => $results_stocks,
 			'filter' => $filter
 		];
-		$this->load->view('items/items_masterlist/print-items',$data);
+		$this->load->view('items/items_masterlist/print-items', $data);
 	}
 
-	public function delete_items($itemCode) {
+	public function delete_items($itemCode)
+	{
 		$this->load->model('ItemsModel');
 		$this->load->model('DeleteHistoryModel');
 		$this->DeleteHistoryModel->addDeleteHistory($itemCode);
 		$this->ItemsModel->deleteItems($itemCode);
-		
+
 
 		$this->session->set_flashdata('success', 'Success! Item Deleted.');
 		redirect('masterlistofitems');
 	}
 
-	function check_item() {
+	function check_item()
+	{
 		$itemCode = $this->input->post('item_code');
 		$this->load->model('PullOutsModel');
 		$results = $this->PullOutsModel->getPulledOutName($itemCode);
-		
+
 		if ($results == 1) {
 			return FALSE;
 		} else {
 			return TRUE;
 		}
-
 	}
 
-	
-	public function pulloutValidate() {
+	public function pulloutValidate()
+	{
 
 		$validate = [
 			'success' => false,
 			'errors' => ''
 		];
-		
+
 
 		$this->load->model('ItemsModel');
 		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_code'));
@@ -521,24 +521,24 @@ class ItemsController extends CI_Controller {
 				'field' => 'item_code',
 				'label' => 'Item Code',
 				'rules' => 'trim|required|callback_check_item',
-				'errors' => ['check_item' => 'This item is already in pullout list.','required' => 'Select another item to pullout.']
+				'errors' => ['check_item' => 'This item is already in pullout list.', 'required' => 'Select another item to pullout.']
 			],
 			[
 				'field' => 'pullout_stocks',
 				'label' => 'Stocks to Pullout',
-				'rules' => 'trim|required|numeric|less_than_equal_to['.$itemStock.']|is_natural_no_zero',
-				'errors' => ['less_than_equal_to' => 'Only '.$itemStock.' stock/s available.']
+				'rules' => 'trim|required|numeric|less_than_equal_to[' . $itemStock . ']|is_natural_no_zero',
+				'errors' => ['less_than_equal_to' => 'Only ' . $itemStock . ' stock/s available.']
 			],
 			[
 				'field' => 'pull_out_to',
 				'label' => 'Pulled Out to',
 				'rules' => 'trim|required',
 				'errors' => ['required' => 'Please select customer name']
-				
+
 			]
 		];
-		
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
@@ -559,15 +559,14 @@ class ItemsController extends CI_Controller {
 			];
 
 			$this->PullOutsModel->addPullout($data);
-			
-		} 
-		else {
+		} else {
 			$validate['errors'] = validation_errors();
-			}
-			echo json_encode($validate);
 		}
+		echo json_encode($validate);
+	}
 
-		public function deletePullout($id) {		
+	public function deletePullout($id)
+	{
 		$this->load->model('PullOutsModel');
 		$this->PullOutsModel->deletePullout($id);
 		$updateMsg = 	'<div class="alert alert-success alert-dismissable">
@@ -576,10 +575,10 @@ class ItemsController extends CI_Controller {
                             </div>';
 		$this->session->set_flashdata('msg', $updateMsg);
 		redirect('Pull-Out-item');
-
 	}
 
-	public function confirmPullout() {
+	public function confirmPullout()
+	{
 		$this->load->model('ConfirmedPullOutsModel');
 		$this->ConfirmedPullOutsModel->insertdirect();
 
@@ -592,12 +591,12 @@ class ItemsController extends CI_Controller {
 		foreach ($results as $row) {
 			$itemCode = $row->item_code;
 			$stocks = $row->stocks_to_pullout;
-			$this->ItemsModel->decreasedByPulloutdirect($stocks,$itemCode);
+			$this->ItemsModel->decreasedByPulloutdirect($stocks, $itemCode);
 		}
 
 		$this->load->model('PullOutsModel');
 		$this->PullOutsModel->deletePullouts();
-		
+
 
 		$updateMsg = 	'<div class="alert alert-success alert-dismissable">
                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -606,10 +605,10 @@ class ItemsController extends CI_Controller {
 		$this->session->set_flashdata('msg', $updateMsg);
 
 		redirect('Pull-Out-item');
-
 	}
 
-	public function ItemGet($itemCode) {
+	public function ItemGet($itemCode)
+	{
 
 		$this->load->model('ItemsModel');
 		$this->load->model('CustomersModel');
@@ -619,11 +618,10 @@ class ItemsController extends CI_Controller {
 		$data['results'] = $results;
 		$data['customers'] = $customers;
 		$this->load->view('items/item_pullout/itemsget', $data);
-
-
 	}
 
-	public function ItemGetValidate($id) {
+	public function ItemGetValidate($id)
+	{
 
 		$validate = [
 			'success' => false,
@@ -632,7 +630,7 @@ class ItemsController extends CI_Controller {
 
 		$this->load->model('ItemsModel');
 		$results = $this->ItemsModel->ItemsGetByName($this->input->post('item_code'));
-		
+
 		$itemStock = 0;
 		foreach ($results as $row) {
 			$itemStock = $row->stocks;
@@ -653,8 +651,8 @@ class ItemsController extends CI_Controller {
 			[
 				'field' => 'pullout_stocks',
 				'label' => 'Stocks',
-				'rules' => 'trim|numeric|required|less_than_equal_to['.$itemStock.']|is_natural_no_zero',
-				'errors' => ['less_than_equal_to' => 'Only '.$itemStock.' stock/s available']
+				'rules' => 'trim|numeric|required|less_than_equal_to[' . $itemStock . ']|is_natural_no_zero',
+				'errors' => ['less_than_equal_to' => 'Only ' . $itemStock . ' stock/s available']
 			],
 			[
 				'field' => 'pull_out_to',
@@ -664,11 +662,11 @@ class ItemsController extends CI_Controller {
 			]
 		];
 
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
-		if($this->form_validation->run()){
+		if ($this->form_validation->run()) {
 
 			$validate['success'] = true;
 
@@ -687,12 +685,10 @@ class ItemsController extends CI_Controller {
 			];
 
 			$this->PullOutsModel->addPullout($data);
-
-
 		} else {
 			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
 	}
-
+	
 }

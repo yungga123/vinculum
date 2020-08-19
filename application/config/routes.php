@@ -148,3 +148,6 @@ $route['joborder-existingcust'] = 'JobOrderController/existing_customer';
 
 //CovidSurveyController
 $route['covidsurvey'] = 'CovidSurveyController';
+$route['covidsurvey-table'] = 'CovidSurveyController/covidsurvey_table';
+$route['covidsurvey-delete/(:any)'] = 'CovidSurveyController/update_delete/$1';
+$route['covidsurvey-export'] = 'CovidSurveyController/export';

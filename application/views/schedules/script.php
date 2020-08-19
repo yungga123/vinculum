@@ -233,7 +233,7 @@ defined('BASEPATH') or die('Access Denied');
 		 	});
 
 
-		 });	
+		});	
 		<?php endif ?>
 	</script>
 
