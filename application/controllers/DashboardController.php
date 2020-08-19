@@ -15,6 +15,7 @@ class DashboardController extends CI_Controller {
 			$this->load->model('PulloutsModel');
 			$this->load->model('CalendarModel');
 			$this->load->model('ToolsModel');
+			$this->load->model('CovidSurveyModel');
 
 			$data = html_variable();
 			$data['title'] = 'Dashboard';
@@ -28,6 +29,7 @@ class DashboardController extends CI_Controller {
 			$data['pullouts_count'] = $this->PulloutsModel->countPullouts();
 			$data['tools_count'] = $this->ToolsModel->count_tools();
 			$data['results_today_event'] = $this->CalendarModel->get_events_by_date();
+			$data['count_ctc'] = $this->CovidSurveyModel->get_all_covidsurvey_data();
 			
 
 			$this->load->view('templates/header', $data);

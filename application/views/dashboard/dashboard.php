@@ -140,7 +140,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3><?php echo $countDispatch ?></h3>
+              <h3><?php echo $count_ctc ?></h3>
 
               <p>CTC Records</p>
             </div>
