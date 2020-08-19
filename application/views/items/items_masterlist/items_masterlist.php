@@ -62,7 +62,11 @@ defined('BASEPATH') or die('No direct script access allowed.');
 			            		</thead>
 
 			            	</table>
-			            </div>
+						</div>
+						
+						<div class="card-footer">
+							<a href="<?php echo site_url('exportitems/').$category ?>" class="btn btn-success text-bold float-right"> <i class="fas fa-file-excel"></i> EXPORT TO EXCEL</a>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -64,6 +64,7 @@ $route['masterlistofindirectitems'] = 'ItemsController/indirect_items_masterlist
 $route['addnewitem'] = 'ItemsController/register_new_item';
 $route['addnewitem-scan'] = 'ItemsController/register_new_item_by_scan';
 $route['print-items/(:any)/(:any)'] = 'ItemsController/print_items/$1/$2';
+$route['exportitems/(:any)'] = 'ItemsController/exportItems/$1';
 
 
 //Logs Controller

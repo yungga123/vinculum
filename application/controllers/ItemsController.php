@@ -30,6 +30,45 @@ class ItemsController extends CI_Controller
 		}
 	}
 
+	// Export to CSV ( must be in result->array() )
+    function exportItems($itemType)
+    {
+
+        $file_name = $itemType.'items_on_' . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+		// get data
+		$this->load->model('ItemsModel');
+        $results = $this->ItemsModel->getMasterItemsArray($itemType);
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+			'Item Code',
+			'Item Name',
+			'Item Type',
+			'Supplier Price',
+			'SRP',
+			'Stocks',
+			'Date of Purchase',
+			'Location',
+			'Supplier',
+			'Encoder'
+        ];
+        fputcsv($file, $header);
+        foreach ($results as $key => $value) {
+			fputcsv($file, $value);
+
+        }
+		fclose($file);
+		
+		
+        exit;
+    }
+
 	public function indirect_items_masterlist()
 	{
 		if ($this->session->userdata('logged_in')) {
