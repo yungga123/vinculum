@@ -1,10 +1,12 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
 
-class CustomersController extends CI_Controller {
+class CustomersController extends CI_Controller
+{
 
-	public function index() {
-		if($this->session->userdata('logged_in')) {
+	public function index()
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 
@@ -17,11 +19,12 @@ class CustomersController extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('customers/script');
 		} else {
-			redirect('','refresh');
+			redirect('', 'refresh');
 		}
 	}
 
-	public function get_customers() {
+	public function get_customers()
+	{
 
 
 		$this->load->model('CustomersModel');
@@ -29,16 +32,16 @@ class CustomersController extends CI_Controller {
 
 
 		$data = array();
-		foreach($fetch_data as $row) {
+		foreach ($fetch_data as $row) {
 			$installationDate = '';
 
 			if ($row->InstallationDate != '0000-00-00') {
-				$installationDate = date_format(date_create($row->InstallationDate),'F d, Y');
+				$installationDate = date_format(date_create($row->InstallationDate), 'F d, Y');
 			}
 
 			$sub_array = array();
 			$sub_array[] = $row->CustomerID;
-			$sub_array[] = '<a href="'.site_url('customer-details/').$row->CustomerID.'" target="_blank">'.$row->CompanyName.'</a>';
+			$sub_array[] = '<a href="' . site_url('customer-details/') . $row->CustomerID . '" target="_blank">' . $row->CompanyName . '</a>';
 			$sub_array[] = $row->ContactPerson;
 			$sub_array[] = $row->Address;
 			$sub_array[] = $row->ContactNumber;
@@ -50,13 +53,13 @@ class CustomersController extends CI_Controller {
 			$sub_array[] = $row->Notes;
 			$sub_array[] = '
 
-			<a href="'.site_url('customers-update/'.$row->CustomerID).'" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> 
+			<a href="' . site_url('customers-update/' . $row->CustomerID) . '" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> 
 
 			<button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
 
 			<button type="button" class="btn btn-success btn-sm btn-addcustomerfile" data-toggle="modal" data-target=".modal-addcustomer-file"><i class="fas fa-plus"></i> Add File</button>
 
-			<a href="'.site_url('customers-addbranch/'.$row->CustomerID).'" class="btn btn-sm btn-primary text-bold" target="_blank"><i class="fas fa-code-branch"></i> Add Branch</a>
+			<a href="' . site_url('customers-addbranch/' . $row->CustomerID) . '" class="btn btn-sm btn-primary text-bold" target="_blank"><i class="fas fa-code-branch"></i> Add Branch</a>
 
 			';
 
@@ -73,8 +76,9 @@ class CustomersController extends CI_Controller {
 		echo json_encode($output);
 	}
 
-	public function customer_add() {
-		if($this->session->userdata('logged_in')) {
+	public function customer_add()
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 
@@ -87,11 +91,12 @@ class CustomersController extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('customers/script');
 		} else {
-			redirect('','refresh');
+			redirect('', 'refresh');
 		}
 	}
 
-	public function customer_add_validate() {
+	public function customer_add_validate()
+	{
 		$validate = [
 			'success' => false,
 			'errors' => ''
@@ -161,8 +166,8 @@ class CustomersController extends CI_Controller {
 				'errors' => ['' => '']
 			]
 		];
-		
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
@@ -186,17 +191,15 @@ class CustomersController extends CI_Controller {
 
 			$this->load->model('CustomersModel');
 			$this->CustomersModel->add_vtCustomer($data);
-
-
-		} 
-		else {
-		$validate['errors'] = validation_errors();
+		} else {
+			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
 	}
 
-	public function customer_update($customer_id) {
-		if($this->session->userdata('logged_in')) {
+	public function customer_update($customer_id)
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 			$this->load->model('CustomersModel');
@@ -212,11 +215,12 @@ class CustomersController extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('customers/script');
 		} else {
-			redirect('','refresh');
+			redirect('', 'refresh');
 		}
 	}
 
-	public function customer_update_validate() {
+	public function customer_update_validate()
+	{
 
 		$validate = [
 			'success' => false,
@@ -285,8 +289,8 @@ class CustomersController extends CI_Controller {
 				'errors' => ['' => '']
 			]
 		];
-		
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
@@ -311,19 +315,17 @@ class CustomersController extends CI_Controller {
 
 
 			$this->load->model('CustomersModel');
-			$this->CustomersModel->update_vtCustomer($customer_id,$data);
-
-
-		} 
-		else {
-		$validate['errors'] = validation_errors();
+			$this->CustomersModel->update_vtCustomer($customer_id, $data);
+		} else {
+			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
 	}
 
-	public function customers_print() {
+	public function customers_print()
+	{
 
-		if($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->model('CustomersModel');
 			$results = $this->CustomersModel->getVtCustomersByID();
@@ -331,14 +333,14 @@ class CustomersController extends CI_Controller {
 				'title' => 'Print Customers',
 				'results' => $results
 			];
-			$this->load->view('customers/customers_print',$data);
-
+			$this->load->view('customers/customers_print', $data);
 		} else {
 			redirect('', 'refresh');
 		}
 	}
 
-	public function upload_customer_file() {
+	public function upload_customer_file()
+	{
 
 		// File Upload path file url: file:///C:/xampp/htdocs/vinculum/user_guide/libraries/file_uploading.html
 
@@ -356,47 +358,44 @@ class CustomersController extends CI_Controller {
 			]
 		];
 
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
-		$uploadPath = './customer_files/'.$this->input->post('file_customer_id').'/';
+		$uploadPath = './customer_files/' . $this->input->post('file_customer_id') . '/';
 
-        $config['upload_path']          = $uploadPath;
-        $config['allowed_types']        = 'jpg|png|xlsx|docx|rtf|html|jpeg|pptx|ppt|doc|xlx|pdf';
-        $config['max_size']             = 51200;
+		$config['upload_path']          = $uploadPath;
+		$config['allowed_types']        = 'jpg|png|xlsx|docx|rtf|html|jpeg|pptx|ppt|doc|xlx|pdf';
+		$config['max_size']             = 51200;
 
-        if (!is_dir($uploadPath)) {
+		if (!is_dir($uploadPath)) {
 			mkdir($uploadPath, 0777, TRUE);
 		}
 
-       	$this->load->library('upload', $config);
+		$this->load->library('upload', $config);
 
-       	if ($this->form_validation->run()) {
+		if ($this->form_validation->run()) {
 
-       		if ( ! $this->upload->do_upload('file_customer_file')) {
+			if (!$this->upload->do_upload('file_customer_file')) {
 
-	            $error = $this->upload->display_errors('<p>• ', '</p>');
+				$error = $this->upload->display_errors('<p>• ', '</p>');
 
-	            $validate['errors'] = $error;
+				$validate['errors'] = $error;
+			} else {
+				$validate['success'] = true;
+				$data = array('upload_data' => $this->upload->data());
+			}
+		} else {
 
-	        } else {
-	        	$validate['success'] = true;
-	            $data = array('upload_data' => $this->upload->data());
-	        }
-
-		} 
-		else {
-
-		$validate['errors'] = validation_errors();
-
+			$validate['errors'] = validation_errors();
 		}
 
-        echo json_encode($validate);
-    }
+		echo json_encode($validate);
+	}
 
-    public function customer_details($id){
-    	if($this->session->userdata('logged_in')) {
+	public function customer_details($id)
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 			$this->load->helper('directory');
@@ -405,20 +404,20 @@ class CustomersController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Customer Details';
 			$data['results'] = $this->CustomersModel->getVtCustomers($id);
-			$data['files'] = directory_map('./customer_files/'.$id);
+			$data['files'] = directory_map('./customer_files/' . $id);
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('customers/customer_details');
 			$this->load->view('templates/footer');
 			$this->load->view('customers/script');
-
 		} else {
 			redirect('', 'refresh');
 		}
-    }
+	}
 
-	public function customer_addbranch($id) {
-		if($this->session->userdata('logged_in')) {
+	public function customer_addbranch($id)
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 			$this->load->model('CustomersModel');
@@ -432,13 +431,13 @@ class CustomersController extends CI_Controller {
 			$this->load->view('customers/customers_addbranch');
 			$this->load->view('templates/footer');
 			$this->load->view('customers/script');
-
 		} else {
 			redirect('', 'refresh');
 		}
 	}
 
-	public function customer_addbranch_validate() {
+	public function customer_addbranch_validate()
+	{
 		$validate = [
 			'success' => false,
 			'errors' => ''
@@ -472,20 +471,53 @@ class CustomersController extends CI_Controller {
 				]
 			]
 		];
-		
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
 		$this->form_validation->set_rules($rules);
 
 		if ($this->form_validation->run()) {
 
 			$validate['success'] = true;
-			
-		} 
-		else {
-		$validate['errors'] = validation_errors();
+		} else {
+			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
 	}
-    
+
+	// Export to CSV
+    function exportCustomers()
+    {
+		$this->load->model('CustomersModel');
+        $file_name = 'customersdata_on' . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        // get data 
+        $results = $this->CustomersModel->getVtCustomersByNameArray();
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+            'CustomerID',
+			'CompanyName',
+			'ContactPerson',
+			'Address',
+			'ContactNumber',
+			'EmailAddress',
+			'Website',
+			'InstallationDate',
+			'Interest',
+			'Type',
+			'Notes'
+        ];
+        fputcsv($file, $header);
+        foreach ($results as $key => $value) {
+            fputcsv($file, $value);
+        }
+        fclose($file);
+        exit;
+    }
 }

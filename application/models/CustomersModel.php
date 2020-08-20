@@ -140,8 +140,29 @@ class CustomersModel extends CI_Model {
 	}
 
 	public function getVtCustomersByName() {
+		$this->db->where('is_deleted','0');
 		$this->db->order_by('CompanyName','ASC');
 		return $this->db->get('customer_vt')->result();
+	}
+
+	public function getVtCustomersByNameArray() {
+		$this->db->select([
+			"CustomerID",
+			"CompanyName",
+			"ContactPerson",
+			"Address",
+			"ContactNumber",
+			"EmailAddress",
+			"Website",
+			"InstallationDate",
+			"Interest",
+			"Type",
+			"Notes"
+		]);
+		$this->db->from('customer_vt');
+		$this->db->where('is_deleted','0');
+		$this->db->order_by('CustomerID','DESC');
+		return $this->db->get()->result_array();
 	}
 
 	public function add_vtCustomer($data) {

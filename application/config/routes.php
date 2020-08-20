@@ -95,6 +95,7 @@ $route['customers-update/(:num)'] = 'CustomersController/customer_update/$1';
 $route['customers-print'] = 'CustomersController/customers_print';
 $route['customer-details/(:any)'] = 'CustomersController/customer_details/$1';
 $route['customers-addbranch/(:any)'] = 'CustomersController/customer_addbranch/$1';
+$route['exportcustomers'] = 'CustomersController/exportCustomers';
 
 //Pullouts Controller
 $route['Pull-Out-item'] = 'PullOutsController';
