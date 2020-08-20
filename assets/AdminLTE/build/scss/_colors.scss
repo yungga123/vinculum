@@ -43,7 +43,7 @@
 }
 
 // Backgrund Color Disabled
-[class^='bg-'].disabled {
+[class^="bg-"].disabled {
   opacity: .65;
 }
 
@@ -79,4 +79,13 @@ a.text-muted:hover {
 // Accent colors (colors)
 @each $name, $color in $colors {
   @include accent-variant($name, $color);
+}
+
+// Accent button override fix
+[class*="accent-"] {
+  @each $name, $color in $theme-colors {
+    a.btn-#{$name} {
+      color: color-yiq($color);
+    }
+  }
 }

@@ -4,29 +4,27 @@
 
 @mixin cards-variant($name, $color) {
   .card-#{$name} {
-    &.card-tabs {
-      &:not(.card-outline) {
-        .card-header {
-          background-color: $color;
+    &:not(.card-outline) {
+      > .card-header {
+        background-color: $color;
 
-          &,
-          a {
-            color: color-yiq($color);
-          }
-
-          a.active {
-            color: color-yiq($white);
-          }
+        &,
+        a {
+          color: color-yiq($color);
         }
-      }
 
-      &.card-outline {
-        border-top: 3px solid $color;
+        a.active {
+          color: color-yiq($white);
+        }
       }
     }
 
+    &.card-outline {
+      border-top: 3px solid $color;
+    }
+
     &.card-outline-tabs {
-      .card-header {
+      > .card-header {
         a {
           &:hover {
             border-top: 3px solid $nav-tabs-border-color;
@@ -44,7 +42,7 @@
   .bg-gradient-#{$name},
   .card-#{$name}:not(.card-outline) {
     .btn-tool {
-      color: rgba(color-yiq($color), 0.8);
+      color: rgba(color-yiq($color), .8);
 
       &:hover {
         color: color-yiq($color);
@@ -65,7 +63,7 @@
       table td.hour:hover,
       table td.minute:hover,
       table td.second:hover {
-        background: darken($color, 8%);
+        background-color: darken($color, 8%);
         color: color-yiq($color);
       }
 
@@ -75,7 +73,7 @@
 
       table td.active,
       table td.active:hover {
-        background: lighten($color, 10%);
+        background-color: lighten($color, 10%);
         color: color-yiq($color);
       }
     }
