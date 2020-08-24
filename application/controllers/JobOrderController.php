@@ -1,15 +1,18 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
 
-class JobOrderController extends CI_Controller {
+class JobOrderController extends CI_Controller
+{
 
-    public function __construct() {
-        Parent::__construct();
-        $this->load->model('JobOrderModel');
-    }
+	public function __construct()
+	{
+		Parent::__construct();
+		$this->load->model('JobOrderModel');
+	}
 
-    public function index() {
-        if($this->session->userdata('logged_in')) {
+	public function index()
+	{
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 
@@ -26,13 +29,14 @@ class JobOrderController extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('job_order/script');
 		} else {
-			redirect('','refresh');
+			redirect('', 'refresh');
 		}
 	}
-	
-	public function existing_customer() {
 
-		if($this->session->userdata('logged_in')) {
+	public function existing_customer()
+	{
+
+		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
 
@@ -50,8 +54,7 @@ class JobOrderController extends CI_Controller {
 			$this->load->view('templates/footer');
 			$this->load->view('job_order/script');
 		} else {
-			redirect('','refresh');
+			redirect('', 'refresh');
 		}
-
 	}
 }

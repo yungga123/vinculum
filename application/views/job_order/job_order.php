@@ -8,7 +8,7 @@ defined('BASEPATH') or die('Access Denied');
 	  <div class="container-fluid">
 	    <div class="row mb-2">
 	      <div class="col-sm-6">
-	        <h1 class="m-0 text-dark">Job Order</h1>
+	        <h1 class="m-0 text-dark">Project Job Order</h1>
 	      </div><!-- /.col -->
 	    </div><!-- /.row -->
 	  </div><!-- /.container-fluid -->
@@ -31,7 +31,6 @@ defined('BASEPATH') or die('Access Denied');
                             <?php } else { ?>
                                 <a href="<?php echo site_url('joborder-existingcust') ?>" class="btn btn-block btn-success text-bold"><i class="fas fa-users"></i> EXISTING CUSTOMER</a>
                             <?php } ?>
-
                             
                             <button class="btn btn-block btn-primary text-bold"><i class="fas fa-user"></i> NEW CUSTOMER</button>
                         </div>
