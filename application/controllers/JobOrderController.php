@@ -11,13 +11,17 @@ class JobOrderController extends CI_Controller {
     public function index() {
         if($this->session->userdata('logged_in')) {
 
+			
+			$this->load->model('CustomersModel');
 			$this->load->helper('site_helper');
+
 
 			$data = html_variable();
 			$data['title'] = 'Job Order';
 			$data['forms_menu_status'] = ' menu-open';
 			$data['ul_forms'] = ' active';
 			$data['servicecall'] = ' active';
+			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
