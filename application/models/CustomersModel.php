@@ -1,43 +1,49 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
 
-class CustomersModel extends CI_Model {
+class CustomersModel extends CI_Model
+{
 
-	
 
-	public function addCustomer($data) {
+
+	public function addCustomer($data)
+	{
 
 		return $this->db->insert('customers', $data);
-
 	}
 
-	public function getCustomers() {
+	public function getCustomers()
+	{
 
 		return $this->db->get('customers')->result();
 	}
 
-	public function fetchCustomers($id) {
+	public function fetchCustomers($id)
+	{
 		$this->db->where('id', $id);
 		return $this->db->get('customers')->result();
 	}
 
-	public function fetchCustomersByName($cName) {
+	public function fetchCustomersByName($cName)
+	{
 		$this->db->where('customer_name', $cName);
 		return $this->db->get('customers')->result();
 	}
 
 
-	public function editCustomers($id,$data) {
+	public function editCustomers($id, $data)
+	{
 		$this->db->where('id', $id);
 		return $this->db->update('customers', $data);
 	}
 
-	public function deleteCustomer($id) {
+	public function deleteCustomer($id)
+	{
 		$this->db->where('id', $id);
 		return $this->db->delete('customers');
 	}
 
-//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
+	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "customer_vt";
 	var $select_column = array(
 		"CustomerID",
@@ -68,12 +74,13 @@ class CustomersModel extends CI_Model {
 		"is_deleted"
 	);
 
-	public function customervt_query(){
+	public function customervt_query()
+	{
 
 		$this->db->select($this->select_column);
 		$this->db->from($this->table);
 
-		if(isset($_POST["search"]["value"])){
+		if (isset($_POST["search"]["value"])) {
 			$this->db->like("CustomerID", $_POST["search"]["value"]);
 			$this->db->or_like("CompanyName", $_POST["search"]["value"]);
 			$this->db->or_like("ContactPerson", $_POST["search"]["value"]);
@@ -85,67 +92,74 @@ class CustomersModel extends CI_Model {
 			$this->db->or_like("Interest", $_POST["search"]["value"]);
 			$this->db->or_like("Type", $_POST["search"]["value"]);
 			$this->db->or_like("Notes", $_POST["search"]["value"]);
-			$this->db->having("is_deleted",0);
+			$this->db->having("is_deleted", 0);
 		}
 
 		if (isset($_POST["order"])) {
 			$this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
 		} else {
-			$this->db->order_by("CustomerID","DESC");
+			$this->db->order_by("CustomerID", "DESC");
 		}
-
 	}
 
-	public function customervt_datatable() {
+	public function customervt_datatable()
+	{
 
 		$this->customervt_query();
-		if($_POST["length"] != -1) {
-			$this->db->limit($_POST["length"],$_POST["start"]);
+		if ($_POST["length"] != -1) {
+			$this->db->limit($_POST["length"], $_POST["start"]);
 		}
 		$query = $this->db->get();
 		return $query->result();
 	}
 
-	public function filter_customervt_data() {
+	public function filter_customervt_data()
+	{
 		$this->customervt_query();
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
 
-	public function get_all_customervt_data() {
+	public function get_all_customervt_data()
+	{
 		$this->db->select("*");
 		$this->db->from($this->table);
-		$this->db->where('is_deleted',0);
+		$this->db->where('is_deleted', 0);
 		return $this->db->count_all_results();
 	}
-//*****************end*********************
+	//*****************end*********************
 
-	public function selectVtCustomer_latest() {
+	public function selectVtCustomer_latest()
+	{
 		$this->db->select('CustomerID');
 		$this->db->from('customer_vt');
-		$this->db->order_by('CustomerID','desc');
+		$this->db->order_by('CustomerID', 'desc');
 		$this->db->limit(1);
 		return $this->db->get()->result();
 	}
 
-	public function getVtCustomers($id) {
+	public function getVtCustomers($id)
+	{
 		$this->db->where('CustomerID', $id);
 		return $this->db->get('customer_vt')->result();
 	}
 
-	public function getVtCustomersByID() {
-		$this->db->where('is_deleted',0);
-		$this->db->order_by('CustomerID','DESC');
+	public function getVtCustomersByID()
+	{
+		$this->db->where('is_deleted', 0);
+		$this->db->order_by('CustomerID', 'DESC');
 		return $this->db->get('customer_vt')->result();
 	}
 
-	public function getVtCustomersByName() {
-		$this->db->where('is_deleted','0');
-		$this->db->order_by('CompanyName','ASC');
+	public function getVtCustomersByName()
+	{
+		$this->db->where('is_deleted', '0');
+		$this->db->order_by('CompanyName', 'ASC');
 		return $this->db->get('customer_vt')->result();
 	}
 
-	public function getVtCustomersByNameArray() {
+	public function getVtCustomersByNameArray()
+	{
 		$this->db->select([
 			"CustomerID",
 			"CompanyName",
@@ -160,30 +174,32 @@ class CustomersModel extends CI_Model {
 			"Notes"
 		]);
 		$this->db->from('customer_vt');
-		$this->db->where('is_deleted','0');
-		$this->db->order_by('CustomerID','DESC');
+		$this->db->where('is_deleted', '0');
+		$this->db->order_by('CustomerID', 'DESC');
 		return $this->db->get()->result_array();
 	}
 
-	public function add_vtCustomer($data) {
+	public function add_vtCustomer($data)
+	{
 
-		$this->db->insert('customer_vt',$data);
-
+		$this->db->insert('customer_vt', $data);
 	}
 
-	public function update_vtCustomer($id,$data) {
+	public function update_vtCustomer($id, $data)
+	{
 
 		$this->db->where('CustomerID', $id);
 		$this->db->update('customer_vt', $data);
 	}
 
-	public function delete_vtCustomer($id) {
+	public function delete_vtCustomer($id)
+	{
 		$this->db->where('CustomerID', $id);
 		$this->db->delete('customer_vt');
 	}
-	
-	public function count_vtCustomer() {
+
+	public function count_vtCustomer()
+	{
 		return $this->db->get('customer_vt')->num_rows();
 	}
-
 }

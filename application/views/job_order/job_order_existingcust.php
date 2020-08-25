@@ -7,6 +7,8 @@ date_default_timezone_set('Asia/Manila');
 
     <!-- Client Information -->
     <div class="card">
+        <div class="card-header">
+            <label>Provide Information Below (Existing Customer)</label>
         <div class="card-body">
             <div class="row">
                 <div class="col-sm-6">
@@ -14,6 +16,9 @@ date_default_timezone_set('Asia/Manila');
                         <label for="customer">Select Customer</label>
                         <select class="form-control" name="customer" id="customer">
                             <option value="">--- Please select customer ---</option>
+                            <?php foreach ($customers as $row) { ?>
+                                <option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName.' - '.$row->CustomerID ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -176,7 +181,14 @@ date_default_timezone_set('Asia/Manila');
     </div>
 
     <!-- Submit -->
-    <div class="card">
-        
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="card">
+                <div class="card-body">
+                    <button type="button" class="btn btn-success btn-block text-bold"><i class="fas fa-check-circle"></i> SUBMIT</button>
+                </div>
+            </div>
+        </div>
     </div>
+    
 </div>
