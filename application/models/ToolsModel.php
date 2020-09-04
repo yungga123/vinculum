@@ -8,6 +8,7 @@ class ToolsModel extends CI_Model {
 	}
 
 	public function select_all() {
+		$this->db->where('is_deleted', 0);
 		return $this->db->get('tools')->result();
 	}
 
