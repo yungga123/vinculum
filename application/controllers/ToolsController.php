@@ -60,11 +60,10 @@ class ToolsController extends CI_Controller {
 			[
 				'field' => 'tool_quantity',
 				'label' => 'Tool Quantity',
-				'rules' => 'trim|max_length[11]|is_natural_no_zero|less_than_equal_to[1]|required',
+				'rules' => 'trim|max_length[11]|is_natural_no_zero|required',
 				'errors' => [
 					'max_length' => 'Tool Quantity maximum characters is 11.',
-					'is_natural_no_zero' => 'Quantity must be 1',
-					'less_than_equal_to' => 'Quantity must be 1',
+					'is_natural_no_zero' => 'Quantity must be natural number and not 0',
 					'required' => 'Please enter quantity'
 				]
 			],
