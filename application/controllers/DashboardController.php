@@ -2,8 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DashboardController extends CI_Controller {
-	
-
 	public function index() {
 
 		if($this->session->userdata('logged_in')) {
@@ -16,6 +14,7 @@ class DashboardController extends CI_Controller {
 			$this->load->model('CalendarModel');
 			$this->load->model('ToolsModel');
 			$this->load->model('CovidSurveyModel');
+			$this->load->model('JobOrderModel');
 
 			$data = html_variable();
 			$data['title'] = 'Dashboard';
@@ -30,8 +29,9 @@ class DashboardController extends CI_Controller {
 			$data['tools_count'] = $this->ToolsModel->count_tools();
 			$data['results_today_event'] = $this->CalendarModel->get_events_by_date();
 			$data['count_ctc'] = $this->CovidSurveyModel->get_all_covidsurvey_data();
+			$data['count_joborder_pending'] = $this->JobOrderModel->count_joborder('');
+			$data['count_joborder_accepted'] = $this->JobOrderModel->count_joborder('Accepted');
 			
-
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('dashboard/dashboard');

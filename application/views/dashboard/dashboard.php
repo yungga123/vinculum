@@ -150,6 +150,36 @@ defined('BASEPATH') or exit('No direct script access allowed.');
             <a href="<?php echo site_url('covidsurvey-table') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
+
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3><?php echo $count_joborder_pending ?></h3>
+
+              <p>Pending Job Orders</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <a href="<?php echo site_url('joborder-list/pending') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3><?php echo $count_joborder_accepted ?></h3>
+
+              <p>Accepted Job Orders</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <a href="<?php echo site_url('joborder-list/accepted') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
       </div>
 
       <div class="row">

@@ -146,7 +146,7 @@ $route['payroll-print-all'] = 'PayrollController/payslip_print_all';
 
 //Job Order Controller
 $route['joborder'] = 'JobOrderController';
-$route['joborder-existingcust'] = 'JobOrderController/existing_customer';
+$route['joborder-list/(:any)'] = 'JobOrderController/job_order_list/$1';
 
 //CovidSurveyController
 $route['covidsurvey'] = 'CovidSurveyController';

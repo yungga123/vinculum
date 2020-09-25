@@ -64,7 +64,7 @@ defined('BASEPATH') or die('Access Denied');
 
 									<div class="form-group">
 										<label>Interest</label>
-										<input class="form-control" type="text" name="customer_interest" id="customer_interest" placeholder="Enter Interest here. e.g. CCTV">
+										<textarea class="form-control" name="customer_interest" id="customer_interest" placeholder="Enter Interest here. e.g. CCTV" rows="3"></textarea>
 									</div>
 
 									<div class="form-group">
@@ -74,7 +74,7 @@ defined('BASEPATH') or die('Access Denied');
 
 									<div class="form-group">
 										<label>Notes</label>
-										<input class="form-control" type="text" name="customer_notes" id="customer_notes" placeholder="Your notes here.">
+										<textarea class="form-control" rows="3" name="customer_notes" id="customer_notes" placeholder="Your notes here."></textarea>
 									</div>
 								</div>
 							</div>

@@ -95,7 +95,7 @@ foreach ($results as $row) {
 
 									<div class="form-group">
 										<label>Interest</label>
-										<input class="form-control" type="text" name="customer_interest_edit" id="customer_interest_edit" placeholder="Enter Interest here. e.g. CCTV" value="<?php echo $customer_interest ?>">
+										<textarea class="form-control" rows="3" name="customer_interest_edit" id="customer_interest_edit" placeholder="Enter Interest here. e.g. CCTV"><?php echo $customer_interest ?></textarea>
 									</div>
 
 									<div class="form-group">
@@ -105,7 +105,7 @@ foreach ($results as $row) {
 
 									<div class="form-group">
 										<label>Notes</label>
-										<input class="form-control" type="text" name="customer_notes_edit" id="customer_notes_edit" placeholder="Your notes here." value="<?php echo $customer_notes ?>">
+										<textarea class="form-control" rows="3" name="customer_notes_edit" id="customer_notes_edit" placeholder="Your notes here."><?php echo $customer_notes ?></textarea>
 									</div>
 								</div>
 							</div>
