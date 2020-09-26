@@ -89,7 +89,7 @@ if ($decision == 'accepted') {
     </section>
 </div>
 
-<!-- Modal -->
+<!-- Modal Accept/Discard JO -->
 <div class="modal fade modal-decision" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -113,6 +113,29 @@ if ($decision == 'accepted') {
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CANCEL</button>
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> PROCEED</button>
                 <?php echo form_close() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal-filejo" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <?php echo form_open('JobOrderController/update_job_order_filejo',["id" => "form_filejo"]) ?>
+                <div class="form-group">
+                    <label for="job_filejo_id">Job Order No.</label>
+                    <input type="text" name="job_filejo_id" id="job_filejo_id" class="form-control text-bold text-center col-sm-6 offset-sm-3" readonly value="">
+                </div>
+
+                <input type="hidden" name="decision_filejo" id="decision_filejo">
+
+                <p class="text-bold mt-4" style="font-size: 18px;">Are you sure to file this Job Order?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
             </div>
         </div>
     </div>

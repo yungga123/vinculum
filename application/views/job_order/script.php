@@ -53,18 +53,20 @@ if ($this->uri->segment(1) == 'joborder-list') {
 
     });
 
-    $('#joborder_table tbody').on('click','.btn_discarded',function(){
+    $('#joborder_table tbody').on('click','.btn_filejo',function(){
 
         var data = payroll_table.row($(this).parents('tr')).data();
         var rowdata = payroll_table.row(this).data();
 
         if (data == undefined) {
-            $('#job_order_id').val(rowdata[0]);
+            $('#job_filejo_id').val(rowdata[0]);
         } else if (rowdata == undefined) {
-            $('#job_order_id').val(data[0]);
+            $('#job_filejo_id').val(data[0]);
         }
 
     });
+
+
     //end
 </script>
 
@@ -79,14 +81,8 @@ if ($this->uri->segment(1) == 'joborder-list') {
         $('.form-commdate').append('<input type="date" name="committed_schedule" id="committed_schedule" class="form-control">');
     });
 
-    $(document).on("click",".btn_discarded",function() {
-        $('#status').html('DISCARDED');
-        $('#status').addClass('badge-danger');
-        $('#status').removeClass('badge-success');
-        $('#decision').val('Discarded');
-        $('.form-commdate').empty();
-        $('.form-commdate').append('<label>This will be removed to the list and will be added to <span class="text-danger">"DISCARDED JOB ORDERS"</span></label>');
-        $('.form-commdate').append('<input type="hidden" name="committed_schedule" id="committed_schedule" class="form-control" value="<?php echo date('Y-m-d') ?>">');
+    $(document).on("click",".btn_filejo",function() {
+        $('#decision_filejo').val('Filed');
 
     });
     
@@ -179,15 +175,73 @@ if ($this->uri->segment(1) == 'joborder-list') {
             data: me.serialize(),
             dataType: 'json',
             success: function(response) {
+
                 if (response.success == true) {
+
                     $(':submit').removeAttr('disabled', 'disabled');
                     $('.loading-modal').modal('hide');
 
-                    toastr.success("Success! This page will be refreshed in 2 seconds!");
+                    toastr.success("Success! This page will be refreshed!");
                     me[0].reset();
 
                     setTimeout(() => {
                         window.location = "<?php echo site_url('joborder-list/pending') ?>";
+                    }, 1000);
+
+                } else {
+
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.error(response.errors);
+                }
+            }
+        });
+    });
+
+    //Form Job Order (File JO)
+    $('#form_filejo').submit(function(e) {
+        e.preventDefault();
+        var me = $(this);
+        var succ = '';
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        $(':submit').attr('disabled', 'disabled');
+        $('.loading-modal').modal();
+
+        //ajax
+        $.ajax({
+            url: me.attr('action'),
+            type: 'post',
+            data: me.serialize(),
+            dataType: 'json',
+            success: function(response) {
+                if (response.success == true) {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.success("Success! This page will be refreshed!");
+                    me[0].reset();
+
+                    setTimeout(() => {
+                        window.location = "<?php echo site_url('joborder-list/accepted') ?>";
                     }, 1000);
                 } else {
                     $(':submit').removeAttr('disabled', 'disabled');

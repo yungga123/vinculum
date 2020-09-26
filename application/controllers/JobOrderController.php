@@ -389,6 +389,50 @@ class JobOrderController extends CI_Controller
 		
 	}
 
+	public function update_job_order_filejo() {
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'job_filejo_id',
+				'label' => 'Decision',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select JOB ORDER.'
+				]
+				],
+			[
+				'field' => 'decision_filejo',
+				'label' => 'Decision',
+				'rules' => 'trim'
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>', '</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			$id = $this->input->post('job_filejo_id');
+			$data = [
+				'decision' => $this->input->post('decision_filejo')
+			];
+
+			$this->JobOrderModel->update_joborder($id,$data);
+
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+
+	}
+
 	public function fetch_joborder($where) {
 
 		$fetch_data = $this->JobOrderModel->job_order_datatable($where);
@@ -449,7 +493,7 @@ class JobOrderController extends CI_Controller
 			}
 
 			if ($where == 'Accepted') {
-				$decision = '<button class="btn btn-success btn-xs text-bold btn-block"><i class="fas fa-file-archive"></i> FILE J.O.</button>';
+				$decision = '<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>';
 			} else {
 				$decision = '
 
