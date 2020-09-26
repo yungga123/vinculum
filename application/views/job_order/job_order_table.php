@@ -4,6 +4,8 @@ defined('BASEPATH') or die('Access Denied');
 
 if ($decision == 'accepted') {
     $page_title = 'Accepted Job Orders';
+} elseif($decision == 'filed') {
+    $page_title = 'Filed Job Orders';
 } else {
     $page_title = 'Pending Job Orders';
 }
@@ -41,6 +43,8 @@ if ($decision == 'accepted') {
 
                             <a href="<?php echo site_url('joborder-list/accepted') ?>" class="btn btn-success btn-block text-bold<?php if ($decision == 'accepted') { echo ' disabled'; } ?>"><i class="fas fa-check-circle"></i> ACCEPTED JOB ORDERS</a>
 
+                            <a href="<?php echo site_url('joborder-list/filed') ?>" class="btn btn-danger btn-block text-bold<?php if ($decision == 'filed') { echo ' disabled'; } ?>"><i class="fas fa-file-archive"></i> FILED JOB ORDERS</a>
+
                         </div>
                     </div>
 
@@ -68,7 +72,11 @@ if ($decision == 'accepted') {
                                 <thead>
                                     <tr>
                                         <th>No.</th>
-                                        <th>Decision</th>
+                                        <th><?php if ($decision == 'filed') {
+                                            echo 'Date Filed';
+                                        } else {
+                                            echo 'Decision';
+                                        } ?></th>
                                         <th>Committed Schedule</th>
                                         <th>Customer Name</th>
                                         <th>Scope</th>

@@ -31,6 +31,7 @@ class DashboardController extends CI_Controller {
 			$data['count_ctc'] = $this->CovidSurveyModel->get_all_covidsurvey_data();
 			$data['count_joborder_pending'] = $this->JobOrderModel->count_joborder('');
 			$data['count_joborder_accepted'] = $this->JobOrderModel->count_joborder('Accepted');
+			$data['count_joborder_filed'] = $this->JobOrderModel->count_joborder('Filed');
 			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');

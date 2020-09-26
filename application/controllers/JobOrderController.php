@@ -341,7 +341,8 @@ class JobOrderController extends CI_Controller
 		}
 	}
 
-	public function update_job_order_decision() {
+	public function update_job_order_decision()
+	{
 
 		$validate = [
 			'success' => false,
@@ -380,16 +381,15 @@ class JobOrderController extends CI_Controller
 				'commited_schedule' => $this->input->post('committed_schedule')
 			];
 
-			$this->JobOrderModel->update_joborder($id,$data);
-
+			$this->JobOrderModel->update_joborder($id, $data);
 		} else {
 			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
-		
 	}
 
-	public function update_job_order_filejo() {
+	public function update_job_order_filejo()
+	{
 
 		$validate = [
 			'success' => false,
@@ -404,7 +404,7 @@ class JobOrderController extends CI_Controller
 				'errors' => [
 					'required' => 'Please select JOB ORDER.'
 				]
-				],
+			],
 			[
 				'field' => 'decision_filejo',
 				'label' => 'Decision',
@@ -418,30 +418,31 @@ class JobOrderController extends CI_Controller
 
 		if ($this->form_validation->run()) {
 			$validate['success'] = true;
+			date_default_timezone_set('Asia/Manila');
 
 			$id = $this->input->post('job_filejo_id');
 			$data = [
-				'decision' => $this->input->post('decision_filejo')
+				'decision' => $this->input->post('decision_filejo'),
+				'date_filed' => date('Y-m-d')
 			];
 
-			$this->JobOrderModel->update_joborder($id,$data);
-
+			$this->JobOrderModel->update_joborder($id, $data);
 		} else {
 			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
-
 	}
 
-	public function fetch_joborder($where) {
+	public function fetch_joborder($where)
+	{
 
 		$fetch_data = $this->JobOrderModel->job_order_datatable($where);
 
 
 
 		$data = array();
-		
-		foreach($fetch_data as $row) {
+
+		foreach ($fetch_data as $row) {
 			$scope = array();
 			$sub_scope = array();
 			$sub_array = array();
@@ -479,21 +480,23 @@ class JobOrderController extends CI_Controller
 			}
 
 			if ($row->date_requested != '0000-00-00') {
-				$date_requested = date_format(date_create($row->date_reported),'F d, Y');
+				$date_requested = date_format(date_create($row->date_reported), 'F d, Y');
 			}
 			if ($row->date_reported != '0000-00-00') {
-				$date_reported = date_format(date_create($row->date_requested),'F d, Y');
+				$date_reported = date_format(date_create($row->date_requested), 'F d, Y');
 			}
 			if ($row->commited_schedule != '0000-00-00') {
-				$committed_schedule = date_format(date_create($row->commited_schedule),'F d, Y');
+				$committed_schedule = date_format(date_create($row->commited_schedule), 'F d, Y');
 			}
 
 			if ($row->middlename != '') {
-				$middle_name = ' '.$row->middlename[0].'. ';
+				$middle_name = ' ' . $row->middlename[0] . '. ';
 			}
 
 			if ($where == 'Accepted') {
 				$decision = '<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>';
+			} elseif($where == 'Filed') {
+				$decision = date_format(date_create($row->date_filed), 'F d, Y');
 			} else {
 				$decision = '
 
@@ -514,7 +517,7 @@ class JobOrderController extends CI_Controller
 			$sub_array[] = $row->type_of_project;
 			$sub_array[] = str_replace("\n", "<br>", $row->comments);
 			$sub_array[] = $date_reported;
-			$sub_array[] = $row->firstname.$middle_name.$row->lastname;
+			$sub_array[] = $row->firstname . $middle_name . $row->lastname;
 			$sub_array[] = $row->under_warranty;
 			$data[] = $sub_array;
 		}
@@ -528,11 +531,18 @@ class JobOrderController extends CI_Controller
 		echo json_encode($output);
 	}
 
-	public function fetch_joborder_pending() {
+	public function fetch_joborder_pending()
+	{
 		return $this->fetch_joborder('');
 	}
 
-	public function fetch_joborder_accepted() {
+	public function fetch_joborder_accepted()
+	{
 		return $this->fetch_joborder('Accepted');
+	}
+
+	public function fetch_joborder_filed()
+	{
+		return $this->fetch_joborder('Filed');
 	}
 }

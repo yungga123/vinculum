@@ -6,6 +6,8 @@ date_default_timezone_set('Asia/Manila');
 if ($this->uri->segment(1) == 'joborder-list') {
     if ($decision == 'accepted') {
         $url = site_url('JobOrderController/fetch_joborder_accepted');
+    } elseif($decision == 'filed') {
+        $url = site_url('JobOrderController/fetch_joborder_filed');
     } else {
         $url = site_url('JobOrderController/fetch_joborder_pending');
     }

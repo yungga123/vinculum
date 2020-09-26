@@ -47,6 +47,7 @@ class JobOrderModel extends CI_Model {
             'a.commited_schedule',
             'a.requested_by',
             'a.decision',
+            'a.date_filed',
             'd.lastname',
             'd.firstname',
             'd.middlename',
@@ -77,6 +78,7 @@ class JobOrderModel extends CI_Model {
             'a.commited_schedule',
             'a.requested_by',
             'a.decision',
+            'a.date_filed',
             'd.lastname',
             'd.firstname',
             'd.middlename',
@@ -136,6 +138,7 @@ class JobOrderModel extends CI_Model {
                 $this->db->or_like("d.firstname", $_POST["search"]["value"]);
                 $this->db->or_like("d.middlename", $_POST["search"]["value"]);
                 $this->db->or_like("a.decision", $_POST["search"]["value"]);
+                $this->db->or_like("a.date_filed", $_POST["search"]["value"]);
                 $this->db->having("a.decision",$where);
                 $this->db->having("a.is_deleted",0);
             }
