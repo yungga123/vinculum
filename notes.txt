@@ -1,0 +1,10 @@
+Apache & MySQL start: \xampp\xampp_start.exe
+Apache & MySQL stop: \xampp\xampp_stop.exe
+Apache start: \xampp\apache_start.bat
+Apache stop: \xampp\apache_stop.bat
+MySQL start: \xampp\mysql_start.bat
+MySQL stop: \xampp\mysql_stop.bat
+Mercury Mailserver start: \xampp\mercury_start.bat
+Mercury Mailserver stop: \xampp\mercury_stop.bat
+FileZilla Server start: \xampp\filezilla_start.bat
+FileZilla Server stop: \xampp\filezilla_stop.bat
