@@ -29,6 +29,7 @@ defined('BASEPATH') or die('Access Denied');
                                 <thead>
                                     <tr>
                                         <th>No.</th>
+                                        <th>Date</th>
                                         <th>Last Name</th>
                                         <th>First Name</th>
                                         <th>Middle Name</th>

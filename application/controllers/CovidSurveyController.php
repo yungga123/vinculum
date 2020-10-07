@@ -8,6 +8,7 @@ class CovidSurveyController extends CI_Controller
     {
         Parent::__construct();
         $this->load->model('CovidSurveyModel');
+        date_default_timezone_set('Asia/Manila');
     }
 
     function validation_rules()
@@ -240,6 +241,7 @@ class CovidSurveyController extends CI_Controller
 
             $sub_array = array();
             $sub_array[] = $row->id;
+            $sub_array[] = ($row->date_filed == '0000-00-00') ? "" : date_format(date_create($row->date_filed),'F d, Y');
             $sub_array[] = $row->lastname;
             $sub_array[] = $row->firstname;
             $sub_array[] = $row->middlename;
@@ -298,6 +300,7 @@ class CovidSurveyController extends CI_Controller
             $birth_date = $this->input->post('bdate_year') . '-' . $this->input->post('bdate_month') . '-' . $this->input->post('bdate_day');
 
             $data = [
+                'date_filed'            =>      date('Y-m-d'),
                 'lastname'              =>      $this->input->post('lname'),
                 'firstname'             =>      $this->input->post('fname'),
                 'middlename'            =>      $this->input->post('mname'),
@@ -360,6 +363,7 @@ class CovidSurveyController extends CI_Controller
 
         $header = [
             'No',
+            'Date',
             'Last Name',
             'First Name',
             'Middle Name',

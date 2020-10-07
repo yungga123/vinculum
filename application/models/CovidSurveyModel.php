@@ -48,6 +48,7 @@ class CovidSurveyModel extends CI_Model
     var $table = "covidsurvey";
     var $select_column = array(
         'id',
+        'date_filed',
         'lastname',
         'firstname',
         'middlename',
@@ -72,6 +73,7 @@ class CovidSurveyModel extends CI_Model
     );
     var $order_column = array(
         'id',
+        'date_filed',
         'lastname',
         'firstname',
         'middlename',
@@ -103,6 +105,7 @@ class CovidSurveyModel extends CI_Model
 
         if (isset($_POST["search"]["value"])) {
             $this->db->like("id", $_POST["search"]["value"]);
+            $this->db->or_like("date_filed", $_POST["search"]["value"]);
             $this->db->or_like("lastname", $_POST["search"]["value"]);
             $this->db->or_like("firstname", $_POST["search"]["value"]);
             $this->db->or_like("middlename", $_POST["search"]["value"]);

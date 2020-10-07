@@ -496,10 +496,12 @@ class JobOrderController extends CI_Controller
 			if ($where == 'Accepted') {
 				$decision = '<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>';
 			} elseif($where == 'Filed') {
-				$decision = date_format(date_create($row->date_filed), 'F d, Y');
+
+				// Shortened If/Else with Ternary Operator
+				$decision = ($row->date_filed == '0000-00-00') ? 'None' : date_format(date_create($row->date_filed), 'F d, Y');
+
 			} else {
 				$decision = '
-
 					<button type="button" class="btn btn-success btn-xs text-bold btn-block btn_accepted" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-check"></i> ACCEPT</button>
 					<button type="button" class="btn btn-danger btn-xs text-bold btn-block btn_discarded" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-times"></i> DISCARD</button>
 
