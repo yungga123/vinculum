@@ -32,6 +32,8 @@ defined('BASEPATH') or die('Access Denied');
                 var commission = Number($('#commission').val());
                 var addBack = Number($('#addback').val());
                 var thirteenthMonthPay = Number($('#13th_month').val());
+                var vac_pay = Number($('#vacation_leave').val()*dailyRate);
+                var sick_pay = Number($('#sick_leave').val()*dailyRate);
 
                 //deductions
                 var absents = daysAbsent * dailyRate;
@@ -46,7 +48,7 @@ defined('BASEPATH') or die('Access Denied');
                 var otherDeduct = Number($('#others').val());
                 var cashAdv = Number($('#cash_adv').val());
 
-                var grossPay = (basicIncome+wdoPay+ndiffPay+spHolidayPay+regHolidayPay+otPay) - (absents+tardiness+awols+restDays);
+                var grossPay = (basicIncome+wdoPay+ndiffPay+spHolidayPay+regHolidayPay+otPay+vac_pay+sick_pay) - (absents+tardiness+awols+restDays);
                 var netPay = (grossPay+thirteenthMonthPay+commission+addBack+incentives) - (otherDeduct+cashAdv+sssRate+taxRate+pagIbigRate+philHealthRate);
 
                 $('.basicIncome').html(basicIncome.toFixed(2));
@@ -72,6 +74,8 @@ defined('BASEPATH') or die('Access Denied');
                 $('.awol').html(awols.toFixed(2));
                 $('.addback').html(addBack.toFixed(2));
                 $('.rest_days').html(restDays.toFixed(2));
+                $('.vac_pay').html(vac_pay.toFixed(2));
+                $('.sick_pay').html(sick_pay.toFixed(2));
 
                 $('.gross_pay').html(grossPay.toFixed(2));
                 $('.net_pay').html(netPay.toFixed(2));
@@ -91,23 +95,28 @@ defined('BASEPATH') or die('Access Denied');
 
             $('.select-employee').on("change",function(){
                 
-                $('.loading-modal').modal();
-                //ajax
-                $.ajax({
+                try {
+                    $('.loading-modal').modal();
+                    //ajax
+                    $.ajax({
 
-                    url: '<?php echo site_url('PayrollController/getTechInfo').'/' ?>' + $(this).val(),
-                    type: 'post',
-                    dataType: 'json',
-                    success: function(response) {
-                        $('.loading-modal').modal('hide');
-                        $('#daily_rate').val(response.daily_rate);
-                        $('#philhealth_rate').val(response.philhealth);
-                        $('#sss_rate').val(response.sss);
-                        $('#tax_rate').val(response.tax_rate);
-                        $('#pagibig_rate').val(response.pagibig);
-                        payrollCompute();
-                    }
-                });
+                        url: '<?php echo site_url('PayrollController/getTechInfo').'/' ?>' + $(this).val(),
+                        type: 'post',
+                        dataType: 'json',
+                        success: function(response) {
+                            $('.loading-modal').modal('hide');
+                            $('#daily_rate').val(response.daily_rate);
+                            $('#philhealth_rate').val(response.philhealth);
+                            $('#sss_rate').val(response.sss);
+                            $('#tax_rate').val(response.tax_rate);
+                            $('#pagibig_rate').val(response.pagibig);
+                            payrollCompute();
+                        }
+                    });
+                }
+                catch(err) {
+                    toastr.error("Please select employee.");
+                }
             });
 
             //payroll add

@@ -206,6 +206,7 @@ class PayrollController extends CI_Controller {
         $payroll['vl'] = '';
         $payroll['sl'] = '';
         $payroll['case'] = '';
+        $payroll['paid_leaves'] = '';
 
         return $payroll;
 
@@ -519,6 +520,7 @@ class PayrollController extends CI_Controller {
                 $payroll['notes'] = $row->notes;
                 $payroll['vl'] = $row->vacation_leave;
                 $payroll['sl'] = $row->sick_leave;
+                $payroll['sl'] = $row->paid_leaves;
                 $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']+$payroll['restday_amt']);
                 $payroll['net_pay'] = ($payroll['gross_pay']+$payroll['incentives']+$payroll['commission']+$payroll['13th_month']+$payroll['addback'])-($payroll['sss_cont']+$payroll['pagibig_cont']+$payroll['philhealth_cont']+$payroll['cash_adv']+$payroll['other_deduction']+$payroll['tax']);
             }

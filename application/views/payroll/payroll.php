@@ -236,8 +236,6 @@ defined('BASEPATH') or die('Access Denied');
                                                             
                                                         </div>
 
-                                                        
-
                                                         <div class="col-sm-4">
 
                                                             <div class="form-group">
@@ -373,6 +371,18 @@ defined('BASEPATH') or die('Access Denied');
                                                                 <td class="addback"></td>
                                                                 <td>Rest Days</td>
                                                                 <td class="rest_days"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Vacation Pay</td>
+                                                                <td class="vac_pay"></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Sick Pay</td>
+                                                                <td class="sick_pay"></td>
+                                                                <td>Rest Days</td>
+                                                                <td></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
