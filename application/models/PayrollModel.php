@@ -12,6 +12,62 @@ class PayrollModel extends CI_Model {
         $this->db->update('payroll',$data);
     }
 
+    public function select_latest() {
+        $this->db->select([
+            "a.id as payroll_id",
+            "a.cutoff_start",
+            "a.cutoff_end",
+            "a.emp_id",
+            "a.days_worked",
+            "a.hours_late",
+            "a.days_absent",
+            "a.cash_adv",
+            "a.others",
+            "a.ot_hrs",
+            "a.night_diff_hrs",
+            "a.wdo",
+            "a.reg_holiday",
+            "a.special_holiday",
+            "a.addback",
+            "a.incentives",
+            "a.commission",
+            "a.13th_month as thirteenth_month",
+            "a.vacation_leave",
+            "a.sick_leave",
+            "a.rest_day",
+            "a.awol",
+            "a.remarks as notes",
+            "a.is_deleted",
+            "b.lastname",
+            "b.firstname",
+            "b.middlename",
+            "b.birthdate",
+            "b.contact_number",
+            "b.position",
+            "b.address",
+            "b.sss_number",
+            "b.tin_number",
+            "b.pagibig_number",
+            "b.phil_health_number",
+            "b.status",
+            "b.validity",
+            "b.date_hired",
+            "b.daily_rate",
+            "b.pag_ibig_rate",
+            "b.sss_rate",
+            "b.phil_health_rate",
+            "b.tax",
+            "b.sl_credit",
+            "b.vl_credit",
+            "b.remarks"
+        ]);
+
+        $this->db->from('payroll as a');
+        $this->db->join('technicians as b','a.emp_id=b.id','left');
+        $this->db->order_by('a.id','DESC');
+        return $this->db->get()->result();
+    }
+
     public function select_payroll($id) {
         $this->db->select([
             "a.id as payroll_id",

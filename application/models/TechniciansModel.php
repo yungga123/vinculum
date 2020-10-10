@@ -85,6 +85,7 @@ class TechniciansModel extends CI_Model {
 		$this->db->where('id', $techID);
 		return $this->db->update('technicians', $data);
 	}
+	
 
 	public function getTechniciansByName() {
 		$this->db->order_by('id', 'ASC');

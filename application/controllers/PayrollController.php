@@ -9,6 +9,15 @@ class PayrollController extends CI_Controller {
     }
     
     function validation_rules() {
+
+        $this->load->model('TechniciansModel');
+        $results = $this->TechniciansModel->fetchTechnicians($this->input->post('emp_id'));
+
+        foreach ($results as $row) {
+            $sl_credit = $row->sl_credit;
+            $vl_credit = $row->vl_credit;
+        }
+
         $rules = [
 			[
 				'field' => 'emp_id',
@@ -100,7 +109,11 @@ class PayrollController extends CI_Controller {
             [
                 'field' => 'vacation_leave',
                 'label' => 'No. of Vacation Leaves',
-                'rules' => 'trim|numeric'
+                'rules' => 'trim|numeric|less_than_equal_to['.$vl_credit.']',
+                'errors' => [
+                    'numeric' => 'No. of Vacation Leaves must be numeric',
+                    'less_than_equal_to' => 'Available number of vacation leaves for this employee is '.$vl_credit.'.'
+                ]
             ],
             [
                 'field' => 'incentives',
@@ -110,7 +123,11 @@ class PayrollController extends CI_Controller {
             [
                 'field' => 'sick_leave',
                 'label' => 'No. of Sick Leaves',
-                'rules' => 'trim|numeric'
+                'rules' => 'trim|numeric|less_than_equal_to['.$sl_credit.']',
+                'errors' => [
+                    'numeric' => 'No. of Sick Leaves must be numeric',
+                    'less_than_equal_to' => 'Available number of sick leaves for this employee is '.$vl_credit.'.'
+                ]
             ],
             [
                 'field' => 'commission',
@@ -154,6 +171,7 @@ class PayrollController extends CI_Controller {
 
     function payroll() {
 
+        $payroll['id'] = '';
         $payroll['cutoff_date'] = '';
         $payroll['start_date'] = '';
         $payroll['end_date'] = '';
@@ -205,6 +223,8 @@ class PayrollController extends CI_Controller {
         $payroll['net_pay'] = '';
         $payroll['vl'] = '';
         $payroll['sl'] = '';
+        $payroll['vl_pay'] = '';
+        $payroll['sl_pay'] = '';
         $payroll['case'] = '';
         $payroll['paid_leaves'] = '';
 
@@ -298,6 +318,20 @@ class PayrollController extends CI_Controller {
             ];
 
             $this->PayrollModel->insert_payroll($data);
+
+            $results = $this->PayrollModel->select_latest();
+
+            foreach ($results as $row) {
+                $emp_id = $row->emp_id;
+                $sl_credit = $row->sl_credit;
+                $vl_credit = $row->vl_credit;
+            }
+
+            $this->load->model('TechniciansModel');
+            $this->TechniciansModel->editTechnicians($emp_id,[
+                'sl_credit' => $sl_credit-$this->input->post('sick_leave'),
+                'vl_credit' => $vl_credit-$this->input->post('vacation_leave')
+            ]);
             
 		} 
 		else {
@@ -341,12 +375,14 @@ class PayrollController extends CI_Controller {
             $special_holiday_pay = $row->daily_rate*$row->special_holiday*0.3;
             $wdo_pay = $row->daily_rate*$row->wdo*1.3;
             $ot_pay = ($row->daily_rate/8)*1.25*$row->ot_hrs;
+            $vac_pay = $row->daily_rate*$row->vacation_leave;
+            $sick_pay = $row->daily_rate*$row->sick_leave;
             $night_diff_pay = ($row->daily_rate/8)*0.1*$row->night_diff_hrs;
             $absents = $row->daily_rate*$row->days_absent;
             $awol = $row->daily_rate*$row->awol;
             $rest_days = $row->daily_rate*$row->rest_day;
             $tardiness = ($row->daily_rate/8)*$row->hours_late;
-            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay) - ($absents+$tardiness+$awol+$rest_days);
+            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay+$vac_pay+$sick_pay) - ($absents+$tardiness+$awol+$rest_days);
             $contribution = $row->sss_rate+$row->pag_ibig_rate+$row->phil_health_rate;
             $net_pay = $gross_pay+$row->incentives+$row->commission+$row->thirteenth_month+$row->addback - ($contribution+$row->tax+$row->cash_adv+$row->others);
 
@@ -391,6 +427,7 @@ class PayrollController extends CI_Controller {
 
             foreach ($results as $row) {
                 $payroll['cutoff_date'] = date_format(date_create($row->cutoff_start),'M d, Y').' - '.date_format(date_create($row->cutoff_end),'M d, Y');
+                $payroll['id'] = $row->payroll_id;
                 $payroll['emp_id'] = $row->emp_id;
                 $payroll['emp_name'] = $row->firstname.' '.$row->middlename.' '.$row->lastname; 
                 $payroll['emp_position'] = $row->position; 
@@ -438,8 +475,12 @@ class PayrollController extends CI_Controller {
                 $payroll['tax'] = $row->tax;
                 $payroll['cash_adv'] = $row->cash_adv; 
                 $payroll['other_deduction'] = $row->others; 
-                $payroll['notes'] = $row->notes; 
-                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']+$payroll['restday_amt']);
+                $payroll['vl'] = $row->vacation_leave;
+                $payroll['sl'] = $row->sick_leave;
+                $payroll['vl_pay'] = $payroll['vl']*$payroll['basic_income_rate'];
+                $payroll['sl_pay'] = $payroll['sl']*$payroll['basic_income_rate'];
+                $payroll['notes'] = $row->notes;
+                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']+$payroll['vl_pay']+$payroll['sl_pay']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']+$payroll['restday_amt']);
                 $payroll['net_pay'] = ($payroll['gross_pay']+$payroll['incentives']+$payroll['commission']+$payroll['13th_month']+$payroll['addback'])-($payroll['sss_cont']+$payroll['pagibig_cont']+$payroll['philhealth_cont']+$payroll['cash_adv']+$payroll['other_deduction']+$payroll['tax']);
             }
 			$data = [
@@ -467,6 +508,7 @@ class PayrollController extends CI_Controller {
             
 
             foreach ($results as $row) {
+                $payroll['id'] = $row->payroll_id;
                 $payroll['cutoff_date'] = date_format(date_create($row->cutoff_start),'M d, Y').' - '.date_format(date_create($row->cutoff_end),'M d, Y');
                 $payroll['start_date'] = $row->cutoff_start;
                 $payroll['end_date'] = $row->cutoff_end;
@@ -520,8 +562,9 @@ class PayrollController extends CI_Controller {
                 $payroll['notes'] = $row->notes;
                 $payroll['vl'] = $row->vacation_leave;
                 $payroll['sl'] = $row->sick_leave;
-                $payroll['sl'] = $row->paid_leaves;
-                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']+$payroll['restday_amt']);
+                $payroll['vl_pay'] = $payroll['vl']*$payroll["basic_income_rate"];
+                $payroll['sl_pay'] = $payroll['sl']*$payroll["basic_income_rate"];
+                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']+$payroll['vl_pay']+$payroll['sl_pay']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']+$payroll['restday_amt']);
                 $payroll['net_pay'] = ($payroll['gross_pay']+$payroll['incentives']+$payroll['commission']+$payroll['13th_month']+$payroll['addback'])-($payroll['sss_cont']+$payroll['pagibig_cont']+$payroll['philhealth_cont']+$payroll['cash_adv']+$payroll['other_deduction']+$payroll['tax']);
             }
 

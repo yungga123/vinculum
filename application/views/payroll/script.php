@@ -94,10 +94,12 @@ defined('BASEPATH') or die('Access Denied');
             });
 
             $('.select-employee').on("change",function(){
-                
-                try {
+
+                if ($(this).val() != "") {
+
                     $('.loading-modal').modal();
                     //ajax
+                    
                     $.ajax({
 
                         url: '<?php echo site_url('PayrollController/getTechInfo').'/' ?>' + $(this).val(),
@@ -114,9 +116,7 @@ defined('BASEPATH') or die('Access Denied');
                         }
                     });
                 }
-                catch(err) {
-                    toastr.error("Please select employee.");
-                }
+
             });
 
             //payroll add

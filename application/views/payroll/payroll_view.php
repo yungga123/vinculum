@@ -66,7 +66,7 @@ $copy = 'Employee Copy';
             <div class="col-6">
                 <div class="row">
                     <div class="col-12">
-                        <label style="font-size : 20px">PAYSLIP</label>
+                        <label style="font-size : 20px">PAYSLIP (No. <?php echo $payroll['id'] ?>)</label>
                         <label class="float-right" style="font-size : 15px">VINCULUM TECHNOLOGIES</label><br>
                         <?php echo $copy ?>
                         <span class="float-right" style="font-size: 15px;">70 Nat'l Road, Putatan, Muntinlupa City</span>
@@ -191,36 +191,52 @@ $copy = 'Employee Copy';
                             </tr>
 
                             <tr>
-                                <td>Incentives</td>
-                                <td colspan="3"><?php echo number_format($payroll['incentives'],2); ?></td>
+                                <td>Sick Pay</td>
+                                <td><?php echo number_format($payroll['basic_income_rate'],2); ?></td>
+                                <td><?php echo number_format($payroll['sl'],2); ?></td>
+                                <td><?php echo number_format($payroll['sl_pay'],2); ?></td>
                                 <td>PAG-IBIG</td>
                                 <td colspan="3"><?php echo number_format($payroll['pagibig_cont'],2); ?></td>
                             </tr>
 
                             <tr>
-                                <td>Commission</td>
-                                <td colspan="3"><?php echo number_format($payroll['commission'],2); ?></td>
+                                <td>Vacation Pay</td>
+                                <td><?php echo number_format($payroll['basic_income_rate'],2); ?></td>
+                                <td><?php echo number_format($payroll['vl'],2); ?></td>
+                                <td><?php echo number_format($payroll['vl_pay'],2); ?></td>
                                 <td>PhilHealth</td>
                                 <td colspan="3"><?php echo number_format($payroll['philhealth_cont'],2); ?></td>
                             </tr>
 
                             <tr>
-                                <td>13th Month</td>
-                                <td colspan="3"><?php echo number_format($payroll['13th_month'],2); ?></td>
+                                <td>Incentives</td>
+                                <td colspan="3"><?php echo number_format($payroll['incentives'],2); ?></td>
                                 <td>Tax</td>
                                 <td colspan="3"><?php echo number_format($payroll['tax'],2); ?></td>
                             </tr>
 
                             <tr>
-                                <td>Addback</td>
-                                <td colspan="3"><?php echo number_format($payroll['addback'],2); ?></td>
+                                <td>Commission</td>
+                                <td colspan="3"><?php echo number_format($payroll['commission'],2); ?></td>
                                 <td>Others</td>
                                 <td colspan="3"><?php echo number_format($payroll['other_deduction'],2); ?></td>
                             </tr>
 
                             <tr>
-                                <td colspan="8">Notes: <?php echo $payroll['notes'] ?></td>
+                                <td>13th Month</td>
+                                <td colspan="3"><?php echo number_format($payroll['13th_month'],2); ?></td>
+                                <td rowspan="2">Notes</td>
+                                <td colspan="3" rowspan="2"><?php echo $payroll['notes'] ?></td>
                             </tr>
+
+                            <tr>
+                                <td>Addback</td>
+                                <td colspan="3"><?php echo number_format($payroll['addback'],2); ?></td>
+                            </tr>
+
+                            <!-- <tr>
+                                <td colspan="8">Notes: </td>
+                            </tr> -->
                         </table>
                     </div>
                 </div>

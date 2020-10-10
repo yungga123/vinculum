@@ -381,7 +381,7 @@ defined('BASEPATH') or die('Access Denied');
                                                             <tr>
                                                                 <td>Sick Pay</td>
                                                                 <td class="sick_pay"></td>
-                                                                <td>Rest Days</td>
+                                                                <td></td>
                                                                 <td></td>
                                                             </tr>
                                                         </tbody>

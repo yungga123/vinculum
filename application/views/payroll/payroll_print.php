@@ -89,7 +89,7 @@ $total_net_pay = 0;
                         <td rowspan="3">Name</td>
                         <td rowspan="3">Position</td>
                         <td rowspan="3">Daily Rate</td>
-                        <td colspan="16">EARNINGS</td>
+                        <td colspan="20">EARNINGS</td>
                         <td colspan="14">DEDUCTIONS</td>
                         <td rowspan="3">Notes</td>
                         <td rowspan="3">Gross Pay</td>
@@ -102,6 +102,8 @@ $total_net_pay = 0;
                         <td colspan="2">Reg Holiday</td>
                         <td colspan="2">Spc Holiday</td>
                         <td colspan="2">WDO</td>
+                        <td colspan="2">Sick Pay</td>
+                        <td colspan="2">Vac Pay</td>
                         <td rowspan="2">Incentives</td>
                         <td rowspan="2">Commission</td>
                         <td rowspan="2">13th Month</td>
@@ -134,6 +136,10 @@ $total_net_pay = 0;
                         <td>Days</td>
                         <td>Pay</td>
                         <td>Days</td>
+                        <td>Pay</td>
+                        <td>Days</td>
+                        <td>Pay</td>
+                        <td>Days</td>
                         <td>Ded</td>
                         <td>Hrs</td>
                         <td>Ded</td>
@@ -154,7 +160,9 @@ $total_net_pay = 0;
                             $awol = $row->daily_rate*$row->awol;
                             $rest_days = $row->daily_rate*$row->rest_day;
                             $tardiness = ($row->daily_rate/8)*$row->hours_late;
-                            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay) - ($absents+$tardiness+$awol+$rest_days);
+                            $vl_pay = $row->vacation_leave*$row->daily_rate;
+                            $sl_pay = $row->sick_leave*$row->daily_rate;
+                            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay+$vl_pay+$sl_pay) - ($absents+$tardiness+$awol+$rest_days);
                             $contribution = $row->sss_rate+$row->pag_ibig_rate+$row->phil_health_rate;
                             $net_pay = $gross_pay+$row->incentives+$row->commission+$row->thirteenth_month+$row->addback - ($contribution+$row->tax+$row->cash_adv+$row->others);
                         ?>
@@ -175,6 +183,10 @@ $total_net_pay = 0;
                             <td><?php echo number_format($special_holiday_pay,2) ?></td>
                             <td><?php echo $row->wdo ?></td>
                             <td><?php echo number_format($wdo_pay,2) ?></td>
+                            <td><?php echo $row->sick_leave ?></td>
+                            <td><?php echo number_format($sl_pay,2) ?></td>
+                            <td><?php echo $row->vacation_leave ?></td>
+                            <td><?php echo number_format($vl_pay,2) ?></td>
                             <td><?php echo number_format($row->incentives,2) ?></td>
                             <td><?php echo number_format($row->commission,2) ?></td>
                             <td><?php echo number_format($row->thirteenth_month,2) ?></td>
