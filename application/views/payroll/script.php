@@ -79,6 +79,7 @@ defined('BASEPATH') or die('Access Denied');
 
                 $('.gross_pay').html(grossPay.toFixed(2));
                 $('.net_pay').html(netPay.toFixed(2));
+                
             }
 
             <?php if ($this->uri->segment(1)=='payslip-update') { ?>

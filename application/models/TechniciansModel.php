@@ -83,13 +83,23 @@ class TechniciansModel extends CI_Model {
 
 	public function editTechnicians($techID,$data) {
 		$this->db->where('id', $techID);
-		return $this->db->update('technicians', $data);
+		$this->db->update('technicians', $data);
 	}
 	
 
 	public function getTechniciansByName() {
 		$this->db->order_by('id', 'ASC');
 		return $this->db->get('technicians')->result();
+	}
+
+	public function vl_deduct($vl_count,$emp_id) {
+		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
+		return $this->db->query("UPDATE technicians SET vl_credit = (vl_credit - ".$vl_count.") WHERE id = '".$emp_id."'");
+	}
+
+	public function sl_deduct($sl_count,$emp_id) {
+		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
+		return $this->db->query("UPDATE technicians SET sl_credit = (sl_credit - ".$sl_count.") WHERE id = '".$emp_id."'");
 	}
 	
 }

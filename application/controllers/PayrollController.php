@@ -323,15 +323,11 @@ class PayrollController extends CI_Controller {
 
             foreach ($results as $row) {
                 $emp_id = $row->emp_id;
-                $sl_credit = $row->sl_credit;
-                $vl_credit = $row->vl_credit;
             }
 
             $this->load->model('TechniciansModel');
-            $this->TechniciansModel->editTechnicians($emp_id,[
-                'sl_credit' => $sl_credit-$this->input->post('sick_leave'),
-                'vl_credit' => $vl_credit-$this->input->post('vacation_leave')
-            ]);
+            $this->TechniciansModel->vl_deduct($this->input->post('vacation_leave'),$emp_id);
+            $this->TechniciansModel->sl_deduct($this->input->post('sick_leave'),$emp_id);
             
 		} 
 		else {

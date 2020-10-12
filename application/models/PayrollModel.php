@@ -65,6 +65,7 @@ class PayrollModel extends CI_Model {
         $this->db->from('payroll as a');
         $this->db->join('technicians as b','a.emp_id=b.id','left');
         $this->db->order_by('a.id','DESC');
+        $this->db->limit(1);
         return $this->db->get()->result();
     }
 
