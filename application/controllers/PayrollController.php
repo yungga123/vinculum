@@ -13,6 +13,8 @@ class PayrollController extends CI_Controller {
         $this->load->model('TechniciansModel');
         $results = $this->TechniciansModel->fetchTechnicians($this->input->post('emp_id'));
 
+        $vl_credit = 0;
+        $sl_credit = 0;
         foreach ($results as $row) {
             $sl_credit = $row->sl_credit;
             $vl_credit = $row->vl_credit;
@@ -326,8 +328,16 @@ class PayrollController extends CI_Controller {
             }
 
             $this->load->model('TechniciansModel');
-            $this->TechniciansModel->vl_deduct($this->input->post('vacation_leave'),$emp_id);
-            $this->TechniciansModel->sl_deduct($this->input->post('sick_leave'),$emp_id);
+
+            if ($this->input->post('vacation_leave') != '') {
+                $this->TechniciansModel->vl_deduct($this->input->post('vacation_leave'),$emp_id);
+            }
+
+            if ($this->input->post('sick_leave') != '') {
+                $this->TechniciansModel->sl_deduct($this->input->post('sick_leave'),$emp_id);
+            }
+            
+            
             
 		} 
 		else {
