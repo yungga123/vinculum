@@ -140,5 +140,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</script>
 	<?php endif ?>
 
+	<script>
+		function payroll_validate() {
+			var pwd = prompt("Please Enter Passcode","");
+
+			if (pwd == 'vinculumrocks') {
+				window.location.href = "<?php echo site_url('payroll') ?>";
+			} else {
+				return false;
+			}
+
+		}
+	</script>
+
 
 	

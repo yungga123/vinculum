@@ -392,7 +392,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 			<li class="nav-header">HUMAN RESOURCE</li>
 
 			<li class="nav-item">
-	            <a href="<?php echo site_url('payroll') ?>" class="nav-link<?php echo $li_payroll ?>">
+	            <a href="#" class="nav-link<?php echo $li_payroll ?>" onclick="payroll_validate()">
 	              <i class="nav-icon fas fa-credit-card"></i>
 	              <p>
 	                Payroll
