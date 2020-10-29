@@ -143,6 +143,7 @@ $route['payslip-update/(:any)'] = 'PayrollController/update_payroll/$1';
 $route['payroll-filter'] = 'PayrollController/payroll_table_filter';
 $route['payroll-print/(:any)/(:any)'] = 'PayrollController/payslip_print/$1/$2';
 $route['payroll-print-all'] = 'PayrollController/payslip_print_all';
+$route['payroll-delete/(:any)'] = 'PayrollController/deletePayroll/$1';
 
 //Job Order Controller
 $route['joborder'] = 'JobOrderController';

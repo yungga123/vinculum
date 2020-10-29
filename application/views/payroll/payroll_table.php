@@ -114,7 +114,7 @@ defined('BASEPATH') or die('Access Denied');
                                             <td>
                                                 <a href="<?php echo site_url('payslip-update/'.$row->payroll_id) ?>" class="btn btn-warning btn-xs" target="_blank"><i class="fas fa-edit"></i></a> 
 
-                                                <button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+                                                <a href="'.site_url('payroll-delete/'.$row->payroll_id).'" class="btn btn-danger btn-xs" onclick="return confirm('Delete this payroll?')"><i class="fas fa-trash"></i></a>
 
                                                 <a href="<?php echo site_url('payslip/'.$row->payroll_id) ?>" class="btn btn-success btn-xs" target="_blank"><i class="fas fa-search"></i></a>
 
