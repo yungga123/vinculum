@@ -247,7 +247,6 @@ defined('BASEPATH') or die('Access Denied');
                 responsive: true
             });
 
-           
             
         });
         

@@ -371,7 +371,7 @@ class PayrollController extends CI_Controller {
     public function getPayrollData() {
 
 		$fetch_data = $this->PayrollModel->payroll_datatable();
-
+        $payrollURL = "'Delete this payroll?'";
 
 		$data = array();
 		foreach($fetch_data as $row) {
@@ -406,7 +406,7 @@ class PayrollController extends CI_Controller {
 
 			<a href="'.site_url('payslip-update/'.$row->payroll_id).'" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
 
-            <button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash"></i></button>
+            <a href="'.site_url('payroll-delete/'.$row->payroll_id).'" class="btn btn-danger btn-xs" onclick="return confirm('.$payrollURL.')"><i class="fas fa-trash"></i></a>
             
             <a href="'.site_url('payslip/'.$row->payroll_id).'" class="btn btn-success btn-xs" target="_blank"><i class="fas fa-search"></i></a> 
 
@@ -702,5 +702,15 @@ class PayrollController extends CI_Controller {
 		} else {
 			redirect('', 'refresh');
 		}
+    }
+
+    public function deletePayroll($id) {
+        
+        $this->PayrollModel->update_payroll($id,[
+            'is_deleted' => '1'
+        ]);
+
+        $this->session->set_flashdata('success', 'Success! Payroll Deleted.');
+        redirect('payroll-table');
     }
 }
