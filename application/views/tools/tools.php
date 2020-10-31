@@ -30,7 +30,7 @@ defined('BASEPATH') or die('Access Denied');
 
 							<a href="<?php echo site_url('printtools') ?>" class="btn btn-block btn-warning text-bold" target="_blank"><i class="fas fa-print"></i> PRINT TOOLS</a>
 
-							
+							<a href="<?php echo site_url('export-excel') ?>" class="btn btn-block btn-secondary text-bold" target="_blank"><i class="fas fa-file-excel"></i> EXPORT TO EXCEL</a>
 
 						</div>
 					</div>

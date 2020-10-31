@@ -691,4 +691,35 @@ class ToolsController extends CI_Controller {
 		}
 	}
 
+	// Export to CSV
+    function exportTools()
+    {
+		$this->load->model('ToolsModel');
+        $file_name = 'toolsdata_on' . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        // get data 
+        $results = $this->ToolsModel->print_select_all();
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+            'Tool Code',
+			'Model',
+			'Description',
+			'Tool Type',
+			'Quantity',
+			'Price'
+        ];
+        fputcsv($file, $header);
+        foreach ($results->result_array() as $key => $value) {
+            fputcsv($file, $value);
+        }
+        fclose($file);
+        exit;
+    }
+
 }

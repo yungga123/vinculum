@@ -125,6 +125,7 @@ $route['addtools'] = 'ToolsController/add_tools';
 $route['printtools'] = 'ToolsController/print_tools';
 $route['tools-pullout'] = 'ToolsController/tools_pullout';
 $route['tool-return-history'] = 'ToolsController/return_history';
+$route['export-excel'] = 'ToolsController/exportTools';
 
 //Service Report Controller
 $route['service-report'] = 'ServiceReportController';

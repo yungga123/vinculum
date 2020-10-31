@@ -12,6 +12,21 @@ class ToolsModel extends CI_Model {
 		return $this->db->get('tools')->result();
 	}
 
+	public function print_select_all() {
+
+		$this->db->select([
+			'code',
+			'model',
+			'description',
+			'type',
+			'quantity',
+			'price'
+		]);
+		$this->db->from('tools');
+		$this->db->where('is_deleted', 0);
+		return $this->db->get();
+	}
+
 	public function select_where_id($id) {
 		$this->db->where('code',$id);
 		return $this->db->get('tools')->result();
