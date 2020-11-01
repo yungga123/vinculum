@@ -52,6 +52,7 @@ class JobOrderModel extends CI_Model {
             'd.firstname',
             'd.middlename',
             'a.under_warranty',
+            'a.remarks',
             'a.is_deleted',
             'b.CompanyName',
             'b.ContactPerson',
@@ -84,6 +85,7 @@ class JobOrderModel extends CI_Model {
             'd.middlename',
             'a.is_deleted',
             'a.under_warranty',
+            'a.remarks',
             'b.CompanyName',
             'b.ContactPerson',
             'c.id',
@@ -121,6 +123,7 @@ class JobOrderModel extends CI_Model {
                 $this->db->or_like("a.commited_schedule", $_POST["search"]["value"]);
                 $this->db->or_like("a.requested_by", $_POST["search"]["value"]);
                 $this->db->or_like("a.under_warranty", $_POST["search"]["value"]);
+                $this->db->or_like("a.remarks", $_POST["search"]["value"]);
                 $this->db->or_like("b.CompanyName", $_POST["search"]["value"]);
                 $this->db->or_like("b.ContactPerson", $_POST["search"]["value"]);
                 $this->db->or_like("c.id", $_POST["search"]["value"]);

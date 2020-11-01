@@ -55,6 +55,20 @@ if ($this->uri->segment(1) == 'joborder-list') {
 
     });
 
+    //Fetching Data in Table Job Order
+    $('#joborder_table tbody').on('click','.btn_discarded',function(){
+
+        var data = payroll_table.row($(this).parents('tr')).data();
+        var rowdata = payroll_table.row(this).data();
+
+        if (data == undefined) {
+            $('#job_order_id').val(rowdata[0]);
+        } else if (rowdata == undefined) {
+            $('#job_order_id').val(data[0]);
+        }
+
+    });
+
     $('#joborder_table tbody').on('click','.btn_filejo',function(){
 
         var data = payroll_table.row($(this).parents('tr')).data();
@@ -83,11 +97,20 @@ if ($this->uri->segment(1) == 'joborder-list') {
         $('.form-commdate').append('<input type="date" name="committed_schedule" id="committed_schedule" class="form-control">');
     });
 
+    $(document).on("click",".btn_discarded",function() {
+        $('#status').html('DISCARDED');
+        $('#status').addClass('badge-danger');
+        $('#status').removeClass('badge-success');
+        $('#decision').val('Discarded');
+        $('.form-commdate').empty();
+        $('.form-commdate').append('<input type="hidden" name="committed_schedule" id="committed_schedule" value="<?php echo date('Y-m-d') ?>" class="form-control">');
+    });
+
     $(document).on("click",".btn_filejo",function() {
         $('#decision_filejo').val('Filed');
 
     });
-    
+
     //Form Job Order (Existing)
     $('#form-addexisting-joborder').submit(function(e) {
         e.preventDefault();

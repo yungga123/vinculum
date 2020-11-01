@@ -409,6 +409,11 @@ class JobOrderController extends CI_Controller
 				'field' => 'decision_filejo',
 				'label' => 'Decision',
 				'rules' => 'trim'
+			],
+			[
+				'field' => 'remarks',
+				'label' => 'Remarks',
+				'rules' => 'trim'
 			]
 		];
 
@@ -423,7 +428,8 @@ class JobOrderController extends CI_Controller
 			$id = $this->input->post('job_filejo_id');
 			$data = [
 				'decision' => $this->input->post('decision_filejo'),
-				'date_filed' => date('Y-m-d')
+				'date_filed' => date('Y-m-d'),
+				'remarks' => $this->input->post('remarks')
 			];
 
 			$this->JobOrderModel->update_joborder($id, $data);
@@ -504,6 +510,7 @@ class JobOrderController extends CI_Controller
 				$decision = '
 					<button type="button" class="btn btn-success btn-xs text-bold btn-block btn_accepted" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-check"></i> ACCEPT</button>
 					<button type="button" class="btn btn-danger btn-xs text-bold btn-block btn_discarded" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-times"></i> DISCARD</button>
+					<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>
 
 				';
 			}
@@ -521,6 +528,7 @@ class JobOrderController extends CI_Controller
 			$sub_array[] = $date_reported;
 			$sub_array[] = $row->firstname . $middle_name . $row->lastname;
 			$sub_array[] = $row->under_warranty;
+			$sub_array[] = $row->remarks;
 			$data[] = $sub_array;
 		}
 		$output = array(
