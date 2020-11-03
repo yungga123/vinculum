@@ -18,3 +18,4 @@ application/logs/*
 
 #customer files
 customer_files/*
+application/config/config.php
