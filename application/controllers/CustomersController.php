@@ -26,10 +26,8 @@ class CustomersController extends CI_Controller
 	public function get_customers()
 	{
 
-
 		$this->load->model('CustomersModel');
 		$fetch_data = $this->CustomersModel->customervt_datatable();
-
 
 		$data = array();
 		foreach ($fetch_data as $row) {
