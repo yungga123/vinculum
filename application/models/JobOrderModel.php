@@ -34,42 +34,51 @@ class JobOrderModel extends CI_Model {
         return $this->db->get('job_order')->result();
     }
 
-    public function select_job_order() {
-        $this->db->select(
-            'a.id as joborder_id',
-            'a.customer_id',
-            'a.date_requested',
-            'a.type_of_project',
-            'a.comments',
-            'a.date_reported',
-            'a.commited_schedule',
-            'a.requested_by',
-            'a.decision',
-            'a.date_filed',
-            'd.lastname',
-            'd.firstname',
-            'd.middlename',
-            'a.under_warranty',
-            'a.remarks',
-            'a.is_deleted',
-            'b.CompanyName',
-            'b.ContactPerson',
-            'c.id as jobscope_id',
-            'c.job_order_id',
-            'c.cctv',
-            'c.biometrics',
-            'c.fdas',
-            'c.intrusion_alarm',
-            'c.pabx',
-            'c.gate_barrier',
-            'c.efence',
-            'c.structured_cabling',
-            'c.pabgm'
+    public function select_job_order($where) {
+
+        if ($where == 'pending') {
+            $where = '';
+        }
+
+        $this->db->select(array(
+                'a.id as joborder_id',
+                'a.customer_id',
+                'a.date_requested',
+                'a.type_of_project',
+                'a.comments',
+                'a.date_reported',
+                'a.commited_schedule',
+                'a.requested_by',
+                'a.decision',
+                'a.date_filed',
+                'd.lastname',
+                'd.firstname',
+                'd.middlename',
+                'a.under_warranty',
+                'a.remarks',
+                'a.is_deleted',
+                'b.CompanyName',
+                'b.ContactPerson',
+                'c.id as jobscope_id',
+                'c.job_order_id',
+                'c.cctv',
+                'c.biometrics',
+                'c.fdas',
+                'c.intrusion_alarm',
+                'c.pabx',
+                'c.gate_barrier',
+                'c.efence',
+                'c.structured_cabling',
+                'c.pabgm'
+            )
         );
         $this->db->from("job_order as a");
         $this->db->join("customer_vt as b",'a.customer_id=b.CustomerID','left');
         $this->db->join("job_order_scope as c",'a.id=c.job_order_id','left');
         $this->db->join("technicians as d",'a.requested_by=d.id','left');
+        $this->db->where("a.decision",$where);
+        $this->db->where("a.is_deleted",0);
+        return $this->db->get();
     }
 
     //*****************SERVER SIDE VALIDATION FOR DATATABLE*********************

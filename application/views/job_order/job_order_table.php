@@ -91,6 +91,23 @@ if ($decision == 'accepted') {
                                 </thead>
                             </table>
                         </div>
+
+                        <div class="card-footer">
+
+                            
+                            <?php if ($this->uri->segment(2) == 'pending') { ?>
+                                <a class="btn btn-success text-bold float-right" href="<?php echo site_url('print-joborder/pending') ?>" target="_blank"><i class="fas fa-print"></i> PRINT</a>
+                            <?php } ?>
+
+                            <?php if ($this->uri->segment(2) == 'filed') { ?>
+                                <a class="btn btn-success text-bold float-right" href="<?php echo site_url('print-joborder/filed') ?>" target="_blank"><i class="fas fa-print"></i> PRINT</a>
+                            <?php } ?>
+
+                            <?php if ($this->uri->segment(2) == 'accepted') { ?>
+                                <a class="btn btn-success text-bold float-right" href="<?php echo site_url('print-joborder/accepted') ?>" target="_blank"><i class="fas fa-print"></i> PRINT</a>
+                            <?php } ?>
+                            
+                        </div>
                     </div>
                 </div>
             </div>

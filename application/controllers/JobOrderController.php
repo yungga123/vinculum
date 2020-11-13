@@ -556,13 +556,12 @@ class JobOrderController extends CI_Controller
 		return $this->fetch_joborder('Filed');
 	}
 
-	public function print_joborder()
+	public function print_joborder($where)
 	{
 		if($this->session->userdata('logged_in')) {
 
 
-            $results = $this->JobOrderModel->select_job_order();
-
+            $results = $this->JobOrderModel->select_job_order($where);
 
 			$data = [
                 'title' => 'Print Job Order',

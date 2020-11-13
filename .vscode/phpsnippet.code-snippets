@@ -24,7 +24,7 @@
 
 	"html-foreach": {
 		"prefix": ["foreach"],
-		"body": [ 	"<?php foreach ($variable as $key => $value) { ?>",
+		"body": [ 	"<?php foreach ($$variable as $$key => $$value) { ?>",
 					"	$1",
 					"<?php } ?>"
 			],
