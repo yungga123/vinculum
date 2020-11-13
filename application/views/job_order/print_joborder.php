@@ -135,7 +135,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
                             <td><?php echo implode(", ",$scope[0]) ?></td>
                             <td><?php echo ($row->date_requested != '0000-00-00') ? date_format(date_create($row->date_requested),'F d, Y') : 'None' ?></td>
                             <td><?php echo $row->type_of_project ?></td>
-                            <td><?php echo $row->comments ?></td>
+                            <td><?php echo str_replace("\n", "<br>", $row->comments) ?></td>
                             <td><?php echo ($row->date_reported != '0000-00-00') ? date_format(date_create($row->date_reported),'F d, Y') : 'None' ?></td>
                             <td><?php echo $row->requested_by ?></td>
                             <td><?php echo $row->under_warranty ?></td>
