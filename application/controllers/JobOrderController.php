@@ -574,4 +574,91 @@ class JobOrderController extends CI_Controller
 			redirect('', 'refresh');
 		}
 	}
+
+	// Export to CSV ( must be in result->array() )
+    function exportJobOrder($where)
+    {
+
+        $file_name = $where.'_joborders_on' . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+		// get data
+        $results = $this->JobOrderModel->select_job_order($where);
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+			'No',
+			'Status',
+			'Committed Schedule',
+			'Customer Name',
+			'Scope',
+			'Date Requested',
+			'Type of Project',
+			'Comments',
+			'Date Reported',
+			'Requested By',
+			'Warranty',
+			'Remarks'
+        ];
+        fputcsv($file, $header);
+        foreach ($results->result() as $row) {
+			$scope = array();
+
+			$sub_scope = array();
+			
+			if ($row->cctv == 1) {
+				$sub_scope[] = 'CCTV';
+			}
+			if ($row->biometrics == 1) {
+				$sub_scope[] = 'AC/Biometrics';
+			}
+			if ($row->fdas == 1) {
+				$sub_scope[] = 'FDAS';
+			}
+			if ($row->intrusion_alarm == 1) {
+				$sub_scope[] = 'Intrusion Alarms';
+			}
+			if ($row->pabx == 1) {
+				$sub_scope[] = 'PABX Systems';
+			}
+			if ($row->gate_barrier == 1) {
+				$sub_scope[] = 'Gate Barriers';
+			}
+			if ($row->efence == 1) {
+				$sub_scope[] = 'E-Fence';
+			}
+			if ($row->structured_cabling == 1) {
+				$sub_scope[] = 'Structured Cabling';
+			}
+			if ($row->gate_barrier == 1) {
+				$sub_scope[] = 'Gate Barriers';
+			}
+
+			$scope[] = $sub_scope;
+
+
+			fputcsv($file, [
+				$row->joborder_id,
+				$row->decision,
+				$row->commited_schedule,
+				$row->CompanyName,
+				implode(", ",$scope[0]),
+				$row->date_requested,
+				$row->type_of_project,
+				$row->comments,
+				$row->date_reported,
+				$row->requested_by,
+				$row->under_warranty,
+				$row->remarks
+			]);
+        }
+		fclose($file);
+		
+		
+        exit;
+    }
 }

@@ -150,6 +150,7 @@ $route['payroll-delete/(:any)'] = 'PayrollController/deletePayroll/$1';
 $route['joborder'] = 'JobOrderController';
 $route['joborder-list/(:any)'] = 'JobOrderController/job_order_list/$1';
 $route['print-joborder/(:any)'] = 'JobOrderController/print_joborder/$1';
+$route['export-jo/(:any)'] = 'JobOrderController/exportJobOrder/$1';
 
 //CovidSurveyController
 $route['covidsurvey'] = 'CovidSurveyController';
