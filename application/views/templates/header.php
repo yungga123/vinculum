@@ -37,6 +37,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/toastr/toastr.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Bootstrap Search Select -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap-select') ?>/dist/css/bootstrap-select.min.css">
 
 
   <!-- fullCalendar -->
