@@ -47,9 +47,9 @@ foreach ($pullout_final_price as $row) {
 										<th>No. of Stocks</th>
 										<th>Stocks to pullout</th>
 										<th>Pulled out to</th>
-										<th>Total Price</th>
-										<th>Less Price</th>
-										<th>Final Price</th>
+										<th>Total Cost</th>
+										<th>Less Cost</th>
+										<th>Final Cost</th>
 										<th>Action</th>
 									</tr>
 								</thead>
@@ -83,8 +83,8 @@ foreach ($pullout_final_price as $row) {
 
 						<div class="card-body">
 							<div class="text-right">
-								<p><label>Total Price (Without Less) : <span class="text-red"><?php echo $span_total_price ?></span></label></p>
-								<p><label>Final Price : <span class="text-red"><?php echo number_format($span_final_price,2) ?></span></label></p>
+								<p><label>Total Cost (Without Less) : <span class="text-red"><?php echo $span_total_price ?></span></label></p>
+								<p><label>Final Cost : <span class="text-red"><?php echo number_format($span_final_price,2) ?></span></label></p>
 							</div>
 						</div>
 
@@ -119,7 +119,7 @@ foreach ($pullout_final_price as $row) {
 				</div>
 
 				<div class="form-group">
-				  <label for="less_total_price">Total Price</label>
+				  <label for="less_total_price">Total Cost</label>
 				  <input type="text" name="less_total_price" id="less_total_price" class="form-control" readonly>
 				</div>
 
