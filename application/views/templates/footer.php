@@ -160,8 +160,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script>
 		$(function() {
 
-			$('select').select2();
+			$('.select2').select2();
 			
 		});
+
+		
 	</script>
 

@@ -337,13 +337,11 @@ class PayrollController extends CI_Controller {
                 $this->TechniciansModel->sl_deduct($this->input->post('sick_leave'),$emp_id);
             }
             
-            
-            
 		} 
 		else {
 		    $validate['errors'] = validation_errors();
 		}
-		echo json_encode($validate);
+        echo json_encode($validate);
     }
 
     public function payroll_table() {

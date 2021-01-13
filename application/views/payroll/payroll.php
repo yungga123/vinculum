@@ -44,7 +44,7 @@ defined('BASEPATH') or die('Access Denied');
                                                     <div class="form-group">
                                                         <label for="emp_id">Select Employee</label>
                                                         <?php if ($payroll['case'] == 'update') { ?>
-                                                            <select class="form-control form-control-sm select-employee" name="emp_id" id="emp_id">
+                                                            <select class="form-control form-control-sm select-employee select2" name="emp_id" id="emp_id">
                                                                 <option value=""><--- Please Select ---></option>
                                                                 <?php foreach ($technicians as $row) { ?>
                                                                     <option value="<?php echo $row->id ?>" <?php if ($row->id==$payroll['emp_id']) {
@@ -55,7 +55,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                 <?php } ?>
                                                             </select>
                                                         <?php } else { ?>
-                                                            <select class="form-control form-control-sm select-employee" name="emp_id" id="emp_id">
+                                                            <select class="form-control form-control-sm select-employee select2" name="emp_id" id="emp_id">
                                                                 <option value=""><--- Please Select ---></option>
                                                                 <?php foreach ($technicians as $row) { ?>
                                                                     <option value="<?php echo $row->id ?>">
