@@ -711,4 +711,42 @@ class PayrollController extends CI_Controller {
         $this->session->set_flashdata('success', 'Success! Payroll Deleted.');
         redirect('payroll-table');
     }
+
+    public function cutoff_selection_validate() {
+        $validate = [
+			'success' => false,
+			'errors' => ''
+		];
+        
+        $rules = [
+            [
+				'field' => 'cutoff_start_modal',
+				'label' => 'Cut-off Start',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Fill out start of cut-off.'
+				]
+            ],
+            [
+				'field' => 'cutoff_end_modal',
+				'label' => 'Cut-off End',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Fill out end of cut-off.'
+				]
+            ]
+        ];
+        
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+            $validate['success'] = true;
+		} 
+		else {
+		    $validate['errors'] = validation_errors();
+		}
+        echo json_encode($validate);
+    }
 }

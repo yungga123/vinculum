@@ -159,11 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- Initialize Select2 -->
 	<script>
 		$(function() {
-
 			$('.select2').select2();
-			
 		});
-
-		
 	</script>
 

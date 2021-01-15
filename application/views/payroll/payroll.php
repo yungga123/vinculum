@@ -144,7 +144,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                         <div class="col-sm-6">
                                                                             <div class="form-group">
                                                                                 <label for="days_worked">W. DAYS</label>
-                                                                                <input type="text" class="form-control form-control-sm" name="days_worked" id="days_worked" placeholder="Typically 13" <?php if ($payroll['case']=='update') {
+                                                                                <input type="text" class="form-control form-control-sm" name="days_worked" id="days_worked" readonly <?php if ($payroll['case']=='update') {
                                                                                     echo 'value="'.$payroll['basic_income_days'].'"';
                                                                                 } ?>>
                                                                             </div>
@@ -435,7 +435,7 @@ defined('BASEPATH') or die('Access Denied');
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="start_date">Start Date</label>
-                                                                <input type="date" name="start_date" id="start_date" class="form-control form-control-sm" <?php if ($payroll['case']=='update') {
+                                                                <input type="date" name="start_date" id="start_date" class="form-control form-control-sm" readonly <?php if ($payroll['case']=='update') {
                                                                     echo 'value="'.$payroll['start_date'].'"';
                                                                 } ?>>
                                                             </div>
@@ -443,7 +443,7 @@ defined('BASEPATH') or die('Access Denied');
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="end_date">End Date</label>
-                                                                <input type="date" name="end_date" id="end_date" class="form-control form-control-sm" <?php if ($payroll['case']=='update') {
+                                                                <input type="date" name="end_date" id="end_date" class="form-control form-control-sm" readonly <?php if ($payroll['case']=='update') {
                                                                     echo 'value="'.$payroll['end_date'].'"';
                                                                 } ?>>
                                                             </div>
@@ -472,4 +472,62 @@ defined('BASEPATH') or die('Access Denied');
             </div>
         </div>
     </section>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="cutoffselect_modal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <label style="font-size: 20px">CUTOFF SELECTION</label>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <?php echo form_open('PayrollController/cutoff_selection_validate',["id" => "form-cutoffselect"]) ?>
+                        <div class="row">
+                        
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="cutoff_start_modal">Cut-off Start</label>
+                                    <input type="date" name="cutoff_start_modal" id="cutoff_start_modal" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="cutoff_end_modal">Cut-off End</label>
+                                    <input type="date" name="cutoff_end_modal" id="cutoff_end_modal" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="spc_days_modal">Special Holidays</label>
+                                    <input type="text" name="spc_days_modal" id="spc_days_modal" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="rh_days_modal">Regular Holidays</label>
+                                    <input type="text" name="rh_days_modal" id="rh_days_modal" class="form-control">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> CONFIRM</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
 </div>

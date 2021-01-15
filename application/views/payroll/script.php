@@ -171,6 +171,68 @@ defined('BASEPATH') or die('Access Denied');
             });
         });
 
+        //cut-off selection
+        $('#form-cutoffselect').submit(function(e) {
+            e.preventDefault();
+
+            var me = $(this);
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            $(':submit').attr('disabled', 'disabled');
+            $('.loading-modal').modal();
+
+            //ajax
+            $.ajax({
+                url: me.attr('action'),
+                type: 'post',
+                data: me.serialize(),
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success == true) {
+
+                        var date1 = new Date($('#cutoff_start_modal').val());
+                        var date2 = new Date($('#cutoff_end_modal').val());
+
+                        var difference_time = date2.getTime() - date1.getTime();
+                        var difference_days = difference_time / (1000 * 3600 * 24);
+
+                        $('#days_worked').val(difference_days + 1);
+                        $('#start_date').val($('#cutoff_start_modal').val());
+                        $('#end_date').val($('#cutoff_end_modal').val());
+
+                        $(':submit').removeAttr('disabled', 'disabled');
+                        $('.loading-modal').modal('hide');
+                        $('#cutoffselect_modal').modal('hide');
+                        toastr.success("Success! Proceed please proceed.");
+                        me[0].reset();
+                    } else {
+                        $(':submit').removeAttr('disabled', 'disabled');
+                        $('.loading-modal').modal('hide');
+                        
+                        toastr.error(response.errors);
+                        
+                    }
+                }
+            });
+        });
+
         $('#form-payroll-update').submit(function(e) {
             e.preventDefault();
 
@@ -245,9 +307,17 @@ defined('BASEPATH') or die('Access Denied');
             responsive: true
         });
 
-
     });
 </script>
+
+<?php if ($this->uri->segment(1)=='payroll') { ?>
+    <script>
+        $("#cutoffselect_modal").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    </script>
+<?php } ?>
 </body>
 
 </html>
