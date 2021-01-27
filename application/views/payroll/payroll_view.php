@@ -166,10 +166,8 @@ $copy = 'Employee Copy';
                                 <td><?php echo number_format($payroll['regday_rate'],2); ?></td>
                                 <td><?php echo number_format($payroll['regday_days'],2); ?></td>
                                 <td><?php echo number_format($payroll['regday_amt'],2); ?></td>
-                                <td>Rest Days</td>
-                                <td><?php echo number_format($payroll['restday_rate'],2); ?></td>
-                                <td><?php echo number_format($payroll['restday_days'],2); ?></td>
-                                <td><?php echo number_format($payroll['restday_amt'],2); ?></td>
+                                <td>Cash Adv</td>
+                                <td colspan="3"><?php echo number_format($payroll['cash_adv'],2); ?></td>
                             </tr>
 
                             <tr>
@@ -177,8 +175,9 @@ $copy = 'Employee Copy';
                                 <td><?php echo number_format($payroll['spcday_rate'],2); ?></td>
                                 <td><?php echo number_format($payroll['spcday_days'],2); ?></td>
                                 <td><?php echo number_format($payroll['spcday_amt'],2); ?></td>
-                                <td>Cash Adv</td>
-                                <td colspan="3"><?php echo number_format($payroll['cash_adv'],2); ?></td>
+                                <td>SSS</td>
+                                <td colspan="3"><?php echo number_format($payroll['sss_cont'],2); ?></td>
+                                
                             </tr>
 
                             <tr>
@@ -186,8 +185,8 @@ $copy = 'Employee Copy';
                                 <td><?php echo number_format($payroll['wdo_rate'],2); ?></td>
                                 <td><?php echo number_format($payroll['wdo_days'],2); ?></td>
                                 <td><?php echo number_format($payroll['wdo_amt'],2); ?></td>
-                                <td>SSS</td>
-                                <td colspan="3"><?php echo number_format($payroll['sss_cont'],2); ?></td>
+                                <td>PAG-IBIG</td>
+                                <td colspan="3"><?php echo number_format($payroll['pagibig_cont'],2); ?></td>
                             </tr>
 
                             <tr>
@@ -195,8 +194,9 @@ $copy = 'Employee Copy';
                                 <td><?php echo number_format($payroll['basic_income_rate'],2); ?></td>
                                 <td><?php echo number_format($payroll['sl'],2); ?></td>
                                 <td><?php echo number_format($payroll['sl_pay'],2); ?></td>
-                                <td>PAG-IBIG</td>
-                                <td colspan="3"><?php echo number_format($payroll['pagibig_cont'],2); ?></td>
+                                <td>PhilHealth</td>
+                                <td colspan="3"><?php echo number_format($payroll['philhealth_cont'],2); ?></td>
+                                
                             </tr>
 
                             <tr>
@@ -204,29 +204,27 @@ $copy = 'Employee Copy';
                                 <td><?php echo number_format($payroll['basic_income_rate'],2); ?></td>
                                 <td><?php echo number_format($payroll['vl'],2); ?></td>
                                 <td><?php echo number_format($payroll['vl_pay'],2); ?></td>
-                                <td>PhilHealth</td>
-                                <td colspan="3"><?php echo number_format($payroll['philhealth_cont'],2); ?></td>
-                            </tr>
-
-                            <tr>
-                                <td>Incentives</td>
-                                <td colspan="3"><?php echo number_format($payroll['incentives'],2); ?></td>
                                 <td>Tax</td>
                                 <td colspan="3"><?php echo number_format($payroll['tax'],2); ?></td>
                             </tr>
 
                             <tr>
-                                <td>Commission</td>
-                                <td colspan="3"><?php echo number_format($payroll['commission'],2); ?></td>
+                                <td>Incentives</td>
+                                <td colspan="3"><?php echo number_format($payroll['incentives'],2); ?></td>
                                 <td>Others</td>
                                 <td colspan="3"><?php echo number_format($payroll['other_deduction'],2); ?></td>
                             </tr>
 
                             <tr>
+                                <td>Commission</td>
+                                <td colspan="3"><?php echo number_format($payroll['commission'],2); ?></td>
+                                <td rowspan="3">Notes</td>
+                                <td colspan="3" rowspan="3"><?php echo $payroll['notes'] ?></td>
+                            </tr>
+
+                            <tr>
                                 <td>13th Month</td>
                                 <td colspan="3"><?php echo number_format($payroll['13th_month'],2); ?></td>
-                                <td rowspan="2">Notes</td>
-                                <td colspan="3" rowspan="2"><?php echo $payroll['notes'] ?></td>
                             </tr>
 
                             <tr>

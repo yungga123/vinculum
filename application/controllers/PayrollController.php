@@ -316,6 +316,7 @@ class PayrollController extends CI_Controller {
                 'sick_leave' => $this->input->post('sick_leave'),
                 'rest_day' => $this->input->post('rest_day'),
                 'awol' => $this->input->post('awol'),
+                'sundays' => $this->input->post('sundays'),
                 'remarks' => $this->input->post('remarks')
             ];
 
@@ -374,7 +375,7 @@ class PayrollController extends CI_Controller {
 		$data = array();
 		foreach($fetch_data as $row) {
 
-            $basic_pay = $row->daily_rate*$row->days_worked;
+            $basic_pay = $row->daily_rate*($row->days_worked - $row->sundays);
             $regular_holiday_pay = $row->daily_rate*$row->reg_holiday;
             $special_holiday_pay = $row->daily_rate*$row->special_holiday*0.3;
             $wdo_pay = $row->daily_rate*$row->wdo*1.3;
@@ -440,8 +441,8 @@ class PayrollController extends CI_Controller {
                 $payroll['emp_pagibig_no'] = $row->pagibig_number; 
                 $payroll['emp_philhealth_no'] = $row->phil_health_number; 
                 $payroll['basic_income_rate'] = $row->daily_rate; 
-                $payroll['basic_income_days'] = $row->days_worked;
-                $payroll['basic_income_amt'] = $row->daily_rate*$row->days_worked; 
+                $payroll['basic_income_days'] = $row->days_worked - $row->sundays - $row->rest_day;
+                $payroll['basic_income_amt'] = $row->daily_rate*$payroll['basic_income_days']; 
                 $payroll['overtime_rate'] = ($row->daily_rate/8)*1.25; 
                 $payroll['overtime_hrs'] = $row->ot_hrs; 
                 $payroll['overtime_amt'] = $payroll['overtime_rate']*$payroll['overtime_hrs']; 
@@ -470,13 +471,12 @@ class PayrollController extends CI_Controller {
                 $payroll['awol_rate'] = $row->daily_rate; 
                 $payroll['awol_days'] = $row->awol;
                 $payroll['awol_amt'] = $payroll['awol_rate']*$payroll['awol_days']; 
-                $payroll['restday_rate'] = $row->daily_rate; 
-                $payroll['restday_days'] = $row->rest_day; 
-                $payroll['restday_amt'] = $row->rest_day*$payroll['restday_rate']; 
                 $payroll['sss_cont'] = $row->sss_rate;
                 $payroll['pagibig_cont'] = $row->pag_ibig_rate; 
                 $payroll['philhealth_cont'] = $row->phil_health_rate; 
+                $payroll['restday_days'] = $row->rest_day;
                 $payroll['tax'] = $row->tax;
+                $payroll['sundays'] = $row->sundays;
                 $payroll['cash_adv'] = $row->cash_adv; 
                 $payroll['other_deduction'] = $row->others; 
                 $payroll['vl'] = $row->vacation_leave;
@@ -484,7 +484,7 @@ class PayrollController extends CI_Controller {
                 $payroll['vl_pay'] = $payroll['vl']*$payroll['basic_income_rate'];
                 $payroll['sl_pay'] = $payroll['sl']*$payroll['basic_income_rate'];
                 $payroll['notes'] = $row->notes;
-                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']+$payroll['vl_pay']+$payroll['sl_pay']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']+$payroll['restday_amt']);
+                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']+$payroll['vl_pay']+$payroll['sl_pay']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']);
                 $payroll['net_pay'] = ($payroll['gross_pay']+$payroll['incentives']+$payroll['commission']+$payroll['13th_month']+$payroll['addback'])-($payroll['sss_cont']+$payroll['pagibig_cont']+$payroll['philhealth_cont']+$payroll['cash_adv']+$payroll['other_deduction']+$payroll['tax']);
             }
 			$data = [
@@ -524,8 +524,8 @@ class PayrollController extends CI_Controller {
                 $payroll['emp_pagibig_no'] = $row->pagibig_number; 
                 $payroll['emp_philhealth_no'] = $row->phil_health_number; 
                 $payroll['basic_income_rate'] = $row->daily_rate; 
-                $payroll['basic_income_days'] = $row->days_worked;
-                $payroll['basic_income_amt'] = $row->daily_rate*$row->days_worked; 
+                $payroll['basic_income_days'] = $row->days_worked - $row->sundays - $row->rest_day;
+                $payroll['basic_income_amt'] = $row->daily_rate*$payroll['basic_income_days']; 
                 $payroll['overtime_rate'] = ($row->daily_rate/8)*1.25; 
                 $payroll['overtime_hrs'] = $row->ot_hrs; 
                 $payroll['overtime_amt'] = $payroll['overtime_rate']*$payroll['overtime_hrs']; 
@@ -554,13 +554,12 @@ class PayrollController extends CI_Controller {
                 $payroll['awol_rate'] = $row->daily_rate; 
                 $payroll['awol_days'] = $row->awol;
                 $payroll['awol_amt'] = $payroll['awol_rate']*$payroll['awol_days']; 
-                $payroll['restday_rate'] = $row->daily_rate; 
-                $payroll['restday_days'] = $row->rest_day; 
-                $payroll['restday_amt'] = $row->rest_day*$payroll['restday_rate']; 
                 $payroll['sss_cont'] = $row->sss_rate;
                 $payroll['pagibig_cont'] = $row->pag_ibig_rate; 
-                $payroll['philhealth_cont'] = $row->phil_health_rate; 
+                $payroll['philhealth_cont'] = $row->phil_health_rate;
+                $payroll['restday_days'] = $row->rest_day;
                 $payroll['tax'] = $row->tax;
+                $payroll['sundays'] = $row->sundays;
                 $payroll['cash_adv'] = $row->cash_adv; 
                 $payroll['other_deduction'] = $row->others; 
                 $payroll['notes'] = $row->notes;
@@ -568,7 +567,7 @@ class PayrollController extends CI_Controller {
                 $payroll['sl'] = $row->sick_leave;
                 $payroll['vl_pay'] = $payroll['vl']*$payroll["basic_income_rate"];
                 $payroll['sl_pay'] = $payroll['sl']*$payroll["basic_income_rate"];
-                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']+$payroll['vl_pay']+$payroll['sl_pay']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']+$payroll['restday_amt']);
+                $payroll['gross_pay'] = ($payroll['basic_income_amt']+$payroll['overtime_amt']+$payroll['nightdiff_amt']+$payroll['regday_amt']+$payroll['spcday_amt']+$payroll['wdo_amt']+$payroll['vl_pay']+$payroll['sl_pay']) - ($payroll['absent_amt']+$payroll['tardiness_amt']+$payroll['awol_amt']);
                 $payroll['net_pay'] = ($payroll['gross_pay']+$payroll['incentives']+$payroll['commission']+$payroll['13th_month']+$payroll['addback'])-($payroll['sss_cont']+$payroll['pagibig_cont']+$payroll['philhealth_cont']+$payroll['cash_adv']+$payroll['other_deduction']+$payroll['tax']);
             }
 

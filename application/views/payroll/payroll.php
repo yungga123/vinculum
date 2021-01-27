@@ -145,7 +145,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                             <div class="form-group">
                                                                                 <label for="days_worked">W. DAYS</label>
                                                                                 <input type="text" class="form-control form-control-sm" name="days_worked" id="days_worked" readonly <?php if ($payroll['case']=='update') {
-                                                                                    echo 'value="'.$payroll['basic_income_days'].'"';
+                                                                                    echo 'value="'.number_format($payroll['basic_income_days']+$payroll['sundays']+$payroll['restday_days'],2).'"';
                                                                                 } ?>>
                                                                             </div>
 
@@ -286,6 +286,13 @@ defined('BASEPATH') or die('Access Denied');
                                                                                 <label for="cash_adv">CA</label>
                                                                                 <input type="text" class="form-control form-control-sm" name="cash_adv" id="cash_adv" placeholder="Input amount" <?php if ($payroll['case']=='update') {
                                                                                     echo 'value="'.$payroll['cash_adv'].'"';
+                                                                                } ?>>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <label for="sundays">SUNDAYS</label>
+                                                                                <input type="text" class="form-control form-control-sm" name="sundays" id="sundays" readonly <?php if ($payroll['case']=='update') {
+                                                                                    echo 'value="'.$payroll['sundays'].'"';
                                                                                 } ?>>
                                                                             </div>
                                                                         </div>

@@ -20,9 +20,13 @@ defined('BASEPATH') or die('Access Denied');
             var slcount = Number($('#sick_leave').val());
             var rdDays = Number($('#rest_day').val());
             var awol = Number($('#awol').val());
+            var sundaysCount = Number($('#sundays').val());
+
+            //special compute
+            var sundays = dailyRate*sundaysCount;
 
             //earnings
-            var basicIncome = dailyRate * daysWorked;
+            var basicIncome = dailyRate * daysWorked - sundays;
             var wdoPay = dailyRate * wdoDays * 1.3;
             var otPay = (dailyRate / 8) * otHours * 1.25;
             var ndiffPay = (dailyRate / 8) * ndiffHours * 0.1;
@@ -47,8 +51,9 @@ defined('BASEPATH') or die('Access Denied');
             var awols = awol * dailyRate;
             var otherDeduct = Number($('#others').val());
             var cashAdv = Number($('#cash_adv').val());
+            
 
-            var grossPay = (basicIncome + wdoPay + ndiffPay + spHolidayPay + regHolidayPay + otPay + vac_pay + sick_pay) - (absents + tardiness + awols + restDays);
+            var grossPay = (basicIncome + wdoPay + ndiffPay + spHolidayPay + regHolidayPay + otPay + vac_pay + sick_pay) - (absents + tardiness + awols + restDays );
             var netPay = (grossPay + thirteenthMonthPay + commission + addBack + incentives) - (otherDeduct + cashAdv + sssRate + taxRate + pagIbigRate + philHealthRate);
 
             $('.basicIncome').html(basicIncome.toFixed(2));
@@ -82,11 +87,22 @@ defined('BASEPATH') or die('Access Denied');
 
         }
 
+        //Sunday Computation
+        function getSundays(start_date,end_date) {
+            var total_sundays = 0;
+
+            for (var i = start_date; i <= end_date; i.setDate(i.getDate()+1)) {
+                if(i.getDay()==0) total_sundays++;
+            }
+            return total_sundays;
+        }
+
         <?php if ($this->uri->segment(1) == 'payslip-update') { ?>
             window.onload = function() {
                 payrollCompute();
             }
         <?php } ?>
+        
         //KeyUp Function
         $('input').keyup(function() {
 
@@ -159,7 +175,17 @@ defined('BASEPATH') or die('Access Denied');
                         $('.loading-modal').modal('hide');
 
                         toastr.success("Success! Payroll Generated. View now at Payroll Table");
+
+                        var start_date = $('#start_date').val();
+                        var end_date = $('#end_date').val();
+                        var sundays = $('#sundays').val();
+                        var days_worked = $('#days_worked').val();
                         me[0].reset();
+
+                        $('#start_date').val(start_date);
+                        $('#end_date').val(end_date);
+                        $('#sundays').val(sundays);
+                        $('#days_worked').val(days_worked);
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
                         $('.loading-modal').modal('hide');
@@ -221,6 +247,9 @@ defined('BASEPATH') or die('Access Denied');
                         $('.loading-modal').modal('hide');
                         $('#cutoffselect_modal').modal('hide');
                         toastr.success("Success! Proceed please proceed.");
+
+                        sundayCnt = getSundays(date1,date2);
+                        $('#sundays').val(sundayCnt);
                         me[0].reset();
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
