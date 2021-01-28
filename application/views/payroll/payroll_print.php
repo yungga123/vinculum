@@ -168,7 +168,7 @@ $total_net_pay = 0;
                             <td><?php echo $row->firstname.' '.$row->middlename.' '.$row->lastname ?></td>
                             <td><?php echo $row->position ?></td>
                             <td><?php echo number_format($row->daily_rate,2) ?></td>
-                            <td><?php echo number_format($row->days_worked,2) ?></td>
+                            <td><?php echo number_format($row->days_worked - $row->rest_day - $row->sundays,2) ?></td>
                             <td><?php echo number_format($basic_pay,2) ?></td>
                             <td><?php echo $row->ot_hrs ?></td>
                             <td><?php echo number_format($ot_pay,2) ?></td>
