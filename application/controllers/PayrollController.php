@@ -560,7 +560,7 @@ class PayrollController extends CI_Controller {
                 $payroll['restday_days'] = $row->rest_day;
                 $payroll['tax'] = $row->tax;
                 $payroll['sundays'] = $row->sundays;
-                $payroll['cash_adv'] = $row->cash_adv; 
+                $payroll['cash_adv'] = $row->cash_adv;
                 $payroll['other_deduction'] = $row->others; 
                 $payroll['notes'] = $row->notes;
                 $payroll['vl'] = $row->vacation_leave;
