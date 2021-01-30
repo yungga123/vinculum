@@ -160,6 +160,15 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            </a>
           	</li>
 
+			<li class="nav-header">PURCHASING</li>
+
+			<li class="nav-item">
+	            <a href="<?php echo site_url('requisition-form') ?>" class="nav-link<?php echo $requisition_form ?>">
+	              <i class="nav-icon far fa-edit"></i>
+	              <p>Item Requisition <span class="right badge badge-danger">New</span></p>
+	            </a>
+          	</li>
+
 			<li class="nav-header">PROJECTS AND SERVICES</li>
 			  
 	    	<li class="nav-item has-treeview<?php echo $project_report ?>">

@@ -157,3 +157,6 @@ $route['covidsurvey'] = 'CovidSurveyController';
 $route['covidsurvey-table'] = 'CovidSurveyController/covidsurvey_table';
 $route['covidsurvey-delete/(:any)'] = 'CovidSurveyController/update_delete/$1';
 $route['covidsurvey-export'] = 'CovidSurveyController/export';
+
+//RequisitionFormController
+$route['requisition-form'] = 'RequisitionFormController';

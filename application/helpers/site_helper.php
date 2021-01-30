@@ -55,6 +55,7 @@ if(!function_exists('html_variable')) {
 			'project_report_list' => '',
 			'li_payroll' => '',
 			'pullout_scan' => '',
+			'requisition_form' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];
