@@ -6,6 +6,26 @@ defined('BASEPATH') or die('Access Denied');
 
         //Clone/Declone
         $(document).ready(function() {
+
+            //Datatable for Requisition Form
+            var payroll_table = $("#table_pending_request").DataTable({
+                responsive: true,
+                "processing": true,
+                "serverSide": true,
+                "order":[],
+                "ajax":{
+                    url: "<?php echo site_url('RequisitionFormController/fetch_pending_requisition') ?>",
+                    type: "POST"
+                },
+                "columnDefs": [
+                    {
+                        "targets": [],
+                        "orderable": false, 
+                    }
+                ]
+            });
+            //end of datatable
+
             $('.add-item-btn').click(function(){
 
             var newfield = $('.add-item:last').clone();

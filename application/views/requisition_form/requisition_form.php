@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH ')
+defined('BASEPATH') or die('Access Denied');
 ?>
 
 <div class="content-wrapper">
@@ -17,10 +17,13 @@ defined('BASEPATH ')
 
     <section class="content">
         <div class="container-fluid">
+
             <div class="row">
+
                 <div class="col-sm-12">
                     <div class="card">
-                        <?php echo form_open('RequisitionFormController/add_item_requisition_validate',["id" => "form-additem-request"]) ?>
+
+                        <?php echo form_open('RequisitionFormController/add_item_requisition_validate', ["id" => "form-additem-request"]) ?>
                         <div class="card-body">
 
                             <!-- Requestor and Approval -->
@@ -42,7 +45,7 @@ defined('BASEPATH ')
                                                     <?php foreach ($employees as $row) { ?>
                                                         <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
                                                     <?php } ?>
-                                                    
+
                                                 </select>
                                             </div>
 
