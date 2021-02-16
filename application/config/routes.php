@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | In some instances, however, you may want to remap this relationship
 | so that a different class/function is called than the one
 | corresponding to the URL.
-|
+|deletedispatch
 | Please see the user guide for complete details:
 |
 |	https://codeigniter.com/user_guide/general/routing.html
@@ -88,6 +88,14 @@ $route['print-salesdispatch/(:any)'] = 'SalesDispatchController/print_sales_disp
 $route['salesdispatch-table'] = 'SalesDispatchController/sales_dispatch_table';
 $route['update-salesdispatch/(:any)'] = 'SalesDispatchController/update_sales_dispatch/$1';
 
+//Sales Quotation
+$route['makequotation'] = 'SalesQuotationController';
+$route['sales_quotation_list'] = 'SalesQuotationController/salesquotationlist';
+$route['sales_quotation_view/(:any)/(:any)'] = 'SalesQuotationController/salesquotationview/$1/$2';
+$route['sales_quotation_update/(:any)'] = 'SalesQuotationController/sales_quotation_update_view/$1';
+$route['deletequotation/(:any)'] = 'SalesQuotationController/deleteQuotation/$1';
+//$route['sales_quotation_update/(:any)'] = 'SalesQuotationController/$1';
+
 //Customers Controller
 $route['customers'] = 'CustomersController';
 $route['customers-add'] = 'CustomersController/customer_add';
@@ -107,6 +115,12 @@ $route['return-history'] = 'PullOutsController/return_history';
 $route['specific-return-history'] = 'PullOutsController/specific_return_history';
 $route['print-return/(:any)/(:any)'] = 'PullOutsController/print_return_history/$1/$2';
 $route['pulloutbyscan'] = 'PullOutsController/pullout_scan';
+
+
+//Delivery Receipt
+$route['generate_blank_dr'] = 'DeliveryReceiptController';
+$route['generate_dr'] = 'DeliveryReceiptController/get_delivery_receipt';
+
 
 //Technicians Controller
 $route['technicians'] = 'TechniciansController';

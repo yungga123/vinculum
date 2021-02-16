@@ -202,4 +202,6 @@ class CustomersModel extends CI_Model
 	{
 		return $this->db->get('customer_vt')->num_rows();
 	}
+
+	
 }
