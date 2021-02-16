@@ -88,7 +88,7 @@ defined('BASEPATH') or die('Access Denied');
                                 <?php if ($this->uri->segment(1) == 'payroll-filter') {
                                     echo '<tbody>';
                                     foreach ($payroll_filter as $row) {
-                                            $basic_pay = $row->daily_rate*$row->days_worked;
+                                            $basic_pay = $row->daily_rate* ($row->days_worked - $row->sundays);
                                             $regular_holiday_pay = $row->daily_rate*$row->reg_holiday;
                                             $special_holiday_pay = $row->daily_rate*$row->special_holiday*0.3;
                                             $wdo_pay = $row->daily_rate*$row->wdo*1.3;

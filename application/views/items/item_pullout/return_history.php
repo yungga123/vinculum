@@ -82,8 +82,8 @@ foreach ($return_price as $row) {
 										<th>Stocks Pulled out</th>
 										<th>Stocks Returned</th>
 										<th>Pullout to</th>
-										<th>Total Price</th>
-										<th>Return Price</th>
+										<th>Total Cost</th>
+										<th>Return Cost</th>
 									</tr>
 								</thead>
 
@@ -113,8 +113,8 @@ foreach ($return_price as $row) {
 
 						<div class="card-body">
 							<div class="text-right">
-								<p><label>Total Price: <span class="text-red"><?php echo $r_total_price ?></span></label></p>
-								<p><label>Return Price: <span class="text-red"><?php echo $r_return_price ?></span></label></p>
+								<p><label>Total Cost: <span class="text-red"><?php echo $r_total_price ?></span></label></p>
+								<p><label>Return Cost: <span class="text-red"><?php echo $r_return_price ?></span></label></p>
 							</div>
 						</div>
 

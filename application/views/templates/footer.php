@@ -89,6 +89,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.js"></script>
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.js"></script>
 
+	<!-- Select2 -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/select2/js/select2.full.min.js"></script>
+
 
 	<!-- Universal Toaster For Success -->
 	<?php if ($this->session->flashdata('success')): ?>
@@ -153,5 +156,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 	</script>
 
+	<!-- Initialize Select2 -->
+	<script>
+		$(function() {
+			$('.select2').select2();
+		});
+	</script>
 
-	
