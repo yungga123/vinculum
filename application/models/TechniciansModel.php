@@ -65,7 +65,6 @@ class TechniciansModel extends CI_Model {
 		);
 		$this->db->from('technicians');
 		$this->db->where('status <>', 'Resigned');
-		$this->db->where('status <>', 'Terminated');
 		return $this->db->get()->result();
 	}
 

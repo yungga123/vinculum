@@ -76,7 +76,7 @@ foreach ($latest_joborder as $row) {
                                     </div>
                                     <div class="form-group">
                                         <label for="customer">Select Customer</label>
-                                        <select class="form-control select2" name="customer" id="customer">
+                                        <select class="form-control" name="customer" id="customer">
                                             <option value="">--- Please select customer ---</option>
                                             <?php foreach ($customers as $row) { ?>
                                                 <option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName . ' - ' . $row->CustomerID ?></option>
@@ -205,7 +205,7 @@ foreach ($latest_joborder as $row) {
 
                                     <div class="form-group">
                                         <label for="requestor">Requested By</label>
-                                        <select name="requestor" id="requestor" class="form-control select2" placeholder="" aria-describedby="requestor_help">
+                                        <select name="requestor" id="requestor" class="form-control" placeholder="" aria-describedby="requestor_help">
                                             <option value="">--- Please select ---</option>
                                             <?php foreach ($employees as $row) { ?>
                                                 <option value="<?php echo $row->id ?>"><?php echo $row->name . ' | ' . $row->position . ' | ' . $row->id ?></option>

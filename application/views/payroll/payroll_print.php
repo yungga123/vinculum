@@ -90,7 +90,7 @@ $total_net_pay = 0;
                         <td rowspan="3">Position</td>
                         <td rowspan="3">Daily Rate</td>
                         <td colspan="20">EARNINGS</td>
-                        <td colspan="12">DEDUCTIONS</td>
+                        <td colspan="14">DEDUCTIONS</td>
                         <td rowspan="3">Notes</td>
                         <td rowspan="3">Gross Pay</td>
                         <td rowspan="3">Net Pay</td>
@@ -111,6 +111,7 @@ $total_net_pay = 0;
                         <td colspan="2">Absents</td>
                         <td colspan="2">Tardiness</td>
                         <td colspan="2">AWOL</td>
+                        <td colspan="2">RD</td>
                         <td rowspan="2">Cash Adv</td>
                         <td rowspan="2">SSS</td>
                         <td rowspan="2">PAG-IBIG</td>
@@ -137,6 +138,8 @@ $total_net_pay = 0;
                         <td>Days</td>
                         <td>Pay</td>
                         <td>Days</td>
+                        <td>Pay</td>
+                        <td>Days</td>
                         <td>Ded</td>
                         <td>Hrs</td>
                         <td>Ded</td>
@@ -147,7 +150,7 @@ $total_net_pay = 0;
                     </tr>
 
                     <?php foreach ($results as $row) {
-                            $basic_pay = $row->daily_rate*($row->days_worked - $row->rest_day - $row->sundays);
+                            $basic_pay = $row->daily_rate*$row->days_worked;
                             $regular_holiday_pay = $row->daily_rate*$row->reg_holiday;
                             $special_holiday_pay = $row->daily_rate*$row->special_holiday*0.3;
                             $wdo_pay = $row->daily_rate*$row->wdo*1.3;
@@ -155,11 +158,11 @@ $total_net_pay = 0;
                             $night_diff_pay = ($row->daily_rate/8)*0.1*$row->night_diff_hrs;
                             $absents = $row->daily_rate*$row->days_absent;
                             $awol = $row->daily_rate*$row->awol;
-                            //$rest_days = $row->daily_rate*$row->rest_day;
+                            $rest_days = $row->daily_rate*$row->rest_day;
                             $tardiness = ($row->daily_rate/8)*$row->hours_late;
                             $vl_pay = $row->vacation_leave*$row->daily_rate;
                             $sl_pay = $row->sick_leave*$row->daily_rate;
-                            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay+$vl_pay+$sl_pay) - ($absents+$tardiness+$awol);
+                            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay+$vl_pay+$sl_pay) - ($absents+$tardiness+$awol+$rest_days);
                             $contribution = $row->sss_rate+$row->pag_ibig_rate+$row->phil_health_rate;
                             $net_pay = $gross_pay+$row->incentives+$row->commission+$row->thirteenth_month+$row->addback - ($contribution+$row->tax+$row->cash_adv+$row->others);
                         ?>
@@ -167,9 +170,9 @@ $total_net_pay = 0;
                             <td><?php echo $row->emp_id ?></td>
                             <td><?php echo $row->firstname.' '.$row->middlename.' '.$row->lastname ?></td>
                             <td><?php echo $row->position ?></td>
-                            <td><?php echo number_format($row->daily_rate,2) ?></td>
-                            <td><?php echo number_format($row->days_worked - $row->rest_day - $row->sundays,2) ?></td>
-                            <td><?php echo number_format($basic_pay,2) ?></td>
+                            <td><?php echo $row->daily_rate ?></td>
+                            <td><?php echo $row->days_worked ?></td>
+                            <td><?php echo $basic_pay ?></td>
                             <td><?php echo $row->ot_hrs ?></td>
                             <td><?php echo number_format($ot_pay,2) ?></td>
                             <td><?php echo $row->night_diff_hrs ?></td>
@@ -194,8 +197,8 @@ $total_net_pay = 0;
                             <td><?php echo number_format($tardiness,2) ?></td>
                             <td><?php echo $row->awol ?></td>
                             <td><?php echo number_format($awol,2) ?></td>
-                            <!-- <td><?php //echo $row->rest_day ?></td> -->
-                            <!-- <td><?php //echo number_format($rest_days,2) ?></td> -->
+                            <td><?php echo $row->rest_day ?></td>
+                            <td><?php echo number_format($rest_days,2) ?></td>
                             <td><?php echo number_format($row->cash_adv,2) ?></td>
                             <td><?php echo number_format($row->sss_rate,2) ?></td>
                             <td><?php echo number_format($row->pag_ibig_rate,2) ?></td>
