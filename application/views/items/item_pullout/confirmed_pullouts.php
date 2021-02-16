@@ -113,9 +113,9 @@ foreach ($final_price as $row) {
 										<th>Selling Price</th>
 										<th>Stocks Pulled Out</th>
 										<th>Pulled Out to</th>
-										<th>Total Price</th>
-										<th>Less Price</th>
-										<th>Final Price</th>
+										<th>Total Cost</th>
+										<th>Less Cost</th>
+										<th>Final Cost</th>
 										<th>Operation</th>
 									</tr>
 								</thead>
@@ -149,9 +149,9 @@ foreach ($final_price as $row) {
 
 						<div class="card-body">
 							<div class="text-right">
-								<p><label>Total Price (Without Less): <span class="text-red"><?php echo $cpullout_total_price ?> PHP</span></label></p>
+								<p><label>Total Cost (Without Less): <span class="text-red"><?php echo $cpullout_total_price ?> PHP</span></label></p>
 
-								<p><label>Final Price: <span class="text-red"><?php echo $cpullout_final_price ?> PHP</span></label></p>
+								<p><label>Final Cost: <span class="text-red"><?php echo $cpullout_final_price ?> PHP</span></label></p>
 							</div>
 							
 						</div>

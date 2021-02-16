@@ -164,9 +164,14 @@ $route['payroll-delete/(:any)'] = 'PayrollController/deletePayroll/$1';
 $route['joborder'] = 'JobOrderController';
 $route['joborder-list/(:any)'] = 'JobOrderController/job_order_list/$1';
 $route['print-joborder/(:any)'] = 'JobOrderController/print_joborder/$1';
+$route['export-jo/(:any)'] = 'JobOrderController/exportJobOrder/$1';
 
 //CovidSurveyController
 $route['covidsurvey'] = 'CovidSurveyController';
 $route['covidsurvey-table'] = 'CovidSurveyController/covidsurvey_table';
 $route['covidsurvey-delete/(:any)'] = 'CovidSurveyController/update_delete/$1';
 $route['covidsurvey-export'] = 'CovidSurveyController/export';
+
+//RequisitionFormController
+$route['requisition-form'] = 'RequisitionFormController';
+$route['requisition-pending'] = 'RequisitionFormController/pending_requisitions';

@@ -138,7 +138,7 @@ date_default_timezone_set('Asia/Manila');
                 <div class="data-form">
                 </div>
                 <div class="text-right text-bold">
-                    Total Price: <span id="scan_total_price"></span>
+                    Total Cost: <span id="scan_total_price"></span>
                 </div>
             </div>
             <div class="modal-footer">
