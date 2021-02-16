@@ -320,21 +320,17 @@ foreach ($results as $row) {
 					<p>________________________________ <br> 
 					Customer Signature over Printed Name</p>
 				</div>
-
-				
 				
 				<div class="col-4 text-center">
+					<p style="font-weight: bold">Checked By:</p>
+					<p><u>Jenina F. Gaceta</u><br> 
+					HR Officer</p>
+				</div>
+
+				<div class="col-4 text-right">
 					<p style="font-weight: bold">Dispatched By:</p>
 					<p><u>Irish Gale L. Serrano</u><br> 
 					Admin & Accounting</p>
-				</div>
-				<div class="col-2">
-				</div>
-
-				<div class="col-2 text-center">
-					<p style="font-weight: bold">Checked By:</p>
-					<p><u>Marvin Lucas</u><br> 
-					General Manager</p>
 				</div>
 
 			</div>
