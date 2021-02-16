@@ -513,7 +513,6 @@ class PullOutsController extends CI_Controller {
 			$total_price = $this->ConfirmedPullOutsModel->cpullouts_total_price($current_date,$current_date,0);
 			$final_price = $this->ConfirmedPullOutsModel->cpullouts_final_price($current_date,$current_date,0);
 
-
 			$data = html_variable();
 			$data['title'] = 'Confirmed Pullouts';
 			$data['items_menu_status'] = ' menu-open';
@@ -589,7 +588,7 @@ class PullOutsController extends CI_Controller {
 				$data['results_confirm_pullout'] = $results_confirm_pullout;
 				$data['start_date'] = $start_date;
 				$data['end_date'] = $end_date;
-				$data['customer'] = $customer;	
+				$data['customer'] = $customer;
 				$data['total_price'] = $total_price;
 				$data['final_price'] = $final_price;
 				$data['results_customers'] = $this->CustomersModel->getVtCustomersByID();
@@ -671,7 +670,7 @@ class PullOutsController extends CI_Controller {
 			]
 		];
 
-		$this->form_validation->set_error_delimiters('<p>• ','</p>'); 	
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
 
 		$this->form_validation->set_rules($rules);
 
@@ -856,8 +855,6 @@ class PullOutsController extends CI_Controller {
 		echo json_encode($validate);
 
 	}
-
-	
 
 
 }
