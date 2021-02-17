@@ -36,6 +36,7 @@ class PayrollModel extends CI_Model {
             "a.sick_leave",
             "a.rest_day",
             "a.awol",
+            "a.sundays",
             "a.remarks as notes",
             "a.is_deleted",
             "b.lastname",
@@ -114,6 +115,7 @@ class PayrollModel extends CI_Model {
             "b.sss_rate",
             "b.phil_health_rate",
             "b.tax",
+            "a.sundays",
             "b.remarks"
         ]);
 
@@ -169,6 +171,7 @@ class PayrollModel extends CI_Model {
             "b.sss_rate",
             "b.phil_health_rate",
             "b.tax",
+            "a.sundays",
             "b.remarks"
         ]);
 
@@ -225,6 +228,7 @@ class PayrollModel extends CI_Model {
             "b.sss_rate",
             "b.phil_health_rate",
             "b.tax",
+            "a.sundays",
             "b.remarks"
         ]);
 
@@ -282,6 +286,7 @@ class PayrollModel extends CI_Model {
             "b.sss_rate",
             "b.phil_health_rate",
             "b.tax",
+            "a.sundays",
             "b.remarks"
         );
 
@@ -329,6 +334,7 @@ class PayrollModel extends CI_Model {
             "b.sss_rate",
             "b.phil_health_rate",
             "b.tax",
+            "a.sundays",
             "b.remarks"
         );
 
@@ -384,7 +390,8 @@ class PayrollModel extends CI_Model {
                 $this->db->or_like("b.sss_rate", $_POST["search"]["value"]); 
                 $this->db->or_like("b.phil_health_rate", $_POST["search"]["value"]); 
                 $this->db->or_like("b.tax", $_POST["search"]["value"]); 
-                $this->db->or_like("b.remarks", $_POST["search"]["value"]); 
+                $this->db->or_like("b.tax", $_POST["search"]["value"]); 
+                $this->db->or_like("a.sundays", $_POST["search"]["value"]); 
                 $this->db->having("a.is_deleted",0);
             }
 

@@ -98,7 +98,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 					            	 <div class="form-group">
 							        	<label>Customer Name</label>
-								        	<select name="customer_name" id="customer_name" class="form-control">
+								        	<select name="customer_name" id="customer_name" class="form-control select2">
 								        		<option value="">---Select Customer---</option>
 								        		<?php foreach ($GetCustomer as $row): ?>
 								        			<option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName." --- ".$row->CustomerID ?></option>
@@ -112,7 +112,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 					                 <div class="form-group">
 					                	<label>Type of Service</label>
-						                	<select name="service_type" id="service_type" class="form-control">
+						                	<select name="service_type" id="service_type" class="form-control select2">
 						                		<option value=""></option>
 						                		<option value="Installation">Installation</option>
 						                		<option value="Service">Service</option>
@@ -123,7 +123,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label>Assigned Technician 1</label>
-											<select name="assigned_tech1" id="assigned_tech1" class="form-control">
+											<select name="assigned_tech1" id="assigned_tech1" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>
@@ -134,7 +134,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 									<div class="form-group">
 										<label>Assigned Technician 2</label>
-											<select name="assigned_tech2" id="assigned_tech2" class="form-control">
+											<select name="assigned_tech2" id="assigned_tech2" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>
@@ -144,7 +144,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 									</div>
 									<div class="form-group">
 										<label>Assigned Technician 3</label>
-											<select name="assigned_tech3" id="assigned_tech3" class="form-control">
+											<select name="assigned_tech3" id="assigned_tech3" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>
@@ -155,7 +155,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 									<div class="form-group">
 										<label>Assigned Technician 4</label>
-											<select name="assigned_tech4" id="assigned_tech4" class="form-control">
+											<select name="assigned_tech4" id="assigned_tech4" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>
@@ -166,7 +166,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 									<div class="form-group">
 										<label>Assigned Technician 5</label>
-											<select name="assigned_tech5" id="assigned_tech5" class="form-control">
+											<select name="assigned_tech5" id="assigned_tech5" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>
@@ -177,7 +177,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 									<div class="form-group">
 										<label>Assigned Technician 6</label>
-											<select name="assigned_tech6" id="assigned_tech6" class="form-control">
+											<select name="assigned_tech6" id="assigned_tech6" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>
@@ -188,7 +188,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 									<div class="form-group">
 										<label>Assigned Technician 7</label>
-											<select name="assigned_tech7" id="assigned_tech7" class="form-control">
+											<select name="assigned_tech7" id="assigned_tech7" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>
@@ -199,7 +199,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 									<div class="form-group">
 										<label>Assigned Technician 8</label>
-											<select name="assigned_tech8" id="assigned_tech8" class="form-control">
+											<select name="assigned_tech8" id="assigned_tech8" class="form-control select2">
 												<option value="">N/A</option>
 
 												<?php foreach ($GetTech as $row): ?>

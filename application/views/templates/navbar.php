@@ -321,39 +321,31 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		        </ul>
 	      	</li>
 
-	    	<li class="nav-item has-treeview">
-		        <a href="#" class="nav-link<?php echo $ul_salesforms ?>">
-		          <i class="nav-icon fas fa-file"></i>
+			<li class="nav-item has-treeview<?php echo $sales_quotation_status ?>">
+		        <a href="javascript:void(0)" class="nav-link <?php echo $sales_quotation_href ?>">
+		          <i class="nav-icon fas fa-file-alt"></i>
 		          <p>
-		            Sales Forms
+		            Sales Quotation
 		            <i class="fas fa-angle-left right"></i>
 		          </p>
 		        </a>
-		        <ul class="nav nav-treeview" style="display: none;">
-
+		        <ul class="nav nav-treeview">
 		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $make_quote ?>">
+		            <a href="<?php echo site_url('makequotation') ?>" class="nav-link <?php echo $make_quotation ?>">
 		              <i class="far fa-circle nav-icon"></i>
-		              <p>Make Quotation</p>
+		              <p>Create Quotation</p>
 		            </a>
 		          </li>
 
 		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $make_drform ?>">
+		            <a href="<?php echo site_url('sales_quotation_list') ?>" class="nav-link <?php echo $sales_quotation_list ?>">
 		              <i class="far fa-circle nav-icon"></i>
-		              <p>Make DR Form</p>
+		              <p>Quotation List</p>
 		            </a>
 		          </li>
-
-		          <li class="nav-item">
-		            <a href="#" class="nav-link<?php echo $make_warrantyform ?>">
-		              <i class="far fa-circle nav-icon"></i>
-		              <p>Make Warranty Form</p>
-		            </a>
-		          </li>
-
 		        </ul>
-	    	</li>
+
+	      	</li>
 
 	    	<li class="nav-item has-treeview">
 		        <a href="#" class="nav-link<?php echo $ul_formslisting ?>">
