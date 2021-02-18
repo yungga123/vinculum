@@ -217,7 +217,7 @@ class SalesQuotationController extends CI_Controller {
 
     		$this->load->helper('site_helper');
 			$data = html_variable();
-			$data['title'] = 'Sales Quotation Form';
+			$data['title'] = 'Sales Quotation List';
 			$data['sales_quotation_status'] = ' menu-open';
 			$data['sales_quotation_href'] = ' active';
 			$data['sales_quotation_list'] = ' active';
