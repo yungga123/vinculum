@@ -81,3 +81,30 @@ if ($this->uri->segment(1) == 'requisition-pending') {
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="delete-requisition" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>Delete Requisition</b></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <?php echo form_open('RequisitionFormController/delete_requisition',["id" => "form-delete-request"]) ?>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                  <label for="req_form_id_del">Are you sure you want to delete?</label>
+                  <input type="text" class="form-control col-6 offset-3 text-center text-bold" name="req_form_id_del" id="req_form_id_del" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
