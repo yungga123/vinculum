@@ -160,6 +160,7 @@ $route['covidsurvey-export'] = 'CovidSurveyController/export';
 
 //RequisitionFormController
 $route['requisition-form'] = 'RequisitionFormController';
+$route['requisition-update/(:any)'] = 'RequisitionFormController/update_requisition/$1';
 $route['requisition-pending'] = 'RequisitionFormController/pending_requisitions';
 $route['requisition-view/(:any)'] = 'RequisitionFormController/requisition_view/$1';
 $route['requisition-accepted'] = 'RequisitionFormController/accepted_requisitions';
