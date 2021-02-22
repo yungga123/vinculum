@@ -1,0 +1,83 @@
+<?php 
+defined('BASEPATH') or die('Access Denied');
+
+$page_title = '';
+
+if ($this->uri->segment(1) == 'requisition-pending') {
+    $page_title = 'Pending Requisitions';
+} elseif ($this->uri->segment(1) == 'requisition-accepted') {
+    $page_title = 'Accepted Requisitions';
+} elseif ($this->uri->segment(1) == 'requisition-filed') {
+    $page_title = 'Filed Requisitions';
+}
+
+?>
+
+<div class="content-wrapper">
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark"><?php echo $page_title ?></h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover" id="table_pending_request" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th>Req No.</th>
+                                        <th>Operation</th>
+                                        <th>Date Added</th>
+                                        <th>Requested By</th>
+                                        <th>Processed By</th>
+                                        <th>Approved By</th>
+                                        <th>Received By</th>
+                                        <th>Checked By</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade <?php echo ($this->uri->segment(1) != 'requisition-accepted') ? 'req-accept' : 'req-filed' ?>" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <b class="modal-title"><?php echo ($this->uri->segment(1) == 'requisition-accepted') ? 'File Request' : 'Accept Request'  ?></b>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <?php echo ($this->uri->segment(1) == 'requisition-pending') ? form_open('RequisitionFormController/accept_requisition',["id" => "form-accept-req"]) : form_open('RequisitionFormController/file_requisition',["id" => "form-file-req"]) ?>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                  <label for="req_form_id">Req. No.</label>
+                  <input type="text" name="req_form_id" id="req_form_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> ACCEPT</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>

@@ -128,7 +128,7 @@ class RequisitionFormController extends CI_Controller {
             $data['requisition_pending'] = ' active';
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
-			$this->load->view('requisition_form/requisition_pending');
+			$this->load->view('requisition_form/requisition_list');
 			$this->load->view('templates/footer');
             $this->load->view('requisition_form/script');
             
@@ -137,9 +137,62 @@ class RequisitionFormController extends CI_Controller {
 		}
     }
 
-    public function fetch_pending_requisition() {
-        $fetch_data = $this->RequisitionFormModel->requisition_form_datatable();
+    public function accepted_requisitions() {
+        if($this->session->userdata('logged_in')) {
+            
+            $this->load->model('TechniciansModel');
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Accepted Requests';
+            $data['requisition_tree'] = ' menu-open';
+            $data['requisition_display'] = ' block';
+            $data['requisition_form'] = ' active';
+            $data['requisition_accepted'] = ' active';
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('requisition_form/requisition_list');
+			$this->load->view('templates/footer');
+            $this->load->view('requisition_form/script');
+            
+		} else {
+			redirect('','refresh');
+		}
+    }
+
+    public function filed_requisitions() {
+        if($this->session->userdata('logged_in')) {
+            
+            $this->load->model('TechniciansModel');
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Filed Requests';
+            $data['requisition_tree'] = ' menu-open';
+            $data['requisition_display'] = ' block';
+            $data['requisition_form'] = ' active';
+            $data['requisition_filed'] = ' active';
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('requisition_form/requisition_list');
+			$this->load->view('templates/footer');
+            $this->load->view('requisition_form/script');
+            
+		} else {
+			redirect('','refresh');
+		}
+    }
+
+    public function fetch_requisitions($where) {
+        $fetch_data = $this->RequisitionFormModel->requisition_form_datatable($where);
 		$data = array();
+
+        
+        if ($where == '') {
+            $btn_status = '<button type="button" class="btn btn-success text-bold btn-xs btn_req_accept btn-block" data-toggle="modal" data-target=".req-accept"><i class="fas fa-check"></i> ACCEPT</button>';
+        } elseif ($where == 'Accepted') {
+            $btn_status = '<button type="button" class="btn btn-success text-bold btn-xs btn_req_filed btn-block" data-toggle="modal" data-target=".req-filed"><i class="fas fa-file"></i> FILE</button>';
+        } elseif ($where == 'Filed') {
+            $btn_status = '';
+        }
 
 		foreach ($fetch_data as $row) {
 			
@@ -148,32 +201,44 @@ class RequisitionFormController extends CI_Controller {
             $date_added = ($row->date != '0000-00-00 00:00:00') ? date_format(date_create($row->date),'M d, Y h:ia') : 'None';
 
             $sub_array[] = $row->req_id;
+            $sub_array[] = '
+                <button type="button" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</button>
+
+                <button type="button" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash"></i> DISCARD</button>
+
+                <a href="'.site_url('requisition-view/'.$row->req_id).'" class="btn btn-primary text-bold btn-xs btn-block" target="_blank"><i class="fas fa-search"></i> VIEW/PRINT</a>
+                ' .$btn_status;
             $sub_array[] = $date_added;
             $sub_array[] = $row->req_first.' '.$row->req_last;
             $sub_array[] = $row->proc_first.' '.$row->proc_last;
             $sub_array[] = $row->app_first.' '.$row->app_last;
             $sub_array[] = $row->rec_first.' '.$row->rec_last;
             $sub_array[] = $row->check_first.' '.$row->check_last;
-            $sub_array[] = '
-                <button type="button" class="btn btn-warning text-bold btn-xs"><i class="fas fa-edit"></i></button>
-
-                <button type="button" class="btn btn-danger text-bold btn-xs"><i class="fas fa-trash"></i></button>
-
-                <button type="button" class="btn btn-success text-bold btn-xs"><i class="fas fa-search"></i></button>
-            ';
+            
             
 			$data[] = $sub_array;
 		}
 		$output = array(
 			"draw"	=>	intval($_POST["draw"]),
-			"recordsTotal" => $this->RequisitionFormModel->get_all_requisition_form_data(),
-			"recordsFiltered" => $this->RequisitionFormModel->filter_requisition_form_data(),
+			"recordsTotal" => $this->RequisitionFormModel->get_all_requisition_form_data($where),
+			"recordsFiltered" => $this->RequisitionFormModel->filter_requisition_form_data($where),
 			"data" => $data
 		);
 
 		echo json_encode($output);
     }
+
+    public function fetch_pending_requisitions() {
+        return $this->fetch_requisitions('');
+    }
+
+    public function fetch_accepted_requisitions() {
+        return $this->fetch_requisitions('Accepted');
+    }
     
+    public function fetch_filed_requisitions() {
+        return $this->fetch_requisitions('Filed');
+    }
 
     public function add_item_requisition_validate() {
         $validate = [
@@ -219,6 +284,92 @@ class RequisitionFormController extends CI_Controller {
 					'request_form_id' => $req_id
 				]);
 			}
+            
+		} 
+		else {
+		    $validate['errors'] = validation_errors();
+		}
+        echo json_encode($validate);
+    }
+
+    public function requisition_view($id) {
+
+        $data = [
+            'title' => 'Requisition View',
+            'results_requisition' => $this->RequisitionFormModel->get_requisition_where($id),
+            'results_req_items' => $this->RequisitionFormModel->get_requisition_items($id)
+        ];
+        $this->load->view('requisition_form/requisition_view',$data);
+    }
+
+    public function accept_requisition() {
+        $validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+        $rules = [
+
+            [
+                'field' => 'req_form_id',
+                'label' => 'Req. No.',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please select an item.'
+                ]
+            ]
+
+        ];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+
+            $this->RequisitionFormModel->update_request_items($this->input->post('req_form_id'),[
+                'status' => 'Accepted'
+            ]);
+            
+		} 
+		else {
+		    $validate['errors'] = validation_errors();
+		}
+        echo json_encode($validate);
+    }
+
+    public function file_requisition() {
+        $validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+        $rules = [
+
+            [
+                'field' => 'req_form_id',
+                'label' => 'Req. No.',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please select an item.'
+                ]
+            ]
+
+        ];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+
+            $this->RequisitionFormModel->update_request_items($this->input->post('req_form_id'),[
+                'status' => 'Filed'
+            ]);
             
 		} 
 		else {

@@ -22,7 +22,7 @@ defined('BASEPATH') or die('Access Denied');
 
                 <div class="col-sm-12">
                     <div class="card">
-
+                        
                         <?php echo form_open('RequisitionFormController/add_item_requisition_validate', ["id" => "form-additem-request"]) ?>
                         <div class="card-body">
 

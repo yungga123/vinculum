@@ -60,6 +60,8 @@ if(!function_exists('html_variable')) {
 			'requisition_add' => '',
 			'requisition_display' => '',
 			'requisition_pending' => '',
+			'requisition_accepted' => '',
+			'requisition_filed' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];
