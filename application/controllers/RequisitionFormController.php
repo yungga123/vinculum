@@ -50,10 +50,7 @@ class RequisitionFormController extends CI_Controller {
             [
                 'field' => 'unit_cost[]',
                 'label' => 'Unit Cost',
-                'rules' => 'trim|required|greater_than_equal_to[0]|max_length[21]',
-                'errors' => [
-                    'required' => 'Please provide unit cost.'
-                ]
+                'rules' => 'trim|greater_than_equal_to[0]|max_length[21]'
             ],
             [
                 'field' => 'qty[]',
@@ -66,10 +63,7 @@ class RequisitionFormController extends CI_Controller {
             [
                 'field' => 'supplier[]',
                 'label' => 'Qty',
-                'rules' => 'trim|required|max_length[500]',
-                'errors' => [
-                    'required' => 'Please provide Supplier.'
-                ]
+                'rules' => 'trim|max_length[500]'
             ],
             [
                 'field' => 'date_needed[]',
@@ -228,7 +222,7 @@ class RequisitionFormController extends CI_Controller {
             $sub_array[] = '
                 <a href="'.site_url('requisition-update/'.$row->req_id).'" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</a>
 
-                <button type="button" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash"></i> DISCARD</button>
+                <button type="button" class="btn btn-danger text-bold btn-xs btn-block btn_req_del" data-toggle="modal" data-target="#delete-requisition"><i class="fas fa-trash"></i> DISCARD</button>
 
                 <a href="'.site_url('requisition-view/'.$row->req_id).'" class="btn btn-primary text-bold btn-xs btn-block" target="_blank"><i class="fas fa-search"></i> VIEW/PRINT</a>
                 ' .$btn_status;
@@ -467,6 +461,44 @@ class RequisitionFormController extends CI_Controller {
 
             $this->RequisitionFormModel->update_request_items($this->input->post('req_form_id'),[
                 'status' => 'Filed'
+            ]);
+            
+		} 
+		else {
+		    $validate['errors'] = validation_errors();
+		}
+        echo json_encode($validate);
+    }
+
+    public function delete_requisition() {
+        $validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+        $rules = [
+
+            [
+                'field' => 'req_form_id_del',
+                'label' => 'Req. No.',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please select an item.'
+                ]
+            ]
+
+        ];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+
+            $this->RequisitionFormModel->update_requesition($this->input->post('req_form_id_del'),[
+                'is_deleted' => '1'
             ]);
             
 		} 

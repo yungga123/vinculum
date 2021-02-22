@@ -107,6 +107,56 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                 });
             });
 
+            //Form Delete item Request
+            $('#form-delete-request').submit(function(e) {
+                e.preventDefault();
+                
+                var me = $(this);
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                $(':submit').attr('disabled','disabled');
+                $('.loading-modal').modal();
+
+                //ajax
+                $.ajax({
+                    url: me.attr('action'),
+                    type: 'post',
+                    data: me.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success == true) {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.success("Success! Item Request was deleted!");
+                            me[0].reset();
+                        } else {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.error(response.errors);
+                            
+                        }
+
+                    }
+                });
+            });
+
             //Form Update item Request
             $('#form-updateitem-request').submit(function(e) {
                 e.preventDefault();
@@ -289,6 +339,20 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                     $('#req_form_id').val(rowdata[0]);
                 } else if (rowdata == undefined) {
                     $('#req_form_id').val(data[0]);
+                }
+
+            });
+
+            //Fetching Data in Pending Requisition (For File)
+            $('#table_pending_request tbody').on('click','.btn_req_del',function(){
+
+                var data = table_pending_request.row($(this).parents('tr')).data();
+                var rowdata = table_pending_request.row(this).data();
+
+                if (data == undefined) {
+                    $('#req_form_id_del').val(rowdata[0]);
+                } else if (rowdata == undefined) {
+                    $('#req_form_id_del').val(data[0]);
                 }
 
             });
