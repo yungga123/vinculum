@@ -1,5 +1,21 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
+
+
+if ($this->uri->segment(1) == 'requisition-update') {
+    $req_data = array();
+
+    foreach ($req_info as $row) {
+        $req_data = [
+            'processed_by' => $row->processed_by,
+            'approved_by' => $row->approved_by,
+            'requested_by' => $row->requested_by,
+            'received_by' => $row->received_by,
+            'checked_by' => $row->checked_by
+        ];
+    }
+}
+
 ?>
 
 <div class="content-wrapper">
@@ -8,7 +24,7 @@ defined('BASEPATH') or die('Access Denied');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Item Requisition</h1>
+                    <h1 class="m-0 text-dark"><?php echo ($this->uri->segment(1) == 'requisition-update') ? 'Update Requisition' : 'Item Requisition' ?></h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -23,7 +39,7 @@ defined('BASEPATH') or die('Access Denied');
                 <div class="col-sm-12">
                     <div class="card">
                         
-                        <?php echo form_open('RequisitionFormController/add_item_requisition_validate', ["id" => "form-additem-request"]) ?>
+                        <?php echo ($this->uri->segment(1) == 'requisition-update') ? form_open('RequisitionFormController/update_item_requisition_validate', ["id" => "form-updateitem-request"]) : form_open('RequisitionFormController/add_item_requisition_validate', ["id" => "form-additem-request"]) ?>
                         <div class="card-body">
 
                             <!-- Requestor and Approval -->
@@ -43,7 +59,9 @@ defined('BASEPATH') or die('Access Denied');
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
-                                                        <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                     <?php } ?>
 
                                                 </select>
@@ -56,7 +74,9 @@ defined('BASEPATH') or die('Access Denied');
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
-                                                        <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['processed_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -69,7 +89,9 @@ defined('BASEPATH') or die('Access Denied');
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
-                                                        <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['approved_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -80,7 +102,9 @@ defined('BASEPATH') or die('Access Denied');
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
-                                                        <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['received_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -92,7 +116,9 @@ defined('BASEPATH') or die('Access Denied');
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
-                                                        <option value="<?php echo $row->id ?>"><?php echo $row->name ?></option>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -108,49 +134,101 @@ defined('BASEPATH') or die('Access Denied');
                                 </div>
 
                                 <div class="card-body">
+
+                                    <?php if ($this->uri->segment(1) == 'requisition-update') { ?>
+                                        <input name="req_id" type="hidden" value="<?php echo $this->uri->segment(2) ?>">
+                                        <?php foreach ($req_items as $row) { ?>
+                                            <div class="row add-item">
+                                                <input name="item_id[]" type="hidden" value="<?php echo $row->item_id ?>">
+                                                <div class="col-sm-4">
+                                                    <div class="form-group">
+                                                        <label for="description">Description</label>
+                                                        <input type="text" name="description[]" class="form-control" placeholder="" value="<?php echo $row->description ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-1">
+                                                    <div class="form-group">
+                                                        <label for="unit_cost">Cost</label>
+                                                        <input type="text" name="unit_cost[]" class="form-control" placeholder="" value="<?php echo $row->unit_cost ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-1">
+                                                    <div class="form-group">
+                                                        <label for="qty">Qty</label>
+                                                        <input type="text" name="qty[]" class="form-control" placeholder="" value="<?php echo $row->qty ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <label for="supplier">Supplier</label>
+                                                        <input type="text" name="supplier[]" class="form-control" placeholder="" value="<?php echo $row->supplier ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <label for="date_needed">Date Needed</label>
+                                                        <input type="date" name="date_needed[]" class="form-control" placeholder="" value="<?php echo $row->date_needed ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-2">
+                                                    <div class="form-group">
+                                                        <label for="purpose">Purpose/s</label>
+                                                        <input type="text" name="purpose[]" class="form-control" placeholder="" value="<?php echo $row->purpose ?>">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                    <?php } else { ?>
                                     <div class="row add-item">
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label for="description">Description</label>
-                                                <input type="text" name="description[]" id="description" class="form-control" placeholder="">
+                                                <input type="text" name="description[]" class="form-control" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-1">
                                             <div class="form-group">
                                                 <label for="unit_cost">Cost</label>
-                                                <input type="text" name="unit_cost[]" id="unit_cost" class="form-control" placeholder="">
+                                                <input type="text" name="unit_cost[]" class="form-control" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-1">
                                             <div class="form-group">
                                                 <label for="qty">Qty</label>
-                                                <input type="text" name="qty[]" id="qty" class="form-control" placeholder="">
+                                                <input type="text" name="qty[]" class="form-control" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label for="supplier">Supplier</label>
-                                                <input type="text" name="supplier[]" id="supplier" class="form-control" placeholder="">
+                                                <input type="text" name="supplier[]" class="form-control" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label for="date_needed">Date Needed</label>
-                                                <input type="date" name="date_needed[]" id="date_needed" class="form-control" placeholder="">
+                                                <input type="date" name="date_needed[]" class="form-control" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label for="purpose">Purpose/s</label>
-                                                <input type="text" name="purpose[]" id="purpose" class="form-control" placeholder="">
+                                                <input type="text" name="purpose[]" class="form-control" placeholder="">
                                             </div>
                                         </div>
                                     </div>
+                                    <?php } ?>
+                                    
                                 </div>
 
                                 <div class="card-footer">

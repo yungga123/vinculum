@@ -10,16 +10,51 @@ class RequisitionFormModel extends CI_Model {
         $this->db->insert('requisition_form_items',$data);
     }
 
-    public function update_request_items($id,$data) {
+    public function update_requesition($id,$data) {
         $this->db->where('id',$id);
         $this->db->update('requisition_form',$data);
     }
+
+    public function update_requesition_items($id,$data) {
+        $this->db->where('id',$id);
+        $this->db->update('requisition_form_items',$data);
+    }
+
+    public function get_new_added_reqitem($req_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('requisition_form_items');
+		$this->db->where('request_form_id',$req_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+
+    public function remove_item_request($id,$item_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('request_form_id',$item_id);
+		$this->db->delete('requisition_form_items');
+	}
 
     public function get_requisition_form() {
 		$this->db->select('*');
 		$this->db->from('requisition_form');
 		$this->db->order_by('id','DESC');
 		$this->db->limit(1);
+		return $this->db->get()->result();
+    }
+
+    public function get_all_requisition_form_where($id) {
+		$this->db->select('*');
+		$this->db->from('requisition_form');
+		$this->db->where('id',$id);
 		return $this->db->get()->result();
     }
 
