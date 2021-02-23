@@ -162,7 +162,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 			<li class="nav-header">PURCHASING</li>
 
-			<li>
+			<li class="nav-item has-treeview">
 				<ul class="nav nav-treeview" style="display: <?php echo $requisition_display ?>">
 					<li class="nav-item">
 						<a href="<?php echo site_url('requisition-form') ?>" class="nav-link <?php echo $requisition_add ?>">
