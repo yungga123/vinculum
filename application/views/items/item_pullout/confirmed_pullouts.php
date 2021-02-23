@@ -83,6 +83,8 @@ foreach ($final_price as $row) {
 							<a href="<?php echo site_url('print-pullout/'.$start_date.'/'.$end_date.'/'.$customer) ?>" class="btn btn-success btn-block text-bold" target="_blank"><i class="fas fa-print"></i> PRINT THIS</a>
 
 							<a class="btn btn-primary btn-block text-bold" href="<?php echo site_url('return-history') ?>"><i class="fas fa-history"></i> RETURN OF ITEMS LOGS</a>
+
+							<button type="button" class="btn btn-success btn-block text-bold btn-get-cpullout" title="Return" data-toggle="modal" data-target=".modal_generate_dr"><i class="fas fa-print"> GENERATE DELIVERY RECEIPT</i></button>
 						</div>
 					</div>
 				</div>
@@ -215,3 +217,70 @@ foreach ($final_price as $row) {
 
 
 
+	
+<div class="modal fade modal_generate_dr" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-m">
+		<div class="modal-content">
+			<div class="modal-body">
+				<?php echo form_open('generate_dr',["id" => "form-dr", "target" => "_blank"]) ?>
+				<h5 style="font-size: 22px; font-weight: bold;" class="text-center">Generate Delivery Receipt</h5>
+
+				<div class="form-group">
+					<label for="dr_clientname" aria-describedby="helpId">Client name</label>
+					<select name="dr_clientname" id="dr_clientname" class="form-control">
+						<option value="">---</option>
+							<?php if (count($results_customers) != 0) { ?>
+								<?php foreach ($results_customers as $row) { ?>
+									<option value="<?php echo $row->CustomerID ?>"><?php echo $row->CompanyName.' - '.$row->CustomerID ?></option>
+								<?php } ?>
+							<?php } ?>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<input type="text" class="form-control" name="dr_daterange" id="dr_daterange" readonly>
+				</div>
+					<input type="hidden" class="form-control" name="dr_start_date" id="dr_start_date">
+					<input type="hidden" class="form-control" name="dr_end_date" id="dr_end_date">
+
+				<div class="form-group">
+					<div class="row">
+                        <div class="col-sm-4">
+                            <label>Payment Mode:</label>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="payment_mode" value="DP">
+                                            DP
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="payment_mode" value="COD">
+   	                                        COD
+                                    </label>
+                                </div>
+                        </div>
+                        <div class="col-sm-8">
+                        		<label>Quotation Amount:</label>
+                        		<input class="form-control" type="text" name="dr_amount" id="dr_amount" placeholder="Enter Amount">
+                        </div>
+                    </div>
+				</div>
+
+				<div class="form-group">
+					<div class="row">
+						<div class="col-sm-6">
+							<button type="submit" class="btn btn-block btn-success text-bold"><i class="fas fa-check"></i> Generate DR</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" class="btn btn-block btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+						</div>
+					</div>
+				</div>
+				<?php echo form_close() ?>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
