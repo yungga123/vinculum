@@ -835,6 +835,14 @@ defined('BASEPATH') or die('Access Denied');
 
 	<!-- Date Range Pickers -->
 	<script>
+		$('#dr_daterange').daterangepicker();
+
+		$('#dr_daterange').on('apply.daterangepicker', function(ev, picker) {
+
+			$('#dr_start_date').val(picker.startDate.format('YYYY-MM-DD'));
+			$('#dr_end_date').val(picker.endDate.format('YYYY-MM-DD'));
+		});
+		
 		$('#conpulledout_daterange').daterangepicker();
 
 		$('#conpulledout_daterange').on('apply.daterangepicker', function(ev, picker) {
