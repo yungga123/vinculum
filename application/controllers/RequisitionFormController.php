@@ -421,7 +421,7 @@ class RequisitionFormController extends CI_Controller {
             $validate['success'] = true;
 
 
-            $this->RequisitionFormModel->update_request_items($this->input->post('req_form_id'),[
+            $this->RequisitionFormModel->update_requesition($this->input->post('req_form_id'),[
                 'status' => 'Accepted'
             ]);
             
@@ -459,7 +459,7 @@ class RequisitionFormController extends CI_Controller {
             $validate['success'] = true;
 
 
-            $this->RequisitionFormModel->update_request_items($this->input->post('req_form_id'),[
+            $this->RequisitionFormModel->update_requesition($this->input->post('req_form_id'),[
                 'status' => 'Filed'
             ]);
             
