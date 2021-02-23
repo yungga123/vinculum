@@ -10,6 +10,39 @@ class RequisitionFormModel extends CI_Model {
         $this->db->insert('requisition_form_items',$data);
     }
 
+    public function update_requesition($id,$data) {
+        $this->db->where('id',$id);
+        $this->db->update('requisition_form',$data);
+    }
+
+    public function update_requesition_items($id,$data) {
+        $this->db->where('id',$id);
+        $this->db->update('requisition_form_items',$data);
+    }
+
+    public function get_new_added_reqitem($req_id) {
+
+		$id = '';
+		$this->db->select('*');
+		$this->db->from('requisition_form_items');
+		$this->db->where('request_form_id',$req_id);
+		$this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		$results = $this->db->get()->result();
+		foreach ($results as $row) {
+			$id = $row->id;
+		}
+		return $id;
+	}
+
+    public function remove_item_request($id,$item_id) {
+		for ($i=0; $i < count($id); $i++) { 
+			$this->db->where('id !=',$id[$i][0]);
+		}
+		$this->db->where('request_form_id',$item_id);
+		$this->db->delete('requisition_form_items');
+	}
+
     public function get_requisition_form() {
 		$this->db->select('*');
 		$this->db->from('requisition_form');
@@ -17,6 +50,68 @@ class RequisitionFormModel extends CI_Model {
 		$this->db->limit(1);
 		return $this->db->get()->result();
     }
+
+    public function get_all_requisition_form_where($id) {
+		$this->db->select('*');
+		$this->db->from('requisition_form');
+		$this->db->where('id',$id);
+		return $this->db->get()->result();
+    }
+
+    public function get_requisition_where($id) {
+        $this->db->select([
+            'a.id as req_id',
+            'a.date',
+            'a.processed_by',
+            'a.approved_by',
+            'a.requested_by',
+            'a.received_by',
+            'a.checked_by',
+            'a.is_deleted',
+            'b.lastname as req_last',
+            'b.firstname as req_first',
+            'b.middlename as req_mid',
+            'c.lastname as proc_last',
+            'c.firstname as proc_first',
+            'c.middlename as proc_mid',
+            'd.lastname as app_last',
+            'd.firstname as app_first',
+            'd.middlename as app_mid',
+            'e.lastname as rec_last',
+            'e.firstname as rec_first',
+            'e.middlename as rec_mid',
+            'f.lastname as check_last',
+            'f.firstname as check_first',
+            'f.middlename as check_mid'
+        ]);
+
+        $this->db->from('requisition_form as a');
+        $this->db->join('technicians as b','a.requested_by=b.id','left');
+        $this->db->join('technicians as c','a.processed_by=c.id','left');
+        $this->db->join('technicians as d','a.approved_by=d.id','left');
+        $this->db->join('technicians as e','a.received_by=e.id','left');
+        $this->db->join('technicians as f','a.checked_by=f.id','left');
+        $this->db->where('a.id',$id);
+        return $this->db->get()->result();
+    }
+
+    public function get_requisition_items($id) {
+        $this->db->select([
+            'id as item_id',
+            'request_form_id',
+            'description',
+            'unit_cost',
+            'qty',
+            'supplier',
+            'date_needed',
+            'purpose'
+        ]);
+        $this->db->from('requisition_form_items');
+        $this->db->where('request_form_id',$id);
+        return $this->db->get()->result();
+    }
+
+   
     
     //*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
         var $table = "requisition_form as a";
@@ -35,6 +130,7 @@ class RequisitionFormModel extends CI_Model {
             'a.received_by',
             'a.checked_by',
             'a.is_deleted',
+            'a.status',
             'b.lastname as req_last',
             'b.firstname as req_first',
             'b.middlename as req_mid',
@@ -60,6 +156,7 @@ class RequisitionFormModel extends CI_Model {
             'a.requested_by',
             'a.received_by',
             'a.checked_by',
+            'a.status',
             'a.is_deleted',
             'b.lastname',
             'b.firstname',
@@ -81,7 +178,7 @@ class RequisitionFormModel extends CI_Model {
             'f.middlename'
         );
 
-        public function requisition_form_query(){
+        public function requisition_form_query($where){
 
             $this->db->select($this->select_column);
             $this->db->from($this->table);
@@ -114,6 +211,7 @@ class RequisitionFormModel extends CI_Model {
                 $this->db->or_like("f.lastname", $_POST["search"]["value"]);
                 $this->db->or_like("f.firstname", $_POST["search"]["value"]);
                 $this->db->or_like("f.middlename", $_POST["search"]["value"]);
+                $this->db->having("a.status",$where);
                 $this->db->having("a.is_deleted",0);
             }
 
@@ -125,9 +223,9 @@ class RequisitionFormModel extends CI_Model {
 
         }
 
-        public function requisition_form_datatable() {
+        public function requisition_form_datatable($where) {
 
-            $this->requisition_form_query();
+            $this->requisition_form_query($where);
             if($_POST["length"] != -1) {
                 $this->db->limit($_POST["length"],$_POST["start"]);
             }
@@ -135,15 +233,16 @@ class RequisitionFormModel extends CI_Model {
             return $query->result();
         }
 
-        public function filter_requisition_form_data() {
-            $this->requisition_form_query();
+        public function filter_requisition_form_data($where) {
+            $this->requisition_form_query($where);
             $query = $this->db->get();
             return $query->num_rows();
         }
 
-        public function get_all_requisition_form_data() {
+        public function get_all_requisition_form_data($where) {
             $this->db->select("*");
             $this->db->from($this->table);
+            $this->db->where('a.status',$where);
             $this->db->where('a.is_deleted',0);
             return $this->db->count_all_results();
         }

@@ -160,6 +160,40 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            </a>
           	</li>
 
+			<li class="nav-header">PURCHASING</li>
+
+			<li>
+				<ul class="nav nav-treeview" style="display: <?php echo $requisition_display ?>">
+					<li class="nav-item">
+						<a href="<?php echo site_url('requisition-form') ?>" class="nav-link <?php echo $requisition_add ?>">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Add Request</p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('requisition-pending') ?>" class="nav-link <?php echo $requisition_pending ?>">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Pending Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_pending_requisitions() ?></span></p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('requisition-accepted') ?>" class="nav-link <?php echo $requisition_accepted ?>">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Accepted Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_accepted_requisitions() ?></span></p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('requisition-filed') ?>" class="nav-link <?php echo $requisition_filed ?>">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Filed Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_filed_requisitions() ?></span></p>
+						</a>
+					</li>
+				</ul>
+			</li>
+
 			<li class="nav-header">PROJECTS AND SERVICES</li>
 			  
 	    	<li class="nav-item has-treeview<?php echo $project_report ?>">
@@ -398,4 +432,3 @@ defined('BASEPATH') or exit('No direct script access allowed.');
     </div>
     <!-- /.sidebar -->
 </aside>
-

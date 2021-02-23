@@ -169,3 +169,11 @@ $route['covidsurvey'] = 'CovidSurveyController';
 $route['covidsurvey-table'] = 'CovidSurveyController/covidsurvey_table';
 $route['covidsurvey-delete/(:any)'] = 'CovidSurveyController/update_delete/$1';
 $route['covidsurvey-export'] = 'CovidSurveyController/export';
+
+//RequisitionFormController
+$route['requisition-form'] = 'RequisitionFormController';
+$route['requisition-update/(:any)'] = 'RequisitionFormController/update_requisition/$1';
+$route['requisition-pending'] = 'RequisitionFormController/pending_requisitions';
+$route['requisition-view/(:any)'] = 'RequisitionFormController/requisition_view/$1';
+$route['requisition-accepted'] = 'RequisitionFormController/accepted_requisitions';
+$route['requisition-filed'] = 'RequisitionFormController/filed_requisitions';
