@@ -198,7 +198,3 @@ foreach ($results_requisition as $row) {
 <script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
-
-<script type="text/javascript"> 
-  window.addEventListener("load", window.print());
-</script>
