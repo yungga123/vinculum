@@ -8,7 +8,8 @@ $requisition_data = [
     'approved_by' => '',
     'requested_by' => '',
     'checked_by' => '',
-    'received_by' => ''
+    'received_by' => '',
+    'total_price' => 0,
 ];
 
 foreach ($results_requisition as $row) {
@@ -139,7 +140,11 @@ foreach ($results_requisition as $row) {
                         <td class="text-center"><?php echo ($row->date_needed != '0000-00-00') ? date_format(date_create($row->date_needed),'m/d/Y') : '' ?></td>
                         <td><?php echo $row->purpose ?></td>
                     </tr>
+                    <?php $requisition_data['total_price'] = $row->unit_cost*$row->qty + $requisition_data['total_price']  ?>
                     <?php } ?>
+                    <tr>
+                        <td colspan="7" class="text-bold">Total Price: <span class="text-danger"><?php echo number_format($requisition_data['total_price'],2) ?></span></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
