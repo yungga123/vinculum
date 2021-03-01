@@ -177,3 +177,6 @@ $route['requisition-pending'] = 'RequisitionFormController/pending_requisitions'
 $route['requisition-view/(:any)'] = 'RequisitionFormController/requisition_view/$1';
 $route['requisition-accepted'] = 'RequisitionFormController/accepted_requisitions';
 $route['requisition-filed'] = 'RequisitionFormController/filed_requisitions';
+
+//HomeAlarmFormController
+$route['home-alarm-application'] = 'HomeAlarmFormController';
