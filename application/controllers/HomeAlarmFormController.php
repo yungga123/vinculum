@@ -5,6 +5,8 @@ class HomeAlarmFormController extends CI_Controller {
 
     public function __construct() {
         Parent::__construct();
+        $this->load->model('HomeAlarmFormModel');
+        date_default_timezone_set('Asia/Manila');
 
     }
 
@@ -286,6 +288,67 @@ class HomeAlarmFormController extends CI_Controller {
 
 		if ($this->form_validation->run()) {
             $validate['success'] = true;
+            $customer_id = '';
+
+            $data_client = [
+                'datetime_added' => date('Y-m-d h:i:s'),
+                'first_name' => strtoupper($this->input->post('first_name')),
+                'middle_name' => strtoupper($this->input->post('middle_name')),
+                'last_name' => strtoupper($this->input->post('last_name')),
+                'bdate' => $this->input->post('bdate_year').'-'.$this->input->post('bdate_month').'-'.$this->input->post('bdate_day'),
+                'email_address' => $this->input->post('email_address'),
+                'nationality' => strtoupper($this->input->post('nationality')),
+                'residence_address' => strtoupper($this->input->post('residence_address')),
+                'contact_no' => strtoupper($this->input->post('contact_no')),
+                'spouse_first_name' => strtoupper($this->input->post('spouse_first_name')),
+                'spouse_middle_name' => strtoupper($this->input->post('spouse_middle_name')),
+                'spouse_last_name' => strtoupper($this->input->post('spouse_last_name')),
+                'spouse_bdate' => $this->input->post('spouse_bdate_year').'-'.$this->input->post('spouse_bdate_month').'-'.$this->input->post('spouse_bdate_day'),
+                'spouse_email_address' => $this->input->post('spouse_email_address'),
+                'spouse_nationality' => strtoupper($this->input->post('spouse_nationality')),
+                'spouse_contact_no' => strtoupper($this->input->post('spouse_contact_no')),
+                'household_count' => $this->input->post('household_count'),
+                'house_floors' => $this->input->post('house_floors'),
+                'signal_strength' => $this->input->post('signal_strength'),
+                'demo_kit_presentation' => strtoupper($this->input->post('demo_kit_presentation')),
+                'property_type' => strtoupper($this->input->post('property_type')),
+                'helpers_number' => $this->input->post('helpers_number'),
+                'speed_test' => strtoupper($this->input->post('speed_test')),
+                'gps_coordinate' => strtoupper($this->input->post('gps_coordinate')),
+                'pets_number' => $this->input->post('pets_number'),
+                'lot_area' => $this->input->post('lot_area'),
+                'isp' => strtoupper($this->input->post('isp'))
+            ];
+
+            $this->HomeAlarmFormModel->insert_client($data_client);
+
+            foreach ($this->HomeAlarmFormModel->get_latest_homealarm_client() as $row) {
+                $customer_id = $row->id;
+            }
+
+
+            $data_transaction = [
+                'customer_id' => $customer_id,
+                'wireless_keypad' => $this->input->post('wireless_keypad'),
+                'magnetic_contact' => $this->input->post('magnetic_contact'),
+                'displacement_detector' => $this->input->post('displacement_detector'),
+                'indoor_motionsensor' => $this->input->post('indoor_motionsensor'),
+                'water_leak_detector' => $this->input->post('water_leak_detector'),
+                'indoor_siren' => $this->input->post('indoor_siren'),
+                'ic_card_tags' => $this->input->post('ic_card_tags'),
+                'outdoor_motionsensor' => $this->input->post('outdoor_motionsensor'),
+                'alarm_output_expander' => $this->input->post('alarm_output_expander'),
+                'outdoor_siren' => $this->input->post('outdoor_siren'),
+                'remote_keyfob' => $this->input->post('remote_keyfob'),
+                'panic_button' => $this->input->post('panic_button'),
+                'host_panel' => $this->input->post('host_panel'),
+                'smoke_detector' => $this->input->post('smoke_detector'),
+                'wireless_repeater' => $this->input->post('wireless_repeater'),
+                'cctv' => $this->input->post('cctv'),
+                'final_remarks' => strtoupper($this->input->post('final_remarks'))
+            ];
+
+            $this->HomeAlarmFormModel->insert_transaction($data_transaction);
 		} 
 		else {
 		    $validate['errors'] = validation_errors();
