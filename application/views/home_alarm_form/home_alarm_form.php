@@ -1,5 +1,73 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
+if ($this->uri->segment(1) == 'home-alarm-update') {
+
+	$client_data = [
+		'id' => 0,
+		'datetime_added' => '',
+		'first_name' => '',
+		'middle_name' => '',
+		'last_name' => '',
+		'bdate' => '',
+		'email_address' => '',
+		'nationality' => '',
+		'residence_address' => '',
+		'contact_no' => '',
+		'spouse_first_name' => '',
+		'spouse_middle_name' => '',
+		'spouse_last_name' => '',
+		'spouse_bdate' => '',
+		'spouse_email_address' => '',
+		'spouse_nationality' => '',
+		'spouse_contact_no' => '',
+		'household_count' => 0,
+		'house_floors' => 0,
+		'signal_strength' => 0,
+		'demo_kit_presentation' => '',
+		'property_type' => '',
+		'helpers_number' => 0,
+		'speed_test' => 0,
+		'gps_coordinate' => '',
+		'pets_number' => 0,
+		'lot_area' => 0,
+		'isp' => ''
+	];
+
+	foreach ($clients as $row) {
+		$client_data = [
+			'id' => $row->id,
+			'datetime_added' => $row->datetime_added,
+			'first_name' => $row->first_name,
+			'middle_name' => $row->middle_name,
+			'last_name' => $row->last_name,
+			'bdate' => $row->bdate,
+			'email_address' => $row->email_address,
+			'nationality' => $row->nationality,
+			'residence_address' => $row->residence_address,
+			'contact_no' => $row->contact_no,
+			'spouse_first_name' => $row->spouse_first_name,
+			'spouse_middle_name' => $row->spouse_middle_name,
+			'spouse_last_name' => $row->spouse_last_name,
+			'spouse_bdate' => $row->spouse_bdate,
+			'spouse_email_address' => $row->spouse_email_address,
+			'spouse_nationality' => $row->spouse_nationality,
+			'spouse_contact_no' => $row->spouse_contact_no,
+			'household_count' => $row->household_count,
+			'house_floors' => $row->house_floors,
+			'signal_strength' => $row->signal_strength,
+			'demo_kit_presentation' => $row->demo_kit_presentation,
+			'property_type' => $row->property_type,
+			'helpers_number' => $row->helpers_number,
+			'speed_test' => $row->speed_test,
+			'gps_coordinate' => $row->gps_coordinate,
+			'pets_number' => $row->pets_number,
+			'lot_area' => $row->lot_area,
+			'isp' => $row->isp
+		];
+	}
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -65,26 +133,30 @@ defined('BASEPATH') or die('Access Denied');
 					<div class="card-header">
 						<b>PERSONAL INFORMATION</b>
 					</div>
-					<?php echo form_open('HomeAlarmFormController/add_home_alarm_validate',["id" => "form-add-homealarm"]) ?>
+					<?php echo ($this->uri->segment(1) != 'home-alarm-update') ? form_open('HomeAlarmFormController/add_home_alarm_validate',["id" => "form-add-homealarm"]) : form_open('HomeAlarmFormController/update_home_alarm_validate_client',["id" => "form-edit-homealarm"]) ?>
+
+					<?php if ($this->uri->segment(1)=='home-alarm-update') { ?>
+					<input name="client_id" type="hidden" value="<?php echo $client_data['id'] ?>">
+					<?php } ?>
 					<div class="card-body">
 						<div class="row">
 							<div class="col-sm-4">
 								<div class="form-group">
 									<label for="first_name">First Name</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="first_name" id="first_name" placeholder="Input your first name.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="first_name" id="first_name" placeholder="Input your first name."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['first_name'].'"' : '' ?>>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="form-group">
 									<label for="middle_name">Middle Name</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="middle_name" id="middle_name" placeholder="Input your middle name.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="middle_name" id="middle_name" placeholder="Input your middle name."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['middle_name'].'"' : '' ?>>
 								</div>
 							</div>
 							<div class="col-sm-4">
 							
 								<div class="form-group">
 									<label for="last_name">Last Name</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="last_name" id="last_name" placeholder="Input your last name.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="last_name" id="last_name" placeholder="Input your last name."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['last_name'].'"' : '' ?>>
 								</div>
 							</div>
 						</div>
@@ -96,6 +168,7 @@ defined('BASEPATH') or die('Access Denied');
 									<div class="row">
 										<div class="col-sm">
 											<select class="form-control form-control-sm" name="bdate_month" id="bdate_month" aria-describedby="bdate_monthId">
+												<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 												<option value="01">January</option>
 												<option value="02">February</option>
 												<option value="03">March</option>
@@ -108,22 +181,51 @@ defined('BASEPATH') or die('Access Denied');
 												<option value="10">October</option>
 												<option value="11">November</option>
 												<option value="12">December</option>
+												<?php } else { ?>
+												<option value="01"<?php echo (date_format(date_create($client_data['bdate']),'m') == "01") ? ' selected' : '' ?>>January</option>
+												<option value="02"<?php echo (date_format(date_create($client_data['bdate']),'m') == "02") ? ' selected' : '' ?>>February</option>
+												<option value="03"<?php echo (date_format(date_create($client_data['bdate']),'m') == "03") ? ' selected' : '' ?>>March</option>
+												<option value="04"<?php echo (date_format(date_create($client_data['bdate']),'m') == "04") ? ' selected' : '' ?>>April</option>
+												<option value="05"<?php echo (date_format(date_create($client_data['bdate']),'m') == "05") ? ' selected' : '' ?>>May</option>
+												<option value="06"<?php echo (date_format(date_create($client_data['bdate']),'m') == "06") ? ' selected' : '' ?>>June</option>
+												<option value="07"<?php echo (date_format(date_create($client_data['bdate']),'m') == "07") ? ' selected' : '' ?>>July</option>
+												<option value="08"<?php echo (date_format(date_create($client_data['bdate']),'m') == "08") ? ' selected' : '' ?>>August</option>
+												<option value="09"<?php echo (date_format(date_create($client_data['bdate']),'m') == "09") ? ' selected' : '' ?>>September</option>
+												<option value="10"<?php echo (date_format(date_create($client_data['bdate']),'m') == "10") ? ' selected' : '' ?>>October</option>
+												<option value="11"<?php echo (date_format(date_create($client_data['bdate']),'m') == "11") ? ' selected' : '' ?>>November</option>
+												<option value="12"<?php echo (date_format(date_create($client_data['bdate']),'m') == "12") ? ' selected' : '' ?>>December</option>
+												<?php } ?>
+
+												
 											</select>
 											<small id="bdate_monthId" class="text-muted">Month</small>
 										</div>
 										<div class="col-sm">
 											<select class="form-control form-control-sm" name="bdate_day" id="bdate_day" aria-describedby="bdate_dayId">
+											<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 												<?php for ($i=1; $i < 32 ; $i++) { ?>
 												<option value="<?php echo $i ?>"><?php echo $i ?></option>
 												<?php } ?>
+											<?php } else { ?>
+												<?php for ($i=1; $i < 32 ; $i++) { ?>
+												<option value="<?php echo $i ?>"<?php echo (date_format(date_create($client_data['bdate']),'d') == $i) ? ' selected' : '' ?>><?php echo $i ?></option>
+												<?php } ?>
+											<?php } ?>
 											</select>
 											<small id="bdate_dayId" class="text-muted">Day</small>
 										</div>
 										<div class="col-sm">
 											<select class="form-control form-control-sm" name="bdate_year" id="bdate_year" aria-describedby="bdate_yearId">
+											<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 												<?php for ($i=1940; $i < 2022; $i++) { ?>
 													<option value="<?php echo $i ?>"><?php echo $i ?></option>
 												<?php } ?>
+											<?php } else { ?>
+												<?php for ($i=1940; $i < 2022; $i++) { ?>
+													<option value="<?php echo $i ?>"<?php echo (date_format(date_create($client_data['bdate']),'Y') == $i) ? ' selected' : '' ?>><?php echo $i ?></option>
+												<?php } ?>
+											<?php } ?>
+												
 											</select>
 											<small id="bdate_yearId" class="text-muted">Year</small>
 										</div>
@@ -134,7 +236,7 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="email_address">Email Address</label>
-									<input type="text" class="form-control form-control-sm" name="email_address" id="email_address" placeholder="Input your email address.">
+									<input type="text" class="form-control form-control-sm" name="email_address" id="email_address" placeholder="Input your email address."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['email_address'].'"' : '' ?>>
 								</div>
 							</div>
 						</div>
@@ -143,19 +245,19 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="nationality">Nationality</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="nationality" id="nationality" placeholder="Input your nationality.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="nationality" id="nationality" placeholder="Input your nationality."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['nationality'].'"' : '' ?>>
 								</div>
 
 								<div class="form-group">
 									<label for="residence_address">Residence Address</label>
-									<textarea style="text-transform: uppercase;" cols="3" class="form-control form-control-sm" name="residence_address" id="residence_address" placeholder="Input your residence address."></textarea>
+									<textarea style="text-transform: uppercase;" cols="3" class="form-control form-control-sm" name="residence_address" id="residence_address" placeholder="Input your residence address."><?php echo ($this->uri->segment(1) == 'home-alarm-update') ? $client_data['residence_address'] : '' ?></textarea>
 								</div>
 							</div>
 
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="contact_no">Contact No.</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="contact_no" id="contact_no" placeholder="Input your Contact No.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="contact_no" id="contact_no" placeholder="Input your Contact No."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['contact_no'].'"' : '' ?>>
 								</div>
 							</div>
 						</div>
@@ -172,20 +274,20 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm-4">
 								<div class="form-group">
 									<label for="spouse_first_name">First Name</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_first_name" id="spouse_first_name" placeholder="Input your spouse's first name.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_first_name" id="spouse_first_name" placeholder="Input your spouse's first name."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['spouse_first_name'].'"' : '' ?>>
 								</div>
 							</div>
 							<div class="col-sm-4">
 								<div class="form-group">
 									<label for="spouse_middle_name">Middle Name</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_middle_name" id="spouse_middle_name" placeholder="Input your spouse's middle name.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_middle_name" id="spouse_middle_name" placeholder="Input your spouse's middle name."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['spouse_middle_name'].'"' : '' ?>>
 								</div>
 							</div>
 							<div class="col-sm-4">
 							
 								<div class="form-group">
 									<label for="spouse_last_name">Last Name</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_last_name" id="spouse_last_name" placeholder="Input your spouse's last name.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_last_name" id="spouse_last_name" placeholder="Input your spouse's last name."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['spouse_last_name'].'"' : '' ?>>
 								</div>
 							</div>
 						</div>
@@ -197,6 +299,7 @@ defined('BASEPATH') or die('Access Denied');
 									<div class="row">
 										<div class="col-sm">
 											<select class="form-control form-control-sm" name="spouse_bdate_month" id="spouse_bdate_month" aria-describedby="spouse_bdate_monthId">
+											<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 												<option value="01">January</option>
 												<option value="02">February</option>
 												<option value="03">March</option>
@@ -209,22 +312,48 @@ defined('BASEPATH') or die('Access Denied');
 												<option value="10">October</option>
 												<option value="11">November</option>
 												<option value="12">December</option>
+												<?php } else { ?>
+												<option value="01"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "01") ? ' selected' : '' ?>>January</option>
+												<option value="02"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "02") ? ' selected' : '' ?>>February</option>
+												<option value="03"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "03") ? ' selected' : '' ?>>March</option>
+												<option value="04"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "04") ? ' selected' : '' ?>>April</option>
+												<option value="05"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "05") ? ' selected' : '' ?>>May</option>
+												<option value="06"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "06") ? ' selected' : '' ?>>June</option>
+												<option value="07"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "07") ? ' selected' : '' ?>>July</option>
+												<option value="08"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "08") ? ' selected' : '' ?>>August</option>
+												<option value="09"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "09") ? ' selected' : '' ?>>September</option>
+												<option value="10"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "10") ? ' selected' : '' ?>>October</option>
+												<option value="11"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "11") ? ' selected' : '' ?>>November</option>
+												<option value="12"<?php echo (date_format(date_create($client_data['spouse_bdate']),'m') == "12") ? ' selected' : '' ?>>December</option>
+												<?php } ?>
 											</select>
 											<small id="spouse_bdate_monthId" class="text-muted">Month</small>
 										</div>
 										<div class="col-sm">
 											<select class="form-control form-control-sm" name="spouse_bdate_day" id="spouse_bdate_day" aria-describedby="spouse_bdate_dayId">
+											<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 												<?php for ($i=1; $i < 32 ; $i++) { ?>
 												<option value="<?php echo $i ?>"><?php echo $i ?></option>
 												<?php } ?>
+											<?php } else { ?>
+												<?php for ($i=1; $i < 32 ; $i++) { ?>
+												<option value="<?php echo $i ?>"<?php echo (date_format(date_create($client_data['spouse_bdate']),'d') == $i) ? ' selected' : '' ?>><?php echo $i ?></option>
+												<?php } ?>
+											<?php } ?>
 											</select>
 											<small id="spouse_bdate_dayId" class="text-muted">Day</small>
 										</div>
 										<div class="col-sm">
 											<select class="form-control form-control-sm" name="spouse_bdate_year" id="spouse_bdate_year" aria-describedby="spouse_bdate_yearId">
+											<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 												<?php for ($i=1940; $i < 2022; $i++) { ?>
 													<option value="<?php echo $i ?>"><?php echo $i ?></option>
 												<?php } ?>
+											<?php } else { ?>
+												<?php for ($i=1940; $i < 2022; $i++) { ?>
+													<option value="<?php echo $i ?>"<?php echo (date_format(date_create($client_data['spouse_bdate']),'Y') == $i) ? ' selected' : '' ?>><?php echo $i ?></option>
+												<?php } ?>
+											<?php } ?>
 											</select>
 											<small id="spouse_bdate_yearId" class="text-muted">Year</small>
 										</div>
@@ -235,7 +364,7 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="spouse_email_address">Email Address</label>
-									<input type="text" class="form-control form-control-sm" name="spouse_email_address" id="spouse_email_address" placeholder="Input your email address.">
+									<input type="text" class="form-control form-control-sm" name="spouse_email_address" id="spouse_email_address" placeholder="Input your email address."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['spouse_email_address'].'"' : '' ?>>
 								</div>
 							</div>
 						</div>
@@ -244,14 +373,14 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="spouse_nationality">Nationality</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_nationality" id="spouse_nationality" placeholder="Input your spouse's nationality.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_nationality" id="spouse_nationality" placeholder="Input your spouse's nationality."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['spouse_nationality'].'"' : '' ?>>
 								</div>
 							</div>
 
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="spouse_contact_no">Contact No.</label>
-									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_contact_no" id="spouse_contact_no" placeholder="Input your spouse's Contact No.">
+									<input style="text-transform: uppercase;" type="text" class="form-control form-control-sm" name="spouse_contact_no" id="spouse_contact_no" placeholder="Input your spouse's Contact No."<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['spouse_contact_no'].'"' : '' ?>>
 								</div>
 							</div>
 						</div>
@@ -268,27 +397,33 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm">
 								<div class="form-group">
 									<label for="household_count">Household Count</label>
-									<input style="text-transform: uppercase;" type="text" name="household_count" id="household_count" class="form-control form-control-sm" placeholder="Input number." aria-describedby="household_countId">
+									<input style="text-transform: uppercase;" type="text" name="household_count" id="household_count" class="form-control form-control-sm" placeholder="Input number." aria-describedby="household_countId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['household_count'].'"' : '' ?>>
 									<small id="household_countId" class="text-muted">How many people are in the house?</small>
 								</div>
 
 								<div class="form-group">
 									<label for="house_floors">House Floors</label>
-									<input style="text-transform: uppercase;" type="text" name="house_floors" id="house_floors" class="form-control form-control-sm" placeholder="Input number." aria-describedby="house_floorsId">
+									<input style="text-transform: uppercase;" type="text" name="house_floors" id="house_floors" class="form-control form-control-sm" placeholder="Input number." aria-describedby="house_floorsId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['house_floors'].'"' : '' ?>>
 									<small id="house_floorsId" class="text-muted">Your house's number of floor</small>
 								</div>
 
 								<div class="form-group">
 									<label for="signal_strength">Signal Strength / Network</label>
-									<input style="text-transform: uppercase;" type="text" name="signal_strength" id="signal_strength" class="form-control form-control-sm" placeholder="Input number." aria-describedby="signal_strengthId">
+									<input style="text-transform: uppercase;" type="text" name="signal_strength" id="signal_strength" class="form-control form-control-sm" placeholder="Input number." aria-describedby="signal_strengthId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['signal_strength'].'"' : '' ?>>
 									<small id="signal_strengthId" class="text-muted">Signal strength in dbM.</small>
 								</div>
 
 								<div class="form-group">
 									<label for="demo_kit_presentation">Demo-kit Presentation</label>
 									<select name="demo_kit_presentation" id="demo_kit_presentation" class="form-control form-control-sm" placeholder="Input number." aria-describedby="demo_kit_presentationId">
-										<option value="No">No</option>
-										<option value="Yes">Yes</option>
+									<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
+										<option value="NO">NO</option>
+										<option value="YES">YES</option>
+									<?php } else { ?>
+										<option value="NO"<?php echo ($client_data['demo_kit_presentation'] == 'NO') ? ' selected' : '' ?>>NO</option>
+										<option value="YES"<?php echo ($client_data['demo_kit_presentation'] == 'YES') ? ' selected' : '' ?>>YES</option>
+									<?php } ?>
+										
 									</select>
 									<small id="demo_kit_presentationId" class="text-muted">Do you want us to conduct a presentation for demo?</small>
 								</div>
@@ -296,25 +431,25 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm">
 								<div class="form-group">
 									<label for="property_type">Property Type</label>
-									<input style="text-transform: uppercase;" type="text" name="property_type" id="property_type" class="form-control form-control-sm" placeholder="Input here." aria-describedby="property_typeId">
+									<input style="text-transform: uppercase;" type="text" name="property_type" id="property_type" class="form-control form-control-sm" placeholder="Input here." aria-describedby="property_typeId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['property_type'].'"' : '' ?>>
 									<small id="property_typeId" class="text-muted">Property type?</small>
 								</div>
 
 								<div class="form-group">
 									<label for="helpers_number">Number of Helpers</label>
-									<input style="text-transform: uppercase;" type="text" name="helpers_number" id="helpers_number" class="form-control form-control-sm" placeholder="Input here." aria-describedby="helpers_numberId">
+									<input style="text-transform: uppercase;" type="text" name="helpers_number" id="helpers_number" class="form-control form-control-sm" placeholder="Input here." aria-describedby="helpers_numberId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['helpers_number'].'"' : '' ?>>
 									<small id="helpers_numberId" class="text-muted">If you have no helper, leave blank</small>
 								</div>
 
 								<div class="form-group">
 									<label for="speed_test">Network Speedtest</label>
-									<input style="text-transform: uppercase;" type="text" name="speed_test" id="speed_test" class="form-control form-control-sm" placeholder="Input here." aria-describedby="speed_testId">
+									<input style="text-transform: uppercase;" type="text" name="speed_test" id="speed_test" class="form-control form-control-sm" placeholder="Input here." aria-describedby="speed_testId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['speed_test'].'"' : '' ?>>
 									<small id="speed_testId" class="text-muted">Speed test in MBPS.</small>
 								</div>
 
 								<div class="form-group">
 									<label for="gps_coordinate">GPS Coordinates</label>
-									<input style="text-transform: uppercase;" type="text" name="gps_coordinate" id="gps_coordinate" class="form-control form-control-sm" placeholder="Input here." aria-describedby="gps_coordinateId">
+									<input style="text-transform: uppercase;" type="text" name="gps_coordinate" id="gps_coordinate" class="form-control form-control-sm" placeholder="Input here." aria-describedby="gps_coordinateId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['gps_coordinate'].'"' : '' ?>>
 									<small id="gps_coordinateId" class="text-muted">Your GPS Coordinate based on GOOGLE MAPS.</small>
 								</div>
 							</div>
@@ -322,26 +457,27 @@ defined('BASEPATH') or die('Access Denied');
 							<div class="col-sm">
 								<div class="form-group">
 									<label for="pets_number">Number of Pets</label>
-									<input style="text-transform: uppercase;" type="text" name="pets_number" id="pets_number" class="form-control form-control-sm" placeholder="Input number." aria-describedby="pets_numberId">
+									<input style="text-transform: uppercase;" type="text" name="pets_number" id="pets_number" class="form-control form-control-sm" placeholder="Input number." aria-describedby="pets_numberId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['pets_number'].'"' : '' ?>>
 									<small id="pets_numberId" class="text-muted">If you have no pet, leave blank</small>
 								</div>
 
 								<div class="form-group">
 									<label for="lot_area">Lot Area</label>
-									<input style="text-transform: uppercase;" type="text" name="lot_area" id="lot_area" class="form-control form-control-sm" placeholder="Input number." aria-describedby="lot_areaId">
+									<input style="text-transform: uppercase;" type="text" name="lot_area" id="lot_area" class="form-control form-control-sm" placeholder="Input number." aria-describedby="lot_areaId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['lot_area'].'"' : '' ?>>
 									<small id="lot_areaId" class="text-muted">Indicate your house's lot area in sqm.</small>
 								</div>
 
 								<div class="form-group">
 									<label for="isp">Internet Service Provider</label>
-									<input style="text-transform: uppercase;" type="text" name="isp" id="isp" class="form-control form-control-sm" placeholder="Input your ISP." aria-describedby="ispId">
+									<input style="text-transform: uppercase;" type="text" name="isp" id="isp" class="form-control form-control-sm" placeholder="Input your ISP." aria-describedby="ispId"<?php echo ($this->uri->segment(1) == 'home-alarm-update') ? ' value="'.$client_data['isp'].'"' : '' ?>>
 									<small id="ispId" class="text-muted">Indicate you internet speed provider. (GLOBE/PLDT/CONVERGE etc..)</small>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
+				<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
+				
 				<div class="card card-primary">
 					<div class="card-header">
 						<b>INCLUDED DEVICES</b>
@@ -489,6 +625,9 @@ defined('BASEPATH') or die('Access Denied');
 						</div>
 					</div>
 				</div>
+				
+				<?php } ?>
+				
 
 				<div class="row">
 					<div class="col-sm-6 offset-sm-3">
@@ -669,6 +808,7 @@ defined('BASEPATH') or die('Access Denied');
 							
 						</div>
 						<div class="col-sm">
+							<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 							<div class="card">
 								<div class="card-header">
 									<b>INCLUDED DEVICES</b>
@@ -744,9 +884,11 @@ defined('BASEPATH') or die('Access Denied');
 									</table>
 								</div>
 							</div>
+							<?php } ?>
 						</div>
 					</div>
-
+					
+					<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="card">
@@ -758,10 +900,12 @@ defined('BASEPATH') or die('Access Denied');
 							</div>
 						</div>
 					</div>
+					<?php } ?>
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary text-bold" data-dismiss="modal"><i class="fas fa-times"></i> GO BACK</button>
-					<button type="submit" class="btn btn-success text-bold" form="form-add-homealarm"><i class="fas fa-check"></i> CONFIRM</button>
+					<button type="submit" class="btn btn-success text-bold" form="<?php echo ($this->uri->segment(1) != 'home-alarm-update') ? 'form-add-homealarm' : 'form-edit-homealarm' ?>"><i class="fas fa-check"></i> CONFIRM</button>
 				</div>
 			</div>
 		</div>
@@ -772,8 +916,17 @@ defined('BASEPATH') or die('Access Denied');
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-body text-center">
+					<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
+					
 					<b class="text-bold text-success" style="font-size: 25px;">SUCCESS!!!</b>
 					<p>Your entry successfully verified. Thank you!</p>
+
+					<?php } else { ?>
+					
+					<b class="text-bold text-success" style="font-size: 25px;">SUCCESS!!!</b>
+					<p>Customer is updated! Check it here at <a href="<?php echo site_url('home-alarm-clients') ?>"><u>Home Alarm Clients</u></a> table</p>
+
+					<?php } ?>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
@@ -835,7 +988,7 @@ defined('BASEPATH') or die('Access Denied');
 
 <script>
 	$(document).ready(function(){
-		//Form Add item Request
+		//Form Add Home Alarm
 		$('#form-add-homealarm').submit(function(e) {
 			e.preventDefault();
 			
@@ -872,8 +1025,58 @@ defined('BASEPATH') or die('Access Denied');
 				success: function(response) {
 					if (response.success == true) {
 						$(':submit').removeAttr('disabled','disabled');
-						toastr.success("Successfully Requested!!!");
+						toastr.success("Success!!!");
 						me[0].reset();
+						$('#form-confirm').modal('hide');
+						$('#modal-success').modal();
+					} else {
+						$(':submit').removeAttr('disabled','disabled');
+						toastr.error(response.errors);
+					}
+
+				}
+			});
+		});
+
+		//Form Edit Home Alarm
+		$('#form-edit-homealarm').submit(function(e) {
+			e.preventDefault();
+			
+			var me = $(this);
+
+			toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+			//ajax
+			$.ajax({
+				url: me.attr('action'),
+				type: 'post',
+				data: me.serialize(),
+				dataType: 'json',
+				success: function(response) {
+					if (response.success == true) {
+						$(':submit').removeAttr('disabled','disabled');
+						toastr.success("Success!!");
+						//me[0].reset();
 						$('#form-confirm').modal('hide');
 						$('#modal-success').modal();
 					} else {
@@ -914,6 +1117,7 @@ defined('BASEPATH') or die('Access Denied');
 		$('.pets_number').empty();
 		$('.lot_area').empty();
 		$('.isp').empty();
+		<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 		$('.wireless_keypad').empty();
 		$('.magnetic_contact').empty();
 		$('.displacement_detector').empty();
@@ -931,7 +1135,7 @@ defined('BASEPATH') or die('Access Denied');
 		$('.wireless_repeater').empty();
 		$('.cctv').empty();
 		$('.final_remarks').empty();
-
+		<?php } ?>
 
 		$('.first_name').append($('#first_name').val().toUpperCase());
 		$('.middle_name').append($('#middle_name').val().toUpperCase());
@@ -959,6 +1163,8 @@ defined('BASEPATH') or die('Access Denied');
 		$('.pets_number').append($('#pets_number').val().toUpperCase());
 		$('.lot_area').append($('#lot_area').val().toUpperCase());
 		$('.isp').append($('#isp').val().toUpperCase());
+
+		<?php if ($this->uri->segment(1) != 'home-alarm-update') { ?>
 		$('.wireless_keypad').append($('#wireless_keypad').val().toUpperCase());
 		$('.magnetic_contact').append($('#magnetic_contact').val().toUpperCase());
 		$('.displacement_detector').append($('#displacement_detector').val().toUpperCase());
@@ -976,7 +1182,7 @@ defined('BASEPATH') or die('Access Denied');
 		$('.wireless_repeater').append($('#wireless_repeater').val().toUpperCase());
 		$('.cctv').append($('#cctv').val().toUpperCase());
 		$('.final_remarks').append($('#final_remarks').val().toUpperCase());
-		
+		<?php } ?>
 	});
 </script>
 

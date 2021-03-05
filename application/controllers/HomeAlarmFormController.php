@@ -10,8 +10,9 @@ class HomeAlarmFormController extends CI_Controller {
 
     }
 
-    public function validation_rules() {
-        $rules = [
+    public function validation_rules($case) {
+
+        $rule1 = [
             [
                 'field' => 'first_name',
                 'label' => 'First Name',
@@ -172,7 +173,12 @@ class HomeAlarmFormController extends CI_Controller {
                 'field' => 'isp',
                 'label' => 'Internet Service Provider',
                 'rules' => 'trim|max_length[200]'
-            ],
+            ]
+        ];
+
+        
+        $rule2 = [
+            
             [
                 'field' => 'host_panel',
                 'label' => 'Alarm Host Panel',
@@ -266,6 +272,13 @@ class HomeAlarmFormController extends CI_Controller {
             ]
         ];
 
+        if ($case == 'add') {
+            $rules = array_merge($rule1,$rule2);
+        } else {
+            $rules = $rule1;
+        }
+        
+
         return $rules;
     }
 
@@ -284,14 +297,14 @@ class HomeAlarmFormController extends CI_Controller {
 		
 		$this->form_validation->set_error_delimiters('<p><b>• ','</b></p>');
 
-		$this->form_validation->set_rules($this->validation_rules());
+		$this->form_validation->set_rules($this->validation_rules('add'));
 
 		if ($this->form_validation->run()) {
             $validate['success'] = true;
             $customer_id = '';
 
             $data_client = [
-                'datetime_added' => date('Y-m-d h:i:s'),
+                'datetime_added' => date('Y-m-d H:i:s'),
                 'first_name' => strtoupper($this->input->post('first_name')),
                 'middle_name' => strtoupper($this->input->post('middle_name')),
                 'last_name' => strtoupper($this->input->post('last_name')),
@@ -349,6 +362,138 @@ class HomeAlarmFormController extends CI_Controller {
             ];
 
             $this->HomeAlarmFormModel->insert_transaction($data_transaction);
+		} 
+		else {
+		    $validate['errors'] = validation_errors();
+		}
+        echo json_encode($validate);
+    }
+
+    public function home_alarm_clients() {
+        if($this->session->userdata('logged_in')) {
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Home Alarm Clients';
+            $data['home_alarm_tree'] = ' menu-open';
+            $data['home_alarm'] = ' active';
+            $data['home_alarm_display'] = ' block';
+            $data['home_alarm_clients'] = ' active';
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('home_alarm_form/home_alarm_clients');
+			$this->load->view('templates/footer');
+            $this->load->view('home_alarm_form/script');
+		} else {
+			redirect('','refresh');
+		}
+    }
+
+    public function fetch_home_alarm_clients() {
+        $fetch_data = $this->HomeAlarmFormModel->home_alarm_datatable();
+		$data = array();
+
+		foreach ($fetch_data as $row) {
+			
+            $sub_array = array();
+            $sub_array[] = $row->id;
+            $sub_array[] = '
+                <a href="'.site_url('home-alarm-update/'.$row->id).'" class="btn btn-xs btn-block btn-warning text-bold"><i class="fas fa-edit"></i> EDIT</a>
+
+                <button class="btn btn-xs btn-block btn-danger text-bold"><i class="fas fa-trash"></i> DELETE</button>
+
+                <button class="btn btn-xs btn-block btn-success text-bold"><i class="fas fa-dollar-sign"></i> QUOTE</button>
+
+                <button class="btn btn-xs btn-block btn-primary text-bold"><i class="fas fa-file-alt"></i> CONTRACT</button>
+            ';
+            $sub_array[] = ($row->datetime_added != '0000-00-00 00:00:00') ? date_format(date_create($row->datetime_added),'M d, Y h:iA') : '' ;
+            $sub_array[] = $row->first_name.' '.$row->middle_name.' '.$row->last_name;
+            $sub_array[] = ($row->bdate != '0000-00-00') ? date_format(date_create($row->bdate),'M d, Y') : '' ;
+            $sub_array[] = $row->email_address;
+            $sub_array[] = $row->nationality;
+            $sub_array[] = $row->residence_address;
+            $sub_array[] = $row->contact_no;
+            $sub_array[] = $row->spouse_first_name.' '.$row->spouse_middle_name.' '.$row->spouse_last_name;
+            $sub_array[] = ($row->spouse_bdate != '0000-00-00') ? date_format(date_create($row->spouse_bdate),'M d, Y') : '';
+            $sub_array[] = $row->spouse_email_address;
+            $sub_array[] = $row->spouse_nationality;
+            $sub_array[] = $row->spouse_contact_no;
+            $sub_array[] = $row->household_count;
+            $sub_array[] = $row->house_floors;
+            $sub_array[] = $row->signal_strength.'dBm';
+            $sub_array[] = $row->demo_kit_presentation;
+            $sub_array[] = $row->property_type;
+            $sub_array[] = $row->helpers_number;
+            $sub_array[] = $row->speed_test.'MBPS';
+            $sub_array[] = $row->gps_coordinate;
+            $sub_array[] = $row->pets_number;
+            $sub_array[] = $row->lot_area;
+            $sub_array[] = $row->isp;
+
+
+			$data[] = $sub_array;
+		}
+		$output = array(
+			"draw"	=>	intval($_POST["draw"]),
+			"recordsTotal" => $this->HomeAlarmFormModel->get_all_home_alarm_data(),
+			"recordsFiltered" => $this->HomeAlarmFormModel->filter_home_alarm_data(),
+			"data" => $data
+		);
+
+		echo json_encode($output);
+    }
+
+    public function update_home_alarm_client($id) {
+        $data['title'] = 'Home Alarm Application';
+        $data['clients'] = $this->HomeAlarmFormModel->get_home_alarm_client_data($id);
+
+        $this->load->view('home_alarm_form/home_alarm_form',$data);
+    }
+
+    public function update_home_alarm_validate_client() {
+        $validate = [
+			'success' => false,
+			'errors' => ''
+		];
+		
+		$this->form_validation->set_error_delimiters('<p><b>• ','</b></p>');
+
+		$this->form_validation->set_rules($this->validation_rules('edit'));
+
+		if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+            $id = $this->input->post('client_id');
+            $data = [
+                'first_name' => $this->input->post('first_name'),
+                'middle_name' => $this->input->post('middle_name'),
+                'last_name' => $this->input->post('last_name'),
+                'bdate' => $this->input->post('bdate'),
+                'email_address' => $this->input->post('email_address'),
+                'nationality' => $this->input->post('nationality'),
+                'residence_address' => $this->input->post('residence_address'),
+                'contact_no' => $this->input->post('contact_no'),
+                'spouse_first_name' => $this->input->post('spouse_first_name'),
+                'spouse_middle_name' => $this->input->post('spouse_middle_name'),
+                'spouse_last_name' => $this->input->post('spouse_last_name'),
+                'spouse_bdate' => $this->input->post('spouse_bdate'),
+                'spouse_email_address' => $this->input->post('spouse_email_address'),
+                'spouse_nationality' => $this->input->post('spouse_nationality'),
+                'spouse_contact_no' => $this->input->post('spouse_contact_no'),
+                'household_count' => $this->input->post('household_count'),
+                'house_floors' => $this->input->post('house_floors'),
+                'signal_strength' => $this->input->post('signal_strength'),
+                'demo_kit_presentation' => $this->input->post('demo_kit_presentation'),
+                'property_type' => $this->input->post('property_type'),
+                'helpers_number' => $this->input->post('helpers_number'),
+                'speed_test' => $this->input->post('speed_test'),
+                'gps_coordinate' => $this->input->post('gps_coordinate'),
+                'pets_number' => $this->input->post('pets_number'),
+                'lot_area' => $this->input->post('lot_area'),
+                'isp' => $this->input->post('isp')
+            ];
+
+            $this->HomeAlarmFormModel->update_client($id,$data);
+            
 		} 
 		else {
 		    $validate['errors'] = validation_errors();

@@ -64,6 +64,10 @@ if(!function_exists('html_variable')) {
 			'requisition_pending' => '',
 			'requisition_accepted' => '',
 			'requisition_filed' => '',
+			'home_alarm_tree' => '',
+			'home_alarm' => '',
+			'home_alarm_display' => '',
+			'home_alarm_clients' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];

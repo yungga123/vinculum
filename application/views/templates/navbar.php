@@ -330,6 +330,28 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
           	<li class="nav-header">SALES</li>
 
+			  <li class="nav-item has-treeview<?php echo $home_alarm_tree ?>">
+				<a href="javascript:void(0)" class="nav-link<?php echo $home_alarm ?>">
+					<i class="nav-icon far fa-edit"></i>
+					<p>Home Alarms</p>
+
+					<span class="badge badge-danger">NEW</span>
+					<i class="fas fa-angle-left right"></i>
+					
+				</a>
+
+				<ul class="nav nav-treeview" style="display: <?php echo $home_alarm_display ?>">
+					<li class="nav-item">
+						<a href="<?php echo site_url('home-alarm-clients') ?>" class="nav-link <?php echo $home_alarm_clients ?>">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Clients</p>
+						</a>
+					</li>
+
+					
+				</ul>
+			</li>
+
           	<li class="nav-item has-treeview">
 		        <a href="#" class="nav-link<?php echo $ul_reports ?>">
 		          <i class="nav-icon fas fa-chart-line"></i>
