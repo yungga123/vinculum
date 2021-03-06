@@ -401,7 +401,7 @@ class HomeAlarmFormController extends CI_Controller {
 
                 <button class="btn btn-xs btn-block btn-danger text-bold"><i class="fas fa-trash"></i> DELETE</button>
 
-                <button class="btn btn-xs btn-block btn-success text-bold"><i class="fas fa-dollar-sign"></i> QUOTE</button>
+                <a href='.site_url('home-alarm-transactions/'.$row->id).' class="btn btn-xs btn-block btn-success text-bold"><i class="fas fa-dollar-sign"></i> QUOTE</a>
 
                 <button class="btn btn-xs btn-block btn-primary text-bold"><i class="fas fa-file-alt"></i> CONTRACT</button>
             ';
@@ -499,6 +499,21 @@ class HomeAlarmFormController extends CI_Controller {
 		    $validate['errors'] = validation_errors();
 		}
         echo json_encode($validate);
+    }
+
+    public function home_alarm_transactions($id) {
+        if($this->session->userdata('logged_in')) {
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Home Alarm Clients';
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('home_alarm_form/home_alarm_quote');
+			$this->load->view('templates/footer');
+            $this->load->view('home_alarm_form/script');
+		} else {
+			redirect('','refresh');
+		}
     }
 
 }

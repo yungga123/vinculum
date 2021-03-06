@@ -182,4 +182,5 @@ $route['requisition-filed'] = 'RequisitionFormController/filed_requisitions';
 $route['home-alarm-application'] = 'HomeAlarmFormController';
 $route['home-alarm-update/(:any)'] = 'HomeAlarmFormController/update_home_alarm_client/$1';
 $route['home-alarm-clients'] = 'HomeAlarmFormController/home_alarm_clients';
+$route['home-alarm-transactions/(:any)'] = 'HomeAlarmFormController/home_alarm_transactions/$1';
 
