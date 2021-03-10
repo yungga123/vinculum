@@ -73,6 +73,15 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                   <input type="text" name="req_form_id" id="req_form_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
                 </div>
             </div>
+
+            <?php if ($this->uri->segment(1) == 'requisition-accepted') { ?>
+                <input type="hidden" id="file_processed_by" name="file_processed_by" value="">
+                <input type="hidden" id="file_approved_by" name="file_approved_by" value="">
+                <input type="hidden" id="file_received_by" name="file_received_by" value="">
+                <input type="hidden" id="file_checked_by" name="file_checked_by" value="">
+
+            <?php } ?>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> ACCEPT</button>
@@ -105,6 +114,53 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
             </div>
             <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade modal-reqitems">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div id="modal_loading">
+
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title"><b>LIST OF ITEMS</b><h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm" id="table-reqitems">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Description</th>
+                                <th>Unit Cost</th>
+                                <th>Qty</th>
+                                <th>Supplier</th>
+                                <th>Date Needed</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tbody-reqitems">
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="text-right">
+                    <b>Total Price: <span id="req_total_price" class="text-danger"></span></b>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+            </div>
         </div>
     </div>
 </div>
