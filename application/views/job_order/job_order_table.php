@@ -181,6 +181,32 @@ if ($decision == 'accepted') {
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
             </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade modal-reschedule" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <?php echo form_open('JobOrderController/update_job_order_reschedule',["id" => "form_reschedule"]) ?>
+                <div class="form-group">
+                    <label for="job_reschedule_id">Job Order No.</label>
+                    <input type="text" name="job_reschedule_id" id="job_reschedule_id" class="form-control text-bold text-center col-sm-6 offset-sm-3" readonly value="">
+                </div>
+
+                <input type="hidden" name="decision_reschedule" id="decision_reschedule">
+
+                <p class="text-bold mt-4" style="font-size: 18px;">Re-schedule JOB ORDER? This will be trasferred again to <span class="text-warning">PENDING JOB ORDERS</span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+            </div>
+            <?php echo form_close() ?>
         </div>
     </div>
 </div>
