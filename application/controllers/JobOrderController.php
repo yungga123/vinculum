@@ -439,6 +439,52 @@ class JobOrderController extends CI_Controller
 		echo json_encode($validate);
 	}
 
+	public function update_job_order_reschedule()
+	{
+
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+			[
+				'field' => 'job_reschedule_id',
+				'label' => 'Decision',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select JOB ORDER.'
+				]
+			],
+			[
+				'field' => 'decision_reschedule',
+				'label' => 'Decision',
+				'rules' => 'trim'
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>', '</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+			date_default_timezone_set('Asia/Manila');
+
+			$id = $this->input->post('job_reschedule_id');
+			$data = [
+				'decision' => $this->input->post('decision_reschedule'),
+				'date_filed' => '0000-00-00',
+				'commited_schedule' => '0000-00-00'
+			];
+
+			$this->JobOrderModel->update_joborder($id, $data);
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
+
 	public function fetch_joborder($where)
 	{
 
@@ -500,7 +546,11 @@ class JobOrderController extends CI_Controller
 			}
 
 			if ($where == 'Accepted') {
-				$decision = '<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>';
+				$decision = '
+					<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>
+					
+					<button class="btn btn-warning btn-xs text-bold btn-block btn_reschedule" data-toggle="modal" data-target=".modal-reschedule"><i class="fas fa-edit"></i> RESCHEDULE</button>
+				';
 			} elseif($where == 'Filed') {
 
 				// Shortened If/Else with Ternary Operator

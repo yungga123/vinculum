@@ -82,6 +82,19 @@ if ($this->uri->segment(1) == 'joborder-list') {
 
     });
 
+    $('#joborder_table tbody').on('click','.btn_reschedule',function(){
+
+        var data = payroll_table.row($(this).parents('tr')).data();
+        var rowdata = payroll_table.row(this).data();
+
+        if (data == undefined) {
+            $('#job_reschedule_id').val(rowdata[0]);
+        } else if (rowdata == undefined) {
+            $('#job_reschedule_id').val(data[0]);
+        }
+
+    });
+
 
     //end
 </script>
@@ -108,6 +121,11 @@ if ($this->uri->segment(1) == 'joborder-list') {
 
     $(document).on("click",".btn_filejo",function() {
         $('#decision_filejo').val('Filed');
+
+    });
+
+    $(document).on("click",".btn_reschedule",function() {
+        $('#decision_reschedule').val('');
 
     });
 
@@ -226,6 +244,60 @@ if ($this->uri->segment(1) == 'joborder-list') {
 
     //Form Job Order (File JO)
     $('#form_filejo').submit(function(e) {
+        e.preventDefault();
+        var me = $(this);
+        var succ = '';
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        $(':submit').attr('disabled', 'disabled');
+        $('.loading-modal').modal();
+
+        //ajax
+        $.ajax({
+            url: me.attr('action'),
+            type: 'post',
+            data: me.serialize(),
+            dataType: 'json',
+            success: function(response) {
+                if (response.success == true) {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.success("Success! This page will be refreshed!");
+                    me[0].reset();
+
+                    setTimeout(() => {
+                        window.location = "<?php echo site_url('joborder-list/accepted') ?>";
+                    }, 1000);
+                } else {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.error(response.errors);
+                }
+            }
+        });
+    });
+
+    //Form Job Order (Reschedule JO)
+    $('#form_reschedule').submit(function(e) {
         e.preventDefault();
         var me = $(this);
         var succ = '';
