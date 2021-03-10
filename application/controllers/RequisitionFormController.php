@@ -213,19 +213,35 @@ class RequisitionFormController extends CI_Controller {
         }
 
 		foreach ($fetch_data as $row) {
+
+            if ($this->uri->segment(2) == 'fetch_pending_requisitions') {
+                $operation = '
+                    <a href="'.site_url('requisition-update/'.$row->req_id).'" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</a>
+
+                    <button type="button" class="btn btn-danger text-bold btn-xs btn-block btn_req_del" data-toggle="modal" data-target="#delete-requisition"><i class="fas fa-trash"></i> DISCARD</button>
+
+                    <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
+                    ' .$btn_status;
+            } elseif($this->uri->segment(2) == 'fetch_accepted_requisitions') {
+                $operation = '
+                    <a href="'.site_url('requisition-update/'.$row->req_id).'" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</a>
+
+                    <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
+                    ' .$btn_status;
+            } else {
+                $operation = '
+                    <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
+                    
+                    <a href="'.site_url('requisition-view/'.$row->req_id).'" class="btn btn-success text-bold btn-xs btn-block" target="_blank"><i class="fas fa-print"></i> PRINT</a>
+                    ';
+            }
 			
             $sub_array = array();
             
             $date_added = ($row->date != '0000-00-00 00:00:00') ? date_format(date_create($row->date),'M d, Y h:ia') : 'None';
 
             $sub_array[] = $row->req_id;
-            $sub_array[] = '
-                <a href="'.site_url('requisition-update/'.$row->req_id).'" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</a>
-
-                <button type="button" class="btn btn-danger text-bold btn-xs btn-block btn_req_del" data-toggle="modal" data-target="#delete-requisition"><i class="fas fa-trash"></i> DISCARD</button>
-
-                <a href="'.site_url('requisition-view/'.$row->req_id).'" class="btn btn-primary text-bold btn-xs btn-block" target="_blank"><i class="fas fa-search"></i> VIEW/PRINT</a>
-                ' .$btn_status;
+            $sub_array[] = $operation;
             $sub_array[] = $date_added;
             $sub_array[] = $row->req_first.' '.$row->req_last;
             $sub_array[] = $row->proc_first.' '.$row->proc_last;
@@ -447,6 +463,38 @@ class RequisitionFormController extends CI_Controller {
                 'errors' => [
                     'required' => 'Please select an item.'
                 ]
+            ],
+            [
+                'field' => 'file_processed_by',
+                'label' => 'Processed By',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please fill Processed By'
+                ]
+            ],
+            [
+                'field' => 'file_approved_by',
+                'label' => 'Approved By',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please fill Approved By'
+                ]
+            ],
+            [
+                'field' => 'file_received_by',
+                'label' => 'Received By',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please fill Received By'
+                ]
+            ],
+            [
+                'field' => 'file_checked_by',
+                'label' => 'Checked By',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please fill Checked By'
+                ]
             ]
 
         ];
@@ -506,5 +554,14 @@ class RequisitionFormController extends CI_Controller {
 		    $validate['errors'] = validation_errors();
 		}
         echo json_encode($validate);
+    }
+
+    public function get_req_items($id) {
+        $results = $this->RequisitionFormModel->get_requisition_items($id);
+
+        $json_data['results'] = $results;
+
+        echo json_encode($json_data);
+
     }
 }
