@@ -25,7 +25,9 @@ class SalesQuotationModel extends CI_Model {
 			$this->db->like("a.quotation_ref", $_POST["search"]["value"]);
 			$this->db->or_like("a.customer_name", $_POST["search"]["value"]);
 			$this->db->or_like("a.contact_person", $_POST["search"]["value"]);
-			$this->db->or_like("a.prepared_by", $_POST["search"]["value"]);
+			$this->db->or_like("b.lastname", $_POST["search"]["value"]);
+			$this->db->or_like("b.firstname", $_POST["search"]["value"]);
+			$this->db->or_like("b.middlename", $_POST["search"]["value"]);
 			$this->db->having('a.is_deleted', 0);
 			
 		}
