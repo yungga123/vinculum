@@ -16,13 +16,24 @@ class SalesQuotationModel extends CI_Model {
 	public function salesquotation_query() {
 		$id = 0;
 		$this->db->select("*");
-		$this->db->from("sales_quotation");
+		$this->db->from($this->table);
+		$this->db->join($this->join_table_tech,'a.prepared_by=b.id','left');
 		$this->db->where("is_deleted",$id);
+		
+		if(isset($_POST["search"]["value"])){
+
+			$this->db->like("a.quotation_ref", $_POST["search"]["value"]);
+			$this->db->or_like("a.customer_name", $_POST["search"]["value"]);
+			$this->db->or_like("a.contact_person", $_POST["search"]["value"]);
+			$this->db->or_like("a.prepared_by", $_POST["search"]["value"]);
+			$this->db->having('a.is_deleted', 0);
+			
+		}
 
 		if (isset($_POST["order"])) {
 			$this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
 		} else {
-			$this->db->order_by("quotation_ref","DESC");
+			$this->db->order_by("a.order_by_id","DESC");
 		}
 
 		
@@ -31,6 +42,7 @@ class SalesQuotationModel extends CI_Model {
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "sales_quotation as a";
 	var $join_table = "sales_quotation_items as b";
+	var $join_table_tech = "technicians as b";
 	var $select_column = array(
 		"a.quotation_ref",
 		"a.customer_name",
@@ -115,6 +127,8 @@ class SalesQuotationModel extends CI_Model {
 		return $this->db->get()->result();
 	}
 
+	
+
 	public function GetSpecificSalesQuotation($quotation_ref) {
 		$this->db->select('*');
 		$this->db->from('sales_quotation');
@@ -195,4 +209,16 @@ class SalesQuotationModel extends CI_Model {
 		return $ID;
 	}
 
+	public function selectsalesname() {
+		$this->db->select('
+			a.id,
+			a.lastname,
+			a.firstname,
+			a.middlename
+		');
+
+		$this->db->from('technicians as a');
+		$this->db->join('sales_quotation as b','a.id=b.prepared_by','right');
+		return $this->db->get()->result();
+	}
 }

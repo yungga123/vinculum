@@ -221,6 +221,7 @@ class SalesQuotationController extends CI_Controller {
 			$data['sales_quotation_status'] = ' menu-open';
 			$data['sales_quotation_href'] = ' active';
 			$data['sales_quotation_list'] = ' active';
+
     		$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('sales_quotation/sales_quotation_list');
@@ -235,15 +236,17 @@ class SalesQuotationController extends CI_Controller {
 
 		$fetch_data = $this->SalesQuotationModel->salesquotation_datatable();
 
+		
+
 
 		$data = array();
 		foreach($fetch_data as $row) {
-			
+		
 
 			if ($row->date_created != '0000-00-00') {
 				$date = date_format(date_create($row->date_created),'F d, Y');
 				
-				$sub_array = array();
+			$sub_array = array();
 			$sub_array[] = $row->quotation_ref;
 			$sub_array[] = $row->customer_name;
 			$sub_array[] = $row->contact_person;
@@ -252,8 +255,8 @@ class SalesQuotationController extends CI_Controller {
 			$sub_array[] = $row->customer_location;
 			$sub_array[] = $row->project_type;
 			$sub_array[] = $row->subject;
-			$sub_array[] = $row->prepared_by;
-			$sub_array[] = $row->date_created;
+			$sub_array[] = $row->lastname.', '.$row->firstname.' '.$row->middlename;
+			$sub_array[] = $date;
 
 			$sub_array[] = '
 			<a href="'.site_url('sales_quotation_update/'.$row->quotation_ref).'" class="btn btn-warning btn-xs"><i class="fas fa-edit"></i></a> 
