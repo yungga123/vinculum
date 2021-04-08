@@ -74,9 +74,11 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
+                                                        <?php if ($row->id == '16071818' || $row->id == 'PS021021' || $row->id == 'PS111620') { ?>
                                                         <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
                                                             echo ($req_data['processed_by'] == $row->id) ? ' selected' : '';
                                                         } ?>><?php echo $row->name ?></option>
+                                                        <?php } ?>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -89,9 +91,11 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
+                                                        <?php if ($row->id == '01021415' || $row->id == '02021415' || $row->id == '16071818' || $row->id == 'RNDE09232020') { ?>
                                                         <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
                                                             echo ($req_data['approved_by'] == $row->id) ? ' selected' : '';
                                                         } ?>><?php echo $row->name ?></option>
+                                                        <?php } ?>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -102,9 +106,11 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                     <option value="">---Please Select---</option>
 
                                                     <?php foreach ($employees as $row) { ?>
+                                                        
                                                         <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
                                                             echo ($req_data['received_by'] == $row->id) ? ' selected' : '';
                                                         } ?>><?php echo $row->name ?></option>
+                                                        
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -114,11 +120,14 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                 <label for="checked_by">Checked By</label>
                                                 <select type="text" name="checked_by" id="checked_by" class="form-control select2">
                                                     <option value="">---Please Select---</option>
-
+                                                    
+                                                    
                                                     <?php foreach ($employees as $row) { ?>
+                                                        <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521') { ?>
                                                         <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
                                                             echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
                                                         } ?>><?php echo $row->name ?></option>
+                                                        <?php } ?>
                                                     <?php } ?>
                                                 </select>
                                             </div>
