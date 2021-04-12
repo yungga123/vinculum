@@ -98,9 +98,19 @@ class TechniciansModel extends CI_Model {
 		return $this->db->query("UPDATE technicians SET vl_credit = (vl_credit - ".$vl_count.") WHERE id = '".$emp_id."'");
 	}
 
+	public function vl_return($vl_count,$emp_id) {
+		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
+		return $this->db->query("UPDATE technicians SET vl_credit = (vl_credit + ".$vl_count.") WHERE id = '".$emp_id."'");
+	}
+
 	public function sl_deduct($sl_count,$emp_id) {
 		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
 		return $this->db->query("UPDATE technicians SET sl_credit = (sl_credit - ".$sl_count.") WHERE id = '".$emp_id."'");
+	}
+
+	public function sl_return($sl_count,$emp_id) {
+		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
+		return $this->db->query("UPDATE technicians SET sl_credit = (sl_credit + ".$sl_count.") WHERE id = '".$emp_id."'");
 	}
 	
 }

@@ -196,7 +196,6 @@ $copy = 'Employee Copy';
                                 <td><?php echo number_format($payroll['sl_pay'],2); ?></td>
                                 <td>PhilHealth</td>
                                 <td colspan="3"><?php echo number_format($payroll['philhealth_cont'],2); ?></td>
-                                
                             </tr>
 
                             <tr>
