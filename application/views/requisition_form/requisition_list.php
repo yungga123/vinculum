@@ -151,6 +151,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                                 <th>Description</th>
                                 <th>Unit Cost</th>
                                 <th>Qty</th>
+                                <th>Unit</th>
                                 <th>Supplier</th>
                                 <th>Date Needed</th>
                                 <th>Purpose</th>

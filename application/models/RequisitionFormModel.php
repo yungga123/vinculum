@@ -102,6 +102,7 @@ class RequisitionFormModel extends CI_Model {
             'description',
             'unit_cost',
             'qty',
+            'unit',
             'supplier',
             'date_needed',
             'purpose'
