@@ -215,7 +215,7 @@ class RequisitionFormController extends CI_Controller {
         if ($where == '') {
             $btn_status = '<button type="button" class="btn btn-success text-bold btn-xs btn_req_accept btn-block" data-toggle="modal" data-target=".req-accept"><i class="fas fa-check"></i> ACCEPT</button>';
         } elseif ($where == 'Accepted') {
-            $btn_status = '<button type="button" class="btn btn-success text-bold btn-xs btn_req_filed btn-block" data-toggle="modal" data-target=".req-filed"><i class="fas fa-file"></i> FILE</button>';
+            $btn_status = '<button type="button" class="btn btn-success text-bold btn-xs btn_req_filed btn-block" data-toggle="modal" data-target=".req-filed"><i class="fas fa-file"></i> APPROVED</button>';
         } elseif ($where == 'Filed') {
             $btn_status = '';
         }

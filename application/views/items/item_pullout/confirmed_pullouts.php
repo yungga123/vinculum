@@ -45,7 +45,7 @@ foreach ($final_price as $row) {
 								<div class="col-12">
 									<?php echo form_open('specific_confirmed_pullouts') ?>
 									<div class="form-group">
-										<label for="customer_print">Select Customer</label>
+										<label for="customer_print">Select Requestor</label>
 										<select name="customer_print" id="customer_print" class="form-control" aria-describedby="helpId">
 											<option value="0">ALL</option>
 											<?php if (count($results_customers) != 0) { ?>

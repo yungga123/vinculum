@@ -2,6 +2,118 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
+<<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Launch
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="pendingrequest_validate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<?php echo form_open('LoginController/requisition_login_validate', ["id" => "form-requisition-pending"]) ?>
+			<div class="modal-header">
+				<h5 class="modal-title">Pending Request</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<h6>Please Enter Passcode:</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+						<input type="password" name="pendingpasscode" id="pendingpasscode" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-success">Enter</button>
+			</div>
+			<?php echo form_close()?>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="acceptedrequest_validate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<?php echo form_open('LoginController/requisition_login_validate', ["id" => "form-requisition-accepted"]) ?>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Accepted Request</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<h6>Please Enter Passcode:</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+						<input type="password" name="accpasscode" id="accpasscode"class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-success">Enter</button>
+			</div>
+		</div>
+	</div>
+	<?php echo form_close()?>
+</div>
+
+<div class="modal fade" id="filedrequest_validate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<?php echo form_open('LoginController/requisition_login_validate', ["id" => "form-requisition-filed"]) ?>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Filed Request</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<h6>Please Enter Passcode:</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+						<input type="password" name="filedpasscode" id="filedpasscode"class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-success">Enter</button>
+			</div>
+		</div>
+	</div>
+	<?php echo form_close()?>
+</div>
+
+
 <div class="modal loading-modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -163,3 +275,156 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 
+<script>
+$(document).ready( function(){
+ 			//Form Requisition Login Validate
+ 			$('#form-requisition-pending').submit(function(e) {
+                e.preventDefault();
+                
+                var me = $(this);
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                $(':submit').attr('disabled','disabled');
+                $('.loading-modal').modal();
+
+                //ajax
+                $.ajax({
+                    url: me.attr('action'),
+                    type: 'post',
+                    data: me.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success == true) {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            window.location = '<?php echo site_url('requisition-pending') ?>';
+                            me[0].reset();
+                        } else {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.error(response.errors);
+                            
+                        }
+
+                    }
+                });
+            });
+
+			//Form Requisition Accepted Validate
+			$('#form-requisition-accepted').submit(function(e) {
+                e.preventDefault();
+                
+                var me = $(this);
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                $(':submit').attr('disabled','disabled');
+                $('.loading-modal').modal();
+
+                //ajax
+                $.ajax({
+                    url: me.attr('action'),
+                    type: 'post',
+                    data: me.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success == true) {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            window.location = '<?php echo site_url('requisition-accepted') ?>';
+                            me[0].reset();
+                        } else {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.error(response.errors);
+                            
+                        }
+
+                    }
+                });
+            });
+
+			//Form Requisition Filed Validate
+			$('#form-requisition-filed').submit(function(e) {
+                e.preventDefault();
+                
+                var me = $(this);
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                $(':submit').attr('disabled','disabled');
+                $('.loading-modal').modal();
+
+                //ajax
+                $.ajax({
+                    url: me.attr('action'),
+                    type: 'post',
+                    data: me.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success == true) {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            window.location = '<?php echo site_url('requisition-filed') ?>';
+                            me[0].reset();
+                        } else {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.error(response.errors);
+                            
+                        }
+
+                    }
+                });
+            });
+		});
+</script>
