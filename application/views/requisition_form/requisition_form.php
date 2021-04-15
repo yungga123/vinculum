@@ -149,90 +149,104 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                         <?php foreach ($req_items as $row) { ?>
                                             <div class="row add-item">
                                                 <input name="item_id[]" type="hidden" value="<?php echo $row->item_id ?>">
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-3">
                                                     <div class="form-group">
                                                         <label for="description">Description</label>
-                                                        <input type="text" name="description[]" class="form-control" placeholder="" value="<?php echo $row->description ?>">
+                                                        <input type="text" name="description[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->description ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-1">
                                                     <div class="form-group">
                                                         <label for="unit_cost">Cost</label>
-                                                        <input type="text" name="unit_cost[]" class="form-control" placeholder="" value="<?php echo $row->unit_cost ?>">
+                                                        <input type="text" name="unit_cost[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->unit_cost ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-1">
                                                     <div class="form-group">
                                                         <label for="qty">Qty</label>
-                                                        <input type="text" name="qty[]" class="form-control" placeholder="" value="<?php echo $row->qty ?>">
+                                                        <input type="text" name="qty[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->qty ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-1">
+                                                    <div class="form-group">
+                                                        <label for="unit">Unit</label>
+                                                        <input type="text" name="unit[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->unit ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="supplier">Supplier</label>
-                                                        <input type="text" name="supplier[]" class="form-control" placeholder="" value="<?php echo $row->supplier ?>">
+                                                        <input type="text" name="supplier[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->supplier ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="date_needed">Date Needed</label>
-                                                        <input type="date" name="date_needed[]" class="form-control" placeholder="" value="<?php echo $row->date_needed ?>">
+                                                        <input type="date" name="date_needed[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->date_needed ?>">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="purpose">Purpose/s</label>
-                                                        <input type="text" name="purpose[]" class="form-control" placeholder="" value="<?php echo $row->purpose ?>">
+                                                        <input type="text" name="purpose[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->purpose ?>">
                                                     </div>
                                                 </div>
                                             </div>
                                         <?php } ?>
                                     <?php } else { ?>
                                     <div class="row add-item">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <div class="form-group">
                                                 <label for="description">Description</label>
-                                                <input type="text" name="description[]" class="form-control" placeholder="">
+                                                <input type="text" name="description[]" class="form-control form-control-sm" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-1">
                                             <div class="form-group">
                                                 <label for="unit_cost">Cost</label>
-                                                <input type="text" name="unit_cost[]" class="form-control" placeholder="">
+                                                <input type="text" name="unit_cost[]" class="form-control form-control-sm" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-1">
                                             <div class="form-group">
                                                 <label for="qty">Qty</label>
-                                                <input type="text" name="qty[]" class="form-control" placeholder="">
+                                                <input type="text" name="qty[]" class="form-control form-control-sm" placeholder="">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-1">
+                                            <div class="form-group">
+                                                <label for="unit">Unit</label>
+                                                <input type="text" name="unit[]" class="form-control form-control-sm" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label for="supplier">Supplier</label>
-                                                <input type="text" name="supplier[]" class="form-control" placeholder="">
+                                                <input type="text" name="supplier[]" class="form-control form-control-sm" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label for="date_needed">Date Needed</label>
-                                                <input type="date" name="date_needed[]" class="form-control" placeholder="">
+                                                <input type="date" name="date_needed[]" class="form-control form-control-sm" placeholder="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label for="purpose">Purpose/s</label>
-                                                <input type="text" name="purpose[]" class="form-control" placeholder="">
+                                                <input type="text" name="purpose[]" class="form-control form-control-sm" placeholder="">
                                             </div>
                                         </div>
                                     </div>

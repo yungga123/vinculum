@@ -123,9 +123,10 @@ foreach ($results_requisition as $row) {
                         <td width="30%%">Description</td>
                         <td width="10%">Unit Cost</td>
                         <td width="5%%">Qty</td>
+                        <td width="5%%">Unit</td>
                         <td width="13%">Supplier</td>
                         <td width="12%">Date Needed</td>
-                        <td width="25%">Purpose</td>
+                        <td width="20%">Purpose</td>
                     </tr>
 
                     <?php 
@@ -136,6 +137,7 @@ foreach ($results_requisition as $row) {
                         <td><?php echo $row->description ?></td>
                         <td><?php echo number_format($row->unit_cost,2) ?></td>
                         <td><?php echo number_format($row->qty) ?></td>
+                        <td><?php echo $row->unit ?></td>
                         <td><?php echo $row->supplier ?></td>
                         <td class="text-center"><?php echo ($row->date_needed != '0000-00-00') ? date_format(date_create($row->date_needed),'m/d/Y') : '' ?></td>
                         <td><?php echo $row->purpose ?></td>
@@ -143,7 +145,7 @@ foreach ($results_requisition as $row) {
                     <?php $requisition_data['total_price'] = $row->unit_cost*$row->qty + $requisition_data['total_price']  ?>
                     <?php } ?>
                     <tr>
-                        <td colspan="7" class="text-bold">Total Price: <span class="text-danger"><?php echo number_format($requisition_data['total_price'],2) ?></span></td>
+                        <td colspan="8" class="text-bold">Total Price: <span class="text-danger"><?php echo number_format($requisition_data['total_price'],2) ?></span></td>
                     </tr>
                 </tbody>
             </table>

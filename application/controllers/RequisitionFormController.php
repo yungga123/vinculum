@@ -61,6 +61,14 @@ class RequisitionFormController extends CI_Controller {
                 ]
             ],
             [
+                'field' => 'unit[]',
+                'label' => 'Unit',
+                'rules' => 'trim|required|max_length[21]',
+                'errors' => [
+                    'required' => 'Please provide Unit.'
+                ]
+            ],
+            [
                 'field' => 'supplier[]',
                 'label' => 'Qty',
                 'rules' => 'trim|max_length[500]'
@@ -312,6 +320,7 @@ class RequisitionFormController extends CI_Controller {
                     'description' => $this->input->post('description')[$i],
                     'unit_cost' => $this->input->post('unit_cost')[$i],
                     'qty' => $this->input->post('qty')[$i],
+                    'unit' => $this->input->post('unit')[$i],
                     'supplier' => $this->input->post('supplier')[$i],
                     'date_needed' => $this->input->post('date_needed')[$i],
                     'purpose' => $this->input->post('purpose')[$i],
@@ -364,6 +373,7 @@ class RequisitionFormController extends CI_Controller {
 							'description' => $this->input->post('description')[$i],
                             'unit_cost' => $this->input->post('unit_cost')[$i],
                             'qty' => $this->input->post('qty')[$i],
+                            'unit' => $this->input->post('unit')[$i],
                             'supplier' => $this->input->post('supplier')[$i],
                             'date_needed' => $this->input->post('date_needed')[$i],
                             'purpose' => $this->input->post('purpose')[$i]
@@ -378,6 +388,7 @@ class RequisitionFormController extends CI_Controller {
 						'description' => $this->input->post('description')[$i],
                         'unit_cost' => $this->input->post('unit_cost')[$i],
                         'qty' => $this->input->post('qty')[$i],
+                        'unit' => $this->input->post('unit')[$i],
                         'supplier' => $this->input->post('supplier')[$i],
                         'date_needed' => $this->input->post('date_needed')[$i],
                         'purpose' => $this->input->post('purpose')[$i],
