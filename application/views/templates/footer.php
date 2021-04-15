@@ -2,6 +2,42 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
+<!-- Modal -->
+<div class="modal fade" id="payrollogin" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<?php echo form_open('LoginController/payroll_login_validate', ["id" => "form-payroll-validation"]) ?>
+			<div class="modal-header">
+				<h5 class="modal-title">Payrol Login</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<h6>Please Enter Passcode:</h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+						<input type="password" name="passcode" id="passcode" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-success">Enter</button>
+			</div>
+			<?php echo form_close()?>
+		</div>
+	</div>
+</div>
+
 <div class="modal loading-modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -155,7 +191,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 		}
 	</script>
+	<script>
+		$('#form-payroll-validation').submit(function(e) {
+		 	e.preventDefault();
+		 	
+		 	var me = $(this);
+		
+		 	toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
 
+			$(':submit').attr('disabled','disabled');
+			$('.loading-modal').modal();
+
+		 	//ajax
+		 	$.ajax({
+		 		url: me.attr('action'),
+		 		type: 'post',
+		 		data: me.serialize(),
+		 		dataType: 'json',
+		 		success: function(response) {
+		 			if (response.success == true) {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+						window.location.href = "<?php echo site_url('payroll') ?>";
+		 			} else {
+		 				$(':submit').removeAttr('disabled','disabled');
+						$('.loading-modal').modal('hide');
+		 				toastr.error(response.errors);
+		 				
+		 			}
+
+		 		}
+		 	});
+		 });
+	</script>
+	
 	<!-- Initialize Select2 -->
 	<script>
 		$(function() {

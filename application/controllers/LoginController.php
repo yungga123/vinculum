@@ -63,6 +63,53 @@ class LoginController extends CI_Controller
 		}
 	}
 
+	public function payroll_login_validate() {
+		$validate = [
+			'success' => false,
+			'errors' => ''
+
+		];
+
+			$rules =[
+				
+				[
+					'field' => 'payrollpasscode',
+					'label' => 'Password',
+					'rules' => 'trim|callback_confirm_payroll_pw'
+				]
+				
+				];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
+
+	function confirm_payroll_pw(){
+
+		if($this->input->post('passcode') != ""){
+			if($this->input->post('passcode') == "vinculumrocks"){
+				return true;
+			}else{
+				$this->form_validation->set_message('confirm_payroll_pw', 'Invalid username or password.');
+				return false;
+			}
+		}
+		else{
+			$this->form_validation->set_message('confirm_payroll_pw', 'Password Required');
+			return false;
+		}
+		
+
+
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('logged_in');
