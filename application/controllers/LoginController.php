@@ -63,6 +63,73 @@ class LoginController extends CI_Controller
 		}
 	}
 
+	public function requisition_login_validate() {
+		$validate = [
+			'success' => false,
+			'errors' => ''
+
+		];
+
+			$rules =[
+				
+				[
+					'field' => 'accpasscode',
+					'label' => 'Password',
+					'rules' => 'trim|callback_confirmreq_pw'
+				]
+				
+				];
+		
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
+
+	function confirmreq_pw(){
+		$purchasing = "purchasingquery";
+		$engr = "vinculumquery";
+
+		if($this->input->post('pendingpasscode') != ""){
+			if($this->input->post('pendingpasscode') == $engr){
+				return true;
+			}else{
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				return false;
+			}
+		}
+
+		elseif($this->input->post('accpasscode') != ""){
+			if($this->input->post('accpasscode') == $purchasing){
+				return true;
+			}else{
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				return false;
+			}
+		}
+
+		elseif($this->input->post('filedpasscode') != ""){
+			if($this->input->post('filedpasscode') == $purchasing){
+				return true;
+			}else{
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				return false;
+			}
+		}
+		else{
+			$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+			return false;
+		}
+		
+
+
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('logged_in');
