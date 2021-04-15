@@ -49,148 +49,90 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                 </div>
 
                                 <div class="card-body">
-                                    <?php if ($this->uri->segment(1) == 'requisition-update'): ?>
-                                        <div class="row">
-                                            <div class="col-sm-6">
 
-                                                <div class="form-group">
-                                                    <label for="requested_by"> Requested By</label>
-                                                    <select type="text" name="requested_by" id="requested_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
+                                    <div class="row">
+                                        <div class="col-sm-6">
 
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                        <?php } ?>
+                                            <div class="form-group">
+                                                <label for="requested_by"> Requested By</label>
+                                                <select type="text" name="requested_by" id="requested_by" class="form-control select2">
+                                                    <option value="">---Please Select---</option>
 
-                                                    </select>
-                                                </div>
+                                                    <?php foreach ($employees as $row) { ?>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
+                                                    <?php } ?>
 
-
-                                                <div class="form-group">
-                                                    <label for="processed_by">Processed By</label>
-                                                    <select type="text" name="processed_by" id="processed_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
-
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == '16071818' || $row->id == 'PS021021' || $row->id == 'PS111620') { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['processed_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
+                                                </select>
                                             </div>
 
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="approved_by">Approved By</label>
-                                                    <select type="text" name="approved_by" id="approved_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
 
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == '01021415' || $row->id == '02021415' || $row->id == '16071818' || $row->id == 'RNDE09232020') { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['approved_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            <?php } ?>
+                                            <div class="form-group">
+                                                <label for="processed_by">Processed By</label>
+                                                <select type="text" name="processed_by" id="processed_by" class="form-control select2">
+                                                    <option value="">---Please Select---</option>
+
+                                                    <?php foreach ($employees as $row) { ?>
+                                                        <?php if ($row->id == '16071818' || $row->id == 'PS021021' || $row->id == 'PS111620') { ?>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['processed_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                         <?php } ?>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="received_by">Received By</label>
-                                                    <select type="text" name="received_by" id="received_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
-
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['received_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-
-
-                                                <div class="form-group">
-                                                    <label for="checked_by">Checked By</label>
-                                                    <select type="text" name="checked_by" id="checked_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
-                                                        
-                                                        
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521') { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
-                                    <?php else: ?>
-                                        <div class="row">
-                                            <div class="col-sm-4">
 
-                                                <div class="form-group">
-                                                    <label for="requested_by"> Requested By</label>
-                                                    <select type="text" name="requested_by" id="requested_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="approved_by">Approved By</label>
+                                                <select type="text" name="approved_by" id="approved_by" class="form-control select2">
+                                                    <option value="">---Please Select---</option>
 
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
+                                                    <?php foreach ($employees as $row) { ?>
+                                                        <?php if ($row->id == '01021415' || $row->id == '02021415' || $row->id == '16071818' || $row->id == 'RNDE09232020') { ?>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['approved_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                         <?php } ?>
-
-                                                    </select>
-                                                </div>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
 
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="processed_by">Processed By</label>
-                                                    <select type="text" name="processed_by" id="processed_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
+                                            <div class="form-group">
+                                                <label for="received_by">Received By</label>
+                                                <select type="text" name="received_by" id="received_by" class="form-control select2">
+                                                    <option value="">---Please Select---</option>
 
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == '16071818' || $row->id == 'PS021021' || $row->id == 'PS111620') { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['processed_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
+                                                    <?php foreach ($employees as $row) { ?>
+                                                        
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['received_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
+                                                        
+                                                    <?php } ?>
+                                                </select>
                                             </div>
 
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="approved_by">Approved By</label>
-                                                    <select type="text" name="approved_by" id="approved_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
 
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == '01021415' || $row->id == '02021415' || $row->id == '16071818' || $row->id == 'RNDE09232020') { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['approved_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            <?php } ?>
+                                            <div class="form-group">
+                                                <label for="checked_by">Checked By</label>
+                                                <select type="text" name="checked_by" id="checked_by" class="form-control select2">
+                                                    <option value="">---Please Select---</option>
+                                                    
+                                                    
+                                                    <?php foreach ($employees as $row) { ?>
+                                                        <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521') { ?>
+                                                        <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                            echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
+                                                        } ?>><?php echo $row->name ?></option>
                                                         <?php } ?>
-                                                    </select>
-                                                </div>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
-                                                <input type="hidden" name="received_by" id="received_by" value="">
-                                                <input type="hidden" name="checked_by" id="checked_by" value="">
-                                              
                                         </div>
-                                    <?php endif ?>
-                                    
+                                    </div>
                                 </div>
                             </div>
 

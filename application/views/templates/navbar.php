@@ -181,21 +181,21 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 					</li>
 
 					<li class="nav-item">
-						<a href="#" class="nav-link <?php echo $requisition_pending ?>" data-toggle="modal" data-target="#pendingrequest_validate">
+						<a href="<?php echo site_url('requisition-pending') ?>" class="nav-link <?php echo $requisition_pending ?>">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Pending Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_pending_requisitions() ?></span></p>
 						</a>
 					</li>
 
 					<li class="nav-item">
-						<a href="#" class="nav-link <?php echo $requisition_accepted ?>" data-toggle="modal" data-target="#acceptedrequest_validate">
+						<a href="<?php echo site_url('requisition-accepted') ?>" class="nav-link <?php echo $requisition_accepted ?>">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Accepted Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_accepted_requisitions() ?></span></p>
 						</a>
 					</li>
 
 					<li class="nav-item">
-						<a href="#" class="nav-link <?php echo $requisition_filed ?>" data-toggle="modal" data-target="#filedrequest_validate">
+						<a href="<?php echo site_url('requisition-filed') ?>" class="nav-link <?php echo $requisition_filed ?>">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Filed Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_filed_requisitions() ?></span></p>
 						</a>

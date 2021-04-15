@@ -36,14 +36,6 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                             <table class="table table-bordered table-hover" id="table_pending_request" style="width: 100%">
                                 <thead>
                                     <tr>
-                                    <?php if($this->uri->segment(1) == 'requisition-pending'): ?>
-                                        <th>Req No.</th>
-                                        <th>Operation</th>
-                                        <th>Date Added</th>
-                                        <th>Requested By</th>
-                                        <th>Processed By</th>
-                                        <th>Approved By</th>
-                                    <?php else: ?>
                                         <th>Req No.</th>
                                         <th>Operation</th>
                                         <th>Date Added</th>
@@ -52,8 +44,6 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                                         <th>Approved By</th>
                                         <th>Received By</th>
                                         <th>Checked By</th>
-                                    <?php endif ?>
-                                        
                                     </tr>
                                 </thead>
                             </table>
