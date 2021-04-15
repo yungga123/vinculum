@@ -185,8 +185,9 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                     </select>
                                                 </div>
                                             </div>
-                                                <input type="hidden" name="received_by" id="received_by">
-                                                <input type="hidden" name="checked_by" id="checked_by">
+                                                <input type="hidden" name="received_by" id="received_by" value="">
+                                                <input type="hidden" name="checked_by" id="checked_by" value="">
+                                              
                                         </div>
                                     <?php endif ?>
                                     
