@@ -166,8 +166,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				<a href="javascript:void(0)" class="nav-link<?php echo $requisition_form ?>">
 					<i class="nav-icon far fa-edit"></i>
 					<p>Item Requisition</p>
-
-					<span class="badge badge-danger">NEW</span>
 					<i class="fas fa-angle-left right"></i>
 					
 				</a>
