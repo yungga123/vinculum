@@ -100,7 +100,7 @@ defined('BASEPATH') or die('Access Denied');
 
 				<div class="form-group">
 					<label for="event_desc">Description</label>
-					<input class="form-control" type="text" name="event_desc" id="event_desc">
+					<textarea class="form-control" name="event_desc" id="event_desc" rows="9"></textarea>
 				</div>
 
 				<div class="form-group">
@@ -150,7 +150,7 @@ defined('BASEPATH') or die('Access Denied');
 
 				<div class="form-group">
 					<label for="event_desc_edit">Description</label>
-					<input class="form-control" type="text" name="event_desc_edit" id="event_desc_edit">
+					<textarea class="form-control" name="event_desc_edit" id="event_desc_edit" rows="9"></textarea>
 				</div>
 
 				<div class="form-group">

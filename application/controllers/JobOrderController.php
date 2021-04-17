@@ -365,6 +365,14 @@ class JobOrderController extends CI_Controller
 				'errors' => [
 					'required' => 'Please select committed date.'
 				]
+			],
+			[
+				'field' => 'schedule_type',
+				'label' => 'Schedule Type',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select schedule type.'
+				]
 			]
 		];
 
@@ -381,7 +389,18 @@ class JobOrderController extends CI_Controller
 				'commited_schedule' => $this->input->post('committed_schedule')
 			];
 
+			$schedule_data = [
+				'title' => $this->input->post('client_name'),
+				'start' => $this->input->post('committed_schedule').' 00:00:00',
+				'end' => $this->input->post('committed_schedule').' 23:59:59',
+				'description' => $this->input->post('description'),
+				'type' => $this->input->post('schedule_type')
+			];
+
 			$this->JobOrderModel->update_joborder($id, $data);
+
+			$this->load->model('CalendarModel');
+			$this->CalendarModel->add_events($schedule_data);
 		} else {
 			$validate['errors'] = validation_errors();
 		}

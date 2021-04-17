@@ -108,6 +108,18 @@ if ($this->uri->segment(1) == 'joborder-list') {
         $('.form-commdate').empty();
         $('.form-commdate').append('<label for="committed_schedule">Please input committed schedule</label>');
         $('.form-commdate').append('<input type="date" name="committed_schedule" id="committed_schedule" class="form-control">');
+        $('.form-commdate').append('<p class="mt-4 text-bold text-danger">Accepted Requisitions will also be added to schedules based on selected date and Client Name.</p>');
+        $('.form-commdate').append('<div class="form-group">'
+            +       '<label for="schedule_type">Schedule Type</label>'
+            +       '<select class="form-control" name="schedule_type" id="schedule_type">'
+            +           '<option value="">---Please Select---</option>'
+            +           '<option value="installation">Installation</option>'
+            +           '<option value="service">Service</option>'
+            +       '</select>'
+            +   '</div>');
+        $('.form-commdate').append('<input type="text" name="client_name" id="client_name">');
+        $('.form-commdate').append('<textarea name="description" id="description"></textarea>');
+        
     });
 
     $(document).on("click",".btn_discarded",function() {

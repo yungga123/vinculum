@@ -143,7 +143,6 @@ if ($decision == 'accepted') {
                 </div>
                 
                 <input type="hidden" name="decision" id="decision" class="form-control" value="">
-
                 <div class="form-group form-commdate">
                     
                 </div>
