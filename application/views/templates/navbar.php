@@ -198,6 +198,13 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 							<p>Filed Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_filed_requisitions() ?></span></p>
 						</a>
 					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('requisition-discarded') ?>" class="nav-link <?php echo $requisition_discarded ?>">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Discarded Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_discarded_requisitions() ?></span></p>
+						</a>
+					</li>
 				</ul>
 			</li>
 
