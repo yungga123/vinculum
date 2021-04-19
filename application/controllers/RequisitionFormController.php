@@ -207,6 +207,28 @@ class RequisitionFormController extends CI_Controller {
 		}
     }
 
+    public function discarded_requisitions() {
+        if($this->session->userdata('logged_in')) {
+            
+            $this->load->model('TechniciansModel');
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Discarded Requests';
+            $data['requisition_tree'] = ' menu-open';
+            $data['requisition_display'] = ' block';
+            $data['requisition_form'] = ' active';
+            $data['requisition_discarded'] = ' active';
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('requisition_form/requisition_list');
+			$this->load->view('templates/footer');
+            $this->load->view('requisition_form/script');
+            
+		} else {
+			redirect('','refresh');
+		}
+    }
+
     public function fetch_requisitions($where) {
         $fetch_data = $this->RequisitionFormModel->requisition_form_datatable($where);
 		$data = array();
@@ -234,8 +256,17 @@ class RequisitionFormController extends CI_Controller {
                 $operation = '
                     <a href="'.site_url('requisition-update/'.$row->req_id).'" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</a>
 
+                    <button type="button" class="btn btn-danger text-bold btn-xs btn-block btn_req_del" data-toggle="modal" data-target="#delete-requisition"><i class="fas fa-trash"></i> DISCARD</button>
+
                     <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
                     ' .$btn_status;
+            } 
+            elseif($this->uri->segment(2) == 'fetch_discarded_requisitions') {
+                $operation = '
+                    <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
+                    
+                    <a href="'.site_url('requisition-view/'.$row->req_id).'" class="btn btn-success text-bold btn-xs btn-block" target="_blank"><i class="fas fa-print"></i> PRINT</a>
+                    ';
             } else {
                 $operation = '
                     <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
@@ -280,6 +311,10 @@ class RequisitionFormController extends CI_Controller {
     
     public function fetch_filed_requisitions() {
         return $this->fetch_requisitions('Filed');
+    }
+
+    public function fetch_discarded_requisitions() {
+        return $this->fetch_requisitions('Discarded');
     }
 
     public function add_item_requisition_validate() {
@@ -557,7 +592,7 @@ class RequisitionFormController extends CI_Controller {
 
 
             $this->RequisitionFormModel->update_requesition($this->input->post('req_form_id_del'),[
-                'is_deleted' => '1'
+                'status' => 'Discarded'
             ]);
             
 		} 

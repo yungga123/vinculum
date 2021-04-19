@@ -28,6 +28,13 @@ class CountsModel extends CI_Model {
         $this->db->where('is_deleted',0);
         return $this->db->count_all_results();
     }
+
+    public function count_discarded_requisitions() {
+        $this->db->select("*");
+        $this->db->from('requisition_form');
+        $this->db->where('status','Discarded');
+        return $this->db->count_all_results();
+    }
     //END OF REQUISITION COUNTS
 
 }
