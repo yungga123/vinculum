@@ -42,20 +42,6 @@ if ($this->uri->segment(1) == 'joborder-list') {
     //end of datatable
 
     //Fetching Data in Table Job Order
-    $('#joborder_table tbody').on('click','.btn_accepted',function(){
-
-        var data = payroll_table.row($(this).parents('tr')).data();
-        var rowdata = payroll_table.row(this).data();
-
-        if (data == undefined) {
-            $('#job_order_id').val(rowdata[0]);
-        } else if (rowdata == undefined) {
-            $('#job_order_id').val(data[0]);
-        }
-
-    });
-
-    //Fetching Data in Table Job Order
     $('#joborder_table tbody').on('click','.btn_discarded',function(){
 
         var data = payroll_table.row($(this).parents('tr')).data();
@@ -117,8 +103,21 @@ if ($this->uri->segment(1) == 'joborder-list') {
             +           '<option value="service">Service</option>'
             +       '</select>'
             +   '</div>');
-        $('.form-commdate').append('<input type="text" name="client_name" id="client_name">');
-        $('.form-commdate').append('<textarea name="description" id="description"></textarea>');
+        $('.form-commdate').append('<input type="hidden" name="client_name" id="client_name">');
+        $('.form-commdate').append('<textarea style="display: none;" name="description" id="description"></textarea>');
+
+        var data = payroll_table.row($(this).parents('tr')).data();
+        var rowdata = payroll_table.row(this).data();
+
+        if (data == undefined) {
+            $('#job_order_id').val(rowdata[0]);
+            $('#client_name').val(rowdata[3]);
+            $('#description').val(rowdata[7]);
+        } else if (rowdata == undefined) {
+            $('#job_order_id').val(data[0]);
+            $('#client_name').val(data[3]);
+            $('#description').val(data[7]);
+        }
         
     });
 

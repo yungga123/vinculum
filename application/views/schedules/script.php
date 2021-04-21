@@ -87,7 +87,7 @@ defined('BASEPATH') or die('Access Denied');
 
 			          ?>",
 			      	extendedProps: {
-			        description		: '<?php echo addslashes($row->description) ?>',
+			        description		: '<?php echo addslashes(json_encode($row->description)) ?>',
 			      	type 			: '<?php echo $row->type ?>'
 			      }
 			      
@@ -102,7 +102,7 @@ defined('BASEPATH') or die('Access Denied');
 	      	$('#event_title_edit').val(info.event.title);
 	      	$('#event_sd_edit').val(moment(info.event.start).format('YYYY-MM-DD HH:mm:ss'));
 	      	$('#event_ed_edit').val(moment(info.event.end).format('YYYY-MM-DD HH:mm:ss'));
-	      	$('#event_desc_edit').val(info.event.extendedProps.description);
+	      	$('#event_desc_edit').val(JSON.parse(info.event.extendedProps.description));
 	      	$('#event_type_edit').val(info.event.extendedProps.type);
 	      	$('#event_daterange_edit').val(moment(info.event.start).format('MMM DD, YYYY hh:mm A') + ' - ' + moment(info.event.end).format('MMM DD, YYYY hh:mm A'));
 

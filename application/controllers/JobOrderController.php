@@ -393,7 +393,7 @@ class JobOrderController extends CI_Controller
 				'title' => $this->input->post('client_name'),
 				'start' => $this->input->post('committed_schedule').' 00:00:00',
 				'end' => $this->input->post('committed_schedule').' 23:59:59',
-				'description' => $this->input->post('description'),
+				'description' => str_replace("<br>", "",$this->input->post('description')),
 				'type' => $this->input->post('schedule_type')
 			];
 
