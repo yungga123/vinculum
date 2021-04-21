@@ -436,6 +436,11 @@ class RequisitionFormController extends CI_Controller {
                 'errors' => [
                     'required' => 'Please select an item.'
                 ]
+            ],
+            [
+                'field' => 'passcode',
+                'label' => 'Password',
+                'rules' => 'trim|callback_confirmreq_pw'
             ]
 
         ];
@@ -458,6 +463,25 @@ class RequisitionFormController extends CI_Controller {
 		}
         echo json_encode($validate);
     }
+
+    function confirmreq_pw(){
+
+		if($this->input->post('passcode') != ""){
+			if($this->input->post('passcode') == "vinculumquery"){
+				return true;
+			}else{
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				return false;
+			}
+		}
+		else{
+			$this->form_validation->set_message('confirmreq_pw', 'Password Required.');
+			return false;
+		}
+		
+
+
+	}
 
     public function file_requisition() {
         $validate = [
