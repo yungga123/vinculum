@@ -78,7 +78,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
                                           ?>">
                                 <td><?php echo $row->title ?></td>
-                                <td><?php echo $row->description ?></td>
+                                <td><?php echo str_replace("\n", "<br>", $row->description) ?></td>
                                 <td><?php echo date_format(date_create($row->start), 'M d, Y h:i A') ?></td>
                                 <td><?php echo date_format(date_create($row->end), 'M d, Y h:i A') ?></td>
                               </tr>
