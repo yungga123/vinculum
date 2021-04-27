@@ -140,7 +140,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                         </div>
                                     <?php else: ?>
                                         <div class="row">
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
 
                                                 <div class="form-group">
                                                     <label for="requested_by"> Requested By</label>
