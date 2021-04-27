@@ -44,10 +44,15 @@ if ($this->uri->segment(1) == 'requisition-update') {
 
                             <!-- Requestor and Approval -->
                             <div class="card">
-                                <div class="card-header">
-                                    <b>Requestor and Approval</b>
-                                </div>
-
+                               <?php if ($this->uri->segment(1) == 'requisition-update'): ?>
+                                    <div class="card-header">
+                                        <b>Requestor and Approval</b>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="card-header">
+                                        <b>Requestor</b>
+                                    </div>
+                                <?php endif ?>
                                 <div class="card-body">
                                     <?php if ($this->uri->segment(1) == 'requisition-update'): ?>
                                         <div class="row">
@@ -135,7 +140,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                         </div>
                                     <?php else: ?>
                                         <div class="row">
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-12">
 
                                                 <div class="form-group">
                                                     <label for="requested_by"> Requested By</label>
@@ -152,41 +157,12 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                 </div>
                                             </div>
 
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="processed_by">Processed By</label>
-                                                    <select type="text" name="processed_by" id="processed_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
-
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == '16071818' || $row->id == 'PS021021' || $row->id == 'PS111620') { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['processed_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="approved_by">Approved By</label>
-                                                    <select type="text" name="approved_by" id="approved_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
-
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == '01021415' || $row->id == '02021415' || $row->id == '16071818' || $row->id == 'RNDE09232020') { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['approved_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            <?php } ?>
-                                                        <?php } ?>
-                                                    </select>
-                                                </div>
-                                            </div>
                                                 <input type="hidden" name="received_by" id="received_by" value="">
                                                 <input type="hidden" name="checked_by" id="checked_by" value="">
+                                                <input type="hidden" name="approved_by" id="received_by" value="">
+                                                <input type="hidden" name="processed_by" id="processed_by" value="">
+                                                
+                                                
                                               
                                         </div>
                                     <?php endif ?>
@@ -216,13 +192,6 @@ if ($this->uri->segment(1) == 'requisition-update') {
 
                                                 <div class="col-sm-1">
                                                     <div class="form-group">
-                                                        <label for="unit_cost">Cost</label>
-                                                        <input type="text" name="unit_cost[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->unit_cost ?>">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-1">
-                                                    <div class="form-group">
                                                         <label for="qty">Qty</label>
                                                         <input type="text" name="qty[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->qty ?>">
                                                     </div>
@@ -232,6 +201,13 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                     <div class="form-group">
                                                         <label for="unit">Unit</label>
                                                         <input type="text" name="unit[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->unit ?>">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-1">
+                                                    <div class="form-group">
+                                                        <label for="unit_cost">Cost</label>
+                                                        <input type="text" name="unit_cost[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->unit_cost ?>">
                                                     </div>
                                                 </div>
 

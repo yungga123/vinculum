@@ -398,9 +398,9 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                             $('#tbody-reqitems').append('<tr>' +
                                 '<td>' + i++ + '</td>' +
                                 '<td>' + response.results[key].description + '</td>' +
+                                '<td>' + Number(response.results[key].qty).toFixed(2) + '</td>' +
                                 '<td>' + response.results[key].unit + '</td>' +
                                 '<td>' + Number(response.results[key].unit_cost).toFixed(2) + '</td>' +
-                                '<td>' + Number(response.results[key].qty).toFixed(2) + '</td>' +
                                 '<td>' + Number(total_cost).toFixed(2) + '</td>' +
                                 '<td>' + response.results[key].supplier + '</td>' +
                                 '<td>' + moment(response.results[key].date_needed).format('MMM DD, YYYY') + '</td>' +
