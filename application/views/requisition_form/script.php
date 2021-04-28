@@ -9,6 +9,8 @@ if ($this->uri->segment(1) == 'requisition-pending') {
     $url = site_url('RequisitionFormController/fetch_accepted_requisitions');
 } elseif ($this->uri->segment(1) == 'requisition-filed') {
     $url = site_url('RequisitionFormController/fetch_filed_requisitions');
+} elseif ($this->uri->segment(1) == 'requisition-discarded') {
+    $url = site_url('RequisitionFormController/fetch_discarded_requisitions');
 }
 
 ?>
@@ -144,8 +146,11 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                         if (response.success == true) {
                             $(':submit').removeAttr('disabled','disabled');
                             $('.loading-modal').modal('hide');
-                            toastr.success("Success! Item Request was deleted!");
+                            toastr.success("Success! Item Request was deleted! The page will refresh.");
                             me[0].reset();
+                            window.setTimeout(function() {
+                                location.reload();
+                            }, 2000);
                         } else {
                             $(':submit').removeAttr('disabled','disabled');
                             $('.loading-modal').modal('hide');

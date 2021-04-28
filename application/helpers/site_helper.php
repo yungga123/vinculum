@@ -64,6 +64,7 @@ if(!function_exists('html_variable')) {
 			'requisition_pending' => '',
 			'requisition_accepted' => '',
 			'requisition_filed' => '',
+			'requisition_discarded' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];
