@@ -22,7 +22,7 @@ defined('BASEPATH') or die('Access Denied');
 					<div class="card">
 						<div class="card-header">
 							Vendor Details
-							<a href="#" class="btn btn-success text-bold float-right" data-toggle="modal" data-target="#modal_add_vendor"> <i class="fas fa-plus"></i> ADD VENDOR</a>
+							<a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#modal_add_vendor"> <i class="fas fa-plus"></i> ADD VENDOR</a>
 						</div>
 
 						<div class="card-body">
