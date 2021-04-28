@@ -166,6 +166,8 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				<a href="javascript:void(0)" class="nav-link<?php echo $requisition_form ?>">
 					<i class="nav-icon far fa-edit"></i>
 					<p>Item Requisition</p>
+
+					<span class="badge badge-danger">NEW</span>
 					<i class="fas fa-angle-left right"></i>
 					
 				</a>
@@ -179,30 +181,23 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 					</li>
 
 					<li class="nav-item">
-						<a href="<?php echo site_url('requisition-pending') ?>" class="nav-link <?php echo $requisition_pending ?>">
+						<a href="<?php echo site_url('requisition-pending')?>" class="nav-link <?php echo $requisition_pending ?>">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Pending Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_pending_requisitions() ?></span></p>
 						</a>
 					</li>
 
 					<li class="nav-item">
-						<a href="<?php echo site_url('requisition-accepted') ?>" class="nav-link <?php echo $requisition_accepted ?>">
+						<a href="#" class="nav-link <?php echo $requisition_accepted ?>" data-toggle="modal" data-target="#acceptedrequest_validate">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Accepted Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_accepted_requisitions() ?></span></p>
 						</a>
 					</li>
 
 					<li class="nav-item">
-						<a href="<?php echo site_url('requisition-filed') ?>" class="nav-link <?php echo $requisition_filed ?>">
+						<a href="#" class="nav-link <?php echo $requisition_filed ?>" data-toggle="modal" data-target="#filedrequest_validate">
 							<i class="far fa-circle nav-icon"></i>
 							<p>Filed Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_filed_requisitions() ?></span></p>
-						</a>
-					</li>
-
-					<li class="nav-item">
-						<a href="<?php echo site_url('requisition-discarded') ?>" class="nav-link <?php echo $requisition_discarded ?>">
-							<i class="far fa-circle nav-icon"></i>
-							<p>Discarded Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_discarded_requisitions() ?></span></p>
 						</a>
 					</li>
 				</ul>
