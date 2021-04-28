@@ -37,8 +37,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
             <div class="row">
 
                 <div class="col-sm-12">
-                    <div class="card">
-                        
+                    <div class="card"> 
                         <?php echo ($this->uri->segment(1) == 'requisition-update') ? form_open('RequisitionFormController/update_item_requisition_validate', ["id" => "form-updateitem-request"]) : form_open('RequisitionFormController/add_item_requisition_validate', ["id" => "form-additem-request"]) ?>
                         <div class="card-body">
 
@@ -56,8 +55,8 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                 <div class="card-body">
                                     <?php if ($this->uri->segment(1) == 'requisition-update'): ?>
                                         <div class="row">
-                                            <div class="col-sm-6">
 
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="requested_by"> Requested By</label>
                                                     <select type="text" name="requested_by" id="requested_by" class="form-control select2">
@@ -114,13 +113,11 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                             
                                                             <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
                                                                 echo ($req_data['received_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                            
+                                                                } ?>><?php echo $row->name ?>
+                                                            </option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>
-
-
                                                 <div class="form-group">
                                                     <label for="checked_by">Checked By</label>
                                                     <select type="text" name="checked_by" id="checked_by" class="form-control select2">
@@ -131,39 +128,49 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                             <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521') { ?>
                                                             <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
                                                                 echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
+                                                                } ?>><?php echo $row->name ?>
+                                                            </option>
                                                             <?php } ?>
                                                         <?php } ?>
+
+                                                            <?php foreach ($employees as $row) { ?>
+                                                                <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521') { ?>
+                                                                <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                                    echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
+                                                                    } ?>><?php echo $row->name ?>
+                                                                </option>
+                                                                <?php } ?>
+                                                            <?php } ?>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     <?php else: ?>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="requested_by"> Requested By</label>
-                                                    <select type="text" name="requested_by" id="requested_by" class="form-control select2">
-                                                        <option value="">---Please Select---</option>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="requested_by"> Requested By</label>
+                                                        <select type="text" name="requested_by" id="requested_by" class="form-control select2">
+                                                            <option value="">---Please Select---</option>
 
-                                                        <?php foreach ($employees as $row) { ?>
-                                                            <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
-                                                            } ?>><?php echo $row->name ?></option>
-                                                        <?php } ?>
+                                                            <?php foreach ($employees as $row) { ?>
+                                                                <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
+                                                                    echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
+                                                                } ?>><?php echo $row->name ?></option>
+                                                            <?php } ?>
 
-                                                    </select>
+                                                        </select>
+                                                    </div>
                                                 </div>
+                                                    <input type="hidden" name="received_by" id="received_by" value="">
+                                                    <input type="hidden" name="checked_by" id="checked_by" value="">
+                                                    <input type="hidden" name="approved_by" id="received_by" value="">
+                                                    <input type="hidden" name="processed_by" id="processed_by" value="">  
                                             </div>
-                                                <input type="hidden" name="received_by" id="received_by" value="">
-                                                <input type="hidden" name="checked_by" id="checked_by" value="">
-                                                <input type="hidden" name="approved_by" id="received_by" value="">
-                                                <input type="hidden" name="processed_by" id="processed_by" value="">  
-                                        </div>
                                     <?php endif ?>
-                                    
                                 </div>
                             </div>
+                        </div>
 
                             <!-- Items for request -->
                             <div class="card">
@@ -292,11 +299,10 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="card-footer">
-                            <div class="float-right">
-                                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> SUBMIT</button>
+                            <div class="card-footer">
+                                <div class="float-right">
+                                    <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> SUBMIT</button>
+                                </div>
                             </div>
                         </div>
                         <?php echo form_close() ?>
