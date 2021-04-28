@@ -141,7 +141,6 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                     <?php else: ?>
                                         <div class="row">
                                             <div class="col-sm-6">
-
                                                 <div class="form-group">
                                                     <label for="requested_by"> Requested By</label>
                                                     <select type="text" name="requested_by" id="requested_by" class="form-control select2">
@@ -156,14 +155,10 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                     </select>
                                                 </div>
                                             </div>
-
                                                 <input type="hidden" name="received_by" id="received_by" value="">
                                                 <input type="hidden" name="checked_by" id="checked_by" value="">
                                                 <input type="hidden" name="approved_by" id="received_by" value="">
-                                                <input type="hidden" name="processed_by" id="processed_by" value="">
-                                                
-                                                
-                                              
+                                                <input type="hidden" name="processed_by" id="processed_by" value="">  
                                         </div>
                                     <?php endif ?>
                                     
