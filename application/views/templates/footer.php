@@ -274,3 +274,157 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$('.select2').select2();
 		});
 	</script>
+
+<script>
+$(document).ready( function(){
+ 			//Form Requisition Login Validate
+ 			$('#form-requisition-pending').submit(function(e) {
+                e.preventDefault();
+                
+                var me = $(this);
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                $(':submit').attr('disabled','disabled');
+                $('.loading-modal').modal();
+
+                //ajax
+                $.ajax({
+                    url: me.attr('action'),
+                    type: 'post',
+                    data: me.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success == true) {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            window.location = '<?php echo site_url('requisition-pending') ?>';
+                            me[0].reset();
+                        } else {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.error(response.errors);
+                            
+                        }
+
+                    }
+                });
+            });
+
+			//Form Requisition Accepted Validate
+			$('#form-requisition-accepted').submit(function(e) {
+                e.preventDefault();
+                
+                var me = $(this);
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                $(':submit').attr('disabled','disabled');
+                $('.loading-modal').modal();
+
+                //ajax
+                $.ajax({
+                    url: me.attr('action'),
+                    type: 'post',
+                    data: me.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success == true) {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            window.location = '<?php echo site_url('requisition-accepted') ?>';
+                            me[0].reset();
+                        } else {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.error(response.errors);
+                            
+                        }
+
+                    }
+                });
+            });
+
+			//Form Requisition Filed Validate
+			$('#form-requisition-filed').submit(function(e) {
+                e.preventDefault();
+                
+                var me = $(this);
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+
+                $(':submit').attr('disabled','disabled');
+                $('.loading-modal').modal();
+
+                //ajax
+                $.ajax({
+                    url: me.attr('action'),
+                    type: 'post',
+                    data: me.serialize(),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success == true) {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            window.location = '<?php echo site_url('requisition-filed') ?>';
+                            me[0].reset();
+                        } else {
+                            $(':submit').removeAttr('disabled','disabled');
+                            $('.loading-modal').modal('hide');
+                            toastr.error(response.errors);
+                            
+                        }
+
+                    }
+                });
+            });
+		});
+</script>
