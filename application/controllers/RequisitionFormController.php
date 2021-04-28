@@ -345,10 +345,6 @@ class RequisitionFormController extends CI_Controller {
 
             $results = $this->RequisitionFormModel->get_requisition_form();
 
-            foreach ($results as $row) {
-                $req_id = $row->id;
-            }
-
             //add request_items
 			for ($i=0; $i < $count_requests; $i++) { 
 				$this->RequisitionFormModel->insert_request_items([
