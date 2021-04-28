@@ -166,10 +166,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				<a href="javascript:void(0)" class="nav-link<?php echo $requisition_form ?>">
 					<i class="nav-icon far fa-edit"></i>
 					<p>Item Requisition</p>
-
-					<span class="badge badge-danger">NEW</span>
 					<i class="fas fa-angle-left right"></i>
-					
 				</a>
 
 				<ul class="nav nav-treeview" style="display: <?php echo $requisition_display ?>">
@@ -200,14 +197,20 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 							<p>Filed Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_filed_requisitions() ?></span></p>
 						</a>
 					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('requisition-discarded') ?>" class="nav-link <?php echo $requisition_discarded ?>">
+							<i class="far fa-circle nav-icon"></i>
+							<p>Discarded Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_discarded_requisitions() ?></span></p>
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li class="nav-item">
 	            <a href="<?php echo site_url('vendor-database')?>" class="nav-link<?php echo $li_vendor_list ?>">
 	              <i class="nav-icon fas fa-database"></i>
-	              <p>
-	                Vendor
-	              </p>
+	              <p>Vendor</p>
+				  <span class="badge badge-danger">NEW</span>
 	            </a>
           	</li>
 
