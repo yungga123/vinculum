@@ -65,6 +65,7 @@ if(!function_exists('html_variable')) {
 			'requisition_accepted' => '',
 			'requisition_filed' => '',
 			'requisition_discarded' => '',
+			'li_vendor_list' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];

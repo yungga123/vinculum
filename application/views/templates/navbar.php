@@ -207,6 +207,14 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 					</li>
 				</ul>
 			</li>
+			<li class="nav-item">
+	            <a href="<?php echo site_url('vendor-database')?>" class="nav-link<?php echo $li_vendor_list ?>">
+	              <i class="nav-icon fas fa-database"></i>
+	              <p>
+	                Vendor
+	              </p>
+	            </a>
+          	</li>
 
 			<li class="nav-header">PROJECTS AND SERVICES</li>
 			  

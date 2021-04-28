@@ -178,3 +178,7 @@ $route['requisition-view/(:any)'] = 'RequisitionFormController/requisition_view/
 $route['requisition-accepted'] = 'RequisitionFormController/accepted_requisitions';
 $route['requisition-filed'] = 'RequisitionFormController/filed_requisitions';
 $route['requisition-discarded'] = 'RequisitionFormController/discarded_requisitions';
+
+//Vendor
+$route['vendor-database'] = 'VendorController';
+$route['vendor-update/(:any)'] = 'VendorController/Vendor_Update/$1';
