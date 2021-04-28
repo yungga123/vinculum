@@ -602,6 +602,32 @@ class PayrollController extends CI_Controller {
 
 		if ($this->form_validation->run()) {
             $validate['success'] = true;
+
+            $this->load->model('TechniciansModel');
+
+            $empid = $this->input->post('emp_id');
+            if ($this->input->post('vacation_leave') != '') {
+                if($this->input->post('vacation_leave') > $this->input->post('vl_hidden'))  {
+                    $minusvl = $this->input->post('vacation_leave') - $this->input->post('vl_hidden');
+                    $this->TechniciansModel->vl_deduct($minusvl,$empid);
+                }
+                elseif($this->input->post('vacation_leave') < $this->input->post('vl_hidden'))  {
+                    $addvl = $this->input->post('vl_hidden') - $this->input->post('vacation_leave');
+                    $this->TechniciansModel->vl_return($addvl,$empid);
+                }
+            }
+
+            if ($this->input->post('sick_leave') != '') {
+                if($this->input->post('sick_leave') > $this->input->post('sl_hidden'))  {
+                    $minussl = $this->input->post('sick_leave') - $this->input->post('sl_hidden');
+                    $this->TechniciansModel->sl_deduct($minussl,$empid);
+                }   
+                elseif($this->input->post('sick_leave') < $this->input->post('sl_hidden'))  {
+                    $addsl = $this->input->post('sl_hidden') - $this->input->post('sick_leave');
+                    $this->TechniciansModel->sl_return($addsl,$empid);
+                } 
+            }
+   
             
             $data = [
                 'cutoff_start' => $this->input->post('start_date'),
@@ -629,6 +655,7 @@ class PayrollController extends CI_Controller {
             ];
 
             $this->PayrollModel->update_payroll($id,$data);
+           
 
 		} 
 		else {

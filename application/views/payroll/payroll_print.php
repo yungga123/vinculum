@@ -138,7 +138,7 @@ $total_net_pay = 0;
                         <td>Pay</td>
                         <td>Days</td>
                         <td>Ded</td>
-                        <td>Hrs</td>
+                        <td>Days</td>
                         <td>Ded</td>
                         <td>Days</td>
                         <td>Ded</td>
