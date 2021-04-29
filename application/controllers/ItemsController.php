@@ -396,15 +396,15 @@ class ItemsController extends CI_Controller
 		echo json_encode($validate);
 	}
 
-	public function fetch_masterlist($vendor_code)
+	public function fetch_masterlist($item_code)
 	{
 
-		$this->load->model('VendorModel');
-		$vendor_data = $this->VendorModel->getSpecificMasterItems($vendor_code);
+		$this->load->model('ItemsModel');
+		$list_of_items = $this->ItemsModel->getSpecificMasterItems($item_code);
 
-		$vendor_arr['vendor_data'] = $vendor_data;
+		$items_arr['list_of_items'] = $list_of_items;
 
-		echo json_encode($vendor_arr);
+		echo json_encode($items_arr);
 	}
 
 
