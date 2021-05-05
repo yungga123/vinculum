@@ -128,6 +128,7 @@ if ($this->uri->segment(1) == 'joborder-list') {
         $('#decision').val('Discarded');
         $('.form-commdate').empty();
         $('.form-commdate').append('<input type="hidden" name="committed_schedule" id="committed_schedule" value="<?php echo date('Y-m-d') ?>" class="form-control">');
+        
     });
 
     $(document).on("click",".btn_filejo",function() {

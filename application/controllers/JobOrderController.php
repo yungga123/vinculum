@@ -349,6 +349,27 @@ class JobOrderController extends CI_Controller
 			'errors' => ''
 		];
 
+		if ($this->input->post('decision') != 'Discarded') {
+			$schedule_type_rule = [
+				'field' => 'schedule_type',
+				'label' => 'Schedule Type',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select schedule type.'
+				]
+			];
+		} else {
+			$schedule_type_rule = [
+				'field' => 'schedule_type',
+				'label' => 'Schedule Type',
+				'rules' => 'trim',
+				'errors' => [
+					'required' => 'Please select schedule type.'
+				]
+			];
+		}
+		
+
 		$rules = [
 			[
 				'field' => 'decision',
@@ -366,14 +387,7 @@ class JobOrderController extends CI_Controller
 					'required' => 'Please select committed date.'
 				]
 			],
-			[
-				'field' => 'schedule_type',
-				'label' => 'Schedule Type',
-				'rules' => 'trim|required',
-				'errors' => [
-					'required' => 'Please select schedule type.'
-				]
-			]
+			$schedule_type_rule
 		];
 
 		$this->form_validation->set_error_delimiters('<p>', '</p>');
@@ -389,18 +403,24 @@ class JobOrderController extends CI_Controller
 				'commited_schedule' => $this->input->post('committed_schedule')
 			];
 
-			$schedule_data = [
-				'title' => $this->input->post('client_name'),
-				'start' => $this->input->post('committed_schedule').' 00:00:00',
-				'end' => $this->input->post('committed_schedule').' 23:59:59',
-				'description' => str_replace("<br>", "",$this->input->post('description')),
-				'type' => $this->input->post('schedule_type')
-			];
+			if ($this->input->post('decision') != 'Discarded') {
+				$schedule_data = [
+					'title' => $this->input->post('client_name'),
+					'start' => $this->input->post('committed_schedule').' 00:00:00',
+					'end' => $this->input->post('committed_schedule').' 23:59:59',
+					'description' => str_replace("<br>", "",$this->input->post('description')),
+					'type' => $this->input->post('schedule_type')
+				];
+			}
+			
 
 			$this->JobOrderModel->update_joborder($id, $data);
 
-			$this->load->model('CalendarModel');
-			$this->CalendarModel->add_events($schedule_data);
+			if ($this->input->post('decision') != 'Discarded') {
+				$this->load->model('CalendarModel');
+				$this->CalendarModel->add_events($schedule_data);
+			}
+			
 		} else {
 			$validate['errors'] = validation_errors();
 		}
