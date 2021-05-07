@@ -27,7 +27,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
             <div class="card-body">
               <div class="row">
-                <div class="col-3">
+                <div class="col-sm-3">
                   <div class="card">
                     <div class="card-header">
                       <label>LEGEND</label>
@@ -43,7 +43,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
                   </div>
                 </div>
 
-                <div class="col-9">
+                <div class="col-sm-9">
                   <div class="card">
                     <div class="card-header">
                       <label>Schedules table</label>
