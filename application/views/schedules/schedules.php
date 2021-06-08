@@ -50,7 +50,8 @@ defined('BASEPATH') or die('Access Denied');
 									<div class="bg-primary color-palette"><span>Installation</span></div>
 									<div class="bg-warning color-palette"><span>Services</span></div>
 									<div class="bg-danger color-palette"><span>Payables</span></div>
-									<div class="bg-success color-palette"><span>Holiday</span></div>
+									<div class="bg-success color-palette"><span>Holiday/Event</span></div>
+									<div class="bg-info color-palette"><span>Meetings</span></div>
 
 								</div>
 							</div>
@@ -110,7 +111,8 @@ defined('BASEPATH') or die('Access Denied');
 						<option value="installation">Installation</option>
 						<option value="service">Service</option>
 						<option value="payables">Payables/Bills</option>
-						<option value="holiday">Holiday</option>
+						<option value="holiday">Holiday/event</option>
+						<option value="meeting">Meeting</option>
 					</select>
 				</div>
 				
@@ -161,6 +163,7 @@ defined('BASEPATH') or die('Access Denied');
 						<option value="service">Service</option>
 						<option value="payables">Payables/Bills</option>
 						<option value="holiday">Holiday</option>
+						<option value="meeting">Meeting</option>
 					</select>
 				</div>
 
@@ -243,7 +246,8 @@ defined('BASEPATH') or die('Access Denied');
 										<div class="bg-primary color-palette"><span>Installation</span></div>
 										<div class="bg-warning color-palette"><span>Services</span></div>
 										<div class="bg-danger color-palette"><span>Payables</span></div>
-										<div class="bg-success color-palette"><span>Holiday</span></div>
+										<div class="bg-success color-palette"><span>Holiday/Event</span></div>
+										<div class="bg-info color-palette"><span>Meeting</span></div>
 
 									</div>
 								</div>
