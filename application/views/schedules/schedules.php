@@ -284,7 +284,9 @@ defined('BASEPATH') or die('Access Denied');
 														 		echo 'bg-danger';
 														 	} else if ($row->type == 'holiday') {
 														 		echo 'bg-success';
-														 	}
+														 	} else if ($row->type == 'meeting') {
+																echo 'bg-info';
+															}
 
 														 ?>">
 														<td><?php echo $row->title ?></td>

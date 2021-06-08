@@ -72,7 +72,7 @@ defined('BASEPATH') or die('Access Denied');
 			          	} else if ($row->type == 'holiday') {
 			          		echo '#6BBA44';
 			          	} else if ($row->type == 'meeting') {
-							echo '#808080';
+							echo '#17a2b8';
 						}
 
 			          ?>",
@@ -86,7 +86,7 @@ defined('BASEPATH') or die('Access Denied');
 			          	} else if ($row->type == 'holiday') {
 			          		echo '#28a745';
 			          	} else if ($row->type == 'meeting') {
-							echo '#808080';
+							echo '#17a2b8';
 						}
 
 			          ?>",
