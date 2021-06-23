@@ -191,8 +191,8 @@ foreach($vendor_data as $row){
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <div class="form-group">
-                                                                    <label for="brand_solutions">Solutions</label>
-                                                                    <input type="text" name="brand_solutions[]" class="form-control" placeholder="Enter Solutions" value="<?php echo $row->products ?>">
+                                                                    <label for="brand_products">Solutions</label>
+                                                                    <input type="text" name="brand_products[]" class="form-control" placeholder="Enter Product" value="<?php echo $row->products ?>">
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-3">
