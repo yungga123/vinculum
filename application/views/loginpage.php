@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <audio id="my_audio" src="<?php echo base_url('assets/') ?>bg.mp3" loop="loop"></audio>
   </head>
   <body class="login-page" style="min-height: 512.391px;">
   <div class="login-box">
@@ -79,11 +78,6 @@
   <!-- AdminLTE App -->
   <script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.min.js"></script>
 
-  <script>
-    function sound() {
-      $("#my_audio").get(0).play();
-    }   
-  </script>
 
 
 
