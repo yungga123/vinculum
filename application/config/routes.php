@@ -182,3 +182,4 @@ $route['requisition-discarded'] = 'RequisitionFormController/discarded_requisiti
 //Vendor
 $route['vendor-database'] = 'VendorController';
 $route['vendor-update/(:any)'] = 'VendorController/Vendor_Update/$1';
+$route['vendor-add'] = 'VendorController/Vendor_Add';
