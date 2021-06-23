@@ -28,7 +28,6 @@ class VendorModel extends CI_Model {
 			$this->db->or_like("a.contact_number", $_POST["search"]["value"]);
 			$this->db->or_like("a.contact_person", $_POST["search"]["value"]);
 			$this->db->or_like("a.industry_classification", $_POST["search"]["value"]);
-            $this->db->or_like("a.terms_and_condition", $_POST["search"]["value"]);
             $this->db->or_like("a.date", $_POST["search"]["value"]);
 			$this->db->having('a.is_deleted', 0);
 			
@@ -129,6 +128,7 @@ class VendorModel extends CI_Model {
 		"a.address",
 		"a.contact_number",
 		"a.contact_person",
+		"a.supplier_ranking",
 		"a.industry_classification",
 		"a.terms_and_condition",
         "a.date",
@@ -142,8 +142,8 @@ class VendorModel extends CI_Model {
 		"a.contact_number",
 		"a.contact_person",
 		"a.industry_classification",
-        "a.date",
-		"a.terms_and_condition"
+		"a.supplier_ranking",
+        "a.date"	
 	);
 	//*****************end*********************
 	

@@ -3,30 +3,13 @@ defined('BASEPATH') or die('Access Denied');
 
 class VendorController extends CI_Controller {
 
-	function validation_rules($usage){
-		$quotation_rule = '';
-    	$quotation_errors = array();
-    	$quotation_discount_rule = '';
-    	$quotation_discount_errors = array();
-    	if ($usage == 'add') {
-    		$vendor_rule = 'trim|max_length[50]|required|is_unique[vendor.vendor_code]';
-    		$vendor_errors = [
-					'is_unique' => 'Vendor Code is already exsisting',
-					'max_length' => 'Vendor Code field exceeds maximum character limit.'
-				];
-    	} elseif ($usage == 'edit') {
-    		$vendor_rule = 'trim|max_length[50]';
-    		$vendor_errors = [
-					'max_length' => 'Vendor Code field exceeds maximum character limit.'
-				];
-		}
+	function validation_rules(){
 
 		$rules = [
 			[
 				'field' => 'vendor_code',
 				'label' => 'Vendor Code',
-				'rules' => $vendor_rule,
-				'errors' => $vendor_errors
+				'rules' => 'trim'
 			],
 			[
 				'field' => 'vendor_name',
@@ -76,11 +59,27 @@ class VendorController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'vendor_technical_name',
+				'label' => 'Vendor Technical Name',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'vendor_technical_contact',
+				'label' => 'Vendor Technical Contact Number',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'vendor_technical_email',
+				'label' => 'Vendor Technical Email Address',
+				'rules' => 'trim'
+			],
+			[
 				'field' => 'vendor_date',
 				'label' => 'Vendor Date of Partnership',
 				'rules' => 'trim|required',
 				'errors' => ['required' => 'Provide Date of Partnership']
 			],
+
 			[
 				'field' => 'brand_name[]',
 				'label' => 'Brand Name',
@@ -88,8 +87,8 @@ class VendorController extends CI_Controller {
 				'errors' => ['required' => 'Provide Brand name']
 			],
 			[
-				'field' => 'brand_solutions[]',
-				'label' => 'Brand Solutions',
+				'field' => 'brand_products[]',
+				'label' => 'Brand Products',
 				'rules' => 'trim|required',
 				'errors' => ['required' => 'Provide Brand Solutions']
 			],
@@ -102,6 +101,36 @@ class VendorController extends CI_Controller {
 			[
 				'field' => 'brand_ranking[]',
 				'label' => 'Brand Ranking',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'brand_contact_person[]',
+				'label' => 'Brand Contact Person',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'brand_contact_number[]',
+				'label' => 'Brand Contact Number',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'brand_email[]',
+				'label' => 'Brand Email Address',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'brand_technical_name[]',
+				'label' => 'Brand Technical Person',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'brand_technical_contact[]',
+				'label' => 'Brand Technical Contact Number',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'brand_technical_email[]',
+				'label' => 'Brand Technical Email',
 				'rules' => 'trim'
 			]
 		];
@@ -120,7 +149,7 @@ class VendorController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Vendor Database';
 			$data['li_vendor_list'] = ' active';
-			
+
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('vendor/vendor_datatable');
@@ -130,6 +159,26 @@ class VendorController extends CI_Controller {
 			redirect('','refresh');
 		}
     }
+	public function Vendor_Add(){
+		if($this->session->userdata('logged_in')) {
+            
+            $this->load->model('VendorModel');
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Update Vendor Details';
+            $data['li_vendor_list'] = ' active';
+			$data['vendor_title'] = 'Add Vendor';
+			$data['vendor_button_title'] = 'Add Vendor';
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('vendor/vendor_add');
+			$this->load->view('templates/footer');
+            $this->load->view('vendor/script');
+            
+		} else {
+			redirect('','refresh');
+		}
+	}
 
 	public function Vendor_Update($vendor_code){
 		if($this->session->userdata('logged_in')) {
@@ -139,6 +188,8 @@ class VendorController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Update Vendor Details';
             $data['li_vendor_list'] = ' active';
+			$data['vendor_title'] = 'Update Vendor';
+			$data['vendor_button_title'] = 'Update Vendor';
             $data['vendor_data'] = $this->VendorModel->get_vendor_data($vendor_code);
 			$data['brand_data'] = $this->VendorModel->get_brand_data($vendor_code);
 			$this->load->view('templates/header', $data);
@@ -152,6 +203,7 @@ class VendorController extends CI_Controller {
 		}
 	}
 
+
 	public function update_vendor_validate() {
         $validate = [
 			'success' => false,
@@ -160,64 +212,81 @@ class VendorController extends CI_Controller {
 		
 		$this->form_validation->set_error_delimiters('<p>• ','</p>');
 
-		$usage = 'edit';
-		$this->form_validation->set_rules($this->validation_rules($usage));
+		$this->form_validation->set_rules($this->validation_rules());
 
 		if ($this->form_validation->run()) {
             $validate['success'] = true;
 
             $vendor_code = $this->input->post('vendor_code');
-
-            $this->VendorModel->update_vendor($vendor_code,[
-                'name' => $this->input->post('vendor_name'),
-                'address' => $this->input->post('vendor_address'),
-                'contact_number' => $this->input->post('vendor_contact'),
-                'contact_person' => $this->input->post('vendor_contact_person'),
-                'industry_classification' => $this->input->post('vendor_classification'),
-				'terms_and_condition' => $this->input->post('vendor_terms'),
-				'date' => $this->input->post('vendor_date')
-            ]);
-
-            //Update Existing Request Item
-			$brand_id_data = array();
+			$vendor_code_generated = $this->input->post('vendor_name')."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
 			
-			for ($i=0; $i < count($this->input->post('brand_data_id')); $i++) {
-
-				$brand_sub_data = array();
-
-				if ($this->input->post('brand_data_id')[$i] != '') {
-
-					$this->VendorModel->update_vendor_brand(
-						$this->input->post('brand_data_id')[$i],
-						[
+				
+				$this->VendorModel->update_vendor($vendor_code,[
+					'vendor_code' => $vendor_code_generated,
+					'name' => $this->input->post('vendor_name'),
+					'address' => $this->input->post('vendor_address'),
+					'contact_number' => $this->input->post('vendor_contact'),
+					'email' => $this->input->post('vendor_email'),
+					'contact_person' => $this->input->post('vendor_contact_person'),
+					'supplier_ranking' => $this->input->post('vendor_ranking'),
+					'industry_classification' => $this->input->post('vendor_classification'),
+					'terms_and_condition' => $this->input->post('vendor_terms'),
+					'date' => $this->input->post('vendor_date'),
+					'vendor_technical_person' => $this->input->post('vendor_technical_name'),
+					'vendor_technical_contact' => $this->input->post('vendor_technical_contact'),
+					'vendor_technical_email' => $this->input->post('vendor_technical_email')
+				]);
+				
+				//Update Existing Request Item
+				$brand_id_data = array();
+				
+				for ($i=0; $i < count($this->input->post('brand_data_id')); $i++) {
+	
+					$brand_sub_data = array();
+	
+					if ($this->input->post('brand_data_id')[$i] != '') {
+	
+						$this->VendorModel->update_vendor_brand(
+							$this->input->post('brand_data_id')[$i],
+							[
+								'brand_id' => $vendor_code_generated,
+								'brand_name' => $this->input->post('brand_name')[$i],
+								'products' => $this->input->post('brand_products')[$i],
+								'classification_level' => $this->input->post('brand_classification')[$i],
+								'ranking' => $this->input->post('brand_ranking')[$i],
+								'brand_contact_person' => $this->input->post('brand_contact_person')[$i],
+								'brand_contact_number' => $this->input->post('brand_contact_number')[$i],
+								'brand_email' => $this->input->post('brand_email')[$i],
+								'brand_technical_person' => $this->input->post('brand_technical_name')[$i],
+								'brand_technical_contact' => $this->input->post('brand_technical_contact')[$i],
+								'brand_technical_email' => $this->input->post('brand_technical_email')[$i]
+							]
+						);
+	
+						$brand_sub_data[] = $this->input->post('brand_data_id')[$i];
+						$brand_id_data[] = $brand_sub_data;
+					} else {
+						
+						$this->VendorModel->insert_vendor_brand([
+							'brand_id' => $vendor_code_generated,
 							'brand_name' => $this->input->post('brand_name')[$i],
-                            'solution' => $this->input->post('brand_solutions')[$i],
-                            'classification_level' => $this->input->post('brand_classification')[$i],
-                            'ranking' => $this->input->post('brand_ranking')[$i]
-						]
-					);
+							'solution' => $this->input->post('brand_solutions')[$i],
+							'classification_level' => $this->input->post('brand_classification')[$i],
+							'ranking' => $this->input->post('brand_ranking')[$i],
+							'brand_contact_person' => $this->input->post('brand_contact_person')[$i],
+							'brand_contact_number' => $this->input->post('brand_contact_number')[$i],
+							'brand_email' => $this->input->post('brand_email')[$i],
+							'brand_technical_person' => $this->input->post('brand_technical_name')[$i],
+							'brand_technical_contact' => $this->input->post('brand_technical_contact')[$i],
+							'brand_technical_email' => $this->input->post('brand_technical_email')[$i]
+						]);
 
-					$brand_sub_data[] = $this->input->post('brand_data_id')[$i];
-					$brand_id_data[] = $brand_sub_data;
-				} else {
-
-					$this->VendorModel->insert_vendor_brand([
-						'brand_id' => $this->input->post('vendor_code'),
-                        'brand_name' => $this->input->post('brand_name')[$i],
-                        'solution' => $this->input->post('brand_solutions')[$i],
-                        'classification_level' => $this->input->post('brand_classification')[$i],
-                        'ranking' => $this->input->post('brand_ranking')[$i]
-					]);
-
-					$brand_sub_data[] = $this->VendorModel->get_new_added_vendor_brand($vendor_code);
-					$brand_id_data[] = $brand_sub_data;
-
+						$brand_sub_data[] = $this->VendorModel->get_new_added_vendor_brand($vendor_code_generated);
+						$brand_id_data[] = $brand_sub_data;
+					}
 				}
-			}
-			$this->VendorModel->remove_vendor_brand($brand_id_data,$vendor_code);
-			//end of update existing request item
-
-
+				$this->VendorModel->remove_vendor_brand($brand_id_data,$vendor_code_generated);
+				//end of update existing request item
 		} 
 		else {
 		    $validate['errors'] = validation_errors();
@@ -228,7 +297,6 @@ class VendorController extends CI_Controller {
 	public function get_vendor() {
 
 		$fetch_data = $this->VendorModel->vendor_datatable();
-
 	
 
 		$data = array();
@@ -244,8 +312,54 @@ class VendorController extends CI_Controller {
 			$sub_array[] = $row->address;
 			$sub_array[] = $row->contact_number;
 			$sub_array[] = $row->contact_person;
+			$sub_array[] = $row->email;
+			$sub_array[] = $row->vendor_technical_person;
+			$sub_array[] = $row->vendor_technical_contact;
+			$sub_array[] = $row->vendor_technical_email;
+
+				if($row->supplier_ranking == "AA"){
+					$sub_array[] = "Rank 1";
+				}
+				elseif($row->supplier_ranking == "BB"){
+					$sub_array[] = "Rank 2";
+				}
+				elseif($row->supplier_ranking == "CC"){
+					$sub_array[] = "Rank 3";
+				}
+				elseif($row->supplier_ranking == "DD"){
+					$sub_array[] = "Rank 4";
+				}
+				elseif($row->supplier_ranking == "EE"){
+					$sub_array[] = "Rank 5";
+				}
+
 			$sub_array[] = $row->industry_classification;
-			$sub_array[] = $row->terms_and_condition;
+			
+				if($row->terms_and_condition == "00"){
+					$sub_array[] = "COD/CASH";
+				}
+				elseif($row->terms_and_condition == "01"){
+					$sub_array[] = "Dated Check";
+				}
+				elseif($row->terms_and_condition == "02"){
+					$sub_array[] = "7 Days";
+				}
+				elseif($row->terms_and_condition == "03"){
+					$sub_array[] = "15 Days";
+				}
+				elseif($row->terms_and_condition == "04"){
+					$sub_array[] = "30 Days";
+				}
+				elseif($row->terms_and_condition == "05"){
+					$sub_array[] = "45 Days";
+				}
+				elseif($row->terms_and_condition == "06"){
+					$sub_array[] = "60 Days";
+				}
+				elseif($row->terms_and_condition == "07"){
+					$sub_array[] = "90 Days";
+				}
+
 			$sub_array[] = $date;
 
 			$sub_array[] = '
@@ -286,15 +400,22 @@ class VendorController extends CI_Controller {
 			$validate['success'] = true;
 
 			date_default_timezone_set('Asia/Manila');
-			$date = $this->input->post('vendor_date', 'Y-m-d');
-			 
+			$date = $this->input->post('vendor_date', 'Y-m-d'); 
+			$vendor_code_generated = $this->input->post('vendor_name')."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
+			
 			$this->VendorModel->insert_vendor([
-				'vendor_code' => $this->input->post('vendor_code'),
+				'vendor_code' => $vendor_code_generated,
 				'name' => $this->input->post('vendor_name'),
 				'address' => $this->input->post('vendor_address'),
 				'contact_number' => $this->input->post('vendor_contact'),
+				'email' => $this->input->post('vendor_email'),
 				'contact_person' => $this->input->post('vendor_contact_person'),
+				'supplier_ranking' => $this->input->post('vendor_ranking'),
 				'industry_classification' => $this->input->post('vendor_classification'),
+				'terms_and_condition' => $this->input->post('vendor_terms'),
+				'vendor_technical_person' => $this->input->post('vendor_technical_name'),
+				'vendor_technical_contact' => $this->input->post('vendor_technical_contact'),
+				'vendor_technical_email' => $this->input->post('vendor_technical_email'),
 				'terms_and_condition' => $this->input->post('vendor_terms'),
 				'date' => $date
 			]);
@@ -305,10 +426,16 @@ class VendorController extends CI_Controller {
 
 			 for ($i=0; $i < $count_brand; $i++) { 
 				 $this->VendorModel->insert_vendor_brand([
-					 'brand_id' => $this->input->post('vendor_code'),
+					 'brand_id' => $vendor_code_generated,
 					 'brand_name' => $this->input->post('brand_name')[$i],
 					 'solution' => $this->input->post('brand_solutions')[$i],
 					 'classification_level' => $this->input->post('brand_classification')[$i],
+					 'brand_contact_person' => $this->input->post('brand_contact_person')[$i],
+					 'brand_contact_number' => $this->input->post('brand_contact_number')[$i],
+					 'brand_email' => $this->input->post('brand_email')[$i],
+					 'brand_technical_person' => $this->input->post('brand_technical_name')[$i],
+					 'brand_technical_contact' => $this->input->post('brand_technical_contact')[$i],
+					 'brand_technical_email' => $this->input->post('brand_technical_email')[$i],
 					 'ranking' => $this->input->post('brand_ranking')[$i]
 				 ]);
 			 }
