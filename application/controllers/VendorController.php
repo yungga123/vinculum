@@ -428,7 +428,7 @@ class VendorController extends CI_Controller {
 				 $this->VendorModel->insert_vendor_brand([
 					 'brand_id' => $vendor_code_generated,
 					 'brand_name' => $this->input->post('brand_name')[$i],
-					 'solution' => $this->input->post('brand_solutions')[$i],
+					 'products' => $this->input->post('brand_products')[$i],
 					 'classification_level' => $this->input->post('brand_classification')[$i],
 					 'brand_contact_person' => $this->input->post('brand_contact_person')[$i],
 					 'brand_contact_number' => $this->input->post('brand_contact_number')[$i],
