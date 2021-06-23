@@ -39,7 +39,7 @@
 
         <?php echo form_open('LoginController/login_validate') ?>
           <div class="input-group mb-3">
-            <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+            <input type="text" name="username" id="username" class="form-control" placeholder="Username" onfocus="sound()">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -80,9 +80,9 @@
   <script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.min.js"></script>
 
   <script>
-    $(document).ready(function() {
+    function sound() {
       $("#my_audio").get(0).play();
-    });
+    }   
   </script>
 
 
