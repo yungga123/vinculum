@@ -363,7 +363,7 @@ class VendorController extends CI_Controller {
 			$sub_array[] = $date;
 
 			$sub_array[] = '
-			<a href="'.site_url('vendor-update/'.$row->vendor_code).'" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
+			<a href="'.site_url('vendor-update/'.$row->id).'" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
 			<button type="button" class="btn btn-danger text-bold btn-xs btn_vendor_del" data-toggle="modal" data-target="#delete-vendor"><i class="fas fa-trash"></i></button>
 			<button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_vendor"><i class="fas fa-search"></i></button>
 			';
