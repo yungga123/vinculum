@@ -73,7 +73,7 @@ class VendorModel extends CI_Model {
 		$id = 0;
 		$this->db->select("*");
 		$this->db->from('vendor');
-		$this->db->where("id",$vendor_code);
+		$this->db->where("vendor_code",$vendor_code);
 		$this->db->where("is_deleted",$id);
 		return $this->db->get()->result();
 	}
