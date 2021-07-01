@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="form-group">
-						<input type="password" name="accpasscode" id="accpasscode" class="form-control">
+						<input type="password" name="accpasscode" class="form-control">
 						</div>
 					</div>
 				</div>
@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="form-group">
-						<input type="password" name="accpasscode" id="accpasscode" class="form-control">
+						<input type="password" name="accpasscode" class="form-control">
 						</div>
 					</div>
 				</div>

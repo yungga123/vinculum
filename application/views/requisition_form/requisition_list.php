@@ -84,10 +84,10 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                 <?php if ($this->uri->segment(1) == 'requisition-pending'): ?>
                     <div class="form-group">
                     <label>Please Enter Passcode:</label>
-                        <input type="password" name="passcode" id="passcode" class="form-control">
+                        <input type="password" name="passcode" class="form-control">
                     </div>
                 <?php else: ?>
-                    <input type="hidden" name="passcode" id="passcode" class="form-control">
+                    <input type="hidden" name="passcode" class="form-control">
                 <?php endif ?>
             </div>
 

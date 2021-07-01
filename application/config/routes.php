@@ -182,3 +182,12 @@ $route['requisition-discarded'] = 'RequisitionFormController/discarded_requisiti
 //Vendor
 $route['vendor-database'] = 'VendorController';
 $route['vendor-update/(:any)'] = 'VendorController/Vendor_Update/$1';
+
+//Sales Inquiry
+$route['inquiry-tempo-clients'] = 'SalesInquiryController/new_client_list';
+$route['inquiry-existing-clients'] = 'SalesInquiryController/existing_client_list';
+$route['inquiry-add-project/(:any)'] = 'SalesInquiryController/add_project/$1';
+$route['inquiry-add-existingclient-project/(:any)'] = 'SalesInquiryController/add_existingclient_project/$1';
+$route['inquiry-edit-project/(:any)'] = 'SalesInquiryController/edit_project/$1';
+$route['inquiry-edit-existingclient-project/(:any)'] = 'SalesInquiryController/edit_existingclient_project/$1';
+
