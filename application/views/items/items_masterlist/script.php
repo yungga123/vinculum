@@ -44,6 +44,8 @@ defined('BASEPATH') or die('Access Denied');
 			 		success: function(response) {
 
 			 			$(".item_name_edit").val(response.list_of_items[0].itemName);
+						$(".item_brand_edit").val(response.list_of_items[0].item_brand);
+						$(".item_size_edit").val(response.list_of_items[0].item_size);
 			 			$(".item_type_edit").val(response.list_of_items[0].itemType);
 			 			$(".original_price_edit").val(response.list_of_items[0].itemSupplierPrice);
 			 			$(".selling_price_edit").val(response.list_of_items[0].itemPrice);

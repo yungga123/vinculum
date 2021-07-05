@@ -39,6 +39,14 @@ date_default_timezone_set('Asia/Manila');
 								<input type="text" id="item_name" name="item_name" class="form-control" placeholder="Enter Item Name">
 							</div>
 							<div class="form-group">
+								<label for="item_brand" class="control-label">Item Brand</label>
+								<input type="text" id="item_brand" name="item_brand" class="form-control" placeholder="Enter Item Brand">
+							</div>
+							<div class="form-group">
+								<label for="item_size" class="control-label">Item Size</label>
+								<input type="text" id="item_size" name="item_size" class="form-control" placeholder="Enter Item Size">
+							</div>
+							<div class="form-group">
 									<p>
 										<label for="item_type">Item Type</label>
 
@@ -50,12 +58,8 @@ date_default_timezone_set('Asia/Manila');
 									</p>
 								</div>
 							<div class="form-group">
-								<label for="original_price" class="control-label">Original Price</label>
+								<label for="original_price" class="control-label">Supplier Price</label>
 								<input type="text" id="original_price" name="original_price" class="form-control" placeholder="Enter Item Price">
-							</div>
-							<div class="form-group">
-								<label for="selling_price" class="control-label">Selling Price</label>
-								<input type="text" id="selling_price" name="selling_price" class="form-control" placeholder="Enter Item Price">
 							</div>
 						</div>
 					</div>
