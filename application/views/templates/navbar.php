@@ -210,7 +210,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            <a href="<?php echo site_url('vendor-database')?>" class="nav-link<?php echo $li_vendor_list ?>">
 	              <i class="nav-icon fas fa-database"></i>
 	              <p>Vendor</p>
-				  <span class="badge badge-danger">NEW</span>
 	            </a>
           	</li>
 
@@ -441,6 +440,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		          <p>
 		            Sales Inquiry
 		            <i class="fas fa-angle-left right"></i>
+					<span class="badge badge-danger"> NEW</span>
 		          </p>
 		        </a>
 		        <ul class="nav nav-treeview">
