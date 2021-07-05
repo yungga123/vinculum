@@ -24,7 +24,6 @@ defined('BASEPATH') or die('Access Denied');
 							Vendor Details
 							<a href="<?php echo site_url('vendor-add') ?>" class="btn btn-success float-right"> <i class="fas fa-plus"></i> ADD VENDOR</a>
 						</div>
-
 						<div class="card-body">
 							<div class="col-sm-12">
 								<table id="vendor_table" class="table table-bordered table-hover" style="width: 100%">

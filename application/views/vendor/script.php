@@ -48,7 +48,8 @@ defined('BASEPATH') or die('Access Denied');
 					$('#tbody-brand').empty();
 					i = 1;
 					$.each(response.results, function (key, value) {
-						
+						var link = '<?php site_url('VendorController/Vendor_Update/') ?>'
+
 						$('#tbody-brand').append('<tr>' +
 							'<td>' + i++ + '</td>' +
 							'<td>' + response.results[key].brand_name + '</td>' +
@@ -61,7 +62,6 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].brand_technical_email + '</td>' +
 							'<td>' + response.results[key].classification_level + '</td>' +
 							'<td>' + response.results[key].ranking + '</td>' +
-							
 						'</tr>');
 						
 					});

@@ -210,7 +210,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            <a href="<?php echo site_url('vendor-database')?>" class="nav-link<?php echo $li_vendor_list ?>">
 	              <i class="nav-icon fas fa-database"></i>
 	              <p>Vendor</p>
-				  <span class="badge badge-danger">NEW</span>
 	            </a>
           	</li>
 
@@ -434,6 +433,33 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 		        </ul>
 	    	</li>
+
+			<li class="nav-item has-treeview<?php echo $inquiry_status ?>">
+		        <a href="javascript:void(0)" class="nav-link <?php echo $inquiry_href ?>">
+		          <i class="nav-icon fas fa-info-circle"></i>
+		          <p>
+		            Sales Inquiry
+		            <i class="fas fa-angle-left right"></i>
+					<span class="badge badge-danger"> NEW</span>
+		          </p>
+		        </a>
+		        <ul class="nav nav-treeview">
+		          <li class="nav-item">
+		            <a href="<?php echo site_url('inquiry-existing-clients') ?>" class="nav-link <?php echo $inquiry_existing ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Existing Client</p>
+		            </a>
+		          </li>
+
+		          <li class="nav-item">
+		            <a href="<?php echo site_url('inquiry-tempo-clients') ?>" class="nav-link <?php echo $inquiry_new ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>New Client</p>
+		            </a>
+		          </li>
+		        </ul>
+
+	      	</li>
 
 			<li class="nav-header">HUMAN RESOURCE</li>
 
