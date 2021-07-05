@@ -159,23 +159,26 @@ class ItemsController extends CI_Controller
 			],
 			[
 				'field' => 'original_price',
-				'label' => 'Original Price',
+				'label' => 'Supplier Price',
 				'rules' => 'trim|required|numeric|max_length[30]',
 				'errors' => [
-					'required' => 'Provide Original Price',
+					'required' => 'Provide Supplier Price',
 					'numeric' => 'Please input only numbers in Original Price',
 					'max_length' => 'You are allowed only of 30 characters in Original Price'
 				]
 			],
 			[
-				'field' => 'selling_price',
-				'label' => 'Selling Price',
-				'rules' => 'trim|required|numeric|max_length[30]',
+				'field' => 'item_brand',
+				'label' => 'Item Brand',
+				'rules' => 'trim|required',
 				'errors' => [
-					'required' => 'Provide Selling Price',
-					'numeric' => 'Please input only numbers in Selling Price',
-					'max_length' => 'You are allowed only of 30 characters in Selling Price'
+					'required' => 'Provide Item Brand'
 				]
+			],
+			[
+				'field' => 'item_size',
+				'label' => 'Item Size',
+				'rules' => 'trim'
 			],
 			[
 				'field' => 'location',
@@ -225,13 +228,20 @@ class ItemsController extends CI_Controller
 
 		if ($this->form_validation->run()) {
 			$validate['success'] = true;
+
+			$srp = $this->input->post('original_price') * 1.30;
+			$project_price = $this->input->post('original_price') * 1.40;
+
 			$data = [
 				'itemCode' => $this->input->post('item_code'),
 				'itemName' => $this->input->post('item_name'),
 				'itemType' => $this->input->post('item_type'),
 				'location' => $this->input->post('location'),
 				'itemSupplierPrice' => $this->input->post('original_price'),
-				'itemPrice' => $this->input->post('selling_price'),
+				'item_brand' => $this->input->post('item_brand'),
+				'item_size' => $this->input->post('item_size'),
+				'itemPrice' => $srp,
+				'project_price' => $project_price,
 				'stocks' => $this->input->post('no_of_stocks'),
 				'date_of_purchase' => $this->input->post('date_of_purchase'),
 				'supplier' => $this->input->post('supplier'),
@@ -248,7 +258,10 @@ class ItemsController extends CI_Controller
 				'itemType' => $this->input->post('item_type'),
 				'location' => $this->input->post('location'),
 				'itemSupplierPrice' => $this->input->post('original_price'),
-				'itemPrice' => $this->input->post('selling_price'),
+				'item_brand' => $this->input->post('item_brand'),
+				'item_size' => $this->input->post('item_size'),
+				'itemPrice' => $srp,
+				'project_price' => $project_price,
 				'stocksRegistered' => $this->input->post('no_of_stocks'),
 				'date_of_purchase' => $this->input->post('date_of_purchase'),
 				'supplier' => $this->input->post('supplier'),
@@ -300,6 +313,19 @@ class ItemsController extends CI_Controller
 				]
 			],
 			[
+				'field' => 'item_brand',
+				'label' => 'Item Brand',
+				'rules' => 'trim|required|max_length[500]',
+				'errors' => [
+					'required' => 'Please provide an Item Brand'
+				]
+			],
+			[
+				'field' => 'item_size',
+				'label' => 'Item Size',
+				'rules' => 'trim'
+			],
+			[
 				'field' => 'item_type',
 				'label' => 'Item Type',
 				'rules' => 'trim|required',
@@ -307,22 +333,12 @@ class ItemsController extends CI_Controller
 			],
 			[
 				'field' => 'original_price',
-				'label' => 'Original Price',
+				'label' => 'Supplier Price',
 				'rules' => 'trim|required|numeric|max_length[30]',
 				'errors' => [
-					'required' => 'Provide Original Price',
+					'required' => 'Provide Supplier Price',
 					'numeric' => 'Please input only numbers in Original Price',
 					'max_length' => 'You are allowed only of 30 characters in Original Price'
-				]
-			],
-			[
-				'field' => 'selling_price',
-				'label' => 'Selling Price',
-				'rules' => 'trim|required|numeric|max_length[30]',
-				'errors' => [
-					'required' => 'Provide Selling Price',
-					'numeric' => 'Please input only numbers in Selling Price',
-					'max_length' => 'You are allowed only of 30 characters in Selling Price'
 				]
 			],
 			[
@@ -374,12 +390,19 @@ class ItemsController extends CI_Controller
 		if ($this->form_validation->run()) {
 			$validate['success'] = true;
 			$item_code = $this->input->post('item_code');
+
+			$srp = $this->input->post('original_price') * 1.30;
+			$project_price = $this->input->post('original_price') * 1.40;
+			
 			$data = [
 				'itemName' => $this->input->post('item_name'),
+				'item_brand' => $this->input->post('item_brand'),
+				'item_size' => $this->input->post('item_size'),
 				'itemType' => $this->input->post('item_type'),
 				'location' => $this->input->post('location'),
 				'itemSupplierPrice' => $this->input->post('original_price'),
-				'itemPrice' => $this->input->post('selling_price'),
+				'itemPrice' => $srp,
+				'project_price' => $project_price,
 				'stocks' => $this->input->post('no_of_stocks'),
 				'date_of_purchase' => $this->input->post('date_of_purchase'),
 				'supplier' => $this->input->post('supplier'),
@@ -425,9 +448,12 @@ class ItemsController extends CI_Controller
 			$sub_array = array();
 			$sub_array[] = $row->itemCode;
 			$sub_array[] = $row->itemName;
+			$sub_array[] = $row->item_brand;
+			$sub_array[] = $row->item_size;
 			$sub_array[] = $row->itemType;
 			$sub_array[] = $row->itemSupplierPrice;
 			$sub_array[] = $row->itemPrice;
+			$sub_array[] = $row->project_price;
 			$sub_array[] = $row->stocks;
 			$sub_array[] = date_format(date_create($row->date_of_purchase), 'F d, Y');
 			$sub_array[] = $row->location;
