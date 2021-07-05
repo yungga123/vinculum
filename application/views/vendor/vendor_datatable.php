@@ -22,7 +22,7 @@ defined('BASEPATH') or die('Access Denied');
 					<div class="card">
 						<div class="card-header">
 							Vendor Details
-							<a href="#" class="btn btn-success float-right" data-toggle="modal" data-target="#modal_add_vendor"> <i class="fas fa-plus"></i> ADD VENDOR</a>
+							<a href="<?php echo site_url('vendor-add') ?>" class="btn btn-success float-right"> <i class="fas fa-plus"></i> ADD VENDOR</a>
 						</div>
 						<div class="card-body">
 							<div class="col-sm-12">
@@ -34,6 +34,11 @@ defined('BASEPATH') or die('Access Denied');
 											<th>Address</th>
 											<th>Contact Number</th>
 											<th>Contact Person</th>
+											<th>Email</th>
+											<th>Technical Person</th>
+											<th>Technical Contact</th>	
+											<th>Technical Email</th>
+											<th>Supplier Ranking</th>
 				            				<th>Industry Classification</th>
 				            				<th>Terms and Condition</th>
 											<th>Date of Partnership</th>
@@ -57,7 +62,7 @@ defined('BASEPATH') or die('Access Denied');
 <div class="modal fade" id="modal_add_vendor">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
-		<?php echo form_open('VendorController/register_new_vendor',["id" => "modal-add-vendor"]) ?>
+			<?php echo form_open('VendorController/register_new_vendor',["id" => "modal-add-vendor"]) ?>
 				<div class="modal-header">
 					<h4 class="modal-title">Add Vendor</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -66,76 +71,138 @@ defined('BASEPATH') or die('Access Denied');
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-12">
 							<div class="card">
+								<div class="card-header">
+									<label>Vendor Details:</label>
+								</div>
 								<div class="card-body">
-									<div class="form-group">
-										<label for="vendor_code" class="control-label">Vendor Code</label>
-										<input type="text" id="vendor_code" name="vendor_code" class="form-control" placeholder="Enter Item Code">
-									</div>
-									<div class="form-group">
-										<label for="vendor_name" class="control-label">Name</label>
-										<input type="text" id="vendor_name" name="vendor_name" class="form-control vendor_name_edit" placeholder="Enter Vendor Name">
-									</div>
-									<div class="form-group">
-										<label for="vendor_address" class="control-label">Address</label>
-										<input type="text" id="vendor_address" name="vendor_address" class="form-control" placeholder="Enter Vendor Address">
-									</div>
-									<div class="form-group">
-										<label for="vendor_contact" class="control-label">Contact Number</label>
-										<input type="text" id="vendor_contact" name="vendor_contact" class="form-control" placeholder="Enter Vendor Contact Number">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="vendor_name" class="control-label">Name</label>
+												<input type="text" id="vendor_name" name="vendor_name" class="form-control vendor_name_edit" placeholder="Enter Vendor Name">
+											</div>
+											<div class="form-group">
+												<label for="vendor_contact" class="control-label">Contact Number</label>
+												<input type="text" id="vendor_contact" name="vendor_contact" class="form-control" placeholder="Enter Vendor Contact Number">
+											</div>
+											<div class="form-group">
+												<label for="vendor_email" class="control-label">Email Address</label>
+												<input type="text" id="vendor_email" name="vendor_email" class="form-control" placeholder="Enter Vendor Email Address">
+											</div>
+											<div class="form-group">
+												<label for="vendor_address" class="control-label">Address</label>
+												<textarea type="text" rows="5" id="vendor_address" name="vendor_address" class="form-control" placeholder="Enter Vendor Address"></textarea>
+											</div>
+										</div>
+										
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label for="vendor_contact_person" class="control-label">Contact Person</label>
+												<input type="text" id="vendor_contact_person" name="vendor_contact_person" class="form-control" placeholder="Enter Vendor Contact Person">
+											</div>
+
+											<div class="form-group">
+												<p>
+													<label for="vendor_classification">Supplier Ranking</label>
+
+													<select id="vendor_ranking" name="vendor_ranking" class="form-control">
+														<option value="">---Please Select---</option>
+														<option value="AA">AA --- Rank 1</option>
+														<option value="BB">BB --- Rank 2</option>
+														<option value="CC">CC --- Rank 3</option>
+														<option value="DD">DD --- Rank 4</option>
+														<option value="EE">EE --- Rank 5</option>
+													</select>
+												</p>
+											</div>
+
+											<div class="form-group">
+												<p>
+													<label for="vendor_classification">Industry Classification</label>
+
+													<select id="vendor_classification" name="vendor_classification" class="form-control" value="">
+														<option value="">---Please Select---</option>
+														<option>Distributor</option>
+														<option>Reseller</option>
+														<option>SI</option>
+														<option>Exclusive/Sole</option>
+														<option>Partners</option>
+													</select>
+												</p>
+											</div>
+
+											<div class="form-group">
+												<p>
+													<label for="vendor_terms">Vendor Terms</label>
+
+													<select id="vendor_terms" name="vendor_terms" class="form-control">
+														<option value="">---Please Select---</option>
+														<option value="00">00 --- COD/Cash</option>
+														<option value="01">01 --- Dated Check</option>
+														<option value="02">02 --- 7 Days</option>
+														<option value="03">03 --- 15 Days</option>
+														<option value="04">04 --- 30 Days</option>
+														<option value="05">05 --- 45 Days</option>
+														<option value="06">06 --- 60 Days</option>
+														<option value="07">07 --- 90 Days</option>
+													</select>
+												</p>
+											</div>
+
+											<div class="form-group">
+												<label for="vendor_date">Date of Partnership</label>
+												<div class="input-group">
+													<input class="form-control" type="date" id="vendor_date" name="vendor_date" placeholder="Select Date">
+													<div id="resetDate" class="input-group-addon">
+														<i class="fa fa-remove"></i>
+													</div>
+												</div>									      
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6">
-							<div class="card">
+								<hr>
 								<div class="card-body">
-									<div class="form-group">
-										<label for="vendor_contact_person" class="control-label">Contact Person</label>
-										<input type="text" id="vendor_contact_person" name="vendor_contact_person" class="form-control" placeholder="Enter Vendor Contact Person">
+									<div class="row">
+										<div class="col-sm-12">
+											<label>Vendor Technical Support Details:</label>
+										</div>
 									</div>
-
-									<div class="form-group">
-										<p>
-											<label for="vendor_classification">Industry Classification</label>
-
-											<select id="vendor_classification" name="vendor_classification" class="form-control" value="">
-												<option value="">---Please Select---</option>
-												<option>Distributor</option>
-												<option>Reseller</option>
-												<option>SI</option>
-												<option>Exclusive/Sole</option>
-												<option>Partners</option>
-											</select>
-										</p>
-									</div>
-
-									<div class="form-group">
-										<label for="vendor_terms">Terms and Condition</label>
-										<input type="text" id="vendor_terms" name="vendor_terms" class="form-control" placeholder="Enter Terms">									      
-									</div>
-
-									<div class="form-group">
-										<label for="vendor_date">Date of Partnership</label>
-										<div class="input-group">
-											<input class="form-control" type="date" id="vendor_date" name="vendor_date" placeholder="Select Date">
-											<div id="resetDate" class="input-group-addon">
-												<i class="fa fa-remove"></i>
+									<div class="row">
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label for="vendor_technical_name" class="control-label">Name</label>
+												<input type="text" name="vendor_technical_name" class="form-control" placeholder="Enter Technical Name">
 											</div>
-										</div>									      
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+													<label for="vendor_technical_contact">Contact Number</label>
+													<input type="text" name="vendor_technical_contact" class="form-control" placeholder="Enter Contact Number">
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label for="vendor_technical_email" class="control-label">Email Address</label>
+												<input type="text" name="vendor_technical_email" class="form-control" placeholder="Enter Email Address">
+											</div>
+										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-sm-12">
-							<div class="card">
+							<div class="card add-brand">
+								<div class="card-header">
+									<label>Brand Details:</label>
+								</div>
 								<div class="card-body">
-									<div class="row add-brand">
+									<div class="row">
 										<div class="col-sm-3">
 											<div class="form-group">
 												<label for="brand_name" class="control-label">Brand Name</label>
@@ -144,18 +211,8 @@ defined('BASEPATH') or die('Access Denied');
 										</div>
 										<div class="col-sm-3">
 											<div class="form-group">
-												<p>
 													<label for="brand_solutions">Solutions</label>
-
-													<select name="brand_solutions[]" class="form-control" value="">
-														<option value="">---Please Select---</option>
-														<option>CCTV</option>
-														<option>ACS</option>
-														<option>Time Attendance</option>
-														<option>Gate Barrier</option>
-														<option>Structured Cabling</option>
-													</select>
-												</p>
+													<input type="text" name="brand_solutions[]" class="form-control" placeholder="Enter Solutions">
 											</div>
 										</div>
 										<div class="col-sm-3">
@@ -181,22 +238,70 @@ defined('BASEPATH') or die('Access Denied');
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="card-footer">
-									<div class="float-right">
-										<button type="button" class="btn btn-danger btn-sm delete-brand-btn"><i class="fas fa-times" aria-hidden="true"></i> DELETE FIELD</button>
-										<button type="button" class="btn btn-success btn-sm add-brand-btn"><i class="fas fa-plus" aria-hidden="true"></i> ADD FIELD</button>
+
+									<div class="row">
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label for="brand_contact_person" class="control-label">Contact Person</label>
+												<input type="text" name="brand_contact_person[]" class="form-control" placeholder="Enter Contact Person">
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label for="brand_contact_number" class="control-label">Contact Number</label>
+												<input type="text" name="brand_contact_number[]" class="form-control" placeholder="Enter Contact Number">
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label for="brand_email" class="control-label">Email Address</label>
+												<input type="text" name="brand_email[]" class="form-control" placeholder="Enter Email Address">
+											</div>
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col-sm-12">
+											<label>Brand Technical Support Details:</label>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label for="brand_technical_name" class="control-label">Name</label>
+												<input type="text" name="brand_technical_name[]" class="form-control" placeholder="Enter Technical Name">
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+													<label for="brand_technical_contact">Contact Number</label>
+													<input type="text" name="brand_technical_contact[]" class="form-control" placeholder="Enter Contact Number">
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group">
+												<label for="brand_technical_email" class="control-label">Email Address</label>
+												<input type="text" name="brand_technical_email[]" class="form-control" placeholder="Enter Email Address">
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					
-			</div>
-			<div class="modal-footer justify-content-between">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-success">Add Vendor</button>
-			</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="float-right">
+								<button type="button" class="btn btn-danger btn-sm delete-brand-btn"><i class="fas fa-times" aria-hidden="true"></i> DELETE FIELD</button>
+								<button type="button" class="btn btn-success btn-sm add-brand-btn"><i class="fas fa-plus" aria-hidden="true"></i> ADD FIELD</button>
+							</div>
+						</div>
+					</div>	
+				</div>
+				<div class="modal-footer justify-content-between">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-success">Add Vendor</button>
+				</div>
 			<?php echo form_close() ?>
 		</div>
 	<!-- /.modal-content -->
@@ -219,12 +324,18 @@ defined('BASEPATH') or die('Access Denied');
             </div>
             <div class="modal-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-sm" id="table-brand">
+                    <table class="table table-bordered table-m" id="table-brand">
                         <thead>
                             <tr>
 								<th>No.</th>
                                 <th>Brand Name</th>
                                 <th>Solutions</th>
+								<th>Contact Person</th>
+								<th>Contact Number</th>
+								<th>Email Address</th>
+								<th>Technical Person</th>
+								<th>Technical Contact</th>
+								<th>Technical Email</th>
                                 <th>Classification Level</th>
                                 <th>Ranking</th>
                             </tr>

@@ -191,3 +191,4 @@ $route['inquiry-add-project/(:any)'] = 'SalesInquiryController/add_project/$1';
 $route['inquiry-add-existingclient-project/(:any)'] = 'SalesInquiryController/add_existingclient_project/$1';
 $route['inquiry-edit-project/(:any)'] = 'SalesInquiryController/edit_project/$1';
 $route['inquiry-edit-existingclient-project/(:any)'] = 'SalesInquiryController/edit_existingclient_project/$1';
+

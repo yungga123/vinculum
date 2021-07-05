@@ -49,7 +49,7 @@ class ItemsModel extends CI_Model {
 	public function getSpecificMasterItems($item_code){
 		// return $this->db->get('items')->result();
 		//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
-		$this->db->select("itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,date_of_purchase,location,supplier,encoder");
+		$this->db->select("itemCode,itemName,item_brand,item_size,itemType,itemSupplierPrice,itemPrice,project_price,stocks,date_of_purchase,location,supplier,encoder");
 		$this->db->from("items");
 		$this->db->where("itemCode",$item_code);
 		$this->db->order_by("itemName","asc");
@@ -78,9 +78,12 @@ class ItemsModel extends CI_Model {
 	var $select_column = array(
 			"a.itemCode",
 			"a.itemName",
+			"a.item_brand",
+			"a.item_size",
 			"a.itemType",
 			"a.itemSupplierPrice",
 			"a.itemPrice",
+			"a.project_price",
 			"a.stocks",
 			"a.date_of_purchase",
 			"a.location",
@@ -91,9 +94,12 @@ class ItemsModel extends CI_Model {
 	var $order_column = array(
 			"itemCode",
 			"itemName",
+			"a.item_brand",
+			"a.item_size",
 			"itemType",
 			"itemSupplierPrice",
 			"itemPrice",
+			"a.project_price",
 			"stocks",
 			"date_of_purchase",
 			"location",
@@ -111,9 +117,12 @@ class ItemsModel extends CI_Model {
 
 			$this->db->like("itemCode", $_POST["search"]["value"]);
 			$this->db->or_like("itemName", $_POST["search"]["value"]);
+			$this->db->or_like("item_brand", $_POST["search"]["value"]);
+			$this->db->or_like("item_size", $_POST["search"]["value"]);
 			$this->db->or_like("itemType", $_POST["search"]["value"]);
 			$this->db->or_like("itemSupplierPrice", $_POST["search"]["value"]);
 			$this->db->or_like("itemPrice", $_POST["search"]["value"]);
+			$this->db->or_like("project_price", $_POST["search"]["value"]);
 			$this->db->or_like("stocks", $_POST["search"]["value"]);
 			$this->db->or_like("date_of_purchase", $_POST["search"]["value"]);
 			$this->db->or_like("location", $_POST["search"]["value"]);

@@ -54,6 +54,12 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + i++ + '</td>' +
 							'<td>' + response.results[key].brand_name + '</td>' +
 							'<td>' + response.results[key].solution + '</td>' +
+							'<td>' + response.results[key].brand_contact_person + '</td>' +
+							'<td>' + response.results[key].brand_contact_number + '</td>' +
+							'<td>' + response.results[key].brand_email + '</td>' +
+							'<td>' + response.results[key].brand_technical_person + '</td>' +
+							'<td>' + response.results[key].brand_technical_contact + '</td>' +
+							'<td>' + response.results[key].brand_technical_email + '</td>' +
 							'<td>' + response.results[key].classification_level + '</td>' +
 							'<td>' + response.results[key].ranking + '</td>' +
 						'</tr>');
@@ -125,11 +131,13 @@ defined('BASEPATH') or die('Access Denied');
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
 		 				toastr.success("Vendor Added!");
+						 window.setTimeout(function() {
+                                window.location = '<?php echo site_url('vendor-database') ?>';
+                            }, 1000);
 						 me[0].reset();
 		 			} else {
 		 				$(':submit').removeAttr('disabled','disabled');
 						$('.loading-modal').modal('hide');
-
 		 				toastr.error(response.errors);
 		 			}
 

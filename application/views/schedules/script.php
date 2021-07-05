@@ -71,7 +71,9 @@ defined('BASEPATH') or die('Access Denied');
 			          		echo '#DB5C5C';
 			          	} else if ($row->type == 'holiday') {
 			          		echo '#6BBA44';
-			          	}
+			          	} else if ($row->type == 'meeting') {
+							echo '#6c757d';
+						}
 
 			          ?>",
 		          borderColor    : "<?php 
@@ -83,7 +85,9 @@ defined('BASEPATH') or die('Access Denied');
 			          		echo '#dc3545';
 			          	} else if ($row->type == 'holiday') {
 			          		echo '#28a745';
-			          	}
+			          	} else if ($row->type == 'meeting') {
+							echo '#6c757d';
+						}
 
 			          ?>",
 			      	extendedProps: {

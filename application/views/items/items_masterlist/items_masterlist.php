@@ -49,9 +49,12 @@ defined('BASEPATH') or die('No direct script access allowed.');
 			            			<tr>
 			            				<th>Item Code</th>
 			            				<th>Description</th>
+										<th>Brand</th>
+										<th>Item Size</th>
 			            				<th>Category</th>
 			            				<th>Supplier's Price</th>
 			            				<th>SRP</th>
+										<th>Project Price</th>
 			            				<th>No. of Stocks</th>
 			            				<th>Date Added</th>
 			            				<th>Location</th>
@@ -122,12 +125,20 @@ defined('BASEPATH') or die('No direct script access allowed.');
 						<?php echo form_open('ItemsController/update_new_item_validate',["id" => "form-update-item"]) ?>
 							<div class="card-body">
 								<div class="form-group">
-								<label for="item_code" class="control-label">Item Code</label>
-								<input type="text" id="item_code" name="item_code" class="form-control item_code_edit" placeholder="Enter Item Code" readonly>
+									<label for="item_code" class="control-label">Item Code</label>
+									<input type="text" id="item_code" name="item_code" class="form-control item_code_edit" placeholder="Enter Item Code" readonly>
 								</div>
 								<div class="form-group">
-									<label for="item_name" class="control-label">Item Name</label>
+									<label for="item_name" class="control-label">Item Name / Description</label>
 									<input type="text" id="item_name" name="item_name" class="form-control item_name_edit" placeholder="Enter Item Name">
+								</div>
+								<div class="form-group">
+									<label for="item_brand" class="control-label">Item Brand</label>
+									<input type="text" id="item_brand" name="item_brand" class="form-control item_brand_edit" placeholder="Enter Item Brand">
+								</div>
+								<div class="form-group">
+									<label for="item_size" class="control-label">Item Size</label>
+									<input type="text" id="item_size" name="item_size" class="form-control item_size_edit" placeholder="Enter Item Size">
 								</div>
 								<div class="form-group">
 									<p>
@@ -141,12 +152,8 @@ defined('BASEPATH') or die('No direct script access allowed.');
 									</p>
 								</div>
 								<div class="form-group">
-									<label for="original_price" class="control-label">Original Price</label>
+									<label for="original_price" class="control-label">Supplier Price</label>
 									<input type="text" id="original_price" name="original_price" class="form-control original_price_edit" placeholder="Enter Item Price">
-								</div>
-								<div class="form-group">
-									<label for="selling_price" class="control-label">Selling Price</label>
-									<input type="text" id="selling_price" name="selling_price" class="form-control selling_price_edit" placeholder="Enter Item Price">
 								</div>
 							</div>
 						</div>
