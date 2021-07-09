@@ -497,6 +497,7 @@ defined('BASEPATH') or die('Access Denied');
 				var newfield = $('.add-task:last').clone();
 				newfield.find('textarea').val('');
 				newfield.find('input').val('');
+				newfield.find('.others:checkbox').prop('checked' , false).end();
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-task:last");
 				});
@@ -512,6 +513,17 @@ defined('BASEPATH') or die('Access Denied');
 				return 0;
 				}
 			});
+
+			$(document).on('change',".others" ,function(){
+
+				if($(this).is(':checked'))
+				{
+					var clone=$(this).parents('section').clone().find('.others:checkbox').prop('checked' , false).end();
+					$('.sth').append(clone);
+				}
+
+				});
+				
 	});
 
 </script>
