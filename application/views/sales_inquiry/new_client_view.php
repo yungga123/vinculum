@@ -21,7 +21,10 @@ defined('BASEPATH') or die('Access Denied'); ?>
 					<div class="card">
 						<div class="card-header">
 							Clients Table
-                            <a href="#" class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#modal_add_client"> <i class="fas fa-plus"></i> Add Client</a>
+							<div class="float-right">
+								<a href="#" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_add_client"> <i class="fas fa-plus"></i> Add Client </a> 
+								<a href="<?php echo site_url('exportnewclientsproject') ?>" class="btn btn-danger btn-sm"> <i class="fas fa-file-excel"></i> Generate Report</a>
+							</div>
 						</div>
 
 						<div class="card-body">

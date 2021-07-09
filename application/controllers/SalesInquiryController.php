@@ -99,11 +99,9 @@ class SalesInquiryController extends CI_Controller {
 				],
 				[
 					'field' => 'project_branch',
-					'label' => 'Project Branch',
+					'label' => 'Project Branch Name',
 					'rules' => 'trim|required',
-					'errors' => [
-						'required' => 'Please Provide Project Branch'
-					]
+					'errors' => ['required' => 'Please Provide Project Branch']
 				],
 				[
 					'field' => 'project_task[]',
@@ -123,6 +121,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
+			$data['category'] = 'New_Clients';
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -203,18 +202,35 @@ class SalesInquiryController extends CI_Controller {
 			date_default_timezone_set('Asia/Manila');
 			$date = date('Y-m-d');
 			 
-			$this->SalesInquiryModel->insert_client([
-				'customer_name' => $this->input->post('customer_name'),
-				'contact_person' => $this->input->post('contact_person'),
-				'contact_number' => $this->input->post('contact_number'),
-				'location' => $this->input->post('location'),
-				'email_add' => $this->input->post('email'),
-				'date' => $date,
-				'website' => $this->input->post('website'),
-                'interest' => $this->input->post('interest'),
-                'type' => $this->input->post('type'),
-                'notes' => $this->input->post('notes')
-			]);
+			$get_id = $this->SalesInquiryModel->get_newclient_id();
+
+			$id = "00";
+			$add_id = 1;
+			
+			if(empty($get_id)){
+				$fetch_id = $id."".$add_id;
+			}
+			else{
+				foreach($get_id as $row){
+					$fetch_id = $row->id;
+				}
+				$fetch_id = $fetch_id + $add_id;
+				$fetch_id = $id."".$fetch_id;
+			}
+			
+				$this->SalesInquiryModel->insert_client([
+					'id'=>$fetch_id,
+					'customer_name' => $this->input->post('customer_name'),
+					'contact_person' => $this->input->post('contact_person'),
+					'contact_number' => $this->input->post('contact_number'),
+					'location' => $this->input->post('location'),
+					'email_add' => $this->input->post('email'),
+					'date' => $date,
+					'website' => $this->input->post('website'),
+					'interest' => $this->input->post('interest'),
+					'type' => $this->input->post('type'),
+					'notes' => $this->input->post('notes')
+				]);
 				
 		} else {
 			$validate['errors'] = validation_errors();
@@ -311,6 +327,7 @@ class SalesInquiryController extends CI_Controller {
 				$customer_id = $row->customer_id;
 			}
 
+			$data['id'] = $customer_id;
 			$data['branch_list'] = $this->SalesInquiryModel->get_specific_branch_list($customer_id);
 			$data['edit_branch'] = $this->SalesInquiryModel->get_specific_branch($branch_id);
 			$data['edit_task'] = $this->SalesInquiryModel->get_specific_task($id);
@@ -406,9 +423,18 @@ class SalesInquiryController extends CI_Controller {
 
 					//add Item
 					for ($i=0; $i < $count_task; $i++) {
+						if(empty($this->input->post('remarks')[$i])){
+							$remarks = 0;
+						}
+						else{
+							$remarks = 1;
+						}
+
 						$this->SalesInquiryModel->insert_project_task([
 							'project_id' => $project_id,
-							'project_task' => $this->input->post('project_task')[$i]
+							'project_task' => $this->input->post('project_task')[$i],
+							'date_of_task' => $this->input->post('task_date')[$i],
+							'mark_as_read' => $remarks
 						]);
 					}
 		} 
@@ -449,15 +475,24 @@ class SalesInquiryController extends CI_Controller {
 			$task_id_data = array();
 			//add Item
 			for ($i=0; $i < count($this->input->post('task_id')); $i++) {
-
+				
 				$task_sub_data = array();
+
+				if(empty($this->input->post('remarks')[$i])){
+					$remarks = 0;
+				}
+				else{
+					$remarks = 1;
+				}
 
 				if ($this->input->post('task_id')[$i] != '') {
 					$this->SalesInquiryModel->update_task(
 						$this->input->post('task_id')[$i],
 					[
 						'project_id' => $project_id,
-						'project_task' => $this->input->post('project_task')[$i]
+						'project_task' => $this->input->post('project_task')[$i],
+						'date_of_task' => $this->input->post('task_date')[$i],
+						'mark_as_read' => $remarks
 					]
 				);
 					$task_sub_data[] = $this->input->post('task_id')[$i];
@@ -466,12 +501,14 @@ class SalesInquiryController extends CI_Controller {
 				else{
 					$this->SalesInquiryModel->insert_project_task([
 						'project_id' => $project_id,
-						'project_task' => $this->input->post('project_task')[$i]
+						'project_task' => $this->input->post('project_task')[$i],
+						'date_of_task' => $this->input->post('task_date')[$i],
+						'mark_as_read' => $remarks
 					]);
 
 					$task_sub_data[] = $this->SalesInquiryModel->get_new_added_task($project_id);
 					$task_id_data[] = $task_sub_data;
-				}
+				} 
 			}
 			$this->SalesInquiryModel->remove_project_task($task_id_data,$project_id);
 
@@ -704,6 +741,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
+			$data['category'] = 'existing_client';
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -726,7 +764,7 @@ class SalesInquiryController extends CI_Controller {
             $data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
 			$data['new_client_id'] = $id;
-			$data['form_id'] = 'existingclient';
+			$data['form_id'] = 'Existing_Clients';
 			$data['results'] = $this->SalesInquiryModel->get_sales_list();
 			$data['branch_list'] = $this->SalesInquiryModel->get_specific_branch_list($id);
 
@@ -932,6 +970,214 @@ class SalesInquiryController extends CI_Controller {
 		echo json_encode($validate);
 	}
 
+	// Export to CSV ( must be in result->array() )
+    function exportnewclientsproject()
+    {
+        $file_name = 'New_Clients_Project_List_' . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+			'Customer Name',
+			'Project ID',
+			'Project Status',
+			'Sales Incharge',
+			'Project Type',
+			'Branch'
+        ];
+        fputcsv($file, $header);
+
+			// get data
+			$results = $this->SalesInquiryModel->getNewClientsList();
+			$name = "";
+			$loop_id = 0;
+			foreach ($results as $row) {
+
+				if($row->project_status == "10%"){
+					$project_status = "Identified Process";
+				}
+				elseif($row->project_status == "30%"){
+					$project_status = "Qualified";
+				}
+				elseif($row->project_status == "50%"){
+					$project_status = "Developing Solution";
+				}
+				elseif($row->project_status == "70%"){
+					$project_status = "Evaluation";
+				}
+				elseif($row->project_status == "90%"){
+					$project_status = "Negotiation";
+				}
+				elseif($row->project_status == "100%"){
+					$project_status = "Booked";
+				}
+
+				//if($row->project_date == "0000-00-00"){
+				//		$project_date = "";
+				//	}
+				//	else{
+				//		$project_date = $row->project_date;
+				//	}
 
 
+				$sub_array = array();
+				
+				if($name == $row->customer_name){
+					$sub_array[] = "";
+					$sub_array[] = $row->project_id;
+					$sub_array[] = $project_status;
+					$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
+					//$sub_array[] = $project_date;
+					$sub_array[] = $row->project_type;
+					$sub_array[] = $row->branch;
+					fputcsv($file, $sub_array);
+					$loop_id = 1;
+				}
+				else{
+					if($loop_id == 0){
+						$sub_array[] = $row->customer_name;
+						$sub_array[] = $row->project_id;
+						$sub_array[] = $project_status;
+						$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
+						//$sub_array[] = $project_date;
+						$sub_array[] = $row->project_type;
+						$sub_array[] = $row->branch;
+						fputcsv($file, $sub_array);
+					}else{
+					$sub_array[] = "";
+					$sub_array[] = "";
+					$sub_array[] = "";
+					$sub_array[] = "";
+					//$sub_array[] = "";
+					$sub_array[] = "";
+					$sub_array[] = "";
+					//fputcsv($file, $sub_array);
+
+					$sub_array = array();
+					$sub_array[] = $row->customer_name;
+					$sub_array[] = $row->project_id;
+					$sub_array[] = $project_status;
+					$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
+					//$sub_array[] = $project_date;
+					$sub_array[] = $row->project_type;
+					$sub_array[] = $row->branch;
+					fputcsv($file, $sub_array);
+					}
+				}
+				$name = $row->customer_name;
+			}
+			fclose($file);		
+
+
+        	exit;
+    }
+
+	// Export to CSV ( must be in result->array() )
+    function exportexistingclientsproject()
+    {
+
+        $file_name = 'Existing_Clients_Project_List_' . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+			'Customer Name',
+			'Project ID',
+			'Project Status',
+			'Sales Incharge',
+			'Project Type',
+			'Branch'
+        ];
+        fputcsv($file, $header);
+
+			// get data
+			$results = $this->SalesInquiryModel->getExistingClientsList();
+			$name = "";
+			$loop_id = 0;
+			foreach ($results as $row) {
+
+				if($row->project_status == "10%"){
+					$project_status = "Identified Process";
+				}
+				elseif($row->project_status == "30%"){
+					$project_status = "Qualified";
+				}
+				elseif($row->project_status == "50%"){
+					$project_status = "Developing Solution";
+				}
+				elseif($row->project_status == "70%"){
+					$project_status = "Evaluation";
+				}
+				elseif($row->project_status == "90%"){
+					$project_status = "Negotiation";
+				}
+				elseif($row->project_status == "100%"){
+					$project_status = "Booked";
+				}
+
+				//if($row->project_date == "0000-00-00"){
+				//	$project_date = "";
+				//}
+				//else{
+				//	$project_date = $row->project_date;
+				//}
+
+				$sub_array = array();
+
+				if($name == $row->CompanyName){
+					$sub_array[] = "";
+					$sub_array[] = $row->project_id;
+					$sub_array[] = $project_status;
+					$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
+					//$sub_array[] = $project_date;
+					$sub_array[] = $row->project_type;
+					$sub_array[] = $row->branch;
+					fputcsv($file, $sub_array);
+					$loop_id = 1;
+				}
+				else{
+					if($loop_id == 0){
+						$sub_array[] = $row->CompanyName;
+						$sub_array[] = $row->project_id;
+						$sub_array[] = $project_status;
+						$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
+						//$sub_array[] = $project_date;
+						$sub_array[] = $row->project_type;
+						$sub_array[] = $row->branch;
+						fputcsv($file, $sub_array);
+					}
+					else{
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						//$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						fputcsv($file, $sub_array);
+						
+						$sub_array = array();
+						$sub_array[] = $row->CompanyName;
+						$sub_array[] = $row->project_id;
+						$sub_array[] = $project_status;
+						$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
+						//$sub_array[] = $project_date;
+						$sub_array[] = $row->project_type;
+						$sub_array[] = $row->branch;
+						fputcsv($file, $sub_array);
+					}	
+				}
+				$name = $row->CompanyName;
+			}
+			fclose($file);		
+        	exit;
+    }
 }
