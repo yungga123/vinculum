@@ -6,6 +6,7 @@ defined('BASEPATH') or die('Access Denied');
 if($this->session->userdata('add')){
     $id = $new_client_id;
 }
+
 else{
     foreach($edit_project as $row){
         $project_data_result = [
@@ -101,7 +102,7 @@ else{
                                             </p>
                                         </div> 
                                     </div>
-                                <input type="hidden" name="project_branch" value="none">
+                                <input type="hidden" name="project_status" value="none">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <p>
@@ -138,17 +139,37 @@ else{
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <div class="float-right">
-                                                <button type="button" class="btn btn-danger btn-sm delete-task-btn"><i class="fas fa-times" aria-hidden="true"></i> DELETE FIELD</button>
-                                                <button type="button" class="btn btn-success btn-sm add-task-btn"><i class="fas fa-plus" aria-hidden="true"></i> ADD FIELD</button>
-                                            </div>
-                                            <br>
-                                            <div class="add-task">
-                                                <label for="project_task" class="control-label">Task</label>
-                                                <textarea type="text" name="project_task[]" class="form-control" placeholder="Enter Task"></textarea>
+                                                <button type="button" class="btn btn-danger btn-sm delete-task-btn"><i class="fas fa-times" aria-hidden="true"></i> DELETE TASK</button>
+                                                <button type="button" class="btn btn-success btn-sm add-task-btn"><i class="fas fa-plus" aria-hidden="true"></i> ADD TASK</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <br>
+                                <div class="row add-task">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label for="project_task" class="control-label">Task</label>
+                                            <textarea type="text" name="project_task[]" class="form-control" placeholder="Enter Task"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="task_date">Select Task Date</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="date" name="task_date[]" placeholder="Select Date">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                    <label for="quotation_vat">Remarks</label>
+		                      			<div class="form-check">
+		                        			<label class="form-check-label">
+		                            			<input type="checkbox" class="form-check-input" name="remarks[]" value="1">
+		                              				Mark As Done
+		                          			</label>
+		                      			</div>
+                                    </div>
+                                </div>
+                            
                                 
                             </div>
 						</div>
@@ -243,26 +264,45 @@ else{
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <div class="float-right">
-                                                <button type="button" class="btn btn-danger btn-sm delete-task-btn"><i class="fas fa-times" aria-hidden="true"></i> DELETE FIELD</button>
-                                                <button type="button" class="btn btn-success btn-sm add-task-btn"><i class="fas fa-plus" aria-hidden="true"></i> ADD FIELD</button>
+                                                <button type="button" class="btn btn-danger btn-sm delete-task-btn"><i class="fas fa-times" aria-hidden="true"></i> DELETE TASK</button>
+                                                <button type="button" class="btn btn-success btn-sm add-task-btn"><i class="fas fa-plus" aria-hidden="true"></i> ADD TASK</button>
                                             </div>
-                                            <br>
-                                            <?php foreach($edit_task as $row ): ?>
-                                                <div class="add-task">
-                                                    <label for="project_task" class="control-label">Task</label>
-                                                    <input type="hidden" name="task_id[]" value="<?php echo $row->task_id ?>">
-                                                    <textarea type="text" name="project_task[]" id ="project_task[]" class="form-control" placeholder="Enter Task"><?php echo $row->project_task ?></textarea>
-                                                </div>
-                                            <?php endforeach ?>
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <br>
+                                <?php foreach($edit_task as $row ): ?>
+                                <div class="row add-task">
+                                    <div class="col-sm-9">
+                                        <div class="form-group">
+                                            <label for="project_task" class="control-label">Task</label>
+                                            <input type="hidden" name="task_id[]" value="<?php echo $row->task_id ?>">
+                                            <textarea type="text" name="project_task[]" class="form-control" placeholder="Enter Task"><?php echo $row->project_task ?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label for="task_date">Select Task Date</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="date" name="task_date[]" placeholder="Select Date" value="<?php echo $row->date_of_task ?>">
+                                            </div>
+                                    </div>
+                                    
+                                    <div class="col-sm-1">
+                                        <label for="quotation_vat">Remarks</label>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="remarks[]" value="1" <?php if($row->mark_as_read == 1) { echo 'checked';} ?>>
+                                                    Mark As Done
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endforeach ?>
                             </div>
 						</div>
                         <div class="card-footer">
                             <div class="row float-right">
-                                <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_add_vendor"> <i class="fas fa-plus"></i> <?php echo $button_title ?></button>
+                                <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_add_vendor"> <i class="fas fa-edit"></i> <?php echo $button_title ?></button>
                             </div>
                         </div>
                     <?php echo form_close() ?>

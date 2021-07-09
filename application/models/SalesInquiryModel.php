@@ -429,5 +429,37 @@ public function existingclient_datatable() {
 		}
 		return $branch_name;
 	}
+
+	public function getNewClientsList(){
+		// return $this->db->get('items')->result();
+		//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
+		//$this->db->select("b.customer_name,a.project_id,a.project_status,c.lastname,a.project_date,a.project_type,a.branch,c.lastname,c.firstname,c.middlename","DISTINCT");
+		$this->db->select('*');
+		$this->db->from("customers_project as a");
+		$this->db->join('sales_inquiry_tempo_clients as b','a.customer_id = b.id','inner');
+		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
+		$this->db->order_by("b.id","DESC");
+		return $this->db->get()->result();
+	}
+
+	public function getExistingClientsList(){
+		// return $this->db->get('items')->result();
+		//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
+		//$this->db->select("b.customer_name,a.project_id,a.project_status,c.lastname,a.project_date,a.project_type,a.branch");
+		$this->db->select("*");
+		$this->db->from("customers_project as a");
+		$this->db->join('customer_vt as b','a.customer_id = b.CustomerID','inner');
+		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
+		$this->db->order_by("b.CustomerID","DESC");
+		return $this->db->get()->result();
+	}
+
+	public function get_newclient_id() {
+        $this->db->select('*');
+		$this->db->from('sales_inquiry_tempo_clients');
+        $this->db->order_by('id','DESC');
+		$this->db->limit(1);
+		return $this->db->get()->result();
+    }
 }
 ?>
