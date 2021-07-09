@@ -163,7 +163,7 @@ else{
                                     <label for="quotation_vat">Remarks</label>
 		                      			<div class="form-check">
 		                        			<label class="form-check-label">
-		                            			<input type="checkbox" class="form-check-input" name="remarks[]" value="1">
+		                            			<input type="checkbox" class="form-check-input others" name="remarks[]" value="1">
 		                              				Mark As Done
 		                          			</label>
 		                      			</div>
