@@ -986,7 +986,6 @@ class SalesInquiryController extends CI_Controller {
 			'Project ID',
 			'Project Status',
 			'Sales Incharge',
-			'Date',
 			'Project Type',
 			'Branch'
         ];
@@ -1017,12 +1016,12 @@ class SalesInquiryController extends CI_Controller {
 					$project_status = "Booked";
 				}
 
-				if($row->project_date == "0000-00-00"){
-					$project_date = "";
-				}
-				else{
-					$project_date = $row->project_date;
-				}
+				//if($row->project_date == "0000-00-00"){
+				//		$project_date = "";
+				//	}
+				//	else{
+				//		$project_date = $row->project_date;
+				//	}
 
 
 				$sub_array = array();
@@ -1032,7 +1031,7 @@ class SalesInquiryController extends CI_Controller {
 					$sub_array[] = $row->project_id;
 					$sub_array[] = $project_status;
 					$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
-					$sub_array[] = $project_date;
+					//$sub_array[] = $project_date;
 					$sub_array[] = $row->project_type;
 					$sub_array[] = $row->branch;
 					fputcsv($file, $sub_array);
@@ -1044,7 +1043,7 @@ class SalesInquiryController extends CI_Controller {
 						$sub_array[] = $row->project_id;
 						$sub_array[] = $project_status;
 						$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
-						$sub_array[] = $project_date;
+						//$sub_array[] = $project_date;
 						$sub_array[] = $row->project_type;
 						$sub_array[] = $row->branch;
 						fputcsv($file, $sub_array);
@@ -1053,7 +1052,7 @@ class SalesInquiryController extends CI_Controller {
 					$sub_array[] = "";
 					$sub_array[] = "";
 					$sub_array[] = "";
-					$sub_array[] = "";
+					//$sub_array[] = "";
 					$sub_array[] = "";
 					$sub_array[] = "";
 					//fputcsv($file, $sub_array);
@@ -1063,7 +1062,7 @@ class SalesInquiryController extends CI_Controller {
 					$sub_array[] = $row->project_id;
 					$sub_array[] = $project_status;
 					$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
-					$sub_array[] = $project_date;
+					//$sub_array[] = $project_date;
 					$sub_array[] = $row->project_type;
 					$sub_array[] = $row->branch;
 					fputcsv($file, $sub_array);
@@ -1094,7 +1093,6 @@ class SalesInquiryController extends CI_Controller {
 			'Project ID',
 			'Project Status',
 			'Sales Incharge',
-			'Date',
 			'Project Type',
 			'Branch'
         ];
@@ -1125,12 +1123,12 @@ class SalesInquiryController extends CI_Controller {
 					$project_status = "Booked";
 				}
 
-				if($row->project_date == "0000-00-00"){
-					$project_date = "";
-				}
-				else{
-					$project_date = $row->project_date;
-				}
+				//if($row->project_date == "0000-00-00"){
+				//	$project_date = "";
+				//}
+				//else{
+				//	$project_date = $row->project_date;
+				//}
 
 				$sub_array = array();
 
@@ -1139,7 +1137,7 @@ class SalesInquiryController extends CI_Controller {
 					$sub_array[] = $row->project_id;
 					$sub_array[] = $project_status;
 					$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
-					$sub_array[] = $project_date;
+					//$sub_array[] = $project_date;
 					$sub_array[] = $row->project_type;
 					$sub_array[] = $row->branch;
 					fputcsv($file, $sub_array);
@@ -1151,7 +1149,7 @@ class SalesInquiryController extends CI_Controller {
 						$sub_array[] = $row->project_id;
 						$sub_array[] = $project_status;
 						$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
-						$sub_array[] = $project_date;
+						//$sub_array[] = $project_date;
 						$sub_array[] = $row->project_type;
 						$sub_array[] = $row->branch;
 						fputcsv($file, $sub_array);
@@ -1161,7 +1159,7 @@ class SalesInquiryController extends CI_Controller {
 						$sub_array[] = "";
 						$sub_array[] = "";
 						$sub_array[] = "";
-						$sub_array[] = "";
+						//$sub_array[] = "";
 						$sub_array[] = "";
 						$sub_array[] = "";
 						fputcsv($file, $sub_array);
@@ -1171,7 +1169,7 @@ class SalesInquiryController extends CI_Controller {
 						$sub_array[] = $row->project_id;
 						$sub_array[] = $project_status;
 						$sub_array[] = $row->lastname.", ".$row->firstname." ".$row->middlename;
-						$sub_array[] = $project_date;
+						//$sub_array[] = $project_date;
 						$sub_array[] = $row->project_type;
 						$sub_array[] = $row->branch;
 						fputcsv($file, $sub_array);
