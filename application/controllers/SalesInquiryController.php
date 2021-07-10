@@ -163,11 +163,11 @@ class SalesInquiryController extends CI_Controller {
 			
 
 			$sub_array[] = '
-            <a href="'.site_url('inquiry-add-project/'.$row->id).'" class="btn btn-success btn-xs btn-block"><i class="fas fa-plus"></i>  Add</a>
-			<a href="#" class="btn btn-primary btn-xs btn-block btn_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View</a>
-            <button type="button" class="btn btn-warning btn-xs btn-block btn_select" data-toggle="modal" data-target="#modal_edit_client"><i class="fas fa-edit"></i> Edit</button> 
-			<button type="button" class="btn btn-success btn-xs btn-block btn_client_approved" data-toggle="modal" data-target="#approved-tempo-client"><i class="fas fa-trash"></i> Approved</button>
-			<button type="button" class="btn btn-danger btn-xs btn-block btn_client_del" data-toggle="modal" data-target="#delete-tempo-client"><i class="fas fa-trash"></i> Delete</button>
+            <a href="'.site_url('inquiry-add-project/'.$row->id).'" class="btn btn-success btn-xs btn-block"><i class="fas fa-plus"></i>  Add Project</a>
+			<a href="#" class="btn btn-primary btn-xs btn-block btn_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View Projects</a>
+            <button type="button" class="btn btn-warning btn-xs btn-block btn_select" data-toggle="modal" data-target="#modal_edit_client"><i class="fas fa-edit"></i> Edit Client</button> 
+			<button type="button" class="btn btn-success btn-xs btn-block btn_client_approved" data-toggle="modal" data-target="#approved-tempo-client"><i class="fas fa-trash"></i> Approved Client</button>
+			<button type="button" class="btn btn-danger btn-xs btn-block btn_client_del" data-toggle="modal" data-target="#delete-tempo-client"><i class="fas fa-trash"></i> Delete Client</button>
 			';
 			
 			$data[] = $sub_array;
@@ -811,10 +811,10 @@ class SalesInquiryController extends CI_Controller {
 			
 
 			$sub_array[] = '
-            <a href="'.site_url('inquiry-add-existingclient-project/'.$row->CustomerID).'" class="btn btn-success btn-xs btn-block"><i class="fas fa-plus"></i>  Add</a>
-			<a href="#" class="btn btn-primary btn-xs btn-block btn_existing_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View</a>
-            <button type="button" class="btn btn-warning btn-xs btn-block btn_existing" data-toggle="modal" data-target="#modal_edit_existing_client"><i class="fas fa-edit"></i> Edit</button> 
-			<button type="button" class="btn btn-danger btn-xs btn-block btn_existing_client_del" data-toggle="modal" data-target="#delete-existing-client"><i class="fas fa-trash"></i> Delete</button>
+            <a href="'.site_url('inquiry-add-existingclient-project/'.$row->CustomerID).'" class="btn btn-success btn-xs btn-block"><i class="fas fa-plus"></i>  Add Project</a>
+			<a href="#" class="btn btn-primary btn-xs btn-block btn_existing_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View Projects</a>
+            <button type="button" class="btn btn-warning btn-xs btn-block btn_existing" data-toggle="modal" data-target="#modal_edit_existing_client"><i class="fas fa-edit"></i> Edit Client</button> 
+			<button type="button" class="btn btn-danger btn-xs btn-block btn_existing_client_del" data-toggle="modal" data-target="#delete-existing-client"><i class="fas fa-trash"></i> Delete Client</button>
 			';
 			
 			$data[] = $sub_array;
