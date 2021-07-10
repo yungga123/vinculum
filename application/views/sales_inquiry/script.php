@@ -449,7 +449,7 @@ defined('BASEPATH') or die('Access Denied');
 		 	});
 		});
 
-			//Fetching Data in Pending Requisition (For Viewing)
+			//Fetching Data in New Client (For Viewing)
 			$('#new_client_table tbody').on('click','.btn_view',function(){
 
 				var data = new_client_table_data.row($(this).parents('tr')).data();
@@ -480,7 +480,7 @@ defined('BASEPATH') or die('Access Denied');
 								'<td>' + response.results[key].project_status + '</td>' +
 								'<td>' + response.results[key].lastname + "," + response.results[key].firstname + " " + response.results[key].middlename + '</td>' +
 								'<td>' + response.results[key].branch + '</td>' +
-								'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete</a></td>' +
+								'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a></td>' +
 							'</tr>');
 							
 						});
@@ -582,7 +582,7 @@ defined('BASEPATH') or die('Access Denied');
 			 	});
 			} );
 
-			//Fetching Data in Pending Requisition (For Delete)
+			//Fetching Data in Existing Client (For Delete)
 			$('#existing_client_table tbody').on('click','.btn_existing_client_del',function(){
 
 				var data = existing_client_table_data.row($(this).parents('tr')).data();
@@ -596,7 +596,7 @@ defined('BASEPATH') or die('Access Denied');
 
 				});
 
-				//Fetching Data in Pending Requisition (For Viewing)
+				//Fetching Data in Existing Client (For Viewing)
 			$('#existing_client_table tbody').on('click','.btn_existing_view',function(){
 
 				var data = existing_client_table_data.row($(this).parents('tr')).data();
@@ -627,7 +627,7 @@ defined('BASEPATH') or die('Access Denied');
 								'<td>' + response.results[key].project_status + '</td>' +
 								'<td>' + response.results[key].lastname + "," + response.results[key].firstname + " " + response.results[key].middlename + '</td>' +
 								'<td>' + response.results[key].branch + '</td>' +
-								'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete</a> </td>' +
+								'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> </td>' +
 							'</tr>');
 						});
 
