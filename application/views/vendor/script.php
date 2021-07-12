@@ -53,7 +53,7 @@ defined('BASEPATH') or die('Access Denied');
 						$('#tbody-brand').append('<tr>' +
 							'<td>' + i++ + '</td>' +
 							'<td>' + response.results[key].brand_name + '</td>' +
-							'<td>' + response.results[key].solution + '</td>' +
+							'<td>' + response.results[key].products + '</td>' +
 							'<td>' + response.results[key].brand_contact_person + '</td>' +
 							'<td>' + response.results[key].brand_contact_number + '</td>' +
 							'<td>' + response.results[key].brand_email + '</td>' +

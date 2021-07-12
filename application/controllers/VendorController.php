@@ -203,6 +203,9 @@ class VendorController extends CI_Controller {
 		}
 	}
 
+	function strReplaceAssoc(array $replace, $subject) {
+		return str_replace(array_keys($replace), array_values($replace), $subject);   
+	 }
 
 	public function update_vendor_validate() {
         $validate = [
@@ -220,7 +223,12 @@ class VendorController extends CI_Controller {
             $vendor_code = $this->input->post('vendor_code');
 			$vendor_code_generated = $this->input->post('vendor_name')."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
 			
-				
+			$replace = array(
+				' ' => '_'
+				);
+
+			$vendor_code_generated = $this->strReplaceAssoc($replace,$vendor_code_generated);
+			
 				$this->VendorModel->update_vendor($vendor_code,[
 					'vendor_code' => $vendor_code_generated,
 					'name' => $this->input->post('vendor_name'),
@@ -402,6 +410,12 @@ class VendorController extends CI_Controller {
 			date_default_timezone_set('Asia/Manila');
 			$date = $this->input->post('vendor_date', 'Y-m-d'); 
 			$vendor_code_generated = $this->input->post('vendor_name')."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
+			
+			$replace = array(
+				' ' => '_'
+				);
+
+			$vendor_code_generated = $this->strReplaceAssoc($replace,$vendor_code_generated);
 			
 			$this->VendorModel->insert_vendor([
 				'vendor_code' => $vendor_code_generated,

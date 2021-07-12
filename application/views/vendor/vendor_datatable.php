@@ -329,7 +329,7 @@ defined('BASEPATH') or die('Access Denied');
                             <tr>
 								<th>No.</th>
                                 <th>Brand Name</th>
-                                <th>Solutions</th>
+                                <th>Products</th>
 								<th>Contact Person</th>
 								<th>Contact Number</th>
 								<th>Email Address</th>
