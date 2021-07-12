@@ -53,13 +53,15 @@ else{
 						<div class="card-header">
 							Project Details
 						</div>
-                    
+                
                 <?php if($this->session->userdata('add')): ?>
                 <!-- ADD FUNCTION -->
                 <?php if($form_id == "newclient"): ?>
                     <?php echo form_open('SalesInquiryController/salesinquiryaddprojectvalidate',["id" => "form-add-project"]) ?>
+                    <input type="hidden" name="form_id" value="<?php echo $form_id ?>" >
                 <?php else: ?>
                     <?php echo form_open('SalesInquiryController/salesinquiryaddprojectvalidate',["id" => "form-add-existingclient-project"]) ?>
+                    <input type="hidden" name="form_id" value="<?php echo $form_id ?>" >
                 <?php endif ?>
 
                     <input type="hidden" id="client_id" name="client_id" value="<?php echo $id ?>" >
@@ -183,8 +185,10 @@ else{
                 <!-- EDIT FUNCTION -->
                 <?php if($form_id == "edit_newclient"): ?>
                     <?php echo form_open('SalesInquiryController/salesinquiryupdateprojectvalidate',["id" => "form-edit-project"]) ?>
+                    <input type="hidden" name="form_id" value="<?php echo $form_id ?>" >
                 <?php else: ?>
                     <?php echo form_open('SalesInquiryController/salesinquiryupdateprojectvalidate',["id" => "form-edit-existingclient-project"]) ?>
+                    <input type="hidden" name="form_id" value="<?php echo $form_id ?>" >
                 <?php endif ?>
                     <input type="hidden" name="client_id" value="<?php echo $project_data_result['project_client_id'] ?>" >
                     <input type="hidden" name="branch_id" value="<?php echo $project_branch_result['project_branch_id'] ?>" >

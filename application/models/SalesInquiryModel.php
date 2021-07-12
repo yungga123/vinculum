@@ -436,6 +436,7 @@ public function existingclient_datatable() {
 		//$this->db->select("b.customer_name,a.project_id,a.project_status,c.lastname,a.project_date,a.project_type,a.branch,c.lastname,c.firstname,c.middlename","DISTINCT");
 		$this->db->select('*');
 		$this->db->from("customers_project as a");
+		$this->db->where('client_status', 'new');
 		$this->db->join('sales_inquiry_tempo_clients as b','a.customer_id = b.id','inner');
 		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
 		$this->db->order_by("b.id","DESC");
@@ -448,6 +449,7 @@ public function existingclient_datatable() {
 		//$this->db->select("b.customer_name,a.project_id,a.project_status,c.lastname,a.project_date,a.project_type,a.branch");
 		$this->db->select("*");
 		$this->db->from("customers_project as a");
+		$this->db->where('client_status', 'existing');
 		$this->db->join('customer_vt as b','a.customer_id = b.CustomerID','inner');
 		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
 		$this->db->order_by("b.CustomerID","DESC");

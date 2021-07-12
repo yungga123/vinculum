@@ -405,14 +405,24 @@ class SalesInquiryController extends CI_Controller {
 			
 			$date = date('Y-m-d'); //YYYY-MM-DD
 				$fetch_branch_name = $this->SalesInquiryModel->fetch_branch_name($this->input->post('project_branch'));
-				$this->SalesInquiryModel->insert_project([
-					'customer_id' => $this->input->post('client_id'),
-					'branch_id' => $this->input->post('project_branch'),
-					'project_status' => $this->input->post('project_status'),
-					'sales_incharge' => $this->input->post('project_sales_incharge'),
-					'project_type' => $this->input->post('project'),
-					'branch' => $fetch_branch_name
-				]);
+
+				if($this->input->post('form_id') == "newclient"){
+					$form_id = "new";
+				}
+				else{
+					$form_id = "existing";
+				}
+
+					$this->SalesInquiryModel->insert_project([
+						'customer_id' => $this->input->post('client_id'),
+						'branch_id' => $this->input->post('project_branch'),
+						'project_status' => $this->input->post('project_status'),
+						'sales_incharge' => $this->input->post('project_sales_incharge'),
+						'project_type' => $this->input->post('project'),
+						'branch' => $fetch_branch_name,
+						'client_status' => $form_id
+					]);
+		
 
 				$project_id = $this->SalesInquiryModel->get_project_id();
 				$count_task = count($this->input->post('project_task'));
@@ -462,14 +472,22 @@ class SalesInquiryController extends CI_Controller {
 
 			$fetch_branch_name = $this->SalesInquiryModel->fetch_branch_name($this->input->post('project_branch'));
 			$project_id = $this->input->post('project_id');
+
+			if($this->input->post('form_id') == "edit_newclient"){
+				$form_id = "new";
+			}
+			else{
+				$form_id = "existing";
+			}
+			
 			$this->SalesInquiryModel->update_existingclient_project($project_id,[
 				'customer_id' => $this->input->post('client_id'),
 				'branch_id' => $this->input->post('project_branch'),
 				'project_status' => $this->input->post('project_status'),
 				'sales_incharge' => $this->input->post('project_sales_incharge'),
 				'project_type' => $this->input->post('project'),
-				'branch' => $fetch_branch_name
-
+				'branch' => $fetch_branch_name,
+				'client_status' => $form_id
 			]);
 
 			$task_id_data = array();
