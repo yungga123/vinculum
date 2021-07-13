@@ -98,7 +98,6 @@ class JobOrderController extends CI_Controller
 
 			$this->load->model('CustomersModel');
 			$this->load->model('TechniciansModel');
-
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Job Order';
@@ -108,6 +107,8 @@ class JobOrderController extends CI_Controller
 			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
 			$data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
 			$data['latest_joborder'] = $this->JobOrderModel->get_latest_job_order();
+			$data['joborder_scheduled_data'] = $this->JobOrderModel->joborder_scheduled_data();
+			$data['form_id'] = "add-form";
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -330,6 +331,8 @@ class JobOrderController extends CI_Controller
 			$data['ul_forms'] = ' active';
 			$data['servicecall'] = ' active';
 			$data['decision'] = $decision;
+			$data['joborder_scheduled_data'] = $this->JobOrderModel->joborder_scheduled_data();
+
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -351,20 +354,20 @@ class JobOrderController extends CI_Controller
 
 		if ($this->input->post('decision') != 'Discarded') {
 			$schedule_type_rule = [
-				'field' => 'schedule_type',
-				'label' => 'Schedule Type',
+				'field' => 'pic_assigned',
+				'label' => 'PIC Assigned',
 				'rules' => 'trim|required',
 				'errors' => [
-					'required' => 'Please select schedule type.'
+					'required' => 'Please select PIC.'
 				]
 			];
 		} else {
 			$schedule_type_rule = [
-				'field' => 'schedule_type',
-				'label' => 'Schedule Type',
+				'field' => 'pic_assigned',
+				'label' => 'PIC Assigned',
 				'rules' => 'trim',
 				'errors' => [
-					'required' => 'Please select schedule type.'
+					'required' => 'Please select PIC.'
 				]
 			];
 		}
@@ -400,7 +403,8 @@ class JobOrderController extends CI_Controller
 			$id = $this->input->post('job_order_id');
 			$data = [
 				'decision' => $this->input->post('decision'),
-				'commited_schedule' => $this->input->post('committed_schedule')
+				'commited_schedule' => $this->input->post('committed_schedule'),
+				'pic' => $this->input->post('pic_assigned')
 			];
 
 			if ($this->input->post('decision') != 'Discarded') {
@@ -409,7 +413,7 @@ class JobOrderController extends CI_Controller
 					'start' => $this->input->post('committed_schedule').' 00:00:00',
 					'end' => $this->input->post('committed_schedule').' 23:59:59',
 					'description' => str_replace("<br>", "",$this->input->post('description')),
-					'type' => $this->input->post('schedule_type')
+					'type' => $this->input->post('type_of_project')
 				];
 			}
 			
@@ -448,11 +452,6 @@ class JobOrderController extends CI_Controller
 				'field' => 'decision_filejo',
 				'label' => 'Decision',
 				'rules' => 'trim'
-			],
-			[
-				'field' => 'remarks',
-				'label' => 'Remarks',
-				'rules' => 'trim'
 			]
 		];
 
@@ -467,8 +466,7 @@ class JobOrderController extends CI_Controller
 			$id = $this->input->post('job_filejo_id');
 			$data = [
 				'decision' => $this->input->post('decision_filejo'),
-				'date_filed' => date('Y-m-d'),
-				'remarks' => $this->input->post('remarks')
+				'date_filed' => date('Y-m-d')
 			];
 
 			$this->JobOrderModel->update_joborder($id, $data);
@@ -530,7 +528,6 @@ class JobOrderController extends CI_Controller
 		$fetch_data = $this->JobOrderModel->job_order_datatable($where);
 
 
-
 		$data = array();
 
 		foreach ($fetch_data as $row) {
@@ -566,8 +563,8 @@ class JobOrderController extends CI_Controller
 			if ($row->structured_cabling == 1) {
 				$sub_scope[] = 'Structured Cabling';
 			}
-			if ($row->gate_barrier == 1) {
-				$sub_scope[] = 'Gate Barriers';
+			if ($row->pabgm == 1) {
+				$sub_scope[] = 'PABGM';
 			}
 
 			if ($row->date_requested != '0000-00-00') {
@@ -589,7 +586,8 @@ class JobOrderController extends CI_Controller
 					<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>
 					
 					<button class="btn btn-warning btn-xs text-bold btn-block btn_reschedule" data-toggle="modal" data-target=".modal-reschedule"><i class="fas fa-edit"></i> RESCHEDULE</button>
-				';
+					<a href="'.site_url('edit-accepted-joborder/'.$row->joborder_id).'" class="btn btn-xs btn-warning text-bold btn-block"><i class="fas fa-edit"></i> Edit</a>
+					';
 			} elseif($where == 'Filed') {
 
 				// Shortened If/Else with Ternary Operator
@@ -600,9 +598,13 @@ class JobOrderController extends CI_Controller
 					<button type="button" class="btn btn-success btn-xs text-bold btn-block btn_accepted" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-check"></i> ACCEPT</button>
 					<button type="button" class="btn btn-danger btn-xs text-bold btn-block btn_discarded" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-times"></i> DISCARD</button>
 					<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>
+					<a href="'.site_url('edit-pending-joborder/'.$row->joborder_id).'" class="btn btn-xs btn-warning text-bold btn-block"><i class="fas fa-edit"></i> Edit</a>
 
 				';
 			}
+
+			
+
 
 			$scope[] = $sub_scope;
 
@@ -618,6 +620,26 @@ class JobOrderController extends CI_Controller
 			$sub_array[] = $row->firstname . $middle_name . $row->lastname;
 			$sub_array[] = $row->under_warranty;
 			$sub_array[] = $row->remarks;
+			
+			if($where == "Pending"){
+				
+			}
+			else{
+				$id = $row->pic;
+
+				if($id != ""){
+					$result = $this->JobOrderModel->pic_data($id);
+					foreach($result as $row){
+						$pic = $row->lastname.", ".$row->firstname." ".$row->middlename;
+						$sub_array[] = $pic;
+					}
+				}
+				else{
+					$sub_array[] = "";
+				}
+			}
+
+
 			$data[] = $sub_array;
 		}
 		$output = array(
@@ -750,4 +772,202 @@ class JobOrderController extends CI_Controller
 		
         exit;
     }
+
+	public function edit_pending_joborder($joborder_id)
+	{
+		if ($this->session->userdata('logged_in')) {
+
+			$this->load->model('CustomersModel');
+			$this->load->model('TechniciansModel');
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Job Order';
+			$data['forms_menu_status'] = ' menu-open';
+			$data['ul_forms'] = ' active';
+			$data['servicecall'] = ' active';
+			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
+			$data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
+			$data['joborder_data'] = $this->JobOrderModel->get_job_order_data($joborder_id);
+			$data['joborder_data_scope'] = $this->JobOrderModel->get_job_order_scope($joborder_id);
+			$data['joborder_scheduled_data'] = $this->JobOrderModel->joborder_scheduled_data();
+			$data['form_id'] = "edit-form";
+			$data['route_id'] = "edit-pending-form";
+			$data['joborder_id'] = $joborder_id;
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('job_order/job_order');
+			$this->load->view('templates/footer');
+			$this->load->view('job_order/script');
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
+	public function edit_accepted_joborder($joborder_id)
+	{
+		if ($this->session->userdata('logged_in')) {
+
+			$this->load->model('CustomersModel');
+			$this->load->model('TechniciansModel');
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Job Order';
+			$data['forms_menu_status'] = ' menu-open';
+			$data['ul_forms'] = ' active';
+			$data['servicecall'] = ' active';
+			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
+			$data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
+			$data['joborder_data'] = $this->JobOrderModel->get_job_order_data($joborder_id);
+			$data['joborder_data_scope'] = $this->JobOrderModel->get_job_order_scope($joborder_id);
+			$data['joborder_scheduled_data'] = $this->JobOrderModel->joborder_scheduled_data();
+			$data['form_id'] = "edit-form";
+			$data['route_id'] = "edit-accepted-form";
+			$data['joborder_id'] = $joborder_id;
+
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('job_order/job_order');
+			$this->load->view('templates/footer');
+			$this->load->view('job_order/script');
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
+	public function edit_joborder_validate()
+	{
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+		if($this->input->post('cctv') == "" && $this->input->post('biometrics') == "" && $this->input->post('fdas') == "" && $this->input->post('intrusion_alarm') == "" && $this->input->post('pabx') == "" && $this->input->post('gate_barrier') == "" && $this->input->post('structured_cabling') == "" && $this->input->post('pabgm') == ""){
+			$rule = 'trim|required';
+    		$errors = [
+					'required' => 'Please Select Project Scope.'
+				];
+		}
+		else{
+			$rule = 'trim';
+    		$errors = "";
+		}
+
+		$rules =[
+			
+			[
+				'field' => 'cctv',
+				'label' => 'CCTV',
+				'rules' => $rule,
+				'errors' => $errors
+			],
+			[
+				'field' => 'biometrics',
+				'label' => 'Biometrics',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'fdas',
+				'label' => 'FDAS',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'intrusion_alarm',
+				'label' => 'Intrusion Alarm',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'pabx',
+				'label' => 'PABX',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'gate_barrier',
+				'label' => 'Gate Barrier',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'efence',
+				'label' => 'E-Fence',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'structured_cabling',
+				'label' => 'Structured Cabling',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'pabgm',
+				'label' => 'PABGM',
+				'rules' => 'trim'
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>', '</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			if($this->input->post('edit-accepted') == "edit-accepted-form"){
+				
+			
+			
+			$this->JobOrderModel->update_joborder(
+			$this->input->post('job_order_id'),
+			[
+				'customer_id' => $this->input->post('customer'),
+				'date_requested' => $this->input->post('date_requested'),
+				'remarks' => $this->input->post('remarks'),
+				'type_of_project' => $this->input->post('service_type'),
+				'comments' => $this->input->post('comments'),
+				'date_reported' => $this->input->post('date_reported'),
+				'commited_schedule' => $this->input->post('date_scheduled'),
+				'requested_by' => $this->input->post('requestor'),
+				'under_warranty' => $this->input->post('under_warranty'),
+				'pic' => $this->input->post('pic_assigned')
+			]
+			);
+		}
+		else{
+			$this->JobOrderModel->update_joborder(
+			$this->input->post('job_order_id'),
+			[
+				'customer_id' => $this->input->post('customer'),
+				'date_requested' => $this->input->post('date_requested'),
+				'remarks' => $this->input->post('remarks'),
+				'type_of_project' => $this->input->post('service_type'),
+				'comments' => $this->input->post('comments'),
+				'date_reported' => $this->input->post('date_reported'),
+				'commited_schedule' => $this->input->post('date_scheduled'),
+				'requested_by' => $this->input->post('requestor'),
+				'under_warranty' => $this->input->post('under_warranty'),
+				'pic' => ""
+			]
+			);
+		}
+
+		$this->JobOrderModel->update_joborder_scope(
+			$this->input->post('job_order_scope_id'),
+			[
+				'cctv' => $this->input->post('cctv'),
+				'biometrics' => $this->input->post('biometrics'),
+				'fdas' => $this->input->post('fdas'),
+				'intrusion_alarm' => $this->input->post('intrusion_alarm'),
+				'pabx' => $this->input->post('pabx'),
+				'gate_barrier' => $this->input->post('gate_barrier'),
+				'efence' => $this->input->post('efence'),
+				'structured_cabling' => $this->input->post('structured_cabling'),
+				'pabgm' => $this->input->post('pabgm')
+			]
+		);
+		}
+		else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
 }

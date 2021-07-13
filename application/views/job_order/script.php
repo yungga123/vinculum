@@ -85,7 +85,7 @@ if ($this->uri->segment(1) == 'joborder-list') {
     //end
 </script>
 
-<script>
+<script type="text/javascript">
     $(document).on("click",".btn_accepted",function() {
         $('#status').html('ACCEPTED');
         $('#status').addClass('badge-success');
@@ -96,14 +96,16 @@ if ($this->uri->segment(1) == 'joborder-list') {
         $('.form-commdate').append('<input type="date" name="committed_schedule" id="committed_schedule" class="form-control">');
         $('.form-commdate').append('<p class="mt-4 text-bold text-danger">Accepted Requisitions will also be added to schedules based on selected date and Client Name.</p>');
         $('.form-commdate').append('<div class="form-group">'
-            +       '<label for="schedule_type">Schedule Type</label>'
-            +       '<select class="form-control" name="schedule_type" id="schedule_type">'
+            +       '<label for="pic_assigned">Job Order Incharge</label>'
+            +       '<select class="form-control" name="pic_assigned" id="pic_assigned">'
             +           '<option value="">---Please Select---</option>'
-            +           '<option value="installation">Installation</option>'
-            +           '<option value="service">Service</option>'
+            +           '<?php foreach($joborder_scheduled_data as $row): ?>'
+            +           '<option value="<?php echo $row->id ?>">' + '<?php echo $row->lastname.", ".$row->firstname." ".$row->middlename ?>' + '</option>'
+            +           '<?php endforeach ?>'
             +       '</select>'
             +   '</div>');
         $('.form-commdate').append('<input type="hidden" name="client_name" id="client_name">');
+        $('.form-commdate').append('<input type="hidden" name="type_of_project" id="type_of_project">');
         $('.form-commdate').append('<textarea style="display: none;" name="description" id="description"></textarea>');
 
         var data = payroll_table.row($(this).parents('tr')).data();
@@ -113,10 +115,12 @@ if ($this->uri->segment(1) == 'joborder-list') {
             $('#job_order_id').val(rowdata[0]);
             $('#client_name').val(rowdata[3]);
             $('#description').val(rowdata[7]);
+            $('#type_of_project').val(rowdata[7]);
         } else if (rowdata == undefined) {
             $('#job_order_id').val(data[0]);
             $('#client_name').val(data[3]);
             $('#description').val(data[7]);
+            $('#type_of_project').val(rowdata[7]);
         }
         
     });
@@ -296,7 +300,7 @@ if ($this->uri->segment(1) == 'joborder-list') {
                     me[0].reset();
 
                     setTimeout(() => {
-                        window.location = "<?php echo site_url('joborder-list/accepted') ?>";
+                        window.location = "<?php echo site_url('joborder-list/filed') ?>";
                     }, 1000);
                 } else {
                     $(':submit').removeAttr('disabled', 'disabled');
@@ -352,6 +356,111 @@ if ($this->uri->segment(1) == 'joborder-list') {
                     setTimeout(() => {
                         window.location = "<?php echo site_url('joborder-list/accepted') ?>";
                     }, 1000);
+                } else {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.error(response.errors);
+                }
+            }
+        });
+    });
+
+    //Form Job Order (Existing)
+    $('#form-editpending-joborder').submit(function(e) {
+        e.preventDefault();
+        var me = $(this);
+        var succ = '';
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        $(':submit').attr('disabled', 'disabled');
+        $('.loading-modal').modal();
+
+        //ajax
+        $.ajax({
+            url: me.attr('action'),
+            type: 'post',
+            data: me.serialize(),
+            dataType: 'json',
+            success: function(response) {
+                if (response.success == true) {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.success("Job Order Successfully Updated!");
+                    me[0].reset();
+                    window.setTimeout(function() {
+                                window.location = '<?php echo site_url('joborder-list/pending') ?>';
+                            }, 1000);
+                } else {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.error(response.errors);
+                }
+            }
+        });
+    });
+
+    $('#form-editaccepted-joborder').submit(function(e) {
+        e.preventDefault();
+        var me = $(this);
+        var succ = '';
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        $(':submit').attr('disabled', 'disabled');
+        $('.loading-modal').modal();
+
+        //ajax
+        $.ajax({
+            url: me.attr('action'),
+            type: 'post',
+            data: me.serialize(),
+            dataType: 'json',
+            success: function(response) {
+                if (response.success == true) {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+
+                    toastr.success("Job Order Successfully Updated!");
+                    me[0].reset();
+                    window.setTimeout(function() {
+                                window.location = '<?php echo site_url('joborder-list/accepted') ?>';
+                            }, 1000);
                 } else {
                     $(':submit').removeAttr('disabled', 'disabled');
                     $('.loading-modal').modal('hide');
