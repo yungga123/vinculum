@@ -21,9 +21,11 @@ defined('BASEPATH') or die('Access Denied'); ?>
 					<div class="card">
 						<div class="card-header">
 							Clients Table
-								<div class="float-right">
+							<!--	
+							<div class="float-right">
 								<a href="<?php echo site_url('exportexistingclientsproject/') ?>" class="btn btn-danger btn-sm"> <i class="fas fa-file-excel"></i> Generate Report</a>
 								</div>
+							-->
                         </div>
 
 						<div class="card-body">
