@@ -201,25 +201,9 @@ class SalesInquiryController extends CI_Controller {
 
 			date_default_timezone_set('Asia/Manila');
 			$date = date('Y-m-d');
-			 
-			$get_id = $this->SalesInquiryModel->get_newclient_id();
 
-			$id = "00";
-			$add_id = 1;
-			
-			if(empty($get_id)){
-				$fetch_id = $id."".$add_id;
-			}
-			else{
-				foreach($get_id as $row){
-					$fetch_id = $row->id;
-				}
-				$fetch_id = $fetch_id + $add_id;
-				$fetch_id = $id."".$fetch_id;
-			}
 			
 				$this->SalesInquiryModel->insert_client([
-					'id'=>$fetch_id,
 					'customer_name' => $this->input->post('customer_name'),
 					'contact_person' => $this->input->post('contact_person'),
 					'contact_number' => $this->input->post('contact_number'),
