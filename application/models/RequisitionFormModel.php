@@ -94,24 +94,6 @@ class RequisitionFormModel extends CI_Model {
         $this->db->where('a.id',$id);
         return $this->db->get()->result();
     }
-
-    public function get_requisition_items($id) {
-        $this->db->select([
-            'id as item_id',
-            'request_form_id',
-            'description',
-            'unit_cost',
-            'qty',
-            'unit',
-            'supplier',
-            'date_needed',
-            'purpose'
-        ]);
-        $this->db->from('requisition_form_items');
-        $this->db->where('request_form_id',$id);
-        return $this->db->get()->result();
-    }
-
    
     
     //*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
@@ -246,6 +228,26 @@ class RequisitionFormModel extends CI_Model {
             $this->db->where('a.status',$where);
             $this->db->where('a.is_deleted',0);
             return $this->db->count_all_results();
+        }
+
+        public function get_requisition_items($id) {
+            $this->db->select([
+                'a.id as item_id',
+                'a.request_form_id',
+                'a.description',
+                'a.unit_cost',
+                'a.qty',
+                'a.unit',
+                'a.supplier',
+                'a.date_needed',
+                'a.purpose'
+               // 'b.name'
+            ]);
+            $this->db->from('requisition_form_items as a');
+            $this->db->where('request_form_id',$id);
+            //$this->db->join('vendor as b','a.supplier=b.vendor_code');
+            $this->db->order_by('supplier', 'DESC');
+            return $this->db->get()->result();
         }
     //*****************end*********************
 }

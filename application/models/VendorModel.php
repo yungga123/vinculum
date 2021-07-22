@@ -118,6 +118,14 @@ class VendorModel extends CI_Model {
 		$this->db->where('brand_id',$vendor_code);
 		$this->db->delete('vendor_brand');
 	}
+
+	public function getVendorList(){
+		$this->db->select('*');
+		$this->db->from('vendor');
+		$this->db->where('is_deleted', '0');
+
+		return $this->db->get()->result();
+	}
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "vendor as a";
 	var $join_table = "vendor_brand as b";

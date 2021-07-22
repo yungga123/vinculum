@@ -6,7 +6,7 @@ $page_title = '';
 if ($this->uri->segment(1) == 'requisition-pending') {
     $page_title = 'Pending Requisitions';
 } elseif ($this->uri->segment(1) == 'requisition-accepted') {
-    $page_title = 'Accepted Requisitions';
+    $page_title = 'Approved Requisitions';
 } elseif ($this->uri->segment(1) == 'requisition-filed') {
     $page_title = 'Filed Requisitions';
 }
@@ -20,7 +20,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><?php echo $page_title ?></h1>
+                <?php echo $page_title ?>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->

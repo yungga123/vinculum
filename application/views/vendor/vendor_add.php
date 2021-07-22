@@ -104,11 +104,29 @@
                                                             </p>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="vendor_date">Date of Partnership</label>
-                                                            <div class="input-group">
-                                                                <input class="form-control" type="date" id="vendor_date" name="vendor_date" placeholder="Select Date">
-                                                            </div>									      
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="vendor_date">Date of Partnership</label>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" type="date" id="vendor_date" name="vendor_date" placeholder="Select Date">
+                                                                    </div>									      
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <p>
+                                                                        <label for="vendor_category">Vendor Category</label>
+
+                                                                        <select name="vendor_category" class="form-control">
+                                                                            <option value="">---Please Select---</option>
+                                                                            <option>Direct</option>
+                                                                            <option>Indirect</option>
+                                                                            <option>Tools</option>
+                                                                        </select>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>

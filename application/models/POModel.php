@@ -1,0 +1,151 @@
+<?php
+defined('BASEPATH') or die('Access Denied');
+
+class POModel extends CI_Model {
+
+    //*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
+    var $table = "generated_po as a";
+    var $join_table = 'vendor as b';
+    var $join_table1 = 'generated_po_items as c';
+    var $join_table2 = 'requisition_form_items as d';
+
+    var $select_column = array(
+        'a.po_id',
+        'a.supplier_id',
+        'a.generated_date',
+        'b.name'
+    );
+
+    var $order_column = array(
+        'a.po_id',
+        'a.supplier_id',
+        'a.generated_date',
+        'b.name'
+    );
+
+    public function po_form_query(){
+
+        $this->db->select($this->select_column);
+        $this->db->from($this->table);
+        $this->db->join($this->join_table,"a.supplier_id=b.vendor_code");
+
+
+        if(isset($_POST["search"]["value"])){
+            $this->db->like("a.po_id", $_POST["search"]["value"]);
+            $this->db->or_like("a.supplier_id", $_POST["search"]["value"]);
+        }
+
+        if (isset($_POST["order"])) {
+            $this->db->order_by($this->order_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+        } else {
+            $this->db->order_by("a.po_id","DESC");
+        }
+
+    }
+
+    public function PO_datatable() {
+
+        $this->po_form_query();
+        if($_POST["length"] != -1) {
+            $this->db->limit($_POST["length"],$_POST["start"]);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function filter_po_form_data() {
+        $this->po_form_query();
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function get_all_po_form_data() {
+        $this->db->select("*");
+        $this->db->from($this->table);
+        return $this->db->count_all_results();
+    }
+
+    public function acc_req_list() {
+        $this->db->select('a.id, a.date, a.requested_by, b.lastname, b.firstname, b.middlename');
+        $this->db->from('requisition_form as a');
+        $this->db->join('technicians as b','a.requested_by=b.id');
+        $this->db->order_by('a.id','DESC');
+        $this->db->where('a.status', 'Accepted');
+        return $this->db->get()->result();
+    }
+
+    public function get_requisition_items($id) {
+        $this->db->select([
+            'id as item_id',
+            'request_form_id',
+            'description',
+            'unit_cost',
+            'qty',
+            'unit',
+            'supplier',
+            'date_needed',
+            'purpose'
+        ]);
+        $this->db->from('requisition_form_items');
+        $this->db->where('request_form_id',$id);
+        $this->db->order_by('supplier', 'DESC');
+        return $this->db->get()->result();
+    }
+
+    public function get_po_items($id) {
+        $this->db->select('*');
+        $this->db->from('generated_po_items as a');
+        $this->db->join('requisition_form_items as b','a.requisition_item_id=b.id','left');
+        $this->db->where('a.po_id',$id);
+        return $this->db->get()->result();
+    }
+
+    public function insert_po_items($data) {
+        $this->db->insert('generated_po_items',$data);
+    }
+
+    public function insert_po($data) {
+        $this->db->insert('generated_po',$data);
+    }
+
+    public function get_new_po_id() {
+        $this->db->select('*');
+        $this->db->from('generated_po');
+        $this->db->order_by('po_id','DESC');
+        $this->db->limit(1);
+        return $this->db->get()->result();
+    }
+
+    public function delete_po($po_id) {
+        $this->db->where('po_id',$po_id);
+        $this->db->delete('generated_po');
+    }
+
+    public function delete_po_items($po_id) {
+        $this->db->where('po_id',$po_id);
+        $this->db->delete('generated_po_items');
+    }
+
+    public function get_employee_list(){
+        $this->db->select('id, lastname, firstname, middlename');
+        $this->db->from('technicians');
+        $this->db->where('status !=','Resigned');
+        return $this->db->get()->result();
+    }
+
+    public function get_supplier_details($po_id){
+        $this->db->select('a.po_id, a.supplier_id, a.po_revise, b.vendor_code, b.name, b.address, b.vendor_category, b.terms_and_condition');
+        $this->db->from($this->table);
+        $this->db->where('a.po_id', $po_id);
+        $this->db->join($this->join_table,'a.supplier_id=b.vendor_code','left');
+        return $this->db->get()->result();
+    }
+
+    public function get_items_details($po_id){
+        $this->db->select('c.po_id, c.requisition_item_id, d.description, d.unit_cost, d.qty, d.unit');
+        $this->db->from($this->join_table1);
+        $this->db->where('c.po_id', $po_id);
+        $this->db->join($this->join_table2,'c.requisition_item_id=d.id','left');
+        return $this->db->get()->result();
+    }
+}

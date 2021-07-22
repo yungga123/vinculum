@@ -79,6 +79,12 @@ class VendorController extends CI_Controller {
 				'rules' => 'trim|required',
 				'errors' => ['required' => 'Provide Date of Partnership']
 			],
+			[
+				'field' => 'vendor_category',
+				'label' => 'Vendor Code',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Provide Vendor Category']
+			],
 
 			[
 				'field' => 'brand_name[]',
@@ -221,18 +227,27 @@ class VendorController extends CI_Controller {
             $validate['success'] = true;
 
             $vendor_code = $this->input->post('vendor_code');
-			$vendor_code_generated = $this->input->post('vendor_name')."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
-			
-			$replace = array(
-				' ' => '_'
-				);
+			$vendor_name = $this->input->post('vendor_name');
 
-			$vendor_code_generated = $this->strReplaceAssoc($replace,$vendor_code_generated);
+			if(preg_match_all('/\b(\w)/',strtoupper($vendor_name),$m)) {
+				$v = implode('',$m[1]);
+			}
+
+
+			$vendor_code_generated = $v."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
 			
+			// REPLACING CHARACTERS
+			//$replace = array(
+			//	' ' => '_'
+			//	);
+
+			//$vendor_code_generated = $this->strReplaceAssoc($replace,$vendor_code_generated);
+
 				$this->VendorModel->update_vendor($vendor_code,[
 					'vendor_code' => $vendor_code_generated,
 					'name' => $this->input->post('vendor_name'),
 					'address' => $this->input->post('vendor_address'),
+					'vendor_category' => $this->input->post('vendor_category'),
 					'contact_number' => $this->input->post('vendor_contact'),
 					'email' => $this->input->post('vendor_email'),
 					'contact_person' => $this->input->post('vendor_contact_person'),
@@ -409,18 +424,19 @@ class VendorController extends CI_Controller {
 
 			date_default_timezone_set('Asia/Manila');
 			$date = $this->input->post('vendor_date', 'Y-m-d'); 
-			$vendor_code_generated = $this->input->post('vendor_name')."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
-			
-			$replace = array(
-				' ' => '_'
-				);
+			$vendor_name = $this->input->post('vendor_name');
 
-			$vendor_code_generated = $this->strReplaceAssoc($replace,$vendor_code_generated);
+			if(preg_match_all('/\b(\w)/',strtoupper($vendor_name),$m)) {
+				$v = implode('',$m[1]);
+			}
+
+			$vendor_code_generated = $v."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
 			
 			$this->VendorModel->insert_vendor([
 				'vendor_code' => $vendor_code_generated,
 				'name' => $this->input->post('vendor_name'),
 				'address' => $this->input->post('vendor_address'),
+				'vendor_category' => $this->input->post('vendor_category'),
 				'contact_number' => $this->input->post('vendor_contact'),
 				'email' => $this->input->post('vendor_email'),
 				'contact_person' => $this->input->post('vendor_contact_person'),

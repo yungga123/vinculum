@@ -70,6 +70,7 @@ if(!function_exists('html_variable')) {
 			'requisition_filed' => '',
 			'requisition_discarded' => '',
 			'li_vendor_list' => '',
+			'li_generated_po' => '',
 
 			'category' => '' //for Get Items Masterlist
 		];
