@@ -86,7 +86,16 @@ class JobOrderController extends CI_Controller
 				'errors' => [
 					'required' => 'Please provide Under Warranty.'
 				]
+			],
+			[
+				'field' => 'jo_status',
+				'label' => 'Status',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Select Status.'
+				]
 			]
+				
 		];
 
 		return $rules;
@@ -139,6 +148,7 @@ class JobOrderController extends CI_Controller
 
 			$data = [
 				'customer_id' => $this->input->post('customer'),
+				'remarks' => $this->input->post('jo_status'),
 				'date_requested' => $this->input->post('date_requested'),
 				'type_of_project' => $this->input->post('service_type'),
 				'comments' => $this->input->post('comments'),
@@ -902,6 +912,14 @@ class JobOrderController extends CI_Controller
 				'field' => 'pabgm',
 				'label' => 'PABGM',
 				'rules' => 'trim'
+			],
+			[
+				'field' => 'jo_status',
+				'label' => 'Status',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Select Status.'
+				]
 			]
 		];
 
@@ -913,42 +931,39 @@ class JobOrderController extends CI_Controller
 			$validate['success'] = true;
 
 			if($this->input->post('edit-accepted') == "edit-accepted-form"){
-				
-			
-			
-			$this->JobOrderModel->update_joborder(
-			$this->input->post('job_order_id'),
-			[
-				'customer_id' => $this->input->post('customer'),
-				'date_requested' => $this->input->post('date_requested'),
-				'remarks' => $this->input->post('remarks'),
-				'type_of_project' => $this->input->post('service_type'),
-				'comments' => $this->input->post('comments'),
-				'date_reported' => $this->input->post('date_reported'),
-				'commited_schedule' => $this->input->post('date_scheduled'),
-				'requested_by' => $this->input->post('requestor'),
-				'under_warranty' => $this->input->post('under_warranty'),
-				'pic' => $this->input->post('pic_assigned')
-			]
-			);
-		}
-		else{
-			$this->JobOrderModel->update_joborder(
-			$this->input->post('job_order_id'),
-			[
-				'customer_id' => $this->input->post('customer'),
-				'date_requested' => $this->input->post('date_requested'),
-				'remarks' => $this->input->post('remarks'),
-				'type_of_project' => $this->input->post('service_type'),
-				'comments' => $this->input->post('comments'),
-				'date_reported' => $this->input->post('date_reported'),
-				'commited_schedule' => $this->input->post('date_scheduled'),
-				'requested_by' => $this->input->post('requestor'),
-				'under_warranty' => $this->input->post('under_warranty'),
-				'pic' => ""
-			]
-			);
-		}
+				$this->JobOrderModel->update_joborder(
+				$this->input->post('job_order_id'),
+				[
+					'customer_id' => $this->input->post('customer'),
+					'date_requested' => $this->input->post('date_requested'),
+					'remarks' => $this->input->post('jo_status'),
+					'type_of_project' => $this->input->post('service_type'),
+					'comments' => $this->input->post('comments'),
+					'date_reported' => $this->input->post('date_reported'),
+					'commited_schedule' => $this->input->post('date_scheduled'),
+					'requested_by' => $this->input->post('requestor'),
+					'under_warranty' => $this->input->post('under_warranty'),
+					'pic' => $this->input->post('pic_assigned')
+				]
+				);
+			}
+			else{
+				$this->JobOrderModel->update_joborder(
+				$this->input->post('job_order_id'),
+				[
+					'customer_id' => $this->input->post('customer'),
+					'date_requested' => $this->input->post('date_requested'),
+					'remarks' => $this->input->post('jo_status'),
+					'type_of_project' => $this->input->post('service_type'),
+					'comments' => $this->input->post('comments'),
+					'date_reported' => $this->input->post('date_reported'),
+					'commited_schedule' => $this->input->post('date_scheduled'),
+					'requested_by' => $this->input->post('requestor'),
+					'under_warranty' => $this->input->post('under_warranty'),
+					'pic' => ""
+				]
+				);
+			}
 
 		$this->JobOrderModel->update_joborder_scope(
 			$this->input->post('job_order_scope_id'),

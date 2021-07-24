@@ -118,9 +118,38 @@ elseif($form_id="edit-form"){
                                         <label for="date_requested">Date Requested</label>
                                         <input type="date" name="date_requested" id="date_requested" class="form-control" value="<?php echo date('Y-m-d') ?>">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="date_requested">Status:</label>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="phone support" >
+                                                        For Phone Support
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="service" >
+                                                        For Service
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="installation" >
+                                                        For Installation
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
                             </div>
-
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-group">
@@ -331,8 +360,33 @@ elseif($form_id="edit-form"){
                                         <input type="date" name="date_requested" id="date_requested" class="form-control" value="<?php echo $joborder_data_edit_result['joborder_daterequested_edit'] ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="date_requested">Remarks</label>
-                                        <textarea name="remarks" id="remarks" class="form-control"><?php echo $joborder_data_edit_result['joborder_remarks_edit'] ?></textarea>
+                                        <label for="date_requested">Status:</label>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="phone support" <?php if($joborder_data_edit_result['joborder_remarks_edit'] == "phone support") { echo 'checked'; }?> >
+                                                        For Phone Support
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="service" <?php if($joborder_data_edit_result['joborder_remarks_edit'] == "service") { echo 'checked'; }?> >
+                                                        For Service
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-check">
+                                                    <label class="form-check-label">
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="installation" <?php if($joborder_data_edit_result['joborder_remarks_edit'] == "installation") { echo 'checked'; }?> >
+                                                        For Installation
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
