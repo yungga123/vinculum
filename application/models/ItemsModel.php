@@ -27,7 +27,7 @@ class ItemsModel extends CI_Model {
 	public function getMasterItemsArray($itemType){
 		// return $this->db->get('items')->result();
 		//SELECT itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,serial_number,supplier,encoder from items
-		$this->db->select("itemCode,itemName,itemType,itemSupplierPrice,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,location,supplier,encoder");
+		$this->db->select("itemCode,itemName,itemType,item_brand,itemSupplierPrice,item_size,itemPrice,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,location,supplier,encoder");
 		$this->db->from("items");
 		$this->db->where("itemType",$itemType);
 		$this->db->order_by("itemName","asc");
