@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="modal-content">
 		<?php echo form_open('LoginController/requisition_login_validate', ["id" => "form-requisition-accepted"]) ?>
 			<div class="modal-header">
-				<h5 class="modal-title">Accepted Requisition Login</h5>
+				<h5 class="modal-title">Approved Requisition Login</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
