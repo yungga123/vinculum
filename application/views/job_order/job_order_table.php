@@ -86,7 +86,12 @@ if ($decision == 'accepted') {
                                         <th>Date Reported</th>
                                         <th>Requested by</th>
                                         <th>Warranty</th>
-                                        <th>Remarks</th>            
+                                        <th>Remarks</th> 
+                                        <?php if ($decision == "pending"): ?>
+                                            
+                                        <?php else: ?>
+                                            <th>P.I.C</th>
+                                        <?php endif ?>       
                                     </tr>
                                 </thead>
                             </table>
@@ -166,12 +171,6 @@ if ($decision == 'accepted') {
                     <label for="job_filejo_id">Job Order No.</label>
                     <input type="text" name="job_filejo_id" id="job_filejo_id" class="form-control text-bold text-center col-sm-6 offset-sm-3" readonly value="">
                 </div>
-
-                <div class="form-group">
-                    <label for="remarks">Remarks</label>
-                    <textarea type="text" name="remarks" id="remarks" class="form-control text-bold text-center" cols="3"></textarea>
-                </div>
-
                 <input type="hidden" name="decision_filejo" id="decision_filejo">
 
                 <p class="text-bold mt-4" style="font-size: 18px;">Are you sure to file this Job Order?</p>
