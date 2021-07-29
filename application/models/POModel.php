@@ -142,10 +142,10 @@ class POModel extends CI_Model {
     }
 
     public function get_items_details($po_id){
-        $this->db->select('c.po_id, c.requisition_item_id, d.description, d.unit_cost, d.qty, d.unit');
+        $this->db->select('c.po_id, c.requisition_item_id, c.requisition_id, d.request_form_id, d.id, d.description, d.unit_cost, d.qty, d.unit');
         $this->db->from($this->join_table1);
+        $this->db->join($this->join_table2,'c.requisition_item_id=d.id','inner');
         $this->db->where('c.po_id', $po_id);
-        $this->db->join($this->join_table2,'c.requisition_item_id=d.id','left');
         return $this->db->get()->result();
     }
 }

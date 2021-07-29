@@ -47,15 +47,29 @@ $supplier_data = array();
             'po_date_day' => date('d')
         ];
 
+        $requisition_id = "";
+        $requisition_id_result = "";
         foreach($items_details as $row){
             $total_per_item = $row->qty * $row->unit_cost;
             $sub_total = $sub_total + $total_per_item;
+            
+                if($requisition_id ==""){
+                    $requisition_id = $row->requisition_id;
+                    $requisition_id_result = $row->requisition_id;
+                }
+                elseif($requisition_id == $row->requisition_id){
+                    $requisition_id = $row->requisition_id;
+                }
+                else{
+                    $requisition_id_result = $requisition_id_result."/".$row->requisition_id;
+                    $requisition_id = $row->requisition_id;
+                }
+
         }
 
         $net_of_vat = $sub_total / 12;
         $vat_amount = $net_of_vat * .12;
         $total_amount = $sub_total + $vat_amount;
-
 ?>
 
 <!DOCTYPE html>
@@ -209,7 +223,7 @@ $supplier_data = array();
 					</tr>
                     <tr>
                         <td width="10%" class="text-center" colspan="3"><text id="requestor_name_po"></text></td>
-                        <td width="10%" class="text-center" colspan="3"><text type="text" id="reference_number_po"></text></td>
+                        <td width="10%" class="text-center" colspan="3"><?php echo $requisition_id_result ?></td>
                     </tr>
                    <tr>
                         <td width="10%" class="text-center">ITEM NO.</td>
@@ -241,14 +255,14 @@ $supplier_data = array();
                             <br> PLUS 12% VAT
                         </td>
                         <td width="10%" class="text-right" colspan="2">PHP <?php echo number_format($sub_total,2) ?>
-                            <br><?php echo number_format($net_of_vat,2) ?></text>
-                            <br><?php echo number_format($vat_amount,2) ?>
+                            <br><text id="net_of_vat_po"></text>
+                            <br><text id="vat_po">
                         </td>
                         
                    </tr>
                    <tr>
                         <td width="10%" style="font-weight: bold" colspan="2" class="text-right">TOTAL AMOUNT(PHP)</td>
-                        <td width="10%" style="font-weight: bold" class="text-right"> PHP <?php echo number_format($total_amount,2) ?></td>
+                        <td width="10%" style="font-weight: bold" class="text-right"> PHP <text id="total_po"></td>
                    </tr>
                 </tbody>
             </table>
@@ -360,17 +374,25 @@ $supplier_data = array();
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
                             <div class="form-group">
                                 <label for="attention_to">Attention to:</label>
                                 <input type="text" class="form-control text-center text-bold" id="attention_to" name="attention_to" placeholder="Ex: Mr. / Ms. / Mrs. Antonette">
                             </div>
                         </div>
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="reference_number">Reference Number</label>
-                                <input type="text" class="form-control text-center text-bold" id="reference_number" name="reference_number">
-                            </div>
+                        <div class="col-sm-3">
+                            <label for="po_vat">Vat Inclusive</label>
+		                      	<div class="form-check">
+		                        	<label class="form-check-label">		                            			
+		                                <input type="checkbox" class="form-check-input" name="po_vat" id="po_vat" value="<?php echo number_format($vat_amount,2) ?>">
+		                  				    Vat 12%              		
+		                          	</label>
+		                      	</div>
+                                  <input type="hidden" name="net_of_vat" id="net_of_vat" value="<?php echo number_format($net_of_vat,2) ?>">
+                                  <input type="hidden" name="sub_total" id="sub_total" value="<?php echo number_format($sub_total,2) ?>">
+                                  <input type="hidden" name="total_amount" id="total_amount" value="<?php echo number_format($total_amount,2) ?>">
                         </div>
                     </div>
                 </div>
@@ -462,14 +484,32 @@ $supplier_data = array();
                     if (response.success == true) {
 
                         $('#requestor_name_po').html($('#requestor_name').val());
-                        $('#reference_number_po').html($('#reference_number').val());
                         $('#attention_to_po').html($('#attention_to').val());
+
+                        var po_vat=document.getElementById("po_vat").value;
+
+                        if(!document.getElementById('po_vat').checked){
+                            $('#vat_po').html($('').val());
+                            $('#total_po').html($('#sub_total').val());
+                            $('#net_of_vat_po').html($('').val());
+                        }
+                        else{
+                            $('#vat_po').html($('#po_vat').val());
+                            $('#total_po').html($('#total_amount').val());
+                            $('#net_of_vat_po').html($('#net_of_vat').val());
+                        }
+
+                            
 
                         $(':submit').removeAttr('disabled', 'disabled');
                         $('.loading-modal').modal('hide');
                         $('#generate-po').modal('hide');
-                        toastr.success("Success! Proceed please proceed.");
+                        //toastr.success("Success! Proceed please proceed.");
                         me[0].reset();
+                       
+                        window.setTimeout(function() {
+                            window.addEventListener("load", window.print());
+						}, 500);
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
                         $('.loading-modal').modal('hide');

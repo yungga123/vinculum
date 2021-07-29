@@ -266,14 +266,6 @@ class POController extends CI_Controller {
 				'errors' => [
 					'required' => 'Please Enter Name of Addressee'
 				]
-            ],
-            [
-				'field' => 'reference_number',
-				'label' => 'Reference Number',
-				'rules' => 'trim|required',
-				'errors' => [
-					'required' => 'Please Enter Reference Number'
-				]
             ]
         ];
         
