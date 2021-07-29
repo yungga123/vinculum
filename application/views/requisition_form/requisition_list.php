@@ -20,7 +20,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                <?php echo $page_title ?>
+                <h1 class="m-0 text-dark"><?php echo $page_title ?></h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
