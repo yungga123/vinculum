@@ -274,12 +274,12 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3><?php echo $count_joborder_filed ?></h3>
+              <h3><?php echo $count_jo_phone_support ?></h3>
 
-              <p>Filed Job Orders</p>
+              <p>Phone Support</p>
             </div>
             <div class="icon">
-              <i class="fas fa-archive"></i>
+              <i class="fas fa-phone"></i>
             </div>
             <a href="<?php echo site_url('joborder-list/filed') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
