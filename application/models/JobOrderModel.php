@@ -27,6 +27,12 @@ class JobOrderModel extends CI_Model {
         return $this->db->count_all_results('job_order');
     }
 
+    public function count_jo_phone_support() {
+        $this->db->where('remarks','phone support');
+        $this->db->where('is_deleted',0);
+        return $this->db->count_all_results('job_order');
+    }
+
     public function get_latest_job_order() {
         $this->db->where('is_deleted',0);
         $this->db->order_by('id','DESC');
