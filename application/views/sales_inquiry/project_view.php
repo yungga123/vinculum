@@ -71,7 +71,7 @@ else{
                                              <p>
                                                 <label for="project_sales_incharge">Sales Incharge</label>
                                                 <select id="project_sales_incharge" name="project_sales_incharge" class="form-control">
-                                                    <option>Please Select Sales Incharge</option>
+                                                    <option value="">Please Select Sales Incharge</option>
                                                     <?php foreach ($results as $row): ?>
                                                         <?php if($row->id == "01021415" || $row->id == "PTS09092020" || $row->id =="02021415" || $row->id =="24120518" || $row->id =="PS021021"): ?>
                                                             <option value="<?php echo $row->id ?>">
@@ -124,7 +124,7 @@ else{
                                                 <label for="project_branch">Select Branch</label>
                                                 <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
                                                 <select name="project_branch" class="form-control">
-                                                    <option>Please Select Branch Name</option>
+                                                    <option value="">Please Select Branch Name</option>
                                                     <?php foreach ($branch_list as $row): ?>
                                                         <option value="<?php echo $row->branch_id ?>">
                                                             <?php echo $row->branch_id." --- ".$row->branch_name ?>
@@ -249,7 +249,7 @@ else{
                                                 <label for="project_branch">Select Branch</label>
                                                 <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
                                                 <select name="project_branch" class="form-control">
-                                                    <option>Please Select Branch Name</option>
+                                                    <option value="">Please Select Branch Name</option>
                                                     <?php foreach ($branch_list as $row): ?>
                                                         <option value="<?php echo $row->branch_id ?>" <?php if ($project_data_result['project_branch_edit'] == $row->branch_name) { echo 'selected';} ?>>
                                                             <?php echo $row->branch_id." --- ".$row->branch_name ?>
