@@ -11,6 +11,7 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      box-shadow: none;
     }
     &:first-child,
     &:last-child {
@@ -37,6 +38,45 @@
   &.pagination-sm {
     .page-month {
       font-size: ($font-size-base);
+    }
+  }
+}
+
+@include dark-mode () {
+  .page-item {
+    &.disabled a,
+    &.disabled .page-link {
+      background-color: lighten($dark, 2.5%) !important;
+      border-color: $gray-600 !important;
+      color: $gray-600;
+    }
+
+    .page-link {
+      color: $primary-alt;
+    }
+
+    &.active {
+      .page-link {
+        background-color: $primary-alt;
+        color: $white;
+
+        &:hover,
+        &:focus {
+          color: $gray-400 !important;
+        }
+      }
+    }
+    &:not(.active) {
+      .page-link {
+        background-color: $dark;
+        border-color: $gray-600;
+
+        &:hover,
+        &:focus {
+          color: lighten($primary-alt, 5%);
+          background-color: lighten($dark, 5%);
+        }
+      }
     }
   }
 }
