@@ -85,15 +85,22 @@ $total_net_pay = 0;
             <table class="table table-bordered table-sm" style="font-size:8px;">
                 <tbody>
                     <tr class="text-center text-bold">
-                        <td rowspan="3">Employee ID</td>
-                        <td rowspan="3">Name</td>
-                        <td rowspan="3">Position</td>
-                        <td rowspan="3">Daily Rate</td>
+                        <td rowspan="4" style="vertical-align: middle;">Employee ID</td>
+                        <td rowspan="4" style="vertical-align: middle;">Name</td>
+                        <td rowspan="4" style="vertical-align: middle;">Position</td>
+                        <td rowspan="4" style="vertical-align: middle;">Daily Rate</td>
                         <td colspan="20">EARNINGS</td>
-                        <td colspan="12">DEDUCTIONS</td>
-                        <td rowspan="3">Notes</td>
-                        <td rowspan="3">Gross Pay</td>
-                        <td rowspan="3">Net Pay</td>
+                        <td colspan="14">DEDUCTIONS</td>
+                        <td rowspan="4" style="vertical-align: middle;">Notes</td>
+                        <td rowspan="4" style="vertical-align: middle;">Gross Pay</td>
+                        <td rowspan="4" style="vertical-align: middle;">Net Pay</td>
+                    </tr>
+
+                    <tr class="text-center text-bold">
+                        <td colspan="16">TAXABLE</td>
+                        <td colspan="4">NON-TAXABLE</td>
+                        <td colspan="8">DELIQUENCIES</td>
+                        <td colspan="6">MANDATORY & OTHERS</td>
                     </tr>
                     <tr class="text-center text-bold">
                         <td colspan="2">Basic Income</td>
@@ -104,23 +111,22 @@ $total_net_pay = 0;
                         <td colspan="2">WDO</td>
                         <td colspan="2">Sick Pay</td>
                         <td colspan="2">Vac Pay</td>
-                        <td rowspan="2">Incentives</td>
-                        <td rowspan="2">Commission</td>
-                        <td rowspan="2">13th Month</td>
-                        <td rowspan="2">Addback</td>
+                        <td rowspan="2" style="vertical-align: middle;">Incentives</td>
+                        <td rowspan="2" style="vertical-align: middle;">Commission</td>
+                        <td rowspan="2" style="vertical-align: middle;">13th Month</td>
+                        <td rowspan="2" style="vertical-align: middle;">Addback</td>
                         <td colspan="2">Absents</td>
                         <td colspan="2">Tardiness</td>
                         <td colspan="2">AWOL</td>
                         <td colspan="2">Rest Day</td>
-                        <td rowspan="2">Cash Adv</td>
-                        <td rowspan="2">SSS</td>
-                        <td rowspan="2">PAG-IBIG</td>
-                        <td rowspan="2">PhilHealth</td>
-                        <td rowspan="2">Tax</td>
-                        <td rowspan="2">Others</td>
-                        
-                        
+                        <td rowspan="2" style="vertical-align: middle;">Cash Adv</td>
+                        <td rowspan="2" style="vertical-align: middle;">SSS</td>
+                        <td rowspan="2" style="vertical-align: middle;">PAG-IBIG</td>
+                        <td rowspan="2" style="vertical-align: middle;">PhilHealth</td>
+                        <td rowspan="2" style="vertical-align: middle;">Tax</td>
+                        <td rowspan="2" style="vertical-align: middle;">Others</td>
                     </tr>
+                    
 
                     <tr class="text-center text-bold">
                         <td>Days</td>
