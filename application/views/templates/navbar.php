@@ -210,6 +210,8 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 	            <a href="<?php echo site_url('generated-po-list')?>" class="nav-link<?php echo $li_generated_po ?>">
 	              <i class="nav-icon fas fa-file"></i>
 	              <p>Generated P.O</p>
+				  <i class="fas fa-angle-left right"></i>
+					<span class="badge badge-danger"> NEW</span>
 	            </a>
           	</li>
 			<li class="nav-item">
@@ -445,8 +447,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 		          <i class="nav-icon fas fa-info-circle"></i>
 		          <p>
 		            Sales Inquiry
-		            <i class="fas fa-angle-left right"></i>
-					<span class="badge badge-danger"> NEW</span>
 		          </p>
 		        </a>
 		        <ul class="nav nav-treeview">
