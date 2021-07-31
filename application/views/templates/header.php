@@ -52,6 +52,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Preloader -->
 <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="<?php echo base_url('assets/AdminLTE/') ?>dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="<?php echo base_url('assets') ?>/images/vcmlogo.png" alt="VCMLogo" height="60" width="100">
 </div>
 

@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
 ?>
+
 	<!-- Full Calendar (Schedules) -->
 	<?php if ($this->uri->segment(1)=='schedules'): ?>
 	<script>
@@ -9,7 +10,6 @@ defined('BASEPATH') or die('Access Denied');
 
 	  	//Schedule Today Modal for Schedules
 	  	$('.schedule-today-info').modal();
-
 
 	    /* initialize the external events
 	     -----------------------------------------------------------------*/
