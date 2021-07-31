@@ -42,7 +42,8 @@ if ($this->uri->segment(1) == 'requisition-pending') {
 
             var newfield = $('.add-item:last').clone();
             newfield.find('input').val('');
-
+            newfield.find('select').val('');
+            
             // Add after last <div class='input-form'>
             $(newfield).insertAfter(".add-item:last");
             });
@@ -212,7 +213,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                 });
             });
 
-            //Form Accept Item Requests
+
             $('#form-accept-req').submit(function(e) {
                 e.preventDefault();
                 
@@ -424,8 +425,6 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                     }
                 });
             });
-
-            
         });
     </script>
 

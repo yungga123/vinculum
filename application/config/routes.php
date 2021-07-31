@@ -180,6 +180,7 @@ $route['requisition-view/(:any)'] = 'RequisitionFormController/requisition_view/
 $route['requisition-accepted'] = 'RequisitionFormController/accepted_requisitions';
 $route['requisition-filed'] = 'RequisitionFormController/filed_requisitions';
 $route['requisition-discarded'] = 'RequisitionFormController/discarded_requisitions';
+$route['requisition-generate-po'] = 'RequisitionFormController/requistion_generate_po';
 
 //Vendor
 $route['vendor-database'] = 'VendorController';
@@ -195,3 +196,8 @@ $route['inquiry-edit-project/(:any)'] = 'SalesInquiryController/edit_project/$1'
 $route['inquiry-edit-existingclient-project/(:any)'] = 'SalesInquiryController/edit_existingclient_project/$1';
 $route['exportnewclientsproject'] = 'SalesInquiryController/exportnewclientsproject';
 $route['exportexistingclientsproject'] = 'SalesInquiryController/exportexistingclientsproject';
+
+//Generated PO
+$route['generated-po-list'] = 'POController';
+$route['items-update/(:any)'] = 'POController/Items_PO_Update/$1';
+$route['generate-po/(:any)'] = 'POController/generate_po_view/$1';

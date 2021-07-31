@@ -15,6 +15,7 @@ foreach($vendor_data as $row){
         'vendor_classification_edit' => $row->industry_classification,
         'vendor_terms_edit' => $row->terms_and_condition,
         'vendor_date_edit' => $row->date,
+        'vendor_category_edit' => $row->vendor_category,
         'vendor_technical_person' => $row->vendor_technical_person,
         'vendor_technical_contact' => $row->vendor_technical_contact,
         'vendor_technical_email' => $row->vendor_technical_email
@@ -129,12 +130,29 @@ foreach($vendor_data as $row){
                                                                 </select>
                                                             </p>
                                                         </div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="vendor_date">Date of Partnership</label>
+                                                                    <div class="input-group">
+                                                                        <input class="form-control" type="date" id="vendor_date" name="vendor_date" placeholder="Select Date" value="<?php echo $vendor_data_result['vendor_date_edit'] ?>">
+                                                                    </div>									      
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <p>
+                                                                        <label for="vendor_category">Vendor Category</label>
 
-                                                        <div class="form-group">
-                                                            <label for="vendor_date">Date of Partnership</label>
-                                                            <div class="input-group">
-                                                                <input class="form-control" type="date" id="vendor_date" name="vendor_date" placeholder="Select Date" value="<?php echo $vendor_data_result['vendor_date_edit'] ?>">
-                                                            </div>									      
+                                                                        <select name="vendor_category" class="form-control">
+                                                                            <option value="">---Please Select---</option>
+                                                                            <option <?php if($vendor_data_result['vendor_category_edit'] == "Direct") { echo "selected"; } ?> >Direct</option>
+                                                                            <option <?php if($vendor_data_result['vendor_category_edit'] == "Indirect") { echo "selected"; } ?> >Indirect</option>
+                                                                            <option <?php if($vendor_data_result['vendor_category_edit'] == "Tools") { echo "selected"; } ?> >Tools</option>
+                                                                        </select>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>

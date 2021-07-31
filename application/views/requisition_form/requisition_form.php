@@ -216,7 +216,21 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
                                                         <label for="supplier">Supplier</label>
-                                                        <input type="text" name="supplier[]" class="form-control form-control-sm" placeholder="" value="<?php echo $row->supplier ?>">
+                                                        <select type="text" name="supplier[]" class="form-control form-control-sm">
+                                                            <option value="">---Please Select---</option>
+
+                                                            <?php foreach($vendor as $vendor_row): ?>
+                                                                <option value="<?php echo $vendor_row->vendor_code ?>"
+                                                                    <?php if ($this->uri->segment(1)=='requisition-update')
+                                                                    {
+                                                                        echo ($row->supplier == $vendor_row->vendor_code) ? ' selected' : '';
+                                                                    }
+                                                                    ?>
+                                                                >
+                                                                    <?php echo $vendor_row->name?>
+                                                                </option>
+                                                            <?php endforeach ?>
+                                                        </select>
                                                     </div>
                                                 </div>
 
@@ -268,7 +282,14 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label for="supplier">Supplier</label>
-                                                <input type="text" name="supplier[]" class="form-control form-control-sm" placeholder="">
+                                                <select type="text" name="supplier[]" class="form-control form-control-sm select2">
+                                                    <option value="">---Please Select---</option>
+                                                        <?php foreach ($vendor as $row): ?>
+                                                            <option value="<?php echo $row->vendor_code ?>">
+                                                                <?php echo $row->name ?>
+                                                            </option>
+                                                        <?php endforeach ?>
+                                                </select>
                                             </div>
                                         </div>
 

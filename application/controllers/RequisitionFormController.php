@@ -98,6 +98,7 @@ class RequisitionFormController extends CI_Controller {
         if($this->session->userdata('logged_in')) {
             
             $this->load->model('TechniciansModel');
+            $this->load->model('VendorModel');
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Request Items';
@@ -106,6 +107,7 @@ class RequisitionFormController extends CI_Controller {
             $data['requisition_form'] = ' active';
             $data['requisition_add'] = ' active';
             $data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
+            $data['vendor'] = $this->VendorModel->getVendorList();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('requisition_form/requisition_form');
@@ -121,6 +123,7 @@ class RequisitionFormController extends CI_Controller {
         if($this->session->userdata('logged_in')) {
             
             $this->load->model('TechniciansModel');
+            $this->load->model('VendorModel');
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Request Items';
@@ -130,6 +133,7 @@ class RequisitionFormController extends CI_Controller {
             $data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
             $data['req_info'] = $this->RequisitionFormModel->get_all_requisition_form_where($id);
             $data['req_items'] = $this->RequisitionFormModel->get_requisition_items($id);
+            $data['vendor'] = $this->VendorModel->getVendorList();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('requisition_form/requisition_form');
@@ -385,6 +389,13 @@ class RequisitionFormController extends CI_Controller {
 
             $req_id = $this->input->post('req_id');
 
+            if($this->input->post('approved_by') == "01021415"){
+                $this->RequisitionFormModel->update_requesition($req_id,[
+                    'status' => 'Accepted'
+                ]);
+            }
+            
+            
             $this->RequisitionFormModel->update_requesition($req_id,[
                 'processed_by' => $this->input->post('processed_by'),
                 'approved_by' => $this->input->post('approved_by'),

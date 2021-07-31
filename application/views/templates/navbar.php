@@ -187,7 +187,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 					<li class="nav-item">
 						<a href="#" class="nav-link <?php echo $requisition_accepted ?>" data-toggle="modal" data-target="#acceptedrequest_validate">
 							<i class="far fa-circle nav-icon"></i>
-							<p>Accepted Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_accepted_requisitions() ?></span></p>
+							<p>Approved Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_accepted_requisitions() ?></span></p>
 						</a>
 					</li>
 
@@ -206,6 +206,12 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 					</li>
 				</ul>
 			</li>
+			<li class="nav-item">
+	            <a href="<?php echo site_url('generated-po-list')?>" class="nav-link<?php echo $li_generated_po ?>">
+	              <i class="nav-icon fas fa-file"></i>
+	              <p>Generated P.O</p>
+	            </a>
+          	</li>
 			<li class="nav-item">
 	            <a href="<?php echo site_url('vendor-database')?>" class="nav-link<?php echo $li_vendor_list ?>">
 	              <i class="nav-icon fas fa-database"></i>
