@@ -39,6 +39,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 											<th>Email</th>
 				            				<th>Location</th>
                                             <th>Website</th>
+											<th>Source</th>
                                             <th>Interest</th>
                                             <th>Type</th>
                                             <th>Notes</th>
@@ -85,6 +86,10 @@ defined('BASEPATH') or die('Access Denied'); ?>
 										<input type="text" name="contact_number" class="form-control" placeholder="Enter Contact Number">
 									</div>
 									<div class="form-group">
+										<label for="email" class="control-label">Email Address</label>
+										<input type="text" name="email" class="form-control" placeholder="Enter Email Address">
+									</div>
+									<div class="form-group">
 										<label for="location" class="control-label">Address</label>
 										<textarea class="form-control" type="text" name="location" placeholder="Enter your Full Address"></textarea>
 									</div>
@@ -96,10 +101,26 @@ defined('BASEPATH') or die('Access Denied'); ?>
 						<div class="col-sm-6">
 							<div class="card">
 								<div class="card-body">
-                                    <div class="form-group">
-										<label for="email" class="control-label">Email Address</label>
-										<input type="text" name="email" class="form-control" placeholder="Enter Email Address">
+									<div class="form-group">
+										<p>
+											<label for="source">Source</label>
+
+											<select name="source" class="form-control">
+												<option value="">---Please Select---</option>
+												<option value="Facebook Page">Vinculum Facebook Page</option>
+												<option value="BNI Referral">BNI Referral</option>
+												<option value="Client Referral">Client Referral</option>
+												<option value="Existing Client">Existing Client</option>
+												<option value="Walk-In">Walk-In</option>
+												<option value="Personal Network">Personal Network</option>
+												<option value="Saturation">Saturation</option>
+												<option value="Other Social Media">Other Social Media</option>
+												<option value="PhilGeps">PhilGeps</option>
+												<option value="Called Calls">Called Calls</option>
+											</select>
+										</p>
 									</div>
+
 									<div class="form-group">
 										<label for="website" class="control-label">Website</label>
 										<input type="text" name="website" class="form-control" placeholder="Enter Website">
@@ -174,6 +195,10 @@ defined('BASEPATH') or die('Access Denied'); ?>
 										<input type="text" name="contact_number" class="form-control contact_number_edit" placeholder="Enter Contact Number">
 									</div>
 									<div class="form-group">
+										<label for="email" class="control-label">Email Address</label>
+										<input type="text" name="email" class="form-control email_add_edit" placeholder="Enter Email Address">
+									</div>
+									<div class="form-group">
 										<label for="location" class="control-label">Address</label>
 										<textarea class="form-control location_edit" type="text" name="location" placeholder="Enter your Full Address"></textarea>
 									</div>
@@ -185,9 +210,23 @@ defined('BASEPATH') or die('Access Denied'); ?>
 						<div class="col-sm-6">
 							<div class="card">
 								<div class="card-body">
-                                    <div class="form-group">
-										<label for="email" class="control-label">Email Address</label>
-										<input type="text" name="email" class="form-control email_add_edit" placeholder="Enter Email Address">
+									<div class="form-group">
+										<p>
+											<label for="source">Source</label>
+											<select name="source" class="form-control source_edit">
+												<option value="">---Please Select---</option>
+												<option value="Facebook Page">Vinculum Facebook Page</option>
+												<option value="BNI Referral">BNI Referral</option>
+												<option value="Client Referral">Client Referral</option>
+												<option value="Existing Client">Existing Client</option>
+												<option value="Walk-In">Walk-In</option>
+												<option value="Personal Network">Personal Network</option>
+												<option value="Saturation">Saturation</option>
+												<option value="Other Social Media">Other Social Media</option>
+												<option value="PhilGeps">PhilGeps</option>
+												<option value="Called Calls">Called Calls</option>
+											</select>
+										</p>
 									</div>
 									<div class="form-group">
 										<label for="website" class="control-label">Website</label>
@@ -256,6 +295,8 @@ defined('BASEPATH') or die('Access Denied'); ?>
                                 <th>Status</th>
                                 <th>Sales Incharge</th>
 								<th>Branch</th>
+								<th>Task</th>
+								<th>Date of Task</th>
                                 <th>Operation</th>
                             </tr>
                         </thead>

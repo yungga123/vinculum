@@ -53,6 +53,11 @@ class SalesInquiryController extends CI_Controller {
 				'rules' => 'trim'
 			],
 			[
+				'field' => 'source',
+				'label' => 'Source',
+				'rules' => 'trim'
+			],
+			[
 				'field' => 'interest',
 				'label' => 'Interest',
 				'rules' => 'trim'
@@ -72,24 +77,18 @@ class SalesInquiryController extends CI_Controller {
 	}
 
 	function validation_rules_project(){
-
-	
 			$rules = [
 				[
 					'field' => 'project_sales_incharge',
 					'label' => 'Sales Incharge',
 					'rules' => 'trim|required',
-					'errors' => [
-						'required' => 'Please Select Sales Incharge'
-					]
+					'errors' => ['required' => 'Please Select Sales Incharge']
 				],
 				[
 					'field' => 'project',
 					'label' => 'Project',
 					'rules' => 'trim|required',
-					'errors' => [
-						'required' => 'Please Enter Project Type'
-					]
+					'errors' => ['required' => 'Please Enter Project Type']
 				],
 				[
 					'field' => 'project_status',
@@ -156,6 +155,7 @@ class SalesInquiryController extends CI_Controller {
 			$sub_array[] = $row->email_add;
             $sub_array[] = $row->location;
             $sub_array[] = $row->website;
+			$sub_array[] = $row->source;
             $sub_array[] = $row->interest;
             $sub_array[] = $row->type;
             $sub_array[] = $row->notes;
@@ -201,25 +201,9 @@ class SalesInquiryController extends CI_Controller {
 
 			date_default_timezone_set('Asia/Manila');
 			$date = date('Y-m-d');
-			 
-			$get_id = $this->SalesInquiryModel->get_newclient_id();
 
-			$id = "00";
-			$add_id = 1;
-			
-			if(empty($get_id)){
-				$fetch_id = $id."".$add_id;
-			}
-			else{
-				foreach($get_id as $row){
-					$fetch_id = $row->id;
-				}
-				$fetch_id = $fetch_id + $add_id;
-				$fetch_id = $id."".$fetch_id;
-			}
 			
 				$this->SalesInquiryModel->insert_client([
-					'id'=>$fetch_id,
 					'customer_name' => $this->input->post('customer_name'),
 					'contact_person' => $this->input->post('contact_person'),
 					'contact_number' => $this->input->post('contact_number'),
@@ -227,9 +211,11 @@ class SalesInquiryController extends CI_Controller {
 					'email_add' => $this->input->post('email'),
 					'date' => $date,
 					'website' => $this->input->post('website'),
+					'source' => $this->input->post('source'),
 					'interest' => $this->input->post('interest'),
 					'type' => $this->input->post('type'),
-					'notes' => $this->input->post('notes')
+					'notes' => $this->input->post('notes'),
+					'is_deleted' => "0"
 				]);
 				
 		} else {
@@ -267,6 +253,7 @@ class SalesInquiryController extends CI_Controller {
 				'email_add' => $this->input->post('email'),
 				'date' => $date,
 				'website' => $this->input->post('website'),
+				'source' => $this->input->post('source'),
                 'interest' => $this->input->post('interest'),
                 'type' => $this->input->post('type'),
                 'notes' => $this->input->post('notes')
@@ -331,6 +318,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['branch_list'] = $this->SalesInquiryModel->get_specific_branch_list($customer_id);
 			$data['edit_branch'] = $this->SalesInquiryModel->get_specific_branch($branch_id);
 			$data['edit_task'] = $this->SalesInquiryModel->get_specific_task($id);
+			
 
 			$this->session->set_userdata('edit',true);
 			$this->session->set_userdata('add',false);
@@ -400,19 +388,28 @@ class SalesInquiryController extends CI_Controller {
 		$this->form_validation->set_rules($this->validation_rules_project());
 
 		if ($this->form_validation->run()) {
-
 			$validate['success'] = true;
 			
 			$date = date('Y-m-d'); //YYYY-MM-DD
 				$fetch_branch_name = $this->SalesInquiryModel->fetch_branch_name($this->input->post('project_branch'));
-				$this->SalesInquiryModel->insert_project([
-					'customer_id' => $this->input->post('client_id'),
-					'branch_id' => $this->input->post('project_branch'),
-					'project_status' => $this->input->post('project_status'),
-					'sales_incharge' => $this->input->post('project_sales_incharge'),
-					'project_type' => $this->input->post('project'),
-					'branch' => $fetch_branch_name
-				]);
+
+				if($this->input->post('form_id') == "newclient"){
+					$form_id = "new";
+				}
+				else{
+					$form_id = "existing";
+				}
+
+					$this->SalesInquiryModel->insert_project([
+						'customer_id' => $this->input->post('client_id'),
+						'branch_id' => $this->input->post('project_branch'),
+						'project_status' => $this->input->post('project_status'),
+						'sales_incharge' => $this->input->post('project_sales_incharge'),
+						'project_type' => $this->input->post('project'),
+						'branch' => $fetch_branch_name,
+						'client_status' => $form_id
+					]);
+		
 
 				$project_id = $this->SalesInquiryModel->get_project_id();
 				$count_task = count($this->input->post('project_task'));
@@ -437,6 +434,18 @@ class SalesInquiryController extends CI_Controller {
 							'mark_as_read' => $remarks
 						]);
 					}
+
+						$mark_last_task = $this->SalesInquiryModel->get_project_task($project_id);
+
+						foreach($mark_last_task as $row){
+							$task_id = $row->task_id;
+						}
+						$this->SalesInquiryModel->update_task(
+								$task_id,
+							[
+								'mark_last_task' => 1
+							]
+						);
 		} 
 		else {
 		$validate['errors'] = validation_errors();
@@ -456,20 +465,28 @@ class SalesInquiryController extends CI_Controller {
 
 		$this->form_validation->set_rules($this->validation_rules_project());
 
-		if ($this->form_validation->run()) {
+		if($this->form_validation->run()) {
 			$validate['success'] = true;
-			$date = date('Y-m-d'); //YYYY-MM-DD
+			//$date = date('Y-m-d'); //YYYY-MM-DD
 
 			$fetch_branch_name = $this->SalesInquiryModel->fetch_branch_name($this->input->post('project_branch'));
 			$project_id = $this->input->post('project_id');
+
+			if($this->input->post('form_id') == "edit_newclient"){
+				$form_id = "new";
+			}
+			else{
+				$form_id = "existing";
+			}
+			
 			$this->SalesInquiryModel->update_existingclient_project($project_id,[
 				'customer_id' => $this->input->post('client_id'),
 				'branch_id' => $this->input->post('project_branch'),
 				'project_status' => $this->input->post('project_status'),
 				'sales_incharge' => $this->input->post('project_sales_incharge'),
 				'project_type' => $this->input->post('project'),
-				'branch' => $fetch_branch_name
-
+				'branch' => $fetch_branch_name,
+				'client_status' => $form_id
 			]);
 
 			$task_id_data = array();
@@ -492,7 +509,8 @@ class SalesInquiryController extends CI_Controller {
 						'project_id' => $project_id,
 						'project_task' => $this->input->post('project_task')[$i],
 						'date_of_task' => $this->input->post('task_date')[$i],
-						'mark_as_read' => $remarks
+						'mark_as_read' => $remarks,
+						'mark_last_task' => 0
 					]
 				);
 					$task_sub_data[] = $this->input->post('task_id')[$i];
@@ -503,7 +521,8 @@ class SalesInquiryController extends CI_Controller {
 						'project_id' => $project_id,
 						'project_task' => $this->input->post('project_task')[$i],
 						'date_of_task' => $this->input->post('task_date')[$i],
-						'mark_as_read' => $remarks
+						'mark_as_read' => $remarks,
+						'mark_last_task' => 0
 					]);
 
 					$task_sub_data[] = $this->SalesInquiryModel->get_new_added_task($project_id);
@@ -511,6 +530,19 @@ class SalesInquiryController extends CI_Controller {
 				} 
 			}
 			$this->SalesInquiryModel->remove_project_task($task_id_data,$project_id);
+
+			
+			$mark_last_task = $this->SalesInquiryModel->get_project_task($project_id);
+			foreach($mark_last_task as $row){
+				$task_id = $row->task_id;
+			}
+
+			$this->SalesInquiryModel->update_task(
+				$task_id,
+				[
+					'mark_last_task' => 1
+				]
+			);
 
 		} 
 		else {
@@ -521,7 +553,20 @@ class SalesInquiryController extends CI_Controller {
 
 	public function get_project($client_id) {
         $results = $this->SalesInquiryModel->get_project_data($client_id);
+		
+		//$count = count($results);
 
+		//for($i = 0; $i < $count; $i++){
+		//	$results = $this->SalesInquiryModel->get_project_data($client_id);
+		//}
+		
+		//foreach($results as $row){
+		//	$project_id = $row->project_id;
+		//}
+
+		//$task_results = $this->SalesInquiryModel->get_project_task($project_id);
+
+		//$json_data['task_results'] = $task_results;
         $json_data['results'] = $results;
 
         echo json_encode($json_data);
@@ -634,6 +679,7 @@ class SalesInquiryController extends CI_Controller {
 					'Address' => $row->location,
 					'EmailAddress' => $row->email_add,
 					'Website' => $row->website,
+					'source' => $row->source,
 					'Interest' => $row->interest,
 					'InstallationDate' => $date,
 					'Type' => $row->type,
@@ -803,6 +849,7 @@ class SalesInquiryController extends CI_Controller {
 			$sub_array[] = $row->EmailAddress;
             $sub_array[] = $row->Address;
             $sub_array[] = $row->Website;
+			$sub_array[] = $row->source;
             $sub_array[] = $row->Interest;
             $sub_array[] = $row->Type;
             $sub_array[] = $row->Notes;
@@ -869,6 +916,7 @@ class SalesInquiryController extends CI_Controller {
 				'EmailAddress' => $this->input->post('existing_client_email'),
 				'InstallationDate' => $date,
 				'Website' => $this->input->post('existing_client_website'),
+				'source' => $this->input->post('existing_client_source'),
                 'Interest' => $this->input->post('existing_client_interest'),
                 'Type' => $this->input->post('existing_client_type'),
                 'Notes' => $this->input->post('existing_client_notes')
