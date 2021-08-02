@@ -456,7 +456,7 @@ class VendorController extends CI_Controller {
 
 			 //add request_items
 			 $count_brand = count($this->input->post('brand_name'));
-			 $get_vendor_id = $this->VendorModel->getVendorList();
+			 $get_vendor_id = $this->VendorModel->getVendorID();
 
 			 foreach($get_vendor_id as $row){
 				 $vendor_id = $row->id;

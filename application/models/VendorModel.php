@@ -122,6 +122,14 @@ class VendorModel extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('vendor');
 		$this->db->where('is_deleted', '0');
+		
+		return $this->db->get()->result();
+	}
+
+	public function getVendorID(){
+		$this->db->select('*');
+		$this->db->from('vendor');
+		$this->db->where('is_deleted', '0');
 		$this->db->order_by('id', 'DESC');
 		$this->db->limit(1);
 		return $this->db->get()->result();
