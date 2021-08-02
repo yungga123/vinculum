@@ -69,25 +69,24 @@ class VendorModel extends CI_Model {
 		return $this->db->get()->result();
 	}
 
-	public function get_vendor_data($vendor_code) {
-		$id = 0;
+	public function get_vendor_data($vendor_id) {
 		$this->db->select("*");
 		$this->db->from('vendor');
-		$this->db->where("vendor_code",$vendor_code);
-		$this->db->where("is_deleted",$id);
+		$this->db->where("id",$vendor_id);
+		$this->db->where("is_deleted",0);
 		return $this->db->get()->result();
 	}
 
-	public function get_brand_data($vendor_code) {
+	public function get_brand_data($vendor_id) {
 		$id = 0;
 		$this->db->select("*");
 		$this->db->from('vendor_brand');
-		$this->db->where("brand_id",$vendor_code);
+		$this->db->where("brand_id",$vendor_id);
 		return $this->db->get()->result();
 	}
 
-	public function update_vendor($vendor_code,$data) {
-        $this->db->where('vendor_code',$vendor_code);
+	public function update_vendor($vendor_id,$data) {
+        $this->db->where('id',$vendor_id);
         $this->db->update('vendor',$data);
     }
 
@@ -123,7 +122,8 @@ class VendorModel extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('vendor');
 		$this->db->where('is_deleted', '0');
-
+		$this->db->order_by('id', 'DESC');
+		$this->db->limit(1);
 		return $this->db->get()->result();
 	}
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************

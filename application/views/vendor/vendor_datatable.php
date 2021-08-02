@@ -29,6 +29,7 @@ defined('BASEPATH') or die('Access Denied');
 								<table id="vendor_table" class="table table-bordered table-hover" style="width: 100%">
 				            		<thead>
 				            			<tr>
+											<th>ID</th>
 				            				<th>Vendor Code</th>
 											<th>Name</th>
 											<th>Address</th>

@@ -4,6 +4,7 @@ defined('BASEPATH') or die('Access Denied');
 foreach($vendor_data as $row){
 
     $vendor_data_result = [
+        'vendor_id_edit' => $row->id,
         'vendor_code_edit' => $row->vendor_code,
         'vendor_name_edit' => $row->name,
         'vendor_address_edit' => $row->address,
@@ -46,6 +47,7 @@ foreach($vendor_data as $row){
                     <div class="card">
                         <?php echo form_open('VendorController/update_vendor_validate',["id" => "modal-update-vendor"]) ?>
                         <input type="hidden" name="vendor_code" value="<?php echo $vendor_data_result['vendor_code_edit'] ?>">
+                        <input type="hidden" name="vendor_id" value="<?php echo $vendor_data_result['vendor_id_edit'] ?>">
                             <div class="card-header">
                                 <h3 class="card-title">Vendor Details</h3>
                                 <div class="float-right">
