@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
 
-
+date_default_timezone_set('Asia/Manila');
+$date = date('m d, Y');
 
 if($this->session->userdata('add')){
     $id = $new_client_id;
@@ -64,7 +65,7 @@ else{
                     <input type="hidden" name="form_id" value="<?php echo $form_id ?>" >
                 <?php endif ?>
 
-                    <input type="hidden" id="client_id" name="client_id" value="<?php echo $id ?>" >
+                    <input type="hidden" name="client_id" value="<?php echo $id ?>" >
 						<div class="card-body">
 							<div class="col-sm-12">
                                 <div class="row">
@@ -73,7 +74,7 @@ else{
                                              <p>
                                                 <label for="project_sales_incharge">Sales Incharge</label>
                                                 <select id="project_sales_incharge" name="project_sales_incharge" class="form-control">
-                                                    <option>Please Select Sales Incharge</option>
+                                                    <option value="">Please Select Sales Incharge</option>
                                                     <?php foreach ($results as $row): ?>
                                                         <?php if($row->id == "01021415" || $row->id == "PTS09092020" || $row->id =="02021415" || $row->id =="24120518" || $row->id =="PS021021" || $row->id =="SEO041921"): ?>
                                                             <option value="<?php echo $row->id ?>">
@@ -111,8 +112,6 @@ else{
                                                 <label for="project_status">Status</label>
                                                 <select name="project_status" class="form-control">
                                                     <option value="">---Please Select---</option>
-                                                    <option value="10%">10% --- Identified Process</option>
-                                                    <option value="30%">30% --- Qualified</option>
                                                     <option value="50%">50% --- Developing Solution</option>
                                                     <option value="70%">70% --- Evaluation</option>
                                                     <option value="90%">90% --- Negotiation</option>
@@ -125,10 +124,10 @@ else{
                                                 <label for="project_branch">Select Branch</label>
                                                 <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
                                                 <select name="project_branch" class="form-control">
-                                                    <option>Please Select Branch Name</option>
+                                                    <option value="">Please Select Branch Name</option>
                                                     <?php foreach ($branch_list as $row): ?>
                                                         <option value="<?php echo $row->branch_id ?>">
-                                                            <?php echo $row->branch_id." --- ".$row->branch_name ?>
+                                                            <?php echo $row->branch_name ?>
                                                         </option>
                                                     <?php endforeach ?>
                                                 </select>
@@ -237,8 +236,6 @@ else{
                                                 <label for="project_status">Status</label>
                                                 <select name="project_status" class="form-control">
                                                     <option value="">---Please Select---</option>
-                                                    <option value="10%" <?php if ($project_data_result['project_status_edit'] == "10%") { echo 'selected';} ?> >10% --- Identified Process</option>
-                                                    <option value="30%" <?php if ($project_data_result['project_status_edit'] == "30%") { echo 'selected';} ?> >30% --- Qualified</option>
                                                     <option value="50%" <?php if ($project_data_result['project_status_edit'] == "50%") { echo 'selected';} ?> >50% --- Developing Solution</option>
                                                     <option value="70%" <?php if ($project_data_result['project_status_edit'] == "70%") { echo 'selected';} ?> >70% --- Evaluation</option>
                                                     <option value="90%" <?php if ($project_data_result['project_status_edit'] == "90%") { echo 'selected';} ?> >90% --- Negotiation</option>
@@ -251,7 +248,7 @@ else{
                                                 <label for="project_branch">Select Branch</label>
                                                 <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
                                                 <select name="project_branch" class="form-control">
-                                                    <option>Please Select Branch Name</option>
+                                                    <option value="">Please Select Branch Name</option>
                                                     <?php foreach ($branch_list as $row): ?>
                                                         <option value="<?php echo $row->branch_id ?>" <?php if ($project_data_result['project_branch_edit'] == $row->branch_name) { echo 'selected';} ?>>
                                                             <?php echo $row->branch_id." --- ".$row->branch_name ?>
@@ -276,12 +273,25 @@ else{
                                 </div>
                                 <br>
                                 <?php foreach($edit_task as $row ): ?>
+                                    <?php
+                                    $task_date = date_format(date_create($row->date_of_task),'m d, Y');
+                                        if($row->date_of_task == "0000-00-00"){
+                                            $color='';
+                                        }
+                                        elseif($row->mark_as_read == 0 && $date <= $task_date){
+                                            $color='style="background-color: #FF0000; color:#FFFFFF"';
+                                        }
+                                        else{
+                                            $color='';      
+                                        }
+                                    ?>
                                 <div class="row add-task">
                                     <div class="col-sm-9">
                                         <div class="form-group">
                                             <label for="project_task" class="control-label">Task</label>
                                             <input type="hidden" name="task_id[]" value="<?php echo $row->task_id ?>">
-                                            <textarea type="text" name="project_task[]" class="form-control" placeholder="Enter Task"><?php echo $row->project_task ?></textarea>
+                                            <textarea type="text" id="textarea" name="project_task[]" <?php echo $color ?> class="form-control" placeholder="Enter Task"><?php echo $row->project_task ?></textarea>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
@@ -300,6 +310,7 @@ else{
                                             </label>
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <?php endforeach ?>
                             </div>
@@ -331,7 +342,7 @@ else{
             </div>
         <?php echo form_open('SalesInquiryController/add_branch',["id" => "modal-add-branch"]) ?>
             <div class="modal-body">
-                <input type="hidden" id="client_id" name="client_id" value="<?php echo $id ?>" >
+                <input type="hidden" name="client_id" value="<?php echo $id ?>" >
                 <div class="form-group">
                     <label for="project_branch" class="control-label">Branch Name</label>
                     <input type="text" name="project_branch" class="form-control" placeholder="Enter Project Branch">

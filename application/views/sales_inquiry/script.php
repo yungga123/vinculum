@@ -48,6 +48,7 @@ defined('BASEPATH') or die('Access Denied');
 						$(".location_edit").val(response.client_data[0].location);
 						$(".email_add_edit").val(response.client_data[0].email_add);
 						$(".website_edit").val(response.client_data[0].website);
+						$(".source_edit").val(response.client_data[0].source);
 						$(".interest_edit").val(response.client_data[0].interest);
 						$(".type_edit").val(response.client_data[0].type);
 						$(".notes_edit").val(response.client_data[0].notes);
@@ -469,20 +470,27 @@ defined('BASEPATH') or die('Access Denied');
 					url: me,
 					type: 'get',
 					dataType: 'json',
+					
 					success: function(response) {
 						$('#tbody-project').empty();
 						i = 1;
-						$.each(response.results, function (key, value) {
 
-							$('#tbody-project').append('<tr>' +
-								'<td>' + i++ + '</td>' +
-								'<td>' + response.results[key].project_type + '</td>' +
-								'<td>' + response.results[key].project_status + '</td>' +
-								'<td>' + response.results[key].lastname + "," + response.results[key].firstname + " " + response.results[key].middlename + '</td>' +
-								'<td>' + response.results[key].branch + '</td>' +
-								'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a></td>' +
-							'</tr>');
-							
+						//$.each(response.task_results, function (key, value) {
+						//	$task = response.task_results[key].project_task;
+						//	$task_date = response.task_results[key].date_of_task;
+						//	});
+
+						$.each(response.results, function (key, value) { 
+								$('#tbody-project').append('<tr>' +
+									'<td>' + i++ + '</td>' +
+									'<td>' + response.results[key].project_type + '</td>' +
+									'<td>' + response.results[key].project_status + '</td>' +
+									'<td>' + response.results[key].lastname + "," + response.results[key].firstname + " " + response.results[key].middlename + '</td>' +
+									'<td>' + response.results[key].branch + '</td>' +
+									'<td>' + response.results[key].project_task + '</td>' +
+									'<td>' + response.results[key].date_of_task + '</td>' +
+									'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a></td>' +
+								'</tr>');
 						});
 
 						$('#modal_loading').removeClass('overlay d-flex justify-content-center align-items-center');
@@ -497,6 +505,7 @@ defined('BASEPATH') or die('Access Denied');
 				var newfield = $('.add-task:last').clone();
 				newfield.find('textarea').val('');
 				newfield.find('input').val('');
+				newfield.find('textarea').val('').css("background-color", "transparent").css("color","black");
 				newfield.find('.others:checkbox').prop('checked' , false).end();
 				// Add after last <div class='input-form'>
 				$(newfield).insertAfter(".add-task:last");
@@ -573,6 +582,7 @@ defined('BASEPATH') or die('Access Denied');
 						$(".existing_location_edit").val(response.existing_client_data[0].Address);
 						$(".existing_email_add_edit").val(response.existing_client_data[0].EmailAddress);
 						$(".existing_website_edit").val(response.existing_client_data[0].Website);
+						$(".existing_source_edit").val(response.existing_client_data[0].source);
 						$(".existing_interest_edit").val(response.existing_client_data[0].Interest);
 						$(".existing_type_edit").val(response.existing_client_data[0].Type);
 						$(".existing_notes_edit").val(response.existing_client_data[0].Notes);
@@ -619,17 +629,28 @@ defined('BASEPATH') or die('Access Denied');
 					success: function(response) {
 						$('#tbody-project').empty();
 						i = 1;
-						$.each(response.results, function (key, value) {
 
+						//$.each(response.task_results, function (key, value) {
+						//	$task = response.task_results[key].project_task;
+						//	$task_date = response.task_results[key].date_of_task;
+							
+						//	});
+
+						$.each(response.results, function (key, value) {
+						
 							$('#tbody-project').append('<tr>' +
 								'<td>' + i++ + '</td>' +
 								'<td>' + response.results[key].project_type + '</td>' +
 								'<td>' + response.results[key].project_status + '</td>' +
 								'<td>' + response.results[key].lastname + "," + response.results[key].firstname + " " + response.results[key].middlename + '</td>' +
 								'<td>' + response.results[key].branch + '</td>' +
-								'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> </td>' +
-							'</tr>');
+								'<td>' + response.results[key].project_task + '</td>' +
+								'<td>' + response.results[key].date_of_task + '</td>' +
+								'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> </td>'
+								);
 						});
+
+						
 
 						$('#modal_loading').removeClass('overlay d-flex justify-content-center align-items-center');
 						$('#modal_loading').empty();

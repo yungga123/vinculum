@@ -150,25 +150,31 @@ class SalesInquiryModel extends CI_Model {
 		$this->db->insert('sales_inquiry_task',$data);
 	}
 
-	
-
 	public function get_project_data($client_id) {
-		$id = 0;
+		
 		$this->db->select("*");
 		$this->db->from('customers_project as a');
-		$this->db->join('technicians as b','a.sales_incharge=b.id','left');
-		$this->db->where("customer_id",$client_id);
+		$this->db->where("a.customer_id", $client_id);
+		$this->db->join($this->join_table,'b.id=a.sales_incharge','inner');
+		$this->db->join($this->join_table1,'c.project_id=a.project_id','inner');
+		$this->db->where('c.mark_last_task', 1);
+		$this->db->order_by('c.task_id','DESC');
+		return $this->db->get()->result();
+	}
+	
+
+	public function get_project_task($project_id) {
+		$this->db->select('*');
+		$this->db->from('sales_inquiry_task');
+		$this->db->where('project_id', $project_id);
+		$this->db->order_by('task_id', 'DESC');
+		$this->db->limit(1);
 		return $this->db->get()->result();
 	}
 
 	public function update_newclient_branch($branch_id,$data) {
         $this->db->where('branch_id',$branch_id);
         $this->db->update('customers_branch',$data);
-    }
-
-	public function update_newclient_project($project_id,$data) {
-        $this->db->where('project_id',$project_id);
-        $this->db->update('customers_project',$data);
     }
 
 	public function update_existingclient_project($project_id,$data) {
@@ -254,7 +260,8 @@ class SalesInquiryModel extends CI_Model {
 
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "sales_inquiry_tempo_clients as a";
-	var $join_table = "sales_quotation_items as b";
+	var $join_table = "technicians as b";
+	var $join_table1 = "sales_inquiry_task as c";
 	var $select_column = array(
 		"a.id",
 		"a.customer_name",
@@ -440,6 +447,7 @@ public function existingclient_datatable() {
 		$this->db->join('sales_inquiry_tempo_clients as b','a.customer_id = b.id','inner');
 		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
 		$this->db->order_by("b.id","DESC");
+		$this->db->where("b.is_deleted","0");
 		return $this->db->get()->result();
 	}
 
@@ -453,6 +461,7 @@ public function existingclient_datatable() {
 		$this->db->join('customer_vt as b','a.customer_id = b.CustomerID','inner');
 		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
 		$this->db->order_by("b.CustomerID","DESC");
+		$this->db->where("b.is_deleted","0");
 		return $this->db->get()->result();
 	}
 

@@ -40,6 +40,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 											<th>Email</th>
 				            				<th>Location</th>
                                             <th>Website</th>
+											<th>Source</th>
                                             <th>Interest</th>
                                             <th>Type</th>
                                             <th>Notes</th>
@@ -93,7 +94,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 									</div>
 									<div class="form-group">
 										<label for="existing_location" class="control-label">Address</label>
-										<textarea class="form-control existing_location_edit" type="text" name="existing_location" placeholder="Enter your Full Address"></textarea>
+										<textarea class="form-control existing_location_edit" rows="5" type="text" name="existing_location" placeholder="Enter your Full Address"></textarea>
 									</div>
                                     
 								</div>
@@ -107,6 +108,24 @@ defined('BASEPATH') or die('Access Denied'); ?>
 										<label for="existing_client_installationdate" class="control-label">Installation Date</label>
                                         <input class="form-control existing_website_edit" type="date" name="existing_client_installationdate" placeholder="Select Date">
                                     </div>
+									<div class="form-group">
+										<p>
+											<label for="existing_client_source">Source</label>
+											<select name="existing_client_source" class="form-control source_edit">
+												<option value="">---Please Select---</option>
+												<option value="Facebook Page">Vinculum Facebook Page</option>
+												<option value="BNI Referral">BNI Referral</option>
+												<option value="Client Referral">Client Referral</option>
+												<option value="Existing Client">Existing Client</option>
+												<option value="Walk-In">Walk-In</option>
+												<option value="Personal Network">Personal Network</option>
+												<option value="Saturation">Saturation</option>
+												<option value="Other Social Media">Other Social Media</option>
+												<option value="PhilGeps">PhilGeps</option>
+												<option value="Called Calls">Called Calls</option>
+											</select>
+										</p>
+									</div>
 									<div class="form-group">
 										<label for="existing_client_website" class="control-label">Website</label>
 										<input type="text" name="existing_client_website" class="form-control existing_website_edit" placeholder="Enter Website">
@@ -174,6 +193,8 @@ defined('BASEPATH') or die('Access Denied'); ?>
                                 <th>Status</th>
                                 <th>Sales Incharge</th>
 								<th>Branch</th>
+								<th>Task</th>
+								<th>Date of task</th>
                                 <th>Operation</th>
                             </tr>
                         </thead>
