@@ -280,7 +280,7 @@ else{
                                         if($row->date_of_task == "0000-00-00"){
                                             $color='';
                                         }
-                                        elseif($row->mark_as_read == 0 && $date <= $task_date){
+                                        elseif($row->mark_as_read == 0 && $date >= $task_date){
                                             $color='style="background-color: #FF0000; color:#FFFFFF"';
                                         }
                                         else{
