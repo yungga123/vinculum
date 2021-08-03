@@ -49,13 +49,13 @@ defined('BASEPATH') or die('Access Denied');
 	    var calendarEl = document.getElementById('calendar');
 
 	    var calendar = new Calendar(calendarEl, {
-	      plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
-	      header    : {
-	        left  : 'prev,next today',
-	        center: 'title',
-	        right : 'dayGridMonth,timeGridWeek,timeGridDay'
-	      },
-	      events: [
+			headerToolbar: {
+				left  : 'prev,next today',
+				center: 'title',
+				right : 'dayGridMonth,timeGridWeek,timeGridDay'
+			},
+      		themeSystem: 'bootstrap',
+	      	events: [
 	      	<?php foreach ($results as $row) { ?>
 	      		{
 	      		  id 			: '<?php echo $row->ID ?>',

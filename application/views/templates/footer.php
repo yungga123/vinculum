@@ -148,6 +148,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- jQuery -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap 4 -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
 	<!-- jQuery UI 1.11.4 -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
 
@@ -155,8 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	  $.widget.bridge('uibutton', $.ui.button)
 	</script>
 
-	<!-- Bootstrap 4 -->
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
 	<!-- DataTables -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables/jquery.dataTables.js"></script>
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
