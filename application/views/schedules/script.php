@@ -55,6 +55,7 @@ defined('BASEPATH') or die('Access Denied');
 				right : 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
       		themeSystem: 'bootstrap',
+			displayEventTime: false,
 	      	events: [
 	      	<?php foreach ($results as $row) { ?>
 	      		{
