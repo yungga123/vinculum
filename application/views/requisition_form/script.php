@@ -408,7 +408,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                                 '<td>' + response.results[key].unit + '</td>' +
                                 '<td>' + Number(response.results[key].unit_cost).toFixed(2) + '</td>' +
                                 '<td>' + Number(total_cost).toFixed(2) + '</td>' +
-                                '<td>' + response.results[key].supplier + '</td>' +
+                                '<td>' + response.results[key].name + '</td>' +
                                 '<td>' + moment(response.results[key].date_needed).format('MMM DD, YYYY') + '</td>' +
                                 '<td>' + response.results[key].purpose + '</td>' +
                             '</tr>');

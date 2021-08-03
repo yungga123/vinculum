@@ -240,12 +240,13 @@ class RequisitionFormModel extends CI_Model {
                 'a.unit',
                 'a.supplier',
                 'a.date_needed',
-                'a.purpose'
-               // 'b.name'
+                'a.purpose',
+                'b.name',
+                'b.id'
             ]);
             $this->db->from('requisition_form_items as a');
             $this->db->where('request_form_id',$id);
-            //$this->db->join('vendor as b','a.supplier=b.vendor_code');
+            $this->db->join('vendor as b','a.supplier=b.id');
             $this->db->order_by('supplier', 'DESC');
             return $this->db->get()->result();
         }
