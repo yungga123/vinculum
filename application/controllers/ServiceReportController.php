@@ -139,7 +139,8 @@ class ServiceReportController extends CI_Controller {
         return $rules;
 	}
 
-   public function index() {
+
+   	public function index() {
         if($this->session->userdata('logged_in')) {
             
             $this->load->model('CustomersModel');
@@ -151,6 +152,7 @@ class ServiceReportController extends CI_Controller {
             $data['li_servicereport'] = ' menu-open';
 			$data['ul_servicereport'] = ' active';
             $data['encode_sr'] = ' active';
+			$data['ul_project_tree'] = ' active';
             $data['results_customers'] = $results_customers;
 
 			$this->load->view('templates/header', $data);
@@ -263,6 +265,7 @@ class ServiceReportController extends CI_Controller {
             $data['title'] = 'Service Report';
             $data['li_servicereport'] = ' menu-open';
 			$data['ul_servicereport'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['sr_listing'] = ' active';
 			
 			$this->load->view('templates/header', $data);
@@ -363,6 +366,7 @@ class ServiceReportController extends CI_Controller {
 			$data['li_servicereport'] = ' menu-open';
 			$data['ul_servicereport'] = ' active';
 			$data['sr_listing'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['results_customers'] = $results_customers;
 			$data['results_direct_items_view'] = $this->ServiceReportModel->service_report_directItem_view($id);
 			$data['results_indirect_items_view'] = $this->ServiceReportModel->service_report_indirectItem_view($id);

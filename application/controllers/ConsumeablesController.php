@@ -15,6 +15,7 @@ class ConsumeablesController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Consumeables';
 			$data['consumeables'] = ' active';
+			$data['ul_items_tree'] = ' active';
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('consumeables/consumeables');

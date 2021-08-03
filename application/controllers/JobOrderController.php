@@ -113,6 +113,7 @@ class JobOrderController extends CI_Controller
 			$data['forms_menu_status'] = ' menu-open';
 			$data['ul_forms'] = ' active';
 			$data['servicecall'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
 			$data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
 			$data['latest_joborder'] = $this->JobOrderModel->get_latest_job_order();
@@ -340,6 +341,7 @@ class JobOrderController extends CI_Controller
 			$data['forms_menu_status'] = ' menu-open';
 			$data['ul_forms'] = ' active';
 			$data['servicecall'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['decision'] = $decision;
 			$data['joborder_scheduled_data'] = $this->JobOrderModel->joborder_scheduled_data();
 
@@ -796,6 +798,7 @@ class JobOrderController extends CI_Controller
 			$data['forms_menu_status'] = ' menu-open';
 			$data['ul_forms'] = ' active';
 			$data['servicecall'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
 			$data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
 			$data['joborder_data'] = $this->JobOrderModel->get_job_order_data($joborder_id);
@@ -828,6 +831,7 @@ class JobOrderController extends CI_Controller
 			$data['forms_menu_status'] = ' menu-open';
 			$data['ul_forms'] = ' active';
 			$data['servicecall'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
 			$data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
 			$data['joborder_data'] = $this->JobOrderModel->get_job_order_data($joborder_id);

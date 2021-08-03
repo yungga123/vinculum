@@ -104,6 +104,7 @@ class RequisitionFormController extends CI_Controller {
 			$data['title'] = 'Request Items';
             $data['requisition_tree'] = ' menu-open';
             $data['requisition_display'] = ' block';
+            $data['ul_purchasing_tree'] = ' active';
             $data['requisition_form'] = ' active';
             $data['requisition_add'] = ' active';
             $data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
@@ -130,6 +131,7 @@ class RequisitionFormController extends CI_Controller {
             $data['requisition_tree'] = ' menu-open';
             $data['requisition_display'] = ' block';
             $data['requisition_form'] = ' active';
+            $data['ul_purchasing_tree'] = ' active';
             $data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
             $data['req_info'] = $this->RequisitionFormModel->get_all_requisition_form_where($id);
             $data['req_items'] = $this->RequisitionFormModel->get_requisition_items($id);
@@ -154,6 +156,7 @@ class RequisitionFormController extends CI_Controller {
 			$data['title'] = 'Pending Requests';
             $data['requisition_tree'] = ' menu-open';
             $data['requisition_display'] = ' block';
+            $data['ul_purchasing_tree'] = ' active';
             $data['requisition_form'] = ' active';
             $data['requisition_pending'] = ' active';
 			$this->load->view('templates/header', $data);
@@ -176,6 +179,7 @@ class RequisitionFormController extends CI_Controller {
 			$data['title'] = 'Accepted Requests';
             $data['requisition_tree'] = ' menu-open';
             $data['requisition_display'] = ' block';
+            $data['ul_purchasing_tree'] = ' active';
             $data['requisition_form'] = ' active';
             $data['requisition_accepted'] = ' active';
 			$this->load->view('templates/header', $data);
@@ -198,6 +202,7 @@ class RequisitionFormController extends CI_Controller {
 			$data['title'] = 'Filed Requests';
             $data['requisition_tree'] = ' menu-open';
             $data['requisition_display'] = ' block';
+            $data['ul_purchasing_tree'] = ' active';
             $data['requisition_form'] = ' active';
             $data['requisition_filed'] = ' active';
 			$this->load->view('templates/header', $data);
@@ -220,6 +225,7 @@ class RequisitionFormController extends CI_Controller {
 			$data['title'] = 'Discarded Requests';
             $data['requisition_tree'] = ' menu-open';
             $data['requisition_display'] = ' block';
+            $data['ul_purchasing_tree'] = ' active';
             $data['requisition_form'] = ' active';
             $data['requisition_discarded'] = ' active';
 			$this->load->view('templates/header', $data);

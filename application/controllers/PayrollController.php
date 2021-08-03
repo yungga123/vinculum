@@ -244,6 +244,7 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Computation';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['technicians'] = $technicians;
             $data['payroll'] = $this->payroll();
 
@@ -353,6 +354,7 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Table';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['start_date'] = '';
             $data['end_date'] = '';
 
@@ -574,6 +576,7 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Computation';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['technicians'] = $technicians;
             $data['payroll'] = $payroll;
 
@@ -676,6 +679,7 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Table';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['payroll_filter'] = $this->PayrollModel->select_payroll_filter($start_date,$end_date);
             $data['start_date'] = $start_date;
             $data['end_date'] = $end_date;

@@ -293,6 +293,7 @@ class ProjectReportController extends CI_Controller {
 			$data['project_report'] = ' menu-open';
 			$data['project_report_href'] = ' active';
 			$data['project_report_add'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['result_customers'] = $this->CustomersModel->getVtCustomersByID();			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -435,6 +436,7 @@ class ProjectReportController extends CI_Controller {
 			$data['project_report'] = ' menu-open';
 			$data['project_report_href'] = ' active';
 			$data['project_report_list'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -537,6 +539,7 @@ class ProjectReportController extends CI_Controller {
 			$data['project_report'] = ' menu-open';
 			$data['project_report_href'] = ' active';
 			$data['project_report_list'] = ' active';
+			$data['ul_project_tree'] = ' active';
 
 			$data['project_details'] = $this->ProjectReportModel->getProjectReport($id);
 			$data['petty_cash'] = $this->ProjectReportModel->getPettyCash($id);

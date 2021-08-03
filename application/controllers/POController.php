@@ -74,6 +74,7 @@ class POController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Generate PO';
             $data['li_generated_po'] = ' active';
+            $data['ul_purchasing_tree'] = ' active';
             $data['requisition_list'] = $this->POModel->acc_req_list();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
