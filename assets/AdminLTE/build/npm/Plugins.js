@@ -246,6 +246,30 @@ const Plugins = [
     to: 'plugins/datatables-scroller/css'
   },
   {
+    from: 'node_modules/datatables.net-searchbuilder/js',
+    to: 'plugins/datatables-searchbuilder/js'
+  },
+  {
+    from: 'node_modules/datatables.net-searchbuilder-bs4/js',
+    to: 'plugins/datatables-searchbuilder/js'
+  },
+  {
+    from: 'node_modules/datatables.net-searchbuilder-bs4/css',
+    to: 'plugins/datatables-searchbuilder/css'
+  },
+  {
+    from: 'node_modules/datatables.net-searchpanes/js',
+    to: 'plugins/datatables-searchpanes/js'
+  },
+  {
+    from: 'node_modules/datatables.net-searchpanes-bs4/js',
+    to: 'plugins/datatables-searchpanes/js'
+  },
+  {
+    from: 'node_modules/datatables.net-searchpanes-bs4/css',
+    to: 'plugins/datatables-searchpanes/css'
+  },
+  {
     from: 'node_modules/datatables.net-select/js',
     to: 'plugins/datatables-select/js'
   },
@@ -260,24 +284,8 @@ const Plugins = [
 
   // Fullcalendar
   {
-    from: 'node_modules/@fullcalendar/core/',
+    from: 'node_modules/fullcalendar/',
     to: 'plugins/fullcalendar'
-  },
-  {
-    from: 'node_modules/@fullcalendar/bootstrap/',
-    to: 'plugins/fullcalendar-bootstrap'
-  },
-  {
-    from: 'node_modules/@fullcalendar/daygrid/',
-    to: 'plugins/fullcalendar-daygrid'
-  },
-  {
-    from: 'node_modules/@fullcalendar/timegrid/',
-    to: 'plugins/fullcalendar-timegrid'
-  },
-  {
-    from: 'node_modules/@fullcalendar/interaction/',
-    to: 'plugins/fullcalendar-interaction'
   },
   // icheck bootstrap
   {
@@ -430,6 +438,11 @@ const Plugins = [
   {
     from: 'node_modules/dropzone/dist/',
     to: 'plugins/dropzone'
+  },
+  // uPlot
+  {
+    from: 'node_modules/uplot/dist/',
+    to: 'plugins/uplot'
   }
 ]
 

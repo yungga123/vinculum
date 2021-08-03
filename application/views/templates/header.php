@@ -42,12 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
 
   <!-- fullCalendar -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.min.css">
-  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.css">
-  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-daygrid/main.min.css">
-  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-timegrid/main.min.css">
-  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.css">
-
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.css">
   
   
 
@@ -55,5 +50,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.css">
 </head>
 
-
+<!-- Preloader -->
+<div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="<?php echo base_url('assets') ?>/images/vcmlogo.png" alt="VCMLogo" height="60" width="100">
+</div>
 

@@ -148,19 +148,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	<!-- jQuery -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery/jquery.min.js"></script>
+
+	<!-- Bootstrap 4 -->
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
 	<!-- jQuery UI 1.11.4 -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery-ui/jquery-ui.min.js"></script>
 
-	<!-- Angular JS -->
-<!-- 	<script src="<?php //echo base_url('assets/AdminLTE/') ?>plugins/angularjs/angular.min.js"></script> -->
-
-	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 	<script>
 	  $.widget.bridge('uibutton', $.ui.button)
 	</script>
 
-	<!-- Bootstrap 4 -->
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
 	<!-- DataTables -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables/jquery.dataTables.js"></script>
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
@@ -192,11 +191,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/daterangepicker/daterangepicker.js"></script>
 
 	<!-- fullCalendar 2.2.5 -->
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-daygrid/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-timegrid/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-interaction/main.min.js"></script>
-	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar-bootstrap/main.min.js"></script>
+	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.js"></script>
 
 	<!-- Select2 -->
 	<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/select2/js/select2.full.min.js"></script>
