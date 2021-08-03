@@ -262,10 +262,7 @@ class POController extends CI_Controller {
 			[
 				'field' => 'attention_to',
 				'label' => 'Name of Addressee',
-				'rules' => 'trim|required',
-				'errors' => [
-					'required' => 'Please Enter Name of Addressee'
-				]
+				'rules' => 'trim'
             ]
         ];
         
