@@ -13,6 +13,7 @@ class DispatchFormController extends CI_Controller {
 			$data['Generate_dispatch'] = ' active';
 			$data['ul_forms'] = ' active';
 			$data['dispatch_forms'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			
 			$this->load->model('CustomersModel');
 			$results = $this->CustomersModel->getVtCustomersByName();
@@ -34,6 +35,7 @@ class DispatchFormController extends CI_Controller {
 	
 		
 	}
+
 	public function DispatchTable() {
 
 		if($this->session->userdata('logged_in')) {
@@ -45,6 +47,7 @@ class DispatchFormController extends CI_Controller {
 			$data['dispatch_list'] = ' active';
 			$data['ul_forms'] = ' active';
 			$data['dispatch_forms'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			
 			$this->load->model('CustomersModel');
 			$customers_form_edit = $this->CustomersModel->getVtCustomersByName();

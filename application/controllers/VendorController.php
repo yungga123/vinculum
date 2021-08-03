@@ -155,6 +155,7 @@ class VendorController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Vendor Database';
 			$data['li_vendor_list'] = ' active';
+			$data['ul_purchasing_tree'] = ' active';
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -173,6 +174,7 @@ class VendorController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Update Vendor Details';
             $data['li_vendor_list'] = ' active';
+			$data['ul_purchasing_tree'] = ' active';
 			$data['vendor_title'] = 'Add Vendor';
 			$data['vendor_button_title'] = 'Add Vendor';
 			$this->load->view('templates/header', $data);
@@ -194,6 +196,7 @@ class VendorController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Update Vendor Details';
             $data['li_vendor_list'] = ' active';
+			$data['ul_purchasing_tree'] = ' active';
 			$data['vendor_title'] = 'Update Vendor';
 			$data['vendor_button_title'] = 'Update Vendor';
             $data['vendor_data'] = $this->VendorModel->get_vendor_data($vendor_id);

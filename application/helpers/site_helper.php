@@ -72,6 +72,12 @@ if(!function_exists('html_variable')) {
 			'li_vendor_list' => '',
 			'li_generated_po' => '',
 
+			'ul_items_tree' => '',
+			'ul_purchasing_tree' => '',
+			'ul_project_tree' => '',
+			'ul_sales_tree' => '',
+			'ul_hr_tree' => '',
+
 			'category' => '' //for Get Items Masterlist
 		];
 

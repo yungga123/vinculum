@@ -3,6 +3,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 
 class ItemsController extends CI_Controller
 {
+
 	public function items_masterlist()
 	{
 		if ($this->session->userdata('logged_in')) {
@@ -12,6 +13,7 @@ class ItemsController extends CI_Controller
 			$data['title'] = 'Masterlist of Items';
 			$data['items_menu_status'] = ' menu-open';
 			$data['items_menu_display'] = ' block';
+			$data['ul_items_tree'] = ' active';
 			$data['registration'] = ' active';
 			$data['ul_items'] = ' active';
 			$data['category'] = 'Direct';
@@ -79,6 +81,7 @@ class ItemsController extends CI_Controller
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Masterlist of Items';
+			$data['ul_items_tree'] = ' active';
 			$data['items_menu_status'] = ' menu-open';
 			$data['items_menu_display'] = ' block';
 			$data['indirect_list'] = ' active';
@@ -104,6 +107,7 @@ class ItemsController extends CI_Controller
 
 		$this->load->helper('site_helper');
 		$data = html_variable();
+		$data['ul_items_tree'] = ' active';
 		$data['title'] = 'Register New Item';
 
 		$this->load->view('templates/header', $data);
@@ -119,6 +123,7 @@ class ItemsController extends CI_Controller
 		$this->load->helper('site_helper');
 		$data = html_variable();
 		$data['title'] = 'Register New Item';
+		$data['ul_items_tree'] = ' active';
 		$data['item_code'] = $this->input->post('itemCode');
 
 		$this->load->view('templates/header', $data);

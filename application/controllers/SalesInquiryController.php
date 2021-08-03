@@ -77,40 +77,40 @@ class SalesInquiryController extends CI_Controller {
 	}
 
 	function validation_rules_project(){
-			$rules = [
-				[
-					'field' => 'project_sales_incharge',
-					'label' => 'Sales Incharge',
-					'rules' => 'trim|required',
-					'errors' => ['required' => 'Please Select Sales Incharge']
-				],
-				[
-					'field' => 'project',
-					'label' => 'Project',
-					'rules' => 'trim|required',
-					'errors' => ['required' => 'Please Enter Project Type']
-				],
-				[
-					'field' => 'project_status',
-					'label' => 'Project Status',
-					'rules' => 'trim|required',
-					'errors' => ['required' => 'Please Project Status.']
-				],
-				[
-					'field' => 'project_branch',
-					'label' => 'Project Branch Name',
-					'rules' => 'trim|required',
-					'errors' => ['required' => 'Please Provide Project Branch']
-				],
-				[
-					'field' => 'project_task[]',
-					'label' => 'Project Task',
-					'rules' => 'trim|required',
-					'errors' =>['required' => 'Please Provide Project Task']
-				]
-			];
-			return $rules;
-		}
+		$rules = [
+			[
+				'field' => 'project_sales_incharge',
+				'label' => 'Sales Incharge',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Please Select Sales Incharge']
+			],
+			[
+				'field' => 'project',
+				'label' => 'Project',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Please Enter Project Type']
+			],
+			[
+				'field' => 'project_status',
+				'label' => 'Project Status',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Please Project Status.']
+			],
+			[
+				'field' => 'project_branch',
+				'label' => 'Project Branch Name',
+				'rules' => 'trim|required',
+				'errors' => ['required' => 'Please Provide Project Branch']
+			],
+			[
+				'field' => 'project_task[]',
+				'label' => 'Project Task',
+				'rules' => 'trim|required',
+				'errors' =>['required' => 'Please Provide Project Task']
+			]
+		];
+		return $rules;
+	}
 
     public function new_client_list() {
         if($this->session->userdata('logged_in')) {
@@ -120,6 +120,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['category'] = 'New_Clients';
 
 			$this->load->view('templates/header', $data);
@@ -275,6 +276,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['new_client_id'] = $id;
 			$data['form_id'] = 'newclient';
 			$data['results'] = $this->SalesInquiryModel->get_sales_list();
@@ -303,6 +305,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $id;
 			$data['form_id'] = "edit_newclient";
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
@@ -342,6 +345,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $project_id;
 			$data['form_id'] = "edit_existingclient";
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
@@ -787,6 +791,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['category'] = 'existing_client';
 
 			$this->load->view('templates/header', $data);
@@ -809,6 +814,7 @@ class SalesInquiryController extends CI_Controller {
 			$data['inquiry_status'] = ' menu-open';
             $data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['new_client_id'] = $id;
 			$data['form_id'] = 'Existing_Clients';
 			$data['results'] = $this->SalesInquiryModel->get_sales_list();
