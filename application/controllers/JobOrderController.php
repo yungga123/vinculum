@@ -149,7 +149,7 @@ class JobOrderController extends CI_Controller
 
 			$data = [
 				'customer_id' => $this->input->post('customer'),
-				'remarks' => $this->input->post('jo_status'),
+				'jo_status' => $this->input->post('jo_status'),
 				'date_requested' => $this->input->post('date_requested'),
 				'type_of_project' => $this->input->post('service_type'),
 				'comments' => $this->input->post('comments'),
@@ -364,27 +364,6 @@ class JobOrderController extends CI_Controller
 			'errors' => ''
 		];
 
-		if ($this->input->post('decision') != 'Discarded') {
-			$schedule_type_rule = [
-				'field' => 'pic_assigned',
-				'label' => 'PIC Assigned',
-				'rules' => 'trim|required',
-				'errors' => [
-					'required' => 'Please select PIC.'
-				]
-			];
-		} else {
-			$schedule_type_rule = [
-				'field' => 'pic_assigned',
-				'label' => 'PIC Assigned',
-				'rules' => 'trim',
-				'errors' => [
-					'required' => 'Please select PIC.'
-				]
-			];
-		}
-		
-
 		$rules = [
 			[
 				'field' => 'decision',
@@ -402,7 +381,15 @@ class JobOrderController extends CI_Controller
 					'required' => 'Please select committed date.'
 				]
 			],
-			$schedule_type_rule
+			[
+				'field' => 'schedule_type',
+				'label' => 'Schedule Type',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please select schedule type.'
+				]
+			]
+			
 		];
 
 		$this->form_validation->set_error_delimiters('<p>', '</p>');
@@ -416,6 +403,7 @@ class JobOrderController extends CI_Controller
 			$data = [
 				'decision' => $this->input->post('decision'),
 				'commited_schedule' => $this->input->post('committed_schedule'),
+				'type_of_project' => $this->input->post('schedule_type'),
 				'pic' => $this->input->post('pic_assigned')
 			];
 
@@ -425,7 +413,7 @@ class JobOrderController extends CI_Controller
 					'start' => $this->input->post('committed_schedule').' 00:00:00',
 					'end' => $this->input->post('committed_schedule').' 23:59:59',
 					'description' => str_replace("<br>", "",$this->input->post('description')),
-					'type' => $this->input->post('type_of_project')
+					'type' => $this->input->post('schedule_type')
 				];
 			}
 			
@@ -464,6 +452,14 @@ class JobOrderController extends CI_Controller
 				'field' => 'decision_filejo',
 				'label' => 'Decision',
 				'rules' => 'trim'
+			],
+			[
+				'field' => 'remarks',
+				'label' => 'Remarks',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Enter Remarks'
+				]
 			]
 		];
 
@@ -478,6 +474,7 @@ class JobOrderController extends CI_Controller
 			$id = $this->input->post('job_filejo_id');
 			$data = [
 				'decision' => $this->input->post('decision_filejo'),
+				'remarks' => $this->input->post('remarks'),
 				'date_filed' => date('Y-m-d')
 			];
 
@@ -632,6 +629,7 @@ class JobOrderController extends CI_Controller
 			$sub_array[] = $row->firstname . $middle_name . $row->lastname;
 			$sub_array[] = $row->under_warranty;
 			$sub_array[] = $row->remarks;
+			$sub_array[] = $row->jo_status;
 			
 			if($where == "Pending"){
 				
@@ -918,13 +916,13 @@ class JobOrderController extends CI_Controller
 				'rules' => 'trim'
 			],
 			[
-				'field' => 'jo_status',
-				'label' => 'Status',
+				'field' => 'service_type',
+				'label' => 'Project Type',
 				'rules' => 'trim|required',
 				'errors' => [
-					'required' => 'Please Select Status.'
+					'required' => 'Please provide Project Type.'
 				]
-			]
+			],
 		];
 
 		$this->form_validation->set_error_delimiters('<p>', '</p>');
@@ -940,14 +938,16 @@ class JobOrderController extends CI_Controller
 				[
 					'customer_id' => $this->input->post('customer'),
 					'date_requested' => $this->input->post('date_requested'),
-					'remarks' => $this->input->post('jo_status'),
+					'jo_status' => $this->input->post('jo_status'),
 					'type_of_project' => $this->input->post('service_type'),
 					'comments' => $this->input->post('comments'),
+					'remarks' => $this->input->post('remarks'),
 					'date_reported' => $this->input->post('date_reported'),
 					'commited_schedule' => $this->input->post('date_scheduled'),
 					'requested_by' => $this->input->post('requestor'),
 					'under_warranty' => $this->input->post('under_warranty'),
-					'pic' => $this->input->post('pic_assigned')
+					'pic' => $this->input->post('pic_assigned'),
+					
 				]
 				);
 			}
@@ -957,7 +957,7 @@ class JobOrderController extends CI_Controller
 				[
 					'customer_id' => $this->input->post('customer'),
 					'date_requested' => $this->input->post('date_requested'),
-					'remarks' => $this->input->post('jo_status'),
+					'jo_status' => $this->input->post('jo_status'),
 					'type_of_project' => $this->input->post('service_type'),
 					'comments' => $this->input->post('comments'),
 					'date_reported' => $this->input->post('date_reported'),

@@ -104,6 +104,15 @@ if ($this->uri->segment(1) == 'joborder-list') {
             +           '<?php endforeach ?>'
             +       '</select>'
             +   '</div>');
+            
+            $('.form-commdate').append('<div class="form-group">'
+            +       '<label for="schedule_type">Schedule Type</label>'
+            +       '<select class="form-control" name="schedule_type" id="schedule_type">'
+            +           '<option value="">---Please Select---</option>'
+            +           '<option value="installation">Installation</option>'
+            +           '<option value="service">Service</option>'
+            +       '</select>'
+            +   '</div>');
         $('.form-commdate').append('<input type="hidden" name="client_name" id="client_name">');
         $('.form-commdate').append('<input type="hidden" name="type_of_project" id="type_of_project">');
         $('.form-commdate').append('<textarea style="display: none;" name="description" id="description"></textarea>');
@@ -244,7 +253,7 @@ if ($this->uri->segment(1) == 'joborder-list') {
                     me[0].reset();
 
                     setTimeout(() => {
-                        window.location = "<?php echo site_url('joborder-list/pending') ?>";
+                        window.location = "<?php echo site_url('joborder-list/accepted') ?>";
                     }, 1000);
 
                 } else {
