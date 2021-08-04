@@ -220,10 +220,10 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                             <option value="">---Please Select---</option>
 
                                                             <?php foreach($vendor as $vendor_row): ?>
-                                                                <option value="<?php echo $vendor_row->vendor_code ?>"
+                                                                <option value="<?php echo $vendor_row->id ?>"
                                                                     <?php if ($this->uri->segment(1)=='requisition-update')
                                                                     {
-                                                                        echo ($row->supplier == $vendor_row->vendor_code) ? ' selected' : '';
+                                                                        echo ($row->supplier == $vendor_row->id) ? ' selected' : '';
                                                                     }
                                                                     ?>
                                                                 >
@@ -285,7 +285,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                 <select type="text" name="supplier[]" class="form-control form-control-sm select2">
                                                     <option value="">---Please Select---</option>
                                                         <?php foreach ($vendor as $row): ?>
-                                                            <option value="<?php echo $row->vendor_code ?>">
+                                                            <option value="<?php echo $row->id ?>">
                                                                 <?php echo $row->name ?>
                                                             </option>
                                                         <?php endforeach ?>
