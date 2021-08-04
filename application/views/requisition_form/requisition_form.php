@@ -225,6 +225,9 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                                     {
                                                                         echo ($row->supplier == $vendor_row->id) ? ' selected' : '';
                                                                     }
+                                                                    else{
+                                                                        echo $row->supplier;
+                                                                    }
                                                                     ?>
                                                                 >
                                                                     <?php echo $vendor_row->name?>
