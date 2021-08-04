@@ -30,6 +30,7 @@ class JobOrderModel extends CI_Model {
     public function count_jo_phone_support() {
         $this->db->where('remarks','phone support');
         $this->db->where('is_deleted',0);
+        $this->db->where('decision','pending');
         return $this->db->count_all_results('job_order');
     }
 
