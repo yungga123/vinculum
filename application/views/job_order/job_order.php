@@ -20,7 +20,7 @@ elseif($form_id="edit-form"){
         }
 
         $joborder_data_edit_result = [
-            'joborder_remarks_edit' => $row->remarks,
+            'joborder_status_edit' => $row->jo_status,
             'joborder_warranty_edit' => $row->under_warranty,
             'joborder_comments_edit' => $row->comments,
             'joborder_id_edit' => $row->id,
@@ -365,7 +365,7 @@ elseif($form_id="edit-form"){
                                             <div class="col-sm-4">
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="jo_status" value="phone support" <?php if($joborder_data_edit_result['joborder_remarks_edit'] == "phone support") { echo 'checked'; }?> >
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="phone support" <?php if($joborder_data_edit_result['joborder_status_edit'] == "phone support") { echo 'checked'; }?> >
                                                         For Phone Support
                                                     </label>
                                                 </div>
@@ -373,7 +373,7 @@ elseif($form_id="edit-form"){
                                             <div class="col-sm-4">
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="jo_status" value="service" <?php if($joborder_data_edit_result['joborder_remarks_edit'] == "service") { echo 'checked'; }?> >
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="service" <?php if($joborder_data_edit_result['joborder_status_edit'] == "service") { echo 'checked'; }?> >
                                                         For Service
                                                     </label>
                                                 </div>
@@ -381,7 +381,7 @@ elseif($form_id="edit-form"){
                                             <div class="col-sm-4">
                                                 <div class="form-check">
                                                     <label class="form-check-label">
-                                                        <input type="radio" class="form-check-input" name="jo_status" value="installation" <?php if($joborder_data_edit_result['joborder_remarks_edit'] == "installation") { echo 'checked'; }?> >
+                                                        <input type="radio" class="form-check-input" name="jo_status" value="installation" <?php if($joborder_data_edit_result['joborder_status_edit'] == "installation") { echo 'checked'; }?> >
                                                         For Installation
                                                     </label>
                                                 </div>
@@ -480,11 +480,10 @@ elseif($form_id="edit-form"){
                                     </div>
                                 <?php endforeach ?>
                                 </div>
-
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label for="comments">Comments</label>
-                                        <textarea class="form-control" name="comments" id="comments" rows="8" placeholder="Enter comments/remarks here.&#10;If service, list here the reported problems.&#10;If project, list here the work scope."><?php echo $joborder_data_edit_result['joborder_comments_edit'] ?></textarea>
+                                        <textarea class="form-control" name="comments" id="comments" rows="8" placeholder="Enter comments here.&#10;If service, list here the reported problems.&#10;If project, list here the work scope."><?php echo $joborder_data_edit_result['joborder_comments_edit'] ?></textarea>
                                     </div>
                                 </div>
                             </div>
