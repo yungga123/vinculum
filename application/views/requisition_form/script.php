@@ -398,24 +398,45 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                         $('#req_total_price').empty();
                         i = 1;
                         total_price = 0;
-                        $.each(response.results, function (key, value) {
-                            total_cost = Number(response.results[key].unit_cost) * Number(response.results[key].qty);
 
-                            $('#tbody-reqitems').append('<tr>' +
-                                '<td>' + i++ + '</td>' +
-                                '<td>' + response.results[key].description + '</td>' +
-                                '<td>' + Number(response.results[key].qty).toFixed(2) + '</td>' +
-                                '<td>' + response.results[key].unit + '</td>' +
-                                '<td>' + Number(response.results[key].unit_cost).toFixed(2) + '</td>' +
-                                '<td>' + Number(total_cost).toFixed(2) + '</td>' +
-                                '<td>' + response.results[key].name + '</td>' +
-                                '<td>' + moment(response.results[key].date_needed).format('MMM DD, YYYY') + '</td>' +
-                                '<td>' + response.results[key].purpose + '</td>' +
-                            '</tr>');
+                        <?php if ($this->uri->segment(1) == 'requisition-pending'): $blank = "";?>
+                            $.each(response.results_pending, function (key, value) {
+                                total_cost = Number(response.results_pending[key].unit_cost) * Number(response.results_pending[key].qty);
+                                    
+                                $('#tbody-reqitems').append('<tr>' +
+                                    '<td>' + i++ + '</td>' +
+                                    '<td>' + response.results_pending[key].description + '</td>' +
+                                    '<td>' + Number(response.results_pending[key].qty).toFixed(2) + '</td>' +
+                                    '<td>' + response.results_pending[key].unit + '</td>' +
+                                    '<td>' + Number(response.results_pending[key].unit_cost).toFixed(2) + '</td>' +
+                                    '<td>' + Number(total_cost).toFixed(2) + '</td>' +
+                                    '<td>' + response.results_pending[key].supplier + '</td>' +
+                                    '<td>' + moment(response.results_pending[key].date_needed).format('MMM DD, YYYY') + '</td>' +
+                                    '<td>' + response.results_pending[key].purpose + '</td>' +
+                                '</tr>');
+                                total_price = total_price+(response.results_pending[key].unit_cost*response.results_pending[key].qty);
+                            });
 
-                            total_price = total_price+(response.results[key].unit_cost*response.results[key].qty);
-                            
-                        });
+
+                        <?php else: ?>
+                            $.each(response.results, function (key, value) {
+                                total_cost = Number(response.results[key].unit_cost) * Number(response.results[key].qty);
+
+                                $('#tbody-reqitems').append('<tr>' +
+                                    '<td>' + i++ + '</td>' +
+                                    '<td>' + response.results[key].description + '</td>' +
+                                    '<td>' + Number(response.results[key].qty).toFixed(2) + '</td>' +
+                                    '<td>' + response.results[key].unit + '</td>' +
+                                    '<td>' + Number(response.results[key].unit_cost).toFixed(2) + '</td>' +
+                                    '<td>' + Number(total_cost).toFixed(2) + '</td>' +
+                                    '<td>' + response.results[key].name + '</td>' +
+                                    '<td>' + moment(response.results[key].date_needed).format('MMM DD, YYYY') + '</td>' +
+                                    '<td>' + response.results[key].purpose + '</td>' +
+                                '</tr>');
+                                total_price = total_price+(response.results[key].unit_cost*response.results[key].qty);
+                            });
+                        <?php endif ?>
+                        
 
 
                         $('#req_total_price').html(Number(total_price).toFixed(2));

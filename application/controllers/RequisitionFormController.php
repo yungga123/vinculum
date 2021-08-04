@@ -645,7 +645,9 @@ class RequisitionFormController extends CI_Controller {
 
     public function get_req_items($id) {
         $results = $this->RequisitionFormModel->get_requisition_items($id);
+        $results_pending = $this->RequisitionFormModel->get_requisition_items_pending($id);
 
+        $json_data['results_pending'] = $results_pending;
         $json_data['results'] = $results;
 
         echo json_encode($json_data);

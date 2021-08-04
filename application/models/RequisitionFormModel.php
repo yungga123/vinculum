@@ -250,5 +250,24 @@ class RequisitionFormModel extends CI_Model {
             $this->db->order_by('supplier', 'DESC');
             return $this->db->get()->result();
         }
+
+        public function get_requisition_items_pending($id) {
+            $this->db->select([
+                'a.id as item_id',
+                'a.request_form_id',
+                'a.description',
+                'a.unit_cost',
+                'a.qty',
+                'a.unit',
+                'a.supplier',
+                'a.date_needed',
+                'a.purpose'
+            ]);
+            $this->db->from('requisition_form_items as a');
+            $this->db->where('request_form_id',$id);
+            //$this->db->join('vendor as b','a.supplier=b.id');
+            $this->db->order_by('supplier', 'DESC');
+            return $this->db->get()->result();
+        }
     //*****************end*********************
 }
