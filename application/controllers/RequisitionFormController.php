@@ -134,7 +134,7 @@ class RequisitionFormController extends CI_Controller {
             $data['ul_purchasing_tree'] = ' active';
             $data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
             $data['req_info'] = $this->RequisitionFormModel->get_all_requisition_form_where($id);
-            $data['req_items'] = $this->RequisitionFormModel->get_requisition_items($id);
+            $data['req_items'] = $this->RequisitionFormModel->get_requisition_items_pending($id);
             $data['vendor'] = $this->VendorModel->getVendorList();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
