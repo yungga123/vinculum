@@ -121,6 +121,7 @@ class VendorModel extends CI_Model {
 	public function getVendorList(){
 		$this->db->select('*');
 		$this->db->from('vendor');
+		$this->db->order_by('name','ASC');
 		$this->db->where('is_deleted', '0');
 		
 		return $this->db->get()->result();
