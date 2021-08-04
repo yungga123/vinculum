@@ -292,18 +292,18 @@ $supplier_data = array();
                 <br>
                 5. <b>Vinculum Technologies</b> will penalize supplier without prior notice in terms of problem deliver such as late delivery, move delivery date, etc.
                 <br>
-                6. Terms of Payment: <b>
-                    <?php if($supplier_data['vendor_terms'] == "00"){ echo "COD/CASH DAYS"; }
+                6. Terms of Payment:
+                <b>
+                    <?php if($supplier_data['vendor_terms'] == "00"){ echo "COD"; }
                         elseif($supplier_data['vendor_terms'] == "01"){ echo "DATED CHECK"; }
-                        elseif($supplier_data['vendor_terms'] == "02"){ echo "7 DAYS"; }
-                        elseif($supplier_data['vendor_terms'] == "03"){ echo "15 DAYS"; }
-                        elseif($supplier_data['vendor_terms'] == "04"){ echo "30 DAYS"; }
-                        elseif($supplier_data['vendor_terms'] == "05"){ echo "45 DAYS"; }
-                        elseif($supplier_data['vendor_terms'] == "06"){ echo "60 DAYS"; }
-                        elseif($supplier_data['vendor_terms'] == "07"){ echo "90 DAYS"; }
+                        elseif($supplier_data['vendor_terms'] == "02"){ echo "7 DAYS PDC"; }
+                        elseif($supplier_data['vendor_terms'] == "03"){ echo "15 DAYS PDC"; }
+                        elseif($supplier_data['vendor_terms'] == "04"){ echo "30 DAYS PDC"; }
+                        elseif($supplier_data['vendor_terms'] == "05"){ echo "45 DAYS PDC"; }
+                        elseif($supplier_data['vendor_terms'] == "06"){ echo "60 DAYS PDC"; }
+                        elseif($supplier_data['vendor_terms'] == "07"){ echo "90 DAYS PDC"; }
                     ?> 
-                
-                PDC</b>
+                </b>
 
             </h6>
         </div>

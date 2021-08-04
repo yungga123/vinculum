@@ -13,6 +13,7 @@ class POModel extends CI_Model {
         'a.po_id',
         'a.supplier_id',
         'a.generated_date',
+        'b.id',
         'b.name'
     );
 
@@ -20,6 +21,7 @@ class POModel extends CI_Model {
         'a.po_id',
         'a.supplier_id',
         'a.generated_date',
+        'b.id',
         'b.name'
     );
 
@@ -27,7 +29,7 @@ class POModel extends CI_Model {
 
         $this->db->select($this->select_column);
         $this->db->from($this->table);
-        $this->db->join($this->join_table,"a.supplier_id=b.vendor_code");
+        $this->db->join($this->join_table,"a.supplier_id=b.id");
 
 
         if(isset($_POST["search"]["value"])){
@@ -137,7 +139,7 @@ class POModel extends CI_Model {
         $this->db->select('a.po_id, a.supplier_id, a.po_revise, b.vendor_code, b.name, b.address, b.vendor_category, b.terms_and_condition');
         $this->db->from($this->table);
         $this->db->where('a.po_id', $po_id);
-        $this->db->join($this->join_table,'a.supplier_id=b.vendor_code','left');
+        $this->db->join($this->join_table,'a.supplier_id=b.id','left');
         return $this->db->get()->result();
     }
 
