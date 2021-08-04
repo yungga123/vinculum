@@ -468,7 +468,7 @@ class RequisitionFormController extends CI_Controller {
         $data = [
             'title' => 'Requisition View',
             'results_requisition' => $this->RequisitionFormModel->get_requisition_where($id),
-            'results_req_items' => $this->RequisitionFormModel->get_requisition_items($id)
+            'results_req_items' => $this->RequisitionFormModel->get_requisition_items_pending($id)
         ];
         $this->load->view('requisition_form/requisition_view',$data);
     }

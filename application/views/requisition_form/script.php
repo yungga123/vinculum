@@ -399,7 +399,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                         i = 1;
                         total_price = 0;
 
-                        <?php if ($this->uri->segment(1) == 'requisition-pending'): $blank = "";?>
+                        <?php if ($this->uri->segment(1) == 'requisition-pending' || $this->uri->segment(1) == 'requisition-filed' || $this->uri->segment(1) == 'requisition-discarded'): $blank = "";?>
                             $.each(response.results_pending, function (key, value) {
                                 total_cost = Number(response.results_pending[key].unit_cost) * Number(response.results_pending[key].qty);
                                     
