@@ -295,7 +295,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Hi! Awesome Person</h5>
+        <h5 class="modal-title">Hi <?php echo $this->session->userdata('logged_in')['firstname'] ?>!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
