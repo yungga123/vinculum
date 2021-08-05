@@ -32,7 +32,7 @@ defined('BASEPATH') or die('Access Denied');
 				            		<thead>
 				            			<tr>
 				            				<th>PO ID</th>
-											<th>Supplier ID</th>
+											<th>Supplier Name</th>
 											<th>Date Created</th>
 											<th>Operation</th>
 				            			</tr>
