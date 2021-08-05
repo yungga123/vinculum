@@ -52,7 +52,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           <img src="<?php echo base_url('assets/AdminLTE/') ?>dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Administrator</a>
+          <a href="#" class="d-block">Hi! <?php echo $this->session->userdata('logged_in')['firstname'].' '.$this->session->userdata('logged_in')['lastname'] ?></a>
         </div>
       </div>
 
