@@ -21,4 +21,9 @@ class AccountsModel extends CI_Model {
 		$this->db->where('id', $id);
 		return $this->db->update('accounts', $data);
 	}
+
+	public function updateUserByName($data,$username) {
+		$this->db->where('username', $username);
+		return $this->db->update('accounts', $data);
+	}
 }
