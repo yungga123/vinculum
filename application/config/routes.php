@@ -201,3 +201,6 @@ $route['exportexistingclientsproject'] = 'SalesInquiryController/exportexistingc
 $route['generated-po-list'] = 'POController';
 $route['items-update/(:any)'] = 'POController/Items_PO_Update/$1';
 $route['generate-po/(:any)'] = 'POController/generate_po_view/$1';
+
+//OFFLIMITS PAGE
+$route['offlimits'] = 'LoginController/offlimits_page';

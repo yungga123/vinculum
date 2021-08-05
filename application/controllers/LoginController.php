@@ -53,7 +53,7 @@ class LoginController extends CI_Controller
 		if($result){
 			$sess_array = array();
 			foreach ($result as $row) {
-				$sess_array = $arrayName = array('id' => $row->id, 'username' => $row->username, 'password' => $row->password , 'lastname' => $row->lastname, 'firstname' => $row->firstname, 'middlename' => $row->middlename);
+				$sess_array = $arrayName = array('id' => $row->id, 'username' => $row->username, 'password' => $row->password , 'lastname' => $row->lastname, 'firstname' => $row->firstname, 'middlename' => $row->middlename, 'class' => $row->class);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
 			return true;
@@ -252,6 +252,14 @@ class LoginController extends CI_Controller
 			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
+	}
+
+	public function offlimits_page() {
+		if ($this->session->userdata('logged_in')) {
+			$this->load->view('templates/offlimits');
+		} else {
+			redirect('','refresh');
+		}
 	}
 
 }

@@ -2,41 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<!-- Modal -->
-<div class="modal fade" id="payrollogin" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-		<?php echo form_open('LoginController/payroll_login_validate', ["id" => "form-payroll-validation"]) ?>
-			<div class="modal-header">
-				<h5 class="modal-title">Payrol Login</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="form-group">
-							<h6>Please Enter Passcode:</h6>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="form-group">
-						<input type="password" name="passcode" id="passcode" class="form-control">
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="submit" class="btn btn-success">Enter</button>
-			</div>
-			<?php echo form_close()?>
-		</div>
-	</div>
-</div>
 
 <div class="modal loading-modal">
 	<div class="modal-dialog">
