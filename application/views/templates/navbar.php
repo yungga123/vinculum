@@ -517,7 +517,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				</a>
 				<ul class="nav nav-treeview">
 					<li class="nav-item">
-						<a href="#" class="nav-link<?php echo $li_payroll ?>" data-toggle="modal" data-target="#payrollogin">
+						<a href="<?php echo site_url('payroll') ?>" class="nav-link<?php echo $li_payroll ?>">
 						<i class="nav-icon fas fa-credit-card"></i>
 						<p>
 							Payroll

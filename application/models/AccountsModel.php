@@ -3,7 +3,7 @@
 class AccountsModel extends CI_Model {
 	
 	public function checkUser($username,$password){
-		$this->db->select('id,username,password,lastname,firstname,middlename');
+		$this->db->select('id,username,password,lastname,firstname,middlename,class');
 		$this->db->from('accounts');
 		$this->db->where('username', $username);
 		$this->db->where('password', $password);
