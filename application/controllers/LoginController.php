@@ -53,7 +53,7 @@ class LoginController extends CI_Controller
 		if($result){
 			$sess_array = array();
 			foreach ($result as $row) {
-				$sess_array = $arrayName = array('id' => $row->id, 'username' => $row->username, 'password' => $row->password , 'lastname' => $row->lastname, 'firstname' => $row->firstname, 'middlename' => $row->middlename, 'class' => $row->class);
+				$sess_array = $arrayName = array('id' => $row->id, 'username' => $row->username, 'password' => $row->password , 'lastname' => $row->lastname, 'firstname' => $row->firstname, 'middlename' => $row->middlename, 'class' => $row->class, 'emp_id' => $row->emp_id);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
 			return true;
