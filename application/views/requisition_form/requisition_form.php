@@ -59,12 +59,12 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="requested_by"> Requested By</label>
-                                                    <select type="text" name="requested_by" id="requested_by" class="form-control select2">
+                                                    <select type="text" name="requested_by" id="requested_by" class="form-control">
                                                         <option value="">---Please Select---</option>
 
                                                         <?php foreach ($employees as $row) { ?>
                                                             <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
+                                                                echo ($req_data['requested_by'] == $row->id) ? ' selected' : ' hidden';
                                                             } ?>><?php echo $row->name ?></option>
                                                         <?php } ?>
 
@@ -150,12 +150,14 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label for="requested_by"> Requested By</label>
-                                                        <select type="text" name="requested_by" id="requested_by" class="form-control select2">
+                                                        <select type="text" name="requested_by" id="requested_by" class="form-control">
                                                             <option value="">---Please Select---</option>
 
                                                             <?php foreach ($employees as $row) { ?>
                                                                 <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
                                                                     echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
+                                                                } else {
+                                                                    echo ($this->session->userdata('logged_in')['emp_id'] == $row->id) ? '' : ' hidden';
                                                                 } ?>><?php echo $row->name ?></option>
                                                             <?php } ?>
 
