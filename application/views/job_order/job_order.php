@@ -262,10 +262,10 @@ elseif($form_id="edit-form"){
 
                                     <div class="form-group">
                                         <label for="requestor">Requested By</label>
-                                        <select name="requestor" id="requestor" class="form-control select2" placeholder="" aria-describedby="requestor_help">
+                                        <select name="requestor" id="requestor" class="form-control" placeholder="" aria-describedby="requestor_help">
                                             <option value="">--- Please select ---</option>
                                             <?php foreach ($employees as $row) { ?>
-                                                <option value="<?php echo $row->id ?>"><?php echo $row->name . ' | ' . $row->position . ' | ' . $row->id ?></option>
+                                                <option value="<?php echo $row->id ?>"<?php echo ($this->session->userdata('logged_in')['emp_id'] == $row->id) ? '' : ' hidden' ?>><?php echo $row->name . ' | ' . $row->position . ' | ' . $row->id ?></option>
                                             <?php } ?>
                                         </select>
                                         <small id="requestor_help" class="text-muted">Must be registered first to employee list.</small>
@@ -503,10 +503,10 @@ elseif($form_id="edit-form"){
 
                                     <div class="form-group">
                                         <label for="requestor">Requested By</label>
-                                        <select name="requestor" id="requestor" class="form-control select2" placeholder="" aria-describedby="requestor_help">
+                                        <select name="requestor" id="requestor" class="form-control" placeholder="" aria-describedby="requestor_help">
                                             <option value="">--- Please select ---</option>
                                             <?php foreach ($employees as $row) { ?>
-                                                <option value="<?php echo $row->id ?>" <?php if ($joborder_data_edit_result['joborder_requestedby_edit'] == $row->id) { echo 'selected';} ?> ><?php echo $row->name . ' | ' . $row->position . ' | ' . $row->id ?></option>
+                                                <option value="<?php echo $row->id ?>" <?php if ($joborder_data_edit_result['joborder_requestedby_edit'] == $row->id) { echo 'selected';} else { echo 'hidden';} ?>><?php echo $row->name . ' | ' . $row->position . ' | ' . $row->id ?></option>
                                             <?php } ?>
                                         </select>
                                         <small id="requestor_help" class="text-muted">Must be registered first to employee list.</small>
