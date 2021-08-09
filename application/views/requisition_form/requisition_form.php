@@ -66,7 +66,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                             <option value="<?php echo $row->id ?>" <?php if ($this->uri->segment(1) == 'requisition-update') {
                                                                                                         echo ($req_data['requested_by'] == $row->id) ? ' selected' : ' hidden';
                                                                                                     } ?>><?php echo $row->name ?></option>
-                                                         <?php } ?>
+                                                        <?php } ?>
 
                                                     </select>
                                                 </div>
@@ -154,13 +154,12 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                         <option value="">---Please Select---</option>
 
                                                         <?php foreach ($employees as $row) { ?>
-                                                                <option value="<?php echo $row->id ?>"<?php if ($this->uri->segment(1)=='requisition-update') {
-                                                                    echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
-                                                                } else {
-                                                                    echo ($this->session->userdata('logged_in')['emp_id'] == $row->id) ? '' : ' hidden';
-                                                                } ?>><?php echo $row->name ?></option>
+                                                            <option value="<?php echo $row->id ?>" <?php if ($this->uri->segment(1) == 'requisition-update') {
+                                                                                                        echo ($req_data['requested_by'] == $row->id) ? ' selected' : '';
+                                                                                                    } else {
+                                                                                                        echo ($this->session->userdata('logged_in')['emp_id'] == $row->id) ? '' : ' hidden';
+                                                                                                    } ?>><?php echo $row->name ?></option>
                                                         <?php } ?>
-                                      <?php } ?>
                                                     </select>
                                                 </div>
                                             </div>
@@ -334,8 +333,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
                 </div>
             </div>
         </div>
-</div>
-</section>
+    </section>
 </div>
 
 
