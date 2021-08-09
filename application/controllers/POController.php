@@ -99,11 +99,13 @@ class POController extends CI_Controller
 
             // $date_added = ($row->date_needed != '0000-00-00 00:00:00') ? date_format(date_create($row->date_needed),'M d, Y h:ia') : 'None';
 
+            //EDIT BUTTON
+            //<a href="' . site_url('items-update/' . $row->po_id) . '" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
+
             $sub_array[] = $row->po_id;
             $sub_array[] = $row->name;
             $sub_array[] = $date;
             $sub_array[] = '
-<a href="' . site_url('items-update/' . $row->po_id) . '" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
 <button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po"><i class="fas fa-trash"></i></button>
 <button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items"><i class="fas fa-search"></i></button>
 <a href="' . site_url('generate-po/' . $row->po_id) . '" class="btn btn-xs btn-success" target="_blank"><i class="fas fa-print"></i></a>
