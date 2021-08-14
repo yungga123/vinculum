@@ -518,10 +518,19 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 				<ul class="nav nav-treeview">
 					<li class="nav-item">
 						<a href="<?php echo site_url('payroll') ?>" class="nav-link<?php echo $li_payroll ?>">
-						<i class="nav-icon fas fa-credit-card"></i>
-						<p>
-							Payroll
-						</p>
+							<i class="nav-icon fas fa-credit-card"></i>
+							<p>
+								Payroll
+							</p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('filed-leaves') ?>" class="nav-link<?php echo $leaves ?>">
+							<i class="nav-icon fas fa-user-shield"></i>
+							<p>
+								Filed Leaves
+							</p>
 						</a>
 					</li>
 				</ul>

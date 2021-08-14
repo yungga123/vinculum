@@ -42,7 +42,11 @@ class TechniciansModel extends CI_Model {
 		//select id,concat(firstname,' ',substring(middlename,1,1),'. ',lastname) as name from technicians
 
 		$this->db->select(
-			"id,concat(firstname,' ',substring(middlename,1,1),' ',lastname) as name,
+			"id,
+			firstname,
+			middlename,
+			lastname,
+			concat(firstname,' ',substring(middlename,1,1),' ',lastname) as name,
 			position,
 			birthdate,
 			contact_number,

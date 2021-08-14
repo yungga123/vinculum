@@ -262,4 +262,8 @@ class LoginController extends CI_Controller
 		}
 	}
 
+	public function startpage() {
+		$this->load->view('startpage');
+	}
+
 }

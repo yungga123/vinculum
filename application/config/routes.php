@@ -204,3 +204,10 @@ $route['generate-po/(:any)'] = 'POController/generate_po_view/$1';
 
 //OFFLIMITS PAGE
 $route['offlimits'] = 'LoginController/offlimits_page';
+
+//START PAGE
+$route['start'] = 'LoginController/startpage';
+
+//LEAVEController
+$route['aflaform'] = 'LeaveController';
+$route['filed-leaves'] = 'LeaveController/filed_leaves';
