@@ -15,7 +15,10 @@ else{
             'project_sales_edit' => $row->sales_incharge,
             'project_status_edit' => $row->project_status,
             'project_type_edit' => $row->project_type,
-            'project_branch_edit' => $row->branch
+            'project_branch_edit' => $row->branch,
+            'project_details_edit' => $row->project_details,
+            'project_amount_edit' => $row->project_amount,
+            'project_quotation_ref_edit' => $row->quotation_ref
         ];
     }
 
@@ -70,6 +73,66 @@ else{
 							<div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-6">
+                                    <div class="form-group">
+                                            <p>
+                                                <label for="project_branch">Select Branch</label>
+                                                <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
+                                                <select name="project_branch" class="form-control">
+                                                    <option value="">Please Select Branch Name</option>
+                                                    <?php foreach ($branch_list as $row): ?>
+                                                        <option value="<?php echo $row->branch_id ?>">
+                                                            <?php echo $row->branch_name ?>
+                                                        </option>
+                                                    <?php endforeach ?>
+                                                </select>
+                                            </p>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                             <p>
+                                                <label for="project">Project</label>
+                                                <select id="project" name="project" class="form-control">
+                                                        <option value="">---Please Select---</option>
+                                                        <option>CCTV</option>
+                                                        <option>ACS</option>
+                                                        <option>Time Attendance</option>
+                                                        <option>Gate Barrier</option>
+                                                        <option>PABX</option>
+                                                        <option>PABGM</option>
+                                                        <option>E-Fence</option>
+                                                        <option>Home Alarm</option>
+                                                        <option>Video Intercom</option>
+                                                </select>
+                                            </p>
+                                        </div> 
+                                        <div class="form-group">
+                                             <p>
+                                                <label for="project">Project Details</label>
+                                                <input type="text" name="project_details" class="form-control" placeholder="Enter Project Details">
+                                            </p>
+                                        </div> 
+                                        <div class="form-group">
+                                             <p>
+                                                <label for="project">Project Amount</label>
+                                                <input type="text" name="project_amount" class="form-control" placeholder="Enter Project Amount">
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="project_status" value="none">
+                                    <div class="col-sm-6">
+                                    
+                                        <div class="form-group">
+                                            <p>
+                                                <label for="project_status">Status</label>
+                                                <select name="project_status" class="form-control">
+                                                    <option value="">---Please Select---</option>
+                                                    <option value="50%">50% --- Developing Solution</option>
+                                                    <option value="70%">70% --- Evaluation</option>
+                                                    <option value="90%">90% --- Negotiation</option>
+                                                    <option value="100%">100% --- Booked</option>
+                                                </select>
+                                            </p>
+                                        </div>
                                         <div class="form-group">
                                              <p>
                                                 <label for="project_sales_incharge">Sales Incharge</label>
@@ -89,51 +152,12 @@ else{
                                         </div>
                                         <div class="form-group">
                                              <p>
-                                                <label for="project">Project</label>
-                                                <select id="project" name="project" class="form-control">
-                                                        <option value="">---Please Select---</option>
-                                                        <option>CCTV</option>
-                                                        <option>ACS</option>
-                                                        <option>Time Attendance</option>
-                                                        <option>Gate Barrier</option>
-                                                        <option>PABX</option>
-                                                        <option>PABGM</option>
-                                                        <option>E-Fence</option>
-                                                        <option>Home Alarm</option>
-                                                        <option>Video Intercom</option>
-                                                </select>
-                                            </p>
-                                        </div> 
-                                    </div>
-                                <input type="hidden" name="project_status" value="none">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <p>
-                                                <label for="project_status">Status</label>
-                                                <select name="project_status" class="form-control">
-                                                    <option value="">---Please Select---</option>
-                                                    <option value="50%">50% --- Developing Solution</option>
-                                                    <option value="70%">70% --- Evaluation</option>
-                                                    <option value="90%">90% --- Negotiation</option>
-                                                    <option value="100%">100% --- Booked</option>
-                                                </select>
-                                            </p>
-                                        </div>
-                                        <div class="form-group">
-                                            <p>
-                                                <label for="project_branch">Select Branch</label>
-                                                <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
-                                                <select name="project_branch" class="form-control">
-                                                    <option value="">Please Select Branch Name</option>
-                                                    <?php foreach ($branch_list as $row): ?>
-                                                        <option value="<?php echo $row->branch_id ?>">
-                                                            <?php echo $row->branch_name ?>
-                                                        </option>
-                                                    <?php endforeach ?>
-                                                </select>
+                                                <label for="project">Quotation Reference Number</label>
+                                                <input type="text" name="quotation_ref" class="form-control" placeholder="Enter Project Amount">
                                             </p>
                                         </div>
                                     </div>
+                                    
 					        </div>
                                 <hr>
                                 <div class="row">
@@ -161,7 +185,7 @@ else{
                                         </div>
                                     </div>
                                     <div class="col-sm-1">
-                                    <label for="quotation_vat">Remarks</label>
+                                        <label for="quotation_vat">Remarks</label>
 		                      			<div class="form-check">
 		                        			<label class="form-check-label">
 		                            			<input type="checkbox" class="form-check-input others" name="remarks[]" value="1">
@@ -176,7 +200,7 @@ else{
 						</div>
                         <div class="card-footer">
                             <div class="row float-right">
-                                <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_add_vendor"> <i class="fas fa-plus"></i> Add Project</button>
+                                <button type="submit" class="btn btn-success btn-sm"> <i class="fas fa-plus"></i> Add Project</button>
                             </div>
                         </div>
                     <?php echo form_close() ?>
@@ -196,18 +220,16 @@ else{
 							<div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                             <p>
-                                                <label for="project_sales_incharge">Sales Incharge</label>
-                                                <select name="project_sales_incharge" class="form-control">
-                                                    <?php foreach ($edit_sales_list as $row): ?>
-                                                        <?php if($row->id == "01021415" || $row->id == "PTS09092020" || $row->id =="02021415" || $row->id =="24120518" || $row->id =="PS021021"): ?>
-                                                            <option value="<?php echo $row->id ?>" <?php if ($project_data_result['project_sales_edit'] == $row->id) { echo 'selected';} ?> >
-                                                                    <?php echo $row->id. " -- " .$row->lastname. ", " .$row->firstname. " " .$row->middlename  ?>
-                                                            </option>
-                                                        <?php else: ?>
-                                                        
-                                                        <?php endif ?>
+                                    <div class="form-group">
+                                            <p>
+                                                <label for="project_branch">Select Branch</label>
+                                                <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
+                                                <select name="project_branch" class="form-control">
+                                                    <option value="">Please Select Branch Name</option>
+                                                    <?php foreach ($branch_list as $row): ?>
+                                                        <option value="<?php echo $row->branch_id ?>" <?php if ($project_data_result['project_branch_edit'] == $row->branch_name) { echo 'selected';} ?>>
+                                                            <?php echo $row->branch_name ?>
+                                                        </option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </p>
@@ -229,6 +251,18 @@ else{
                                                 </select>
                                             </p>
                                         </div> 
+                                        <div class="form-group">
+                                             <p>
+                                                <label for="project">Project Details</label>
+                                                <input type="text" name="project_details" class="form-control" placeholder="Enter Project Details" value="<?php echo $project_data_result['project_details_edit'] ?>">
+                                            </p>
+                                        </div> 
+                                        <div class="form-group">
+                                             <p>
+                                                <label for="project">Project Amount</label>
+                                                <input type="text" name="project_amount" class="form-control" placeholder="Enter Project Amount" value="<?php echo number_format($project_data_result['project_amount_edit'],2) ?>">
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -244,17 +278,25 @@ else{
                                             </p>
                                         </div>
                                         <div class="form-group">
-                                            <p>
-                                                <label for="project_branch">Select Branch</label>
-                                                <button type="button" class="btn btn-success btn-sm delete-task-btn float-right" data-toggle="modal" data-target="#modal_add_branch"><i class="fas fa-plus" aria-hidden="true"></i> Add Branch</button>
-                                                <select name="project_branch" class="form-control">
-                                                    <option value="">Please Select Branch Name</option>
-                                                    <?php foreach ($branch_list as $row): ?>
-                                                        <option value="<?php echo $row->branch_id ?>" <?php if ($project_data_result['project_branch_edit'] == $row->branch_name) { echo 'selected';} ?>>
-                                                            <?php echo $row->branch_id." --- ".$row->branch_name ?>
-                                                        </option>
+                                             <p>
+                                                <label for="project_sales_incharge">Sales Incharge</label>
+                                                <select name="project_sales_incharge" class="form-control">
+                                                    <?php foreach ($edit_sales_list as $row): ?>
+                                                        <?php if($row->id == "01021415" || $row->id == "PTS09092020" || $row->id =="02021415" || $row->id =="24120518" || $row->id =="PS021021"): ?>
+                                                            <option value="<?php echo $row->id ?>" <?php if ($project_data_result['project_sales_edit'] == $row->id) { echo 'selected';} ?> >
+                                                                    <?php echo $row->id. " -- " .$row->lastname. ", " .$row->firstname. " " .$row->middlename  ?>
+                                                            </option>
+                                                        <?php else: ?>
+                                                        
+                                                        <?php endif ?>
                                                     <?php endforeach ?>
                                                 </select>
+                                            </p>
+                                        </div>
+                                        <div class="form-group">
+                                             <p>
+                                                <label for="project">Quotation Reference Number</label>
+                                                <input type="text" name="quotation_ref" class="form-control" placeholder="Enter Project Amount" value="<?php echo $project_data_result['project_quotation_ref_edit'] ?>">
                                             </p>
                                         </div>
                                         <input type="hidden" name="project_address" value="none">
@@ -305,8 +347,8 @@ else{
                                         <label for="quotation_vat">Remarks</label>
                                         <div class="form-check">
                                             <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input others" name="remarks[]" value="1" <?php if($row->mark_as_read == 1) { echo 'checked';} ?>>
-                                                    Mark As Done
+                                                <input type="checkbox" class="form-check-input others" name="remarks[]" <?php if($row->mark_as_read == 1) {echo 'checked'; } ?>>
+                                                Mark As Done
                                             </label>
                                         </div>
                                     </div>
@@ -317,7 +359,7 @@ else{
 						</div>
                         <div class="card-footer">
                             <div class="row float-right">
-                                <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modal_add_vendor"> <i class="fas fa-edit"></i> <?php echo $button_title ?></button>
+                                <button type="submit" class="btn btn-success btn-sm"> <i class="fas fa-edit"></i> <?php echo $button_title ?></button>
                             </div>
                         </div>
                     <?php echo form_close() ?>

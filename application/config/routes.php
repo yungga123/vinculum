@@ -139,6 +139,7 @@ $route['printtools'] = 'ToolsController/print_tools';
 $route['tools-pullout'] = 'ToolsController/tools_pullout';
 $route['tool-return-history'] = 'ToolsController/return_history';
 $route['export-excel'] = 'ToolsController/exportTools';
+$route['export-pullout-excel'] = 'ToolsController/exportpulloutTools';
 
 //Service Report Controller
 $route['service-report'] = 'ServiceReportController';
@@ -185,11 +186,13 @@ $route['vendor-update/(:any)'] = 'VendorController/Vendor_Update/$1';
 $route['vendor-add'] = 'VendorController/Vendor_Add';
 
 //Sales Inquiry
-$route['inquiry-tempo-clients'] = 'SalesInquiryController/new_client_list';
-$route['inquiry-existing-clients'] = 'SalesInquiryController/existing_client_list';
+$route['inquiry-tempo-clients/(:any)'] = 'SalesInquiryController/new_client_list/$1';
+$route['inquiry-existing-clients/(:any)'] = 'SalesInquiryController/existing_client_list/$1';
 $route['inquiry-add-project/(:any)'] = 'SalesInquiryController/add_project/$1';
 $route['inquiry-add-existingclient-project/(:any)'] = 'SalesInquiryController/add_existingclient_project/$1';
 $route['inquiry-edit-project/(:any)'] = 'SalesInquiryController/edit_project/$1';
 $route['inquiry-edit-existingclient-project/(:any)'] = 'SalesInquiryController/edit_existingclient_project/$1';
 $route['exportnewclientsproject'] = 'SalesInquiryController/exportnewclientsproject';
 $route['exportexistingclientsproject'] = 'SalesInquiryController/exportexistingclientsproject';
+$route['inquiry-archive-projects'] = 'SalesInquiryController/archive_projects_list';
+$route['inquiry-archive-project-confirmation/(:any)'] = 'SalesInquiryController/archive_project_confirmation/$1';

@@ -27,6 +27,26 @@ class ToolsModel extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function export_pullout_tools() {
+
+		$this->db->select([
+			'a.tool_code',
+			'd.model',
+			'd.description',
+			'a.quantity',
+			'b.lastname',
+			'b.firstname',
+			'b.middlename',
+			'c.CompanyName'
+		]);
+		$this->db->from('tools_pullout as a');
+		$this->db->join('technicians as b','a.assigned_personnel=b.id','left');
+		$this->db->join('customer_vt as c','a.customer=c.CustomerID','left');
+		$this->db->join('tools as d','a.tool_code=d.code','left');
+		$this->db->where('a.is_deleted', 0);
+		return $this->db->get();
+	}
+
 	public function select_where_id($id) {
 		$this->db->where('code',$id);
 		return $this->db->get('tools')->result();
