@@ -85,9 +85,11 @@ class POController extends CI_Controller
         }
     }
 
-    public function get_generated_po_list()
+    public function get_generated_po_list($po_status)
     {
-        $fetch_data = $this->POModel->PO_datatable();
+
+        $fetch_data = $this->POModel->PO_datatable($po_status);
+
         $data = array();
 
         foreach ($fetch_data as $row) {
@@ -106,18 +108,26 @@ class POController extends CI_Controller
             $sub_array[] = $row->po_id;
             $sub_array[] = $row->name;
             $sub_array[] = $date;
-            $sub_array[] = '
+            if ($po_status == 'pending') {
+                $sub_array[] = '
+<button type="button" class="btn btn-success text-bold btn-xs btn_po_id" data-toggle="modal" data-target="#approved-po"><i class="fas fa-check"></i></button>
+<button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po"><i class="fas fa-trash"></i></button>
+<button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items"><i class="fas fa-search"></i></button>
+';
+            } else {
+                $sub_array[] = '
 <button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po"><i class="fas fa-trash"></i></button>
 <button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items"><i class="fas fa-search"></i></button>
 <a href="' . site_url('generate-po/' . $row->po_id) . '" class="btn btn-xs btn-success" target="_blank"><i class="fas fa-print"></i></a>
 ';
+            }
 
             $data[] = $sub_array;
         }
         $output = array(
             "draw"    =>    intval($_POST["draw"]),
-            "recordsTotal" => $this->POModel->get_all_po_form_data(),
-            "recordsFiltered" => $this->POModel->filter_po_form_data(),
+            "recordsTotal" => $this->POModel->get_all_po_form_data($po_status),
+            "recordsFiltered" => $this->POModel->filter_po_form_data($po_status),
             "data" => $data
         );
 
@@ -166,7 +176,8 @@ class POController extends CI_Controller
                     } else {
                         $this->POModel->insert_po([
                             'generated_date' => $generated_date,
-                            'supplier_id' => $row->supplier
+                            'supplier_id' => $row->supplier,
+                            'po_status' => "pending"
                         ]);
                         $supplier_id = $row->supplier;
                     }
@@ -191,7 +202,30 @@ class POController extends CI_Controller
     {
         $results = $this->POModel->get_po_items($id);
 
-        $json_data['results'] = $results;
+        $data = array();
+        $total_price = 0;
+
+        foreach($results as $row){
+            $sub_array = array();
+            $total_cost = 0;
+            
+            $total_cost = $row->qty * $row->unit_cost;
+            $total_price = $total_price + $total_cost;
+
+            $sub_array['description'] = $row->description;
+            $sub_array['qty'] = $row->qty;
+            $sub_array['unit'] = $row->unit;
+            $sub_array['unit_cost'] = number_format($row->unit_cost, 2);
+            $sub_array['description'] = $row->description;
+            $sub_array['total_cost'] = number_format($total_cost, 2);
+            $sub_array['date_needed'] = $row->date_needed;
+            $sub_array['purpose'] = $row->purpose;
+            $sub_array['total_price'] = number_format($total_price, 2);
+
+            $data[] = $sub_array;
+        }
+
+        $json_data['results'] = $data;
 
         echo json_encode($json_data);
     }
@@ -349,5 +383,74 @@ class POController extends CI_Controller
             $validate['errors'] = validation_errors();
         }
         echo json_encode($validate);
+    }
+
+    public function approved_po()
+    {
+        $validate = [
+            'success' => false,
+            'errors' => ''
+        ];
+
+        $rules = [
+
+            [
+                'field' => 'po_id',
+                'label' => 'PO ID',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please select PO'
+                ]
+            ],
+            [
+                'field' => 'approved_po_passcode',
+                'label' => 'Password',
+                'rules' => 'trim|callback_confirmreq_pw'
+            ]
+
+        ];
+
+        $this->form_validation->set_error_delimiters('<p>• ', '</p>');
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+            //$this->update_item_requisition_validate();
+
+            $this->POModel->update_approved_po($this->input->post('po_id'), [
+                'po_status' => 'approved'
+            ]);
+        } else {
+            $validate['errors'] = validation_errors();
+        }
+        echo json_encode($validate);
+    }
+
+    public function fetch_pending_po()
+    {
+        $this->get_generated_po_list('pending');
+    }
+
+    public function fetch_approved_po()
+    {
+        $this->get_generated_po_list('approved');
+    }
+
+    function confirmreq_pw()
+    {
+
+        if ($this->input->post('approved_po_passcode') != "") {
+            if ($this->input->post('approved_po_passcode') == "vinculumquery") {
+                return true;
+            } else {
+                $this->form_validation->set_message('confirmreq_pw', 'Invalid Password.');
+                return false;
+            }
+        } else {
+            $this->form_validation->set_message('confirmreq_pw', 'Password Required.');
+            return false;
+        }
     }
 }
