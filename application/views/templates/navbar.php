@@ -221,7 +221,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 						</ul>
 					</li>
 					<li class="nav-item">
-						<a href="<?php echo site_url('generated-po-list')?>" class="nav-link<?php echo $li_generated_po ?>">
+						<a href="<?php echo site_url('generated-po-list')?>/pending" class="nav-link<?php echo $li_generated_po ?>">
 						<i class="nav-icon fas fa-file"></i>
 						<p>Generated P.O</p>
 							<span class="badge badge-danger"> NEW</span>
