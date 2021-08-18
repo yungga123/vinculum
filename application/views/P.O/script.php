@@ -120,7 +120,7 @@ else{
                         me[0].reset();
 
                         window.setTimeout(function() {
-                            window.location = '<?php echo site_url('generated-po-list') ?>';
+                            window.location = '<?php echo site_url('generated-po-list') ?>/pending';
                         }, 1000);
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
@@ -171,7 +171,11 @@ else{
                         $(':submit').removeAttr('disabled', 'disabled');
                         $('.loading-modal').modal('hide');
                         toastr.success("Success! PO Items was updated!");
-                        window.location = '<?php echo site_url('generated-po-list') ?>';
+                        <?php if($this->uri->segment(2) == 'pending'): ?>
+                                window.location = '<?php echo site_url('generated-po-list') ?>/pending';
+                                <?php else: ?>
+                                window.location = '<?php echo site_url('generated-po-list') ?>/approved';
+                            <?php endif ?>
                         //me[0].reset();
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
@@ -239,7 +243,11 @@ else{
                         toastr.success("PO Deleted!");
                         me[0].reset();
                         window.setTimeout(function() {
-                            window.location = '<?php echo site_url('generated-po-list') ?>';
+                            <?php if($this->uri->segment(2) == 'pending'): ?>
+                                window.location = '<?php echo site_url('generated-po-list') ?>/pending';
+                                <?php else: ?>
+                                window.location = '<?php echo site_url('generated-po-list') ?>/approved';
+                            <?php endif ?>
                         }, 1000);
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
