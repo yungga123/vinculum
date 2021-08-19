@@ -187,7 +187,8 @@ class SalesQuotationController extends CI_Controller {
 		];
 		
 		return $rules;
-}
+	}
+
     public function index() {
         if($this->session->userdata('logged_in')) {
 			$this->load->helper('site_helper');
@@ -196,6 +197,7 @@ class SalesQuotationController extends CI_Controller {
 			$data['sales_quotation_status'] = ' menu-open';
 			$data['sales_quotation_href'] = ' active';
 			$data['make_quotation'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 
 			$this->load->model('TechniciansModel');
 			$results2 = $this->SalesQuotationModel->getSales();
@@ -221,6 +223,7 @@ class SalesQuotationController extends CI_Controller {
 			$data['sales_quotation_status'] = ' menu-open';
 			$data['sales_quotation_href'] = ' active';
 			$data['sales_quotation_list'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 
     		$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -384,6 +387,7 @@ class SalesQuotationController extends CI_Controller {
 			$data['sales_quotation_status'] = ' menu-open';
 			$data['sales_quotation_href'] = ' active';
 			$data['make_quotation'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 
 			$data['quotation_details'] = $this->SalesQuotationModel->GetSalesQuotation($quotation_ref);
 			$data['quotation_items'] = $this->SalesQuotationModel->GetSalesQuotationItem($quotation_ref);

@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
 ?>
+
 	<!-- Full Calendar (Schedules) -->
 	<?php if ($this->uri->segment(1)=='schedules'): ?>
 	<script>
@@ -9,7 +10,6 @@ defined('BASEPATH') or die('Access Denied');
 
 	  	//Schedule Today Modal for Schedules
 	  	$('.schedule-today-info').modal();
-
 
 	    /* initialize the external events
 	     -----------------------------------------------------------------*/
@@ -49,13 +49,14 @@ defined('BASEPATH') or die('Access Denied');
 	    var calendarEl = document.getElementById('calendar');
 
 	    var calendar = new Calendar(calendarEl, {
-	      plugins: [ 'bootstrap', 'interaction', 'dayGrid', 'timeGrid' ],
-	      header    : {
-	        left  : 'prev,next today',
-	        center: 'title',
-	        right : 'dayGridMonth,timeGridWeek,timeGridDay'
-	      },
-	      events: [
+			headerToolbar: {
+				left  : 'prev,next today',
+				center: 'title',
+				right : 'dayGridMonth,timeGridWeek,timeGridDay'
+			},
+      		themeSystem: 'bootstrap',
+			displayEventTime: false,
+	      	events: [
 	      	<?php foreach ($results as $row) { ?>
 	      		{
 	      		  id 			: '<?php echo $row->ID ?>',

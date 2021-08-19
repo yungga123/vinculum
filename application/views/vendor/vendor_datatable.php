@@ -29,6 +29,7 @@ defined('BASEPATH') or die('Access Denied');
 								<table id="vendor_table" class="table table-bordered table-hover" style="width: 100%">
 				            		<thead>
 				            			<tr>
+											<th>ID</th>
 				            				<th>Vendor Code</th>
 											<th>Name</th>
 											<th>Address</th>
@@ -329,7 +330,7 @@ defined('BASEPATH') or die('Access Denied');
                             <tr>
 								<th>No.</th>
                                 <th>Brand Name</th>
-                                <th>Solutions</th>
+                                <th>Products</th>
 								<th>Contact Person</th>
 								<th>Contact Number</th>
 								<th>Email Address</th>

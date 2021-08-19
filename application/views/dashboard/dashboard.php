@@ -274,18 +274,44 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3><?php echo $count_joborder_filed ?></h3>
+              <h3><?php echo $count_jo_phone_support ?></h3>
 
-              <p>Filed Job Orders</p>
+              <p>Phone Support</p>
             </div>
             <div class="icon">
-              <i class="fas fa-archive"></i>
+              <i class="fas fa-phone"></i>
             </div>
-            <a href="<?php echo site_url('joborder-list/filed') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?php echo site_url('joborder-list/pending') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
       </div>
 
     </div>
   </section>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="inspirationalModal" tabindex="-1" role="dialog" aria-labelledby="inspirationalModalId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hi <?php echo $this->session->userdata('logged_in')['firstname'] ?>!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <?php if ($sock = @fsockopen('www.google.com', 80)) { ?>
+          <p>"<?php echo $random_quote->content ?>"</p>
+          <p class="text-bold">- <?php echo $random_quote->author ?></p>
+        <?php } else { ?>
+          <p>SADLY! THERE IS NO INTERNET, I CAN'T SHOW YOU SOME INSPIRATIONAL MESSAGE FOR NOW. :(</p>
+        <?php } ?>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success text-bold" data-dismiss="modal">THANKS <i class="fas fa-kiss-wink-heart"></i></button>
+      </div>
+    </div>
+  </div>
 </div>

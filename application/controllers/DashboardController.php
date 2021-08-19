@@ -15,6 +15,8 @@ class DashboardController extends CI_Controller {
 			$this->load->model('ToolsModel');
 			$this->load->model('CovidSurveyModel');
 			$this->load->model('JobOrderModel');
+			
+			$api_url = 'https://api.quotable.io/random';
 
 			$data = html_variable();
 			$data['title'] = 'Dashboard';
@@ -31,8 +33,12 @@ class DashboardController extends CI_Controller {
 			$data['count_ctc'] = $this->CovidSurveyModel->get_all_covidsurvey_data();
 			$data['count_joborder_pending'] = $this->JobOrderModel->count_joborder('');
 			$data['count_joborder_accepted'] = $this->JobOrderModel->count_joborder('Accepted');
-			$data['count_joborder_filed'] = $this->JobOrderModel->count_joborder('Filed');
-			
+			$data['count_jo_phone_support'] = $this->JobOrderModel->count_jo_phone_support();
+			//$data['count_joborder_filed'] = $this->JobOrderModel->count_joborder('Filed');
+
+			if ($sock = @fsockopen('www.google.com', 80)) {
+				$data['random_quote'] = json_decode(file_get_contents($api_url));
+			}
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('dashboard/dashboard');

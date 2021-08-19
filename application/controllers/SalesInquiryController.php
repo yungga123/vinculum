@@ -79,8 +79,8 @@ class SalesInquiryController extends CI_Controller
 		return $rules;
 	}
 
-	function validation_rules_project()
-	{
+
+	function validation_rules_project(){
 		$rules = [
 			[
 				'field' => 'project_sales_incharge',
@@ -146,6 +146,7 @@ class SalesInquiryController extends CI_Controller
 			$data['inquiry_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['category'] = 'New_Clients';
 
 			$this->load->view('templates/header', $data);
@@ -250,7 +251,6 @@ class SalesInquiryController extends CI_Controller
 <button type="button" class="btn btn-success btn-xs btn-block btn_client_approved" data-toggle="modal" data-target="#approved-tempo-client"><i class="fas fa-trash"></i> Approved Client</button>
 <button type="button" class="btn btn-danger btn-xs btn-block btn_client_del" data-toggle="modal" data-target="#delete-tempo-client"><i class="fas fa-trash"></i> Delete Client</button>
 ';
-
 			$data[] = $sub_array;
 		}
 
@@ -356,6 +356,7 @@ class SalesInquiryController extends CI_Controller
 			$data['inquiry_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['new_client_id'] = $id;
 			$data['form_id'] = 'newclient';
 			$data['results'] = $this->SalesInquiryModel->get_sales_list();
@@ -384,6 +385,7 @@ class SalesInquiryController extends CI_Controller
 			$data['inquiry_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $id;
 			$data['form_id'] = "edit_newclient";
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
@@ -423,6 +425,7 @@ class SalesInquiryController extends CI_Controller
 			$data['inquiry_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $project_id;
 			$data['form_id'] = "edit_existingclient";
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
@@ -878,6 +881,7 @@ class SalesInquiryController extends CI_Controller
 			$data['inquiry_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['category'] = 'existing_client';
 
 			$this->load->view('templates/header', $data);
@@ -900,6 +904,7 @@ class SalesInquiryController extends CI_Controller
 			$data['inquiry_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
+			$data['ul_sales_tree'] = ' active';
 			$data['new_client_id'] = $id;
 			$data['form_id'] = 'Existing_Clients';
 			$data['results'] = $this->SalesInquiryModel->get_sales_list();

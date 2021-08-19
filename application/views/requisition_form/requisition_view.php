@@ -140,7 +140,14 @@ foreach ($results_requisition as $row) {
                         <td><?php echo $row->unit ?></td>
                         <td><?php echo number_format($row->unit_cost,2) ?></td>
                         <td><?php echo number_format($row->qty * $row->unit_cost,2) ?></td>
-                        <td><?php echo $row->supplier ?></td>
+                        <td>
+                            <?php foreach($results_supplier as $row2){
+                                if($row->supplier  == $row->id){
+                                    $supplier_name =  $row->name;
+                                }
+                            } ?>
+                            <?php echo $supplier_name ?>
+                        </td>
                         <td class="text-center"><?php echo ($row->date_needed != '0000-00-00') ? date_format(date_create($row->date_needed),'m/d/Y') : '' ?></td>
                         <td><?php echo $row->purpose ?></td>
                     </tr>

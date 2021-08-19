@@ -164,6 +164,8 @@ $route['payroll-delete/(:any)'] = 'PayrollController/deletePayroll/$1';
 $route['joborder'] = 'JobOrderController';
 $route['joborder-list/(:any)'] = 'JobOrderController/job_order_list/$1';
 $route['print-joborder/(:any)'] = 'JobOrderController/print_joborder/$1';
+$route['edit-pending-joborder/(:any)'] = 'JobOrderController/edit_pending_joborder/$1';
+$route['edit-accepted-joborder/(:any)'] = 'JobOrderController/edit_accepted_joborder/$1';
 
 //CovidSurveyController
 $route['covidsurvey'] = 'CovidSurveyController';
@@ -179,6 +181,7 @@ $route['requisition-view/(:any)'] = 'RequisitionFormController/requisition_view/
 $route['requisition-accepted'] = 'RequisitionFormController/accepted_requisitions';
 $route['requisition-filed'] = 'RequisitionFormController/filed_requisitions';
 $route['requisition-discarded'] = 'RequisitionFormController/discarded_requisitions';
+$route['requisition-generate-po'] = 'RequisitionFormController/requistion_generate_po';
 
 //Vendor
 $route['vendor-database'] = 'VendorController';
@@ -196,3 +199,11 @@ $route['exportnewclientsproject'] = 'SalesInquiryController/exportnewclientsproj
 $route['exportexistingclientsproject'] = 'SalesInquiryController/exportexistingclientsproject';
 $route['inquiry-archive-projects'] = 'SalesInquiryController/archive_projects_list';
 $route['inquiry-archive-project-confirmation/(:any)'] = 'SalesInquiryController/archive_project_confirmation/$1';
+
+//Generated PO
+$route['generated-po-list/(:any)'] = 'POController/index/$1';
+$route['items-update/(:any)'] = 'POController/Items_PO_Update/$1';
+$route['generate-po/(:any)'] = 'POController/generate_po_view/$1';
+
+//OFFLIMITS PAGE
+$route['offlimits'] = 'LoginController/offlimits_page';

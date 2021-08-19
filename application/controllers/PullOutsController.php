@@ -15,6 +15,7 @@ class PullOutsController extends CI_Controller {
 			$data['title'] = 'Scanned Item';
 			$data['items_menu_status'] = ' menu-open';
 			$data['items_menu_display'] = ' block';
+			$data['ul_items_tree'] = ' active';
 			$data['pullout_items'] = ' active';
 			$data['ul_items'] = ' active';
 			$data['customer_results'] = $customer_results;
@@ -41,6 +42,7 @@ class PullOutsController extends CI_Controller {
 			$data['title'] = 'Scanned Item';
 			$data['items_menu_status'] = ' menu-open';
 			$data['items_menu_display'] = ' block';
+			$data['ul_items_tree'] = ' active';
 			$data['pullout_scan'] = ' active';
 			$data['ul_items'] = ' active';
 			$data['results'] = $results;
@@ -254,6 +256,7 @@ class PullOutsController extends CI_Controller {
 			$pullout_final_price = $this->PullOutsModel->pullouts_final_price();
 			$data = html_variable();
 			$data['title'] = 'Pending Pullouts';
+			$data['ul_items_tree'] = ' active';
 			$data['results'] = $results;
 			$data['pullout_total_price'] = $pullout_total_price;
 			$data['pullout_final_price'] = $pullout_final_price;
@@ -519,6 +522,7 @@ class PullOutsController extends CI_Controller {
 			$data['items_menu_display'] = ' block';
 			$data['listof_pullouts'] = ' active';
 			$data['ul_items'] = ' active';
+			$data['ul_items_tree'] = ' active';
 			$data['results_confirm_pullout'] = $results_confirm_pullout;
 			$data['start_date'] = $current_date;
 			$data['end_date'] = $current_date;

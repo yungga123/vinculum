@@ -53,7 +53,7 @@ class LoginController extends CI_Controller
 		if($result){
 			$sess_array = array();
 			foreach ($result as $row) {
-				$sess_array = $arrayName = array('id' => $row->id, 'username' => $row->username, 'password' => $row->password , 'lastname' => $row->lastname, 'firstname' => $row->firstname, 'middlename' => $row->middlename);
+				$sess_array = $arrayName = array('id' => $row->id, 'username' => $row->username, 'password' => $row->password , 'lastname' => $row->lastname, 'firstname' => $row->firstname, 'middlename' => $row->middlename, 'class' => $row->class, 'emp_id' => $row->emp_id);
 				$this->session->set_userdata('logged_in', $sess_array);
 			}
 			return true;
@@ -180,6 +180,86 @@ class LoginController extends CI_Controller
 		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
 		redirect('');
+	}
+
+	function confirm_user($username) {
+		$this->load->model('AccountsModel');
+		$password = $this->input->post('change_old_pass');
+		$result = $this->AccountsModel->checkUser($username,$password);
+
+		if ($result) {
+			return true;
+		} else {
+			$this->form_validation->set_message('confirm_user', 'Username or Password is invalid.');
+			return false;
+		}
+
+	}
+
+	function change_pass_validate() {
+		$rules = [
+			[
+				'field' => 'change_user',
+				'label' => 'Username',
+				'rules' => 'trim|required|max_length[20]|min_length[4]|callback_confirm_user',
+				'errors' => [
+					'required' => 'Please provide Username',
+					'alpha_numeric' => 'Username only provides alpha numeric characters.'
+				]
+			],
+			[
+				'field' => 'change_old_pass',
+				'label' => 'Old Password',
+				'rules' => 'trim|required|max_length[20]|alpha_dash|min_length[4]',
+				'errors' => [
+					'required' => 'Please provide Old Password.'
+				]
+			],
+			[
+				'field' => 'change_new_pass',
+				'label' => 'New Password',
+				'rules' => 'trim|required|max_length[20]|alpha_dash|min_length[4]|differs[change_old_pass]',
+				'errors' => [
+					'required' => 'Please provide New Password.',
+					'differs' => 'Old and New Password must not be the same.'
+				]
+			],
+			[
+				'field' => 'change_new_pass_confirm',
+				'label' => 'Confirm New Password',
+				'rules' => 'trim|required|max_length[20]|alpha_dash|min_length[4]|matches[change_new_pass]',
+				'errors' => [
+					'required' => 'Please provide Confirm New Password.',
+					'matches' => 'Password does not match.'
+				]
+			]
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ','</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			$this->load->model('AccountsModel');
+
+			$this->AccountsModel->updateUserByName([
+				'password' => $this->input->post('change_new_pass')
+			],$this->input->post('change_user'));
+		} 
+		else {
+			$validate['errors'] = validation_errors();
+		}
+		echo json_encode($validate);
+	}
+
+	public function offlimits_page() {
+		if ($this->session->userdata('logged_in')) {
+			$this->load->view('templates/offlimits');
+		} else {
+			redirect('','refresh');
+		}
 	}
 
 }

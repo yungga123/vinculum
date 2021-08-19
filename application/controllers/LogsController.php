@@ -17,6 +17,7 @@ class LogsController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Item History';
 			$data['history'] = ' active';
+			$data['ul_items_tree'] = ' active';
 			$data['specific'] = FALSE;
 			$data['results'] = $result_register_history;
 			$data['results2'] = $result_delete_history;

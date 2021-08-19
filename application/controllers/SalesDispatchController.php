@@ -16,6 +16,7 @@ class SalesDispatchController extends CI_Controller {
 			$data['sales_menu_status'] = ' menu-open';
 			$data['Generate_sales_dispatch'] = ' active';
 			$data['sales_dispatch'] = ' active';
+			$data['ul_project_tree'] = ' active';
 
 			$data['results'] = $results;
 
@@ -29,6 +30,7 @@ class SalesDispatchController extends CI_Controller {
 			redirect('', 'refresh');
 		}
 	}
+	
 	public function sales_dispatch_table() {
 		$this->load->helper('site_helper');
 		$this->load->model('SalesRepModel');
@@ -40,6 +42,7 @@ class SalesDispatchController extends CI_Controller {
 			$data['sales_menu_status'] = ' menu-open';
 			$data['sales_dispatch_list'] = ' active';
 			$data['sales_dispatch'] = ' active';
+			$data['ul_project_tree'] = ' active';
 			$data['sales_rep'] = $results;
 
 

@@ -90,6 +90,7 @@ class ToolsController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Tools';
 			$data['ul_tools'] = ' active';
+			$data['ul_items_tree'] = ' active';
 			$data['result_customers'] = $this->CustomersModel->getVtCustomersByID();
 			$data['result_technicians'] = $this->TechniciansModel->getTechniciansByName();
 			$this->load->view('templates/header',$data);
@@ -143,6 +144,7 @@ class ToolsController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Add Tools';
 			$data['ul_tools'] = ' active';
+			$data['ul_items_tree'] = ' active';
 			$data['listof_tools'] = ' active';
 			$data['ul_tools_treeview'] = ' menu-open';
 
@@ -384,6 +386,7 @@ class ToolsController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Tools Pullout';
 			$data['ul_tools'] = ' active';
+			$data['ul_items_tree'] = ' active';
 			$data['results_tools_pullout'] = $this->ToolsModel->tools_pullout_select();
 			$data['results_technicians'] = $this->TechniciansModel->getTechnicians();
 			$data['results_customers'] = $this->CustomersModel->getVtCustomersByID();
@@ -583,6 +586,7 @@ class ToolsController extends CI_Controller {
 			$data = html_variable();
 			$data['title'] = 'Tools Return History';
 			$data['ul_tools'] = ' active';
+			$data['ul_items_tree'] = ' active';
 			$data['customers'] = $this->CustomersModel->getVtCustomersByID();
 			$data['technicians'] = $this->TechniciansModel->getTechniciansByName();
 			$this->load->view('templates/header',$data);

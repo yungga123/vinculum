@@ -235,7 +235,7 @@ class PayrollController extends CI_Controller {
     }
 
     public function index() {
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('logged_in')['class'] == 1) {
 
             $this->load->model('TechniciansModel');
             $technicians = $this->TechniciansModel->getTechniciansByStatus();
@@ -244,6 +244,7 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Computation';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['technicians'] = $technicians;
             $data['payroll'] = $this->payroll();
 
@@ -254,7 +255,7 @@ class PayrollController extends CI_Controller {
             $this->load->view('payroll/script');
             
         } else {
-            redirect('','refresh');
+            redirect('offlimits');
         }
     }
 
@@ -346,13 +347,14 @@ class PayrollController extends CI_Controller {
     }
 
     public function payroll_table() {
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('logged_in')['class'] == 1) {
 
             $this->load->helper('site_helper');
 
             $data = html_variable();
             $data['title'] = 'Payroll Table';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['start_date'] = '';
             $data['end_date'] = '';
 
@@ -363,7 +365,7 @@ class PayrollController extends CI_Controller {
             $this->load->view('payroll/script');
             
         } else {
-            redirect('','refresh');
+            redirect('offlimits');
         }
     }
 
@@ -425,7 +427,7 @@ class PayrollController extends CI_Controller {
     }
 
     public function payslip_view($id) {
-        if($this->session->userdata('logged_in')) {
+        if($this->session->userdata('logged_in')['class'] == 1) {
             $results = $this->PayrollModel->select_payroll($id);
 
             $payroll = $this->payroll();
@@ -495,12 +497,12 @@ class PayrollController extends CI_Controller {
 			$this->load->view('payroll/payroll_view',$data);
 
 		} else {
-			redirect('', 'refresh');
+			redirect('offlimits');
 		}
     }
 
     public function update_payroll($id) {
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('logged_in')['class'] == 1) {
 
             $this->load->model('TechniciansModel');
             $technicians = $this->TechniciansModel->getTechniciansByStatus();
@@ -574,6 +576,7 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Computation';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['technicians'] = $technicians;
             $data['payroll'] = $payroll;
 
@@ -586,7 +589,7 @@ class PayrollController extends CI_Controller {
             $this->load->view('payroll/script');
             
         } else {
-            redirect('','refresh');
+            redirect('offlimits');
         }
     }
 
@@ -666,7 +669,7 @@ class PayrollController extends CI_Controller {
 
     public function payroll_table_filter() {
 
-        if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('logged_in')['class'] == 1) {
 
             $start_date = $this->input->post('cutoff_filter_start');
             $end_date = $this->input->post('cutoff_filter_end');
@@ -676,6 +679,7 @@ class PayrollController extends CI_Controller {
             $data = html_variable();
             $data['title'] = 'Payroll Table';
             $data['li_payroll'] = ' active';
+            $data['ul_hr_tree'] = ' active';
             $data['payroll_filter'] = $this->PayrollModel->select_payroll_filter($start_date,$end_date);
             $data['start_date'] = $start_date;
             $data['end_date'] = $end_date;
@@ -686,12 +690,12 @@ class PayrollController extends CI_Controller {
             $this->load->view('payroll/script');
             
         } else {
-            redirect('','refresh');
+            redirect('offlimits');
         }
     }
 
     public function payslip_print($start_date,$end_date) {
-        if($this->session->userdata('logged_in')) {
+        if($this->session->userdata('logged_in')['class'] == 1) {
 
 
             $results = $this->PayrollModel->select_payroll_filter($start_date,$end_date);
@@ -705,12 +709,12 @@ class PayrollController extends CI_Controller {
 			$this->load->view('payroll/payroll_print',$data);
 
 		} else {
-			redirect('', 'refresh');
+			redirect('offlimits');
 		}
     }
 
     public function payslip_print_all() {
-        if($this->session->userdata('logged_in')) {
+        if($this->session->userdata('logged_in')['class'] == 1) {
 
 
             $results = $this->PayrollModel->select_payroll_all();
@@ -724,7 +728,7 @@ class PayrollController extends CI_Controller {
 			$this->load->view('payroll/payroll_print',$data);
 
 		} else {
-			redirect('', 'refresh');
+			redirect('offlimits');
 		}
     }
 

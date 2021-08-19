@@ -17,13 +17,20 @@ class JobOrderModel extends CI_Model {
     }
 
     public function update_joborder_scope($id,$data) {
-        $this->db->where('job_order_id',$id);
+        $this->db->where('id',$id);
         $this->db->update('job_order_scope',$data);
     }
 
     public function count_joborder($where) {
         $this->db->where('decision',$where);
         $this->db->where('is_deleted',0);
+        return $this->db->count_all_results('job_order');
+    }
+
+    public function count_jo_phone_support() {
+        $this->db->where('jo_status','phone support');
+        $this->db->where('is_deleted',0);
+        $this->db->where('decision','');
         return $this->db->count_all_results('job_order');
     }
 
@@ -56,6 +63,8 @@ class JobOrderModel extends CI_Model {
                 'd.middlename',
                 'a.under_warranty',
                 'a.remarks',
+                'a.jo_status',
+                'a.pic',
                 'a.is_deleted',
                 'b.CompanyName',
                 'b.ContactPerson',
@@ -100,6 +109,8 @@ class JobOrderModel extends CI_Model {
             'd.middlename',
             'a.under_warranty',
             'a.remarks',
+            'a.jo_status',
+            'a.pic',
             'a.is_deleted',
             'b.CompanyName',
             'b.ContactPerson',
@@ -133,6 +144,7 @@ class JobOrderModel extends CI_Model {
             'a.is_deleted',
             'a.under_warranty',
             'a.remarks',
+            'a.pic',
             'b.CompanyName',
             'b.ContactPerson',
             'c.id',
@@ -171,6 +183,7 @@ class JobOrderModel extends CI_Model {
                 $this->db->or_like("a.requested_by", $_POST["search"]["value"]);
                 $this->db->or_like("a.under_warranty", $_POST["search"]["value"]);
                 $this->db->or_like("a.remarks", $_POST["search"]["value"]);
+                $this->db->or_like("a.pic", $_POST["search"]["value"]);
                 $this->db->or_like("b.CompanyName", $_POST["search"]["value"]);
                 $this->db->or_like("b.ContactPerson", $_POST["search"]["value"]);
                 $this->db->or_like("c.id", $_POST["search"]["value"]);
@@ -224,6 +237,45 @@ class JobOrderModel extends CI_Model {
             $this->db->where('a.is_deleted',0);
             return $this->db->count_all_results();
         }
+
+        public function get_job_order_data($joborder_id) {
+            $this->db->select('*');
+            $this->db->from('job_order');
+            $this->db->where('id',$joborder_id);
+            return $this->db->get()->result();
+        }
+
+        public function get_job_order_scope($joborder_id) {
+            $this->db->select('*');
+            $this->db->from('job_order_scope');
+            $this->db->where('job_order_id',$joborder_id);
+            return $this->db->get()->result();
+        }
+
+        public function joborder_scheduled_data(){
+        $ITposition = 'Field IT Support';
+        $ENGRposition = 'TECHNICAL SUPPORT ENGINEER';
+        $IITposition = 'Internal IT Support';
+        $ITHeadposition = 'IT Support Head';
+		
+		$this->db->select("*");
+		$this->db->from('technicians');
+		$this->db->where('position',$ITposition);
+        $this->db->or_where('position',$ENGRposition);
+        $this->db->or_where('position',$IITposition);
+        $this->db->or_where('position',$ITHeadposition);
+		return $this->db->get()->result();
+
+        }
+
+        public function pic_data($id){
+            $this->db->select("*");
+            $this->db->from('technicians');
+            $this->db->where('id',$id);
+            return $this->db->get()->result();
+    
+            }
+
     //*****************end*********************
     
 }

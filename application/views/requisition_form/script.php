@@ -42,7 +42,8 @@ if ($this->uri->segment(1) == 'requisition-pending') {
 
             var newfield = $('.add-item:last').clone();
             newfield.find('input').val('');
-
+            newfield.find('select').val('');
+            
             // Add after last <div class='input-form'>
             $(newfield).insertAfter(".add-item:last");
             });
@@ -200,6 +201,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                             $(':submit').removeAttr('disabled','disabled');
                             $('.loading-modal').modal('hide');
                             toastr.success("Success! Item Request was updated!");
+                            $('.btn_req_accept').removeAttr('disabled');
                             //me[0].reset();
                         } else {
                             $(':submit').removeAttr('disabled','disabled');
@@ -212,7 +214,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                 });
             });
 
-            //Form Accept Item Requests
+
             $('#form-accept-req').submit(function(e) {
                 e.preventDefault();
                 
@@ -397,35 +399,34 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                         $('#req_total_price').empty();
                         i = 1;
                         total_price = 0;
-                        $.each(response.results, function (key, value) {
-                            total_cost = Number(response.results[key].unit_cost) * Number(response.results[key].qty);
 
-                            $('#tbody-reqitems').append('<tr>' +
-                                '<td>' + i++ + '</td>' +
-                                '<td>' + response.results[key].description + '</td>' +
-                                '<td>' + Number(response.results[key].qty).toFixed(2) + '</td>' +
-                                '<td>' + response.results[key].unit + '</td>' +
-                                '<td>' + Number(response.results[key].unit_cost).toFixed(2) + '</td>' +
-                                '<td>' + Number(total_cost).toFixed(2) + '</td>' +
-                                '<td>' + response.results[key].supplier + '</td>' +
-                                '<td>' + moment(response.results[key].date_needed).format('MMM DD, YYYY') + '</td>' +
-                                '<td>' + response.results[key].purpose + '</td>' +
-                            '</tr>');
+                        
+                            $.each(response.results, function (key, value) {
+                                //total_cost = Number(response.results[key].unit_cost) * Number(response.results[key].qty);
+                                    
+                                $('#tbody-reqitems').append('<tr>' +
+                                    '<td>' + i++ + '</td>' +
+                                    '<td>' + response.results[key].description + '</td>' +
+                                    '<td>' + Number(response.results[key].qty).toFixed(2) + '</td>' +
+                                    '<td>' + response.results[key].unit + '</td>' +
+                                    '<td>' + response.results[key].unit_cost  + '</td>' +
+                                    '<td>' + response.results[key].item_cost + '</td>' +
+                                    '<td>' + response.results[key].supplier + '</td>' +
+                                    '<td>' + moment(response.results[key].date_needed).format('MMM DD, YYYY') + '</td>' +
+                                    '<td>' + response.results[key].purpose + '</td>' +
+                                '</tr>');
+                                //total_price = total_price+(response.results[key].unit_cost*response.results[key].qty);
+                                total_price = response.results[key].total;
+  
+                            });
 
-                            total_price = total_price+(response.results[key].unit_cost*response.results[key].qty);
-                            
-                        });
-
-
-                        $('#req_total_price').html(Number(total_price).toFixed(2));
+                        $('#req_total_price').html(total_price);
 
                         $('#modal_loading').removeClass('overlay d-flex justify-content-center align-items-center');
 						$('#modal_loading').empty();
                     }
                 });
             });
-
-            
         });
     </script>
 

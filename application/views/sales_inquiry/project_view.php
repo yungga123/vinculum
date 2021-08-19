@@ -102,6 +102,7 @@ else{
                                                         <option>E-Fence</option>
                                                         <option>Home Alarm</option>
                                                         <option>Video Intercom</option>
+                                                        <option>Structured Cabling</option>
                                                 </select>
                                             </p>
                                         </div> 
@@ -248,6 +249,7 @@ else{
                                                         <option <?php if ($project_data_result['project_type_edit'] == "E-Fence") { echo 'selected';} ?> >E-Fence</option>
                                                         <option <?php if ($project_data_result['project_type_edit'] == "Home Alarm") { echo 'selected';} ?> >Home Alarm</option>
                                                         <option <?php if ($project_data_result['project_type_edit'] == "Video Intercom") { echo 'selected';} ?> >Video Intercom</option>
+                                                        <option <?php if ($project_data_result['project_type_edit'] == "Structured Cabling") { echo 'selected';} ?> >Structured Cabling</option>
                                                 </select>
                                             </p>
                                         </div> 
