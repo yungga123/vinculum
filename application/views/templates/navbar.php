@@ -492,6 +492,17 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 							<p>Existing Client</p>
 							</a>
 						</li>
+              
+               <li class="nav-item">
+		            <a href="<?php echo site_url('inquiry-archive-projects') ?>" class="nav-link <?php echo $inquiry_archive ?>">
+		              <i class="far fa-circle nav-icon"></i>
+		              <p>Archive Projects</p>
+		            </a>
+		          </li>
+
+		        </ul>
+
+	      	</li>
 
 						<li class="nav-item">
 							<a href="<?php echo site_url('inquiry-tempo-clients') ?>" class="nav-link <?php echo $inquiry_new ?>">

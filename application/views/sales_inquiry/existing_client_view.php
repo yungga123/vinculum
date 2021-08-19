@@ -195,6 +195,9 @@ defined('BASEPATH') or die('Access Denied'); ?>
 								<th>Branch</th>
 								<th>Task</th>
 								<th>Date of task</th>
+								<th>Project Details</th>
+								<th>Project Amount</th>
+								<th>Quotation Reference</th>
                                 <th>Operation</th>
                             </tr>
                         </thead>
@@ -259,6 +262,35 @@ defined('BASEPATH') or die('Access Denied'); ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Reject Project-->
+<div class="modal fade" id="modal_reject_project" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>Reject Project</b></h5>
+            </div>
+            <?php echo form_open('SalesInquiryController/reject_project_validate',["id" => "modal-reject-project-existing"]) ?>
+            <div class="modal-body text-center">
+
+				<div class="form-group">
+                    <label for="reject_project_id">Are you sure you want to Reject this Project ?</label>
+                    <input type="text" name="reject_project_id" id="reject_project_id" class="form-control text-bold text-center col-sm-6 offset-sm-3" readonly>
+                </div>
+                
+				<div class="form-group">
+                    <label for="reason">Reasons / Remarks</label>
+                    <textarea type="text" name="reason" id="reason" class="form-control text-bold text-center" cols="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="<?php echo site_url($this->uri->segment(1)) ?>/list" class="btn btn-danger text-bold"><i class="fas fa-times"></i> NO</a>
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
             </div>
             <?php echo form_close() ?>
