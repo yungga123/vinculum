@@ -79,6 +79,9 @@ if(!function_exists('html_variable')) {
 			'ul_sales_tree' => '',
 			'ul_hr_tree' => '',
 
+			'sales_tree_status' => '',
+
+
 			'category' => '' //for Get Items Masterlist
 		];
 

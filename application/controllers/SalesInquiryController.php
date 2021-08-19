@@ -144,11 +144,12 @@ class SalesInquiryController extends CI_Controller
 			$data = html_variable();
 			$data['title'] = 'New Clients';
 			$data['inquiry_status'] = ' menu-open';
+			$data['sales_tree_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
 			$data['ul_sales_tree'] = ' active';
 			$data['category'] = 'New_Clients';
-
+			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('sales_inquiry/new_client_view');
@@ -354,6 +355,7 @@ class SalesInquiryController extends CI_Controller
 			$data['title'] = 'New Project';
 			$data['button_title'] = 'Add Project';
 			$data['inquiry_status'] = ' menu-open';
+			$data['sales_tree_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
 			$data['ul_sales_tree'] = ' active';
@@ -383,6 +385,7 @@ class SalesInquiryController extends CI_Controller
 			$data['title'] = 'Edit Project';
 			$data['button_title'] = 'Edit Project';
 			$data['inquiry_status'] = ' menu-open';
+			$data['sales_tree_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_new'] = ' active';
 			$data['ul_sales_tree'] = ' active';
@@ -423,6 +426,7 @@ class SalesInquiryController extends CI_Controller
 			$data['title'] = 'Edit Project';
 			$data['button_title'] = 'Edit Project';
 			$data['inquiry_status'] = ' menu-open';
+			$data['sales_tree_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
 			$data['ul_sales_tree'] = ' active';
@@ -879,6 +883,7 @@ class SalesInquiryController extends CI_Controller
 			$data = html_variable();
 			$data['title'] = 'Existing Clients';
 			$data['inquiry_status'] = ' menu-open';
+			$data['sales_tree_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
 			$data['ul_sales_tree'] = ' active';
@@ -902,6 +907,7 @@ class SalesInquiryController extends CI_Controller
 			$data['title'] = 'New Project';
 			$data['button_title'] = 'Add Project';
 			$data['inquiry_status'] = ' menu-open';
+			$data['sales_tree_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_existing'] = ' active';
 			$data['ul_sales_tree'] = ' active';
@@ -1365,9 +1371,10 @@ class SalesInquiryController extends CI_Controller
 			$data = html_variable();
 			$data['title'] = 'Archive Projects';
 			$data['inquiry_status'] = ' menu-open';
+			$data['sales_tree_status'] = ' menu-open';
 			$data['inquiry_href'] = ' active';
 			$data['inquiry_archive'] = ' active';
-
+			$data['ul_sales_tree'] = ' active';
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('sales_inquiry/archive_projects_view');
