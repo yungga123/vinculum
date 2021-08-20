@@ -417,7 +417,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                                 '</tr>');
                                 //total_price = total_price+(response.results[key].unit_cost*response.results[key].qty);
                                 total_price = response.results[key].total;
-  
+
                             });
 
                         $('#req_total_price').html(total_price);

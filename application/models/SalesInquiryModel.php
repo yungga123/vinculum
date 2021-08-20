@@ -105,6 +105,7 @@ class SalesInquiryModel extends CI_Model {
 		$this->db->select("*");
 		$this->db->from("customers_branch");
 		$this->db->where('branch_id', $branch_id);
+		
 		return $this->db->get()->result();
 	}
 
@@ -592,5 +593,40 @@ public function existingclient_datatable() {
 			$this->db->where('a.client_status', 'existing');
 			return $this->db->get()->result();
 		}
+
+		public function get_branch_data($client_id, $client_status) {
+		
+			$this->db->select("*");
+			$this->db->from('customers_branch');
+			$this->db->where("customer_id", $client_id);
+			$this->db->where("client_status", $client_status);
+			$this->db->order_by('branch_id','DESC');
+			return $this->db->get()->result();
+		}
+
+		public function get_existing_branch_data($client_id, $client_status) {
+		
+			$this->db->select("*");
+			$this->db->from('customers_branch');
+			$this->db->where("customer_id", $client_id);
+			$this->db->where("client_status", $client_status);
+			$this->db->order_by('branch_id','DESC');
+			return $this->db->get()->result();
+		}
+
+		public function update_branch_details($branch_id, $data){
+			$this->db->where('branch_id', $branch_id);
+			$this->db->update('customers_branch', $data);
+		}
+
+		public function update_projects_branch($branch_id,$data) {
+			$this->db->where('branch_id',$branch_id);
+			$this->db->update('customers_project',$data);
+		}
+
+		public function deletebranch($branch_id) {
+        $this->db->where('branch_id',$branch_id);
+        $this->db->delete('customers_branch');
+    }
 }
 ?>
