@@ -122,7 +122,7 @@ class POModel extends CI_Model
         $this->db->insert('generated_po', $data);
     }
 
-    public function get_new_po_id()
+    public function get_po_generated_id()
     {
         $this->db->select('*');
         $this->db->from('generated_po');
@@ -130,6 +130,16 @@ class POModel extends CI_Model
         $this->db->limit(1);
         return $this->db->get()->result();
     }
+
+    public function get_new_po_data()
+    {
+        $this->db->select('*');
+        $this->db->from('generated_po');
+        $this->db->order_by('po_id', 'DESC');
+        return $this->db->get()->result();
+    }
+
+
 
     public function delete_po($po_id)
     {
@@ -228,8 +238,9 @@ class POModel extends CI_Model
         $this->db->insert('requisition_form_items', $data);
     }
 
-    public function update_approved_po($id,$data) {
-        $this->db->where('po_id',$id);
-        $this->db->update('generated_po',$data);
+    public function update_approved_po($id, $data)
+    {
+        $this->db->where('po_id', $id);
+        $this->db->update('generated_po', $data);
     }
 }

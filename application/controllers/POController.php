@@ -138,7 +138,8 @@ class POController extends CI_Controller
     {
         $validate = [
             'success' => false,
-            'errors' => ''
+            'error' => '',
+            'po_id'
         ];
 
         $rules = [
@@ -161,34 +162,62 @@ class POController extends CI_Controller
             $validate['success'] = true;
 
             $reqcount = count($this->input->post('reqid'));
-
+            $supplier_id2 = array();
+            $generated_id = array();
             for ($i = 0; $i < $reqcount; $i++) {
                 $req_id = $this->input->post('reqid')[$i];
                 $results = $this->POModel->get_requisition_items($req_id);
                 $generated_date = date('Y-m-d H:i:s');
                 $supplier_id = "";
-                $supplier_id2 = "";
+
                 foreach ($results as $row) {
 
                     if ($supplier_id == $row->supplier) {
                         $supplier_id = $row->supplier;
-                        $supplier_id2 = $row->supplier;
+                    } elseif ($row->supplier == "") {
+
                     } else {
-                        $this->POModel->insert_po([
-                            'generated_date' => $generated_date,
-                            'supplier_id' => $row->supplier,
-                            'po_status' => "pending"
-                        ]);
-                        $supplier_id = $row->supplier;
+                        $result = $this->POModel->get_po_generated_id();
+                        $key = in_array($row->supplier, $supplier_id2);
+                        $generated_id = 0;
+                        //fetch Generated ID for new PO
+                        foreach ($result as $row2) {
+                            if ($row2->generated_id == "") {
+                                $generated_id = 1;
+                            } else {
+                                $generated_id = $row2->generated_id;
+                                $generated_id = $generated_id + 1;
+                            }
+
+                            //check if Supplier Loop is Already Generated
+                            if (
+                                $key == ""
+                            ) {
+                                $this->POModel->insert_po([
+                                    'generated_date' => $generated_date,
+                                    'supplier_id' => $row->supplier,
+                                    'po_status' => "pending",
+                                    'generated_id' => $generated_id
+                                ]);
+                                $supplier_id = $row->supplier;
+                                $supplier_id2[] = $supplier_id;
+                                $generated_id_array[] = $generated_id;
+                            }
+                        }
                     }
 
-                    $po_id = $this->POModel->get_new_po_id();
-                    foreach ($po_id as $porow) {
-                        $this->POModel->insert_po_items([
-                            'po_id' => $porow->po_id,
-                            'requisition_id' => $this->input->post('reqid')[$i],
-                            'requisition_item_id' => $row->item_id
-                        ]);
+                    //add items to generated supplier
+                    $resultss = $this->POModel->get_new_po_data();
+                    foreach ($resultss as $row3) {
+                        $key = in_array($row3->generated_id, $generated_id_array);
+                        if ($key != "" && $row3->supplier_id == $row->supplier) {
+                            $po_id = $row3->po_id;
+                            $this->POModel->insert_po_items([
+                                'po_id' => $po_id,
+                                'requisition_id' => $this->input->post('reqid')[$i],
+                                'requisition_item_id' => $row->item_id
+                            ]);
+                        }
                     }
                 }
             }
@@ -205,10 +234,10 @@ class POController extends CI_Controller
         $data = array();
         $total_price = 0;
 
-        foreach($results as $row){
+        foreach ($results as $row) {
             $sub_array = array();
             $total_cost = 0;
-            
+
             $total_cost = $row->qty * $row->unit_cost;
             $total_price = $total_price + $total_cost;
 
