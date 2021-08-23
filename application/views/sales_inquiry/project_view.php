@@ -22,12 +22,21 @@ else{
         ];
     }
 
-    foreach($edit_branch as $row){
+    if(empty($edit_branch)){
         $project_branch_result = [
-            'project_branch_id' => $row->branch_id,
-            'project_branch_edit' => $row->branch_name,
-            'project_branch_address_edit' => $row->branch_address
+            'project_branch_id' => "",
+            'project_branch_edit' => "",
+            'project_branch_address_edit' => ""
         ];
+    }
+    else{
+        foreach($edit_branch as $row){
+            $project_branch_result = [
+                'project_branch_id' => $row->branch_id,
+                'project_branch_edit' => $row->branch_name,
+                'project_branch_address_edit' => $row->branch_address
+            ];
+        }
     }
 }
 
@@ -67,7 +76,7 @@ else{
                     <?php echo form_open('SalesInquiryController/salesinquiryaddprojectvalidate',["id" => "form-add-existingclient-project"]) ?>
                     <input type="hidden" name="form_id" value="<?php echo $form_id ?>" >
                 <?php endif ?>
-
+                
                     <input type="hidden" name="client_id" value="<?php echo $id ?>" >
 						<div class="card-body">
 							<div class="col-sm-12">
@@ -228,7 +237,7 @@ else{
                                                 <select name="project_branch" class="form-control">
                                                     <option value="">Please Select Branch Name</option>
                                                     <?php foreach ($branch_list as $row): ?>
-                                                        <option value="<?php echo $row->branch_id ?>" <?php if ($project_data_result['project_branch_edit'] == $row->branch_name) { echo 'selected';} ?>>
+                                                        <option value="<?php echo $row->branch_id ?>" <?php if ($project_branch_result['project_branch_id'] == $row->branch_id) { echo 'selected';} ?>>
                                                             <?php echo $row->branch_name ?>
                                                         </option>
                                                     <?php endforeach ?>
@@ -387,6 +396,7 @@ else{
         <?php echo form_open('SalesInquiryController/add_branch',["id" => "modal-add-branch"]) ?>
             <div class="modal-body">
                 <input type="hidden" name="client_id" value="<?php echo $id ?>" >
+                <input type="hidden" name="client_status" value="<?php echo $this->uri->segment(3) ?>" >
                 <div class="form-group">
                     <label for="project_branch" class="control-label">Branch Name</label>
                     <input type="text" name="project_branch" class="form-control" placeholder="Enter Project Branch">

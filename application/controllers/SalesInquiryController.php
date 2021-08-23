@@ -248,6 +248,7 @@ class SalesInquiryController extends CI_Controller
 			$sub_array[] = '
 <a href="' . site_url('inquiry-add-project/' . $row->id) . '" class="btn btn-success btn-xs btn-block"><i class="fas fa-plus"></i>  Add Project</a>
 <a href="#" class="btn btn-primary btn-xs btn-block btn_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View Projects</a>
+<button type="button" class="btn btn-primary btn-xs btn-block btn_view_branch" target="_blank" data-toggle="modal" data-target=".modal_view_branch"><i class="fas fa-search"></i>  View Branch</button>
 <button type="button" class="btn btn-warning btn-xs btn-block btn_select" data-toggle="modal" data-target="#modal_edit_client"><i class="fas fa-edit"></i> Edit Client</button> 
 <button type="button" class="btn btn-success btn-xs btn-block btn_client_approved" data-toggle="modal" data-target="#approved-tempo-client"><i class="fas fa-trash"></i> Approved Client</button>
 <button type="button" class="btn btn-danger btn-xs btn-block btn_client_del" data-toggle="modal" data-target="#delete-tempo-client"><i class="fas fa-trash"></i> Delete Client</button>
@@ -377,7 +378,7 @@ class SalesInquiryController extends CI_Controller
 		}
 	}
 
-	public function edit_project($id)
+	public function edit_project($id, $client_status)
 	{
 		if ($this->session->userdata('logged_in')) {
 			$this->load->helper('site_helper');
@@ -734,6 +735,29 @@ class SalesInquiryController extends CI_Controller
 		redirect('inquiry-tempo-clients');
 	}
 
+	public function delete_branch_new($branch_id)
+	{
+		$this->SalesInquiryModel->deletebranch($branch_id);
+		$this->SalesInquiryModel->update_projects_branch($branch_id,[
+			'branch' => '',
+			'branch_id' => ''
+		]);
+
+		$this->session->set_flashdata('success', 'Success! Branch Deleted.');
+		redirect('inquiry-tempo-clients/list');
+	}
+
+	public function delete_branch_existing($branch_id)
+	{
+		$this->SalesInquiryModel->deletebranch($branch_id);
+		$this->SalesInquiryModel->update_projects_branch($branch_id,[
+			'branch' => '',
+			'branch_id' => ''
+		]);
+		$this->session->set_flashdata('success', 'Success! Branch Deleted.');
+		redirect('inquiry-existing-clients/list');
+	}
+
 	public function approved_client()
 	{
 		$validate = [
@@ -962,6 +986,7 @@ class SalesInquiryController extends CI_Controller
 			$sub_array[] = '
 <a href="' . site_url('inquiry-add-existingclient-project/' . $row->CustomerID) . '" class="btn btn-success btn-xs btn-block"><i class="fas fa-plus"></i>  Add Project</a>
 <a href="#" class="btn btn-primary btn-xs btn-block btn_existing_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View Projects</a>
+<button type="button" class="btn btn-primary btn-xs btn-block btn_view_existing_branch" target="_blank" data-toggle="modal" data-target=".modal_view_branch"><i class="fas fa-search"></i>  View Branch</button>
 <button type="button" class="btn btn-warning btn-xs btn-block btn_existing" data-toggle="modal" data-target="#modal_edit_existing_client"><i class="fas fa-edit"></i> Edit Client</button> 
 <button type="button" class="btn btn-danger btn-xs btn-block btn_existing_client_del" data-toggle="modal" data-target="#delete-existing-client"><i class="fas fa-trash"></i> Delete Client</button>
 ';
@@ -1109,7 +1134,8 @@ class SalesInquiryController extends CI_Controller
 			$this->SalesInquiryModel->insert_branch([
 				'customer_id' => $this->input->post('client_id'),
 				'branch_name' => $this->input->post('project_branch'),
-				'branch_address' => $this->input->post('project_address')
+				'branch_address' => $this->input->post('project_address'),
+				'client_status' => $this->input->post('client_status')
 			]);
 		} else {
 			$validate['errors'] = validation_errors();
@@ -1488,4 +1514,65 @@ class SalesInquiryController extends CI_Controller
 
 		echo json_encode($json_data);
 	}
+
+	public function get_branch($client_id, $client_status)
+	{
+		$results = $this->SalesInquiryModel->get_branch_data($client_id, $client_status);		
+
+		$json_data['results'] = $results;
+
+		echo json_encode($json_data);
+	}
+
+
+	public function update_branch_validate()
+	{
+		$validate = [
+			'success' => false,
+			'errors' => ''
+		];
+
+		$rules = [
+
+			[
+				'field' => 'edit_branch_name',
+				'label' => 'Branch Name',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Provide Branch Name'
+				]
+			],
+			[
+				'field' => 'edit_branch_address',
+				'label' => 'Branch Address',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Provide Branch Address'
+				]
+			]
+
+		];
+
+		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
+
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run()) {
+			$validate['success'] = true;
+
+			$this->SalesInquiryModel->update_branch_details($this->input->post('edit_branch_id'),[
+				'branch_name' => $this->input->post('edit_branch_name'),
+				'branch_address' => $this->input->post('edit_branch_name')
+			]);
+
+			$this->SalesInquiryModel->update_projects_branch($this->input->post('edit_branch_id'),[
+				'branch' => $this->input->post('edit_branch_name')
+			]);
+		} else {
+			$validate['errors'] = validation_errors();
+		}
+
+		echo json_encode($validate);
+	}
+
 }

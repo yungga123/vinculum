@@ -490,14 +490,55 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].project_details + '</td>' +
 							'<td>' + response.results[key].project_amount + '</td>' +
 							'<td>' + response.results[key].quotation_ref + '</td>' +
-							'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> <a href="' + '<?php echo site_url('inquiry-tempo-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>' +
+							'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '/new' + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> <a href="' + '<?php echo site_url('inquiry-tempo-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>' +
 							'</tr>'
-							);
+						);
 
-						
+
 					});
 
 
+
+					$('#modal_loading').removeClass('overlay d-flex justify-content-center align-items-center');
+					$('#modal_loading').empty();
+				}
+			});
+		});
+
+		//Fetching Data in New Client (For Viewing of branch)
+		$('#new_client_table tbody').on('click', '.btn_view_branch', function() {
+
+			var data = new_client_table_data.row($(this).parents('tr')).data();
+			var rowdata = new_client_table_data.row(this).data();
+
+			if (data == undefined) {
+				var me = '<?php echo site_url('SalesInquiryController/get_branch/') ?>' + rowdata[0] + '/new';
+			} else if (rowdata == undefined) {
+				var me = '<?php echo site_url('SalesInquiryController/get_branch/') ?>' + data[0] + '/new';
+			}
+
+			$('#modal_loading').addClass('overlay d-flex justify-content-center align-items-center');
+			$('#modal_loading').append('<i class="fas fa-2x fa-sync fa-spin"></i>');
+
+			//ajax
+			$.ajax({
+				url: me,
+				type: 'get',
+				dataType: 'json',
+
+				success: function(response) {
+					$('#tbody_branch').empty();
+
+					$.each(response.results, function(key, value) {
+						$('#tbody_branch').append('<tr>' +
+							'<td>' + response.results[key].branch_id + '</td>' +
+							'<td>' + response.results[key].branch_name + '</td>' +
+							'<td>' + response.results[key].branch_address + '</td>' +
+							'<td> <button type="button" class="btn btn-warning btn-xs btn-block btn_edit_branch"><i class="fas fa-edit"></i> Edit Branch</button><a href="' + '<?php echo site_url('SalesInquiryController/delete_branch_new/') ?>' + response.results[key].branch_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Branch</a></td>' +
+							'</tr>'
+						);
+
+					});
 
 					$('#modal_loading').removeClass('overlay d-flex justify-content-center align-items-center');
 					$('#modal_loading').empty();
@@ -538,6 +579,19 @@ defined('BASEPATH') or die('Access Denied');
 
 		});
 
+		$('#new_client_table tbody').on('click', '.btn_client_del', function() {
+
+			var data = new_client_table_data.row($(this).parents('tr')).data();
+			var rowdata = new_client_table_data.row(this).data();
+
+			if (data == undefined) {
+				$('#reject_project_id').val(rowdata[0]);
+			} else if (rowdata == undefined) {
+				$('#reject_project_id').val(data[0]);
+			}
+
+		});
+
 	});
 </script>
 
@@ -559,6 +613,47 @@ defined('BASEPATH') or die('Access Denied');
 			}]
 		});
 		// END OF DATATABLE
+
+		//Fetching Data in Existing Client (For Viewing of branch)
+		$('#existing_client_table tbody').on('click', '.btn_view_existing_branch', function() {
+
+			var data = existing_client_table_data.row($(this).parents('tr')).data();
+			var rowdata = existing_client_table_data.row(this).data();
+
+			if (data == undefined) {
+				var me = '<?php echo site_url('SalesInquiryController/get_branch/') ?>' + rowdata[0] + '/existing';
+			} else if (rowdata == undefined) {
+				var me = '<?php echo site_url('SalesInquiryController/get_branch/') ?>' + data[0] + '/existing';
+			}
+
+			$('#modal_loading').addClass('overlay d-flex justify-content-center align-items-center');
+			$('#modal_loading').append('<i class="fas fa-2x fa-sync fa-spin"></i>');
+
+			//ajax
+			$.ajax({
+				url: me,
+				type: 'get',
+				dataType: 'json',
+
+				success: function(response) {
+					$('#tbody_branch').empty();
+
+					$.each(response.results, function(key, value) {
+						$('#tbody_branch').append('<tr>' +
+							'<td>' + response.results[key].branch_id + '</td>' +
+							'<td>' + response.results[key].branch_name + '</td>' +
+							'<td>' + response.results[key].branch_address + '</td>' +
+							'<td> <button type="button" class="btn btn-warning btn-xs btn-block btn_edit_branch"><i class="fas fa-edit"></i> Edit Branch</button><a href="' + '<?php echo site_url('SalesInquiryController/delete_branch_existing/') ?>' + response.results[key].branch_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Branch</a></td>' +
+							'</tr>'
+						);
+
+					});
+
+					$('#modal_loading').removeClass('overlay d-flex justify-content-center align-items-center');
+					$('#modal_loading').empty();
+				}
+			});
+		});
 
 		//click select edit for masterlist table
 		$('#existing_client_table tbody').on('click', '.btn_existing', function() {
@@ -651,7 +746,7 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].project_details + '</td>' +
 							'<td>' + response.results[key].project_amount + '</td>' +
 							'<td>' + response.results[key].quotation_ref + '</td>' +
-							'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a><a href="' + '<?php echo site_url('inquiry-existing-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>'
+							'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '/existing' + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a><a href="' + '<?php echo site_url('inquiry-existing-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>'
 						);
 
 						$('#reject_project_id').val(response.results[key].project_id);
@@ -821,18 +916,7 @@ defined('BASEPATH') or die('Access Denied');
 			});
 		});
 
-		$('#new_client_table tbody').on('click', '.btn_client_del', function() {
 
-			var data = new_client_table_data.row($(this).parents('tr')).data();
-			var rowdata = new_client_table_data.row(this).data();
-
-			if (data == undefined) {
-				$('#reject_project_id').val(rowdata[0]);
-			} else if (rowdata == undefined) {
-				$('#reject_project_id').val(data[0]);
-			}
-
-		});
 
 		$('#modal-add-branch').submit(function(e) {
 			e.preventDefault();
@@ -1060,14 +1144,86 @@ defined('BASEPATH') or die('Access Denied');
 			});
 		});
 
-	<?php if($this->uri->segment(2) == 'list'): ?>
-	
-	<?php else: ?>
+
+		<?php if ($this->uri->segment(2) != 'list' && $this->uri->segment(1) == 'inquiry-tempo-clients') : ?>
 			$('#reject_project_id').val(<?php echo $this->uri->segment(2) ?>);
 			$("#modal_reject_project").modal({
 				backdrop: 'static',
-            	keyboard: false
+				keyboard: false
 			});
-	<?php endif ?>
+		<?php endif ?>
+
+		$("#table-branch").on('click', '.btn_edit_branch', function() {
+			// get the current row
+			var currentRow = $(this).closest("tr");
+
+			var col1 = currentRow.find("td:eq(0)").text();
+			var col2 = currentRow.find("td:eq(1)").text();
+			var col3 = currentRow.find("td:eq(2)").text();
+
+			$('#edit_branch_id').val(col1);
+			$('#edit_branch_name').val(col2);
+			$('#edit_branch_address').val(col3);
+
+
+			$(".modal_view_branch").modal('hide');
+			$("#modal_edit_branch").modal({
+				backdrop: 'static',
+				keyboard: false
+			});
+		});
+
+		$('#modal-edit-branch').submit(function(e) {
+			e.preventDefault();
+
+			var me = $(this);
+			var succ = '';
+
+			toastr.options = {
+				"closeButton": false,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-top-right",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+			}
+
+			$(':submit').attr('disabled', 'disabled');
+			$('.loading-modal').modal();
+
+			//ajax
+			$.ajax({
+				url: me.attr('action'),
+				type: 'post',
+				data: me.serialize(),
+				dataType: 'json',
+				success: function(response) {
+					if (response.success == true) {
+						$(':submit').removeAttr('disabled', 'disabled');
+						$('.loading-modal').modal('hide');
+						toastr.success("Brand Updated!");
+						document.location.reload(true);
+						me[0].reset();
+
+					} else {
+						$(':submit').removeAttr('disabled', 'disabled');
+						$('.loading-modal').modal('hide');
+
+						toastr.error(response.errors);
+					}
+
+				}
+			});
+		});
+
 	});
 </script>
