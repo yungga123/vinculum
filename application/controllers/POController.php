@@ -138,8 +138,7 @@ class POController extends CI_Controller
     {
         $validate = [
             'success' => false,
-            'error' => '',
-            'po_id'
+            'errors' => ''
         ];
 
         $rules = [
@@ -297,13 +296,24 @@ class POController extends CI_Controller
     public function generate_po_view($po_id)
     {
         if ($this->session->userdata('logged_in')) {
-
+            
             $this->load->model('TechniciansModel');
+            $this->load->model('POModel');
             $data['title'] = 'Generate PO';
+
+            if($this->uri->segment(1) == 'generate-po'){
+                $this->POModel->reset_items_status([
+                    'mark_as_proceed' => '0'
+                ]);
+            }
             $data['employee_list'] = $this->POModel->get_employee_list();
             $data['supplier_details'] = $this->POModel->get_supplier_details($po_id);
-            $data['items_details'] = $this->POModel->get_items_details($po_id);
+            $mark_as_read = 1;
+            $data['items_details'] = $this->POModel->get_items_details($po_id, $mark_as_read);
+            $mark_as_read = 0;
+            $data['items_details_modal'] = $this->POModel->get_items_details($po_id, $mark_as_read);
             $data['po_details'] = $this->POModel->get_po_details($po_id);
+            $data['po_id'] = $po_id;
             $this->load->view('P.O/generate_po', $data);
         } else {
             redirect('', 'refresh');
@@ -344,6 +354,7 @@ class POController extends CI_Controller
         }
         echo json_encode($validate);
     }
+
     public function Items_PO_Update($po_id)
     {
         if ($this->session->userdata('logged_in')) {
@@ -481,5 +492,46 @@ class POController extends CI_Controller
             $this->form_validation->set_message('confirmreq_pw', 'Password Required.');
             return false;
         }
+    }
+
+    public function update_items_status_to_proceed()
+    {
+        $validate = [
+            'success' => false,
+            'errors' => ''
+        ];
+
+        $rules = [
+
+            [
+                'field' => 'reqid[]',
+                'label' => 'Req. No.',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please select an item.'
+                ]
+            ]
+        ];
+
+        $this->form_validation->set_error_delimiters('<p>• ', '</p>');
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+            $reqcount = count($this->input->post('reqid'));
+            $po_id = $this->input->post('po_id');
+            for ($i = 0; $i < $reqcount; $i++) {
+                $req_id = $this->input->post('reqid')[$i];
+                $this->POModel->mark_po_item($req_id,$po_id,
+                [
+                    'mark_as_proceed' => '1'
+                ]);
+            }
+        } else {
+            $validate['errors'] = validation_errors();
+        }
+        echo json_encode($validate);
     }
 }
