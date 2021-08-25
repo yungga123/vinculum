@@ -204,6 +204,7 @@ $route['inquiry-archive-project-confirmation/(:any)'] = 'SalesInquiryController/
 $route['generated-po-list/(:any)'] = 'POController/index/$1';
 $route['items-update/(:any)'] = 'POController/Items_PO_Update/$1';
 $route['generate-po/(:any)'] = 'POController/generate_po_view/$1';
+$route['generate-po-proceed/(:any)'] = 'POController/generate_po_view/$1';
 
 //OFFLIMITS PAGE
 $route['offlimits'] = 'LoginController/offlimits_page';

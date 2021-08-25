@@ -18,7 +18,7 @@ foreach ($supplier_details as $row) {
             'vendor_name' => $row->name,
             'vendor_address' => $row->address,
             'vendor_category' => "01",
-            'vendor_acronym' => strtok($row->supplier_id, '-'),
+            'vendor_acronym' => strtok($row->vendor_code, '-'),
             'vendor_terms' => $row->terms_and_condition
         ];
     } elseif ($row->vendor_category == "Indirect") {
@@ -26,15 +26,15 @@ foreach ($supplier_details as $row) {
             'vendor_name' => $row->name,
             'vendor_address' => $row->address,
             'vendor_category' => "02",
-            'vendor_acronym' => strtok($row->supplier_id, '-'),
+            'vendor_acronym' => strtok($row->vendor_code, '-'),
             'vendor_terms' => $row->terms_and_condition
         ];
     } elseif ($row->vendor_category == "Tools") {
         $supplier_data = [
             'vendor_name' => $row->name,
             'vendor_address' => $row->address,
-            'vendor_category' => "02",
-            'vendor_acronym' => strtok($row->supplier_id, '-'),
+            'vendor_category' => "03",
+            'vendor_acronym' => strtok($row->vendor_code, '-'),
             'vendor_terms' => $row->terms_and_condition
         ];
     }
@@ -417,6 +417,68 @@ $total_amount = $sub_total + $vat_amount;
 </div>
 
 
+
+<!-- Modal for Items List -->
+<div class="modal fade view-items" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <b class="modal-title">Items List</b>
+            </div>
+            <?php echo form_open('POController/update_items_status_to_proceed', ["id" => "form-proceed-generatepo-req"]) ?>
+            <div class="modal-body text-center">
+                <input type="hidden" name="po_id" value="<?php echo $po_id ?>">
+                <table class="table table-bordered table-xl" id="table-reqitems">
+                    <thead>
+                        <tr>
+                            <th>Select</th>
+                            <th>Item No.</th>
+                            <th>Item Description</th>
+                            <th>Item Qty</th>
+                            <th>Item Unit</th>
+                            <th>Item Unit Price</th>
+                            <th>Item Total Price</th>
+                            <th>Date Needed</th>
+                            <th>Item Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $item_id = 1;
+                        $total_price = 0;
+                        $sub_total = 0; ?>
+                        <?php foreach ($items_details_modal as $row) : ?>
+                            <?php $sub_total = $row->qty * $row->unit_cost; ?>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="form-check-input" name="reqid[]" value="<?php echo $row->id ?>" checked>
+                                </td>
+                                <td><?php echo $item_id ?></td>
+                                <td><?php echo $row->description ?></td>
+                                <td><?php echo number_format($row->qty) ?></td>
+                                <td><?php echo $row->unit ?></td>
+                                <td><?php echo number_format($row->unit_cost, 2) ?></td>
+                                <td><?php echo number_format($sub_total, 2) ?></td>
+                                <td><?php echo $row->date_needed ?></td>
+                                <td><?php echo $row->purpose ?></td>
+                            </tr>
+                            <?php $item_id = $item_id + 1;
+                            $total_price = $total_price + $sub_total; ?>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+                <div class="text-right">
+                    <b>Total Price: <?php echo number_format($total_price, 2); ?></b>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-edit"></i> PROCEED</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+
 <!-- jQuery -->
 <script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -453,11 +515,17 @@ $total_amount = $sub_total + $vat_amount;
 <script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
 
 <script type="text/javascript">
-    $("#generate-po").modal({
-        backdrop: 'static',
-        keyboard: false
-    });
-
+    <?php if ($this->uri->segment(1) == 'generate-po') : ?>
+        $(".view-items").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    <?php elseif ($this->uri->segment(1) == 'generate-po-proceed') : ?>
+        $("#generate-po").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    <?php endif ?>
 
     $('#Modal-Generate-PO').submit(function(e) {
         e.preventDefault();
@@ -527,6 +595,59 @@ $total_amount = $sub_total + $vat_amount;
                     toastr.error(response.errors);
 
                 }
+            }
+        });
+    });
+
+    //Form Accept Item Requests
+    $('#form-proceed-generatepo-req').submit(function(e) {
+        e.preventDefault();
+
+        var me = $(this);
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+
+        $(':submit').attr('disabled', 'disabled');
+        $('.loading-modal').modal();
+
+        //ajax
+        $.ajax({
+            url: me.attr('action'),
+            type: 'post',
+            data: me.serialize(),
+            dataType: 'json',
+            success: function(response) {
+                if (response.success == true) {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+                    me[0].reset();
+
+                    window.setTimeout(function() {
+                        window.location = '<?php echo site_url('generate-po-proceed/') . $po_id ?>';
+                    }, 1000);
+                } else {
+                    $(':submit').removeAttr('disabled', 'disabled');
+                    $('.loading-modal').modal('hide');
+                    toastr.error(response.errors);
+
+                }
+
             }
         });
     });
