@@ -176,40 +176,22 @@ class POController extends CI_Controller
                     } elseif ($row->supplier == "") {
 
                     } else {
-                        $result = $this->POModel->get_po_generated_id();
                         $key = in_array($row->supplier, $supplier_id2);
-                        $generated_id = 0;
-                        //fetch Generated ID for new PO
-                        foreach ($result as $row2) {
-                            if ($row2->generated_id == "") {
-                                $generated_id = 1;
-                            } else {
-                                $generated_id = $row2->generated_id;
-                                $generated_id = $generated_id + 1;
-                            }
-
-                            //check if Supplier Loop is Already Generated
-                            if (
-                                $key == ""
-                            ) {
-                                $this->POModel->insert_po([
-                                    'generated_date' => $generated_date,
-                                    'supplier_id' => $row->supplier,
-                                    'po_status' => "pending",
-                                    'generated_id' => $generated_id
-                                ]);
-                                $supplier_id = $row->supplier;
-                                $supplier_id2[] = $supplier_id;
-                                $generated_id_array[] = $generated_id;
-                            }
+                        if ($key == "") {
+                            $this->POModel->insert_po([
+                                'generated_date' => $generated_date,
+                                'supplier_id' => $row->supplier,
+                                'po_status' => "pending"
+                            ]);
+                            $supplier_id = $row->supplier;
+                            $supplier_id2[] = $supplier_id;
                         }
                     }
 
                     //add items to generated supplier
                     $resultss = $this->POModel->get_new_po_data();
                     foreach ($resultss as $row3) {
-                        $key = in_array($row3->generated_id, $generated_id_array);
-                        if ($key != "" && $row3->supplier_id == $row->supplier) {
+                        if ($row3->supplier_id == $row->supplier) {
                             $po_id = $row3->po_id;
                             $this->POModel->insert_po_items([
                                 'po_id' => $po_id,
