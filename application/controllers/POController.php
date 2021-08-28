@@ -162,7 +162,7 @@ class POController extends CI_Controller
 
             $reqcount = count($this->input->post('reqid'));
             $supplier_id2 = array();
-            $generated_id = array();
+            $generated_id_array = array();
             for ($i = 0; $i < $reqcount; $i++) {
                 $req_id = $this->input->post('reqid')[$i];
                 $results = $this->POModel->get_requisition_items($req_id);
