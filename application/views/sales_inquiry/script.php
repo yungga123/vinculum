@@ -50,6 +50,7 @@ defined('BASEPATH') or die('Access Denied');
 					$(".interest_edit").val(response.client_data[0].interest);
 					$(".type_edit").val(response.client_data[0].type);
 					$(".notes_edit").val(response.client_data[0].notes);
+					$(".sales_incharge_edit").val(response.client_data[0].sales_incharge);
 
 
 				}

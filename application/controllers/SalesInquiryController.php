@@ -48,7 +48,7 @@ class SalesInquiryController extends CI_Controller
 			[
 				'field' => 'email',
 				'label' => 'Email Address',
-				'rules' => 'trim|required'
+				'rules' => 'trim'
 			],
 			[
 				'field' => 'website',
@@ -74,6 +74,14 @@ class SalesInquiryController extends CI_Controller
 				'field' => 'notes',
 				'label' => 'Notes',
 				'rules' => 'trim'
+			],
+			[
+				'field' => 'sales_incharge',
+				'label' => 'Sales Incharge',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Select Sales Incharge'
+				]
 			]
 		];
 		return $rules;
@@ -149,6 +157,7 @@ class SalesInquiryController extends CI_Controller
 			$data['inquiry_new'] = ' active';
 			$data['ul_sales_tree'] = ' active';
 			$data['category'] = 'New_Clients';
+			$data['sales_list'] = $this->SalesInquiryModel->get_sales_list();
 			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -163,9 +172,9 @@ class SalesInquiryController extends CI_Controller
 
 	public function get_new_client_list()
 	{
-
+		
 		$fetch_client = $this->SalesInquiryModel->fetch_customer();
-
+	
 		foreach ($fetch_client as $row) {
 			$customer_id = $row->id;
 
@@ -194,6 +203,7 @@ class SalesInquiryController extends CI_Controller
 								'InstallationDate' => $date,
 								'Type' => $row->type,
 								'Notes' => $row->notes,
+								'sales_incharge' => $row->sales_incharge,
 								'is_deleted' => "0"
 							]);
 						}
@@ -219,8 +229,8 @@ class SalesInquiryController extends CI_Controller
 			}
 		}
 
-
-		$fetch_data = $this->SalesInquiryModel->newclient_datatable();
+		$id = $this->session->userdata('logged_in')['emp_id'];
+		$fetch_data = $this->SalesInquiryModel->newclient_datatable($id);
 
 		$data = array();
 		foreach ($fetch_data as $row) {
@@ -228,6 +238,13 @@ class SalesInquiryController extends CI_Controller
 
 			if ($row->date != '0000-00-00') {
 				$date = date_format(date_create($row->date), 'F d, Y');
+			}
+
+			if($row->lastname == ''){
+				$sales_incharge = '';
+			}
+			else{
+				$sales_incharge = $row->lastname.", ".$row->firstname." ".$row->middlename;
 			}
 
 			$sub_array = array();
@@ -242,6 +259,7 @@ class SalesInquiryController extends CI_Controller
 			$sub_array[] = $row->interest;
 			$sub_array[] = $row->type;
 			$sub_array[] = $row->notes;
+			$sub_array[] = $sales_incharge;
 
 
 
@@ -259,7 +277,7 @@ class SalesInquiryController extends CI_Controller
 		$output = array(
 			"draw"	=>	intval($_POST["draw"]),
 			"recordsTotal" => $this->SalesInquiryModel->get_all_new_client_data(),
-			"recordsFiltered" => $this->SalesInquiryModel->filter_new_client_data(),
+			"recordsFiltered" => $this->SalesInquiryModel->filter_new_client_data($id),
 			"data" => $data
 		);
 
@@ -298,6 +316,7 @@ class SalesInquiryController extends CI_Controller
 				'interest' => $this->input->post('interest'),
 				'type' => $this->input->post('type'),
 				'notes' => $this->input->post('notes'),
+				'sales_incharge' => $this->input->post('sales_incharge'),
 				'is_deleted' => "0"
 			]);
 		} else {
@@ -338,7 +357,8 @@ class SalesInquiryController extends CI_Controller
 					'source' => $this->input->post('source'),
 					'interest' => $this->input->post('interest'),
 					'type' => $this->input->post('type'),
-					'notes' => $this->input->post('notes')
+					'notes' => $this->input->post('notes'),
+					'sales_incharge' => $this->input->post('sales_incharge')
 				]
 			);
 		} else {
@@ -955,8 +975,8 @@ class SalesInquiryController extends CI_Controller
 
 	public function get_existing_client_list()
 	{
-
-		$fetch_data = $this->SalesInquiryModel->existingclient_datatable();
+		$id = $this->session->userdata('logged_in')['emp_id'];
+		$fetch_data = $this->SalesInquiryModel->existingclient_datatable($id);
 
 
 		$data = array();
@@ -965,6 +985,13 @@ class SalesInquiryController extends CI_Controller
 
 			if ($row->InstallationDate != '0000-00-00') {
 				$installationDate = date_format(date_create($row->InstallationDate), 'F d, Y');
+			}
+
+			if($row->lastname == ''){
+				$sales_incharge = '';
+			}
+			else{
+				$sales_incharge = $row->lastname.", ".$row->firstname." ".$row->middlename;
 			}
 
 			$sub_array = array();
@@ -979,15 +1006,16 @@ class SalesInquiryController extends CI_Controller
 			$sub_array[] = $row->Interest;
 			$sub_array[] = $row->Type;
 			$sub_array[] = $row->Notes;
+			$sub_array[] = $sales_incharge;
 			$sub_array[] = $installationDate;
-
-
+			
+//BUTTON FOR EDIT FORM
+//<button type="button" class="btn btn-warning btn-xs btn-block btn_existing" data-toggle="modal" data-target="#modal_edit_existing_client"><i class="fas fa-edit"></i> Edit Client</button>
 
 			$sub_array[] = '
 <a href="' . site_url('inquiry-add-existingclient-project/' . $row->CustomerID) . '" class="btn btn-success btn-xs btn-block"><i class="fas fa-plus"></i>  Add Project</a>
 <a href="#" class="btn btn-primary btn-xs btn-block btn_existing_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View Projects</a>
-<button type="button" class="btn btn-primary btn-xs btn-block btn_view_existing_branch" target="_blank" data-toggle="modal" data-target=".modal_view_branch"><i class="fas fa-search"></i>  View Branch</button>
-<button type="button" class="btn btn-warning btn-xs btn-block btn_existing" data-toggle="modal" data-target="#modal_edit_existing_client"><i class="fas fa-edit"></i> Edit Client</button> 
+<button type="button" class="btn btn-primary btn-xs btn-block btn_view_existing_branch" target="_blank" data-toggle="modal" data-target=".modal_view_branch"><i class="fas fa-search"></i>  View Branch</button> 
 <button type="button" class="btn btn-danger btn-xs btn-block btn_existing_client_del" data-toggle="modal" data-target="#delete-existing-client"><i class="fas fa-trash"></i> Delete Client</button>
 ';
 
@@ -997,7 +1025,7 @@ class SalesInquiryController extends CI_Controller
 		$output = array(
 			"draw"	=>	intval($_POST["draw"]),
 			"recordsTotal" => $this->SalesInquiryModel->get_all_existing_client_data(),
-			"recordsFiltered" => $this->SalesInquiryModel->filter_existing_client_data(),
+			"recordsFiltered" => $this->SalesInquiryModel->filter_existing_client_data($id),
 			"data" => $data
 		);
 

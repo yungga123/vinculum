@@ -35,8 +35,8 @@ defined('BASEPATH') or die('Access Denied');
 									</div>
 
 									<div class="form-group">
-										<label>Address</label>
-										<input class="form-control" type="text" name="customer_address" id="customer_address" placeholder="Enter Address here.">
+										<label>Email Address</label>
+										<input class="form-control" type="text" name="email_address" id="email_address" placeholder="Enter Email Address here.">
 									</div>
 
 									<div class="form-group">
@@ -45,17 +45,54 @@ defined('BASEPATH') or die('Access Denied');
 									</div>
 
 									<div class="form-group">
-										<label>Email Address</label>
-										<input class="form-control" type="text" name="email_address" id="email_address" placeholder="Enter Email Address here.">
+										<label>Website</label>
+										<input class="form-control" type="text" name="customer_website" id="customer_website" placeholder="Enter Website here.">
+									</div>
+
+									<div class="form-group">
+										<label>Address</label>
+										<textarea class="form-control" rows="5" type="text" name="customer_address" placeholder="Enter your Full Address"></textarea>
 									</div>
 
 								</div>
 
 								<div class="col-6">
-									<div class="form-group">
-										<label>Website</label>
-										<input class="form-control" type="text" name="customer_website" id="customer_website" placeholder="Enter Website here.">
-									</div>
+								<div class="form-group">
+									<p>
+										<label for="source">Sales Incharge</label>
+
+										<select name="sales_incharge" class="form-control">
+											<option value="">---Please Select---</option>
+											<?php foreach ($sales_list as $row) : ?>
+												<?php if ($row->id == "01021415" || $row->id == "PTS09092020" || $row->id == "02021415" || $row->id == "24120518" || $row->id == "PS021021" || $row->id == "SEO041921") : ?>
+													<option value="<?php echo $row->id ?>">
+														<?php echo $row->id . " -- " . $row->lastname . ", " . $row->firstname . " " . $row->middlename  ?>
+													</option>
+												<?php endif ?>
+											<?php endforeach ?>
+										</select>
+									</p>
+								</div>
+
+								<div class="form-group">
+									<p>
+										<label for="source">Source</label>
+
+										<select name="source" class="form-control">
+											<option value="">---Please Select---</option>
+											<option value="Facebook Page">Vinculum Facebook Page</option>
+											<option value="BNI Referral">BNI Referral</option>
+											<option value="Client Referral">Client Referral</option>
+											<option value="Existing Client">Existing Client</option>
+											<option value="Walk-In">Walk-In</option>
+											<option value="Personal Network">Personal Network</option>
+											<option value="Saturation">Saturation</option>
+											<option value="Other Social Media">Other Social Media</option>
+											<option value="PhilGeps">PhilGeps</option>
+											<option value="Called Calls">Called Calls</option>
+										</select>
+									</p>
+								</div>
 
 									<div class="form-group">
 										<label>Installation Date</label>

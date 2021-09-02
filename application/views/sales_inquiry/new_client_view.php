@@ -43,6 +43,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 											<th>Interest</th>
 											<th>Type</th>
 											<th>Notes</th>
+											<th>Sales Incharge</th>
 											<th>Operation</th>
 										</tr>
 									</thead>
@@ -91,7 +92,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 								</div>
 								<div class="form-group">
 									<label for="location" class="control-label">Address</label>
-									<textarea class="form-control" type="text" name="location" placeholder="Enter your Full Address"></textarea>
+									<textarea class="form-control" rows="5" type="text" name="location" placeholder="Enter your Full Address"></textarea>
 								</div>
 
 							</div>
@@ -101,6 +102,23 @@ defined('BASEPATH') or die('Access Denied'); ?>
 					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
+								<div class="form-group">
+									<p>
+										<label for="source">Sales Incharge</label>
+
+										<select name="sales_incharge" class="form-control">
+											<option value="">---Please Select---</option>
+											<?php foreach ($sales_list as $row) : ?>
+												<?php if ($row->id == "01021415" || $row->id == "PTS09092020" || $row->id == "02021415" || $row->id == "24120518" || $row->id == "PS021021" || $row->id == "SEO041921") : ?>
+													<option value="<?php echo $row->id ?>">
+														<?php echo $row->id . " -- " . $row->lastname . ", " . $row->firstname . " " . $row->middlename  ?>
+													</option>
+												<?php endif ?>
+											<?php endforeach ?>
+										</select>
+									</p>
+								</div>
+
 								<div class="form-group">
 									<p>
 										<label for="source">Source</label>
@@ -200,7 +218,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 								</div>
 								<div class="form-group">
 									<label for="location" class="control-label">Address</label>
-									<textarea class="form-control location_edit" type="text" name="location" placeholder="Enter your Full Address"></textarea>
+									<textarea class="form-control location_edit" rows="5" type="text" name="location" placeholder="Enter your Full Address"></textarea>
 								</div>
 
 							</div>
@@ -210,6 +228,22 @@ defined('BASEPATH') or die('Access Denied'); ?>
 					<div class="col-sm-6">
 						<div class="card">
 							<div class="card-body">
+							<div class="form-group">
+									<p>
+										<label for="source">Sales Incharge</label>
+
+										<select name="sales_incharge" class="form-control sales_incharge_edit">
+											<?php foreach ($sales_list as $row) : ?>
+												<?php if ($row->id == "01021415" || $row->id == "PTS09092020" || $row->id == "02021415" || $row->id == "24120518" || $row->id == "PS021021" || $row->id == "SEO041921") : ?>
+													<option value="<?php echo $row->id ?>">
+														<?php echo $row->id . " -- " . $row->lastname . ", " . $row->firstname . " " . $row->middlename  ?>
+													</option>
+												<?php endif ?>
+											<?php endforeach ?>
+										</select>
+									</p>
+								</div>
+
 								<div class="form-group">
 									<p>
 										<label for="source">Source</label>

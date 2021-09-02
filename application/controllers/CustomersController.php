@@ -79,9 +79,11 @@ class CustomersController extends CI_Controller
 		if ($this->session->userdata('logged_in')) {
 
 			$this->load->helper('site_helper');
+			$this->load->model('CustomersModel');
 
 			$data = html_variable();
 			$data['title'] = 'Register New Client';
+			$data['sales_list'] = $this->CustomersModel->get_sales_list();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -162,6 +164,14 @@ class CustomersController extends CI_Controller
 				'label' => 'Notes',
 				'rules' => 'trim|max_length[255]',
 				'errors' => ['' => '']
+			],
+			[
+				'field' => 'sales_incharge',
+				'label' => 'Notes',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Select Sales Incharge'
+				]
 			]
 		];
 
@@ -183,7 +193,8 @@ class CustomersController extends CI_Controller
 				'InstallationDate' => $this->input->post('installation_date'),
 				'Interest' => $this->input->post('customer_interest'),
 				'Type' => $this->input->post('customer_type'),
-				'Notes' => $this->input->post('customer_notes')
+				'Notes' => $this->input->post('customer_notes'),
+				'sales_incharge' => $this->input->post('sales_incharge')
 			];
 
 
@@ -206,6 +217,7 @@ class CustomersController extends CI_Controller
 			$data = html_variable();
 			$data['title'] = 'Update Client';
 			$data['results'] = $results;
+			$data['sales_list'] = $this->CustomersModel->get_sales_list();
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -285,6 +297,21 @@ class CustomersController extends CI_Controller
 				'label' => 'Notes',
 				'rules' => 'trim|max_length[255]',
 				'errors' => ['' => '']
+			],
+			[
+				'field' => 'sales_incharge_edit',
+				'label' => 'Notes',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Select Sales Incharge']
+			],
+			[
+				'field' => 'source_edit',
+				'label' => 'Notes',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Select Source'
+					]
 			]
 		];
 
@@ -306,7 +333,8 @@ class CustomersController extends CI_Controller
 				'InstallationDate' => $this->input->post('installation_date_edit'),
 				'Interest' => $this->input->post('customer_interest_edit'),
 				'Type' => $this->input->post('customer_type_edit'),
-				'Notes' => $this->input->post('customer_notes_edit')
+				'Notes' => $this->input->post('customer_notes_edit'),
+				'sales_incharge' => $this->input->post('sales_incharge_edit')
 			];
 
 			$customer_id = $this->input->post('customer_id_edit');

@@ -44,6 +44,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
                                             <th>Interest</th>
                                             <th>Type</th>
                                             <th>Notes</th>
+											<th>Sales Incharge</th>
                                             <th>Installation Date</th>
                                             <th>Operation</th>
 				            			</tr>

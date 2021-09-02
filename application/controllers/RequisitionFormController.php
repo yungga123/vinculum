@@ -520,7 +520,7 @@ class RequisitionFormController extends CI_Controller {
 			if($this->input->post('passcode') == "vinculumquery"){
 				return true;
 			}else{
-				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid Password.');
 				return false;
 			}
 		}

@@ -25,6 +25,8 @@ foreach ($results as $row) {
 	$customer_interest = $row->Interest;
 	$customer_type = $row->Type;
 	$customer_notes = $row->Notes;
+	$source = $row->source;
+	$sales_incharge = $row->sales_incharge;
 
 }
 ?>
@@ -66,8 +68,8 @@ foreach ($results as $row) {
 									</div>
 
 									<div class="form-group">
-										<label>Address</label>
-										<input class="form-control" type="text" name="customer_address_edit" id="customer_address_edit" placeholder="Enter Address here." value="<?php echo $customer_address ?>">
+										<label>Email Address</label>
+										<input class="form-control" type="text" name="email_address_edit" id="email_address_edit" placeholder="Enter Email Address here." value="<?php echo $email_address ?>">
 									</div>
 
 									<div class="form-group">
@@ -76,17 +78,53 @@ foreach ($results as $row) {
 									</div>
 
 									<div class="form-group">
-										<label>Email Address</label>
-										<input class="form-control" type="text" name="email_address_edit" id="email_address_edit" placeholder="Enter Email Address here." value="<?php echo $email_address ?>">
+										<label>Website</label>
+										<input class="form-control" type="text" name="customer_website_edit" id="customer_website_edit" placeholder="Enter Website here." value="<?php echo $customer_website ?>">
+									</div>
+
+									<div class="form-group">
+										<label>Address</label>
+										<textarea class="form-control" type="text" name="customer_address_edit" id="customer_address_edit" placeholder="Enter Address here." rows="3"><?php echo $customer_address ?></textarea>
 									</div>
 
 								</div>
 
 								<div class="col-6">
-									<div class="form-group">
-										<label>Website</label>
-										<input class="form-control" type="text" name="customer_website_edit" id="customer_website_edit" placeholder="Enter Website here." value="<?php echo $customer_website ?>">
-									</div>
+								<div class="form-group">
+									<p>
+										<label for="source">Sales Incharge</label>
+
+										<select name="sales_incharge_edit" class="form-control">
+											<option value="">---Please Select---</option>
+											<?php foreach ($sales_list as $row) : ?>
+												<?php if ($row->id == "01021415" || $row->id == "PTS09092020" || $row->id == "02021415" || $row->id == "24120518" || $row->id == "PS021021" || $row->id == "SEO041921") : ?>
+													<option value="<?php echo $row->id ?>" <?php if($row->id == $sales_incharge){echo 'Selected'; } ?> >
+														<?php echo $row->id . " -- " . $row->lastname . ", " . $row->firstname . " " . $row->middlename  ?>
+													</option>
+												<?php endif ?>
+											<?php endforeach ?>
+										</select>
+									</p>
+								</div>
+
+								<div class="form-group">
+									<p>
+										<label for="source">Source</label>
+
+										<select name="source_edit" class="form-control">
+											<option value="Facebook Page" <?php if($source == "Facebook Page"){echo 'Selected'; } ?> >Vinculum Facebook Page</option>
+											<option value="BNI Referral" <?php if($source == "BNI Referral"){echo 'Selected'; } ?>>BNI Referral</option>
+											<option value="Client Referral" <?php if($source == "Client Referral"){echo 'Selected'; } ?>>Client Referral</option>
+											<option value="Existing Client" <?php if($source == "Existing Client"){echo 'Selected'; } ?>>Existing Client</option>
+											<option value="Walk-In" <?php if($source == "Walk-In"){echo 'Selected'; } ?>>Walk-In</option>
+											<option value="Personal Network" <?php if($source == "Personal Network"){echo 'Selected'; } ?>>Personal Network</option>
+											<option value="Saturation" <?php if($source == "Saturation"){echo 'Selected'; } ?>>Saturation</option>
+											<option value="Other Social Media" <?php if($source == "Other Social Media"){echo 'Selected'; } ?>>Other Social Media</option>
+											<option value="PhilGeps" <?php if($source == "PhilGeps"){echo 'Selected'; } ?>>PhilGeps</option>
+											<option value="Called Calls" <?php if($source == "Called Calls"){echo 'Selected'; } ?>>Called Calls</option>
+										</select>
+									</p>
+								</div>
 
 									<div class="form-group">
 										<label>Installation Date</label>

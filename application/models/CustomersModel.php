@@ -202,4 +202,12 @@ class CustomersModel extends CI_Model
 	{
 		return $this->db->get('customer_vt')->num_rows();
 	}
+
+	public function get_sales_list() {
+		$salesposition = 'Pre-Technical Sales';
+		
+		$this->db->select("*");
+		$this->db->from("technicians");
+		return $this->db->get()->result();
+	}
 }

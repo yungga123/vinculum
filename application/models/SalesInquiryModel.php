@@ -2,9 +2,9 @@
 defined('BASEPATH') or die('Access Denied');
 class SalesInquiryModel extends CI_Model {
 
-    public function newclient_datatable() {
+    public function newclient_datatable($sales_id) {
 
-		$this->newclient_query();
+		$this->newclient_query($sales_id);
 
 		if($_POST["length"] != -1) {
 			$this->db->limit($_POST["length"],$_POST["start"]);
@@ -13,28 +13,26 @@ class SalesInquiryModel extends CI_Model {
 		return $query->result();
 	}
 
-	public function newclient_query() {
+	public function newclient_query($sales_id) {
 		$id = 0;
-		$this->db->select("*");
+		$this->db->select("a.*, b.id as tech_id, b.lastname, b.firstname, b.middlename");
 		$this->db->from($this->table);
-		//$this->db->join($this->join_table_tech,'a.prepared_by=b.id','left');
-		$this->db->where("is_deleted",$id);
+		$this->db->join('technicians as b','a.sales_incharge=b.id','left');
+		$this->db->where("a.is_deleted",$id);
+		
 		
 		if(isset($_POST["search"]["value"])){
 
-			$this->db->like("id", $_POST["search"]["value"]);
+			$this->db->like("a.id", $_POST["search"]["value"]);
 			$this->db->or_like("a.customer_name", $_POST["search"]["value"]);
 			$this->db->or_like("a.contact_person", $_POST["search"]["value"]);
 			$this->db->or_like("a.contact_number", $_POST["search"]["value"]);
-			$this->db->or_like("a.location", $_POST["search"]["value"]);
-			$this->db->or_like("a.email_add", $_POST["search"]["value"]);
-            $this->db->or_like("a.date", $_POST["search"]["value"]);
-            $this->db->or_like("a.website", $_POST["search"]["value"]);
-            $this->db->or_like("a.interest", $_POST["search"]["value"]);
-            $this->db->or_like("a.type", $_POST["search"]["value"]);
-            $this->db->or_like("a.notes", $_POST["search"]["value"]);
+			$this->db->or_like("b.lastname", $_POST["search"]["value"]);
+			$this->db->or_like("b.firstname", $_POST["search"]["value"]);
 			$this->db->having('a.is_deleted', 0);
-			
+			if($this->session->userdata('logged_in')['emp_id'] != '01021415'){
+				$this->db->having('a.sales_incharge', $sales_id);
+			}
 		}
 
 		if (isset($_POST["order"])) {
@@ -46,8 +44,8 @@ class SalesInquiryModel extends CI_Model {
 		
 	}
 
-    public function filter_new_client_data() {
-		$this->newclient_query();
+    public function filter_new_client_data($id) {
+		$this->newclient_query($id);
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
@@ -337,9 +335,9 @@ var $order_archiveprojects_column = array(
 	"d.date_of_task"
 );
 
-public function existingclient_datatable() {
+public function existingclient_datatable($id) {
 
-	$this->existingclient_query();
+	$this->existingclient_query($id);
 
 	if($_POST["length"] != -1) {
 		$this->db->limit($_POST["length"],$_POST["start"]);
@@ -348,11 +346,11 @@ public function existingclient_datatable() {
 	return $query->result();
 }
 
-	public function existingclient_query() {
+	public function existingclient_query($sales_id) {
 		$id = 0;
 		$this->db->select("*");
 		$this->db->from($this->existingclienttable);
-		//$this->db->join($this->join_table_tech,'a.prepared_by=b.id','left');
+		$this->db->join('technicians as b','a.sales_incharge=b.id','left');
 		$this->db->where("is_deleted",$id);
 		
 		if(isset($_POST["search"]["value"])){
@@ -361,14 +359,13 @@ public function existingclient_datatable() {
 			$this->db->or_like("a.CompanyName", $_POST["search"]["value"]);
 			$this->db->or_like("a.ContactPerson", $_POST["search"]["value"]);
 			$this->db->or_like("a.ContactNumber", $_POST["search"]["value"]);
-			$this->db->or_like("a.Address", $_POST["search"]["value"]);
-			$this->db->or_like("a.EmailAddress", $_POST["search"]["value"]);
-			$this->db->or_like("a.InstallationDate", $_POST["search"]["value"]);
-			$this->db->or_like("a.Website", $_POST["search"]["value"]);
-			$this->db->or_like("a.Interest", $_POST["search"]["value"]);
-			$this->db->or_like("a.Type", $_POST["search"]["value"]);
-			$this->db->or_like("a.Notes", $_POST["search"]["value"]);
+			$this->db->or_like("b.lastname", $_POST["search"]["value"]);
+			$this->db->or_like("b.firstname", $_POST["search"]["value"]);
 			$this->db->having('a.is_deleted', 0);
+			if($this->session->userdata('logged_in')['emp_id'] != '01021415'){
+				$this->db->having('a.sales_incharge', $sales_id);
+			}
+			
 			
 		}
 
@@ -381,8 +378,8 @@ public function existingclient_datatable() {
 	
 	}
 
-	public function filter_existing_client_data() {
-		$this->existingclient_query();
+	public function filter_existing_client_data($id) {
+		$this->existingclient_query($id);
 		$query = $this->db->get();
 		return $query->num_rows();
 	}
