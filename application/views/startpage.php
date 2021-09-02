@@ -31,7 +31,7 @@ defined('BASEPATH') or die('Access Denied');
 				<a href="#" class="h1"><b>Welcome </b>User</a>
 			</div>
 			<div class="card-body">
-                <button type="button" class="btn btn-success btn-lg btn-block text-bold">LOGIN TO M.I.S.</button>
+                <a href="<?php echo site_url('login') ?>" class="btn btn-success btn-lg btn-block text-bold">LOGIN TO M.I.S.</a>
 				<a href="<?php echo site_url('aflaform') ?>" class="btn btn-danger btn-lg btn-block text-bold">FILE A LEAVE</a>
 			</div>
 			<!-- /.card-body -->

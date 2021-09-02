@@ -106,6 +106,16 @@ defined('BASEPATH') or die('Access Denied');
                 <?php echo form_close() ?>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="card row">
+                    <div class="card-body col-sm-6 offset-sm-3">
+                        <a href="<?php echo site_url('') ?>" class="btn btn-danger btn-lg btn-block text-bold"><i class="fas fa-arrow-circle-left"></i> GO BACK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal -->

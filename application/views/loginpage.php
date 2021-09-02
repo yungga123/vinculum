@@ -57,17 +57,24 @@ defined('BASEPATH') or die('Access Denied');
 						</div>
 					</div>
 				</div>
+
 				<div class="row">
-					<div class="col-8">
+					<div class="col-sm-8">
 						<button type="button" class="btn btn-block btn-secondary" data-toggle="modal" data-target="#change_passModal">
 							Change Password
 						</button>
 					</div>
 					<!-- /.col -->
-					<div class="col-4">
+					<div class="col-sm-4">
 						<button type="submit" class="btn btn-primary btn-block">Sign In</button>
 					</div>
 					<!-- /.col -->
+				</div>
+
+				<div class="row mt-2">
+					<div class="col-sm-12">
+						<a href="<?php echo site_url('') ?>" class="btn btn-danger btn-block">Go Back</a>
+					</div>
 				</div>
 				<?php echo form_close() ?>
 			</div>
