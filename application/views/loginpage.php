@@ -31,7 +31,7 @@ defined('BASEPATH') or die('Access Denied');
       ) ?>
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>Vinculum </b>Technologies</a>
+      <img class="img-thumbnail mx-auto d-block" src="<?php echo base_url('assets/images/mislogo.jpg') ?>" alt="">
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>
