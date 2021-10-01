@@ -314,6 +314,9 @@ $total_amount = $sub_total + $vat_amount;
                     } elseif ($supplier_data['vendor_terms'] == "07") {
                         echo "90 DAYS PDC";
                     }
+                    elseif ($supplier_data['vendor_terms'] == "08") {
+                        echo "21 DAYS PDC";
+                    }
                     ?>
                 </b>
 
