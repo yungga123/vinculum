@@ -129,6 +129,7 @@ foreach($vendor_data as $row){
                                                                     <option value="05" <?php if ($vendor_data_result['vendor_terms_edit'] == "05") { echo 'selected';} ?> >05 --- 45 Days</option>
                                                                     <option value="06" <?php if ($vendor_data_result['vendor_terms_edit'] == "06") { echo 'selected';} ?> >06 --- 60 Days</option>
                                                                     <option value="07" <?php if ($vendor_data_result['vendor_terms_edit'] == "07") { echo 'selected';} ?> >07 --- 90 Days</option>
+                                                                    <option value="08" <?php if ($vendor_data_result['vendor_terms_edit'] == "08") { echo 'selected';} ?> >08 --- 21 Days</option>
                                                                 </select>
                                                             </p>
                                                         </div>

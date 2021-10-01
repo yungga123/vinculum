@@ -53,9 +53,10 @@ class VendorController extends CI_Controller {
 			[
 				'field' => 'vendor_terms',
 				'label' => 'Vendor Terms and Condition',
-				'rules' => 'trim|max_length[50]',
+				'rules' => 'trim|max_length[50]|required',
 				'errors' => [
-					'max_length' => 'You are allowed only of 50 characters'
+					'max_length' => 'You are allowed only of 50 characters',
+					'required' => 'Please Provide Vendor Terms'
 				]
 			],
 			[
@@ -388,6 +389,9 @@ class VendorController extends CI_Controller {
 				}
 				elseif($row->terms_and_condition == "07"){
 					$sub_array[] = "90 Days";
+				}
+				elseif($row->terms_and_condition == "08"){
+					$sub_array[] = "21 Days";
 				}
 
 			$sub_array[] = $date;

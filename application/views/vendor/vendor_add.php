@@ -100,6 +100,7 @@
                                                                     <option value="05">05 --- 45 Days</option>
                                                                     <option value="06">06 --- 60 Days</option>
                                                                     <option value="07">07 --- 90 Days</option>
+                                                                    <option value="08">08 --- 21 Days</option>
                                                                 </select>
                                                             </p>
                                                         </div>
