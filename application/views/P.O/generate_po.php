@@ -68,7 +68,7 @@ foreach ($items_details as $row) {
     }
 }
 
-$net_of_vat = $sub_total / 12;
+$net_of_vat = $sub_total / 1.12;
 $vat_amount = $net_of_vat * .12;
 $total_amount = $sub_total + $vat_amount;
 ?>
