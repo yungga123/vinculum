@@ -36,9 +36,9 @@ class DashboardController extends CI_Controller {
 			$data['count_jo_phone_support'] = $this->JobOrderModel->count_jo_phone_support();
 			//$data['count_joborder_filed'] = $this->JobOrderModel->count_joborder('Filed');
 
-			if ($sock = @fsockopen('www.google.com', 80)) {
-				$data['random_quote'] = json_decode(file_get_contents($api_url));
-			}
+			// if ($sock = @fsockopen('www.google.com', 80)) {
+			// 	$data['random_quote'] = json_decode(file_get_contents($api_url));
+			// }
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('dashboard/dashboard');
