@@ -161,6 +161,34 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <hr>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Bank Details:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_bank_name" class="control-label">Bank Name</label>
+                                                            <input type="text" name="vendor_bank_name" class="form-control" placeholder="Enter Bank Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                                <label for="vendor_account_name">Account Name</label>
+                                                                <input type="text" name="vendor_account_name" class="form-control" placeholder="Enter Account Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_account_number" class="control-label">Account Number</label>
+                                                            <input type="text" name="vendor_account_number" class="form-control" placeholder="Enter Account Number">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
