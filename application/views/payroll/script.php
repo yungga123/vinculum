@@ -23,7 +23,7 @@ defined('BASEPATH') or die('Access Denied');
             var sundaysCount = Number($('#sundays').val());
 
             //special compute
-            var sundays = dailyRate*sundaysCount;
+            var sundays = dailyRate * sundaysCount;
 
             //earnings
             var basicIncome = dailyRate * daysWorked - sundays;
@@ -51,9 +51,9 @@ defined('BASEPATH') or die('Access Denied');
             var awols = awol * dailyRate;
             var otherDeduct = Number($('#others').val());
             var cashAdv = Number($('#cash_adv').val());
-            
 
-            var grossPay = (basicIncome + wdoPay + ndiffPay + spHolidayPay + regHolidayPay + otPay + vac_pay + sick_pay) - (absents + tardiness + awols + restDays );
+
+            var grossPay = (basicIncome + wdoPay + ndiffPay + spHolidayPay + regHolidayPay + otPay + vac_pay + sick_pay) - (absents + tardiness + awols + restDays);
             var netPay = (grossPay + thirteenthMonthPay + commission + addBack + incentives) - (otherDeduct + cashAdv + sssRate + taxRate + pagIbigRate + philHealthRate);
 
             $('.basicIncome').html(basicIncome.toFixed(2));
@@ -88,11 +88,11 @@ defined('BASEPATH') or die('Access Denied');
         }
 
         //Sunday Computation
-        function getSundays(start_date,end_date) {
+        function getSundays(start_date, end_date) {
             var total_sundays = 0;
 
-            for (var i = start_date; i <= end_date; i.setDate(i.getDate()+1)) {
-                if(i.getDay()==0) total_sundays++;
+            for (var i = start_date; i <= end_date; i.setDate(i.getDate() + 1)) {
+                if (i.getDay() == 0) total_sundays++;
             }
             return total_sundays;
         }
@@ -102,7 +102,7 @@ defined('BASEPATH') or die('Access Denied');
                 payrollCompute();
             }
         <?php } ?>
-        
+
         //KeyUp Function
         $('input').keyup(function() {
 
@@ -129,12 +129,124 @@ defined('BASEPATH') or die('Access Denied');
                         $('#sss_rate').val(response.sss);
                         $('#tax_rate').val(response.tax_rate);
                         $('#pagibig_rate').val(response.pagibig);
+                        
+
+
+                        var date1 = new Date($('#start_date').val());
+                        var date2 = new Date($('#end_date').val());
+
+                        //computing Filed Vacation Leave
+                        var vl_start_date = new Date(response.vacation_leave_start_date);
+                        var vl_end_date = new Date(response.vacation_leave_end_date);
+                        var vl_total_sundays = 0;
+                        var sl_total_sundays = 0;
+                            
+
+                        if(date1 <= vl_start_date && vl_start_date <= date2 && vl_end_date >= date2){
+                            var vl_difference_time = date2.getTime() - vl_start_date.getTime(); 
+                            
+                            for (var i = vl_start_date; i <= date2; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) vl_total_sundays++;
+                            }
+                        }
+
+                        else if(vl_start_date <= date1 && vl_end_date >= date1 && vl_end_date <= date2){
+                            var vl_difference_time = vl_end_date.getTime() - date1.getTime(); 
+
+                            for (var i = date1; i <= vl_end_date; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) vl_total_sundays++;
+                            }
+                        }
+
+                        else if(vl_start_date >= date1 && vl_end_date <= date2){
+                            var vl_difference_time = vl_end_date.getTime() - vl_start_date.getTime();
+
+                            for (var i = vl_start_date; i <= vl_end_date; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) vl_total_sundays++;
+                            }
+                        }
+
+                        else if(vl_start_date < date1 && vl_end_date > date2){
+                            var vl_difference_time = date2.getTime() - date1.getTime();
+
+                            for (var i = date1; i <= date2; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) vl_total_sundays++;
+                            }
+                        }
+                        else{
+                            vl_difference_days = "";
+                        }
+
+
+
+
+                        //computing Filed Sick Leave
+                        var sl_start_date = new Date(response.sick_leave_start_date);
+                        var sl_end_date = new Date(response.sick_leave_end_date);
+                        var date1 = new Date($('#start_date').val());
+                        var date2 = new Date($('#end_date').val());
+
+                        if(date1 <= sl_start_date && sl_start_date <= date2 && sl_end_date >= date2){
+                            var sl_difference_time = date2.getTime() - sl_start_date.getTime();
+
+                            for (var i = sl_start_date; i <= date2; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) sl_total_sundays++;
+                            }
+                        }
+
+                        else if(sl_start_date <= date1 && sl_end_date >= date1 && sl_end_date <= date2){
+                            var sl_difference_time = sl_end_date.getTime() - date1.getTime();
+
+                            for (var i = date1; i <= sl_end_date; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) sl_total_sundays++;
+                            }
+                        }
+
+                        else if(sl_start_date >= date1 && sl_end_date <= date2){
+                            var sl_difference_time = sl_end_date.getTime() - sl_start_date.getTime();
+
+                            for (var i = sl_start_date; i <= sl_end_date; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) sl_total_sundays++;
+                            }
+                        }
+                        
+                        else if(sl_start_date < date1 && sl_end_date > date2){
+                            var sl_difference_time = date2.getTime() - date1.getTime();
+
+                            for (var i = date1; i <= date2; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) sl_total_sundays++;
+                            }
+                        }
+                        
+                        else{
+                            sl_difference_days = "";
+                        }
+
+                        
+
+                        if(vl_difference_days !=""){
+                            var vl_difference_days = vl_difference_time / (1000 * 3600 * 24);
+                            vl_difference_days = vl_difference_days + 1;
+                            vl_difference_days = vl_difference_days - vl_total_sundays;
+                        }
+
+                        if(sl_difference_days !=""){
+                            var sl_difference_days = sl_difference_time / (1000 * 3600 * 24);
+                            sl_difference_days = sl_difference_days + 1;  
+                            sl_difference_days = sl_difference_days - sl_total_sundays;
+                        }
+                        
+                        
+
+                        $('#vacation_leave').val(vl_difference_days);
+                        $('#sick_leave').val(sl_difference_days);    
                         payrollCompute();
                     }
                 });
             }
 
         });
+
 
         //payroll add
         $('#form-payroll').submit(function(e) {
@@ -189,9 +301,9 @@ defined('BASEPATH') or die('Access Denied');
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
                         $('.loading-modal').modal('hide');
-                        
+
                         toastr.error(response.errors);
-                        
+
                     }
                 }
             });
@@ -248,15 +360,15 @@ defined('BASEPATH') or die('Access Denied');
                         $('#cutoffselect_modal').modal('hide');
                         toastr.success("Success! Proceed please proceed.");
 
-                        sundayCnt = getSundays(date1,date2);
+                        sundayCnt = getSundays(date1, date2);
                         $('#sundays').val(sundayCnt);
                         me[0].reset();
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
                         $('.loading-modal').modal('hide');
-                        
+
                         toastr.error(response.errors);
-                        
+
                     }
                 }
             });
@@ -339,7 +451,7 @@ defined('BASEPATH') or die('Access Denied');
     });
 </script>
 
-<?php if ($this->uri->segment(1)=='payroll') { ?>
+<?php if ($this->uri->segment(1) == 'payroll') { ?>
     <script>
         $("#cutoffselect_modal").modal({
             backdrop: 'static',

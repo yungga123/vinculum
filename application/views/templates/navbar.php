@@ -506,7 +506,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 			</li>
 
 			<!-- HUMAN RESOURCE GROUP -->
-			<li class="nav-item has-treeview">
+			<li class="nav-item has-treeview<?php echo $hr_status ?>">
 
 				<a href="javascript:void(0)" class="nav-link<?php echo $ul_hr_tree ?>">
 					<i class="nav-icon fas fa-users"></i>
@@ -526,7 +526,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 					</li>
 
 					<li class="nav-item">
-						<a href="<?php echo site_url('filed-leaves') ?>" class="nav-link<?php echo $leaves ?>">
+						<a href="<?php echo site_url('filed-leaves/pending') ?>" class="nav-link<?php echo $leaves ?>">
 							<i class="nav-icon fas fa-user-shield"></i>
 							<p>
 								Filed Leaves

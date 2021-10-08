@@ -116,5 +116,12 @@ class TechniciansModel extends CI_Model {
 		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
 		return $this->db->query("UPDATE technicians SET sl_credit = (sl_credit + ".$sl_count.") WHERE id = '".$emp_id."'");
 	}
+
+	public function update_vlsl_to_default($data) {
+
+		$this->db->where('status', 'Regular');
+		$this->db->update('technicians', $data);
+		
+	}
 	
 }

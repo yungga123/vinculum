@@ -243,6 +243,7 @@ class PayrollController extends CI_Controller {
 
             $data = html_variable();
             $data['title'] = 'Payroll Computation';
+            $data['hr_status'] = ' menu-open';
             $data['li_payroll'] = ' active';
             $data['ul_hr_tree'] = ' active';
             $data['technicians'] = $technicians;
@@ -279,6 +280,35 @@ class PayrollController extends CI_Controller {
             $validate['philhealth'] = $row->phil_health_rate;
             $validate['tax_rate'] = $row->tax;
         }
+
+        // Fetch Filed Leaves Data
+        $this->load->model('LeaveModel');
+
+        $vacationleaves = $this->LeaveModel->fetchVacationLeave($id);
+        $sickleaves = $this->LeaveModel->fetchSickLeave($id);
+
+        if(!empty($vacationleaves)){
+            foreach ($vacationleaves as $row) {
+                $validate['vacation_leave_start_date'] = $row->start_date;
+                $validate['vacation_leave_end_date'] = $row->end_date;
+            }
+        }
+        else{
+            $validate['vacation_leave_start_date'] = "";
+            $validate['vacation_leave_end_date'] = "";
+        }
+
+        if(!empty($sickleaves)){
+            foreach ($sickleaves as $row) {
+                $validate['sick_leave_start_date'] = $row->start_date;
+                $validate['sick_leave_end_date'] = $row->end_date;
+            }
+        }
+        else{
+            $validate['sick_leave_start_date'] = "";
+            $validate['sick_leave_end_date'] = "";
+        }
+
 
 		echo json_encode($validate);
     }
@@ -778,5 +808,45 @@ class PayrollController extends CI_Controller {
 		    $validate['errors'] = validation_errors();
 		}
         echo json_encode($validate);
+    }
+
+    public function getLeaveInfo($id) {
+
+        $this->load->model('LeaveModel');
+
+        $vacationleaves = $this->LeaveModel->fetchVacationLeave($id);
+        $sickleaves = $this->LeaveModel->fetchSickLeave($id);
+
+        if(!empty($vacationleaves)){
+            foreach ($vacationleaves as $row) {
+                $validate['leave_start_date'] = date_format(date_create($row->start_date),'d-m-yy');
+                $validate['leave_end_date'] = date_format(date_create($row->end_date),'d/m/yy');
+            }
+        }
+        else{
+            $validate['leave_start_date'] = "";
+            $validate['leave_end_date'] = "";
+        }
+
+        if(!empty($sickleaves)){
+            foreach ($sickleaves as $row) {
+                $validate['leave_start_date'] = date_format(date_create($row->start_date),'d/m/yy');
+                $validate['leave_end_date'] = date_format(date_create($row->end_date),'d/m/yy');
+            }
+        }
+        else{
+            $validate['leave_start_date'] = "";
+            $validate['leave_end_date'] = "";
+        }
+
+        $cutoff_start_date = date_format(date_create($this->input->post('start_date')),'m-d-yy');
+        $cutoff_end_date = date_format(date_create($this->input->post('end_date')),'d/m/yy');
+
+
+        $validate['cutoff_start_date'] = $cutoff_start_date;
+        $validate['cutoff_end_date'] = $cutoff_end_date;
+        
+
+		echo json_encode($validate);
     }
 }

@@ -210,4 +210,4 @@ $route['start'] = 'LoginController/startpage';
 
 //LEAVEController
 $route['aflaform'] = 'LeaveController';
-$route['filed-leaves'] = 'LeaveController/filed_leaves';
+$route['filed-leaves/(:any)'] = 'LeaveController/filed_leaves/$1';
