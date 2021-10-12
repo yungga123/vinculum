@@ -47,8 +47,11 @@ if ($this->uri->segment(2) == 'pending') {
             type: 'get',
             dataType: 'json',
             success: function(response) {
-                $("#approve_start_date").val(response.leave_data[0].start_date);
-                $("#approve_end_date").val(response.leave_data[0].end_date);
+                $("#start_date").val(response.leave_data[0].start_date);
+                $("#end_date").val(response.leave_data[0].end_date);
+
+                console.log(response);
+                
             }
         });
 
@@ -158,7 +161,6 @@ if ($this->uri->segment(2) == 'pending') {
                     $('.loading-modal').modal('hide');
                     toastr.success("Success! Filed Leave Deleted.");
                     me[0].reset();
-
                     window.setTimeout(function() {
                         location.reload();
                     }, 2000);

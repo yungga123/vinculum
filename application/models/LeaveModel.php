@@ -112,7 +112,21 @@ class LeaveModel extends CI_Model
 		$this->db->select('vl_credit, sl_credit');
 		$this->db->from('technicians');
 		$this->db->where('id', $employee_id);
-		$this->db->limit(1);
+		return $this->db->get()->result();
+	}
+
+	public function check_pending_leave($emp_id,$type_of_leave){
+		$this->db->select('*');
+		$this->db->from('filed_leave');
+		$this->db->where('emp_id',$emp_id);
+		$this->db->where('status', 'pending');
+		$this->db->where('type_of_leave', $type_of_leave);
+		return $this->db->get()->result();
+	}
+
+	public function check_empty_database(){
+		$this->db->select('*');
+		$this->db->from('filed_leave');
 		return $this->db->get()->result();
 	}
 }

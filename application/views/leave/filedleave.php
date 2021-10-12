@@ -91,7 +91,7 @@ if ($this->uri->segment(2) == 'pending') {
                         <div class="form-group">
                             <label for="task_date">Start Date</label>
                             <div class="input-group">
-                                <input class="form-control" type="date" name="approve_start_date" id="approve_start_date" placeholder="Select Date">
+                                <input class="form-control" type="date" name="start_date" id="start_date" placeholder="Select Date">
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ if ($this->uri->segment(2) == 'pending') {
                         <div class="form-group">
                             <label for="task_date">End Date</label>
                             <div class="input-group">
-                                <input class="form-control" type="date" name="approve_end_date" id="approve_end_date" placeholder="Select Date">
+                                <input class="form-control" type="date" name="end_date" id="end_date" placeholder="Select Date">
                             </div>
                         </div>
                     </div>

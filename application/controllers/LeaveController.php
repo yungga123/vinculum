@@ -19,7 +19,7 @@ class LeaveController extends CI_Controller
                 'label' => 'Date of Application',
                 'rules' => 'trim|required',
                 'errors' => [
-                    'required' => 'Please provide Date of Application'
+                    'required' => 'Please Provide Date of Application'
                 ]
             ],
             [
@@ -27,31 +27,20 @@ class LeaveController extends CI_Controller
                 'label' => 'Type of Leave',
                 'rules' => 'trim|required',
                 'errors' => [
-                    'required' => 'Please provide Type of Leave'
-                ]
-            ],
-            [
-                'field' => 'employee',
-                'label' => 'Select Employee',
-                'rules' => 'trim|required|callback_checkslvl',
-                'errors' => [
-                    'required' => 'Please select employee.'
+                    'required' => 'Please Provide Type of Leave'
                 ]
             ],
             [
                 'field' => 'start_date',
                 'label' => 'Start Date',
-                'rules' => 'trim|required',
-                'errors' => [
-                    'required' => 'Please provide start date.'
-                ]
+                'rules' => 'trim|callback_checkslvl'
             ],
             [
                 'field' => 'end_date',
                 'label' => 'Select Employee',
                 'rules' => 'trim|required',
                 'errors' => [
-                    'required' => 'Please provide end date.'
+                    'required' => 'Please Provide End Date.'
                 ]
             ],
             [
@@ -59,7 +48,7 @@ class LeaveController extends CI_Controller
                 'label' => 'Reason',
                 'rules' => 'trim|required',
                 'errors' => [
-                    'required' => 'Please enter a valid reason.'
+                    'required' => 'Please enter a Valid Reason.'
                 ]
             ]
         ];
@@ -229,8 +218,8 @@ class LeaveController extends CI_Controller
 
             $this->LeaveModel->update_leave($this->input->post('approve_leave_id'), [
                 'status' => 'approved',
-                'start_date' => $this->input->post('approve_start_date'),
-                'end_date' => $this->input->post('approve_end_date'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date'),
                 'notes' => $this->input->post('approve_notes')
 
             ]);
@@ -304,76 +293,96 @@ class LeaveController extends CI_Controller
 
     function checkslvl()
     {
-        if ($this->input->post('employee') != "") {
-            $employee_id = $this->input->post('employee');
-            $techdata = $this->LeaveModel->gettechdata($employee_id);
 
-            $start_date = strtotime($this->input->post('start_date'));
-            $end_date = strtotime($this->input->post('end_date'));
-            $start_date2 = date_create($this->input->post('start_date'));
-            $end_date2 = date_create($this->input->post('end_date'));
-
-            if ($this->input->post('type_of_leave') == "Vacation Leave") {
-
-                //Compute difference of two days
-                $days_between = ceil(abs($end_date - $start_date) / 86400);
-                $days_between = $days_between + 1;
-
-
-                //Compute total Sundays of Filed Date
-                $days = $start_date2->diff($end_date2, true)->days;
-                $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
-
-                //Compute total Filed Days
-                $filed_days = $days_between - $total_sundays;
-
-                //Fetch remaning VL of employee
-                foreach ($techdata as $row) {
-                    $remaining_vl = $row->vl_credit;
+        if(!empty($this->input->post('employee'))){
+            if ($this->input->post('start_date') != "") {
+                $check_pending_leave = $this->LeaveModel->check_pending_leave($this->input->post('employee'), $this->input->post('type_of_leave'));
+               // $check_empty_database = $this->LeaveModel->check_empty_database();
+                
+                foreach($check_pending_leave as $row){
+                    $leave_id = $row->id;
                 }
 
-                //check difference of filed days and remaining vl days
-                if ($remaining_vl >= $filed_days) {
-                    $remaining_vl = $remaining_vl - $filed_days;
-                    $this->form_validation->set_message('checkslvl', 'Youre remaing VL Credit:' . $remaining_vl);
+                if(empty($check_pending_leave)){
+                $techdata = $this->LeaveModel->gettechdata($this->input->post('employee'));
+                $start_date = strtotime($this->input->post('start_date'));
+                $end_date = strtotime($this->input->post('end_date'));
+                $start_date2 = date_create($this->input->post('start_date'));
+                $end_date2 = date_create($this->input->post('end_date'));
+
+                if ($this->input->post('type_of_leave') == "Vacation Leave") {
+    
+                    //Compute difference of two days
+                    $days_between = ceil(abs($end_date - $start_date) / 86400);
+                    $days_between = $days_between + 1;
+    
+    
+                    //Compute total Sundays of Filed Date
+                    $days = $start_date2->diff($end_date2, true)->days;
+                    $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
+    
+                    //Compute total Filed Days
+                    $filed_days = $days_between - $total_sundays;
+    
+                    //Fetch remaning VL of employee
+                    foreach ($techdata as $row) {
+                        $remaining_vl = $row->vl_credit;
+                    }
+    
+                    //check difference of filed days and remaining vl days
+                    if ($remaining_vl >= $filed_days) {
+                        $remaining_vl = $remaining_vl - $filed_days;
+                        $this->form_validation->set_message('checkslvl', 'Youre remaing VL Credit:' . $remaining_vl);
+                        return true;
+                    } else {
+                        $this->form_validation->set_message('checkslvl', 'Invalid, remaing VL Credit:' . $remaining_vl);
+                        return false;
+                    }
+    
+                } elseif ($this->input->post('type_of_leave') == 'Sick Leave') {
+                    
+                    //Compute difference of two days
+                    $days_between = ceil(abs($end_date - $start_date) / 86400);
+                    $days_between = $days_between + 1;
+    
+    
+                    //Compute total Sundays of Filed Date
+                    $days = $start_date2->diff($end_date2, true)->days;
+                    $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
+    
+                    //Compute total Filed Days
+                    $filed_days = $days_between - $total_sundays;
+    
+                    //Fetch remaning SL of employee
+                    foreach ($techdata as $row) {
+                        $remaining_sl = $row->sl_credit;
+                    }
+    
+                    //check difference of filed days and remaining sl days
+                    if ($remaining_sl >= $filed_days) {
+                        $remaining_sl = $remaining_sl - $filed_days;
+                        $this->form_validation->set_message('checkslvl', 'Youre remaing SL Credit:' . $remaining_sl);
+                        return true;
+                    } else {
+                        $this->form_validation->set_message('checkslvl', 'Invalid remaing SL Credit:' . $remaining_sl);
+                        return false;
+                    }
+                }
+
+                }
+                else{
+                    $this->form_validation->set_message('checkslvl', 'You Still have Pending Filed Leave, Filed Leave ID:' . $leave_id);
                     return false;
-                } else {
-                    $this->form_validation->set_message('checkslvl', 'Invalid remaing VL Credit:' . $remaining_vl);
-                    return false;
                 }
-            } elseif ($this->input->post('type_of_leave') == 'Sick Leave') {
-                //Compute difference of two days
-                $days_between = ceil(abs($end_date - $start_date) / 86400);
-                $days_between = $days_between + 1;
-
-
-                //Compute total Sundays of Filed Date
-                $days = $start_date2->diff($end_date2, true)->days;
-                $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
-
-                //Compute total Filed Days
-                $filed_days = $days_between - $total_sundays;
-
-                //Fetch remaning VL of employee
-                foreach ($techdata as $row) {
-                    $remaining_sl = $row->sl_credit;
-                }
-
-                //check difference of filed days and remaining vl days
-                if ($remaining_sl >= $filed_days) {
-                    $remaining_sl = $remaining_sl - $filed_days;
-                    $this->form_validation->set_message('checkslvl', 'Youre remaing SL Credit:' . $remaining_sl);
-                    return true;
-                } else {
-                    $this->form_validation->set_message('checkslvl', 'Invalid remaing SL Credit:' . $remaining_sl);
-                    return false;
-                }
+            } else {
+                $this->form_validation->set_message('checkslvl', 'Please Provide Start Date');
+                return false;
             }
+        }else{
             $this->form_validation->set_message('checkslvl', 'Please Select Employee');
             return false;
-        } else {
-            $this->form_validation->set_message('checkslvl', 'Please Select Employee Name');
-            return false;
         }
+
+        
     }
 }

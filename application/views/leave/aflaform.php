@@ -190,7 +190,9 @@ defined('BASEPATH') or die('Access Denied');
                             $(':submit').removeAttr('disabled','disabled');
                             toastr.success('Successfully Filed!');
                             $('#leave_confirm').modal();
+                            $("#employee option:selected").remove();
                             me[0].reset();
+                            
                         } else {
                             $(':submit').removeAttr('disabled','disabled');
 
