@@ -138,6 +138,7 @@ class LeaveController extends CI_Controller
 
             if ($status == 'pending') {
                 $button = '
+                <button type="button" class="btn btn-warning btn-xs btn-block btn_edit_leave" data-toggle="modal" data-target=".leave-edit"><i class="fas fa-file"></i> Edit</button>
 <button type="button" class="btn btn-success btn-xs btn-block btn_approve_leave" data-toggle="modal" data-target=".leave-approved"><i class="fas fa-file"></i> Approved</button>
 <button type="button" class="btn btn-danger btn-xs btn-block btn_delete_leave" data-toggle="modal" data-target=".leave-delete"><i class="fas fa-trash"></i> Delete</button>
 ';
@@ -155,6 +156,8 @@ class LeaveController extends CI_Controller
             $sub_array[] = $start_date;
             $sub_array[] = $end_date;
             $sub_array[] = $row->reason;
+            $sub_array[] = $row->processed_by;
+            $sub_array[] = $row->approved_by;
             $sub_array[] = $button;
 
             $data[] = $sub_array;
@@ -220,7 +223,8 @@ class LeaveController extends CI_Controller
                 'status' => 'approved',
                 'start_date' => $this->input->post('start_date'),
                 'end_date' => $this->input->post('end_date'),
-                'notes' => $this->input->post('approve_notes')
+                'notes' => $this->input->post('approve_notes'),
+                'approved_by' => 'Marvin G. Lucas'
 
             ]);
         } else {
@@ -233,11 +237,16 @@ class LeaveController extends CI_Controller
     {
 
         if ($this->input->post('passcode') != "") {
-            if ($this->input->post('passcode') == "vinculumquery") {
-                return true;
-            } else {
-                $this->form_validation->set_message('confirmleave_pw', 'Invalid Password.');
+            if($this->input->post('processed_by') ==""){
+                $this->form_validation->set_message('confirmleave_pw', 'Please Process First Before Approving Filed Leave');
                 return false;
+            }else{
+                if ($this->input->post('passcode') == "vinculumquery") {
+                    return true;
+                } else {
+                    $this->form_validation->set_message('confirmleave_pw', 'Invalid Password.');
+                    return false;
+                }
             }
         } else {
             $this->form_validation->set_message('confirmleave_pw', 'Password Required.');
@@ -294,16 +303,9 @@ class LeaveController extends CI_Controller
     function checkslvl()
     {
 
-        if(!empty($this->input->post('employee'))){
+        if (!empty($this->input->post('employee'))) {
             if ($this->input->post('start_date') != "") {
-                $check_pending_leave = $this->LeaveModel->check_pending_leave($this->input->post('employee'), $this->input->post('type_of_leave'));
-               // $check_empty_database = $this->LeaveModel->check_empty_database();
-                
-                foreach($check_pending_leave as $row){
-                    $leave_id = $row->id;
-                }
 
-                if(empty($check_pending_leave)){
                 $techdata = $this->LeaveModel->gettechdata($this->input->post('employee'));
                 $start_date = strtotime($this->input->post('start_date'));
                 $end_date = strtotime($this->input->post('end_date'));
@@ -311,24 +313,24 @@ class LeaveController extends CI_Controller
                 $end_date2 = date_create($this->input->post('end_date'));
 
                 if ($this->input->post('type_of_leave') == "Vacation Leave") {
-    
+
                     //Compute difference of two days
                     $days_between = ceil(abs($end_date - $start_date) / 86400);
                     $days_between = $days_between + 1;
-    
-    
+
+
                     //Compute total Sundays of Filed Date
                     $days = $start_date2->diff($end_date2, true)->days;
                     $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
-    
+
                     //Compute total Filed Days
                     $filed_days = $days_between - $total_sundays;
-    
+
                     //Fetch remaning VL of employee
                     foreach ($techdata as $row) {
                         $remaining_vl = $row->vl_credit;
                     }
-    
+
                     //check difference of filed days and remaining vl days
                     if ($remaining_vl >= $filed_days) {
                         $remaining_vl = $remaining_vl - $filed_days;
@@ -338,51 +340,103 @@ class LeaveController extends CI_Controller
                         $this->form_validation->set_message('checkslvl', 'Invalid, remaing VL Credit:' . $remaining_vl);
                         return false;
                     }
-    
                 } elseif ($this->input->post('type_of_leave') == 'Sick Leave') {
-                    
+
                     //Compute difference of two days
                     $days_between = ceil(abs($end_date - $start_date) / 86400);
                     $days_between = $days_between + 1;
-    
-    
+
+
                     //Compute total Sundays of Filed Date
                     $days = $start_date2->diff($end_date2, true)->days;
                     $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
-    
+
                     //Compute total Filed Days
                     $filed_days = $days_between - $total_sundays;
-    
+
                     //Fetch remaning SL of employee
                     foreach ($techdata as $row) {
                         $remaining_sl = $row->sl_credit;
                     }
-    
+
                     //check difference of filed days and remaining sl days
                     if ($remaining_sl >= $filed_days) {
                         $remaining_sl = $remaining_sl - $filed_days;
                         $this->form_validation->set_message('checkslvl', 'Youre remaing SL Credit:' . $remaining_sl);
                         return true;
                     } else {
-                        $this->form_validation->set_message('checkslvl', 'Invalid remaing SL Credit:' . $remaining_sl);
+                        $this->form_validation->set_message('checkslvl', 'Invalid, Set Date Exceeds your remaining Sick Leave');
                         return false;
                     }
-                }
-
-                }
-                else{
-                    $this->form_validation->set_message('checkslvl', 'You Still have Pending Filed Leave, Filed Leave ID:' . $leave_id);
-                    return false;
                 }
             } else {
                 $this->form_validation->set_message('checkslvl', 'Please Provide Start Date');
                 return false;
             }
-        }else{
+        } else {
             $this->form_validation->set_message('checkslvl', 'Please Select Employee');
             return false;
         }
+    }
 
-        
+    public function check_remaing_leave($id)
+    {
+
+        $leave_status = $this->LeaveModel->leave_status($id);
+
+        foreach ($leave_status as $row) {
+            $employee_status = $row->status;
+            $vl_credit = $row->vl_credit;
+            $sl_credit = $row->sl_credit;
+        }
+        if ($employee_status == "Regular") {
+            $validate['vl_credit'] = $vl_credit;
+            $validate['sl_credit'] = $sl_credit;
+        } else {
+            $validate['vl_credit'] = "0";
+            $validate['sl_credit'] = "0";
+        }
+        $validate['employee_status'] = $employee_status;
+
+        echo json_encode($validate);
+    }
+
+    public function edit_leave()
+    {
+        $validate = [
+            'success' => false,
+            'errors' => ''
+        ];
+
+        $rules = [
+
+            [
+                'field' => 'edit_leave_id',
+                'label' => 'Leave ID',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please Select Filed Leave'
+                ]
+            ]
+
+        ];
+
+        $this->form_validation->set_error_delimiters('<p>• ', '</p>');
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+
+            $this->LeaveModel->update_leave($this->input->post('edit_leave_id'), [
+                'processed_by' => $this->input->post('edit_processed_by'),
+                'approved_by' => $this->input->post('edit_approved_by')
+
+            ]);
+        } else {
+            $validate['errors'] = validation_errors();
+        }
+        echo json_encode($validate);
     }
 }

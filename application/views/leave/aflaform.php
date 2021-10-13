@@ -38,7 +38,18 @@ defined('BASEPATH') or die('Access Denied');
             <div class="col-sm-6 offset-sm-3">
                 <div class="card">
                     <div class="card-body">
-                        <?php echo form_open('LeaveController/leave_form_validate',["id" => "form-leave"]) ?>
+                        <?php echo form_open('LeaveController/leave_form_validate', ["id" => "form-leave"]) ?>
+                        <input type="hidden" name="employee_status" id="employee_status">
+                        <div class="row">
+                            <div class="col-sm-3 offset-sm-9">
+                                <label> Remaining Vacation Leave: <h7 name="vl_credit" id="vl_credit"></h7></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-2 offset-sm-10">
+                            <label>Sick Leave: <h7 name="sl_credit" id="sl_credit"></h7></label>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -50,21 +61,22 @@ defined('BASEPATH') or die('Access Denied');
                                 <div class="form-group">
                                     <label for="type_of_leave">Type of Leave</label>
                                     <select class="form-control" name="type_of_leave" id="type_of_leave">
-                                            <option value="">--- PLEASE SELECT ---</option>
-                                            <option>Vacation Leave</option>
-                                            <option>Sick Leave</option>
+                                        <option value="">--- PLEASE SELECT ---</option>
+                                        <option>Vacation Leave</option>
+                                        <option>Sick Leave</option>
+                                        <option>Leave of Absence</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        
+
 
                         <div class="form-group">
                             <label for="employee">Select Employee</label>
-                            <select class="form-control select2bs4" name="employee" id="employee">
+                            <select class="form-control check_remaining_leave select2bs4" name="employee" id="employee">
                                 <option value="">--- PLEASE SELECT ---</option>
                                 <?php foreach ($results as $row) { ?>
-                                <option value="<?php echo $row->id ?>"><?php echo $row->firstname.' '.$row->middlename.' '.$row->lastname.' -- '.$row->id ?></option>
+                                    <option value="<?php echo $row->id ?>"><?php echo $row->firstname . ' ' . $row->middlename . ' ' . $row->lastname . ' -- ' . $row->id ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -93,7 +105,7 @@ defined('BASEPATH') or die('Access Denied');
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
         <div class="row">
@@ -146,14 +158,14 @@ defined('BASEPATH') or die('Access Denied');
     <script src="<?php echo base_url('assets/AdminLTE') ?>/dist/js/adminlte.min.js"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
 
             //Initialize Select2 Elements
             $('.select2').select2();
 
             //Initialize Select2 Elements
             $('.select2bs4').select2({
-            theme: 'bootstrap4'
+                theme: 'bootstrap4'
             });
 
             $('#form-leave').submit(function(e) {
@@ -178,7 +190,7 @@ defined('BASEPATH') or die('Access Denied');
                     "hideMethod": "fadeOut"
                 }
 
-                $(':submit').attr('disabled','disabled');
+                $(':submit').attr('disabled', 'disabled');
                 //ajax
                 $.ajax({
                     url: me.attr('action'),
@@ -187,20 +199,45 @@ defined('BASEPATH') or die('Access Denied');
                     dataType: 'json',
                     success: function(response) {
                         if (response.success == true) {
-                            $(':submit').removeAttr('disabled','disabled');
+                            $(':submit').removeAttr('disabled', 'disabled');
                             toastr.success('Successfully Filed!');
                             $('#leave_confirm').modal();
                             $("#employee option:selected").remove();
+                            $("#vl_credit").html('');
+                            $("#sl_credit").html('');
                             me[0].reset();
-                            
+
                         } else {
-                            $(':submit').removeAttr('disabled','disabled');
+                            $(':submit').removeAttr('disabled', 'disabled');
 
                             toastr.error(response.errors);
                         }
 
                     }
                 });
+            });
+
+            $('.check_remaining_leave').on("change", function() {
+
+                if ($(this).val() != "") {
+
+                    $('.loading-modal').modal();
+                    //ajax
+
+                    $.ajax({
+
+                        url: '<?php echo site_url('LeaveController/check_remaing_leave/') ?>' + $(this).val(),
+                        type: 'post',
+                        dataType: 'json',
+                        success: function(response) {
+                            $('.loading-modal').modal('hide');
+                            $('#vl_credit').html(response.vl_credit);
+                            $('#sl_credit').html(response.sl_credit);
+                            $('#employee_status').html(response.employee_status);
+                        }
+                    });
+                }
+
             });
 
         });

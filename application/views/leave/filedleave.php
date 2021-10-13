@@ -55,6 +55,8 @@ if ($this->uri->segment(2) == 'pending') {
                                         <th>Start Date</th>
                                         <th>End Date</th>
                                         <th>Reason of Leave</th>
+                                        <th>Processed By</th>
+                                        <th>Approved By</th>
                                         <th>Operations</th>
                                     </tr>
                                 </thead>
@@ -80,12 +82,13 @@ if ($this->uri->segment(2) == 'pending') {
                 </button>
             </div>
             <?php echo form_open('LeaveController/approve_leave', ["id" => "modal-approve-leave"]) ?>
+            <input type="hidden" name="processed_by" id="processed_by">
             <div class="modal-body text-center">
-            <div class="form-group">
+                <div class="form-group">
                     <label for="approve_leave_id">Leave Form ID</label>
                     <input type="text" name="approve_leave_id" id="approve_leave_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -113,6 +116,90 @@ if ($this->uri->segment(2) == 'pending') {
                 <div class="form-group">
                     <label>Please Enter Passcode:</label>
                     <input type="password" name="passcode" class="form-control">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CANCEL</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> ACCEPT</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade leave-edit" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <b class="modal-title">Edit Filed Leave</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php echo form_open('LeaveController/edit_leave', ["id" => "modal-edit-leave"]) ?>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <label for="approve_leave_id">Leave Form ID</label>
+                    <input type="text" name="edit_leave_id" id="edit_leave_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="employee">Employee Name</label>
+                            <input type="text" name="edit_employee_name" id="edit_employee_name" class="form-control text-center" readonly>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="employee">Type of Leave</label>
+                            <input type="text" name="edit_type_of_leave" id="edit_type_of_leave" class="form-control text-center" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="task_date">Start Date</label>
+                            <div class="input-group">
+                                <input class="form-control" type="date" name="edit_start_date" id="edit_start_date" placeholder="Select Date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="task_date">End Date</label>
+                            <div class="input-group">
+                                <input class="form-control" type="date" name="edit_end_date" id="edit_end_date" placeholder="Select Date">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Reason of Leave</label>
+                    <textarea type="text" name="edit_reason" id="edit_reason" class="form-control" rows="3" readonly></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="edit_processed_by">Processed By</label>
+                            <select class="form-control" name="edit_processed_by" id="edit_processed_by">
+                                <option value="">--- PLEASE SELECT ---</option>
+                                <option value="Jenina F. Gaceta">Jenina F. Gaceta</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="edit_approved_by">Approved By</label>
+                            <select class="form-control" name="edit_approved_by" id="edit_approved_by">
+                                <option value="">--- PLEASE SELECT ---</option>
+                                <option value="Marvin G. Lucas">Marvin G. Lucas</option>    
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
             </div>

@@ -115,18 +115,19 @@ class LeaveModel extends CI_Model
 		return $this->db->get()->result();
 	}
 
-	public function check_pending_leave($emp_id,$type_of_leave){
-		$this->db->select('*');
-		$this->db->from('filed_leave');
-		$this->db->where('emp_id',$emp_id);
-		$this->db->where('status', 'pending');
-		$this->db->where('type_of_leave', $type_of_leave);
-		return $this->db->get()->result();
-	}
 
 	public function check_empty_database(){
 		$this->db->select('*');
 		$this->db->from('filed_leave');
 		return $this->db->get()->result();
+	}
+
+	public function leave_status($id){
+		$this->db->select('sl_credit, vl_credit, status');
+		$this->db->from('technicians');
+		$this->db->where('id', $id);
+
+		return $this->db->get()->result();
+
 	}
 }
