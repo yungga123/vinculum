@@ -125,7 +125,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
 
 
                                                         <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521') { ?>
+                                                            <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521' || $row->id == 'TSE091021') { ?>
                                                                 <option value="<?php echo $row->id ?>" <?php if ($this->uri->segment(1) == 'requisition-update') {
                                                                                                             echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
                                                                                                         } ?>><?php echo $row->name ?>
@@ -134,7 +134,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                         <?php } ?>
 
                                                         <?php foreach ($employees as $row) { ?>
-                                                            <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521') { ?>
+                                                            <?php if ($row->id == 'IC12042020' || $row->id == '15070218' || $row->id == 'AITS0620202001' || $row->id == 'TSE020921' || $row->id == 'TSE021521' || $row->id == 'TSE091021') { ?>
                                                                 <option value="<?php echo $row->id ?>" <?php if ($this->uri->segment(1) == 'requisition-update') {
                                                                                                             echo ($req_data['checked_by'] == $row->id) ? ' selected' : '';
                                                                                                         } ?>><?php echo $row->name ?>
