@@ -189,7 +189,7 @@ class POController extends CI_Controller
                     }
 
                     //add items to generated supplier
-                    $resultss = $this->POModel->get_new_po_data();
+                    $resultss = $this->POModel->get_new_po_data($row->supplier);
                     foreach ($resultss as $row3) {
                         if ($row3->supplier_id == $row->supplier) {
                             $po_id = $row3->po_id;
