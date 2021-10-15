@@ -202,6 +202,7 @@ if ($this->uri->segment(2) == 'pending') {
                 $("#edit_reason").val(response.leave_data[0].reason);
                 $("#edit_processed_by").val(response.leave_data[0].processed_by);
                 $("#edit_approved_by").val(response.leave_data[0].approved_by);
+                $("#edit_department").val(response.leave_data[0].department);
 
 
                 //disable start datepicker

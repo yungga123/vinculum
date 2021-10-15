@@ -47,7 +47,7 @@ defined('BASEPATH') or die('Access Denied');
                         </div>
                         <div class="row">
                             <div class="col-sm-2 offset-sm-10">
-                            <label>Sick Leave: <h7 name="sl_credit" id="sl_credit"></h7></label>
+                                <label>Sick Leave: <h7 name="sl_credit" id="sl_credit"></h7></label>
                             </div>
                         </div>
                         <div class="row">
@@ -71,14 +71,29 @@ defined('BASEPATH') or die('Access Denied');
                         </div>
 
 
-                        <div class="form-group">
-                            <label for="employee">Select Employee</label>
-                            <select class="form-control check_remaining_leave select2bs4" name="employee" id="employee">
-                                <option value="">--- PLEASE SELECT ---</option>
-                                <?php foreach ($results as $row) { ?>
-                                    <option value="<?php echo $row->id ?>"><?php echo $row->firstname . ' ' . $row->middlename . ' ' . $row->lastname . ' -- ' . $row->id ?></option>
-                                <?php } ?>
-                            </select>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="employee">Select Employee</label>
+                                <select class="form-control check_remaining_leave select2bs4" name="employee" id="employee">
+                                    <option value="">--- PLEASE SELECT ---</option>
+                                    <?php foreach ($results as $row) { ?>
+                                        <option value="<?php echo $row->id ?>"><?php echo $row->firstname . ' ' . $row->middlename . ' ' . $row->lastname . ' -- ' . $row->id ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="deparment">Select Department</label>
+                                <select class="form-control select2bs4" name="department" id="department">
+                                    <option value="">--- PLEASE SELECT ---</option>
+                                    <option value="Managers Department">1. Managers Department</option>
+                                    <option value="HR Department">2. HR Department</option>
+                                    <option value="Admin Department">3. Admin Department</option>
+                                    <option value="Technical Department">4. Technical Department</option>
+                                    <option value="Sales Department">5. Sales Department</option>
+                                    <option value="Inventory">6. Inventory</option>
+                                    <option value="Purchasing Department">7. Purchasing Department</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="row">

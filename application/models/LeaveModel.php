@@ -130,4 +130,21 @@ class LeaveModel extends CI_Model
 		return $this->db->get()->result();
 
 	}
+
+	public function fetch_leave_data($leave_id){
+		$this->db->select('*');
+		$this->db->from('filed_leave');
+		$this->db->where('id', $leave_id);
+
+		return $this->db->get()->result();
+	}
+
+	public function fetch_employee_data($emp_id){
+
+		$this->db->select('lastname, firstname, middlename');
+		$this->db->from('technicians');
+		$this->db->where('id', $emp_id);
+
+		return $this->db->get()->result();
+	}
 }

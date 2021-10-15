@@ -78,6 +78,7 @@ class LeaveController extends CI_Controller
         $this->form_validation->set_rules($this->validation_rules());
 
         if ($this->form_validation->run()) {
+           
             $validate['success'] = true;
             $data = [
                 'emp_id'                => $this->input->post('employee'),
@@ -86,6 +87,7 @@ class LeaveController extends CI_Controller
                 'start_date'            => $this->input->post('start_date'),
                 'end_date'              => $this->input->post('end_date'),
                 'reason'                => $this->input->post('reason'),
+                'department'            => $this->input->post('department'),
                 'status'                => 'pending'
             ];
             $this->LeaveModel->insert_leave($data);
@@ -138,12 +140,13 @@ class LeaveController extends CI_Controller
 
             if ($status == 'pending') {
                 $button = '
-                <button type="button" class="btn btn-warning btn-xs btn-block btn_edit_leave" data-toggle="modal" data-target=".leave-edit"><i class="fas fa-file"></i> Edit</button>
+<button type="button" class="btn btn-warning btn-xs btn-block btn_edit_leave" data-toggle="modal" data-target=".leave-edit"><i class="fas fa-file"></i> Edit</button>
 <button type="button" class="btn btn-success btn-xs btn-block btn_approve_leave" data-toggle="modal" data-target=".leave-approved"><i class="fas fa-file"></i> Approved</button>
 <button type="button" class="btn btn-danger btn-xs btn-block btn_delete_leave" data-toggle="modal" data-target=".leave-delete"><i class="fas fa-trash"></i> Delete</button>
 ';
             } else {
                 $button = '
+<a href="' . site_url('print-leaves/' . $row->id) . '" target="_blank" class="btn btn-xs btn-block btn-success"><i class="fas fa-print"></i>Print</a>
 <button type="button" class="btn btn-danger btn-xs btn-block btn_delete_leave" data-toggle="modal" data-target=".leave-delete"><i class="fas fa-trash"></i> Delete</button>
 ';
             }
@@ -152,6 +155,7 @@ class LeaveController extends CI_Controller
             $sub_array[] = $row->id;
             $sub_array[] = $row->lastname . ", " . $row->firstname . " " . $row->middlename;
             $sub_array[] = $row->type_of_leave;
+            $sub_array[] = $row->department;
             $sub_array[] = $date_of_application;
             $sub_array[] = $start_date;
             $sub_array[] = $end_date;
@@ -217,13 +221,14 @@ class LeaveController extends CI_Controller
 
         if ($this->form_validation->run()) {
             $validate['success'] = true;
-
+            $date_approved = date('Y-m-d');
 
             $this->LeaveModel->update_leave($this->input->post('approve_leave_id'), [
                 'status' => 'approved',
                 'start_date' => $this->input->post('start_date'),
                 'end_date' => $this->input->post('end_date'),
                 'notes' => $this->input->post('approve_notes'),
+                'date_approved' => $date_approved,
                 'approved_by' => 'Marvin G. Lucas'
 
             ]);
@@ -237,10 +242,10 @@ class LeaveController extends CI_Controller
     {
 
         if ($this->input->post('passcode') != "") {
-            if($this->input->post('processed_by') ==""){
+            if ($this->input->post('processed_by') == "") {
                 $this->form_validation->set_message('confirmleave_pw', 'Please Process First Before Approving Filed Leave');
                 return false;
-            }else{
+            } else {
                 if ($this->input->post('passcode') == "vinculumquery") {
                     return true;
                 } else {
@@ -438,5 +443,41 @@ class LeaveController extends CI_Controller
             $validate['errors'] = validation_errors();
         }
         echo json_encode($validate);
+    }
+
+    public function print_filed_leave($leave_id)
+    {
+        if ($this->session->userdata('logged_in')) {
+
+            $filed_leave_data = $this->LeaveModel->fetch_leave_data($leave_id);
+
+                $data['title'] = 'Filed Leave Print';
+            foreach ($filed_leave_data as $row) {
+                $data['leave_id'] = $row->id;
+                $data['employee_id'] = $row->emp_id;
+                $data['date_of_application'] = date_format(date_create($row->date_of_application),'F d, Y');
+                $data['department'] = $row->department;
+                $data['type_of_leave'] = $row->type_of_leave;
+                $data['filed_start_date'] = date_format(date_create($row->start_date),'F d, Y');
+                $data['filed_end_date'] = date_format(date_create($row->end_date),'F d, Y');
+                $data['reason'] = $row->reason;
+                $data['approved_day'] = date_format(date_create($row->date_approved),'d');
+                $data['approved_month'] = date_format(date_create($row->date_approved),'m');
+                $data['approved_year'] = date_format(date_create($row->date_approved),'y');
+                $employee_id = $row->emp_id;
+            }
+
+            $employee_data = $this->LeaveModel->fetch_employee_data($employee_id);
+
+            foreach($employee_data as $row){
+                $data['firstname'] = $row->firstname;
+                $data['middlename'] = $row->middlename;
+                $data['lastname'] = $row->lastname;
+            }
+            
+            $this->load->view('leave/print_filed_leave', $data);
+        } else {
+            redirect('', 'refresh');
+        }
     }
 }

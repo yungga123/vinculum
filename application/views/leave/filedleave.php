@@ -51,6 +51,7 @@ if ($this->uri->segment(2) == 'pending') {
                                         <th>Leave ID</th>
                                         <th>Name of Employee</th>
                                         <th>Type of Leave</th>
+                                        <th>Department</th>
                                         <th>Date of Application</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
@@ -145,16 +146,24 @@ if ($this->uri->segment(2) == 'pending') {
                     <input type="text" name="edit_leave_id" id="edit_leave_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <div class="form-group">
                             <label for="employee">Employee Name</label>
                             <input type="text" name="edit_employee_name" id="edit_employee_name" class="form-control text-center" readonly>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="employee">Type of Leave</label>
                             <input type="text" name="edit_type_of_leave" id="edit_type_of_leave" class="form-control text-center" readonly>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <input type="text" name="edit_department" id="edit_department" class="form-control text-center" readonly>
                         </div>
                     </div>
                 </div>
