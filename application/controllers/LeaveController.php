@@ -50,7 +50,15 @@ class LeaveController extends CI_Controller
                 'errors' => [
                     'required' => 'Please enter a Valid Reason.'
                 ]
-            ]
+                ],
+                [
+                    'field' => 'department',
+                    'label' => 'Reason',
+                    'rules' => 'trim|required',
+                    'errors' => [
+                        'required' => 'Please Select Department'
+                    ]
+                ]
         ];
 
         return $rules;
@@ -310,70 +318,69 @@ class LeaveController extends CI_Controller
 
         if (!empty($this->input->post('employee'))) {
             if ($this->input->post('start_date') != "") {
+                    $techdata = $this->LeaveModel->gettechdata($this->input->post('employee'));
+                    $start_date = strtotime($this->input->post('start_date'));
+                    $end_date = strtotime($this->input->post('end_date'));
+                    $start_date2 = date_create($this->input->post('start_date'));
+                    $end_date2 = date_create($this->input->post('end_date'));
 
-                $techdata = $this->LeaveModel->gettechdata($this->input->post('employee'));
-                $start_date = strtotime($this->input->post('start_date'));
-                $end_date = strtotime($this->input->post('end_date'));
-                $start_date2 = date_create($this->input->post('start_date'));
-                $end_date2 = date_create($this->input->post('end_date'));
+                    if ($this->input->post('type_of_leave') == "Vacation Leave") {
 
-                if ($this->input->post('type_of_leave') == "Vacation Leave") {
-
-                    //Compute difference of two days
-                    $days_between = ceil(abs($end_date - $start_date) / 86400);
-                    $days_between = $days_between + 1;
+                        //Compute difference of two days
+                        $days_between = ceil(abs($end_date - $start_date) / 86400);
+                        $days_between = $days_between + 1;
 
 
-                    //Compute total Sundays of Filed Date
-                    $days = $start_date2->diff($end_date2, true)->days;
-                    $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
+                        //Compute total Sundays of Filed Date
+                        $days = $start_date2->diff($end_date2, true)->days;
+                        $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
 
-                    //Compute total Filed Days
-                    $filed_days = $days_between - $total_sundays;
+                        //Compute total Filed Days
+                        $filed_days = $days_between - $total_sundays;
 
-                    //Fetch remaning VL of employee
-                    foreach ($techdata as $row) {
-                        $remaining_vl = $row->vl_credit;
+                        //Fetch remaning VL of employee
+                        foreach ($techdata as $row) {
+                            $remaining_vl = $row->vl_credit;
+                        }
+
+                        //check difference of filed days and remaining vl days
+                        if ($remaining_vl >= $filed_days) {
+                            $remaining_vl = $remaining_vl - $filed_days;
+                            $this->form_validation->set_message('checkslvl', 'Youre remaing VL Credit:' . $remaining_vl);
+                            return true;
+                        } else {
+                            $this->form_validation->set_message('checkslvl', 'Invalid, Set Date Exceeds your remaining Vacation Leave');
+                            return false;
+                        }
+                    } elseif ($this->input->post('type_of_leave') == 'Sick Leave') {
+
+                        //Compute difference of two days
+                        $days_between = ceil(abs($end_date - $start_date) / 86400);
+                        $days_between = $days_between + 1;
+
+
+                        //Compute total Sundays of Filed Date
+                        $days = $start_date2->diff($end_date2, true)->days;
+                        $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
+
+                        //Compute total Filed Days
+                        $filed_days = $days_between - $total_sundays;
+
+                        //Fetch remaning SL of employee
+                        foreach ($techdata as $row) {
+                            $remaining_sl = $row->sl_credit;
+                        }
+
+                        //check difference of filed days and remaining sl days
+                        if ($remaining_sl >= $filed_days) {
+                            $remaining_sl = $remaining_sl - $filed_days;
+                            $this->form_validation->set_message('checkslvl', 'Youre remaing SL Credit:' . $remaining_sl);
+                            return true;
+                        } else {
+                            $this->form_validation->set_message('checkslvl', 'Invalid, Set Date Exceeds your remaining Sick Leave');
+                            return false;
+                        }
                     }
-
-                    //check difference of filed days and remaining vl days
-                    if ($remaining_vl >= $filed_days) {
-                        $remaining_vl = $remaining_vl - $filed_days;
-                        $this->form_validation->set_message('checkslvl', 'Youre remaing VL Credit:' . $remaining_vl);
-                        return true;
-                    } else {
-                        $this->form_validation->set_message('checkslvl', 'Invalid, remaing VL Credit:' . $remaining_vl);
-                        return false;
-                    }
-                } elseif ($this->input->post('type_of_leave') == 'Sick Leave') {
-
-                    //Compute difference of two days
-                    $days_between = ceil(abs($end_date - $start_date) / 86400);
-                    $days_between = $days_between + 1;
-
-
-                    //Compute total Sundays of Filed Date
-                    $days = $start_date2->diff($end_date2, true)->days;
-                    $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
-
-                    //Compute total Filed Days
-                    $filed_days = $days_between - $total_sundays;
-
-                    //Fetch remaning SL of employee
-                    foreach ($techdata as $row) {
-                        $remaining_sl = $row->sl_credit;
-                    }
-
-                    //check difference of filed days and remaining sl days
-                    if ($remaining_sl >= $filed_days) {
-                        $remaining_sl = $remaining_sl - $filed_days;
-                        $this->form_validation->set_message('checkslvl', 'Youre remaing SL Credit:' . $remaining_sl);
-                        return true;
-                    } else {
-                        $this->form_validation->set_message('checkslvl', 'Invalid, Set Date Exceeds your remaining Sick Leave');
-                        return false;
-                    }
-                }
             } else {
                 $this->form_validation->set_message('checkslvl', 'Please Provide Start Date');
                 return false;
@@ -422,8 +429,23 @@ class LeaveController extends CI_Controller
                 'errors' => [
                     'required' => 'Please Select Filed Leave'
                 ]
+            ],
+            [
+                'field' => 'edit_start_date',
+                'label' => 'Leave ID',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please Select Start Date'
+                ]
+            ],
+            [
+                'field' => 'edit_end_date',
+                'label' => 'Leave ID',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please Select End Date'
+                ]
             ]
-
         ];
 
         $this->form_validation->set_error_delimiters('<p>• ', '</p>');
@@ -435,6 +457,8 @@ class LeaveController extends CI_Controller
 
 
             $this->LeaveModel->update_leave($this->input->post('edit_leave_id'), [
+                'start_date' => $this->input->post('edit_start_date'),
+                'end_date' => $this->input->post('edit_end_date'),
                 'processed_by' => $this->input->post('edit_processed_by'),
                 'approved_by' => $this->input->post('edit_approved_by')
 

@@ -77,10 +77,21 @@ if ($this->uri->segment(2) == 'pending') {
     <div class="modal-dialog modal-m" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <div class="col-sm-6">
                 <b class="modal-title">Approved Filed Leave</b>
+                </div>
+                <div class="col-sm-2">
+                <label class="float-right">SL: <label id="approved_sl_credit"></label>
+                </div>
+                <div class="col-sm-2">
+                <label class="float-right">VL: <label id="approved_vl_credit"></label></label>
+                </div>
+                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
+
+                
             </div>
             <?php echo form_open('LeaveController/approve_leave', ["id" => "modal-approve-leave"]) ?>
             <input type="hidden" name="processed_by" id="processed_by">
@@ -205,7 +216,7 @@ if ($this->uri->segment(2) == 'pending') {
                             <label for="edit_approved_by">Approved By</label>
                             <select class="form-control" name="edit_approved_by" id="edit_approved_by">
                                 <option value="">--- PLEASE SELECT ---</option>
-                                <option value="Marvin G. Lucas">Marvin G. Lucas</option>    
+                                <option value="Marvin G. Lucas">Marvin G. Lucas</option>
                             </select>
                         </div>
                     </div>

@@ -202,5 +202,5 @@ defined('BASEPATH') or die('Access Denied');
 <script src="<?php echo base_url('assets/AdminLTE/') ?>dist/js/adminlte.js"></script>
 
 <script type="text/javascript">
-    //    window.addEventListener("load", window.print());
+       window.addEventListener("load", window.print());
 </script>

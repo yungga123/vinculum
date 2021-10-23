@@ -40,14 +40,16 @@ defined('BASEPATH') or die('Access Denied');
                     <div class="card-body">
                         <?php echo form_open('LeaveController/leave_form_validate', ["id" => "form-leave"]) ?>
                         <input type="hidden" name="employee_status" id="employee_status">
+                        <input type="hidden" name="vl_credit" id="vl_credit" class="col-sm-2">
+                        <input type="hidden" name="sl_credit" id="sl_credit" class="col-sm-2">
                         <div class="row">
                             <div class="col-sm-3 offset-sm-9">
-                                <label> Remaining Vacation Leave: <h7 name="vl_credit" id="vl_credit"></h7></label>
+                                <label> Remaining Vacation Leave: <label id="vl_credit_label"></label></label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-2 offset-sm-10">
-                                <label>Sick Leave: <h7 name="sl_credit" id="sl_credit"></h7></label>
+                            <div class="col-sm-3 offset-sm-10">
+                                <label>Sick Leave: <label id="sl_credit_label"></label></label>
                             </div>
                         </div>
                         <div class="row">
@@ -217,9 +219,9 @@ defined('BASEPATH') or die('Access Denied');
                             $(':submit').removeAttr('disabled', 'disabled');
                             toastr.success('Successfully Filed!');
                             $('#leave_confirm').modal();
-                            $("#employee option:selected").remove();
-                            $("#vl_credit").html('');
-                            $("#sl_credit").html('');
+                            // $("#employee option:selected").remove();
+                            $("#vl_credit").val('');
+                            $("#sl_credit").val('');
                             me[0].reset();
 
                         } else {
@@ -246,8 +248,10 @@ defined('BASEPATH') or die('Access Denied');
                         dataType: 'json',
                         success: function(response) {
                             $('.loading-modal').modal('hide');
-                            $('#vl_credit').html(response.vl_credit);
-                            $('#sl_credit').html(response.sl_credit);
+                            $('#vl_credit').val(response.vl_credit);
+                            $('#sl_credit').val(response.sl_credit);
+                            $('#vl_credit_label').html(response.vl_credit);
+                            $('#sl_credit_label').html(response.sl_credit);
                             $('#employee_status').html(response.employee_status);
                         }
                     });

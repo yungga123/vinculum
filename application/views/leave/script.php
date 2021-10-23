@@ -50,6 +50,8 @@ if ($this->uri->segment(2) == 'pending') {
                 $("#start_date").val(response.leave_data[0].start_date);
                 $("#end_date").val(response.leave_data[0].end_date);
                 $("#processed_by").val(response.leave_data[0].processed_by);
+                $("#approved_sl_credit").html(response.leave_data[0].sl_credit);
+                $("#approved_vl_credit").html(response.leave_data[0].vl_credit);
 
                 console.log(response);
             }
@@ -205,13 +207,13 @@ if ($this->uri->segment(2) == 'pending') {
                 $("#edit_department").val(response.leave_data[0].department);
 
 
-                //disable start datepicker
-                $("#edit_start_date").datepicker();
-                $("#edit_start_date").datepicker("disable");
+                // //disable start datepicker
+                // $("#edit_start_date").datepicker();
+                // $("#edit_start_date").datepicker("disable");
 
-                //disable end datepicker
-                $("#edit_end_date").datepicker();
-                $("#edit_end_date").datepicker("disable");
+                // //disable end datepicker
+                // $("#edit_end_date").datepicker();
+                // $("#edit_end_date").datepicker("disable");
 
                 console.log(response);
 

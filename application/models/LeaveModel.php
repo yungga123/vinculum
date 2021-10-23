@@ -76,8 +76,9 @@ class LeaveModel extends CI_Model
 	public function getleavedata($leave_id)
 	{
 		$this->db->select("*");
-		$this->db->from("filed_leave");
-		$this->db->where("id", $leave_id);
+		$this->db->from("filed_leave as a");
+		$this->db->join("technicians as b", "a.emp_id=b.id", "left");
+		$this->db->where("a.id", $leave_id);
 		return $this->db->get()->result();
 	}
 
