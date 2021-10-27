@@ -295,7 +295,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
               <p>Paulpnx</p>
             </div>
             <div class="icon">
-              <i class="fas fa-phone"></i>
+            <i class="fas fa-address-card"></i>
             </div>
             <a href="<?php echo site_url('joborder-list/pending') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
