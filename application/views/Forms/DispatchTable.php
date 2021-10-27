@@ -53,6 +53,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 											<th>SR Number</th>
 											<th>Remarks</th>
 											<th>Operation</th>
+														
 										</tr>
 									</thead>
 								</table>

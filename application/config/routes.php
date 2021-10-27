@@ -75,6 +75,7 @@ $route['specific-logs'] = 'LogsController/get_specific_register_logs';
 //Dispatch form
 $route['dispatchform'] = 'DispatchFormController/addDispatch';
 $route['dispatchtable'] = 'DispatchFormController/DispatchTable';
+$route['printservicereport/(:num)'] = 'DispatchFormController/printServiceReport/$1';
 $route['printdispatch/(:num)'] = 'DispatchFormController/printDispatch/$1';
 $route['updatedispatch/(:any)'] = 'DispatchFormController/updateDispatch/$1';
 $route['deletedispatch/(:any)'] = 'DispatchFormController/deleteDispatch/$1';
@@ -208,3 +209,6 @@ $route['generate-po-proceed/(:any)'] = 'POController/generate_po_view/$1';
 
 //OFFLIMITS PAGE
 $route['offlimits'] = 'LoginController/offlimits_page';
+
+//SAMPLE
+$route['sample'] = 'SampleController';
