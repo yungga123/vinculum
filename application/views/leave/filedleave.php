@@ -168,7 +168,11 @@ if ($this->uri->segment(2) == 'pending') {
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="employee">Type of Leave</label>
-                            <input type="text" name="edit_type_of_leave" id="edit_type_of_leave" class="form-control text-center" readonly>
+                            <select class="form-control" name="edit_type_of_leave" id="edit_type_of_leave">
+                                <option value="Vacation Leave">Vacation Leave</option>
+                                <option value="Sick Leave">Sick Leave</option>
+                                <option value="Leave of Absence">Leave of Absence</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-sm-6">

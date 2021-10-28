@@ -108,6 +108,19 @@ class LeaveModel extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	public function fetchLeaveOfAbsence($techID)
+	{
+		$this->db->select('*');
+		$this->db->from('filed_leave');
+		$this->db->where('emp_id', $techID);
+		$this->db->where('type_of_leave', 'Leave of Absence');
+		$this->db->where('status', 'approved');
+		$this->db->where('is_deleted', 0);
+		$this->db->order_by('id', 'desc');
+		$this->db->limit(1);
+		return $this->db->get()->result();
+	}
+
 	public function gettechdata($employee_id)
 	{
 		$this->db->select('vl_credit, sl_credit');

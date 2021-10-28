@@ -131,7 +131,6 @@ defined('BASEPATH') or die('Access Denied');
                         $('#pagibig_rate').val(response.pagibig);
                         
 
-
                         var date1 = new Date($('#start_date').val());
                         var date2 = new Date($('#end_date').val());
 
@@ -140,6 +139,7 @@ defined('BASEPATH') or die('Access Denied');
                         var vl_end_date = new Date(response.vacation_leave_end_date);
                         var vl_total_sundays = 0;
                         var sl_total_sundays = 0;
+                        var loa_total_sundays = 0;
                             
 
                         if(date1 <= vl_start_date && vl_start_date <= date2 && vl_end_date >= date2){
@@ -173,6 +173,7 @@ defined('BASEPATH') or die('Access Denied');
                                 if (i.getDay() == 0) vl_total_sundays++;
                             }
                         }
+                        
                         else{
                             vl_difference_days = "";
                         }
@@ -222,6 +223,51 @@ defined('BASEPATH') or die('Access Denied');
                             sl_difference_days = "";
                         }
 
+
+                        //Computing Filed Leave of Absence
+
+                        var loa_start_date = new Date(response.leave_of_absence_start_date);
+                        var loa_end_date = new Date(response.leave_of_absence_end_date);
+                        var date1 = new Date($('#start_date').val());
+                        var date2 = new Date($('#end_date').val());
+
+                        if(date1 <= loa_start_date && loa_start_date <= date2 && loa_end_date >= date2){
+                            var loa_difference_time = date2.getTime() - loa_start_date.getTime(); 
+                            
+                            for (var i = loa_start_date; i <= date2; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) loa_total_sundays++;
+                            }
+                        }
+
+                        else if(loa_start_date <= date1 && loa_end_date >= date1 && loa_end_date <= date2){
+                            var loa_difference_time = loa_end_date.getTime() - date1.getTime(); 
+
+                            for (var i = date1; i <= loa_end_date; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) loa_total_sundays++;
+                            }
+                        }
+
+                        else if(loa_start_date >= date1 && loa_end_date <= date2){
+                            var loa_difference_time = loa_end_date.getTime() - loa_start_date.getTime();
+
+                            for (var i = loa_start_date; i <= loa_end_date; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) loa_total_sundays++;
+                            }
+                        }
+
+                        else if(loa_start_date < date1 && loa_end_date > date2){
+                            var loa_difference_time = date2.getTime() - date1.getTime();
+
+                            for (var i = date1; i <= date2; i.setDate(i.getDate() + 1)) {
+                                if (i.getDay() == 0) loa_total_sundays++;
+                            }
+                        }
+                        
+                        else{
+                            loa_difference_days = "";
+                        }
+
+
                         
 
                         if(vl_difference_days !=""){
@@ -235,11 +281,17 @@ defined('BASEPATH') or die('Access Denied');
                             sl_difference_days = sl_difference_days + 1;  
                             sl_difference_days = sl_difference_days - sl_total_sundays;
                         }
-                        
+
+                        if(loa_difference_days !=""){
+                            var loa_difference_days = loa_difference_time / (1000 * 3600 * 24);
+                            loa_difference_days = loa_difference_days + 1;
+                            loa_difference_days = loa_difference_days - loa_total_sundays;
+                        }
                         
 
                         $('#vacation_leave').val(vl_difference_days);
-                        $('#sick_leave').val(sl_difference_days);    
+                        $('#sick_leave').val(sl_difference_days);
+                        $('#rest_day').val(loa_difference_days);    
                         payrollCompute();
                     }
                 });

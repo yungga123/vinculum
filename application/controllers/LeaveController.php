@@ -459,6 +459,7 @@ class LeaveController extends CI_Controller
             $this->LeaveModel->update_leave($this->input->post('edit_leave_id'), [
                 'start_date' => $this->input->post('edit_start_date'),
                 'end_date' => $this->input->post('edit_end_date'),
+                'type_of_leave' => $this->input->post('edit_type_of_leave'),
                 'processed_by' => $this->input->post('edit_processed_by'),
                 'approved_by' => $this->input->post('edit_approved_by')
 

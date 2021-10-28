@@ -286,6 +286,7 @@ class PayrollController extends CI_Controller {
 
         $vacationleaves = $this->LeaveModel->fetchVacationLeave($id);
         $sickleaves = $this->LeaveModel->fetchSickLeave($id);
+        $leaveofabsence = $this->LeaveModel->fetchLeaveOfAbsence($id);
 
         if(!empty($vacationleaves)){
             foreach ($vacationleaves as $row) {
@@ -307,6 +308,17 @@ class PayrollController extends CI_Controller {
         else{
             $validate['sick_leave_start_date'] = "";
             $validate['sick_leave_end_date'] = "";
+        }
+
+        if(!empty($leaveofabsence)){
+            foreach ($leaveofabsence as $row) {
+                $validate['leave_of_absence_start_date'] = $row->start_date;
+                $validate['leave_of_absence_end_date'] = $row->end_date;
+            }
+        }
+        else{
+            $validate['leave_of_absence_start_date'] = "";
+            $validate['leave_of_absence_end_date'] = "";
         }
 
 
