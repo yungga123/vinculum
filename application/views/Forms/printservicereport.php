@@ -1,129 +1,5 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
-
-$DispatchID = '';
-$companyName = '';
-$customerName = '';
-$contactPerson = '';
-$contactNumber = '';
-$dispatchDate = '';
-$address = '';
-$timeIn = '';
-$timeOut = '';
-$dispatch_out = '';
-$concern = '';
-$assignedTech1 = '';
-$assignedTech2 = 'N/A';
-$assignedTech3 = 'N/A';
-$assignedTech4 = 'N/A';
-$assignedTech5 = 'N/A';
-$assignedTech6 = 'N/A';
-$assignedTech7 = 'N/A';
-$assignedTech8 = 'N/A';
-$with_permit = '';
-$typeOfService = '';
-$sr_number = '';
-$remarks = '';
-
-foreach ($results as $row) {
-	$DispatchID = $dispatch_id;
-	$companyName = $row->CompanyName;
-	$customerName = $row->CustomerName;
-	$contactPerson = $row->ContactPerson;
-	$contactNumber = $row->ContactNumber;
-	$dispatchDate = $row->DispatchDate;
-	$address = $row->Address;
-	$sr_number = $row->sr_number;
-	$remarks = $row->remarks2;
-
-
-	if ($row->dispatch_out == '00:00:00' or $row->dispatch_out == '') {
-		$dispatch_out = '';
-	} else {
-		$dispatch_out = date('g:i A',strtotime($row->dispatch_out));
-	}
-
-	if ($row->TimeIn == '00:00:00' or $row->TimeIn == '') {
-		$timeIn = '';
-	} else {
-		$timeIn = date('g:i A',strtotime($row->TimeIn));
-	}
-
-	if ($row->TimeOut == '00:00:00' or $row->TimeIn == '') {
-		$timeOut = '';
-	} else {
-		$timeOut =  date('g:i A',strtotime($row->TimeOut));
-	} 	
-
-	$concern = $row->Remarks;
-
-	if ($row->AssignedTechnicians1 == '') {
-		$assignedTech1 = 'N/A';
-	} else {
-		$assignedTech1 = $row->AssignedTechnicians1;
-	}
-
-	if ($row->AssignedTechnicians2 == '') {
-		$assignedTech2 = 'N/A';
-	} else {
-		$assignedTech2 = $row->AssignedTechnicians2;
-	}
-
-	if ($row->AssignedTechnicians3 == '') {
-		$assignedTech3 = 'N/A';
-	} else {
-		$assignedTech3 = $row->AssignedTechnicians3;
-	}
-
-	if ($row->AssignedTechnicians4 == '') {
-		$assignedTech4 = 'N/A';
-	} else {
-		$assignedTech4 = $row->AssignedTechnicians4;
-	}
-
-	if ($row->AssignedTechnicians5 == '') {
-		$assignedTech5 = 'N/A';
-	} else {
-		$assignedTech5 = $row->AssignedTechnicians5;
-	}
-
-	if ($row->AssignedTechnicians6 == '') {
-		$assignedTech6 = 'N/A';
-	} else {
-		$assignedTech6 = $row->AssignedTechnicians6;
-	}
-
-	if ($row->AssignedTechnicians7 == '') {
-		$assignedTech7 = 'N/A';
-	} else {
-		$assignedTech7 = $row->AssignedTechnicians7;
-	}
-
-	if ($row->AssignedTechnicians8 == '') {
-		$assignedTech8 = 'N/A';
-	} else {
-		$assignedTech8 = $row->AssignedTechnicians8;
-	}
-
-	if ($row->Installation == 1) {
-		$typeOfService = 'Installation';
-	}
-
-	if ($row->RepairOrService) {
-		$typeOfService = 'Service';
-	}
-
-	if ($row->WithPermit == 'Yes') {
-		$with_permit = 'YES';
-	} else {
-		$with_permit = 'NO';
-	}
-
-	if ($row->Warranty) {
-		$typeOfService = 'Warranty';
-	}
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -191,35 +67,35 @@ foreach ($results as $row) {
 	
 	<div class="customer" style="text-align: left;">
 	<tr>
-		<td>Customer:_______________________________<br></td>
+		<td>Customer:_______________________________________<br></td>
 	</tr>
 	<tr>
-		<td>Address:________________________________<br></td>
+		<td>Address:________________________________________<br></td>
 	</tr>
 	<tr>
-		<td>Responsible:____________________________<br></td>
+		<td>Responsible:_____________________________________<br></td>
 	</tr>
 	<tr>
-		<td>Phone:__________________________________<br></td>
+		<td>Phone:__________________________________________<br></td>
 	</tr>
 	</div>
 
 	<div class="order_no" style="text-align: center; margin-top: -100px;">
-		<td>Order No.:______________</td>
+		<td>Order No.:_________________________</td>
 	</div>
 	
 	<div class="arrival" style="text-align: right; margin-top: -50px;">
 	<tr>
-		<td>Arrival Time:____________<br></td>
+		<td>Arrival Time:____________________<br></td>
 	</tr>
 	<tr>
-		<td>Date:____________<br></td>
+		<td>Date:____________________<br></td>
 	</tr>
 	<tr>
-		<td>Type:____________<br></td>
+		<td>Type:____________________<br></td>
 	</tr>
 	<tr>
-		<td>Serial No:____________<br></td>
+		<td>Serial No:___________________<br></td>
 	</tr>
 		<td>Customer Site:</td>
 		<input type="checkbox">
@@ -230,41 +106,41 @@ foreach ($results as $row) {
 	<div class="error_description" style="text-align: left; margin-top: 100px;">
 	<tr>
 		<td>Error Description:<br>
-		__________________________</td>
+		_______________________________________________________________________</td>
 	</tr>
 	<tr><br>
 		<td>Error Description:<br>
-		__________________________</td>
+		_______________________________________________________________________</td>
 	</tr>
 	<tr><br>
 		<td>Error Description:<br>
-		__________________________</td>
+		_______________________________________________________________________</td>
 	</tr>
 	<tr><br>
-		<td>Remaks:_______________________________________________________________________________________<br>
-		__________________________________________________________________________________________________</td>
+		<td>Remaks:_____________________________________________________________________________________________________________________________________<br>
+		____________________________________________________________________________________________________________________________________________</td>
 	</tr>
 	</div>
 	
-	<div class="corrective_action" style="text-align: right; margin-top: -200px;">
+	<div class="corrective_action" style="text-align: right; margin-top: -170px;">
 	<tr>
-		<td>Corrective Action:__________________________</td>
+		<td>Corrective Action:__________________________________________________</td>
 		<br>
 		<br>
 	</tr>
 	<tr>
-		<td>Corrective Action:__________________________</td>
+		<td>Corrective Action:__________________________________________________</td>
 		<br>
 		<br>
 	</tr>
 	<tr>
-		<td>Corrective Action:__________________________</td>
+		<td>Corrective Action:__________________________________________________</td>
 		<br>
 		<br>
 	</tr>
 	</div>
 	
-	<div class="unit_condition" style="text-align: left; margin-top: 300px;">
+	<div class="unit_condition" style="text-align: left; margin-top: 50px;">
 	<tr>
 	<label>Unit Condition:</label><br>
 	<label>ITEMS</label><br>
@@ -280,7 +156,7 @@ foreach ($results as $row) {
 		<td>10) GPS </td><br>
 	</div>
 
-	<div class="good_defective" style="text-align: center; margin-top: -300px; column-count: 2; width: 100px;
+	<div class="good_defective" style="text-align: center; margin-top: -260px; column-count: 2; width: 100px;
 	margin-left: 40%;">
 	<label>GOOD</label><br>
 		<input type="checkbox"><br>
@@ -307,7 +183,7 @@ foreach ($results as $row) {
 		<input type="checkbox"><br>
 	</div>
 
-	<div class="defective" style="text-align: right; margin-top: -250px;">
+	<div class="defective" style="text-align: right; margin-top: -260px;">
 	<th>if defective please specify:
 	______________<br>
 	____________________________________<br>
@@ -445,14 +321,14 @@ foreach ($results as $row) {
 	</div>
 	<div class="customer" style="margin-top: 50px;">
 	<tr>
-		<td>____________________________________<br>
+		<td>________________________________________________________<br>
 		Customer's Signature over Printed Name</td>
 	</tr>
 
 	<div class="technician" style="float: right; text-align: center;
 	margin-top: -25px;">
 	<tr>
-		<td>___________________________________<br>
+		<td>________________________________________________________<br>
 		Technician</td>
 	</tr>
 	</div>

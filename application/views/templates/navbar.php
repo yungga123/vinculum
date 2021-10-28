@@ -539,6 +539,21 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 			</li>
         </ul>
 
+		<li class="nav-item has-treeview">
+			
+				<ul class="nav nav-treeview">
+					<li class="nav-item">
+						<a href="<?php echo site_url('paulpnx') ?>" class="nav-link<?php echo $li_payroll ?>">
+						<i class="fas fa-skull"></i>
+						<p>
+							Paulpnx Tab
+						</p>
+						</a>
+					</li>
+				</ul>
+			</li>
+        </ul>
+
       </nav>
       <!-- /.sidebar-menu -->
     </div>

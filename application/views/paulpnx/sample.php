@@ -1,28 +1,21 @@
+<?php 
+defined('BASEPATH') or die('No direct script access allowed');
+?>
+
+<style>
+    img {
+        width: 100%;
+        height: auto;
+    }
+</style>
+
 <html>
 <head>
-<title>My Form</title>
+<title>anonymous</title>
 </head>
 <body>
 
-<?php echo validation_errors(); ?>
-
-<?php echo form_open('form'); ?>
-
-<h5>Username</h5>
-<input type="text" name="username" value="" size="50" />
-
-<h5>Password</h5>
-<input type="text" name="password" value="" size="50" />
-
-<h5>Password Confirm</h5>
-<input type="text" name="passconf" value="" size="50" />
-
-<h5>Email Address</h5>
-<input type="text" name="email" value="" size="50" />
-
-<div><input type="submit" value="Submit" /></div>
-
-</form>
+<img src="https://cdn1.i-scmp.com/sites/default/files/styles/1200x800/public/2014/10/04/ransom_virus_2_xnyt138_32879547_0.jpg?itok=vqVTtopY">
 
 </body>
 </html>

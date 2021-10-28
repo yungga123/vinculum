@@ -2,6 +2,14 @@
 defined('BASEPATH') or exit('No direct script access allowed.');
 ?>
 
+<style>
+  body {
+    width: auto;
+    opacity: 0.9;
+    background-image: url('https://media.istockphoto.com/vectors/seamless-skull-wallpaper-background-vector-id165673932');
+  }
+</style>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -280,22 +288,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
             </div>
             <div class="icon">
               <i class="fas fa-phone"></i>
-            </div>
-            <a href="<?php echo site_url('joborder-list/pending') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3><?php echo $count_jo_phone_support ?></h3>
-
-              <p>Paulpnx</p>
-            </div>
-            <div class="icon">
-            <i class="fas fa-address-card"></i>
             </div>
             <a href="<?php echo site_url('joborder-list/pending') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>

@@ -21,10 +21,10 @@
         <!-- /.login-logo -->
         <div class="card card-outline card-primary">
             <div class="card-header text-center text-danger text-bold" style="font-size: 27px;">
-                OOPS!!
+                BOBO!!
             </div>
             <div class="card-body">
-                <p class="login-box-msg text-bold">YOU ARE OFFLIMITS HERE!!! :(</p>
+                <p class="login-box-msg text-bold">ALIS!!!</p>
                
                 <a href="<?php echo site_url('dashboard') ?>" class="btn btn-block btn-success text-bold">
                     <i class="fab fa-dashboard mr-2"></i> GO BACK TO DASHBOARD
