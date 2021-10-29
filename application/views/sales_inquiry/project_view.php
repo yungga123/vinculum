@@ -149,7 +149,7 @@ else{
                                                 <select id="project_sales_incharge" name="project_sales_incharge" class="form-control">
                                                     <option value="">Please Select Sales Incharge</option>
                                                     <?php foreach ($results as $row): ?>
-                                                        <?php if($row->id == "01021415" || $row->id == "PTS09092020" || $row->id =="02021415" || $row->id =="24120518" || $row->id =="PS021021" || $row->id =="SEO041921"): ?>
+                                                        <?php if($row->id == "01021415" || $row->id == "PTS09092020" || $row->id =="02021415" || $row->id =="24120518" || $row->id =="PS021021" || $row->id =="SEO041921" || $row->id == "SSC091321" ): ?>
                                                             <option value="<?php echo $row->id ?>">
                                                                     <?php echo $row->id. " -- " .$row->lastname. ", " .$row->firstname. " " .$row->middlename  ?>
                                                             </option>
