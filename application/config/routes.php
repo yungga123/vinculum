@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'LoginController';
+$route['default_controller'] = 'LoginController/startpage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -208,3 +208,11 @@ $route['generate-po-proceed/(:any)'] = 'POController/generate_po_view/$1';
 
 //OFFLIMITS PAGE
 $route['offlimits'] = 'LoginController/offlimits_page';
+
+//START PAGE
+$route['start'] = 'LoginController/startpage';
+
+//LEAVEController
+$route['aflaform'] = 'LeaveController';
+$route['filed-leaves/(:any)'] = 'LeaveController/filed_leaves/$1';
+$route['print-leaves/(:any)'] = 'LeaveController/print_filed_leave/$1';

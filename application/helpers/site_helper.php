@@ -78,6 +78,9 @@ if(!function_exists('html_variable')) {
 			'ul_project_tree' => '',
 			'ul_sales_tree' => '',
 			'ul_hr_tree' => '',
+			'hr_status' => '',
+
+			'leaves' => '',
 
 			'sales_tree_status' => '',
 
