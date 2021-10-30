@@ -132,9 +132,10 @@ class RequisitionFormController extends CI_Controller {
             $data['requisition_display'] = ' block';
             $data['requisition_form'] = ' active';
             $data['ul_purchasing_tree'] = ' active';
+            $data['requisition_pending'] = ' active';
             $data['employees'] = $this->TechniciansModel->getTechniciansByStatus();
             $data['req_info'] = $this->RequisitionFormModel->get_all_requisition_form_where($id);
-            $data['req_items'] = $this->RequisitionFormModel->get_requisition_items_pending($id);
+            $data['req_items'] = $this->RequisitionFormModel->get_requisition_items($id);
             $data['vendor'] = $this->VendorModel->getVendorList();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -394,12 +395,6 @@ class RequisitionFormController extends CI_Controller {
             $validate['success'] = true;
 
             $req_id = $this->input->post('req_id');
-
-            if($this->input->post('approved_by') == "01021415"){
-                $this->RequisitionFormModel->update_requesition($req_id,[
-                    'status' => 'Accepted'
-                ]);
-            }
             
             
             $this->RequisitionFormModel->update_requesition($req_id,[
@@ -468,7 +463,8 @@ class RequisitionFormController extends CI_Controller {
         $data = [
             'title' => 'Requisition View',
             'results_requisition' => $this->RequisitionFormModel->get_requisition_where($id),
-            'results_req_items' => $this->RequisitionFormModel->get_requisition_items_pending($id)
+            'results_req_items' => $this->RequisitionFormModel->get_requisition_items($id),
+            'results_supplier' => $this->RequisitionFormModel->get_supplier_list()
         ];
         $this->load->view('requisition_form/requisition_view',$data);
     }
@@ -498,15 +494,17 @@ class RequisitionFormController extends CI_Controller {
         ];
 		
 		$this->form_validation->set_error_delimiters('<p>• ','</p>');
-
+        
 		$this->form_validation->set_rules($rules);
 
 		if ($this->form_validation->run()) {
             $validate['success'] = true;
 
+            //$this->update_item_requisition_validate();
 
             $this->RequisitionFormModel->update_requesition($this->input->post('req_form_id'),[
-                'status' => 'Accepted'
+                'status' => 'Accepted',
+                'approved_by' => '01021415'
             ]);
             
 		} 
@@ -530,9 +528,6 @@ class RequisitionFormController extends CI_Controller {
 			$this->form_validation->set_message('confirmreq_pw', 'Password Required.');
 			return false;
 		}
-		
-
-
 	}
 
     public function file_requisition() {
@@ -643,14 +638,42 @@ class RequisitionFormController extends CI_Controller {
         echo json_encode($validate);
     }
 
-    public function get_req_items($id) {
+    public function get_req_items($id)
+    {
+
         $results = $this->RequisitionFormModel->get_requisition_items($id);
-        $results_pending = $this->RequisitionFormModel->get_requisition_items_pending($id);
+        $get_supplier_list = $this->RequisitionFormModel->get_supplier_list();
 
-        $json_data['results_pending'] = $results_pending;
-        $json_data['results'] = $results;
 
+        $data = array();
+        $total = 0;
+
+        foreach ($results as $row) {
+            $sub_data = array();
+            $item_total = 0;
+            foreach ($get_supplier_list as $row2) {
+                if ($row->supplier == "") {
+                    $sub_data['supplier'] = "";
+                } elseif ($row->supplier == $row2->id) {
+                    $sub_data['supplier'] = $row2->name;
+                }
+            }
+
+            $item_total = $row->qty * $row->unit_cost;
+            $total = $total + $item_total;
+
+            $sub_data['description'] = $row->description;
+            $sub_data['qty'] = $row->qty;
+            $sub_data['unit'] = $row->unit;
+            $sub_data['unit_cost'] = number_format($row->unit_cost, 2);
+            $sub_data['item_cost'] = number_format($item_total, 2);
+            $sub_data['purpose'] = $row->purpose;
+            $sub_data['total'] = number_format($total, 2);
+
+            $data[] = $sub_data;
+        }
+
+        $json_data['results'] = $data;
         echo json_encode($json_data);
-
     }
 }

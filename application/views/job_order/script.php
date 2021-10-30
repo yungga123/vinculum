@@ -253,7 +253,7 @@ if ($this->uri->segment(1) == 'joborder-list') {
                     me[0].reset();
 
                     setTimeout(() => {
-                        window.location = "<?php echo site_url('joborder-list/accepted') ?>";
+                        window.location = "<?php echo site_url('joborder-list/pending') ?>";
                     }, 1000);
 
                 } else {
@@ -309,7 +309,7 @@ if ($this->uri->segment(1) == 'joborder-list') {
                     me[0].reset();
 
                     setTimeout(() => {
-                        window.location = "<?php echo site_url('joborder-list/filed') ?>";
+                        window.location = "<?php echo site_url('joborder-list/accepted') ?>";
                     }, 1000);
                 } else {
                     $(':submit').removeAttr('disabled', 'disabled');

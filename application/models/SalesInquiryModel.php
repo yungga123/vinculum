@@ -105,6 +105,7 @@ class SalesInquiryModel extends CI_Model {
 		$this->db->select("*");
 		$this->db->from("customers_branch");
 		$this->db->where('branch_id', $branch_id);
+		
 		return $this->db->get()->result();
 	}
 
@@ -157,6 +158,7 @@ class SalesInquiryModel extends CI_Model {
 		$this->db->where("a.customer_id", $client_id);
 		$this->db->join($this->join_table,'b.id=a.sales_incharge','inner');
 		$this->db->join($this->join_table1,'c.project_id=a.project_id','inner');
+		$this->db->where('a.archive', 0);
 		$this->db->where('c.mark_last_task', 1);
 		$this->db->order_by('c.task_id','DESC');
 		return $this->db->get()->result();
@@ -324,6 +326,16 @@ var $order_existingclient_column = array(
 	"a.Type",
 	"a.Notes"
 );
+var $order_archiveprojects_column = array(
+	"a.project_id",
+	"b.customer_name",
+	"a.project_type",
+	"a.project_status",
+	"c.lastname",
+	"a.branch",
+	"d.project_task",
+	"d.date_of_task"
+);
 
 public function existingclient_datatable() {
 
@@ -448,6 +460,7 @@ public function existingclient_datatable() {
 		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
 		$this->db->order_by("b.id","DESC");
 		$this->db->where("b.is_deleted","0");
+		$this->db->where("a.archive","0");
 		return $this->db->get()->result();
 	}
 
@@ -462,6 +475,7 @@ public function existingclient_datatable() {
 		$this->db->join('technicians as c','a.sales_incharge = c.id','left');
 		$this->db->order_by("b.CustomerID","DESC");
 		$this->db->where("b.is_deleted","0");
+		$this->db->where("a.archive","0");
 		return $this->db->get()->result();
 	}
 
@@ -471,6 +485,148 @@ public function existingclient_datatable() {
         $this->db->order_by('id','DESC');
 		$this->db->limit(1);
 		return $this->db->get()->result();
+    }
+
+	public function fetch_customer_project($id){
+		$this->db->select('*');
+		$this->db->from('customers_project');
+		$this->db->where('customer_id', $id);
+		$this->db->where('client_status', 'new');
+		$this->db->where('project_status', '100%');
+		return $this->db->get()->result();
+	}
+
+	public function fetch_customer(){
+		$this->db->select('*');
+		$this->db->from('sales_inquiry_tempo_clients');
+		$this->db->where('is_deleted', 0);
+		return $this->db->get()->result();
+	}
+
+	public function fetch_customer_existing(){
+		$this->db->select('*');
+		$this->db->from('customer_vt');
+		$this->db->where('is_deleted', 0);
+		return $this->db->get()->result();
+	}
+
+	public function reject_branch($project_id, $data){
+		$this->db->where('project_id', $project_id);
+		$this->db->update('customers_project', $data);
+	}
+
+	public function archiveprojects_datatable() {
+
+		$this->archiveproject_query();
+	
+		if($_POST["length"] != -1) {
+			$this->db->limit($_POST["length"],$_POST["start"]);
+		}
+		$query = $this->db->get();
+		return $query->result();
+	}
+	
+	public function archiveproject_query() {
+		$this->db->select("a.*, c.lastname, c.firstname, c.middlename, d.project_task, d.date_of_task, d.mark_last_task");
+		$this->db->from('customers_project as a');
+		$this->db->where('a.client_status', 'new');
+		//$this->db->join('sales_inquiry_tempo_clients as b','a.customer_id=b.id','left');
+		$this->db->join('technicians as c','a.sales_incharge=c.id','left');
+		$this->db->join('sales_inquiry_task as d','a.project_id=d.project_id','left');
+		//$this->db->where('a.archive', 1);
+		//$this->db->where('d.mark_last_task', 1);
+		//$this->db->where('b.is_deleted', 0);	
+		
+		if(isset($_POST["search"]["value"])){
+			$this->db->like("a.project_id", $_POST["search"]["value"]);
+			//$this->db->or_like("b.customer_name", $_POST["search"]["value"]);
+			$this->db->or_like("a.project_type", $_POST["search"]["value"]);
+			$this->db->or_like("a.project_status", $_POST["search"]["value"]);
+			$this->db->or_like("c.lastname", $_POST["search"]["value"]);
+			$this->db->or_like("c.firstname", $_POST["search"]["value"]);
+			$this->db->or_like("c.middlename", $_POST["search"]["value"]);
+			$this->db->or_like("a.branch", $_POST["search"]["value"]);
+			$this->db->or_like("d.project_task", $_POST["search"]["value"]);
+			//$this->db->having('b.is_deleted', 0);
+			$this->db->having('a.archive', 1);
+			$this->db->having('d.mark_last_task', 1);
+		}
+
+		if (isset($_POST["order"])) {
+			$this->db->order_by($this->order_archiveprojects_column[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+		} else {
+			$this->db->order_by("a.project_id","DESC");
+		}
+	}
+
+		public function filter_archive_projects_data() {
+			$this->archiveproject_query();
+			$query = $this->db->get();
+			return $query->num_rows();
+		}
+	
+		public function get_archive_projects_data() {
+			$this->db->select("*");
+			$this->db->from('customers_project');
+			$this->db->where('archive', 1);
+			return $this->db->count_all_results();
+		}
+
+		public function get_clients_data($project_id) {
+		
+			$this->db->select("*");
+			$this->db->from('customers_project as a');
+			$this->db->where("a.project_id", $project_id);
+			$this->db->join('sales_inquiry_tempo_clients as b','a.customer_id=b.id','left');
+			$this->db->where('b.is_deleted', 0);
+			$this->db->where('a.client_status', 'new');
+			return $this->db->get()->result();
+		}
+
+		public function get_existing_clients_data($project_id) {
+		
+			$this->db->select("*");
+			$this->db->from('customers_project as a');
+			$this->db->where("a.project_id", $project_id);
+			$this->db->join('customer_vt as b','a.customer_id=b.CustomerID','left');
+			$this->db->where('b.is_deleted', 0);
+			$this->db->where('a.client_status', 'existing');
+			return $this->db->get()->result();
+		}
+
+		public function get_branch_data($client_id, $client_status) {
+		
+			$this->db->select("*");
+			$this->db->from('customers_branch');
+			$this->db->where("customer_id", $client_id);
+			$this->db->where("client_status", $client_status);
+			$this->db->order_by('branch_id','DESC');
+			return $this->db->get()->result();
+		}
+
+		public function get_existing_branch_data($client_id, $client_status) {
+		
+			$this->db->select("*");
+			$this->db->from('customers_branch');
+			$this->db->where("customer_id", $client_id);
+			$this->db->where("client_status", $client_status);
+			$this->db->order_by('branch_id','DESC');
+			return $this->db->get()->result();
+		}
+
+		public function update_branch_details($branch_id, $data){
+			$this->db->where('branch_id', $branch_id);
+			$this->db->update('customers_branch', $data);
+		}
+
+		public function update_projects_branch($branch_id,$data) {
+			$this->db->where('branch_id',$branch_id);
+			$this->db->update('customers_project',$data);
+		}
+
+		public function deletebranch($branch_id) {
+        $this->db->where('branch_id',$branch_id);
+        $this->db->delete('customers_branch');
     }
 }
 ?>

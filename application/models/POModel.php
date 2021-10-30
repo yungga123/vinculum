@@ -15,7 +15,8 @@ class POModel extends CI_Model
         'a.supplier_id',
         'a.generated_date',
         'b.id',
-        'b.name'
+        'b.name',
+        'a.po_status'
     );
 
     var $order_column = array(
@@ -26,7 +27,7 @@ class POModel extends CI_Model
         'b.name'
     );
 
-    public function po_form_query()
+    public function po_form_query($po_status)
     {
 
         $this->db->select($this->select_column);
@@ -37,6 +38,7 @@ class POModel extends CI_Model
         if (isset($_POST["search"]["value"])) {
             $this->db->like("a.po_id", $_POST["search"]["value"]);
             $this->db->or_like("a.supplier_id", $_POST["search"]["value"]);
+            $this->db->having('a.po_status', $po_status);
         }
 
         if (isset($_POST["order"])) {
@@ -46,10 +48,10 @@ class POModel extends CI_Model
         }
     }
 
-    public function PO_datatable()
+    public function PO_datatable($po_status)
     {
 
-        $this->po_form_query();
+        $this->po_form_query($po_status);
         if ($_POST["length"] != -1) {
             $this->db->limit($_POST["length"], $_POST["start"]);
         }
@@ -57,17 +59,18 @@ class POModel extends CI_Model
         return $query->result();
     }
 
-    public function filter_po_form_data()
+    public function filter_po_form_data($po_status)
     {
-        $this->po_form_query();
+        $this->po_form_query($po_status);
         $query = $this->db->get();
         return $query->num_rows();
     }
 
-    public function get_all_po_form_data()
+    public function get_all_po_form_data($po_status)
     {
         $this->db->select("*");
         $this->db->from($this->table);
+        $this->db->where('a.po_status', $po_status);
         return $this->db->count_all_results();
     }
 
@@ -119,7 +122,7 @@ class POModel extends CI_Model
         $this->db->insert('generated_po', $data);
     }
 
-    public function get_new_po_id()
+    public function get_po_generated_id()
     {
         $this->db->select('*');
         $this->db->from('generated_po');
@@ -127,6 +130,18 @@ class POModel extends CI_Model
         $this->db->limit(1);
         return $this->db->get()->result();
     }
+
+    public function get_new_po_data($supplier_id)
+    {
+        $this->db->select('*');
+        $this->db->from('generated_po');
+        $this->db->where('supplier_id', $supplier_id);
+        $this->db->order_by('po_id', 'DESC');
+        $this->db->limit(1);
+        return $this->db->get()->result();
+    }
+
+
 
     public function delete_po($po_id)
     {
@@ -157,12 +172,13 @@ class POModel extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function get_items_details($po_id)
+    public function get_items_details($po_id, $mark_as_read)
     {
-        $this->db->select('c.po_id, c.requisition_item_id, c.requisition_id, d.request_form_id, d.id, d.description, d.unit_cost, d.qty, d.unit');
+        $this->db->select('c.po_id, c.requisition_item_id, c.requisition_id, d.request_form_id, d.id, d.description, d.unit_cost, d.qty, d.unit, d.date_needed, d.purpose');
         $this->db->from($this->join_table1);
-        $this->db->join($this->join_table2, 'c.requisition_item_id=d.id', 'inner');
         $this->db->where('c.po_id', $po_id);
+        $this->db->join($this->join_table2, 'c.requisition_item_id=d.id', 'inner');
+        $this->db->where('c.mark_as_proceed', $mark_as_read);
         return $this->db->get()->result();
     }
 
@@ -171,6 +187,7 @@ class POModel extends CI_Model
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('a.po_id', $po_id);
+        $this->db->where('po_status', 'approved');
         $this->db->limit(1);
         return $this->db->get()->result();
     }
@@ -224,4 +241,21 @@ class POModel extends CI_Model
     {
         $this->db->insert('requisition_form_items', $data);
     }
+
+    public function update_approved_po($id, $data)
+    {
+        $this->db->where('po_id', $id);
+        $this->db->update('generated_po', $data);
+    }
+
+    public function mark_po_item($req_id,$po_id,$data){
+        $this->db->where('requisition_item_id', $req_id);
+        $this->db->where('po_id', $po_id);
+        $this->db->update('generated_po_items', $data);
+    }
+
+    public function reset_items_status($data){
+        $this->db->update('generated_po_items', $data);
+    }
+
 }

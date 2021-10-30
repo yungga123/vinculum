@@ -291,7 +291,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="inspirationalModal" tabindex="-1" role="dialog" aria-labelledby="inspirationalModalId" aria-hidden="true">
+<!-- <div class="modal fade" id="inspirationalModal" tabindex="-1" role="dialog" aria-labelledby="inspirationalModalId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -301,12 +301,12 @@ defined('BASEPATH') or exit('No direct script access allowed.');
           </button>
       </div>
       <div class="modal-body">
-        <?php if ($sock = @fsockopen('www.google.com', 80)) { ?>
-          <p>"<?php echo $random_quote->content ?>"</p>
-          <p class="text-bold">- <?php echo $random_quote->author ?></p>
-        <?php } else { ?>
+        <?php //if ($sock = @fsockopen('www.google.com', 80)) { ?>
+          <p>"<?php //echo $random_quote->content ?>"</p>
+          <p class="text-bold">- <?php //echo $random_quote->author ?></p>
+        <?php //} else { ?>
           <p>SADLY! THERE IS NO INTERNET, I CAN'T SHOW YOU SOME INSPIRATIONAL MESSAGE FOR NOW. :(</p>
-        <?php } ?>
+        <?php //} ?>
         
       </div>
       <div class="modal-footer">
@@ -314,4 +314,4 @@ defined('BASEPATH') or exit('No direct script access allowed.');
       </div>
     </div>
   </div>
-</div>
+</div> -->

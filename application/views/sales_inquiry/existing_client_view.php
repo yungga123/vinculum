@@ -195,6 +195,9 @@ defined('BASEPATH') or die('Access Denied'); ?>
 								<th>Branch</th>
 								<th>Task</th>
 								<th>Date of task</th>
+								<th>Project Details</th>
+								<th>Project Amount</th>
+								<th>Quotation Reference</th>
                                 <th>Operation</th>
                             </tr>
                         </thead>
@@ -264,4 +267,101 @@ defined('BASEPATH') or die('Access Denied'); ?>
             <?php echo form_close() ?>
         </div>
     </div>
+</div>
+
+<!-- Modal for Reject Project-->
+<div class="modal fade" id="modal_reject_project" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>Reject Project</b></h5>
+            </div>
+            <?php echo form_open('SalesInquiryController/reject_project_validate',["id" => "modal-reject-project-existing"]) ?>
+            <div class="modal-body text-center">
+
+				<div class="form-group">
+                    <label for="reject_project_id">Are you sure you want to Reject this Project ?</label>
+                    <input type="text" name="reject_project_id" id="reject_project_id" class="form-control text-bold text-center col-sm-6 offset-sm-3" readonly>
+                </div>
+                
+				<div class="form-group">
+                    <label for="reason">Reasons / Remarks</label>
+                    <textarea type="text" name="reason" id="reason" class="form-control text-bold text-center" cols="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="<?php echo site_url($this->uri->segment(1)) ?>/list" class="btn btn-danger text-bold"><i class="fas fa-times"></i> NO</a>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for View Branch-->
+<div class="modal fade modal_view_branch">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div id="modal_loading">
+
+			</div>
+			<div class="modal-header">
+				<h5 class="modal-title"><b>Branch List</b>
+					<h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+			</div>
+			<div class="modal-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-xl" id="table-branch">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Branch Name</th>
+								<th>Branch Address</th>
+								<th>Operation</th>
+							</tr>
+						</thead>
+
+						<tbody id="tbody_branch">
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal edit Branch-->
+<div class="modal fade" id="modal_edit_branch" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-m" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title"><b>Edit Branch</b></h5>
+			</div>
+			<?php echo form_open('SalesInquiryController/update_branch_validate', ["id" => "modal-edit-branch"]) ?>
+			<div class="modal-body">
+				<input type="hidden" name="edit_branch_id" id="edit_branch_id">
+				<div class="form-group">
+					<label for="edit_branch_name" class="control-label">Branch Name</label>
+					<input type="text" name="edit_branch_name" id="edit_branch_name" class="form-control" placeholder="Enter Project Branch">
+				</div>
+				<div class="form-group">
+					<label for="edit_branch_address" class="control-label">Address</label>
+					<textarea type="text" rows="3" name="edit_branch_address" id="edit_branch_address" class="form-control" placeholder="Enter Project Address"></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+				<button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> Update</button>
+			</div>
+			<?php echo form_close() ?>
+		</div>
+	</div>
 </div>

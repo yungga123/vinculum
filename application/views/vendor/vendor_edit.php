@@ -19,7 +19,10 @@ foreach($vendor_data as $row){
         'vendor_category_edit' => $row->vendor_category,
         'vendor_technical_person' => $row->vendor_technical_person,
         'vendor_technical_contact' => $row->vendor_technical_contact,
-        'vendor_technical_email' => $row->vendor_technical_email
+        'vendor_technical_email' => $row->vendor_technical_email,
+        'vendor_bank_name' => $row->vendor_bank_name,
+        'vendor_account_name' => $row->vendor_account_name,
+        'vendor_account_number' => $row->vendor_account_number
     ];
 }
 
@@ -129,6 +132,7 @@ foreach($vendor_data as $row){
                                                                     <option value="05" <?php if ($vendor_data_result['vendor_terms_edit'] == "05") { echo 'selected';} ?> >05 --- 45 Days</option>
                                                                     <option value="06" <?php if ($vendor_data_result['vendor_terms_edit'] == "06") { echo 'selected';} ?> >06 --- 60 Days</option>
                                                                     <option value="07" <?php if ($vendor_data_result['vendor_terms_edit'] == "07") { echo 'selected';} ?> >07 --- 90 Days</option>
+                                                                    <option value="08" <?php if ($vendor_data_result['vendor_terms_edit'] == "08") { echo 'selected';} ?> >08 --- 21 Days</option>
                                                                 </select>
                                                             </p>
                                                         </div>
@@ -184,6 +188,34 @@ foreach($vendor_data as $row){
                                                         <div class="form-group">
                                                             <label for="vendor_technical_email" class="control-label">Email Address</label>
                                                             <input type="text" name="vendor_technical_email" class="form-control" placeholder="Enter Email Address" value="<?php echo $vendor_data_result['vendor_technical_email'] ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Bank Details:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_bank_name" class="control-label">Bank Name</label>
+                                                            <input type="text" name="vendor_bank_name" class="form-control" placeholder="Enter Bank Name" value="<?php echo $vendor_data_result['vendor_bank_name'] ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                                <label for="vendor_account_name">Account Name</label>
+                                                                <input type="text" name="vendor_account_name" class="form-control" placeholder="Enter Account Name" value="<?php echo $vendor_data_result['vendor_account_name'] ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_account_number" class="control-label">Account Number</label>
+                                                            <input type="text" name="vendor_account_number" class="form-control" placeholder="Enter Account Number" value="<?php echo $vendor_data_result['vendor_account_number'] ?>">
                                                         </div>
                                                     </div>
                                                 </div>

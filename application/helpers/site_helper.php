@@ -35,6 +35,7 @@ if(!function_exists('html_variable')) {
 			'inquiry_href' => '',
 			'inquiry_existing' => '',
 			'inquiry_new' => '',
+			'inquiry_archive' => '',
 			'schedules' => '',
 			'forms_menu_status' => '',
 			'ul_forms' => '',
@@ -80,6 +81,9 @@ if(!function_exists('html_variable')) {
 			'hr_status' => '',
 
 			'leaves' => '',
+
+			'sales_tree_status' => '',
+
 
 			'category' => '' //for Get Items Masterlist
 		];

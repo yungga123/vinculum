@@ -53,9 +53,10 @@ class VendorController extends CI_Controller {
 			[
 				'field' => 'vendor_terms',
 				'label' => 'Vendor Terms and Condition',
-				'rules' => 'trim|max_length[50]',
+				'rules' => 'trim|max_length[50]|required',
 				'errors' => [
-					'max_length' => 'You are allowed only of 50 characters'
+					'max_length' => 'You are allowed only of 50 characters',
+					'required' => 'Please Provide Vendor Terms'
 				]
 			],
 			[
@@ -263,7 +264,10 @@ class VendorController extends CI_Controller {
 					'date' => $this->input->post('vendor_date'),
 					'vendor_technical_person' => $this->input->post('vendor_technical_name'),
 					'vendor_technical_contact' => $this->input->post('vendor_technical_contact'),
-					'vendor_technical_email' => $this->input->post('vendor_technical_email')
+					'vendor_technical_email' => $this->input->post('vendor_technical_email'),
+					'vendor_bank_name' => $this->input->post('vendor_bank_name'),
+					'vendor_account_name' => $this->input->post('vendor_account_name'),
+					'vendor_account_number' => $this->input->post('vendor_account_number')
 				]);
 				
 				//Update Existing Request Item
@@ -389,8 +393,14 @@ class VendorController extends CI_Controller {
 				elseif($row->terms_and_condition == "07"){
 					$sub_array[] = "90 Days";
 				}
+				elseif($row->terms_and_condition == "08"){
+					$sub_array[] = "21 Days";
+				}
 
 			$sub_array[] = $date;
+			$sub_array[] = $row->vendor_bank_name;
+			$sub_array[] = $row->vendor_account_name;
+			$sub_array[] = $row->vendor_account_number;
 
 			$sub_array[] = '
 			<a href="'.site_url('vendor-update/'.$row->id).'" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
@@ -453,7 +463,9 @@ class VendorController extends CI_Controller {
 				'vendor_technical_person' => $this->input->post('vendor_technical_name'),
 				'vendor_technical_contact' => $this->input->post('vendor_technical_contact'),
 				'vendor_technical_email' => $this->input->post('vendor_technical_email'),
-				'terms_and_condition' => $this->input->post('vendor_terms'),
+				'vendor_bank_name' => $this->input->post('vendor_bank_name'),
+				'vendor_account_name' => $this->input->post('vendor_account_name'),
+				'vendor_account_number' => $this->input->post('vendor_account_number'),
 				'date' => $date
 			]);
 

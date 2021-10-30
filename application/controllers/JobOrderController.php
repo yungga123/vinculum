@@ -364,6 +364,14 @@ class JobOrderController extends CI_Controller
 			'errors' => ''
 		];
 
+		if($this->input->post('decision') == 'Discarded'){
+			$rules = 'trim';
+			$errors = "";
+		}
+		else{
+			$rules = 'trim|required';
+			$errors = ['required' => 'Please select schedule type.'];
+		}
 		$rules = [
 			[
 				'field' => 'decision',
@@ -384,10 +392,8 @@ class JobOrderController extends CI_Controller
 			[
 				'field' => 'schedule_type',
 				'label' => 'Schedule Type',
-				'rules' => 'trim|required',
-				'errors' => [
-					'required' => 'Please select schedule type.'
-				]
+				'rules' => $rules,
+				'errors' => $errors
 			]
 			
 		];

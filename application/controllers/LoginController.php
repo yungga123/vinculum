@@ -144,7 +144,7 @@ class LoginController extends CI_Controller
 			if($this->input->post('pendingpasscode') == $engr){
 				return true;
 			}else{
-				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid Password.');
 				return false;
 			}
 		}
@@ -153,7 +153,7 @@ class LoginController extends CI_Controller
 			if($this->input->post('accpasscode') == $purchasing){
 				return true;
 			}else{
-				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid Password.');
 				return false;
 			}
 		}
@@ -162,12 +162,12 @@ class LoginController extends CI_Controller
 			if($this->input->post('filedpasscode') == $purchasing){
 				return true;
 			}else{
-				$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+				$this->form_validation->set_message('confirmreq_pw', 'Invalid Password.');
 				return false;
 			}
 		}
 		else{
-			$this->form_validation->set_message('confirmreq_pw', 'Invalid username or password.');
+			$this->form_validation->set_message('confirmreq_pw', 'Password Required');
 			return false;
 		}
 		
