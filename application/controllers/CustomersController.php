@@ -53,11 +53,13 @@ class CustomersController extends CI_Controller
 
 			<a href="' . site_url('customers-update/' . $row->CustomerID) . '" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a> 
 
-			<button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+			<button type="button" class="btn btn-danger btn-sm btn-deleteclient" data-toggle="modal" data-target=".modal-deletecustomer"><i class="fas fa-trash"></i> Delete</button>
 
 			<button type="button" class="btn btn-success btn-sm btn-addcustomerfile" data-toggle="modal" data-target=".modal-addcustomer-file"><i class="fas fa-plus"></i> Add File</button>
 
 			<a href="' . site_url('customers-addbranch/' . $row->CustomerID) . '" class="btn btn-sm btn-primary text-bold" target="_blank"><i class="fas fa-code-branch"></i> Add Branch</a>
+
+			<a href="#" class="btn btn-primary btn-sm btn_existing_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View Projects</a>
 
 			';
 
@@ -518,4 +520,70 @@ class CustomersController extends CI_Controller
         fclose($file);
         exit;
     }
+
+	public function delete_client()
+    {
+        $validate = [
+            'success' => false,
+            'errors' => ''
+        ];
+
+        $rules = [
+
+            [
+                'field' => 'client_del_id',
+                'label' => 'Client ID',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please Select Client.'
+                ]
+            ]
+
+        ];
+
+        $this->form_validation->set_error_delimiters('<p>• ', '</p>');
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+			$this->load->model('CustomersModel');
+            $this->CustomersModel->delete_client($this->input->post('client_del_id'), [
+				'is_deleted' => '1'
+			]);
+        } else {
+            $validate['errors'] = validation_errors();
+        }
+        echo json_encode($validate);
+    }
+
+	public function get_project($client_id)
+	{
+		$this->load->model('CustomersModel');
+		$results = $this->CustomersModel->get_project_data($client_id);
+
+		$data = array();
+			foreach($results as $row){
+				$sub_data = array();
+				$sub_data['project_id'] = $row->project_id;
+				$sub_data['project_type'] = $row->project_type;
+				$sub_data['project_status'] = $row->project_status;
+				$sub_data['lastname'] = $row->lastname;
+				$sub_data['firstname'] = $row->firstname;
+				$sub_data['middlename'] = $row->middlename;
+				$sub_data['branch'] = $row->branch;
+				$sub_data['project_task'] = $row->project_task;
+				$sub_data['date_of_task'] = $row->date_of_task;
+				$sub_data['project_details'] = $row->project_details;
+				$sub_data['project_amount'] = number_format($row->project_amount,2);
+				$sub_data['quotation_ref'] = $row->quotation_ref;
+				$data[] = $sub_data;
+			}
+		
+
+		$json_data['results'] = $data;
+
+		echo json_encode($json_data);
+	}
 }
