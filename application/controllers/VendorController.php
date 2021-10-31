@@ -60,6 +60,14 @@ class VendorController extends CI_Controller {
 				]
 			],
 			[
+				'field' => 'vendor_ranking',
+				'label' => 'Vendor Ranking',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Provide Vendor Ranking'
+				]
+			],
+			[
 				'field' => 'vendor_technical_name',
 				'label' => 'Vendor Technical Name',
 				'rules' => 'trim'
