@@ -151,7 +151,7 @@ $total_amount = $sub_total;
                     <tr class="text-center">
                         <td style="font-weight: bold">PURCHASE ORDER NO.
                             <br>
-                            F06-<?php echo $supplier_data['vendor_category'] ?>-<?php echo $supplier_data['vendor_acronym'] ?>-<?php echo $po_data['po_date_year'] ?>-<?php echo $po_data['po_date_month'] ?><?php echo $po_data['po_date_day'] ?>-0<?php echo $po_data['po_revise_count'] ?>
+                            F06-<?php echo $supplier_data['vendor_category'] ?>-<?php echo $supplier_data['vendor_acronym'] ?>-<?php echo $po_data['po_date_year'] ?>-<?php echo $po_data['po_date_month'] ?><?php echo $po_data['po_date_day'] ?>-<?php echo $po_data['po_id'] ?> <!-- <?php echo $po_data['po_revise_count'] ?> -->
                         </td>
                     </tr>
                     <br>
@@ -229,7 +229,7 @@ $total_amount = $sub_total;
                     </tr>
                     <tr>
                         <td width="10%" class="text-center" colspan="3"><text id="requestor_name_po"></text></td>
-                        <td width="10%" class="text-center" colspan="3"><?php echo $requisition_id_result."-".$po_data['po_id'] ?></td>
+                        <td width="10%" class="text-center" colspan="3"><?php echo $requisition_id_result ?></td>
                     </tr>
                     <tr>
                         <td width="10%" class="text-center">ITEM NO.</td>
