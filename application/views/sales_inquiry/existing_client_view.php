@@ -44,7 +44,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
                                             <th>Interest</th>
                                             <th>Type</th>
                                             <th>Notes</th>
-                                            <th>Installation Date</th>
+                                            <th>Date Added</th>
                                             <th>Operation</th>
 				            			</tr>
 				            		</thead>
@@ -94,7 +94,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 									</div>
 									<div class="form-group">
 										<label for="existing_location" class="control-label">Address</label>
-										<textarea class="form-control existing_location_edit" rows="5" type="text" name="existing_location" placeholder="Enter your Full Address"></textarea>
+										<textarea class="form-control existing_location_edit" rows="3" type="text" name="existing_location" placeholder="Enter your Full Address"></textarea>
 									</div>
                                     
 								</div>
@@ -104,10 +104,6 @@ defined('BASEPATH') or die('Access Denied'); ?>
 						<div class="col-sm-6">
 							<div class="card">
 								<div class="card-body">
-                                    <div class="form-group">
-										<label for="existing_client_installationdate" class="control-label">Installation Date</label>
-                                        <input class="form-control existing_website_edit" type="date" name="existing_client_installationdate" placeholder="Select Date">
-                                    </div>
 									<div class="form-group">
 										<p>
 											<label for="existing_client_source">Source</label>
@@ -198,6 +194,7 @@ defined('BASEPATH') or die('Access Denied'); ?>
 								<th>Project Details</th>
 								<th>Project Amount</th>
 								<th>Quotation Reference</th>
+								<th>Date of Installation</th>
                                 <th>Operation</th>
                             </tr>
                         </thead>
@@ -317,9 +314,11 @@ defined('BASEPATH') or die('Access Denied'); ?>
 					<table class="table table-bordered table-xl" id="table-branch">
 						<thead>
 							<tr>
-								<th>No.</th>
+								<th>ID.</th>
 								<th>Branch Name</th>
 								<th>Branch Address</th>
+								<th>Branch Contact Person</th>
+								<th>Branch Contact Number</th>
 								<th>Operation</th>
 							</tr>
 						</thead>
@@ -352,8 +351,22 @@ defined('BASEPATH') or die('Access Denied'); ?>
 					<label for="edit_branch_name" class="control-label">Branch Name</label>
 					<input type="text" name="edit_branch_name" id="edit_branch_name" class="form-control" placeholder="Enter Project Branch">
 				</div>
+				<div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="edit_branch_contact_person" class="control-label">Branch Contact Person</label>
+                            <input type="text" name="edit_branch_contact_person" id="edit_branch_contact_person" class="form-control" placeholder="Enter Branch Personnel">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="edit_branch_contact_number" class="control-label">Branch Contact Number</label>
+                            <input type="text" name="edit_branch_contact_number" id="edit_branch_contact_number" class="form-control" placeholder="Enter Branch Contact Number">
+                        </div>
+                    </div>
+                </div>
 				<div class="form-group">
-					<label for="edit_branch_address" class="control-label">Address</label>
+					<label for="edit_branch_address" class="control-label">Branch Address</label>
 					<textarea type="text" rows="3" name="edit_branch_address" id="edit_branch_address" class="form-control" placeholder="Enter Project Address"></textarea>
 				</div>
 			</div>
