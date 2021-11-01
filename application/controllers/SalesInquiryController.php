@@ -394,6 +394,7 @@ class SalesInquiryController extends CI_Controller
 			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $id;
 			$data['form_id'] = "edit_newclient";
+			$data['client_status'] = 'new';
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
 			$data['edit_project'] = $this->SalesInquiryModel->get_specific_project($id);
 
@@ -435,6 +436,7 @@ class SalesInquiryController extends CI_Controller
 			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $project_id;
 			$data['form_id'] = "edit_existingclient";
+			$data['client_status'] = 'existing';
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
 			$data['edit_project'] = $this->SalesInquiryModel->get_specific_project($project_id);
 

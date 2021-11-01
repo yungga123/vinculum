@@ -491,7 +491,7 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].project_amount + '</td>' +
 							'<td>' + response.results[key].quotation_ref + '</td>' +
 							'<td>' + response.results[key].date_of_installation + '</td>' +
-							'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '/new' + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> <a href="' + '<?php echo site_url('inquiry-tempo-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>' +
+							'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> <a href="' + '<?php echo site_url('inquiry-tempo-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>' +
 							'</tr>'
 						);
 
@@ -752,7 +752,7 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].project_amount + '</td>' +
 							'<td>' + response.results[key].quotation_ref + '</td>' +
 							'<td>' + response.results[key].date_of_installation + '</td>' +
-							'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '/existing' + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a><a href="' + '<?php echo site_url('inquiry-existing-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>'
+							'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a><a href="' + '<?php echo site_url('inquiry-existing-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>'
 						);
 
 						$('#reject_project_id').val(response.results[key].project_id);
@@ -1159,7 +1159,7 @@ defined('BASEPATH') or die('Access Denied');
 			});
 		<?php endif ?>
 
-		$("#table-branch").on('click', '.btn_edit_branch', function() {
+		$("#table-branch").on('click', '.btn_edit_branch', function() { 
 			// get the current row
 			var currentRow = $(this).closest("tr");
 
