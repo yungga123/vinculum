@@ -57,8 +57,6 @@ class CustomersController extends CI_Controller
 
 			<button type="button" class="btn btn-success btn-sm btn-addcustomerfile" data-toggle="modal" data-target=".modal-addcustomer-file"><i class="fas fa-plus"></i> Add File</button>
 
-			<a href="' . site_url('customers-addbranch/' . $row->CustomerID) . '" class="btn btn-sm btn-primary text-bold" target="_blank"><i class="fas fa-code-branch"></i> Add Branch</a>
-
 			<a href="#" class="btn btn-primary btn-sm btn_existing_view" target="_blank" data-toggle="modal" data-target=".modal_view_project"><i class="fas fa-search"></i>  View Projects</a>
 
 			';
