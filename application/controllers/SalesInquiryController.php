@@ -158,6 +158,7 @@ class SalesInquiryController extends CI_Controller
 			$data['ul_sales_tree'] = ' active';
 			$data['category'] = 'New_Clients';
 			$data['sales_list'] = $this->SalesInquiryModel->get_sales_list();
+			$data['emp_id'] = $this->session->userdata('logged_in')['emp_id'];
 			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -1441,8 +1442,8 @@ class SalesInquiryController extends CI_Controller
 
 	public function get_archive_projects_list()
 	{
-
-		$fetch_data = $this->SalesInquiryModel->archiveprojects_datatable();
+		$id = $this->session->userdata('logged_in')['emp_id'];
+		$fetch_data = $this->SalesInquiryModel->archiveprojects_datatable($id);
 		$fetch_new_customer = $this->SalesInquiryModel->fetch_customer();
 		$fetch_customer_existing = $this->SalesInquiryModel->fetch_customer_existing();
 
@@ -1487,7 +1488,7 @@ class SalesInquiryController extends CI_Controller
 		$output = array(
 			"draw"	=>	intval($_POST["draw"]),
 			"recordsTotal" => $this->SalesInquiryModel->get_archive_projects_data(),
-			"recordsFiltered" => $this->SalesInquiryModel->filter_archive_projects_data(),
+			"recordsFiltered" => $this->SalesInquiryModel->filter_archive_projects_data($id),
 			"data" => $data
 		);
 

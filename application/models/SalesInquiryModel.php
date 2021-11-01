@@ -512,9 +512,9 @@ public function existingclient_datatable($id) {
 		$this->db->update('customers_project', $data);
 	}
 
-	public function archiveprojects_datatable() {
+	public function archiveprojects_datatable($sales_id) {
 
-		$this->archiveproject_query();
+		$this->archiveproject_query($sales_id);
 	
 		if($_POST["length"] != -1) {
 			$this->db->limit($_POST["length"],$_POST["start"]);
@@ -523,7 +523,7 @@ public function existingclient_datatable($id) {
 		return $query->result();
 	}
 	
-	public function archiveproject_query() {
+	public function archiveproject_query($sales_id) {
 		$this->db->select("a.*, c.lastname, c.firstname, c.middlename, d.project_task, d.date_of_task, d.mark_last_task");
 		$this->db->from('customers_project as a');
 		$this->db->where('a.client_status', 'new');
@@ -547,6 +547,9 @@ public function existingclient_datatable($id) {
 			//$this->db->having('b.is_deleted', 0);
 			$this->db->having('a.archive', 1);
 			$this->db->having('d.mark_last_task', 1);
+			if($this->session->userdata('logged_in')['emp_id'] != '01021415'){
+				$this->db->having('a.sales_incharge', $sales_id);
+			}
 		}
 
 		if (isset($_POST["order"])) {
@@ -556,8 +559,8 @@ public function existingclient_datatable($id) {
 		}
 	}
 
-		public function filter_archive_projects_data() {
-			$this->archiveproject_query();
+		public function filter_archive_projects_data($sales_id) {
+			$this->archiveproject_query($sales_id);
 			$query = $this->db->get();
 			return $query->num_rows();
 		}

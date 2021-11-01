@@ -107,12 +107,13 @@ defined('BASEPATH') or die('Access Denied'); ?>
 										<label for="source">Sales Incharge</label>
 
 										<select name="sales_incharge" class="form-control">
-											<option value="">---Please Select---</option>
 											<?php foreach ($sales_list as $row) : ?>
 												<?php if ($row->id == "01021415" || $row->id == "PTS09092020" || $row->id == "02021415" || $row->id == "24120518" || $row->id == "PS021021" || $row->id == "SEO041921") : ?>
+													<?php if($emp_id == $row->id): ?>
 													<option value="<?php echo $row->id ?>">
 														<?php echo $row->id . " -- " . $row->lastname . ", " . $row->firstname . " " . $row->middlename  ?>
 													</option>
+													<?php endif ?>
 												<?php endif ?>
 											<?php endforeach ?>
 										</select>
