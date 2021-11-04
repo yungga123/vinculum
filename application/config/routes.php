@@ -209,6 +209,3 @@ $route['generate-po-proceed/(:any)'] = 'POController/generate_po_view/$1';
 
 //OFFLIMITS PAGE
 $route['offlimits'] = 'LoginController/offlimits_page';
-
-//Paulpnx
-$route['paulpnx'] = 'PaulpnxController';

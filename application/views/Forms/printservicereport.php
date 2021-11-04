@@ -1,5 +1,128 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
+
+$DispatchID = '';
+$companyName = '';
+$customerName = '';
+$contactPerson = '';
+$contactNumber = '';
+$dispatchDate = '';
+$address = '';
+$timeIn = '';
+$timeOut = '';
+$dispatch_out = '';
+$concern = '';
+$assignedTech1 = '';
+$assignedTech2 = 'N/A';
+$assignedTech3 = 'N/A';
+$assignedTech4 = 'N/A';
+$assignedTech5 = 'N/A';
+$assignedTech6 = 'N/A';
+$assignedTech7 = 'N/A';
+$assignedTech8 = 'N/A';
+$with_permit = '';
+$typeOfService = '';
+$sr_number = '';
+$remarks = '';
+
+foreach ($results as $row) {
+	$DispatchID = $dispatch_id;
+	$companyName = $row->CompanyName;
+	$customerName = $row->CustomerName;
+	$contactPerson = $row->ContactPerson;
+	$contactNumber = $row->ContactNumber;
+	$dispatchDate = $row->DispatchDate;
+	$address = $row->Address;
+	$sr_number = $row->sr_number;
+	$remarks = $row->remarks2;
+
+
+	if ($row->dispatch_out == '00:00:00' or $row->dispatch_out == '') {
+		$dispatch_out = '';
+	} else {
+		$dispatch_out = date('g:i A',strtotime($row->dispatch_out));
+	}
+
+	if ($row->TimeIn == '00:00:00' or $row->TimeIn == '') {
+		$timeIn = '';
+	} else {
+		$timeIn = date('g:i A',strtotime($row->TimeIn));
+	}
+
+	if ($row->TimeOut == '00:00:00' or $row->TimeIn == '') {
+		$timeOut = '';
+	} else {
+		$timeOut =  date('g:i A',strtotime($row->TimeOut));
+	} 	
+
+	$concern = $row->Remarks;
+
+	if ($row->AssignedTechnicians1 == '') {
+		$assignedTech1 = 'N/A';
+	} else {
+		$assignedTech1 = $row->AssignedTechnicians1;
+	}
+
+	if ($row->AssignedTechnicians2 == '') {
+		$assignedTech2 = 'N/A';
+	} else {
+		$assignedTech2 = $row->AssignedTechnicians2;
+	}
+
+	if ($row->AssignedTechnicians3 == '') {
+		$assignedTech3 = 'N/A';
+	} else {
+		$assignedTech3 = $row->AssignedTechnicians3;
+	}
+
+	if ($row->AssignedTechnicians4 == '') {
+		$assignedTech4 = 'N/A';
+	} else {
+		$assignedTech4 = $row->AssignedTechnicians4;
+	}
+
+	if ($row->AssignedTechnicians5 == '') {
+		$assignedTech5 = 'N/A';
+	} else {
+		$assignedTech5 = $row->AssignedTechnicians5;
+	}
+
+	if ($row->AssignedTechnicians6 == '') {
+		$assignedTech6 = 'N/A';
+	} else {
+		$assignedTech6 = $row->AssignedTechnicians6;
+	}
+
+	if ($row->AssignedTechnicians7 == '') {
+		$assignedTech7 = 'N/A';
+	} else {
+		$assignedTech7 = $row->AssignedTechnicians7;
+	}
+
+	if ($row->AssignedTechnicians8 == '') {
+		$assignedTech8 = 'N/A';
+	} else {
+		$assignedTech8 = $row->AssignedTechnicians8;
+	}
+
+	if ($row->Installation == 1) {
+		$typeOfService = 'Installation';
+	}
+
+	if ($row->RepairOrService) {
+		$typeOfService = 'Service';
+	}
+
+	if ($row->WithPermit == 'Yes') {
+		$with_permit = 'YES';
+	} else {
+		$with_permit = 'NO';
+	}
+
+	if ($row->Warranty) {
+		$typeOfService = 'Warranty';
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -65,83 +188,83 @@ defined('BASEPATH') or die('Access Denied');
 	<form action="" method="POST" style="margin-bottom: 100px">
 	<h2>Service Report</h2>
 	
-	<div class="customer" style="text-align: left;">
+	<div class="customer" style="text-align: left; margin-top: 30px; width: 100%; height: auto;">
 	<tr>
-		<td>Customer:_______________________________________<br></td>
+		<td><b>Customer:</b>	<u><?php echo $companyName ?><br></td></u>
 	</tr>
 	<tr>
-		<td>Address:________________________________________<br></td>
+		<td><b>Address:</b>	<u><td width="80%"><?php echo $address ?></td><br></td></u>
 	</tr>
 	<tr>
-		<td>Responsible:_____________________________________<br></td>
+		<td><b>Responsible:</b>	_____________________________________<br></td>
 	</tr>
 	<tr>
-		<td>Phone:__________________________________________<br></td>
+		<td><b>Phone:</b>	__________________________________________<br></td>
 	</tr>
 	</div>
 
-	<div class="order_no" style="text-align: center; margin-top: -100px;">
-		<td>Order No.:_________________________</td>
+	<div class="order_no" style="text-align: center; margin-top: -150px; width: 100%; height: auto;">
+		<td><b>Order No.:</b>	_________________________</td>
 	</div>
 	
-	<div class="arrival" style="text-align: right; margin-top: -50px;">
+	<div class="arrival" style="text-align: left; margin-top: -20px; float: right; width: 20%; hegiht: auto;">
 	<tr>
-		<td>Arrival Time:____________________<br></td>
+		<td><b>Arrival Time:</b>________________<br</td>
 	</tr>
 	<tr>
-		<td>Date:____________________<br></td>
+		<td><b>Date:</b><u><td width="70%"><?php echo date($dispatchDate) ?></u><br></td>
 	</tr>
 	<tr>
-		<td>Type:____________________<br></td>
+		<td><b>Type:</b>_______________________<br></td>
 	</tr>
 	<tr>
-		<td>Serial No:___________________<br></td>
+		<td><b>Serial No:</b>___________________<br></td>
 	</tr>
-		<td>Customer Site:</td>
+		<td><b>Customer Site:</b></td>
 		<input type="checkbox">
-		<td>In-house:</td>
+		<td><b>In-house:</b></td>
 		<input type="checkbox">
 	</div>
 	
-	<div class="error_description" style="text-align: left; margin-top: 100px;">
+	<div class="error_description" style="text-align: left; margin-top: 150px; width: 50%; height: auto;">
 	<tr>
-		<td>Error Description:<br>
-		_______________________________________________________________________</td>
+		<td><b>Error Description:</b><br>
+		___________________________________________________________________</td>
 	</tr>
 	<tr><br>
-		<td>Error Description:<br>
-		_______________________________________________________________________</td>
+		<td><b>Error Description:</b><br>
+		___________________________________________________________________</td>
 	</tr>
 	<tr><br>
-		<td>Error Description:<br>
-		_______________________________________________________________________</td>
-	</tr>
+		<td><b>Error Description:</b><br>
+		____________________________________________________________________</td>
 	<tr><br>
-		<td>Remaks:_____________________________________________________________________________________________________________________________________<br>
-		____________________________________________________________________________________________________________________________________________</td>
+	<br>
+		<td><b>Remaks:</b>_____________________________________________________________________________________________________________________________________<br>
+		_____________________________________________________________________________________________________________________________________________</td>
 	</tr>
 	</div>
 	
-	<div class="corrective_action" style="text-align: right; margin-top: -170px;">
+	<div class="corrective_action" style="text-align: left; margin-top: -217px; width: 50%; height: auto; float: right;">
 	<tr>
-		<td>Corrective Action:__________________________________________________</td>
-		<br>
+		<td><b>Corrective Action:</b><br>
+		__________________________________________________________________</td>
 		<br>
 	</tr>
 	<tr>
-		<td>Corrective Action:__________________________________________________</td>
-		<br>
+		<td><b>Corrective Action:</b><br>
+		__________________________________________________________________</td>
 		<br>
 	</tr>
 	<tr>
-		<td>Corrective Action:__________________________________________________</td>
-		<br>
+		<td><b>Corrective Action:</b><br>
+		__________________________________________________________________</td>
 		<br>
 	</tr>
 	</div>
 	
 	<div class="unit_condition" style="text-align: left; margin-top: 50px;">
-	<tr>
+	<tr><b>
 	<label>Unit Condition:</label><br>
 	<label>ITEMS</label><br>
 		<td>1) CCTV </td><br>
@@ -153,7 +276,7 @@ defined('BASEPATH') or die('Access Denied');
 		<td>7) WIRELESS CONNECTION </td><br>
 		<td>8) PABX </td><br>
 		<td>9) FDAS </td><br>
-		<td>10) GPS </td><br>
+		<td>10) GPS </td><br></b>
 	</div>
 
 	<div class="good_defective" style="text-align: center; margin-top: -260px; column-count: 2; width: 100px;
@@ -184,7 +307,7 @@ defined('BASEPATH') or die('Access Denied');
 	</div>
 
 	<div class="defective" style="text-align: right; margin-top: -260px;">
-	<th>if defective please specify:
+	<th><b>if defective please specify:</b>
 	______________<br>
 	____________________________________<br>
 	____________________________________<br>
@@ -198,7 +321,7 @@ defined('BASEPATH') or die('Access Denied');
 	</th>
 	</div>
 
-	<div class="item_no" style="text-align: left; margin-top: 100px; column-count: 5; width: auto;">
+	<div class="item_no" style="text-align: left; margin-top: 50px; column-count: 5; width: 100%; height: auto;">
 	<label>ITEM NO.</label><br>
 	_________________<br>
 	_________________<br>
@@ -263,73 +386,74 @@ defined('BASEPATH') or die('Access Denied');
 
 	<div class="labor" style="text-align: left; width: auto;">
 	<tr>
-		<td>Labor(Hours)</td>_____________
-		<br><td>Travel Time(Hours)</td>_________
+		<td><b>Labor(Hours)</td>_____________
+		<br><td><b>Travel Time(Hours)</td>_________
 	</tr>
 	</div>
 	
 	<div class="travel_cost" style="text-align: center; margin-top: -70px;">
 	<tr>
-		<br><td>Travel Cost</td>	_____________
-		<br><td>Time Out</td>	______________
+		<br><td><b>Travel Cost</b></td>	_____________
+		<br><td><b>Time Out</b></td>	______________
 	</tr>
 	</div>
 
 	<div class="total_price" style="text-align: right; margin-top: -30px">
 	<tr>
-		<td>Total Price:</td>
+		<td><b>Total Price:</b></td>
 		<input type="text">
 	</div>
 
 	<div class="warranty" style="text-align: left; margin-top: 20px;">
 	<tr>
-		<td>Warranty
+		<td><b>Warranty</b>
 		<input type="checkbox">
 		</td>
 	</tr>
 	</div>
 	
-	<div class="installation" style="margin-left: 25%; margin-top: -20px;">
+	<div class="installation" style="margin-left: 25%; margin-top: -21px;">
 	<tr>
-		<td>Installation
+		<td><b>Installation</b>
 		<input type="checkbox">
 		</td>
 	</tr>
 	</div>
 	<div class="training" style="text-align: center; margin-top: -29px;">
 	<tr>
-		<td>Training
+		<td><b>Training</b>
 		<input type="checkbox">
 		</td>
 	</tr>
 	</div>
 	<div class="emergency" style="text-align: right; margin-right: 25%; margin-top: -25px;">
 	<tr>
-		<td>Emergency Repair
+		<td><b>Emergency Repair</b>
 		<input type="checkbox">
 		</td>
 	</tr>
 	</div>
-	<div class="repair" style="text-align: right; margin-top: -30px;">
+	<div class="repair" style="text-align: right; margin-top: -25px;">
 	<tr>
-		<td>Repair
+		<td><b>Repair</b>
 		<input type="checkbox">
 		</td>
 		
 	</tr>
 	<br>
 	</div>
-	<div class="customer" style="margin-top: 50px;">
+	<div class="customer" style="margin-top: 50px; text-align: center; float: left;">
 	<tr>
-		<td>________________________________________________________<br>
-		Customer's Signature over Printed Name</td>
+		<td>________________________________________________________<br></td>
+		<b>Customer's Signature over Printed Name</b>
 	</tr>
+	</div>
 
 	<div class="technician" style="float: right; text-align: center;
-	margin-top: -25px;">
+	margin-top: 50px;">
 	<tr>
-		<td>________________________________________________________<br>
-		Technician</td>
+		<u><td width="50%"><?php echo $assignedTech1 ?></td><br></u>
+		<b>Technician</b></td>
 	</tr>
 	</div>
 	</form>

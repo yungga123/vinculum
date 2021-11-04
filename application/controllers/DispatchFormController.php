@@ -32,8 +32,8 @@ class DispatchFormController extends CI_Controller {
 		} else {
 			redirect('', 'refresh');
 		}
-	
-		
+
+
 	}
 
 	public function DispatchTable() {
@@ -110,7 +110,7 @@ class DispatchFormController extends CI_Controller {
 			$sub_array[] = '<button type="button" class="btn btn-warning btn-sm btn_select" data-toggle="modal" data-target="#modal-edit-dispatch"><i class="fas fa-edit"> EDIT </i>
         </button> <a href="'.site_url("deletedispatch/".$row->Dispatch_ID).'" class="btn btn-sm btn-danger" onclick="return confirm('."'Are you sure?'".')"><i class="fa fa-trash"></i> DELETE</a>
 				<a href="'.site_url('printdispatch/'.$row->Dispatch_ID).'" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-print"></i> Print</a>
-				<a href="'.site_url('printservicereport/'.$row->Dispatch_ID).'" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> BluePrint</a>';
+				<a href="'.site_url('printservicereport/'.$row->Dispatch_ID).'" target="_blank" class="btn btn-primary btn-sm"><i class="fa fa-print"></i> PrintSR</a>';
 			$data[] = $sub_array;
 		}
 
@@ -189,7 +189,7 @@ class DispatchFormController extends CI_Controller {
 			$this->load->model('DispatchFormsModel');
 			$results = $this->DispatchFormsModel->getSpecificDispatch($id);
 			$data = [
-				'title' => 'Print',
+				'title' => 'PrintSR',
 				'results' => $results,
 				'dispatch_id' => $id
 			];

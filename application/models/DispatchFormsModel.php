@@ -116,6 +116,47 @@ class DispatchFormsModel extends CI_Model {
 		return $this->db->count_all('dispatch_forms');
 	}
 
+	//Service Report
+	public function printServiceReport($id) {
+
+		$select = array(
+			"a.Dispatch_ID",
+			"b.CompanyName",
+			"a.CustomerName",
+			"b.ContactPerson",
+			"b.ContactNumber",
+			"a.DispatchDate",
+			"b.Address",
+			"TimeIn",
+			"TimeOut",
+			"a.Remarks",
+			"a.AssignedTechnicians1",
+			"a.AssignedTechnicians2",
+			"a.AssignedTechnicians3",
+			"a.AssignedTechnicians4",
+			"a.AssignedTechnicians5",
+			"a.AssignedTechnicians6",
+			"a.AssignedTechnicians7",
+			"a.AssignedTechnicians8",
+			"a.WithPermit",
+			"a.Installation",
+			"a.RepairOrService",
+			"a.Warranty",
+			"a.dispatch_out",
+			"a.sr_number",
+			"a.remarks2"
+		);
+
+		$table = "dispatch_forms as a";
+		$join = "customer_vt as b";
+
+		$this->db->select($select);
+		$this->db->from($table);
+		$this->db->join($join,'a.CustomerName = b.CustomerID','left');
+		$this->db->where("Dispatch_ID",$id);
+		
+	}
+
 // *****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "dispatch_forms as a";
 	var $join_table = "customer_vt as b";

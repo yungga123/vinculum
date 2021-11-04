@@ -2,14 +2,6 @@
 defined('BASEPATH') or exit('No direct script access allowed.');
 ?>
 
-<style>
-  body {
-    width: auto;
-    opacity: 0.9;
-    background-image: url('https://media.istockphoto.com/vectors/seamless-skull-wallpaper-background-vector-id165673932');
-  }
-</style>
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
