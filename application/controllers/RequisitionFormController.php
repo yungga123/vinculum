@@ -668,6 +668,7 @@ class RequisitionFormController extends CI_Controller {
             $sub_data['unit_cost'] = number_format($row->unit_cost, 2);
             $sub_data['item_cost'] = number_format($item_total, 2);
             $sub_data['purpose'] = $row->purpose;
+            $sub_data['date_needed'] = $row->date_needed;
             $sub_data['total'] = number_format($total, 2);
 
             $data[] = $sub_data;
