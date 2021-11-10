@@ -107,23 +107,29 @@ class LeaveController extends CI_Controller
 
     public function filed_leaves($status)
     {
+        if ($this->session->userdata('logged_in')['class'] == 1) {
 
-        if ($this->session->userdata('logged_in')) {
-            $this->load->helper('site_helper');
-            $data = html_variable();
-            $data['title'] = 'Filed Leaves';
-            $data['hr_status'] = ' menu-open';
-            $data['ul_hr_tree'] = ' active';
-            $data['leaves'] = ' active';
-
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navbar');
-            $this->load->view('leave/filedleave');
-            $this->load->view('templates/footer');
-            $this->load->view('leave/script');
+            if ($this->session->userdata('logged_in')) {
+                $this->load->helper('site_helper');
+                $data = html_variable();
+                $data['title'] = 'Filed Leaves';
+                $data['hr_status'] = ' menu-open';
+                $data['ul_hr_tree'] = ' active';
+                $data['leaves'] = ' active';
+    
+                $this->load->view('templates/header', $data);
+                $this->load->view('templates/navbar');
+                $this->load->view('leave/filedleave');
+                $this->load->view('templates/footer');
+                $this->load->view('leave/script');
+            } else {
+                redirect('', 'refresh');
+            }
+            
         } else {
-            redirect('', 'refresh');
+            redirect('offlimits');
         }
+
     }
     public function fetch_filed_leave($status)
     {
