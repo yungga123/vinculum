@@ -3,8 +3,10 @@ defined('BASEPATH') or die('Access Denied');
 
 if ($this->uri->segment(2) == 'pending') {
     $url = site_url('LeaveController/fetch_pending');
-} else {
+} elseif ($this->uri->segment(2) == 'approved') {
     $url = site_url('LeaveController/fetch_approved');
+} elseif ($this->uri->segment(2) == 'discarded') {
+    $url = site_url('LeaveController/fetch_discarded');
 }
 
 ?>
@@ -52,6 +54,9 @@ if ($this->uri->segment(2) == 'pending') {
                 $("#processed_by").val(response.leave_data[0].processed_by);
                 $("#approved_sl_credit").html(response.leave_data[0].sl_credit);
                 $("#approved_vl_credit").html(response.leave_data[0].vl_credit);
+                $("#approve_leave_employee_name").val(response.leave_data[0].lastname + ", " + response.leave_data[0].firstname + " " + response.leave_data[0].middlename);
+                $("#approve_employee_designation").val(response.leave_data[0].position);
+                $("#approved_type_of_leave").val(response.leave_data[0].type_of_leave);
 
                 console.log(response);
             }
@@ -113,7 +118,7 @@ if ($this->uri->segment(2) == 'pending') {
                     me[0].reset();
                     window.setTimeout(function() {
                         location.reload();
-                    }, 2000);
+                    }, 1000);
                 } else {
                     $(':submit').removeAttr('disabled', 'disabled');
                     $('.loading-modal').modal('hide');
@@ -165,7 +170,7 @@ if ($this->uri->segment(2) == 'pending') {
                     me[0].reset();
                     window.setTimeout(function() {
                         location.reload();
-                    }, 2000);
+                    }, 1000);
                 } else {
                     $(':submit').removeAttr('disabled', 'disabled');
                     $('.loading-modal').modal('hide');
@@ -262,7 +267,7 @@ if ($this->uri->segment(2) == 'pending') {
                     me[0].reset();
                     window.setTimeout(function() {
                         location.reload();
-                    }, 2000);
+                    }, 1000);
                 } else {
                     $(':submit').removeAttr('disabled', 'disabled');
                     $('.loading-modal').modal('hide');

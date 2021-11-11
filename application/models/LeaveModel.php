@@ -41,7 +41,7 @@ class LeaveModel extends CI_Model
 			$this->db->like("b.lastname", $_POST["search"]["value"]);
 			$this->db->or_like("b.firstname", $_POST["search"]["value"]);
 			$this->db->or_like("a.status", $_POST["search"]["value"]);
-			$this->db->having('a.is_deleted', 0);
+			//$this->db->having('a.is_deleted', 0);
 			$this->db->having('a.status', $status);
 		}
 

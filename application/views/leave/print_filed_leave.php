@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') or die('Access Denied');
+
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +41,9 @@ defined('BASEPATH') or die('Access Denied');
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    
+			
+            
     <style type="text/css">
         @media print {
 
@@ -60,7 +64,11 @@ defined('BASEPATH') or die('Access Denied');
 <body>
     <!-- Title Page -->
     <div class="row">
-        <div class="col-sm-6 offset-sm-3 text-center">
+        <div class="col-sm-2">
+        <img src="<?php echo base_url('assets/qr_image/'.$approved_year."".$leave_id."".$approved_month."".$approved_day.'.png') ?>" alt="qrlogo" class="img-thumbnail sm-4" style="height: 150px;width: 170px">
+        </div>
+        <div class="col-sm-6 offset-sm-1 text-center">
+           
             <h3>VINCULUM TECHNOLOGIES</h3>
             <h3>APPLICATION FOR LEAVE OF ABSENCE</h3>
         </div>

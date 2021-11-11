@@ -154,14 +154,13 @@ class LeaveController extends CI_Controller
 
             if ($status == 'pending') {
                 $button = '
-<button type="button" class="btn btn-warning btn-xs btn-block btn_edit_leave" data-toggle="modal" data-target=".leave-edit"><i class="fas fa-file"></i> Edit</button>
+<button type="button" class="btn btn-warning btn-xs btn-block btn_edit_leave" data-toggle="modal" data-target=".leave-edit"><i class="fas fa-sync-alt"></i> Process</button>
 <button type="button" class="btn btn-success btn-xs btn-block btn_approve_leave" data-toggle="modal" data-target=".leave-approved"><i class="fas fa-file"></i> Approved</button>
-<button type="button" class="btn btn-danger btn-xs btn-block btn_delete_leave" data-toggle="modal" data-target=".leave-delete"><i class="fas fa-trash"></i> Delete</button>
+<button type="button" class="btn btn-danger btn-xs btn-block btn_delete_leave" data-toggle="modal" data-target=".leave-delete"><i class="fas fa-trash"></i> Discard</button>
 ';
-            } else {
+            } elseif($status == 'approved') {
                 $button = '
 <a href="' . site_url('print-leaves/' . $row->id) . '" target="_blank" class="btn btn-xs btn-block btn-success"><i class="fas fa-print"></i>Print</a>
-<button type="button" class="btn btn-danger btn-xs btn-block btn_delete_leave" data-toggle="modal" data-target=".leave-delete"><i class="fas fa-trash"></i> Delete</button>
 ';
             }
 
@@ -176,7 +175,9 @@ class LeaveController extends CI_Controller
             $sub_array[] = $row->reason;
             $sub_array[] = $row->processed_by;
             $sub_array[] = $row->approved_by;
-            $sub_array[] = $button;
+            if($status !='discarded'){
+                $sub_array[] = $button;
+            }
 
             $data[] = $sub_array;
             $i = $i + 1;
@@ -201,6 +202,12 @@ class LeaveController extends CI_Controller
     public function fetch_approved()
     {
         $status = 'approved';
+        $this->fetch_filed_leave($status);
+    }
+
+    public function fetch_discarded()
+    {
+        $status = 'discarded';
         $this->fetch_filed_leave($status);
     }
 
@@ -246,6 +253,21 @@ class LeaveController extends CI_Controller
                 'approved_by' => 'Marvin G. Lucas'
 
             ]);
+
+            //FOR GENERATE QR CODE
+            $approved_day = date_format(date_create($date_approved),'d');
+            $approved_month = date_format(date_create($date_approved),'m');
+            $approved_year = date_format(date_create($date_approved),'y');
+            $leave_id = $this->input->post('approve_leave_id');
+
+            include 'assets/phpqrcode/qrlib.php';
+            $text = $approved_year."".$leave_id."".$approved_month."".$approved_day;
+			$file = '';
+			$file='assets/qr_image/'.$text.".png";
+			QRcode::png($text,$file);
+            
+            //END OF GENERATE QR CODE
+
         } else {
             $validate['errors'] = validation_errors();
         }
@@ -302,7 +324,7 @@ class LeaveController extends CI_Controller
 
 
             $this->LeaveModel->update_leave($this->input->post('delete_leave_id'), [
-                'is_deleted' => 1
+                'status' => 'discarded'
             ]);
         } else {
             $validate['errors'] = validation_errors();
@@ -321,9 +343,18 @@ class LeaveController extends CI_Controller
 
     function checkslvl()
     {
-
         if (!empty($this->input->post('employee'))) {
+            if($this->input->post('type_of_leave') !=""){
+            if($this->input->post('employee_status') != 'Regular' && $this->input->post('type_of_leave') != 'Leave of Absence'){
+                $this->form_validation->set_message('checkslvl', 'Invalid, Only Leave of Absence Allowed');
+                return false;
+            }
+            else{
             if ($this->input->post('start_date') != "") {
+                if($this->input->post('start_date') > $this->input->post('end_date')){
+                    $this->form_validation->set_message('checkslvl', 'Invalid, Entry of Date Range');
+                    return false;
+                }else{
                     $techdata = $this->LeaveModel->gettechdata($this->input->post('employee'));
                     $start_date = strtotime($this->input->post('start_date'));
                     $end_date = strtotime($this->input->post('end_date'));
@@ -364,6 +395,41 @@ class LeaveController extends CI_Controller
                         $days_between = ceil(abs($end_date - $start_date) / 86400);
                         $days_between = $days_between + 1;
 
+                         //Compute total Sundays of Filed Date
+                         $days = $start_date2->diff($end_date2, true)->days;
+                         $total_sundays = intval($days / 7) + ($start_date2->format('N') + $days % 7 >= 7);
+ 
+                         //Compute total Filed Days
+                         $filed_days = $days_between - $total_sundays;
+
+                         //Fetch remaning SL of employee
+                        foreach ($techdata as $row) {
+                            $remaining_sl = $row->sl_credit;
+                        }
+
+                            if ($filed_days >= 2) {
+
+                                //check difference of filed days and remaining sl days
+                                if ($remaining_sl >= $filed_days) {
+                                    $remaining_sl = $remaining_sl - $filed_days;
+                                    $this->form_validation->set_message('checkslvl', 'Youre remaing SL Credit:' . $remaining_sl);
+                                    return true;
+                                } else {
+                                    $this->form_validation->set_message('checkslvl', 'Invalid, Set Date Exceeds your remaining Sick Leave');
+                                    return false;
+                                }
+                            } else {
+                                $this->form_validation->set_message('checkslvl', 'Invalid, Minimum of two days for Sick Leave Filing');
+                                return false;
+                            }
+
+
+                    } elseif ($this->input->post('type_of_leave') == 'Leave of Absence') {
+
+                        //Compute difference of two days
+                        $days_between = ceil(abs($end_date - $start_date) / 86400);
+                        $days_between = $days_between + 1;
+
 
                         //Compute total Sundays of Filed Date
                         $days = $start_date2->diff($end_date2, true)->days;
@@ -372,25 +438,16 @@ class LeaveController extends CI_Controller
                         //Compute total Filed Days
                         $filed_days = $days_between - $total_sundays;
 
-                        //Fetch remaning SL of employee
-                        foreach ($techdata as $row) {
-                            $remaining_sl = $row->sl_credit;
-                        }
-
-                        //check difference of filed days and remaining sl days
-                        if ($remaining_sl >= $filed_days) {
-                            $remaining_sl = $remaining_sl - $filed_days;
-                            $this->form_validation->set_message('checkslvl', 'Youre remaing SL Credit:' . $remaining_sl);
-                            return true;
-                        } else {
-                            $this->form_validation->set_message('checkslvl', 'Invalid, Set Date Exceeds your remaining Sick Leave');
-                            return false;
-                        }
+                        $this->form_validation->set_message('checkslvl', 'Your Total Filed Days' . $filed_days);
+                        return true;
                     }
-            } else {
+            
+            }    } else {
                 $this->form_validation->set_message('checkslvl', 'Please Provide Start Date');
                 return false;
             }
+        }
+    }
         } else {
             $this->form_validation->set_message('checkslvl', 'Please Select Employee');
             return false;
@@ -505,7 +562,9 @@ class LeaveController extends CI_Controller
                 $data['middlename'] = $row->middlename;
                 $data['lastname'] = $row->lastname;
             }
-            
+          
+
+
             $this->load->view('leave/print_filed_leave', $data);
         } else {
             redirect('', 'refresh');

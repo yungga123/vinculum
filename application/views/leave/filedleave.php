@@ -5,10 +5,17 @@ if ($this->uri->segment(2) == 'pending') {
     $page_title = 'Pending Filed Leave List';
     $pending_button = 'disabled';
     $approved_button = '';
-} else {
+    $discarded_button = '';
+} elseif($this->uri->segment(2) == 'approved') {
     $page_title = 'Approved Filed Leave List';
     $pending_button = '';
     $approved_button = 'disabled';
+    $discarded_button = '';
+} elseif($this->uri->segment(2) == 'discarded'){
+    $page_title = 'Discarded Filed Leave List';
+    $pending_button = '';
+    $approved_button = '';
+    $discarded_button = 'disabled';
 }
 ?>
 
@@ -36,6 +43,7 @@ if ($this->uri->segment(2) == 'pending') {
                         <div class="card-body">
                             <a href="<?php echo site_url('filed-leaves/pending') ?>" class="btn btn-warning btn-lg btn-block text-bold <?php echo $pending_button ?>">PENDING LEAVES</a>
                             <a href="<?php echo site_url('filed-leaves/approved') ?>" class="btn btn-success btn-lg btn-block text-bold <?php echo $approved_button ?>">APPROVED LEAVES</a>
+                            <a href="<?php echo site_url('filed-leaves/discarded') ?>" class="btn btn-danger btn-lg btn-block text-bold <?php echo $discarded_button ?>">DISCARDED LEAVES</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +66,9 @@ if ($this->uri->segment(2) == 'pending') {
                                         <th>Reason of Leave</th>
                                         <th>Processed By</th>
                                         <th>Approved By</th>
-                                        <th>Operations</th>
+                                        <?php if($this->uri->segment(2) != 'discarded') :?>
+                                            <th>Operations</th>
+                                        <?php endif ?>
                                     </tr>
                                 </thead>
                             </table>
@@ -74,33 +84,59 @@ if ($this->uri->segment(2) == 'pending') {
 
 <!-- Modal -->
 <div class="modal fade leave-approved" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-m" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="col-sm-6">
                 <b class="modal-title">Approved Filed Leave</b>
                 </div>
-                <div class="col-sm-2">
-                <label class="float-right">SL: <label id="approved_sl_credit"></label>
-                </div>
-                <div class="col-sm-2">
-                <label class="float-right">VL: <label id="approved_vl_credit"></label></label>
-                </div>
                 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-
-                
             </div>
             <?php echo form_open('LeaveController/approve_leave', ["id" => "modal-approve-leave"]) ?>
             <input type="hidden" name="processed_by" id="processed_by">
             <div class="modal-body text-center">
-                <div class="form-group">
-                    <label for="approve_leave_id">Leave Form ID</label>
-                    <input type="text" name="approve_leave_id" id="approve_leave_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
+                
+                <label>Employee Details: </label>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="approve_leave_id">Employee Name</label>
+                        <input type="text" name="approve_leave_employee_name" id="approve_leave_employee_name" class="form-control text-bold text-center" readonly>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="approve_leave_id">Designation</label>
+                        <input type="text" name="approve_employee_designation" id="approve_employee_designation" class="form-control text-bold text-center" readonly>
+                    </div>
                 </div>
-
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Remaining Sick Leave: <label id="approved_sl_credit"></label>
+                    </div>
+                    <div class="col-sm-6">
+                        <label>Remaining Vacation Leave: <label id="approved_vl_credit"></label></label>
+                    </div>
+                </div>
+                <hr><br><br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label>Filed Leave details: </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="approve_leave_id">Leave Form ID</label>
+                        <input type="text" name="approve_leave_id" id="approve_leave_id" class="form-control text-bold text-center" readonly>
+                    </div>
+                    <div class="col-sm-6">
+                    <label for="approve_leave_id">Type of Leave</label>
+                        <input type="text" name="approved_type_of_leave" id="approved_type_of_leave" class="form-control text-bold text-center" readonly>
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">

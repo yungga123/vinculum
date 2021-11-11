@@ -252,7 +252,7 @@ defined('BASEPATH') or die('Access Denied');
                             $('#sl_credit').val(response.sl_credit);
                             $('#vl_credit_label').html(response.vl_credit);
                             $('#sl_credit_label').html(response.sl_credit);
-                            $('#employee_status').html(response.employee_status);
+                            $('#employee_status').val(response.employee_status);
                         }
                     });
                 }
