@@ -66,6 +66,9 @@ if ($this->uri->segment(2) == 'pending') {
                                         <th>Reason of Leave</th>
                                         <th>Processed By</th>
                                         <th>Approved By</th>
+                                        <?php if($this->uri->segment(2) == 'approved') :?>
+                                            <th>Notes</th>
+                                        <?php endif ?>
                                         <?php if($this->uri->segment(2) != 'discarded') :?>
                                             <th>Operations</th>
                                         <?php endif ?>

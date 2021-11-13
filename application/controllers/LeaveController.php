@@ -175,6 +175,9 @@ class LeaveController extends CI_Controller
             $sub_array[] = $row->reason;
             $sub_array[] = $row->processed_by;
             $sub_array[] = $row->approved_by;
+            if($status =='approved'){
+                $sub_array[] = $row->notes;
+            }
             if($status !='discarded'){
                 $sub_array[] = $button;
             }
@@ -554,10 +557,6 @@ class LeaveController extends CI_Controller
                 $data['approved_year'] = date_format(date_create($row->date_approved),'y');
                 $employee_id = $row->emp_id;
 
-                $approved_day = date_format(date_create($row->date_approved),'d');
-                $approved_month = date_format(date_create($row->date_approved),'m');
-                $approved_year = date_format(date_create($row->date_approved),'y');
-                $leave_id = $row->id;
             }
 
             $employee_data = $this->LeaveModel->fetch_employee_data($employee_id);
@@ -568,11 +567,6 @@ class LeaveController extends CI_Controller
                 $data['lastname'] = $row->lastname;
             }
 
-            include 'assets/phpqrcode/qrlib.php';
-            $text = $approved_year."".$leave_id."".$approved_month."".$approved_day;
-			$file = '';
-			$file='assets/qr_image/'.$text.".png";
-			QRcode::png($text,$file);
 
 
             $this->load->view('leave/print_filed_leave', $data);
