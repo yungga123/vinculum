@@ -97,7 +97,7 @@ defined('BASEPATH') or die('Access Denied');
         <div class="col-sm-4 offset-sm-1">
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="po_vat" id="po_vat" <?php if($type_of_leave == "Vacation Leave") echo 'checked' ?>>
+                    <input type="checkbox" class="form-check-input" name="po_vat" id="po_vat" <?php if($type_of_leave == "Vacation Leave") echo 'checked'; else echo 'disabled' ?>>
                     Vacation Leave w/Pay
                 </label>
             </div>
@@ -105,7 +105,7 @@ defined('BASEPATH') or die('Access Denied');
         <div class="col-sm-4">
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="po_vat" id="po_vat" <?php if($type_of_leave == "Sick Leave") echo 'checked' ?>>
+                    <input type="checkbox" class="form-check-input" name="po_vat" id="po_vat" <?php if($type_of_leave == "Sick Leave") echo 'checked'; else echo 'disabled' ?>>
                     Sick Leave w/Pay
                 </label>
             </div>
@@ -113,7 +113,7 @@ defined('BASEPATH') or die('Access Denied');
         <div class="col-sm-3">
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" class="form-check-input" name="po_vat" id="po_vat" <?php if($type_of_leave == "Leave of Absence") echo 'checked' ?>>
+                    <input type="checkbox" class="form-check-input" name="po_vat" id="po_vat" <?php if($type_of_leave == "Leave of Absence") echo 'checked'; else echo 'disabled' ?>>
                     Leave of Absence w/o Pay
                 </label>
             </div>
