@@ -52,11 +52,18 @@ if ($this->uri->segment(2) == 'pending') {
                 $("#start_date").val(response.leave_data[0].start_date);
                 $("#end_date").val(response.leave_data[0].end_date);
                 $("#processed_by").val(response.leave_data[0].processed_by);
-                $("#approved_sl_credit").html(response.leave_data[0].sl_credit);
-                $("#approved_vl_credit").html(response.leave_data[0].vl_credit);
                 $("#approve_leave_employee_name").val(response.leave_data[0].lastname + ", " + response.leave_data[0].firstname + " " + response.leave_data[0].middlename);
                 $("#approve_employee_designation").val(response.leave_data[0].position);
                 $("#approved_type_of_leave").val(response.leave_data[0].type_of_leave);
+
+                if(response.leave_data[0].status == 'Regular'){
+                    $("#approved_sl_credit").html(response.leave_data[0].sl_credit);
+                    $("#approved_vl_credit").html(response.leave_data[0].vl_credit);
+                }
+                else{
+                    $("#approved_sl_credit").html('0');
+                    $("#approved_vl_credit").html('0');
+                }
 
                 console.log(response);
             }
