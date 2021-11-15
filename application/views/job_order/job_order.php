@@ -296,6 +296,15 @@ elseif($form_id="edit-form"){
                                         </div>
                                     </div>
 
+                                    <div class="form-group">
+										<label class="control-label">Is this with permit?</label>
+											<select class="form-control" name="with_permit" id="with_permit">
+												<option value="">---</option>
+												<option>No</option>
+												<option>Yes</option>
+											</select>
+									</div>
+
                                 </div>
                             </div>
 

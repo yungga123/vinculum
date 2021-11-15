@@ -163,6 +163,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                 <!-- Sales Info -->
+                                <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Sales Info:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_sales_name" class="control-label">Name</label>
+                                                            <input type="text" name="vendor_sales_name" class="form-control" placeholder="Enter Sales Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                                <label for="vendor_sales_contact">Contact Number</label>
+                                                                <input type="text" name="vendor_sales_contact" class="form-control" placeholder="Enter Contact Number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_sales_email" class="control-label">Email Address</label>
+                                                            <input type="text" name="vendor_sales_email" class="form-control" placeholder="Enter Email Address">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                <hr>
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="card">
@@ -227,6 +257,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+
                                                     <br>
                                                     <div class="row">
                                                         <div class="col-sm-12">
@@ -253,6 +284,35 @@
                                                                 </div>
                                                         </div>
                                                     </div>
+
+                                            <!-- Sales Info -->
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Sales Info:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_sales_name" class="control-label">Name</label>
+                                                            <input type="text" name="vendor_sales_name" class="form-control" placeholder="Enter Sales Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                                <label for="vendor_sales_contact">Contact Number</label>
+                                                                <input type="text" name="vendor_sales_contact" class="form-control" placeholder="Enter Contact Number">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_sales_email" class="control-label">Email Address</label>
+                                                            <input type="text" name="vendor_sales_email" class="form-control" placeholder="Enter Email Address">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                                 <hr>
                                                 <br>
                                                 </div>

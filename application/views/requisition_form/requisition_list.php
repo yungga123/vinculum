@@ -148,7 +148,20 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <?php
+                     //function to calculate date difference 
+                    function dateDiff($date1, $date2) {
+                                                            
+                        $diff = strtotime($date2) - strtotime($date1);
+                        return abs(round($diff / 86400));
+                        }
+
+                    //call the function
+                    $dateDiff = dateDiff("October 15, 2021", "November 5, 2021");
+                    echo "<b>days left: " . $dateDiff. " </b>";
+                    ?> 
             </div>
+
             <div class="modal-body">
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm" id="table-reqitems">

@@ -212,7 +212,7 @@ foreach ($results as $row) {
 		<td><b>Arrival Time:</b>________________<br</td>
 	</tr>
 	<tr>
-		<td><b>Date:</b><u><td width="70%"><?php echo date($dispatchDate) ?></u><br></td>
+		<td><b>Date:</b><u><td width="70%"><?php echo date('F j, Y',strtotime($dispatchDate)) ?></u><br></td>
 	</tr>
 	<tr>
 		<td><b>Type:</b>_______________________<br></td>

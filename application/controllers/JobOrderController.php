@@ -396,6 +396,7 @@ class JobOrderController extends CI_Controller
 				'errors' => $errors
 			]
 			
+			
 		];
 
 		$this->form_validation->set_error_delimiters('<p>', '</p>');
@@ -635,6 +636,7 @@ class JobOrderController extends CI_Controller
 			$sub_array[] = $row->firstname . $middle_name . $row->lastname;
 			$sub_array[] = $row->under_warranty;
 			$sub_array[] = $row->remarks;
+			$sub_array[] = $row->with_permit;
 			$sub_array[] = $row->jo_status;
 			
 			if($where == "Pending"){
@@ -729,7 +731,8 @@ class JobOrderController extends CI_Controller
 			'Date Reported',
 			'Requested By',
 			'Warranty',
-			'Remarks'
+			'Remarks',
+			'With Permit'
         ];
         fputcsv($file, $header);
         foreach ($results->result() as $row) {
@@ -780,7 +783,8 @@ class JobOrderController extends CI_Controller
 				$row->date_reported,
 				$row->requested_by,
 				$row->under_warranty,
-				$row->remarks
+				$row->remarks,
+				$row->with_permit
 			]);
         }
 		fclose($file);

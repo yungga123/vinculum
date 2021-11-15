@@ -150,6 +150,8 @@ $route['service-report-update/(:any)'] = 'ServiceReportController/update_service
 
 //Consumeables Controller
 $route['consumeables'] = 'ConsumeablesController';
+$route['consumeables/(:any)'] = 'ConsumeablesController/prf/$1';
+
 
 //Payroll Controller
 $route['payroll'] = 'PayrollController';

@@ -8,6 +8,15 @@ class RequisitionFormController extends CI_Controller {
         $this->load->model("RequisitionFormModel");
     }
 
+    public function remainingdate() {
+        $now = new DateTime();
+        $future_date = new DateTime('2011-05-11 12:00:00');
+
+        $interval = $future_date->diff($now);
+
+        echo $interval->format("%a days, %h hours, %i minutes, %s seconds");
+    }
+
     function validation_rules() {
 
         $rules = [
@@ -379,8 +388,9 @@ class RequisitionFormController extends CI_Controller {
 		    $validate['errors'] = validation_errors();
 		}
         echo json_encode($validate);
-    }
 
+    }
+   
     public function update_item_requisition_validate() {
         $validate = [
 			'success' => false,
@@ -676,4 +686,5 @@ class RequisitionFormController extends CI_Controller {
         $json_data['results'] = $data;
         echo json_encode($json_data);
     }
+    
 }

@@ -162,6 +162,14 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 						<p>List of Warranty</p>
 						</a>
 					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('consumeables/prf') ?>" class="nav-link<?php echo $consumeables ?>">
+						<i class="nav-icon fas fa-copy"></i>
+						<p>PRF</p>
+						</a>
+					</li>
+					
 				</ul>
 			</li>
 				

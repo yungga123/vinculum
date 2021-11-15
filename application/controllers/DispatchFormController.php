@@ -104,6 +104,7 @@ class DispatchFormController extends CI_Controller {
 			$sub_array[] = $row->Installation;
 			$sub_array[] = $row->RepairOrService;
 			$sub_array[] = $row->Warranty;
+			$sub_array[] = $row->WithPermit;
 			$sub_array[] = $row->dispatch_out;
 			$sub_array[] = $row->sr_number;
 			$sub_array[] = $row->remarks2;
@@ -503,7 +504,8 @@ class DispatchFormController extends CI_Controller {
 				'Warranty' => $warranty,
 				'dispatch_out' => $this->input->post('dispatch_out'),
 				'sr_number' => $this->input->post('sr_number'),
-				'remarks2' => $this->input->post('remarks2')
+				'remarks2' => $this->input->post('remarks2'),
+				'With_Permit' => $this->input->post('with_permit')
 			];
 
 			$this->DispatchFormsModel->insertDispatch($data);

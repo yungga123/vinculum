@@ -74,6 +74,21 @@ class VendorController extends CI_Controller {
 				'rules' => 'trim'
 			],
 			[
+				'field' => 'vendor_sales_name',
+				'label' => 'Vendor Sales Name',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'vendor_sales_contact',
+				'label' => 'Vendor Sales Contact Number',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'vendor_sales_email',
+				'label' => 'Vendor Sales Email Address',
+				'rules' => 'trim'
+			],
+			[
 				'field' => 'vendor_date',
 				'label' => 'Vendor Date of Partnership',
 				'rules' => 'trim|required',
@@ -264,6 +279,7 @@ class VendorController extends CI_Controller {
 					'vendor_technical_person' => $this->input->post('vendor_technical_name'),
 					'vendor_technical_contact' => $this->input->post('vendor_technical_contact'),
 					'vendor_technical_email' => $this->input->post('vendor_technical_email')
+
 				]);
 				
 				//Update Existing Request Item
