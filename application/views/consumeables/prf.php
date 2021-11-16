@@ -10,8 +10,10 @@ defined('BASEPATH') or die('Access Denied');
 	        <h1 class="page-header m-0 text-dark">Project Request Form</h1>
 	      </div><!-- /.col -->
 	    </div><!-- /.row -->
+      <button type="submit" name="save" value="savedata" class="btn btn-success" style="float: right; margin-top: -30px;">Add Input</button>
 	  </div><!-- /.container-fluid -->
 </div>
+<form method="post" action="<?= base_url() ?>ConsumeablesController/savedata">
 <section class="content">
 <div class="container-fluid" style="background: white; margin-bottom: 1%;">
 <table class="table table-bordered">
@@ -1112,3 +1114,4 @@ defined('BASEPATH') or die('Access Denied');
   </thead>
 </table>
 </div>
+</form>
