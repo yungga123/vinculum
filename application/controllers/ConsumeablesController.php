@@ -6,6 +6,7 @@ class ConsumeablesController extends CI_Controller {
     public function __construct() {
         Parent::__construct();
         $this->load->model("ConsumeablesModel");
+		$this->load->library('form_validation');
     }
 
     public function index() {
@@ -43,47 +44,22 @@ class ConsumeablesController extends CI_Controller {
 			redirect('','refresh');
 		}
     }
-	public function prfInput()
+
+	public function projectrequestform()
 	{
-	/*call CodeIgniter's default Constructor*/
-	parent::prfInput();
-	
-	/*load database libray manually*/
-	$this->load->database('vinculum');
-	
-	/*load Model*/
-	$this->load->model('ConsumeablesModel');
-	}
-        /*Insert*/
-	public function savedata()
-	{
-		/*load registration view form*/
-		$this->load->view('consumeables/prf');
-	
-		/*Check submit button */
-		if($this->input->post('save'))
+		$this->form_validation->set_rules('project_name', 'Project Name', 'required|alpha');
+		$this->form_validation->set_rules('project_activity', 'Project Activity', 'required|alpha');
+		$this->form_validation->set_rules('date_requested', 'Date Requested', 'required|alpha');
+		$this->form_validation->set_rules('date_issued', 'Date Issued', 'required|alpha');
+
+		if($this->form_validation->run()==true)
 		{
-		    $data['project_name']=$this->input->post('project_name');
-			$data['date_requested']=$this->input->post('date_requested');
-			$data['project_activity']=$this->input->post('project_activity');
-			$data['dated_issued']=$this->input->post('date_issued');
-			$data['indirect_items']=$this->input->post('indirect_items');
-			$data['quantity']=$this->input->post('quantity');
-			$data['available']=$this->input->post('available');
-			$data['remarks']=$this->input->post('remarks');
-			$data['counted']=$this->input->post('counted');
-			$data['direct_items']=$this->input->post('direct_items');
-			$data['tools']=$this->input->post('tools');
-			$data['prepared_by']=$this->input->post('prepared_by');
-			$data['person_in_charge']=$this->input->post('person_in_charge');
-			$data['check_by']=$this->input->post('check_by');
-			$response=$this->ConsumeablesModel->saverecords($data);
-			if($response==true){
-			        echo "Records Saved Successfully";
-			}
-			else{
-					echo "Insert error !";
-			}
+			$this->load->model('ConsumeablesModel');
+			$this->ConsumeablesModel->insert_data();
+		}
+		else
+		{
+			redirect('consumeables/prf');
 		}
 	}
 }

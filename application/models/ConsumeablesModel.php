@@ -6,10 +6,17 @@ class ConsumeablesModel extends CI_Model {
     public function select () {
         
     }
+    
     //ADD INPUT TO PRF 
-    function saverecords($data)
+	public function insert_data()
     {
-        $this->db->insert('ConsumeablesController',$data);
-        return true;
+        $data = array('project_name' => $this->insert->post('project_name'),
+                        'project_activity' => $this->insert->post('project_activity'),
+                        'date_requested' => $this->insert->post('date_requested'),
+                        'date_issued' => $this->insert->post('date_issued')
+                    );
+
+        $this->db->insert('project_request_form', $data);
     }
+
 }
