@@ -53,7 +53,14 @@ class ConsumeablesController extends CI_Controller {
 		'date_issued'=>$this->input->post('date_issued')
           );
      $this->ConsumeablesModel->order_summary_insert($data);
-
+	
+	$this->load->helper('site_helper');
+	$data = html_variable();
+	$data['title'] = 'Project Request Form';
+	$this->load->view('templates/header', $data);
+	$this->load->view('templates/navbar');
     $this->load->view('consumeables/prf');
+	$this->load->view('templates/footer');
+	$this->load->view('consumeables/script');
   }
 }
