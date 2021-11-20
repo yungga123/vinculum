@@ -49,8 +49,12 @@ class ConsumeablesController extends CI_Controller {
   {
       $data = array(
         'project_name'=>$this->input->post('project_name'),
+		'date_requested'=>$this->input->post('date_requested'),
 		'project_activity'=>$this->input->post('project_activity'),
-		'date_issued'=>$this->input->post('date_issued')
+		'date_issued'=>$this->input->post('date_issued'),
+		'indirect_items'=>$this->input->post('indirect_items'),
+		'quantity'=>$this->input->post('quantity'),
+		'available'=>$this->input->post('available')
           );
      $this->ConsumeablesModel->order_summary_insert($data);
 	
