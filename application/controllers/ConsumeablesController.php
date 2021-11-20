@@ -45,21 +45,15 @@ class ConsumeablesController extends CI_Controller {
 		}
     }
 
-	public function projectrequestform()
-	{
-		$this->form_validation->set_rules('project_name', 'Project Name', 'required|alpha');
-		$this->form_validation->set_rules('project_activity', 'Project Activity', 'required|alpha');
-		$this->form_validation->set_rules('date_requested', 'Date Requested', 'required|alpha');
-		$this->form_validation->set_rules('date_issued', 'Date Issued', 'required|alpha');
+	function new_blank_order_summary() 
+  {
+      $data = array(
+        'project_name'=>$this->input->post('project_name'),
+		'project_activity'=>$this->input->post('project_activity'),
+		'date_issued'=>$this->input->post('date_issued')
+          );
+     $this->ConsumeablesModel->order_summary_insert($data);
 
-		if($this->form_validation->run()==true)
-		{
-			$this->load->model('ConsumeablesModel');
-			$this->ConsumeablesModel->insert_data();
-		}
-		else
-		{
-			redirect('consumeables/prf');
-		}
-	}
+    $this->load->view('consumeables/prf');
+  }
 }

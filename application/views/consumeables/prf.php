@@ -10,7 +10,7 @@ defined('BASEPATH') or die('Access Denied');
 	        <h1 class="page-header m-0 text-dark">Project Request Form</h1>
 	      </div><!-- /.col -->
 	    </div><!-- /.row -->
-<form action="<?php echo site_url('ConsumeablesController/projectrequestform');?>" method="post">
+<form action="<?php echo site_url('ConsumeablesController/new_blank_order_summary');?>" method="post">
       <button type="submit" name="Submit" value="insert_data" class="btn btn-success" style="float: right; margin-top: -30px;">Add Input</button>
 	  </div><!-- /.container-fluid -->
 </div>
