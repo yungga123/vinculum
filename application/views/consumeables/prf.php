@@ -14,27 +14,27 @@ defined('BASEPATH') or die('Access Denied');
       <button type="submit" name="Submit" value="insert_data" class="btn btn-success" style="float: right; margin-top: -30px;">Add Input</button>
 	  </div><!-- /.container-fluid -->
 </div>
+<div class="container-fluid" style="background: white; margin-bottom: 1%; max-width: 100%; height: auto;">
 <section class="content">
-<div class="container-fluid" style="background: white; margin-bottom: 1%;">
 <table class="table table-bordered">
 
   <thead>
     <tr>
       <th scope="col" colspan="4">Project Name:
-      <input style="border: hidden; width: 75%;" type="text" name="project_name" value="<?php echo set_value('project_name'); ?>">
+      <input style="border: hidden; width: 70%;" type="text" name="project_name" value="<?php echo set_value('project_name'); ?>">
       </th>
       <th scope="col" colspan="5">Date Requested:
-      <input style="border: none; width: 75%;" type="date" name="date_requested" value="<?php echo set_value('date_requested'); ?>">
+      <input style="border: none; width: 75%; float: right;" type="date" name="date_requested" value="<?php echo set_value('date_requested'); ?>">
       </th>
     </tr>
   </thead>
   <thead>
     <tr>
       <th scope="col" colspan="4">Project Activity:
-      <input style="border-style: none; width: 73%;" type="text" name="project_activity" value="<?php echo set_value('project_activity'); ?>">
+      <input style="border-style: none; width: 65%;" type="text" name="project_activity" value="<?php echo set_value('project_activity'); ?>">
       </th>
       <th scope="col" colspan="5">Date Issued:
-      <input style="border: none; width: 75%;" type="date" name="date_issued" value="<?php echo set_value('date_issued'); ?>">
+      <input style="border: none; width: 80%; float: right;" type="date" name="date_issued" value="<?php echo set_value('date_issued'); ?>">
       </th>
     </tr>
   </thead>
