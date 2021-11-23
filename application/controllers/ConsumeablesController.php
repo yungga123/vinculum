@@ -69,7 +69,7 @@ class ConsumeablesController extends CI_Controller {
 	$data['title'] = 'Project Request Form';
 	$this->load->view('templates/header', $data);
 	$this->load->view('templates/navbar');
-    $this->load->view('consumeables/prf');
+    $this->load->view('consumeables/prf_view');
 	$this->load->view('templates/footer');
 	$this->load->view('consumeables/script');
   }
