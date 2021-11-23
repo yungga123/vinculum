@@ -408,323 +408,323 @@ defined('BASEPATH') or die('Access Denied');
         <th>Counted</th>
     </tr>
   </thead>
-    <tr>
+  <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="direct_items" placeholder="" style="width: 100%;" >
+    <?php echo set_value('direct_items'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
   </tbody>
@@ -753,323 +753,323 @@ defined('BASEPATH') or die('Access Denied');
         <th>Counted</th>
     </tr>
   </thead>
-    <tr>
+  <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" id="tools" placeholder="" style="width: 100%;" >
+    <?php echo set_value('tools'); ?>
     </td>
       <td scope="col">
-      <input type="checkbox" name="checkbox" style="width: 100%;">
+      <?php echo set_value('checkbox'); ?>
       </td>
       <th scope="col">
-      <input type="number" name="quantity" style="width: 40px; height: auto;">
+      <?php echo set_value('quantity'); ?>
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;">
+        <?php echo set_value('available'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="quantity" style="width: 40px; height: auto;">
+        <?php echo set_value('quantity'); ?>
         </td>
         <td>
-        <input type="text"  id="remarks" placeholder="" style="width: 100px;"  >
+        <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <input type="number" name="counted" style="width: 40px; height: auto;">
+        <?php echo set_value('counted'); ?>
         </td>
     </tr>
   </tbody>
