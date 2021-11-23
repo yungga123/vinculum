@@ -1086,17 +1086,17 @@ defined('BASEPATH') or die('Access Denied');
   <thead>
     <tr>
       <th scope="col" colspan="4">Prepared By:
-      <input style="width: 80%; float: right;" type="text" name="project_activity">
+      <input style="width: 80%; float: right;" type="text" name="prepared_by" required>
       </th>
       <th scope="col" colspan="5">Person In Charge:
-      <input style="float: right; width: 75%;" type="text" name="project_activity">
+      <input style="float: right; width: 75%;" type="text" name="person_in_charge" required>
       </th>
     </tr>
   </thead>
   <thead>
     <tr>
       <th scope="col" colspan="4">Check By:
-      <input style="width: 80%; float: right;" type="text" name="project_activity">
+      <input style="width: 80%; float: right;" type="text" name="check_by" required>
       </th>
       <th scope="col" colspan="5"></th>
     </tr>
