@@ -127,9 +127,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 							<p>Confirmed Pullouts</p>
 							</a>
 						</li>
-
-						
-
 						</ul>
 					</li>
 
@@ -162,14 +159,27 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 						<p>List of Warranty</p>
 						</a>
 					</li>
+				
+					<li class="nav-item has-treeview<?php echo $consumeables; ?>">
+						<a href="javascript:void(0)" class="nav-link<?php echo $consumeables ?>">
+							<i class="nav-icon fas fa-copy"></i>
+							<p>
+								Project Request Form
+								<i class="fas fa-angle-left right"></i>
+							</p>
+						</a>
+
+						<ul class="nav nav-treeview" style="display: <?php echo $consumeables ?>;">
+
 
 					<li class="nav-item">
 						<a href="<?php echo site_url('consumeables/prf') ?>" class="nav-link<?php echo $consumeables ?>">
-						<i class="nav-icon fas fa-copy"></i>
+						<i class="far fa-copy"></i>
 						<p>PRF</p>
 						</a>
 					</li>
 					
+					</ul>
 				</ul>
 			</li>
 				
