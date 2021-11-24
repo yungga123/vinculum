@@ -861,4 +861,152 @@ class PayrollController extends CI_Controller {
 
 		echo json_encode($validate);
     }
+
+    // Export to CSV ( must be in result->array() )
+    function exportItems($start_date, $end_date)
+    {
+
+        $filename_start_date = date_format(date_create($start_date),'M d Y');
+        $filename_cutoff_start_date = date_format(date_create($end_date),'M d Y');
+
+        $file_name = $filename_start_date.'-'.$filename_cutoff_start_date. '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        
+
+		// get data
+		$this->load->model('PayrollModel');
+        $results = $this->PayrollModel->getPayrollArray($start_date, $end_date);
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+			'Employee Name',
+            'Daily Rate',
+            'Working Days',
+            'Basic Pay',
+            'Over Time',
+            'Amount',
+            'Night Diff Hrs',
+            'Amount',
+            'Regular Holiday',
+            'Amount',
+            'Special Holiday',
+            'Amount',
+            'WDO',
+            'Amount',
+            'Sick Leave',
+            'Amount',
+            'Vacation Leave',
+            'Amount',
+            'Incentives',
+            'Commision',
+            '13th Month',
+            'Addback',
+            'Absents',
+            'Deduction',
+            'Tardiness',
+            'Deduction',
+            'AWOL',
+            'Deduction',
+            'Rest Day',
+            'Deduction',
+            'Cash Advance',
+            'SSS',
+            'Pag Ibig',
+            'Philhealth',
+            'Tax',
+            'Others',
+            'Notes',
+            'Gross Pay',
+            'Net Pay'
+        ];
+        
+
+        fputcsv($file, $header);
+
+        // require_once 'assets/Classes/PHPExcel.php';
+        // include 'assets/Classes/Calculation.php';
+        // include 'assets/Classes/Cell.php';
+        //include 'assets/Classes/PHPExcel/IOFactory.php';
+
+        //$objPHPExcel = new PHPExcel();
+        // $objPHPExcel->getActiveSheet()->mergeCells('A2:B2');
+        // fputcsv($file, $objPHPExcel);
+
+
+        foreach ($results as $row) {
+
+            //Payroll Computation
+
+            $basic_pay = $row->daily_rate*($row->days_worked - $row->rest_day - $row->sundays);
+            $regular_holiday_pay = $row->daily_rate*$row->reg_holiday;
+            $special_holiday_pay = $row->daily_rate*$row->special_holiday*0.3;
+            $wdo_pay = $row->daily_rate*$row->wdo*1.3;
+            $ot_pay = ($row->daily_rate/8)*1.25*$row->ot_hrs;
+            $night_diff_pay = ($row->daily_rate/8)*0.1*$row->night_diff_hrs;
+            $absents = $row->daily_rate*$row->days_absent;
+            $awol = $row->daily_rate*$row->awol;
+            $rest_day = $row->daily_rate*$row->rest_day;
+            //$rest_days = $row->daily_rate*$row->rest_day;
+            $tardiness = ($row->daily_rate/8)*$row->hours_late;
+            $vl_pay = $row->vacation_leave*$row->daily_rate;
+            $sl_pay = $row->sick_leave*$row->daily_rate;
+            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay+$vl_pay+$sl_pay) - ($absents+$tardiness+$awol);
+            $contribution = $row->sss_rate+$row->pag_ibig_rate+$row->phil_health_rate;
+            $net_pay = $gross_pay+$row->incentives+$row->commission+$row->thirteenth_month+$row->addback - ($contribution+$row->tax+$row->cash_adv+$row->others);
+
+
+            $sub_array = array();
+
+                $sub_array[] = $row->lastname.', '.$row->firstname.' '.$row->middlename;
+                $sub_array[] = $row->daily_rate;
+				$sub_array[] = $row->days_worked;
+                $sub_array[] = $basic_pay;
+                $sub_array[] = $row->ot_hrs;
+                $sub_array[] = $ot_pay;
+                $sub_array[] = $row->night_diff_hrs;
+                $sub_array[] = $night_diff_pay;
+                $sub_array[] = $row->reg_holiday;
+                $sub_array[] = $regular_holiday_pay;
+                $sub_array[] = $row->special_holiday;
+                $sub_array[] = $special_holiday_pay;
+                $sub_array[] = $row->wdo;
+                $sub_array[] = $wdo_pay;
+                $sub_array[] = $row->sick_leave;
+                $sub_array[] = $sl_pay;
+                $sub_array[] = $row->vacation_leave;
+                $sub_array[] = $vl_pay;
+                $sub_array[] = $row->incentives;
+                $sub_array[] = $row->commission;
+                $sub_array[] = $row->thirteenth_month;
+                $sub_array[] = $row->addback;
+                $sub_array[] = $row->days_absent;
+                $sub_array[] = $absents;
+                $sub_array[] = $row->hours_late;
+                $sub_array[] = $tardiness;
+                $sub_array[] = $row->awol;
+                $sub_array[] = $awol;
+                $sub_array[] = $row->rest_day;
+                $sub_array[] = $rest_day;
+                $sub_array[] = $row->cash_adv;
+                $sub_array[] = $row->sss_rate;
+                $sub_array[] = $row->pag_ibig_rate;
+                $sub_array[] = $row->phil_health_rate;
+                $sub_array[] = $row->tax;
+                $sub_array[] = $row->others;
+                $sub_array[] = $row->notes;
+                $sub_array[] = $gross_pay;
+                $sub_array[] = $net_pay;
+
+				fputcsv($file, $sub_array);
+        }
+
+		fclose($file);
+		
+		
+        exit;
+    }
 }

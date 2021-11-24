@@ -54,4 +54,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="<?php echo base_url('assets') ?>/images/vcmlogo.png" alt="VCMLogo" height="60" width="100">
 </div>
-

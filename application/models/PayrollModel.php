@@ -425,6 +425,17 @@ class PayrollModel extends CI_Model {
             $this->db->where('a.is_deleted',0);
             return $this->db->count_all_results();
         }
+
+        public function getPayrollArray($start_date, $end_date){
+            $this->db->select("*, a.13th_month as thirteenth_month, a.remarks as notes");
+            $this->db->from("payroll as a");
+            $this->db->where("a.cutoff_start",$start_date);
+            $this->db->where("a.cutoff_end",$end_date);
+            $this->db->where("a.is_deleted",'0');
+            $this->db->join("technicians as b",'a.emp_id=b.id','left');
+            return $this->db->get()->result();
+        }
+
     //*****************end*********************
 
 
