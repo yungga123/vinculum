@@ -159,6 +159,7 @@ $route['payroll-filter'] = 'PayrollController/payroll_table_filter';
 $route['payroll-print/(:any)/(:any)'] = 'PayrollController/payslip_print/$1/$2';
 $route['payroll-print-all'] = 'PayrollController/payslip_print_all';
 $route['payroll-delete/(:any)'] = 'PayrollController/deletePayroll/$1';
+$route['payroll-exportitems/(:any)/(:any)'] = 'PayrollController/exportItems/$1/$2';
 
 //Job Order Controller
 $route['joborder'] = 'JobOrderController';
