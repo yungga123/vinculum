@@ -205,7 +205,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 							<li class="nav-item">
 								<a href="<?php echo site_url('requisition-form') ?>" class="nav-link <?php echo $requisition_add ?>">
 									<i class="far fa-circle nav-icon"></i>
-									<p>Add Request</p>
+									<p>Purchase Request</p>
 								</a>
 							</li>
 
