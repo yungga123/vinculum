@@ -211,7 +211,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                                 <label for="sick_leave">SL</label>
                                                                                 <input type="text" class="form-control form-control-sm" name="sick_leave" id="sick_leave" placeholder="Input day" <?php if ($payroll['case']=='update') {
                                                                                     echo 'value="'.$payroll['sl'].'"';
-                                                                                } ?>>
+                                                                                } ?> readonly>
                                                                                 <input type="hidden" name="sl_hidden" value="<?php echo $payroll['sl'] ?>">
                                                                             </div>
 
@@ -219,7 +219,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                                 <label for="vacation_leave">VL</label>
                                                                                 <input type="text" class="form-control form-control-sm" name="vacation_leave" id="vacation_leave" placeholder="Input day" <?php if ($payroll['case']=='update') {
                                                                                     echo 'value="'.$payroll['vl'].'"';
-                                                                                } ?>>
+                                                                                } ?> readonly>
                                                                                 <input type="hidden" name="vl_hidden" value="<?php echo $payroll['vl'] ?>">
                                                                             </div>
 
