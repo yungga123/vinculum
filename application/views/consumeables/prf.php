@@ -68,18 +68,17 @@ defined('BASEPATH') or die('Access Denied');
 
   <tbody>
     <!-- indirect items -->
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>                                                                                                                                                                            <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" required>
+    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
-        <input type="checkbox" name="checkbox" style="width: 100%;" required>
+        <input type="checkbox" name="checkbox" style="width: 100%;" >
       </td>
       <th scope="col">
-        <input type="number" name="quantity" style="width: 40px; height: auto;" required>
+        <input type="number" name="quantity" style="width: 40px; height: auto;" >
       </th>
         <td>
-        <input type="number" name="available" style="width: 40px; height: auto;" required>
+        <input type="number" name="available" style="width: 40px; height: auto;" >
         </td>
         <td>
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
@@ -97,11 +96,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="purchase_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
-        </form>
     </tr>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;">
@@ -131,12 +128,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;">
@@ -166,11 +160,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -200,11 +192,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -234,11 +224,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -268,11 +256,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -302,11 +288,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -336,11 +320,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -370,11 +352,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -404,11 +384,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
@@ -438,10 +416,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-</form>
   </tbody>
 </table>
 
@@ -468,7 +445,6 @@ defined('BASEPATH') or die('Access Denied');
         <th>Counted</th>
     </tr>
   </thead>
-  <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -498,11 +474,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -532,11 +506,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -566,11 +538,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -600,11 +570,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -634,11 +602,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -668,11 +634,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -702,11 +666,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -736,11 +698,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -770,11 +730,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -804,11 +762,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
@@ -838,10 +794,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-</form>
   </tbody>
 </table>
 
@@ -868,7 +823,6 @@ defined('BASEPATH') or die('Access Denied');
         <th>Counted</th>
     </tr>
   </thead>
-  <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -898,11 +852,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -932,11 +884,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -966,11 +916,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1000,11 +948,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1034,11 +980,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1068,11 +1012,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1102,11 +1044,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1136,11 +1076,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1170,11 +1108,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1204,11 +1140,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-    </form>
-    <form method="post" action="<?php echo site_url('RequisitionFormController/index');?>">
     <tr>
     <td scope="col">
     <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
@@ -1238,10 +1172,9 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <button type="submit" name="add_request" class="btn btn-success" style="float: right;">add request</button>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
-</form>
   </tbody>
 </div>
   <thead>
@@ -1281,3 +1214,4 @@ defined('BASEPATH') or die('Access Denied');
   </thead>
 </table>
 </div>
+</form>
