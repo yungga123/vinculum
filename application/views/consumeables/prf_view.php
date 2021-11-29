@@ -75,16 +75,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -104,16 +104,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -133,16 +133,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -162,16 +162,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -191,16 +191,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -220,16 +220,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -249,16 +249,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -278,16 +278,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -307,16 +307,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -336,16 +336,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -365,16 +365,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -420,16 +420,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -449,16 +449,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -478,16 +478,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -507,16 +507,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -536,16 +536,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -565,16 +565,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -594,16 +594,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -623,16 +623,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -652,16 +652,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -681,16 +681,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -710,16 +710,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -765,16 +765,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -794,16 +794,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -823,16 +823,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -852,16 +852,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -881,16 +881,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -910,16 +910,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -939,16 +939,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -968,16 +968,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -997,16 +997,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -1026,16 +1026,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -1055,16 +1055,16 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('available'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity2'); ?>
         </td>
         <td>
         <?php echo set_value('remarks'); ?>
         </td>
         <td>
-        <?php echo set_value('quantity'); ?>
+        <?php echo set_value('quantity3'); ?>
         </td>
         <td>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks2'); ?>
         </td>
         <td>
         <?php echo set_value('counted'); ?>
@@ -1100,7 +1100,7 @@ defined('BASEPATH') or die('Access Denied');
   <thead>
     <tr>
         <th scope="col" colspan="9">Remarks:<br>
-        <?php echo set_value('remarks'); ?>
+        <?php echo set_value('remarks3'); ?>
         </th>
     </tr>
   </thead>

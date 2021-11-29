@@ -37,7 +37,6 @@ defined('BASEPATH') or die('Access Denied');
       <input style="width: 75%; float: right;" type="date" name="date_issued" value="<?php echo set_value('date_issued'); ?>" required>
       </th>
     </tr>
-</form>
   </thead>
   <tbody>
   <thead>
@@ -69,7 +68,7 @@ defined('BASEPATH') or die('Access Denied');
   <tbody>
     <!-- indirect items -->
     <tr>                                                                                                                                                                            <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
         <input type="checkbox" name="checkbox" style="width: 100%;" >
@@ -84,13 +83,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;">
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;">
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;">
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;">
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -101,7 +100,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;">
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;">
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -116,13 +115,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;">
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;">
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;">
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;">
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -133,7 +132,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;">
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;">
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -148,13 +147,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks3" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks3" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -165,7 +164,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -180,13 +179,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -197,7 +196,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -212,13 +211,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
           <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -229,7 +228,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -244,13 +243,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -261,7 +260,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -276,13 +275,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -293,7 +292,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -308,24 +307,24 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>>
+        <a href="<?php echo site_url('RequisitionFormController/index');?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
         </td>
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -340,13 +339,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -357,7 +356,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;" >
@@ -372,13 +371,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;" >
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;" >
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -389,7 +388,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="indirect_items" id="indirect_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="indirect_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;" >
@@ -404,13 +403,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto; align: center;" >
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto; align: center;" >
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -447,7 +446,7 @@ defined('BASEPATH') or die('Access Denied');
   </thead>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -462,13 +461,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -479,7 +478,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -494,13 +493,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -511,7 +510,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -526,13 +525,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -543,7 +542,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -558,13 +557,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -575,7 +574,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -590,13 +589,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -607,7 +606,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -622,13 +621,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -639,7 +638,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -654,13 +653,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -671,7 +670,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -686,13 +685,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -703,7 +702,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -718,13 +717,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -735,7 +734,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -750,13 +749,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -767,7 +766,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="direct_items" id="direct_items" placeholder="" style="width: 100%;" >
+    <input type="text" name="direct_items" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -782,13 +781,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -825,7 +824,7 @@ defined('BASEPATH') or die('Access Denied');
   </thead>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -840,13 +839,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -857,7 +856,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -872,13 +871,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -889,7 +888,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -904,13 +903,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -921,7 +920,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -936,13 +935,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -953,7 +952,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -968,13 +967,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -985,7 +984,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -1000,13 +999,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -1017,7 +1016,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -1032,13 +1031,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -1049,7 +1048,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -1064,13 +1063,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -1081,7 +1080,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -1096,13 +1095,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -1113,7 +1112,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -1128,13 +1127,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -1145,7 +1144,7 @@ defined('BASEPATH') or die('Access Denied');
     </tr>
     <tr>
     <td scope="col">
-    <input type="text" name="tools" id="tools" placeholder="" style="width: 100%;" >
+    <input type="text" name="tools" placeholder="" style="width: 100%;" >
     </td>
       <td scope="col">
       <input type="checkbox" name="checkbox" style="width: 100%;">
@@ -1160,13 +1159,13 @@ defined('BASEPATH') or die('Access Denied');
         <input type="number" name="quantity2" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="quantity3" style="width: 40px; height: auto;">
         </td>
         <td>
-        <input type="text"  name="remarks2" id="remarks" placeholder="" style="width: 100px;"  >
+        <input type="text"  name="remarks2" placeholder="" style="width: 100px;"  >
         </td>
         <td>
         <input type="number" name="counted" style="width: 40px; height: auto;">
@@ -1208,10 +1207,10 @@ defined('BASEPATH') or die('Access Denied');
   <thead>
     <tr>
         <th scope="col" colspan="10">Remarks:<br>
-        <textarea name="remarks3" id="remarks" rows="4" style="width: 100%;"></textarea>
+        <textarea name="remarks3" rows="4" style="width: 100%;"></textarea>
         </th>
     </tr>
   </thead>
+  </form>
 </table>
 </div>
-</form>
