@@ -150,8 +150,6 @@ $route['service-report-update/(:any)'] = 'ServiceReportController/update_service
 
 //Consumeables Controller
 $route['consumeables'] = 'ConsumeablesController';
-$route['consumeables/(:any)'] = 'ConsumeablesController/prf/$1';
-
 
 //Payroll Controller
 $route['payroll'] = 'PayrollController';
@@ -211,3 +209,7 @@ $route['generate-po-proceed/(:any)'] = 'POController/generate_po_view/$1';
 
 //OFFLIMITS PAGE
 $route['offlimits'] = 'LoginController/offlimits_page';
+
+//PRF
+$route['prf/prf'] = 'PrfController/prf';
+$route['prf/prf_view'] = 'PrfController/prf_view';

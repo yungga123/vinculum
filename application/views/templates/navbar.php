@@ -173,9 +173,16 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 
 					<li class="nav-item">
-						<a href="<?php echo site_url('consumeables/prf') ?>" class="nav-link<?php echo $consumeables ?>">
-						<i class="far fa-copy"></i>
+						<a href="<?php echo site_url('prf/prf') ?>" class="nav-link<?php echo $consumeables ?>">
+						<i class="far fa-circle nav-icon"></i>
 						<p>PRF</p>
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a href="<?php echo site_url('prf/prf_view') ?>" class="nav-link<?php echo $consumeables ?>">
+						<i class="far fa-circle nav-icon"></i>
+						<p>PRF View</p>
 						</a>
 					</li>
 					
