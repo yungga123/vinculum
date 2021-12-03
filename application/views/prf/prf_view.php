@@ -90,16 +90,10 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('counted'); ?>
         </td>
         <td style="text-align: center;">
-        <button type="button" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+        <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
         <br>
         <br>
-        <button type="button" class="btn btn-danger"><i class="fas fa-ban"></i></button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary"><i class="fas fa-file-powerpoint"></i></button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-success"><i class="fas fa-check-square"></i></button>
+        <button type="button" class="btn btn-primary btn-sm"><i class="fab fa-searchengin"></i></button>
         </td>
     </tr>
   </tbody>
@@ -160,13 +154,7 @@ defined('BASEPATH') or die('Access Denied');
         <button type="button" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
         <br>
         <br>
-        <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i></button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary btn-sm"><i class="fas fa-file-powerpoint"></i></button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-success btn-sm"><i class="fas fa-check-square"></i></button>
+        <button type="button" class="btn btn-primary btn-sm"><i class="fab fa-searchengin"></i></button>
         </td>
     </tr>
   </tbody>
@@ -224,16 +212,10 @@ defined('BASEPATH') or die('Access Denied');
         <?php echo set_value('counted'); ?>
         </td>
         <td style="text-align: center;">
-        <button type="button" style="margin: 1%;" class="btn btn-warning"><i class="fas fa-edit"></i></button>
+        <button type="button" style="margin: 1%;" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></button>
         <br>
         <br>
-        <button type="button" class="btn btn-danger"><i class="fas fa-ban"></i></button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-primary"><i class="fas fa-file-powerpoint"></i></button>
-        <br>
-        <br>
-        <button type="button" class="btn btn-success"><i class="fas fa-check-square"></i></button>
+        <button type="button" class="btn btn-primary btn-sm"><i class="fab fa-searchengin"></i></button>
         </td>
     </tr>
   </tbody>

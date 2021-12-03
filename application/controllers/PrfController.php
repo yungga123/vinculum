@@ -5,7 +5,7 @@ class PrfController extends CI_Controller {
 
     public function __construct() {
         Parent::__construct();
-        $this->load->model("ConsumeablesModel");
+        $this->load->model("PrfModel");
 		$this->load->library('form_validation');
     }
 
@@ -63,7 +63,7 @@ class PrfController extends CI_Controller {
 		'checkbox'=>$this->input->post('checkbox'),
 		'person_in_charge'=>$this->input->post('person_in_charge')
           );
-     $this->ConsumeablesModel->order_summary_insert($data);
+     $this->PrfModel->order_summary_insert($data);
 	
 	$this->load->helper('site_helper');
 	$data = html_variable();
