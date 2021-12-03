@@ -101,7 +101,7 @@ defined('BASEPATH') or die('Access Denied');
                       <input type="number" name="counted" style="width: 40px; height: auto;">
                     </td>
                     <td>
-                      <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
+                      <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success btn-sm" style="float: right;">add request</a>
                     </td>
                   </tr>
                 </tbody>
@@ -166,7 +166,7 @@ defined('BASEPATH') or die('Access Denied');
       <input type="number" name="counted" style="width: 40px; height: auto;">
     </td>
     <td>
-      <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
+      <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success btn-sm" style="float: right;">add request</a>
     </td>
   </tr>
   </thead>
@@ -228,7 +228,7 @@ defined('BASEPATH') or die('Access Denied');
           <input type="number" name="counted" style="width: 40px; height: auto;">
         </td>
         <td>
-          <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success" style="float: right;">add request</a>
+          <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success btn-sm" style="float: right;">add request</a>
         </td>
 </div>
 </tr>
@@ -277,7 +277,7 @@ defined('BASEPATH') or die('Access Denied');
   function add_row() {
     $rowno = $("#employee_table tr").length;
     $rowno = $rowno + 1;
-    $("#employee_table tr:last").after("<tr id='row" + $rowno + "'><td><input type='text' name='name[]' placeholder='Enter Name'></td><td><input type='text' name='age[]' placeholder='Enter Age'></td><td><input type='text' name='job[]' placeholder='Enter Job'></td><td><input type='button' class='btn btn-danger btn-sm text-bold add-item-btn' value='DELETE' onclick=delete_row('row" + $rowno + "')></td></tr>");
+    $("#employee_table tr:last").after("<tr id='row" + $rowno + "'><td><label>Indirect Items</label><input type='text' name='name[]' placeholder=''></td><td><label>✔</label><input type='checkbox' name='checkbox'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Available</label><input type='number' name='available' placeholder='' style='width: 50%;'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Remarks</label><input type='text' name='name[]' placeholder='' style='width: 100%;'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Remarks</label><input type='text' name='name[]' placeholder='' style='width: 100%;'></td><td><label>Counted</label><input type='number' name='counted' placeholder='' style='width: 50%;'></td><td><input type='button' class='btn btn-danger btn-sm text-bold add-item-btn' value='DELETE' onclick=delete_row('row" + $rowno + "')></td></tr>");
   }
 
   function delete_row(rowno) {
