@@ -75,7 +75,7 @@ defined('BASEPATH') or die('Access Denied');
                     <input type="text" name="indirect_items" placeholder="" style="width: 100%;">
                   </td>
                   <td scope="col">
-                    <input type="checkbox" name="checkbox" style="width: 100%;">
+                    <input type="checkbox" name="indirect_checkbox" value="1" style="width: 100%;">
                   </td>
                   <th scope="col">
                     <input type="number" name="quantity" style="width: 40px; height: auto;">
@@ -137,13 +137,13 @@ defined('BASEPATH') or die('Access Denied');
                     <input type="text" name="direct_items" placeholder="" style="width: 100%;">
                   </td>
                   <td scope="col">
-                    <input type="checkbox" name="checkbox" style="width: 100%;">
+                    <input type="checkbox" name="checkbox_direct" value="2" style="width: 100%;">
                   </td>
                   <th scope="col">
-                    <input type="number" name="quantity" style="width: 40px; height: auto;">
+                    <input type="number" name="quantity_direct" style="width: 40px; height: auto;">
                   </th>
                   <td>
-                    <input type="number" name="available" style="width: 40px; height: auto;">
+                    <input type="number" name="available_direct" style="width: 40px; height: auto;">
                   </td>
                   <td>
                     <input type="number" name="quantity2" style="width: 40px; height: auto;">
@@ -199,13 +199,13 @@ defined('BASEPATH') or die('Access Denied');
                     <input type="text" name="tools" placeholder="" style="width: 100%;">
                   </td>
                   <td scope="col">
-                    <input type="checkbox" name="checkbox" style="width: 100%;">
+                    <input type="checkbox" name="tools_checkbox" value="3" style="width: 100%;">
                   </td>
                   <th scope="col">
-                    <input type="number" name="quantity" style="width: 40px; height: auto;">
+                    <input type="number" name="quantity_tools" style="width: 40px; height: auto;">
                   </th>
                   <td>
-                    <input type="number" name="available" style="width: 40px; height: auto;">
+                    <input type="number" name="available_tools" style="width: 40px; height: auto;">
                   </td>
                   <td>
                     <input type="number" name="quantity2" style="width: 40px; height: auto;">
