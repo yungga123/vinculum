@@ -180,9 +180,9 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 					</li>
 
 					<li class="nav-item">
-						<a href="<?php echo site_url('prf/prf_view') ?>" class="nav-link<?php echo $consumeables ?>">
+						<a href="<?php echo site_url('prf/prf_list') ?>" class="nav-link<?php echo $consumeables ?>">
 						<i class="far fa-circle nav-icon"></i>
-						<p>PRF View</p>
+						<p>PRF List</p>
 						</a>
 					</li>
 					

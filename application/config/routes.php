@@ -212,5 +212,6 @@ $route['offlimits'] = 'LoginController/offlimits_page';
 
 //PRF
 $route['prf/prf'] = 'PrfController/prf';
+$route['prf/prf_list'] = 'PrfController/prf_list';
+$route['prf/prf_edit'] = 'PrfController/edit';
 $route['prf/prf_view'] = 'PrfController/prf_view';
-$route['prf/edit_prf/(:any)'] = 'PrfController/edit/$1';
