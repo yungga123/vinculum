@@ -73,4 +73,32 @@ class PrfModel extends CI_Model
         $this->db->from('sales_inquiry_tempo_clients');
 		return $this->db->get()->result();
 	}
+
+    public function fetchProjectReportDescription()
+	{
+		$this->db->select('*');
+        $this->db->from('project_report');
+		return $this->db->get()->result();
+	}
+
+    public function fetchItemName()
+	{
+		$this->db->select('*');
+        $this->db->from('items');
+		return $this->db->get()->result();
+	}
+
+    public function fetchItemStock()
+	{
+		$this->db->select('*');
+        $this->db->from('items');
+		return $this->db->get()->result();
+	}
+
+    public function fetchAvailableTools()
+	{
+		$this->db->select('*');
+        $this->db->from('tools');
+		return $this->db->get()->result();
+	}
 }
