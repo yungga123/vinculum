@@ -55,8 +55,22 @@ class PrfModel extends CI_Model
             'check_by' => $this->input->post('check_by'),
             'person_in_charge' => $this->input->post('person_in_charge')
         );
-        
+
         $query = $this->db->get("project_request_form", $data);
         return $query->result();
     }
+
+    public function fetchCustomersByName()
+	{
+		$this->db->select('*');
+        $this->db->from('customers');
+		return $this->db->get()->result();
+	}
+
+    public function fetchNewClientByName()
+	{
+		$this->db->select('*');
+        $this->db->from('sales_inquiry_tempo_clients');
+		return $this->db->get()->result();
+	}
 }

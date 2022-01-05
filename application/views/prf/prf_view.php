@@ -91,6 +91,9 @@ defined('BASEPATH') or die('Access Denied');
                 <td>
                   <?php echo set_value('counted'); ?>
                 </td>
+                <td>
+                  <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success btn-sm" style="float: right;">add request</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -144,6 +147,9 @@ defined('BASEPATH') or die('Access Denied');
                 <td>
                   <?php echo set_value('counted'); ?>
                 </td>
+                <td>
+                  <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success btn-sm" style="float: right;">add request</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -196,6 +202,9 @@ defined('BASEPATH') or die('Access Denied');
                 </td>
                 <td>
                   <?php echo set_value('counted'); ?>
+                </td>
+                <td>
+                  <a href="<?php echo site_url('RequisitionFormController/index'); ?>" name="purchase_request" class="btn btn-success btn-sm" style="float: right;">add request</a>
                 </td>
               </tr>
             </tbody>

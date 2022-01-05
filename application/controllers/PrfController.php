@@ -21,6 +21,8 @@ class PrfController extends CI_Controller
 			$data['title'] = 'Project Request Form';
 			$data['prf'] = ' active';
 			$data['ul_items_tree'] = ' active';
+			$data['query'] = $this->PrfModel->fetchCustomersByName();
+			$data['fetchnewclient'] = $this->PrfModel->fetchNewClientByName();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('prf/prf');
