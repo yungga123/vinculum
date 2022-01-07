@@ -101,4 +101,11 @@ class PrfModel extends CI_Model
         $this->db->from('tools');
 		return $this->db->get()->result();
 	}
+
+    public function fetchEmployee()
+	{
+		$this->db->select('*');
+        $this->db->from('technicians');
+		return $this->db->get()->result();
+	}
 }

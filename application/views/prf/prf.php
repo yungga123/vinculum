@@ -2,6 +2,20 @@
 defined('BASEPATH') or die('Access Denied');
 ?>
 
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 5px;
+  }
+</style>
+
 <div class="content-wrapper">
   <div class="content-header">
     <div class="container-fluid">
@@ -20,34 +34,21 @@ defined('BASEPATH') or die('Access Denied');
         <thead>
           <tr>
             <th scope="col" colspan="5">Project Name:
-              <div class="dropdown">
-                <button class="btn btn-whtie dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="border:solid">
-                  ---Select Project Name---
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <label for="project_name" class="btn btn-secondary dropdown-toggle">---select project name---</label>
-                  <?php foreach ($query as $row) : ?>
-                    <select name="project_name" id="project_name" class="form-control" value="">
-                      <option><?php echo $row->customer_name; ?></option>
-                    </select>
-                  <?php endforeach ?>
-                </div>
-              </div>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">--- Select Project Name ---</option>
+                <?php foreach ($fetchcustomerbyname as $row) : ?>
+                  <option value=""><?php echo $row->customer_name; ?></option>
+                <?php endforeach ?>
+              </select>
             </th>
+
             <th scope="col" colspan="5">Branch Name:
-              <div class="dropdown">
-                <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="border:solid">
-                  ---Select Branch Name---
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <label for="branch_name">---select project name---</label>
-                  <?php foreach ($fetchnewclient as $row) : ?>
-                    <select name="branch_name" id="project_name" class="form-control" value="">
-                      <option><?php echo $row->customer_name; ?></option>
-                    </select>
-                  <?php endforeach ?>
-                </div>
-              </div>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">--- Select Branch Name ---</option>
+                <?php foreach ($fetchnewclient as $row) : ?>
+                  <option><?php echo $row->customer_name; ?></option>
+                <?php endforeach ?>
+              </select>
             </th>
             <th scope="col" colspan="5">Date Requested:
               <input style="float: right; width: 75%;" type="date" name="date_requested" value="<?php echo set_value('date_requested'); ?>">
@@ -57,19 +58,12 @@ defined('BASEPATH') or die('Access Denied');
         <thead>
           <tr>
             <th scope="col" colspan="5">Project Activity:
-              <div class="dropdown">
-                <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="border:solid">
-                  ---Select Project Name---
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <label for="project_activity">---select project name---</label>
-                  <?php foreach ($fetchprojectreportdescription as $row) : ?>
-                    <select name="project_name" id="project_activity" class="form-control" value="">
-                      <option><?php echo $row->description; ?></option>
-                    </select>
-                  <?php endforeach ?>
-                </div>
-              </div>
+              <select class="form-control select2" style="width: 100%;">
+                <option selected="selected">--- Select Project Activity ---</option>
+                <?php foreach ($fetchprojectreportdescription as $row) : ?>
+                  <option><?php echo $row->description; ?></option>
+                <?php endforeach ?>
+              </select>
             </th>
             <th scope="col" colspan="5">
             </th>
@@ -112,19 +106,12 @@ defined('BASEPATH') or die('Access Denied');
               <!-- indirect items -->
               <tr>
                 <td>
-                  <div class="dropdown">
-                    <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="border:solid">
-                      ---Indirect Items---
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <label for="branch_name">---select project name---</label>
-                      <?php foreach ($fetchitemname as $row) : ?>
-                        <select name="branch_name" id="project_name" class="form-control" value="">
-                          <option><?php echo $row->itemName; ?></option>
-                        </select>
-                      <?php endforeach ?>
-                    </div>
-                  </div>
+                  <select class="form-control select2" style="width: 100%;">
+                    <option selected="selected">--- Select Indirect ---</option>
+                    <?php foreach ($fetchitemname as $row) : ?>
+                      <option><?php echo $row->itemName; ?></option>
+                    <?php endforeach ?>
+                  </select>
                 </td>
                 <td scope="col">
                   <input type="checkbox" name="indirect_checkbox" style="width: 100%;">
@@ -183,19 +170,12 @@ defined('BASEPATH') or die('Access Denied');
               <thead>
                 <tr>
                   <td>
-                    <div class="dropdown">
-                      <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="border:solid">
-                        ---Direct Items---
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <label for="branch_name">---select project name---</label>
-                        <?php foreach ($fetchitemname as $row) : ?>
-                          <select name="branch_name" id="project_name" class="form-control" value="">
-                            <option><?php echo $row->itemName; ?></option>
-                          </select>
-                        <?php endforeach ?>
-                      </div>
-                    </div>
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">--- Select Direct ---</option>
+                      <?php foreach ($fetchitemname as $row) : ?>
+                        <option><?php echo $row->itemName; ?></option>
+                      <?php endforeach ?>
+                    </select>
                   </td>
                   <td scope="col">
                     <input type="checkbox" name="checkbox_direct" style="width: 100%;">
@@ -254,19 +234,12 @@ defined('BASEPATH') or die('Access Denied');
               </thead>
               <tr>
                 <td>
-                  <div class="dropdown">
-                    <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" style="border:solid">
-                      ---Tools---
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <label for="branch_name">---select project name---</label>
-                      <?php foreach ($fetchitemname as $row) : ?>
-                        <select name="branch_name" id="project_name" class="form-control" value="">
-                          <option><?php echo $row->itemName; ?></option>
-                        </select>
-                      <?php endforeach ?>
-                    </div>
-                  </div>
+                  <select class="form-control select2" style="width: 100%;">
+                    <option selected="selected">--- Select Tools ---</option>
+                    <?php foreach ($fetchitemname as $row) : ?>
+                      <option><?php echo $row->itemName; ?></option>
+                    <?php endforeach ?>
+                  </select>
                 </td>
                 <td scope="col">
                   <input type="checkbox" name="tools_checkbox" value="3" style="width: 100%;">
@@ -275,7 +248,7 @@ defined('BASEPATH') or die('Access Denied');
                   <input type="number" name="quantity_tools" style="width: 40px; height: auto;">
                 </th>
                 <td>
-                  <?php echo $row->quantity; ?>
+
                 </td>
                 <td>
                   <input type="number" name="quantity2" style="width: 40px; height: auto;">
@@ -306,17 +279,32 @@ defined('BASEPATH') or die('Access Denied');
           <thead>
             <tr>
               <th scope="col" colspan="5">Prepared By:
-                <input style="width: 80%; float: right;" type="text" name="prepared_by">
+                <select class="form-control select2" style="width: 100%;">
+                  <option selected="selected">--- Select Name ---</option>
+                  <?php foreach ($fetchemployee as $row) : ?>
+                    <option value=""><?php echo $row->firstname; ?></option>
+                  <?php endforeach ?>
+                </select>
               </th>
               <th scope="col" colspan="5">Person In Charge:
-                <input style="float: right; width: 75%;" type="text" name="person_in_charge">
+                <select class="form-control select2" style="width: 100%;">
+                  <option selected="selected">--- Select PIC ---</option>
+                  <?php foreach ($fetchemployee as $row) : ?>
+                    <option value=""><?php echo $row->firstname; ?></option>
+                  <?php endforeach ?>
+                </select>
               </th>
             </tr>
           </thead>
           <thead>
             <tr>
               <th scope="col" colspan="5">Check By:
-                <input style="width: 80%; float: right;" type="text" name="check_by">
+                <select class="form-control select2" style="width: 100%;">
+                  <option selected="selected">--- Select Checker ---</option>
+                  <?php foreach ($fetchemployee as $row) : ?>
+                    <option value=""><?php echo $row->firstname; ?></option>
+                  <?php endforeach ?>
+                </select>
               </th>
               <th scope="col" colspan="5"></th>
             </tr>
