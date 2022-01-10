@@ -91,7 +91,7 @@ defined('BASEPATH') or die('Access Denied');
             <thead style="text-align: center;">
               <tr>
                 <th scope="col">Indirect Items</th>
-                <th scope="col">On Stock</th>
+                <th scope="col">Stock</th>
                 <th>Quantity</th>
                 <th>Available</th>
                 <th>Quantity</th>
@@ -120,7 +120,7 @@ defined('BASEPATH') or die('Access Denied');
                   <input type="number" name="quantity" style="width: 40px; height: auto;">
                 </th>
                 <td>
-                  <?php echo $row->stocks; ?>
+                  <input type="number" value="<?php echo $row->stocks; ?>" style="width: 40px; height: auto;" readonly>
                 </td>
                 <td>
                   <input type="number" name="quantity2" style="width: 40px; height: auto; text-align: center;">
@@ -157,7 +157,7 @@ defined('BASEPATH') or die('Access Denied');
               <thead style="text-align: center;">
                 <tr>
                   <th scope="col">Direct Items</th>
-                  <th scope="col">On Stock</th>
+                  <th scope="col">Stock</th>
                   <th>Quantity</th>
                   <th>Available</th>
                   <th>Quantity</th>
@@ -184,7 +184,7 @@ defined('BASEPATH') or die('Access Denied');
                     <input type="number" name="quantity_direct" style="width: 40px; height: auto;">
                   </th>
                   <td>
-                    <?php echo $row->stocks; ?>
+                  <input type="number" value="<?php echo $row->stocks; ?>" style="width: 40px; height: auto;" readonly>
                   </td>
                   <td>
                     <input type="number" name="quantity2" style="width: 40px; height: auto;">
@@ -222,7 +222,7 @@ defined('BASEPATH') or die('Access Denied');
               <thead style="text-align: center;">
                 <tr>
                   <th scope="col">Tools</th>
-                  <th scope="col">On Stock</th>
+                  <th scope="col">Stock</th>
                   <th>Quantity</th>
                   <th>Available</th>
                   <th>Quantity</th>
@@ -248,7 +248,7 @@ defined('BASEPATH') or die('Access Denied');
                   <input type="number" name="quantity_tools" style="width: 40px; height: auto;">
                 </th>
                 <td>
-
+                <input type="number" value="<?php echo $row->stocks; ?>" style="width: 40px; height: auto;" readonly>
                 </td>
                 <td>
                   <input type="number" name="quantity2" style="width: 40px; height: auto;">
