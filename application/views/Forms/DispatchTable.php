@@ -49,6 +49,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 											<th>Installation</th>
 											<th>Repair/Service</th>
 											<th>Warranty</th>
+											<th>Back Job</th>
 											<th>Dispatch Out</th>
 											<th>SR Number</th>
 											<th>Remarks</th>
@@ -180,10 +181,11 @@ defined('BASEPATH') or die('No direct script access allowed.');
 			                <div class="form-group">
 			                	<label for="service_type" class="control-label">Type Of Service</label>
 			                	<select name="service_type" id="service_type" class="form-control TypeOfService_Edit">
-			                		<option value=""></option>
+			                		<option value="">--------Please Select</option>
 				                	<option value="Installation">Installation</option>
 				                	<option value="Service">Service</option>
-				                	<option value="Warranty">Warranty</option>	
+				                	<option value="Warranty">Warranty</option>
+									<option value="back_job">Back Job</option>	
 			                	</select>
 			                </div>
 						</div>
