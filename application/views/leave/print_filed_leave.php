@@ -65,7 +65,7 @@ defined('BASEPATH') or die('Access Denied');
     <!-- Title Page -->
     <div class="row">
         <div class="col-sm-2">
-        <img src="<?php echo base_url('assets/qr_image/'.$approved_year."".$leave_id."".$approved_month."".$approved_day.'.png') ?>" alt="qrlogo" class="img-thumbnail sm-4" style="height: 150px;width: 170px">
+        <img src="<?php echo ('http://localhost/qr_image/'.$approved_year."".$leave_id."".$approved_month."".$approved_day.'.png') ?>" alt="qrlogo" class="img-thumbnail sm-4" style="height: 150px;width: 170px">
         </div>
         <div class="col-sm-6 offset-sm-1 text-center">
            

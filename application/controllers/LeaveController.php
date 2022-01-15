@@ -266,7 +266,7 @@ class LeaveController extends CI_Controller
             include 'assets/phpqrcode/qrlib.php';
             $text = $approved_year."".$leave_id."".$approved_month."".$approved_day;
 			$file = '';
-			$file='assets/qr_image/'.$text.".png";
+			$file='C:\xampp\htdocs\qr_image/'.$text.".png";
 			QRcode::png($text,$file);
             
             //END OF GENERATE QR CODE
