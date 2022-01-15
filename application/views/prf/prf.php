@@ -46,7 +46,7 @@ defined('BASEPATH') or die('Access Denied');
               <select class="form-control select2" style="width: 100%;">
                 <option selected="selected">--- Select Branch Name ---</option>
                 <?php foreach ($fetchnewclient as $row) : ?>
-                  <option><?php echo $row->branch_name; ?></option>
+                  <option val><?php echo $row->branch_name; ?></option>
                 <?php endforeach ?>
               </select>
             </th>
