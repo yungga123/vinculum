@@ -219,7 +219,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 							<li class="nav-item">
 								<a href="<?php echo site_url('requisition-pending')?>" class="nav-link <?php echo $requisition_pending ?>">
 									<i class="far fa-circle nav-icon"></i>
-									<p>Pending Requests <span class="right badge badge-danger"><?php echo $this->CountsModel->count_pending_requisitions() ?></span></p>
+									<p>Pending PR <span class="right badge badge-danger"><?php echo $this->CountsModel->count_pending_requisitions() ?></span></p>
 								</a>
 							</li>
 

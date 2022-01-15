@@ -46,7 +46,7 @@ defined('BASEPATH') or die('Access Denied');
               <select class="form-control select2" style="width: 100%;">
                 <option selected="selected">--- Select Branch Name ---</option>
                 <?php foreach ($fetchnewclient as $row) : ?>
-                  <option><?php echo $row->customer_name; ?></option>
+                  <option><?php echo $row->branch_name; ?></option>
                 <?php endforeach ?>
               </select>
             </th>
@@ -61,7 +61,7 @@ defined('BASEPATH') or die('Access Denied');
               <select class="form-control select2" style="width: 100%;">
                 <option selected="selected">--- Select Project Activity ---</option>
                 <?php foreach ($fetchprojectreportdescription as $row) : ?>
-                  <option><?php echo $row->description; ?></option>
+                  <option><?php echo $row->project_type; ?></option>
                 <?php endforeach ?>
               </select>
             </th>
@@ -328,7 +328,7 @@ defined('BASEPATH') or die('Access Denied');
     function add_row() {
       $rowno = $("#employee_table tr").length;
       $rowno = $rowno + 1;
-      $("#employee_table tr:last").after("<tr id='row" + $rowno + "'><td><center><label>Indirect Items</label></center><input type='text' name='name[]' placeholder=''></td><td><label>✔</label><input type='checkbox' name='checkbox'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Available</label><input type='number' name='available' placeholder='' style='width: 50%;'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Remarks</label><input type='text' name='name[]' placeholder='' style='width: 100%;'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Remarks</label><input type='text' name='name[]' placeholder='' style='width: 100%;'></td><td><label>Counted</label><input type='number' name='counted' placeholder='' style='width: 50%;'></td><td><input type='button' class='btn btn-danger btn-sm text-bold add-item-btn' value='DELETE' onclick=delete_row('row" + $rowno + "')></td></tr>");
+      $("#employee_table tr:last").after("<tr id='row" + $rowno + "'><td><center><label>Indirect Items</label></center><input type='text' name='name[]' placeholder=''></td><td><label></label><input type='checkbox' name='checkbox'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Available</label><input type='number' name='available' placeholder='' style='width: 50%;'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Remarks</label><input type='text' name='name[]' placeholder='' style='width: 100%;'></td><td><label>Quantity</label><input type='number' name='quantity' placeholder='' style='width: 50%;'></td><td><label>Remarks</label><input type='text' name='name[]' placeholder='' style='width: 100%;'></td><td><label>Counted</label><input type='number' name='counted' placeholder='' style='width: 50%;'></td><td><input type='button' class='btn btn-danger btn-sm text-bold add-item-btn' value='DELETE' onclick=delete_row('row" + $rowno + "')></td></tr>");
     }
 
     function delete_row(rowno) {

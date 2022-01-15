@@ -47,11 +47,12 @@ defined('BASEPATH') or die('No direct script access allowed.');
 			            	<table id="item_masterlist" class="table table-bordered table-hover" style="width: 100%">
 			            		<thead>
 			            			<tr>
-			            				<th>Item Code</th>
-			            				<th>Description</th>
-										<th>Brand</th>
-										<th>Item Size</th>
 			            				<th>Category</th>
+										<th>Sub Category</th>
+										<th>Brand</th>
+										<th>Model</th>
+			            				<th>Description</th>
+										<th>Item Size</th>
 			            				<th>Supplier's Price</th>
 			            				<th>SRP</th>
 										<th>Project Price</th>
@@ -153,7 +154,7 @@ defined('BASEPATH') or die('No direct script access allowed.');
 								</div>
 								<div class="form-group">
 									<label for="original_price" class="control-label">Supplier Price</label>
-									<input type="text" id="original_price" name="original_price" class="form-control original_price_edit" placeholder="Enter Item Price">
+									<input type="text" id="original_price" name="original_price" class="form-control original_price_edit" placeholder="Enter Item Price" readonly>
 								</div>
 							</div>
 						</div>

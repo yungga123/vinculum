@@ -470,8 +470,6 @@ class ItemsController extends CI_Controller
 			$sub_array[] = '
 							<button type="button" class="btn btn-warning btn-xs btn_select" data-toggle="modal" data-target="#modal-edit-item" title="Edit"><i class="fas fa-edit"></i></button> 
 
-							<a href="' . site_url("ItemsController/delete_items/" . $row->itemCode) . '" class="btn btn-danger btn-xs" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i></a> 
-
 							<button class="btn btn-success btn-xs btn_addstock" data-toggle="modal" data-target=".addstocks" title="Add Stocks"><i class="fas fa-plus"></i></button>
 
 							<button class="btn btn-primary btn-xs btn_select" data-toggle="modal" data-target="#toPulloutModal" title="Pullout Item"><i class="fas fa-sign-out-alt"></i></button>
