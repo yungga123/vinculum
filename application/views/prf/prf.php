@@ -22,6 +22,7 @@ defined('BASEPATH') or die('Access Denied');
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="page-header m-0 text-dark">Project Request Form</h1>
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         </div><!-- /.col -->
       </div><!-- /.row -->
       <form id="add_field" action="<?php echo site_url('PrfController/prf_data_input'); ?>" method="post">
@@ -33,22 +34,41 @@ defined('BASEPATH') or die('Access Denied');
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col" colspan="5">Project Name:
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">--- Select Project Name ---</option>
-                <?php foreach ($fetchcustomerbyname as $row) : ?>
-                  <option value=""><?php echo $row->customer_name; ?></option>
-                <?php endforeach ?>
-              </select>
-            </th>
+            <div class="form-group">
+              <label for="emp_id">Select Employee</label>
+              <?php if ($payroll['case'] == 'update') { ?>
+                <select class="form-control form-control-sm select-employee select2" name="emp_id" id="emp_id">
+                  <option value="">
+                    <--- Please Select --->
+                  </option>
+                  <?php foreach ($technicians as $row) { ?>
+                    <option value="<?php echo $row->id ?>" <?php if ($row->id == $payroll['emp_id']) {
+                                                              echo 'selected';
+                                                            } ?>>
+                      <?php echo $row->name . ' | ' . $row->position . ' | ID : ' . $row->id ?>
+                    </option>
+                  <?php } ?>
+                </select>
+              <?php } else { ?>
+                <select class="form-control form-control-sm select-employee select2" name="emp_id" id="emp_id">
+                  <option value="">
+                    <--- Please Select --->
+                  </option>
+                  <?php foreach ($technicians as $row) { ?>
+                    <option value="<?php echo $row->id ?>">
+                      <?php echo $row->name . ' | ' . $row->position . ' | ID : ' . $row->id ?>
+                    </option>
+                  <?php } ?>
+                </select>
+              <?php } ?>
+
+
+            </div>
 
             <th scope="col" colspan="5">Branch Name:
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">--- Select Branch Name ---</option>
-                <?php foreach ($fetchnewclient as $row) : ?>
-                  <option val><?php echo $row->branch_name; ?></option>
-                <?php endforeach ?>
-              </select>
+              <input type="text" class="form-control form-control-sm" name="daily_rate" id="daily_rate" readonly <?php if ($payroll['case'] == 'update') {
+                                                                                                                    echo 'value="' . $payroll['basic_income_rate'] . '"';
+                                                                                                                  } ?>>
             </th>
             <th scope="col" colspan="5">Date Requested:
               <input style="float: right; width: 75%;" type="date" name="date_requested" value="<?php echo set_value('date_requested'); ?>">
@@ -58,12 +78,9 @@ defined('BASEPATH') or die('Access Denied');
         <thead>
           <tr>
             <th scope="col" colspan="5">Project Activity:
-              <select class="form-control select2" style="width: 100%;">
-                <option selected="selected">--- Select Project Activity ---</option>
-                <?php foreach ($fetchprojectreportdescription as $row) : ?>
-                  <option><?php echo $row->project_type; ?></option>
-                <?php endforeach ?>
-              </select>
+              <input type="text" class="form-control form-control-sm" name="sss_rate" id="sss_rate" readonly <?php if ($payroll['case'] == 'update') {
+                                                                                                                echo 'value="' . $payroll['sss_cont'] . '"';
+                                                                                                              } ?>>
             </th>
             <th scope="col" colspan="5">
             </th>
@@ -184,7 +201,7 @@ defined('BASEPATH') or die('Access Denied');
                     <input type="number" name="quantity_direct" style="width: 40px; height: auto;">
                   </th>
                   <td>
-                  <input type="number" value="<?php echo $row->stocks; ?>" style="width: 40px; height: auto;" readonly>
+                    <input type="number" value="<?php echo $row->stocks; ?>" style="width: 40px; height: auto;" readonly>
                   </td>
                   <td>
                     <input type="number" name="quantity2" style="width: 40px; height: auto;">
@@ -248,7 +265,7 @@ defined('BASEPATH') or die('Access Denied');
                   <input type="number" name="quantity_tools" style="width: 40px; height: auto;">
                 </th>
                 <td>
-                <input type="number" value="<?php echo $row->stocks; ?>" style="width: 40px; height: auto;" readonly>
+                  <input type="number" value="<?php echo $row->stocks; ?>" style="width: 40px; height: auto;" readonly>
                 </td>
                 <td>
                   <input type="number" name="quantity2" style="width: 40px; height: auto;">
@@ -356,4 +373,37 @@ defined('BASEPATH') or die('Access Denied');
     function delete_row(rowno) {
       $('#' + rowno).remove();
     }
+
+    //KeyUp Function
+        $('input').keyup(function() {
+
+            payrollCompute();
+
+        });
+
+        $('.select-employee').on("change", function() {
+
+            if ($(this).val() != "") {
+
+                $('.loading-modal').modal();
+                //ajax
+
+                $.ajax({
+
+                    url: '<?php echo site_url('PayrollController/getTechInfo') . '/' ?>' + $(this).val(),
+                    type: 'post',
+                    dataType: 'json',
+                    success: function(response) {
+                        $('.loading-modal').modal('hide');
+                        $('#daily_rate').val(response.daily_rate);
+                        $('#philhealth_rate').val(response.philhealth);
+                        $('#sss_rate').val(response.sss);
+                        $('#tax_rate').val(response.tax_rate);
+                        $('#pagibig_rate').val(response.pagibig);
+                        payrollCompute();
+                    }
+                });
+            }
+
+        });
   </script>

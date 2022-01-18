@@ -4,6 +4,11 @@ defined('BASEPATH') or die('Access Denied');
 class PrfModel extends CI_Model
 {
 
+    function __construct()
+    {
+        parent::__construct();
+    }
+
     //ADD INPUT TO PRF 
     function prf_insert_model($data)
     {
@@ -106,6 +111,42 @@ class PrfModel extends CI_Model
 	{
 		$this->db->select('*');
         $this->db->from('technicians');
+		return $this->db->get()->result();
+	}
+
+    public function fetchTechnicians($techID) {
+		return $this->db->get_where('technicians',['id' => $techID])->result();
+	}
+
+    public function getTechniciansByStatus() {
+		
+		//select id,concat(firstname,' ',substring(middlename,1,1),'. ',lastname) as name from technicians
+
+		$this->db->select(
+			"id,concat(firstname,' ',substring(middlename,1,1),' ',lastname) as name,
+			position,
+			birthdate,
+			contact_number,
+			address,
+			sss_number,
+			tin_number,
+			pagibig_number,
+			phil_health_number,
+			status,
+			validity,
+			date_hired,
+			daily_rate,
+			pag_ibig_rate,
+			sss_rate,
+			phil_health_rate,
+			tax,
+			sl_credit,
+			vl_credit,
+			remarks"
+		);
+		$this->db->from('technicians');
+		$this->db->where('status <>', 'Resigned');
+		$this->db->where('status <>', 'Terminated');
 		return $this->db->get()->result();
 	}
 

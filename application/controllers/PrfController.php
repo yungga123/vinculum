@@ -23,11 +23,9 @@ class PrfController extends CI_Controller
 			$data['prf'] = ' active';
 			$data['ul_items_tree'] = ' active';
 			$data['fetchcustomerbyname'] = $this->PrfModel->fetchCustomersByName();
-			$data['fetchcustomerbyname'] = $this->PrfModel->fetchCustomersByName();
-			$data['fetchnewclient'] = $this->PrfModel->fetchNewClientByName();
-			$data['fetchprojectreportdescription'] = $this->PrfModel->fetchProjectReportDescription();
-			$data['fetchitemname'] = $this->PrfModel->fetchItemName();
-			$data['fetchemployee'] = $this->PrfModel->fetchEmployee();
+			$technicians = $this->PrfModel->getTechniciansByStatus();
+			$data['technicians'] = $technicians;
+            $data['payroll'] = $this->payroll();
 			$this->PrfModel->fetchItemStock();
 			$this->PrfModel->fetchAvailableTools();
 			$this->load->view('templates/header', $data);
@@ -164,4 +162,88 @@ class PrfController extends CI_Controller
 		$this->load->view('templates/footer');
 		$this->load->view('prf/script');
 	}
+
+	public function getTechInfo($id) {
+        $validate = [
+            'customer_name' => '',
+            'project_activity' => '',
+            'branch_name' => ''
+        ];
+        
+        $this->load->model('PrfModel');
+
+        $technicians = $this->PrfModel->fetchTechnicians($id);
+
+        foreach ($technicians as $row) {
+            $validate['customer_name'] = $row->customer_name;
+            $validate['project_activity'] = $row->project_activity;
+            $validate['branch_name'] = $row->branch_name;
+        }
+
+		echo json_encode($validate);
+    }
+
+	function payroll() {
+
+        $payroll['id'] = '';
+        $payroll['cutoff_date'] = '';
+        $payroll['start_date'] = '';
+        $payroll['end_date'] = '';
+        $payroll['emp_id'] = '';
+        $payroll['emp_name'] = ''; 
+        $payroll['emp_position'] = ''; 
+        $payroll['emp_sss_no'] = ''; 
+        $payroll['emp_tin_no'] = ''; 
+        $payroll['emp_pagibig_no'] = ''; 
+        $payroll['emp_philhealth_no'] = ''; 
+        $payroll['basic_income_rate'] = ''; 
+        $payroll['basic_income_days'] = '';
+        $payroll['basic_income_amt'] = ''; 
+        $payroll['overtime_rate'] = ''; 
+        $payroll['overtime_hrs'] = ''; 
+        $payroll['overtime_amt'] = ''; 
+        $payroll['nightdiff_rate'] = ''; 
+        $payroll['nightdiff_hrs'] = ''; 
+        $payroll['nightdiff_amt'] = ''; 
+        $payroll['regday_rate'] = ''; 
+        $payroll['regday_days'] = '';
+        $payroll['regday_amt'] = ''; 
+        $payroll['spcday_rate'] = ''; 
+        $payroll['spcday_days'] = ''; 
+        $payroll['spcday_amt'] = ''; 
+        $payroll['incentives'] = ''; 
+        $payroll['commission'] = ''; 
+        $payroll['13th_month'] = ''; 
+        $payroll['addback'] = ''; 
+        $payroll['absent_rate'] = ''; 
+        $payroll['absent_days'] = ''; 
+        $payroll['absent_amt'] = ''; 
+        $payroll['tardiness_rate'] = ''; 
+        $payroll['tardiness_hrs'] = ''; 
+        $payroll['tardiness_amt'] = ''; 
+        $payroll['awol_rate'] = ''; 
+        $payroll['awol_days'] = '';
+        $payroll['awol_amt'] = ''; 
+        $payroll['restday_rate'] = ''; 
+        $payroll['restday_days'] = ''; 
+        $payroll['restday_hrs'] = ''; 
+        $payroll['sss_cont'] = '';
+        $payroll['pagibig_cont'] = ''; 
+        $payroll['philhealth_cont'] = ''; 
+        $payroll['tax'] = ''; 
+        $payroll['other_deduction'] = ''; 
+        $payroll['notes'] = ''; 
+        $payroll['gross_pay'] = ''; 
+        $payroll['net_pay'] = '';
+        $payroll['vl'] = '';
+        $payroll['sl'] = '';
+        $payroll['vl_pay'] = '';
+        $payroll['sl_pay'] = '';
+        $payroll['case'] = '';
+        $payroll['paid_leaves'] = '';
+
+        return $payroll;
+
+    }
+
 }
