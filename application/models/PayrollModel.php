@@ -53,7 +53,6 @@ class PayrollModel extends CI_Model {
             "b.status",
             "b.validity",
             "b.date_hired",
-            "b.daily_rate",
             "b.pag_ibig_rate",
             "b.sss_rate",
             "b.phil_health_rate",
@@ -76,6 +75,7 @@ class PayrollModel extends CI_Model {
             "a.cutoff_start",
             "a.cutoff_end",
             "a.emp_id",
+            "a.rate",
             "a.days_worked",
             "a.hours_late",
             "a.days_absent",
@@ -110,7 +110,6 @@ class PayrollModel extends CI_Model {
             "b.status",
             "b.validity",
             "b.date_hired",
-            "b.daily_rate",
             "b.pag_ibig_rate",
             "b.sss_rate",
             "b.phil_health_rate",
@@ -132,6 +131,7 @@ class PayrollModel extends CI_Model {
             "a.cutoff_start",
             "a.cutoff_end",
             "a.emp_id",
+            "a.rate",
             "a.days_worked",
             "a.hours_late",
             "a.days_absent",
@@ -166,7 +166,6 @@ class PayrollModel extends CI_Model {
             "b.status",
             "b.validity",
             "b.date_hired",
-            "b.daily_rate",
             "b.pag_ibig_rate",
             "b.sss_rate",
             "b.phil_health_rate",
@@ -189,6 +188,7 @@ class PayrollModel extends CI_Model {
             "a.cutoff_start",
             "a.cutoff_end",
             "a.emp_id",
+            "a.rate",
             "a.days_worked",
             "a.hours_late",
             "a.days_absent",
@@ -223,7 +223,6 @@ class PayrollModel extends CI_Model {
             "b.status",
             "b.validity",
             "b.date_hired",
-            "b.daily_rate",
             "b.pag_ibig_rate",
             "b.sss_rate",
             "b.phil_health_rate",
@@ -247,6 +246,7 @@ class PayrollModel extends CI_Model {
             "a.cutoff_start",
             "a.cutoff_end",
             "a.emp_id",
+            "a.rate",
             "a.days_worked",
             "a.hours_late",
             "a.days_absent",
@@ -281,7 +281,6 @@ class PayrollModel extends CI_Model {
             "b.status",
             "b.validity",
             "b.date_hired",
-            "b.daily_rate",
             "b.pag_ibig_rate",
             "b.sss_rate",
             "b.phil_health_rate",
@@ -329,7 +328,6 @@ class PayrollModel extends CI_Model {
             "b.status",
             "b.validity",
             "b.date_hired",
-            "b.daily_rate",
             "b.pag_ibig_rate",
             "b.sss_rate",
             "b.phil_health_rate",
@@ -385,7 +383,6 @@ class PayrollModel extends CI_Model {
                 $this->db->or_like("b.status", $_POST["search"]["value"]); 
                 $this->db->or_like("b.validity", $_POST["search"]["value"]); 
                 $this->db->or_like("b.date_hired", $_POST["search"]["value"]); 
-                $this->db->or_like("b.daily_rate", $_POST["search"]["value"]); 
                 $this->db->or_like("b.pag_ibig_rate", $_POST["search"]["value"]); 
                 $this->db->or_like("b.sss_rate", $_POST["search"]["value"]); 
                 $this->db->or_like("b.phil_health_rate", $_POST["search"]["value"]); 
