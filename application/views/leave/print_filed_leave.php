@@ -76,7 +76,7 @@ defined('BASEPATH') or die('Access Denied');
             <h8>Control No: <?php echo $approved_year."".$leave_id."".$approved_month."".$approved_day ?></h8>
         </div>
     </div>
-    <br><br><br>
+    <br>
     <div class="row">
         <div class="col-sm-12">
             <table class="table table-bordered table-sm">
@@ -134,7 +134,7 @@ defined('BASEPATH') or die('Access Denied');
             </table>
         </div>
     </div>
-        <br>
+        
     <div class="row">
         <div class="col-sm-11 offset-sm-1">
             <h5>I fully understand that my failure to return to work after the above-stated period shall be constrained as abandoned </h5>
@@ -143,7 +143,7 @@ defined('BASEPATH') or die('Access Denied');
             <h5>and therefore, I am ready to accept whatever disciplinary action that will be imposed on me related to such offense. </h5>
         </div>
     </div>
-        <br><br><br>
+        <br>
     <div class="row text-center">
         <div class="col-sm-12">
             ___________________________________________
@@ -154,7 +154,7 @@ defined('BASEPATH') or die('Access Denied');
     </div>
 
 </body>
-<br><br><br>
+<br><br>
     <footer class="footer">
         <div class="row">
         <div class="col-sm-12">
