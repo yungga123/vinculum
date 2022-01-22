@@ -11,7 +11,8 @@ class AccountsModel extends CI_Model {
 			b.lastname,
 			b.firstname,
 			b.middlename,
-			class
+			b.position,
+			a.class
 			');
 		$this->db->from('accounts as a');
 		$this->db->join('technicians as b','a.emp_id=b.id','left');

@@ -85,7 +85,14 @@ if(!function_exists('html_variable')) {
 			'sales_tree_status' => '',
 
 
-			'category' => '' //for Get Items Masterlist
+			'category' => '', //for Get Items Masterlist
+
+			'prf_menu_status' => '',
+			'ul_prf' => '',
+			'prf_menu_display' => '',
+			'new_prf' => '',
+			'prf_list' => '',
+			'inventory_menu_status' => ''
 		];
 
     return $data;
