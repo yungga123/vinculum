@@ -49,3 +49,96 @@ defined('BASEPATH') or die('Access Denied');
         </div>
     </section>
 </div>
+
+<!-- Modal for Generate P.O. -->
+<div class="modal fade btn-view" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <b class="modal-title"><h3>PRF ITEMS LIST</h3></b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <label>Direct Items</label>
+                            </div>
+                            <div class="card-body">
+
+                                <table class="table table-bordered table-xl text-center" id="table-direct">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Item Name</th>
+                                            <th>Item Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody-direct">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <label>Indirect Items</label>
+                            </div>
+                            <div class="card-body">
+
+                                <table class="table table-bordered table-xl text-center" id="table-indirect">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Item Name</th>
+                                            <th>Item Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody-indirect">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <label>Tools Items</label>
+                            </div>
+                            <div class="card-body">
+
+                                <table class="table table-bordered table-xl text-center" id="table-tools">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Item Name</th>
+                                            <th>Item Qty</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbody-tools">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>

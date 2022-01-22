@@ -278,7 +278,7 @@ class PRFController extends CI_Controller
 			$sub_array[] = $row->requested_by;
             
             $button = '
-            <button type="button" class="btn btn-primary text-bold btn-xs" data-toggle="modal" data-target="#approved-po"><i class="fas fa-search"></i></button>
+            <button type="button" class="btn btn-primary text-bold btn-xs fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
             <button type="button" class="btn btn-warning text-bold btn-xs" data-toggle="modal" data-target="#approved-po"><i class="fas fa-edit"></i></button>
             <button type="button" class="btn btn-danger text-bold btn-xs" data-toggle="modal" data-target="#approved-po"><i class="fas fa-trash"></i></button>
             <button type="button" class="btn btn-success text-bold btn-xs" data-toggle="modal" data-target="#approved-po"><i class="fas fa-print"></i></button>
@@ -297,5 +297,65 @@ class PRFController extends CI_Controller
 
 		echo json_encode($output);
 	}
+
+    public function get_direct_items($prf_id)
+    {
+        $results = $this->PRFModel->get_direct_items($prf_id);
+
+        $data = array();
+
+        foreach ($results as $row) {
+            $sub_array = array();
+
+            $sub_array['item_name'] = $row->itemName;
+            $sub_array['item_qty'] = $row->item_qty;
+
+            $data[] = $sub_array;
+        }
+
+        $json_data['results'] = $data;
+
+        echo json_encode($json_data);
+    }
+
+    public function get_indirect_items($prf_id)
+    {
+        $results = $this->PRFModel->get_indirect_items($prf_id);
+
+        $data = array();
+
+        foreach ($results as $row) {
+            $sub_array = array();
+
+            $sub_array['item_name'] = $row->itemName;
+            $sub_array['item_qty'] = $row->item_qty;
+
+            $data[] = $sub_array;
+        }
+
+        $json_data['results'] = $data;
+
+        echo json_encode($json_data);
+    }
+
+    public function get_tools_items($prf_id)
+    {
+        $results = $this->PRFModel->get_tools_items($prf_id);
+
+        $data = array();
+
+        foreach ($results as $row) {
+            $sub_array = array();
+
+            $sub_array['item_name'] = $row->description;
+            $sub_array['item_qty'] = $row->item_qty;
+
+            $data[] = $sub_array;
+        }
+
+        $json_data['results'] = $data;
+
+        echo json_encode($json_data);
+    }
 
 }

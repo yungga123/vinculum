@@ -153,4 +153,30 @@ class PRFModel extends CI_Model {
 		return $query->num_rows();
 	}
 
+	public function get_direct_items($prf_id)
+    {
+        $this->db->select('*');
+        $this->db->from('prf_items_direct as a');
+		$this->db->join('items as b','a.item_name=b.itemCode','left');
+        $this->db->where('a.prf_id', $prf_id);
+        return $this->db->get()->result();
+    }
+
+	public function get_indirect_items($prf_id)
+    {
+        $this->db->select('*');
+        $this->db->from('prf_items_indirect as a');
+		$this->db->join('items as b','a.item_name=b.itemCode','left');
+        $this->db->where('a.prf_id', $prf_id);
+        return $this->db->get()->result();
+    }
+
+	public function get_tools_items($prf_id)
+    {
+        $this->db->select('*');
+        $this->db->from('prf_items_tools as a');
+		$this->db->join('tools as b','a.item_name=b.code','left');
+        $this->db->where('a.prf_id', $prf_id);
+        return $this->db->get()->result();
+    }
 }
