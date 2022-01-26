@@ -454,11 +454,11 @@ class ItemsController extends CI_Controller
 		$data = array();
 		foreach ($fetch_data as $row) {
 			$sub_array = array();
+			$sub_array[] = $row->itemType;
+			$sub_array[] = $row->item_brand;
 			$sub_array[] = $row->itemCode;
 			$sub_array[] = $row->itemName;
-			$sub_array[] = $row->item_brand;
 			$sub_array[] = $row->item_size;
-			$sub_array[] = $row->itemType;
 			$sub_array[] = $row->itemSupplierPrice;
 			$sub_array[] = $row->itemPrice;
 			$sub_array[] = $row->project_price;

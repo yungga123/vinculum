@@ -95,7 +95,7 @@ class JobOrderController extends CI_Controller
 					'required' => 'Please Select Status.'
 				]
 			]
-				
+
 		];
 
 		return $rules;
@@ -156,9 +156,11 @@ class JobOrderController extends CI_Controller
 				'date_reported' => $this->input->post('date_reported'),
 				'commited_schedule' => $this->input->post('date_scheduled'),
 				'requested_by' => $this->input->post('requestor'),
-				'under_warranty' => $this->input->post('under_warranty')
+				'under_warranty' => $this->input->post('under_warranty'),
+				'with_permit' => $this->input->post('with_permit')
 			];
 
+			echo "<h1 class='alert alert-success'>CONGRATS 100%!!!</h1>";
 			$this->JobOrderModel->add_joborder($data);
 			$latest_joborder = $this->JobOrderModel->get_latest_job_order();
 
@@ -364,11 +366,10 @@ class JobOrderController extends CI_Controller
 			'errors' => ''
 		];
 
-		if($this->input->post('decision') == 'Discarded'){
+		if ($this->input->post('decision') == 'Discarded') {
 			$rules = 'trim';
 			$errors = "";
-		}
-		else{
+		} else {
 			$rules = 'trim|required';
 			$errors = ['required' => 'Please select schedule type.'];
 		}
@@ -395,8 +396,8 @@ class JobOrderController extends CI_Controller
 				'rules' => $rules,
 				'errors' => $errors
 			]
-			
-			
+
+
 		];
 
 		$this->form_validation->set_error_delimiters('<p>', '</p>');
@@ -417,13 +418,13 @@ class JobOrderController extends CI_Controller
 			if ($this->input->post('decision') != 'Discarded') {
 				$schedule_data = [
 					'title' => $this->input->post('client_name'),
-					'start' => $this->input->post('committed_schedule').' 00:00:00',
-					'end' => $this->input->post('committed_schedule').' 23:59:59',
-					'description' => str_replace("<br>", "",$this->input->post('description')),
+					'start' => $this->input->post('committed_schedule') . ' 00:00:00',
+					'end' => $this->input->post('committed_schedule') . ' 23:59:59',
+					'description' => str_replace("<br>", "", $this->input->post('description')),
 					'type' => $this->input->post('schedule_type')
 				];
 			}
-			
+
 
 			$this->JobOrderModel->update_joborder($id, $data);
 
@@ -431,7 +432,6 @@ class JobOrderController extends CI_Controller
 				$this->load->model('CalendarModel');
 				$this->CalendarModel->add_events($schedule_data);
 			}
-			
 		} else {
 			$validate['errors'] = validation_errors();
 		}
@@ -602,24 +602,23 @@ class JobOrderController extends CI_Controller
 					<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>
 					
 					<button class="btn btn-warning btn-xs text-bold btn-block btn_reschedule" data-toggle="modal" data-target=".modal-reschedule"><i class="fas fa-edit"></i> RESCHEDULE</button>
-					<a href="'.site_url('edit-accepted-joborder/'.$row->joborder_id).'" class="btn btn-xs btn-warning text-bold btn-block"><i class="fas fa-edit"></i> Edit</a>
+					<a href="' . site_url('edit-accepted-joborder/' . $row->joborder_id) . '" class="btn btn-xs btn-warning text-bold btn-block"><i class="fas fa-edit"></i> Edit</a>
 					';
-			} elseif($where == 'Filed') {
+			} elseif ($where == 'Filed') {
 
 				// Shortened If/Else with Ternary Operator
 				$decision = ($row->date_filed == '0000-00-00') ? 'None' : date_format(date_create($row->date_filed), 'F d, Y');
-
 			} else {
 				$decision = '
 					<button type="button" class="btn btn-success btn-xs text-bold btn-block btn_accepted" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-check"></i> ACCEPT</button>
 					<button type="button" class="btn btn-danger btn-xs text-bold btn-block btn_discarded" data-toggle="modal" data-target=".modal-decision"><i class="fas fa-times"></i> DISCARD</button>
 					<button class="btn btn-success btn-xs text-bold btn-block btn_filejo" data-toggle="modal" data-target=".modal-filejo"><i class="fas fa-file-archive"></i> FILE J.O.</button>
-					<a href="'.site_url('edit-pending-joborder/'.$row->joborder_id).'" class="btn btn-xs btn-warning text-bold btn-block"><i class="fas fa-edit"></i> Edit</a>
+					<a href="' . site_url('edit-pending-joborder/' . $row->joborder_id) . '" class="btn btn-xs btn-warning text-bold btn-block"><i class="fas fa-edit"></i> Edit</a>
 
 				';
 			}
 
-			
+
 
 
 			$scope[] = $sub_scope;
@@ -638,21 +637,18 @@ class JobOrderController extends CI_Controller
 			$sub_array[] = $row->remarks;
 			$sub_array[] = $row->with_permit;
 			$sub_array[] = $row->jo_status;
-			
-			if($where == "Pending"){
-				
-			}
-			else{
+
+			if ($where == "Pending") {
+			} else {
 				$id = $row->pic;
 
-				if($id != ""){
+				if ($id != "") {
 					$result = $this->JobOrderModel->pic_data($id);
-					foreach($result as $row){
-						$pic = $row->lastname.", ".$row->firstname." ".$row->middlename;
+					foreach ($result as $row) {
+						$pic = $row->lastname . ", " . $row->firstname . " " . $row->middlename;
 						$sub_array[] = $pic;
 					}
-				}
-				else{
+				} else {
 					$sub_array[] = "";
 				}
 			}
@@ -687,39 +683,38 @@ class JobOrderController extends CI_Controller
 
 	public function print_joborder($where)
 	{
-		if($this->session->userdata('logged_in')) {
+		if ($this->session->userdata('logged_in')) {
 
 
-            $results = $this->JobOrderModel->select_job_order($where);
+			$results = $this->JobOrderModel->select_job_order($where);
 
 			$data = [
-                'title' => 'Print Job Order',
-                'results' => $results
-            ];
-            
-			$this->load->view('job_order/print_joborder',$data);
+				'title' => 'Print Job Order',
+				'results' => $results
+			];
 
+			$this->load->view('job_order/print_joborder', $data);
 		} else {
 			redirect('', 'refresh');
 		}
 	}
 
 	// Export to CSV ( must be in result->array() )
-    function exportJobOrder($where)
-    {
+	function exportJobOrder($where)
+	{
 
-        $file_name = $where.'_joborders_on' . date('Ymd') . '.csv';
-        header("Content-Description: File Transfer");
-        header("Content-Disposition: attachment; filename=$file_name");
-        header("Content-Type: application/csv;");
+		$file_name = $where . '_joborders_on' . date('Ymd') . '.csv';
+		header("Content-Description: File Transfer");
+		header("Content-Disposition: attachment; filename=$file_name");
+		header("Content-Type: application/csv;");
 
 		// get data
-        $results = $this->JobOrderModel->select_job_order($where);
+		$results = $this->JobOrderModel->select_job_order($where);
 
-        // file creation 
-        $file = fopen('php://output', 'w');
+		// file creation 
+		$file = fopen('php://output', 'w');
 
-        $header = [
+		$header = [
 			'No',
 			'Status',
 			'Committed Schedule',
@@ -733,13 +728,13 @@ class JobOrderController extends CI_Controller
 			'Warranty',
 			'Remarks',
 			'With Permit'
-        ];
-        fputcsv($file, $header);
-        foreach ($results->result() as $row) {
+		];
+		fputcsv($file, $header);
+		foreach ($results->result() as $row) {
 			$scope = array();
 
 			$sub_scope = array();
-			
+
 			if ($row->cctv == 1) {
 				$sub_scope[] = 'CCTV';
 			}
@@ -776,7 +771,7 @@ class JobOrderController extends CI_Controller
 				$row->decision,
 				$row->commited_schedule,
 				$row->CompanyName,
-				implode(", ",$scope[0]),
+				implode(", ", $scope[0]),
 				$row->date_requested,
 				$row->type_of_project,
 				$row->comments,
@@ -786,12 +781,12 @@ class JobOrderController extends CI_Controller
 				$row->remarks,
 				$row->with_permit
 			]);
-        }
+		}
 		fclose($file);
-		
-		
-        exit;
-    }
+
+
+		exit;
+	}
 
 	public function edit_pending_joborder($joborder_id)
 	{
@@ -866,19 +861,18 @@ class JobOrderController extends CI_Controller
 			'success' => false,
 			'errors' => ''
 		];
-		if($this->input->post('cctv') == "" && $this->input->post('biometrics') == "" && $this->input->post('fdas') == "" && $this->input->post('intrusion_alarm') == "" && $this->input->post('pabx') == "" && $this->input->post('gate_barrier') == "" && $this->input->post('structured_cabling') == "" && $this->input->post('pabgm') == ""){
+		if ($this->input->post('cctv') == "" && $this->input->post('biometrics') == "" && $this->input->post('fdas') == "" && $this->input->post('intrusion_alarm') == "" && $this->input->post('pabx') == "" && $this->input->post('gate_barrier') == "" && $this->input->post('structured_cabling') == "" && $this->input->post('pabgm') == "") {
 			$rule = 'trim|required';
-    		$errors = [
-					'required' => 'Please Select Project Scope.'
-				];
-		}
-		else{
+			$errors = [
+				'required' => 'Please Select Project Scope.'
+			];
+		} else {
 			$rule = 'trim';
-    		$errors = "";
+			$errors = "";
 		}
 
-		$rules =[
-			
+		$rules = [
+
 			[
 				'field' => 'cctv',
 				'label' => 'CCTV',
@@ -939,64 +933,94 @@ class JobOrderController extends CI_Controller
 
 		$this->form_validation->set_rules($rules);
 
-		if($this->form_validation->run()) {
+		if ($this->form_validation->run()) {
 			$validate['success'] = true;
 
-			if($this->input->post('edit-accepted') == "edit-accepted-form"){
+			if ($this->input->post('edit-accepted') == "edit-accepted-form") {
 				$this->JobOrderModel->update_joborder(
-				$this->input->post('job_order_id'),
-				[
-					'customer_id' => $this->input->post('customer'),
-					'date_requested' => $this->input->post('date_requested'),
-					'jo_status' => $this->input->post('jo_status'),
-					'type_of_project' => $this->input->post('service_type'),
-					'comments' => $this->input->post('comments'),
-					'remarks' => $this->input->post('remarks'),
-					'date_reported' => $this->input->post('date_reported'),
-					'commited_schedule' => $this->input->post('date_scheduled'),
-					'requested_by' => $this->input->post('requestor'),
-					'under_warranty' => $this->input->post('under_warranty'),
-					'pic' => $this->input->post('pic_assigned'),
-					
-				]
+					$this->input->post('job_order_id'),
+					[
+						'customer_id' => $this->input->post('customer'),
+						'date_requested' => $this->input->post('date_requested'),
+						'jo_status' => $this->input->post('jo_status'),
+						'type_of_project' => $this->input->post('service_type'),
+						'comments' => $this->input->post('comments'),
+						'remarks' => $this->input->post('remarks'),
+						'date_reported' => $this->input->post('date_reported'),
+						'commited_schedule' => $this->input->post('date_scheduled'),
+						'requested_by' => $this->input->post('requestor'),
+						'under_warranty' => $this->input->post('under_warranty'),
+						'pic' => $this->input->post('pic_assigned'),
+
+					]
 				);
-			}
-			else{
+			} else {
 				$this->JobOrderModel->update_joborder(
-				$this->input->post('job_order_id'),
-				[
-					'customer_id' => $this->input->post('customer'),
-					'date_requested' => $this->input->post('date_requested'),
-					'jo_status' => $this->input->post('jo_status'),
-					'type_of_project' => $this->input->post('service_type'),
-					'comments' => $this->input->post('comments'),
-					'date_reported' => $this->input->post('date_reported'),
-					'commited_schedule' => $this->input->post('date_scheduled'),
-					'requested_by' => $this->input->post('requestor'),
-					'under_warranty' => $this->input->post('under_warranty'),
-					'pic' => ""
-				]
+					$this->input->post('job_order_id'),
+					[
+						'customer_id' => $this->input->post('customer'),
+						'date_requested' => $this->input->post('date_requested'),
+						'jo_status' => $this->input->post('jo_status'),
+						'type_of_project' => $this->input->post('service_type'),
+						'comments' => $this->input->post('comments'),
+						'date_reported' => $this->input->post('date_reported'),
+						'commited_schedule' => $this->input->post('date_scheduled'),
+						'requested_by' => $this->input->post('requestor'),
+						'under_warranty' => $this->input->post('under_warranty'),
+						'pic' => ""
+					]
 				);
 			}
 
-		$this->JobOrderModel->update_joborder_scope(
-			$this->input->post('job_order_scope_id'),
-			[
-				'cctv' => $this->input->post('cctv'),
-				'biometrics' => $this->input->post('biometrics'),
-				'fdas' => $this->input->post('fdas'),
-				'intrusion_alarm' => $this->input->post('intrusion_alarm'),
-				'pabx' => $this->input->post('pabx'),
-				'gate_barrier' => $this->input->post('gate_barrier'),
-				'efence' => $this->input->post('efence'),
-				'structured_cabling' => $this->input->post('structured_cabling'),
-				'pabgm' => $this->input->post('pabgm')
-			]
-		);
-		}
-		else {
+			$this->JobOrderModel->update_joborder_scope(
+				$this->input->post('job_order_scope_id'),
+				[
+					'cctv' => $this->input->post('cctv'),
+					'biometrics' => $this->input->post('biometrics'),
+					'fdas' => $this->input->post('fdas'),
+					'intrusion_alarm' => $this->input->post('intrusion_alarm'),
+					'pabx' => $this->input->post('pabx'),
+					'gate_barrier' => $this->input->post('gate_barrier'),
+					'efence' => $this->input->post('efence'),
+					'structured_cabling' => $this->input->post('structured_cabling'),
+					'pabgm' => $this->input->post('pabgm')
+				]
+			);
+		} else {
 			$validate['errors'] = validation_errors();
 		}
 		echo json_encode($validate);
+	}
+
+	public function gotodispatch()
+	{
+		if($this->session->userdata('logged_in')) {
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Add Dispatch Form';
+			$data['forms_menu_status'] = ' menu-open';
+			$data['dispatch_menu_status'] = ' menu-open';
+			$data['Generate_dispatch'] = ' active';
+			$data['ul_forms'] = ' active';
+			$data['dispatch_forms'] = ' active';
+			$data['ul_project_tree'] = ' active';
+			
+			$this->load->model('CustomersModel');
+			$results = $this->CustomersModel->getVtCustomersByName();
+			$data['GetCustomer'] = $results;
+
+			$this->load->model('TechniciansModel');
+			$results2 = $this->TechniciansModel->getTechnicians();
+			$data['GetTech'] = $results2;
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('forms/dispatch');
+			$this->load->view('templates/footer');
+			$this->load->view('forms/script');
+
+		} else {
+			redirect('', 'refresh');
+		}
 	}
 }

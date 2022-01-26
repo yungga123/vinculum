@@ -64,6 +64,7 @@ defined('BASEPATH') or die('Access Denied');
 			            				<th>Model</th>
 			            				<th>Description</th>
 			            				<th>Tool Type</th>
+			            				<th>Date of Purchase</th>
 			            				<th>Quantity</th>
 			            				<th>Price</th>
 			            				<th>Operation</th>

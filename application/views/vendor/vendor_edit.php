@@ -188,6 +188,33 @@ foreach($vendor_data as $row){
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <label>Sales Details:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_technical_name" class="control-label">Name</label>
+                                                            <input type="text" name="vendor_technical_name" class="form-control" placeholder="Enter Technical Name" value="<?php echo $vendor_data_result['vendor_technical_person'] ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                                <label for="vendor_technical_contact">Contact Number</label>
+                                                                <input type="text" name="vendor_technical_contact" class="form-control" placeholder="Enter Contact Number" value="<?php echo $vendor_data_result['vendor_technical_contact'] ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <div class="form-group">
+                                                            <label for="vendor_technical_email" class="control-label">Email Address</label>
+                                                            <input type="text" name="vendor_technical_email" class="form-control" placeholder="Enter Email Address" value="<?php echo $vendor_data_result['vendor_technical_email'] ?>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

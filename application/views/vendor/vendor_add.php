@@ -175,19 +175,19 @@
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label for="vendor_sales_name" class="control-label">Name</label>
-                                                            <input type="text" name="vendor_sales_name" class="form-control" placeholder="Enter Sales Name">
+                                                            <input type="text" name="vendor_sales_name" class="form-control" placeholder="Enter Sales Name" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                                 <label for="vendor_sales_contact">Contact Number</label>
-                                                                <input type="text" name="vendor_sales_contact" class="form-control" placeholder="Enter Contact Number">
+                                                                <input type="text" name="vendor_sales_contact" class="form-control" placeholder="Enter Contact Number" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label for="vendor_sales_email" class="control-label">Email Address</label>
-                                                            <input type="text" name="vendor_sales_email" class="form-control" placeholder="Enter Email Address">
+                                                            <input type="text" name="vendor_sales_email" class="form-control" placeholder="Enter Email Address" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -296,19 +296,19 @@
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label for="vendor_sales_name" class="control-label">Name</label>
-                                                            <input type="text" name="vendor_sales_name" class="form-control" placeholder="Enter Sales Name">
+                                                            <input type="text" name="brand_vendor_sales_name" class="form-control" placeholder="Enter Sales Name">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                                 <label for="vendor_sales_contact">Contact Number</label>
-                                                                <input type="text" name="vendor_sales_contact" class="form-control" placeholder="Enter Contact Number">
+                                                                <input type="text" name="brand_vendor_sales_contact" class="form-control" placeholder="Enter Contact Number">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label for="vendor_sales_email" class="control-label">Email Address</label>
-                                                            <input type="text" name="vendor_sales_email" class="form-control" placeholder="Enter Email Address">
+                                                            <input type="text" name="brand_vendor_sales_email" class="form-control" placeholder="Enter Email Address">
                                                         </div>
                                                     </div>
                                                 </div>

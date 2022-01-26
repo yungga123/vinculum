@@ -679,83 +679,83 @@ class SalesInquiryController extends CI_Controller
 		echo json_encode($client_data_arr);
 	}
 
-	public function delete_client()
-	{
-		$validate = [
-			'success' => false,
-			'errors' => ''
-		];
+	// public function delete_client()
+	// {
+	// 	$validate = [
+	// 		'success' => false,
+	// 		'errors' => ''
+	// 	];
 
-		$rules = [
+	// 	$rules = [
 
-			[
-				'field' => 'client_id_del',
-				'label' => 'Client ID',
-				'rules' => 'trim|required',
-				'errors' => [
-					'required' => 'Please Select Client.'
-				]
-			]
+	// 		[
+	// 			'field' => 'client_id_del',
+	// 			'label' => 'Client ID',
+	// 			'rules' => 'trim|required',
+	// 			'errors' => [
+	// 				'required' => 'Please Select Client.'
+	// 			]
+	// 		]
 
-		];
+	// 	];
 
-		$this->form_validation->set_error_delimiters('<p>• ', '</p>');
+	// 	$this->form_validation->set_error_delimiters('<p>• ', '</p>');
 
-		$this->form_validation->set_rules($rules);
+	// 	$this->form_validation->set_rules($rules);
 
-		if ($this->form_validation->run()) {
-			$validate['success'] = true;
+	// 	if ($this->form_validation->run()) {
+	// 		$validate['success'] = true;
 
 
-			$this->SalesInquiryModel->hide_client($this->input->post('client_id_del'), [
-				'is_deleted' => '1'
-			]);
-		} else {
-			$validate['errors'] = validation_errors();
-		}
-		echo json_encode($validate);
-	}
+	// 		$this->SalesInquiryModel->hide_client($this->input->post('client_id_del'), [
+	// 			'is_deleted' => '1'
+	// 		]);
+	// 	} else {
+	// 		$validate['errors'] = validation_errors();
+	// 	}
+	// 	echo json_encode($validate);
+	// }
 
-	public function delete_existingclient_project($project_id)
-	{
-		$this->SalesInquiryModel->deleteproject($project_id);
-		$this->SalesInquiryModel->deletetask($project_id);
+	// // public function delete_existingclient_project($project_id)
+	// // {
+	// // 	$this->SalesInquiryModel->deleteproject($project_id);
+	// // 	$this->SalesInquiryModel->deletetask($project_id);
 
-		$this->session->set_flashdata('success', 'Success! Project Deleted.');
-		redirect('inquiry-existing-clients');
-	}
+	// // 	$this->session->set_flashdata('success', 'Success! Project Deleted.');
+	// // 	redirect('inquiry-existing-clients');
+	// // }
 
-	public function delete_newclient_project($project_id)
-	{
-		$this->SalesInquiryModel->deleteproject($project_id);
-		$this->SalesInquiryModel->deletetask($project_id);
+	// public function delete_newclient_project($project_id)
+	// {
+	// 	$this->SalesInquiryModel->deleteproject($project_id);
+	// 	$this->SalesInquiryModel->deletetask($project_id);
 
-		$this->session->set_flashdata('success', 'Success! Project Deleted.');
-		redirect('inquiry-tempo-clients');
-	}
+	// 	$this->session->set_flashdata('success', 'Success! Project Deleted.');
+	// 	redirect('inquiry-tempo-clients');
+	// }
 
-	public function delete_branch_new($branch_id)
-	{
-		$this->SalesInquiryModel->deletebranch($branch_id);
-		$this->SalesInquiryModel->update_projects_branch($branch_id,[
-			'branch' => '',
-			'branch_id' => ''
-		]);
+	// public function delete_branch_new($branch_id)
+	// {
+	// 	$this->SalesInquiryModel->deletebranch($branch_id);
+	// 	$this->SalesInquiryModel->update_projects_branch($branch_id,[
+	// 		'branch' => '',
+	// 		'branch_id' => ''
+	// 	]);
 
-		$this->session->set_flashdata('success', 'Success! Branch Deleted.');
-		redirect('inquiry-tempo-clients/list');
-	}
+	// 	$this->session->set_flashdata('success', 'Success! Branch Deleted.');
+	// 	redirect('inquiry-tempo-clients/list');
+	// }
 
-	public function delete_branch_existing($branch_id)
-	{
-		$this->SalesInquiryModel->deletebranch($branch_id);
-		$this->SalesInquiryModel->update_projects_branch($branch_id,[
-			'branch' => '',
-			'branch_id' => ''
-		]);
-		$this->session->set_flashdata('success', 'Success! Branch Deleted.');
-		redirect('inquiry-existing-clients/list');
-	}
+	// public function delete_branch_existing($branch_id)
+	// {
+	// 	$this->SalesInquiryModel->deletebranch($branch_id);
+	// 	$this->SalesInquiryModel->update_projects_branch($branch_id,[
+	// 		'branch' => '',
+	// 		'branch_id' => ''
+	// 	]);
+	// 	$this->session->set_flashdata('success', 'Success! Branch Deleted.');
+	// 	redirect('inquiry-existing-clients/list');
+	// }
 
 	public function approved_client()
 	{

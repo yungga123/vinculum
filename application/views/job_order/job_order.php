@@ -83,6 +83,15 @@ elseif($form_id="edit-form"){
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="<?php echo site_url('Forms/Dispatch') ?>" class="btn btn-warning text-bold btn-block"><i class="fas fa-arrow-circle-right"></i>Go to Dispatch Form</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-sm-9">
