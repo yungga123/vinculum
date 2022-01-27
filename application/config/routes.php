@@ -216,3 +216,6 @@ $route['prf/prf'] = 'PrfController/prf';
 $route['prf/prf_list'] = 'PrfController/prf_list';
 $route['prf/prf_edit'] = 'PrfController/edit';
 $route['prf/prf_view'] = 'PrfController/prf_view';
+
+//BILLING INVOICE
+$route['billing_invoice/billinginvoice'] = 'BillingInvoiceController/billinginvoiceview';

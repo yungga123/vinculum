@@ -338,6 +338,7 @@ defined('BASEPATH') or die('Access Denied');
     </section>
   </div>
   </form>
+</div>
 
 
   <script>
