@@ -92,7 +92,8 @@ if(!function_exists('html_variable')) {
 			'prf_menu_display' => '',
 			'new_prf' => '',
 			'prf_list' => '',
-			'inventory_menu_status' => ''
+			'inventory_menu_status' => '',
+			'prf_title' => ''
 		];
 
     return $data;

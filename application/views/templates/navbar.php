@@ -174,14 +174,14 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 									<ul class="nav nav-treeview" style="display: <?php echo $prf_menu_display ?>;">
 
 										<li class="nav-item">
-											<a href="<?php echo site_url('prf-add') ?>/select-project/select-branch" class="nav-link<?php echo $new_prf ?>">
+											<a href="<?php echo site_url('prf-form') ?>/select-project/select-branch/select-prf" class="nav-link<?php echo $new_prf ?>">
 												<i class="far fa-circle nav-icon"></i>
-												<p>Add PRF</p>
+												<p>PRF Add</p>
 											</a>
 										</li>
 
 										<li class="nav-item">
-											<a href="<?php echo site_url('prf-list') ?>" class="nav-link<?php echo $prf_list ?>">
+											<a href="<?php echo site_url('prf-list/pending') ?>" class="nav-link<?php echo $prf_list ?>">
 												<i class="far fa-circle nav-icon"></i>
 												<p>PRF List</p>
 											</a>

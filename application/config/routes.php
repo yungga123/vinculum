@@ -65,8 +65,10 @@ $route['addnewitem'] = 'ItemsController/register_new_item';
 $route['addnewitem-scan'] = 'ItemsController/register_new_item_by_scan';
 $route['print-items/(:any)/(:any)'] = 'ItemsController/print_items/$1/$2';
 $route['exportitems/(:any)'] = 'ItemsController/exportItems/$1';
-$route['prf-add/(:any)/(:any)'] = 'PRFController/add_prf/$1/$2';
-$route['prf-list'] = 'PRFController/prf_list';
+$route['prf-form/(:any)/(:any)/(:any)'] = 'PRFController/prf_form/$1/$2/$3';
+$route['prf-return/(:any)'] = 'PRFController/prf_return/$1';
+$route['prf-list/(:any)'] = 'PRFController/prf_list/$1';
+$route['prf-print/(:any)'] = 'PRFController/prf_print/$1';
 
 
 //Logs Controller
