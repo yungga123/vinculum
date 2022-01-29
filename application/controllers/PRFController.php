@@ -170,6 +170,7 @@ class PRFController extends CI_Controller
                         $data['pic_id'] = $row->pic;
                         $data['inventory_id'] = $row->prepared_by;
                         $data['requestor_id'] = $row->requested_by;
+                        $data['date_issued'] =  $row->date_issued;
                         $requestor_id = $row->requested_by;
                     }
 
@@ -359,7 +360,8 @@ class PRFController extends CI_Controller
                 'project_id' => $this->input->post('project_activity'),
                 'sales' => $this->input->post('sales_incharge'),
                 'pic' => $this->input->post('person_in_charge'),
-                'prepared_by' => $this->input->post('prepared_by')
+                'prepared_by' => $this->input->post('prepared_by'),
+                'date_issued' => $this->input->post('date_issued')
             ];
 
             $this->PRFModel->edit_prf_info($prf_id, $data);
@@ -373,7 +375,8 @@ class PRFController extends CI_Controller
                 if ($this->input->post('prf_direct_items_id')[$i] != '') {
                     $data1 = [
                         'item_name' => $this->input->post('direct_item_name')[$i],
-                        'item_qty' => $this->input->post('direct_item_qty')[$i]
+                        'item_qty' => $this->input->post('direct_item_qty')[$i],
+                        'stock_available' => $this->input->post('direct_available_qty')[$i]
                     ];
                     $this->PRFModel->edit_prf_direct($this->input->post('prf_direct_items_id')[$i], $data1);
 
@@ -384,6 +387,7 @@ class PRFController extends CI_Controller
                     $data1 = [
                         'item_name' => $this->input->post('direct_item_name')[$i],
                         'item_qty' => $this->input->post('direct_item_qty')[$i],
+                        'stock_available' => $this->input->post('direct_available_qty')[$i],
                         'prf_id' => $prf_id
                     ];
                     $this->PRFModel->add_prf_direct($data1);
@@ -403,7 +407,8 @@ class PRFController extends CI_Controller
                 if ($this->input->post('prf_indirect_items_id')[$i] != '') {
                     $data2 = [
                         'item_name' => $this->input->post('indirect_item_name')[$i],
-                        'item_qty' => $this->input->post('indirect_item_qty')[$i]
+                        'item_qty' => $this->input->post('indirect_item_qty')[$i],
+                        'stock_available' => $this->input->post('indirect_available_qty')[$i]
                     ];
                     $this->PRFModel->edit_prf_indirect($this->input->post('prf_indirect_items_id')[$i], $data2);
                     $indirect_sub_id[] = $this->input->post('prf_indirect_items_id')[$i];
@@ -412,6 +417,7 @@ class PRFController extends CI_Controller
                     $data2 = [
                         'item_name' => $this->input->post('indirect_item_name')[$i],
                         'item_qty' => $this->input->post('indirect_item_qty')[$i],
+                        'stock_available' => $this->input->post('indirect_available_qty')[$i],
                         'prf_id' => $prf_id
                     ];
                     $this->PRFModel->add_prf_indirect($data2);
@@ -429,7 +435,8 @@ class PRFController extends CI_Controller
                 if ($this->input->post('prf_tools_items_id')[$i] != '') {
                     $data3 = [
                         'item_name' => $this->input->post('tools_item_name')[$i],
-                        'item_qty' => $this->input->post('tools_item_qty')[$i]
+                        'item_qty' => $this->input->post('tools_item_qty')[$i],
+                        'stock_available' => $this->input->post('tools_available_qty')[$i]
                     ];
                     $this->PRFModel->edit_prf_tools($this->input->post('prf_tools_items_id')[$i], $data3);
                     $tools_sub_id[] = $this->input->post('prf_tools_items_id')[$i];
@@ -438,6 +445,7 @@ class PRFController extends CI_Controller
                     $data3 = [
                         'item_name' => $this->input->post('tools_item_name')[$i],
                         'item_qty' => $this->input->post('tools_item_qty')[$i],
+                        'stock_available' => $this->input->post('tools_available_qty')[$i],
                         'prf_id' => $prf_id
                     ];
                     $this->PRFModel->add_prf_tools($data3);
@@ -562,6 +570,7 @@ class PRFController extends CI_Controller
             if($status =='ongoing'){
                 $sub_array[] = '
                 <button type="button" title="View Items List" class="btn btn-primary text-bold btn-xs fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
+                <a href="'.site_url('prf-form/'.$row->client_id .'/'.$row->branch_id.'/'.$row->prf_id).'" class="btn btn-warning text-bold btn-xs" title="Edit PRF Info"><i class="fas fa-edit"></i></a>
                 <button type="button" class="btn btn-success text-bold btn-xs select-prf-status" title="File PRF" data-toggle="modal" data-target="#file-prf"><i class="fas fa-file"></i></button>
                 <a href="'.site_url('prf-return/'.$row->prf_id).'" class="btn btn-warning text-bold btn-xs" title="Return Items"><i class="fas fa-undo"></i></a>
                 <a href="'.site_url('prf-print/'.$row->prf_id).'" class="btn btn-success text-bold btn-xs" title="Print PRF"><i class="fas fa-print"></i></a>';
@@ -708,6 +717,10 @@ class PRFController extends CI_Controller
                         $this->form_validation->set_message('confirm_user', 'Please Select Inventory Personnel First.');
                         return false;
                     }
+                    else if($this->input->post('prf_date_issued') == "0000-00-00"){
+                        $this->form_validation->set_message('confirm_user', 'Please Select Date Issued.');
+                        return false;
+                    }
                     else{
                         return true;
                     }
@@ -770,11 +783,11 @@ class PRFController extends CI_Controller
 
         if ($this->form_validation->run()) {
             $validate['success'] = true;
-            $date_issued = date('Y-m-d H:i:s');
+            // $date_issued = date('Y-m-d H:i:s');
 
             $this->PRFModel->PRF_status($this->input->post('prf_form_id'),[
-                'status' => $this->input->post('prf_status'),
-                'date_issued' => $date_issued
+                'status' => $this->input->post('prf_status')
+                // 'date_issued' => $date_issued
             ]);
         } 
         else {
@@ -1103,6 +1116,7 @@ class PRFController extends CI_Controller
             $sub_array['pic'] = $row->pic;
             $sub_array['prepared_by'] = $row->prepared_by;
             $sub_array['status'] = $row->status;
+            $sub_array['date_issued'] = $row->date_issued;
             $status = $row->status;
 
             if($status == "ongoing"){

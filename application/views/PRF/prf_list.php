@@ -216,6 +216,7 @@ defined('BASEPATH') or die('Access Denied');
                   <input type="hidden" name="prf_sales" id="prf_sales">
                   <input type="hidden" name="prf_pic" id="prf_pic">
                   <input type="hidden" name="prf_prepared" id="prf_prepared">
+                  <input type="hidden" name="prf_date_issued" id="prf_date_issued">
                   
                   <input type="hidden" name="returned_by" id="returned_by">
                   <input type="hidden" name="date_return" id="date_return">

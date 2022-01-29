@@ -119,7 +119,7 @@ defined('BASEPATH') or die('Access Denied');
                             <td><?php echo $row->itemName; ?></td>
                             <td></td>
                             <td class="text-center"><?php echo $row->item_qty; ?></td>
-                            <td></td>
+                            <td><?php echo $row->stock_available; ?></td>
                             <td class="text-center"><?php echo $row->consumed_qty; ?></td>
                             <td class="text-center"><?php echo $row->consumed_remarks; ?></td>
                             <td class="text-center"><?php echo $row->return_qty; ?></td>
@@ -155,7 +155,7 @@ defined('BASEPATH') or die('Access Denied');
                             <td><?php echo $row->itemName; ?></td>
                             <td></td>
                             <td class="text-center"><?php echo $row->item_qty; ?></td>
-                            <td></td>
+                            <td><?php echo $row->stock_available; ?></td>
                             <td class="text-center"><?php echo $row->consumed_qty; ?></td>
                             <td class="text-center"><?php echo $row->consumed_remarks; ?></td>
                             <td class="text-center"><?php echo $row->return_qty; ?></td>
@@ -191,7 +191,7 @@ defined('BASEPATH') or die('Access Denied');
                             <td><?php echo $row->description; ?></td>
                             <td></td>
                             <td class="text-center"><?php echo $row->item_qty; ?></td>
-                            <td></td>
+                            <td><?php echo $row->stock_available; ?></td>
                             <td class="text-center"><?php echo $row->consumed_qty; ?></td>
                             <td class="text-center"><?php echo $row->consumed_remarks; ?></td>
                             <td class="text-center"><?php echo $row->return_qty; ?></td>

@@ -136,7 +136,11 @@ defined('BASEPATH') or die('Access Denied');
                                 <?php if($status =="Edit"): ?>
                                     <div class="form-group">
                                         <div class="row">
-                                            <div class="col-sm-6 offset-sm-6">
+                                            <div class="col-sm-6">
+                                                <label for="date_issued">Date Issued:</label>
+                                                <input type="date" name="date_issued" class="form-control" value="<?php echo $date_issued; ?>" >
+                                            </div>
+                                            <div class="col-sm-6">
                                                 <label for="prepared_by">Prepared By:</label>
                                                 <select type="text" name="prepared_by" id="prepared_by" class="form-control  select2">
                                                     <option value="">---Please Select---</option>
@@ -181,7 +185,7 @@ defined('BASEPATH') or die('Access Denied');
                                                         <input type="hidden" name="prf_direct_items_id[]" value="
                                                         <?php if ($status == "Edit") {echo $row1->prf_items_id;} ?>">
                                                         <div class="row">
-                                                            <div class="col-sm-10">
+                                                            <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
                                                                 <label for="direct_item_name[]">Item Name</label>
                                                                 <select type="text" name="direct_item_name[]" class="form-control select-direct-item">
                                                                     <option value="">---Please Select---</option>
@@ -198,10 +202,12 @@ defined('BASEPATH') or die('Access Denied');
                                                                 <input type="text" name="direct_item_qty[]" class="form-control"
                                                                 <?php if ($status == "Edit") {echo ' value=';echo $row1->item_qty;} ?>>
                                                             </div>
-                                                            <!-- <div class="col-sm-2">
-                                                            <label for="available_qty[]">Available</label>
-                                                            <input type="text" name="available_qty[]" id="available_qty" class="form-control" readonly>
-                                                        </div> -->
+                                                            <?php if($status == "Edit"):?>
+                                                                <div class="col-sm-2">
+                                                                    <label for="direct_available_qty[]">Available</label>
+                                                                    <input type="text" name="direct_available_qty[]" id="direct_available_qty" class="form-control" value="<?php echo $row1->stock_available; ?>">
+                                                                </div>
+                                                            <?php endif ?>
                                                         </div>
                                                     </div>
                                                 <?php endforeach ?>
@@ -227,7 +233,7 @@ defined('BASEPATH') or die('Access Denied');
                                                         <input type="hidden" name="prf_indirect_items_id[]" value="
                                                         <?php if ($status == "Edit") {echo $row1->prf_items_id;} ?>">
                                                         <div class="row">
-                                                            <div class="col-sm-10">
+                                                            <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
                                                                 <label for="indirect_item_name[]">Item Name</label>
                                                                 <select type="text" name="indirect_item_name[]" class="form-control">
                                                                     <option value="">---Select---</option>
@@ -244,6 +250,12 @@ defined('BASEPATH') or die('Access Denied');
                                                                 <input type="text" name="indirect_item_qty[]" class="form-control"
                                                                 <?php if ($status == "Edit") {echo ' value=';echo $row1->item_qty;} ?>>
                                                             </div>
+                                                            <?php if($status == "Edit"):?>
+                                                                <div class="col-sm-2">
+                                                                    <label for="indirect_available_qty[]">Available</label>
+                                                                    <input type="text" name="indirect_available_qty[]" id="indirect_available_qty" class="form-control" value="<?php echo $row1->stock_available; ?>">
+                                                                </div>
+                                                            <?php endif ?>
                                                         </div>
                                                     </div>
                                                 <?php endforeach ?>
@@ -269,7 +281,7 @@ defined('BASEPATH') or die('Access Denied');
                                                         <input type="hidden" name="prf_tools_items_id[]" value="
                                                         <?php if ($status == "Edit") {echo $row1->prf_items_id;} ?>">
                                                         <div class="row">
-                                                            <div class="col-sm-10">
+                                                            <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
                                                                 <label for="tools_item_name[]">Item Name</label>
                                                                 <select type="text" name="tools_item_name[]" class="form-control">
                                                                     <option value="">---Please Select---</option>
@@ -286,6 +298,12 @@ defined('BASEPATH') or die('Access Denied');
                                                                 <input type="text" name="tools_item_qty[]" class="form-control"
                                                                 <?php if ($status == "Edit") {echo 'value=';echo $row1->item_qty;} ?>>
                                                             </div>
+                                                            <?php if($status == "Edit"):?>
+                                                                <div class="col-sm-2">
+                                                                    <label for="tools_available_qty[]">Available</label>
+                                                                    <input type="text" name="tools_available_qty[]" id="tools_available_qty" class="form-control" value="<?php echo $row1->stock_available; ?>">
+                                                                </div>
+                                                            <?php endif ?>
                                                         </div>
                                                     </div>
                                                 <?php endforeach ?>

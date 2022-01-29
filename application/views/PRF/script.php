@@ -353,11 +353,15 @@ if ($this->uri->segment(2) == "pending") {
                         $('.loading-modal').modal('hide');
 
                         toastr.success("PRF Successfully Updated!");
-                        me[0].reset();
+                        //me[0].reset();
 
-                        setTimeout(() => {
-                            window.location = "<?php echo site_url('prf-list/pending') ?>";
-                        }, 1000);
+                        // setTimeout(() => {
+                        //     <?php if($this->uri->segment(2) == "edit_prf_validate"): ?>
+                        //         window.location = "<?php echo site_url('prf-list/pending') ?>";
+                        //     <?php else: ?>
+                        //         window.location = "<?php echo site_url('prf-list/pending') ?>";
+                        //     <?php endif ?>
+                        // }, 1000);
                     } else {
                         $(':submit').removeAttr('disabled', 'disabled');
                         $('.loading-modal').modal('hide');
@@ -412,6 +416,7 @@ if ($this->uri->segment(2) == "pending") {
                         $('#prf_pic').val(response.results[key].pic);
                         $('#prf_prepared').val(response.results[key].prepared_by);
                         $('#prf_status1').val(response.results[key].status);
+                        $('#prf_date_issued').val(response.results[key].date_issued);
 
                         $('#returned_by').val(response.results[key].returned_by);
                         $('#date_return').val(response.results[key].date_return);
