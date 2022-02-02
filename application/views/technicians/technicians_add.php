@@ -134,6 +134,7 @@ defined('BASEPATH') or die('Access Denied');
                                                             <option>Project-Based</option>
                                                             <option>Part-Time</option>
                                                             <option>Regular</option>
+                                                            <option>Managerial</option>
                                                             <option>Resigned</option>
                                                             <option>Terminated</option>
                                                         </select>
