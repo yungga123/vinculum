@@ -264,11 +264,10 @@ class RequisitionFormController extends CI_Controller {
                     <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
                     ' .$btn_status;
             } elseif($this->uri->segment(2) == 'fetch_accepted_requisitions') {
+                //  <a href="'.site_url('requisition-update/'.$row->req_id).'" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</a>
+
+                //     <button type="button" class="btn btn-danger text-bold btn-xs btn-block btn_req_del" data-toggle="modal" data-target="#delete-requisition"><i class="fas fa-trash"></i> DISCARD</button>
                 $operation = '
-                    <a href="'.site_url('requisition-update/'.$row->req_id).'" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit"></i> EDIT</a>
-
-                    <button type="button" class="btn btn-danger text-bold btn-xs btn-block btn_req_del" data-toggle="modal" data-target="#delete-requisition"><i class="fas fa-trash"></i> DISCARD</button>
-
                     <button type="button" class="btn btn-primary text-bold btn-xs btn-block btn_view" data-toggle="modal" data-target=".modal-reqitems"><i class="fas fa-search"></i> VIEW ITEMS</button>
                     ' .$btn_status;
             } 
