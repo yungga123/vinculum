@@ -319,6 +319,38 @@ class JobOrderController extends CI_Controller
 							);
 						}
 						break;
+					
+					case 'Video Wall':
+						if ($i == 0) {
+							$this->JobOrderModel->add_joborder_scope([
+								'job_order_id' => $job_order_id,
+								'video_wall' => 1
+							]);
+						} else {
+							$this->JobOrderModel->update_joborder_scope(
+								$job_order_id,
+								[
+									'video_wall' => 1
+								]
+							);
+						}
+						break;
+
+					case 'Wireless Access Point':
+						if ($i == 0) {
+							$this->JobOrderModel->add_joborder_scope([
+								'job_order_id' => $job_order_id,
+								'wap' => 1
+							]);
+						} else {
+							$this->JobOrderModel->update_joborder_scope(
+								$job_order_id,
+								[
+									'wap' => 1
+								]
+							);
+						}
+						break;
 				}
 			}
 		} else {
@@ -581,6 +613,12 @@ class JobOrderController extends CI_Controller
 			if ($row->pabgm == 1) {
 				$sub_scope[] = 'PABGM';
 			}
+			if ($row->video_wall == 1) {
+				$sub_scope[] = 'Video Wall';
+			}
+			if ($row->wap == 1) {
+				$sub_scope[] = 'WAP';
+			}
 
 			if ($row->date_requested != '0000-00-00') {
 				$date_requested = date_format(date_create($row->date_reported), 'F d, Y');
@@ -619,8 +657,6 @@ class JobOrderController extends CI_Controller
 			}
 
 			
-
-
 			$scope[] = $sub_scope;
 
 			$sub_array[] = $row->joborder_id;
@@ -862,7 +898,7 @@ class JobOrderController extends CI_Controller
 			'success' => false,
 			'errors' => ''
 		];
-		if($this->input->post('cctv') == "" && $this->input->post('biometrics') == "" && $this->input->post('fdas') == "" && $this->input->post('intrusion_alarm') == "" && $this->input->post('pabx') == "" && $this->input->post('gate_barrier') == "" && $this->input->post('structured_cabling') == "" && $this->input->post('pabgm') == ""){
+		if($this->input->post('cctv') == "" && $this->input->post('biometrics') == "" && $this->input->post('fdas') == "" && $this->input->post('intrusion_alarm') == "" && $this->input->post('pabx') == "" && $this->input->post('gate_barrier') == "" && $this->input->post('structured_cabling') == "" && $this->input->post('pabgm') == "" && $this->input->post('video_wall') == "" && $this->input->post('wap') == "") {
 			$rule = 'trim|required';
     		$errors = [
 					'required' => 'Please Select Project Scope.'
@@ -919,6 +955,16 @@ class JobOrderController extends CI_Controller
 			[
 				'field' => 'pabgm',
 				'label' => 'PABGM',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'video_wall',
+				'label' => 'Video Wall',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'wap',
+				'label' => 'Wireless Access Point',
 				'rules' => 'trim'
 			],
 			[
@@ -986,7 +1032,9 @@ class JobOrderController extends CI_Controller
 				'gate_barrier' => $this->input->post('gate_barrier'),
 				'efence' => $this->input->post('efence'),
 				'structured_cabling' => $this->input->post('structured_cabling'),
-				'pabgm' => $this->input->post('pabgm')
+				'pabgm' => $this->input->post('pabgm'),
+				'video_wall' => $this->input->post('video_wall'),
+				'wap' => $this->input->post('wap')
 			]
 		);
 		}
