@@ -35,12 +35,9 @@ defined('BASEPATH') or die('Access Denied');
                             <h4>PO Status:</h4>
                         </div>
                         <div class="card-body">
-                            <a href="<?php echo site_url('generated-po-list') ?>/pending" class="btn btn-warning text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'pending') {
-                                                                                                                                                echo 'disabled';
-                                                                                                                                            } ?>"><i class="fas fa-pause"></i> Pending PO List</a>
-                            <a href="<?php echo site_url('generated-po-list') ?>/approved" class="btn btn-success text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'approved') {
-                                                                                                                                                    echo 'disabled';
-                                                                                                                                                } ?>"><i class="fas fa-check"></i> Approved PO List</a>
+                            <a href="<?php echo site_url('generated-po-list') ?>/pending" class="btn btn-warning text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'pending') {echo 'disabled';} ?>"><i class="fas fa-pause"></i> Pending PO List</a>
+                            <a href="<?php echo site_url('generated-po-list') ?>/approved" class="btn btn-success text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'approved') {echo 'disabled';} ?>"><i class="fas fa-check"></i> Approved PO List</a>
+                            <a href="<?php echo site_url('generated-po-list') ?>/filed" class="btn btn-danger text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'filed') {echo 'disabled';} ?>"><i class="fas fa-file"></i> Filed PO List</a>
                         </div>
                     </div>
                     </div>
@@ -215,9 +212,11 @@ defined('BASEPATH') or die('Access Denied');
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?php echo form_open('POController/approved_po', ["id" => "form-approved-po"]) ?>
+            <?php echo form_open('POController/file_po', ["id" => "form-approved-po"]) ?>
             <div class="modal-body text-center">
                 <div class="form-group">
+                    <label for="po_id">Are you sure you want to approved this PO ?</label>
+                    <br><br>
                     <label for="po_id">PO ID</label>
                     <input type="text" name="po_id" id="po_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
                 </div>
@@ -230,6 +229,35 @@ defined('BASEPATH') or die('Access Denied');
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> APPROVED</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for File PO-->
+<div class="modal fade" id="file-po" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <b class="modal-title">File PO</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php echo form_open('POController/file_po', ["id" => "form-file-po"]) ?>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <label for="po_id_filing">Are you sure you want to file this PO ?</label>
+                    <br><br>
+                    <label for="po_id_filing">PO ID</label>
+                    <input type="text" name="po_id_filing" id="po_id_filing" class="form-control col-6 offset-3 text-bold text-center" readonly>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> File</button>
             </div>
             <?php echo form_close() ?>
         </div>

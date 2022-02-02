@@ -110,15 +110,23 @@ class POController extends CI_Controller
             $sub_array[] = $date;
             if ($po_status == 'pending') {
                 $sub_array[] = '
-<button type="button" class="btn btn-success text-bold btn-xs btn_po_id" data-toggle="modal" data-target="#approved-po"><i class="fas fa-check"></i></button>
-<button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po"><i class="fas fa-trash"></i></button>
-<button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items"><i class="fas fa-search"></i></button>
+<button type="button" class="btn btn-success text-bold btn-xs btn_po_id" data-toggle="modal" data-target="#approved-po" title="Approved PO"><i class="fas fa-check"></i></button>
+<button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po" title="Delete PO"><i class="fas fa-trash"></i></button>
+<button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items" title="View Items"><i class="fas fa-search"></i></button>
 ';
-            } else {
+            }
+            elseif ($po_status == 'filed') {
                 $sub_array[] = '
-<button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po"><i class="fas fa-trash"></i></button>
-<button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items"><i class="fas fa-search"></i></button>
-<a href="' . site_url('generate-po/' . $row->po_id) . '" class="btn btn-xs btn-success" target="_blank"><i class="fas fa-print"></i></a>
+<button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items" title="View Items"><i class="fas fa-search"></i></button>
+<a href="' . site_url('generate-po/' . $row->po_id) . '" class="btn btn-xs btn-success" target="_blank" title="Print PO"><i class="fas fa-print"></i></a>
+';
+            }
+             else {
+                $sub_array[] = '
+                <button type="button" class="btn btn-success text-bold btn-xs btn_po_id_filing" data-toggle="modal" data-target="#file-po" title="File PO"><i class="fas fa-file"></i></button>
+<button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po" title="Delete PO"><i class="fas fa-trash"></i></button>
+<button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items" title="View Items"><i class="fas fa-search"></i></button>
+<a href="' . site_url('generate-po/' . $row->po_id) . '" class="btn btn-xs btn-success" target="_blank" title="Print PO"><i class="fas fa-print"></i></a>
 ';
             }
 
@@ -288,6 +296,7 @@ class POController extends CI_Controller
                     'mark_as_proceed' => '0'
                 ]);
             }
+            
             $data['employee_list'] = $this->POModel->get_employee_list();
             $data['supplier_details'] = $this->POModel->get_supplier_details($po_id);
             $mark_as_read = 1;
@@ -460,6 +469,11 @@ class POController extends CI_Controller
         $this->get_generated_po_list('approved');
     }
 
+    public function fetch_filed_po()
+    {
+        $this->get_generated_po_list('filed');
+    }
+
     function confirmreq_pw()
     {
 
@@ -511,6 +525,44 @@ class POController extends CI_Controller
                     'mark_as_proceed' => '1'
                 ]);
             }
+        } else {
+            $validate['errors'] = validation_errors();
+        }
+        echo json_encode($validate);
+    }
+
+    public function file_po()
+    {
+        $validate = [
+            'success' => false,
+            'errors' => ''
+        ];
+
+        $rules = [
+
+            [
+                'field' => 'po_id_filing',
+                'label' => 'PO ID',
+                'rules' => 'trim|required',
+                'errors' => [
+                    'required' => 'Please select PO'
+                ]
+            ]
+        ];
+
+        $this->form_validation->set_error_delimiters('<p>• ', '</p>');
+
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run()) {
+            $validate['success'] = true;
+
+            //$this->update_item_requisition_validate();
+
+            $this->POModel->update_approved_po($this->input->post('po_id_filing'), [
+                'po_status' => 'filed',
+                'date_filed' => date('Y-m-d')
+            ]);
         } else {
             $validate['errors'] = validation_errors();
         }
