@@ -176,14 +176,14 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 										<li class="nav-item">
 											<a href="<?php echo site_url('prf-form') ?>/select-project/select-branch/select-prf" class="nav-link<?php echo $new_prf ?>">
 												<i class="far fa-circle nav-icon"></i>
-												<p>PRF Add</p>
+												<p>Create PRF</p>
 											</a>
 										</li>
 
 										<li class="nav-item">
 											<a href="<?php echo site_url('prf-list/pending') ?>" class="nav-link<?php echo $prf_list ?>">
 												<i class="far fa-circle nav-icon"></i>
-												<p>PRF List</p>
+												<p>PRF List <span class="right badge badge-danger"><?php echo $this->CountsModel->count_prf() ?></span></p>
 											</a>
 										</li>
 									</ul>

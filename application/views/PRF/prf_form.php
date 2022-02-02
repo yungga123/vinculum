@@ -179,14 +179,25 @@ defined('BASEPATH') or die('Access Denied');
                                                 <h5>Direct</h5>
                                             </div>
                                             <div class="card-body">
-
+                                                <div class="row">
+                                                    <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
+                                                        <label for="direct_item_name">Item Name</label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label for="direct_item_qty">Item Qty</label>
+                                                    </div>
+                                                    <?php if($status == "Edit"):?>
+                                                        <div class="col-sm-2">
+                                                            <label for="direct_available_qty">Available</label>
+                                                        </div>
+                                                    <?php endif ?>
+                                                </div>
                                                 <?php foreach ($prfdirectitems as $row1) : ?>
                                                     <div class="form-group add-direct">
+                                                        <div class="row">
                                                         <input type="hidden" name="prf_direct_items_id[]" value="
                                                         <?php if ($status == "Edit") {echo $row1->prf_items_id;} ?>">
-                                                        <div class="row">
                                                             <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
-                                                                <label for="direct_item_name[]">Item Name</label>
                                                                 <select type="text" name="direct_item_name[]" class="form-control select-direct-item">
                                                                     <option value="">---Please Select---</option>
                                                                     <?php foreach ($direct_item_list as $row) : ?>
@@ -198,13 +209,11 @@ defined('BASEPATH') or die('Access Denied');
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <label for="direct_item_qty[]">Item Qty</label>
                                                                 <input type="text" name="direct_item_qty[]" class="form-control"
                                                                 <?php if ($status == "Edit") {echo ' value=';echo $row1->item_qty;} ?>>
                                                             </div>
                                                             <?php if($status == "Edit"):?>
                                                                 <div class="col-sm-2">
-                                                                    <label for="direct_available_qty[]">Available</label>
                                                                     <input type="text" name="direct_available_qty[]" id="direct_available_qty" class="form-control" value="<?php echo $row1->stock_available; ?>">
                                                                 </div>
                                                             <?php endif ?>
@@ -228,13 +237,25 @@ defined('BASEPATH') or die('Access Denied');
                                                 <h5>Indirect</h5>
                                             </div>
                                             <div class="card-body">
+                                                <div class="row">
+                                                    <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
+                                                        <label for="indirect_item_name">Item Name</label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label for="indirect_item_qty">Item Qty</label>
+                                                    </div>
+                                                    <?php if($status == "Edit"):?>
+                                                        <div class="col-sm-2">
+                                                            <label for="indirect_available_qty">Available</label>
+                                                        </div>
+                                                    <?php endif ?>
+                                                </div>
                                                 <?php foreach ($prfindirectitems as $row1) : ?>
                                                     <div class="form-group add-indirect">
+                                                        <div class="row">
                                                         <input type="hidden" name="prf_indirect_items_id[]" value="
                                                         <?php if ($status == "Edit") {echo $row1->prf_items_id;} ?>">
-                                                        <div class="row">
                                                             <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
-                                                                <label for="indirect_item_name[]">Item Name</label>
                                                                 <select type="text" name="indirect_item_name[]" class="form-control">
                                                                     <option value="">---Select---</option>
                                                                     <?php foreach ($indirect_item_list as $row) : ?>
@@ -246,13 +267,11 @@ defined('BASEPATH') or die('Access Denied');
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <label for="indirect_item_qty[]">Item Qty</label>
                                                                 <input type="text" name="indirect_item_qty[]" class="form-control"
                                                                 <?php if ($status == "Edit") {echo ' value=';echo $row1->item_qty;} ?>>
                                                             </div>
                                                             <?php if($status == "Edit"):?>
                                                                 <div class="col-sm-2">
-                                                                    <label for="indirect_available_qty[]">Available</label>
                                                                     <input type="text" name="indirect_available_qty[]" id="indirect_available_qty" class="form-control" value="<?php echo $row1->stock_available; ?>">
                                                                 </div>
                                                             <?php endif ?>
@@ -276,13 +295,25 @@ defined('BASEPATH') or die('Access Denied');
                                                 <h5>Tools</h5>
                                             </div>
                                             <div class="card-body">
+                                                <div class="row">
+                                                    <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
+                                                        <label for="tools_item_name">Item Name</label>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <label for="tools_item_qty">Item Qty</label>
+                                                    </div>
+                                                    <?php if($status == "Edit"):?>
+                                                        <div class="col-sm-2">
+                                                            <label for="tools_available_qty">Available</label>
+                                                        </div>
+                                                    <?php endif ?>
+                                                </div>
                                                 <?php foreach ($prftoolsitems as $row1) : ?>
                                                     <div class="form-group add-tools">
+                                                        <div class="row">
                                                         <input type="hidden" name="prf_tools_items_id[]" value="
                                                         <?php if ($status == "Edit") {echo $row1->prf_items_id;} ?>">
-                                                        <div class="row">
                                                             <div class="<?php if($status =="Edit"){echo 'col-sm-8';}else{echo 'col-sm-10';}?>">
-                                                                <label for="tools_item_name[]">Item Name</label>
                                                                 <select type="text" name="tools_item_name[]" class="form-control">
                                                                     <option value="">---Please Select---</option>
                                                                     <?php foreach ($tools_item_list as $row) : ?>
@@ -294,13 +325,11 @@ defined('BASEPATH') or die('Access Denied');
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-2">
-                                                                <label for="tools_item_qty[]">Item Qty</label>
                                                                 <input type="text" name="tools_item_qty[]" class="form-control"
                                                                 <?php if ($status == "Edit") {echo 'value=';echo $row1->item_qty;} ?>>
                                                             </div>
                                                             <?php if($status == "Edit"):?>
                                                                 <div class="col-sm-2">
-                                                                    <label for="tools_available_qty[]">Available</label>
                                                                     <input type="text" name="tools_available_qty[]" id="tools_available_qty" class="form-control" value="<?php echo $row1->stock_available; ?>">
                                                                 </div>
                                                             <?php endif ?>

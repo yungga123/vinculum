@@ -539,14 +539,17 @@ class PRFController extends CI_Controller
             }
 
             if($status == "filed"){
-                foreach($requestor_list as $row1){
-                    if($row1->id == $row->returned_by){
-                        $returned_by = $row1->lastname.', '.$row1->firstname.' ';
-                    }
-                    else{
-                        $returned_by = "";
+                if($row->returned_by == ""){
+                    $returned_by = "";
+                }  
+                else{
+                    foreach($requestor_list as $row1){
+                        if($row1->id == $row->returned_by){
+                            $returned_by = $row1->lastname.', '.$row1->firstname.' ';
+                        } 
                     }
                 }
+                
                 if($row->date_return == "0000-00-00"){
                     $date_return = "";
                 }else{

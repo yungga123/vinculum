@@ -100,8 +100,12 @@ class PRFModel extends CI_Model {
 	// }
 
 	public function fetchtoollist() {
-		$this->db->order_by('model', 'asc');
-		return $this->db->get_where('tools',['is_deleted' => '0'])->result();
+		$this->db->select('*');
+		$this->db->from('tools');
+		$this->db->where('is_deleted', '0');
+		$this->db->where('quantity', '1');
+
+		return $this->db->get()->result();
 	}
 
 	public function fetchprojectlist($branch_id) {
@@ -388,4 +392,5 @@ class PRFModel extends CI_Model {
 
 		return $this->db->get()->result();
 	}
+
 }

@@ -37,4 +37,11 @@ class CountsModel extends CI_Model {
     }
     //END OF REQUISITION COUNTS
 
+
+    // PRF Counts
+	public function count_prf() {
+        $this->db->where('status','pending');
+        $this->db->where('is_deleted',0);
+        return $this->db->count_all_results('prf_info');
+    }
 }
