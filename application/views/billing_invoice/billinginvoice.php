@@ -60,7 +60,7 @@ defined('BASEPATH') or die('Access Denied');
                                         </tr>
                                         <tr>
                                             <td>September 25, 2021</td>
-                                            <td>September 30, 2021</td>
+                                            <td><input type="text" class="form-control" placeholder=""></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -81,13 +81,32 @@ defined('BASEPATH') or die('Access Denied');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">Southern Philippines Institute of Science and Technology (SPIST)</th>
+                        <th scope="col">
+                            <form>
+                                <div class="row">
+                                    <div class="col">
+                                        <?php { ?>
+                                            <select class="form-control select-employee select2" name="emp_id" id="emp_id">
+                                                <option value="">
+                                                    <--- Please Select --->
+                                                </option>
+                                                <?php foreach ($supplier as $row) { ?>
+                                                    <option value="<?php echo $row->supplier_id; ?>" >
+                                                    <?php echo $row->supplier_id; ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </form>
+                        </th>
                         <th scope="col">VINCULUM TECHNOLOGIES</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Tia Maria Bldg. Agunaldo Highway, Anabu 2A Imus City</td>
+                        <td><input type="text" class="form-control" placeholder="" readonly></td>
                         <td>70 National Road, Putatan Muntinlupa City</td>
                     </tr>
                 </tbody>
@@ -95,15 +114,16 @@ defined('BASEPATH') or die('Access Denied');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="5">Attention: Mr. Ryan John Delos Santos</th>
+                        <th scope="col" colspan="5">Attention: <input type="text" class="form-control" placeholder=""  style="width:30%;" readonly></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row" colspan="3">Project Name & Reference<br>
-                            Qtn Ref. No.: QJC21012G</th>
-                        <th scope="row">Total Project Cost</th>
-                        <th scope="row">PHP 207260.55</th>
+                            <input type="text" class="form-control" placeholder="">
+                        </th>
+                        <th scope="row" style="text-align: center;">Total Project Cost</th>
+                        <th scope="row">PHP<input type="text" class="form-control" placeholder=""></th>
                     </tr>
                     <tr>
                         <th scope="row">Terms</th>
@@ -113,11 +133,11 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="row">Payable Amount</th>
                     </tr>
                     <tr>
-                        <td>50% Down Payment</td>
-                        <td>1</td>
-                        <td>lot</td>
-                        <td>Supply and Installation of 20 Analog CCTV Surveillance Camera </td>
-                        <td>P 103630.28</td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="number" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="text" class="form-control" placeholder=""></td>
+                        <td><input type="number" class="form-control" placeholder="P"></td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
@@ -212,13 +232,13 @@ defined('BASEPATH') or die('Access Denied');
             <div class="container" style="margin:5%; font-weight:bold;">
                 <div class="row">
                     <div class="col-sm">
-                    Engr. Ginelou Niño T. Garzon
+                        Engr. Ginelou Niño T. Garzon
                     </div>
                     <div class="col-sm">
-                    Marvin G. Lucas
+                        Marvin G. Lucas
                     </div>
                     <div class="col-sm">
-                    _______________________
+                        _______________________
                     </div>
                 </div>
             </div>

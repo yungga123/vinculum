@@ -3,6 +3,14 @@ defined('BASEPATH') or die('Access Denied');
 
 class BillingInvoiceController extends CI_Controller{
 
+	public function __construct()
+	{
+		Parent::__construct();
+		$this->load->model('BillingInvoiceModel');
+		$this->load->library('form_validation');
+		$this->load->database();
+	}
+
     public function billinginvoiceview()
     {
 
@@ -11,6 +19,8 @@ class BillingInvoiceController extends CI_Controller{
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Billing Invoice';
+			$supplier = $this->BillingInvoiceModel->billing_invoice();
+			$data['supplier'] = $supplier;
 			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
