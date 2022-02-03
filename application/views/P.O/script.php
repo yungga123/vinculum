@@ -7,7 +7,6 @@ if($this->uri->segment(2) == "pending"){
 else{
     $url_po_list = site_url('POController/fetch_approved_po');
 }
-
 ?>
 
 <script>

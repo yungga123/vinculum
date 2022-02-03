@@ -44,6 +44,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- fullCalendar -->
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.css">
   
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   
 
   <!-- Date Range Picker -->
