@@ -212,7 +212,7 @@ defined('BASEPATH') or die('Access Denied');
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?php echo form_open('POController/file_po', ["id" => "form-approved-po"]) ?>
+            <?php echo form_open('POController/approved_po', ["id" => "form-approved-po"]) ?>
             <div class="modal-body text-center">
                 <div class="form-group">
                     <label for="po_id">Are you sure you want to approved this PO ?</label>
