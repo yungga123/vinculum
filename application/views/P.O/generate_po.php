@@ -329,19 +329,8 @@ $total_amount = $sub_total;
     <br>
     <br>
     <div class="row">
-        <div class="col-sm-12">
-            <h6>
-                <b>
-                    PREPARED BY: VERONICA SEMBRANO
-                </b>
-            </h6>
-        </div>
-    </div>
-    <br>
-    <br>
-    <div class="row">
         <div class="col-sm-9">
-            <h6>RECOMMENDING APPROVAL:</h6>
+            <h6>PREPARED BY:</h6>
         </div>
         <div class="col-sm-3">
             <h6>APPROVED BY:</h6>
@@ -352,14 +341,14 @@ $total_amount = $sub_total;
         <div class="col-sm-9">
             <h6>
                 <b>
-                    ENGR. GINELOU NIÑO T. GARZON
+                VERONICA SEMBRANO
                 </b>
             </h6>
         </div>
         <div class="col-sm-3">
             <h6>
                 <b>
-                    MARVIN G. LUCAS
+                ENGR. GINELOU NIÑO T. GARZON
                 </b>
             </h6>
         </div>
