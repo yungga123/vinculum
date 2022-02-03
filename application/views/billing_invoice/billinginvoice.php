@@ -85,14 +85,27 @@ defined('BASEPATH') or die('Access Denied');
                             <form>
                                 <div class="row">
                                     <div class="col">
-                                        <?php { ?>
-                                            <select class="form-control select-employee select2" name="emp_id" id="emp_id">
+                                        <?php if ($payroll['id'] == 'id') { ?>
+                                            <select class="form-control form-control-sm select-employee select2" name="supplier_id" id="supplier_id">
                                                 <option value="">
                                                     <--- Please Select --->
                                                 </option>
                                                 <?php foreach ($supplier as $row) { ?>
-                                                    <option value="<?php echo $row->supplier_id; ?>" >
-                                                    <?php echo $row->supplier_id; ?>
+                                                    <option value="<?php echo $row->id ?>" <?php if ($row->id == $payroll['id']) {
+                                                                                                echo 'selected';
+                                                                                            } ?>>
+                                                        <?php echo $row->customer_name ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
+                                        <?php } else { ?>
+                                            <select class="form-control form-control-sm select-employee select2" name="supplier_id" id="supplier_id">
+                                                <option value="">
+                                                    <--- Please Select --->
+                                                </option>
+                                                <?php foreach ($supplier as $row) { ?>
+                                                    <option value="<?php echo $row->id ?>">
+                                                        <?php echo $row->customer_name ?>
                                                     </option>
                                                 <?php } ?>
                                             </select>
@@ -106,7 +119,9 @@ defined('BASEPATH') or die('Access Denied');
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" class="form-control" placeholder="" readonly></td>
+                        <td><input type="text" class="form-control" placeholder="" readonly <?php if ($payroll['id'] == 'id') {
+                        echo 'value="'.$payroll['customer_name'].'"';
+                        } ?>></td>
                         <td>70 National Road, Putatan Muntinlupa City</td>
                     </tr>
                 </tbody>
@@ -114,7 +129,8 @@ defined('BASEPATH') or die('Access Denied');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="5">Attention: <input type="text" class="form-control" placeholder=""  style="width:30%;" readonly></th>
+                        <th scope="col" colspan="5">Attention: <input type="text" class="form-control" placeholder="" style="width:30%;" readonly <?php if ($payroll['id'] == 'id') {
+                        echo 'value="'.$payroll['contact_person'].'"'; } ?>></th>
                     </tr>
                 </thead>
                 <tbody>
