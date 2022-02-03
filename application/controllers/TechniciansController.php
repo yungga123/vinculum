@@ -6,20 +6,25 @@ class TechniciansController extends CI_Controller {
 	public function index(){
 		if($this->session->userdata('logged_in')) {
 
-			$this->load->model('TechniciansModel');
-			$results = $this->TechniciansModel->getTechnicians();
+			if($this->session->userdata('logged_in')['class'] == 1) {
+				$this->load->model('TechniciansModel');
+				$results = $this->TechniciansModel->getTechnicians();
 
-			$this->load->helper('site_helper');
+				$this->load->helper('site_helper');
 
-			$data = html_variable();
-			$data['title'] = 'Employees';
-			$data['results'] = $results;
+				$data = html_variable();
+				$data['title'] = 'Employees';
+				$data['results'] = $results;
 
-			$this->load->view('templates/header', $data);
-			$this->load->view('templates/navbar');
-			$this->load->view('technicians/technicians');
-			$this->load->view('templates/footer');
-			$this->load->view('technicians/script');
+				$this->load->view('templates/header', $data);
+				$this->load->view('templates/navbar');
+				$this->load->view('technicians/technicians');
+				$this->load->view('templates/footer');
+				$this->load->view('technicians/script');
+			}
+			else {
+				redirect('offlimits');
+			}
 		} else {
 			redirect('','refresh');
 		}
