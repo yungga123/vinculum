@@ -41,13 +41,25 @@ foreach ($supplier_details as $row) {
 }
 
 foreach ($po_details as $row) {
-    $po_data = [
-        'po_id' =>$row->po_id,
-        'po_date_year' => date('y'),
-        'po_date_month' => date('m'),
-        'po_date_day' => date('d'),
-        'po_revise_count' => $row->po_revise
-    ];
+    if($row->po_status == "approved"){
+        $po_data = [
+            'po_id' =>$row->po_id,
+            'po_date_year' => date('y'),
+            'po_date_month' => date('m'),
+            'po_date_day' => date('d'),
+            'po_revise_count' => $row->po_revise
+        ];
+    }
+    elseif($row->po_status =="filed"){
+        $po_data = [
+            'po_id' =>$row->po_id,
+            'po_date_year' => date_format(date_create($row->date_filed), 'y'),
+            'po_date_month' => date_format(date_create($row->date_filed), 'm'),
+            'po_date_day' => date_format(date_create($row->date_filed), 'd'),
+            'po_revise_count' => $row->po_revise
+        ];
+    }
+    
 }
 
 

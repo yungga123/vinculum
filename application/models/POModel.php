@@ -187,7 +187,7 @@ class POModel extends CI_Model
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('a.po_id', $po_id);
-        $this->db->where('po_status', 'approved');
+        // $this->db->where('po_status', 'filed');
         $this->db->limit(1);
         return $this->db->get()->result();
     }
