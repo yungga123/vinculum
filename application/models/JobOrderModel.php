@@ -78,7 +78,9 @@ class JobOrderModel extends CI_Model {
                 'c.gate_barrier',
                 'c.efence',
                 'c.structured_cabling',
-                'c.pabgm'
+                'c.pabgm',
+                'c.video_wall',
+                'c.wap'
             )
         );
         $this->db->from("job_order as a");
@@ -124,7 +126,10 @@ class JobOrderModel extends CI_Model {
             'c.gate_barrier',
             'c.efence',
             'c.structured_cabling',
-            'c.pabgm'
+            'c.pabgm',
+            'c.video_wall',
+            'c.wap'
+            
         );
 
         var $order_column = array(

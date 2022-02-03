@@ -235,6 +235,20 @@ elseif($form_id="edit-form"){
                                                 PABGM
                                             </label>
                                         </div>
+
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="scope[]" value="Video Wall">
+                                                Video Wall
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="scope[]" value="Wireless Access Point">
+                                                Wireless Access Point
+                                            </label>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -475,6 +489,20 @@ elseif($form_id="edit-form"){
                                             <label class="form-check-label">
                                                 <input type="checkbox" class="form-check-input" name="pabgm" value="1" <?php if($row->pabgm == 1) { echo 'checked="checked"';} ?> >
                                                 PABGM
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="video_wall" value="1" <?php if($row->video_wall == 1) { echo 'checked="checked"';} ?> >
+                                                Video Wall
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="checkbox" class="form-check-input" name="wap" value="1" <?php if($row->wap == 1) { echo 'checked="checked"';} ?> >
+                                                Wireless Access Point
                                             </label>
                                         </div>
                                     </div>
