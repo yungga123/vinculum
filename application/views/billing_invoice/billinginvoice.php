@@ -85,16 +85,16 @@ defined('BASEPATH') or die('Access Denied');
                             <form>
                                 <div class="row">
                                     <div class="col">
-                                        <?php if ($payroll['id'] == 'id') { ?>
+                                        <?php if ($select['location'] == 'id') { ?>
                                             <select class="form-control form-control-sm select-employee select2" name="supplier_id" id="supplier_id">
                                                 <option value="">
                                                     <--- Please Select --->
                                                 </option>
-                                                <?php foreach ($supplier as $row) { ?>
-                                                    <option value="<?php echo $row->id ?>" <?php if ($row->id == $payroll['id']) {
-                                                                                                echo 'selected';
-                                                                                            } ?>>
-                                                        <?php echo $row->customer_name ?>
+                                                <?php foreach ($slcdata as $row) { ?>
+                                                    <option value="<?php echo $row->id ?>" <?php if ($row->id == $select['location']) {
+                                                        echo 'selected';
+                                                        } ?>>
+                                                        <?php echo $row->location ?>
                                                     </option>
                                                 <?php } ?>
                                             </select>
@@ -103,9 +103,9 @@ defined('BASEPATH') or die('Access Denied');
                                                 <option value="">
                                                     <--- Please Select --->
                                                 </option>
-                                                <?php foreach ($supplier as $row) { ?>
+                                                <?php foreach ($slcdata as $row) { ?>
                                                     <option value="<?php echo $row->id ?>">
-                                                        <?php echo $row->customer_name ?>
+                                                        <?php echo $row->location ?>
                                                     </option>
                                                 <?php } ?>
                                             </select>
@@ -119,8 +119,8 @@ defined('BASEPATH') or die('Access Denied');
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" class="form-control" placeholder="" readonly <?php if ($payroll['id'] == 'id') {
-                        echo 'value="'.$payroll['customer_name'].'"';
+                        <td><input type="text" class="form-control" placeholder="" readonly <?php if ($select['location'] == 'id') {
+                        echo 'value="'.$select['location'].'"';
                         } ?>></td>
                         <td>70 National Road, Putatan Muntinlupa City</td>
                     </tr>
@@ -129,8 +129,8 @@ defined('BASEPATH') or die('Access Denied');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="5">Attention: <input type="text" class="form-control" placeholder="" style="width:30%;" readonly <?php if ($payroll['id'] == 'id') {
-                        echo 'value="'.$payroll['contact_person'].'"'; } ?>></th>
+                        <th scope="col" colspan="5">Attention: <input type="text" class="form-control" placeholder="" style="width:30%;" readonly <?php if ($select['location'] == 'id') {
+                        echo 'value="'.$select['contact_person'].'"'; } ?>></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -261,7 +261,3 @@ defined('BASEPATH') or die('Access Denied');
         </section>
     </div>
 </div>
-
-<footer>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-</footer>

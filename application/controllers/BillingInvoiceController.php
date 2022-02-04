@@ -16,13 +16,13 @@ class BillingInvoiceController extends CI_Controller{
 
         if($this->session->userdata('logged_in')) {
 
-			$supplier = $this->BillingInvoiceModel->billing_invoice();
+			$slcdata = $this->BillingInvoiceModel->billing_invoice();
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Billing Invoice';
-			$data['supplier'] = $supplier;
-			$data['payroll'] = $this->payroll();
+			$data['slcdata'] = $slcdata;
+			$data['select'] = $this->select_data();
 			
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
@@ -34,12 +34,12 @@ class BillingInvoiceController extends CI_Controller{
 		}
     }
 
-	function payroll() {
+	function select_data() {
 
-        $payroll['id'] = '';
-        $payroll['customer_name'] = '';
+        $select['id'] = '';
+        $select['location'] = '';
 
-        return $payroll;
+        return $select;
 
     }
 
