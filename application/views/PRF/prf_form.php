@@ -204,7 +204,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                         <option value="<?php echo $row->itemCode; ?>"
                                                                             <?php if ($status == "Edit") {
                                                                             if ($row->itemCode == $row1->item_name) { echo 'selected';}}?>>
-                                                                            <?php echo $row->itemName ?></option>
+                                                                            <?php echo $row->itemName.' --- ' .$row->stocks ?></option>
                                                                     <?php endforeach ?>
                                                                 </select>
                                                             </div>
@@ -262,7 +262,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                         <option value="<?php echo $row->itemCode; ?>"
                                                                             <?php if ($status == "Edit") {
                                                                             if ($row->itemCode == $row1->item_name) {echo 'selected';}} ?>>
-                                                                            <?php echo $row->itemName ?></option>
+                                                                            <?php echo $row->itemName.' --- ' .$row->stocks ?></option>
                                                                     <?php endforeach ?>
                                                                 </select>
                                                             </div>
@@ -320,7 +320,7 @@ defined('BASEPATH') or die('Access Denied');
                                                                         <option value="<?php echo $row->code; ?>"
                                                                         <?php if ($status == "Edit") {
                                                                             if ($row->code == $row1->item_name) {echo 'selected';}} ?>>
-                                                                            <?php echo $row->model ?></option>
+                                                                            <?php echo $row->model.' --- ' .$row->quantity ?></option>
                                                                     <?php endforeach ?>
                                                                 </select>
                                                             </div>
