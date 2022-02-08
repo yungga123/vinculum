@@ -158,34 +158,6 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 										<p>List of Warranty</p>
 									</a>
 								</li>
-
-								<li class="nav-item has-treeview<?php echo $consumeables; ?>">
-									<a href="javascript:void(0)" class="nav-link<?php echo $consumeables ?>">
-										<i class="nav-icon fas fa-copy"></i>
-										<p>
-											Project Request Form
-											<i class="fas fa-angle-left right"></i>
-										</p>
-									</a>
-
-									<ul class="nav nav-treeview" style="display: <?php echo $consumeables ?>;">
-
-
-										<li class="nav-item">
-											<a href="<?php echo site_url('prf/prf') ?>" class="nav-link<?php echo $consumeables ?>">
-												<i class="far fa-circle nav-icon"></i>
-												<p>PRF</p>
-											</a>
-										</li>
-
-										<li class="nav-item">
-											<a href="<?php echo site_url('prf/prf_list') ?>" class="nav-link<?php echo $consumeables ?>">
-												<i class="far fa-circle nav-icon"></i>
-												<p>PRF List</p>
-											</a>
-										</li>
-
-									</ul>
 							</ul>
 						</li>
 
