@@ -243,6 +243,7 @@ class PayrollController extends CI_Controller {
 
             $data = html_variable();
             $data['title'] = 'Payroll Computation';
+            $data['hr_status'] = ' menu-open';
             $data['li_payroll'] = ' active';
             $data['ul_hr_tree'] = ' active';
             $data['technicians'] = $technicians;
@@ -280,6 +281,47 @@ class PayrollController extends CI_Controller {
             $validate['tax_rate'] = $row->tax;
         }
 
+        // Fetch Filed Leaves Data
+        $this->load->model('LeaveModel');
+
+        $vacationleaves = $this->LeaveModel->fetchVacationLeave($id);
+        $sickleaves = $this->LeaveModel->fetchSickLeave($id);
+        $leaveofabsence = $this->LeaveModel->fetchLeaveOfAbsence($id);
+
+        if(!empty($vacationleaves)){
+            foreach ($vacationleaves as $row) {
+                $validate['vacation_leave_start_date'] = $row->start_date;
+                $validate['vacation_leave_end_date'] = $row->end_date;
+            }
+        }
+        else{
+            $validate['vacation_leave_start_date'] = "";
+            $validate['vacation_leave_end_date'] = "";
+        }
+
+        if(!empty($sickleaves)){
+            foreach ($sickleaves as $row) {
+                $validate['sick_leave_start_date'] = $row->start_date;
+                $validate['sick_leave_end_date'] = $row->end_date;
+            }
+        }
+        else{
+            $validate['sick_leave_start_date'] = "";
+            $validate['sick_leave_end_date'] = "";
+        }
+
+        if(!empty($leaveofabsence)){
+            foreach ($leaveofabsence as $row) {
+                $validate['leave_of_absence_start_date'] = $row->start_date;
+                $validate['leave_of_absence_end_date'] = $row->end_date;
+            }
+        }
+        else{
+            $validate['leave_of_absence_start_date'] = "";
+            $validate['leave_of_absence_end_date'] = "";
+        }
+
+
 		echo json_encode($validate);
     }
 
@@ -299,6 +341,7 @@ class PayrollController extends CI_Controller {
                 'cutoff_start' => $this->input->post('start_date'),
                 'cutoff_end' => $this->input->post('end_date'),
                 'emp_id' => $this->input->post('emp_id'),
+                'rate' => $this->input->post('daily_rate'),
                 'days_worked' => $this->input->post('days_worked'),
                 'hours_late' => $this->input->post('hours_late'),
                 'days_absent' => $this->input->post('days_absent'),
@@ -377,18 +420,18 @@ class PayrollController extends CI_Controller {
 		$data = array();
 		foreach($fetch_data as $row) {
 
-            $basic_pay = $row->daily_rate*($row->days_worked - $row->sundays);
-            $regular_holiday_pay = $row->daily_rate*$row->reg_holiday;
-            $special_holiday_pay = $row->daily_rate*$row->special_holiday*0.3;
-            $wdo_pay = $row->daily_rate*$row->wdo*1.3;
-            $ot_pay = ($row->daily_rate/8)*1.25*$row->ot_hrs;
-            $vac_pay = $row->daily_rate*$row->vacation_leave;
-            $sick_pay = $row->daily_rate*$row->sick_leave;
-            $night_diff_pay = ($row->daily_rate/8)*0.1*$row->night_diff_hrs;
-            $absents = $row->daily_rate*$row->days_absent;
-            $awol = $row->daily_rate*$row->awol;
-            $rest_days = $row->daily_rate*$row->rest_day;
-            $tardiness = ($row->daily_rate/8)*$row->hours_late;
+            $basic_pay = $row->rate*($row->days_worked - $row->sundays);
+            $regular_holiday_pay = $row->rate*$row->reg_holiday;
+            $special_holiday_pay = $row->rate*$row->special_holiday*0.3;
+            $wdo_pay = $row->rate*$row->wdo*1.3;
+            $ot_pay = ($row->rate/8)*1.25*$row->ot_hrs;
+            $vac_pay = $row->rate*$row->vacation_leave;
+            $sick_pay = $row->rate*$row->sick_leave;
+            $night_diff_pay = ($row->rate/8)*0.1*$row->night_diff_hrs;
+            $absents = $row->rate*$row->days_absent;
+            $awol = $row->rate*$row->awol;
+            $rest_days = $row->rate*$row->rest_day;
+            $tardiness = ($row->rate/8)*$row->hours_late;
             $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay+$vac_pay+$sick_pay) - ($absents+$tardiness+$awol+$rest_days);
             $contribution = $row->sss_rate+$row->pag_ibig_rate+$row->phil_health_rate;
             $net_pay = $gross_pay+$row->incentives+$row->commission+$row->thirteenth_month+$row->addback - ($contribution+$row->tax+$row->cash_adv+$row->others);
@@ -399,7 +442,7 @@ class PayrollController extends CI_Controller {
             $sub_array[] = $row->emp_id;
             $sub_array[] = $row->firstname.' '.$row->middlename.' '.$row->lastname;
             $sub_array[] = $row->position;
-            $sub_array[] = $row->daily_rate;
+            $sub_array[] = $row->rate;
             $sub_array[] = number_format($gross_pay,2);
             $sub_array[] = number_format($net_pay,2);
 
@@ -442,35 +485,35 @@ class PayrollController extends CI_Controller {
                 $payroll['emp_tin_no'] = $row->tin_number; 
                 $payroll['emp_pagibig_no'] = $row->pagibig_number; 
                 $payroll['emp_philhealth_no'] = $row->phil_health_number; 
-                $payroll['basic_income_rate'] = $row->daily_rate; 
+                $payroll['basic_income_rate'] = $row->rate; 
                 $payroll['basic_income_days'] = $row->days_worked - $row->sundays - $row->rest_day;
-                $payroll['basic_income_amt'] = $row->daily_rate*$payroll['basic_income_days']; 
-                $payroll['overtime_rate'] = ($row->daily_rate/8)*1.25; 
+                $payroll['basic_income_amt'] = $row->rate*$payroll['basic_income_days']; 
+                $payroll['overtime_rate'] = ($row->rate/8)*1.25; 
                 $payroll['overtime_hrs'] = $row->ot_hrs; 
                 $payroll['overtime_amt'] = $payroll['overtime_rate']*$payroll['overtime_hrs']; 
-                $payroll['nightdiff_rate'] = ($row->daily_rate/8)*0.1; 
+                $payroll['nightdiff_rate'] = ($row->rate/8)*0.1; 
                 $payroll['nightdiff_hrs'] = $row->night_diff_hrs; 
                 $payroll['nightdiff_amt'] = $payroll['nightdiff_rate']*$payroll['nightdiff_hrs']; 
-                $payroll['regday_rate'] = $row->daily_rate; 
+                $payroll['regday_rate'] = $row->rate; 
                 $payroll['regday_days'] = $row->reg_holiday;
                 $payroll['regday_amt'] = $payroll['regday_rate']*$payroll['regday_days']; 
-                $payroll['spcday_rate'] = $row->daily_rate*0.3; 
+                $payroll['spcday_rate'] = $row->rate*0.3; 
                 $payroll['spcday_days'] = $row->special_holiday; 
                 $payroll['spcday_amt'] = $payroll['spcday_rate']*$payroll['spcday_days'];
-                $payroll['wdo_rate'] = $row->daily_rate*1.3;
+                $payroll['wdo_rate'] = $row->rate*1.3;
                 $payroll['wdo_days'] = $row->wdo;
                 $payroll['wdo_amt'] = $payroll['wdo_rate']*$payroll['wdo_days'];
                 $payroll['incentives'] = $row->incentives; 
                 $payroll['commission'] = $row->commission; 
                 $payroll['13th_month'] = $row->thirteenth_month; 
                 $payroll['addback'] = $row->addback; 
-                $payroll['absent_rate'] = $row->daily_rate; 
+                $payroll['absent_rate'] = $row->rate; 
                 $payroll['absent_days'] = $row->days_absent; 
                 $payroll['absent_amt'] = $payroll['absent_rate']* $payroll['absent_days']; 
-                $payroll['tardiness_rate'] = $row->daily_rate/8; 
+                $payroll['tardiness_rate'] = $row->rate/8; 
                 $payroll['tardiness_hrs'] = $row->hours_late; 
                 $payroll['tardiness_amt'] = $payroll['tardiness_rate']*$payroll['tardiness_hrs']; 
-                $payroll['awol_rate'] = $row->daily_rate; 
+                $payroll['awol_rate'] = $row->rate; 
                 $payroll['awol_days'] = $row->awol;
                 $payroll['awol_amt'] = $payroll['awol_rate']*$payroll['awol_days']; 
                 $payroll['sss_cont'] = $row->sss_rate;
@@ -525,35 +568,35 @@ class PayrollController extends CI_Controller {
                 $payroll['emp_tin_no'] = $row->tin_number; 
                 $payroll['emp_pagibig_no'] = $row->pagibig_number; 
                 $payroll['emp_philhealth_no'] = $row->phil_health_number; 
-                $payroll['basic_income_rate'] = $row->daily_rate; 
+                $payroll['basic_income_rate'] = $row->rate; 
                 $payroll['basic_income_days'] = $row->days_worked - $row->sundays - $row->rest_day;
-                $payroll['basic_income_amt'] = $row->daily_rate*$payroll['basic_income_days']; 
-                $payroll['overtime_rate'] = ($row->daily_rate/8)*1.25; 
+                $payroll['basic_income_amt'] = $row->rate*$payroll['basic_income_days']; 
+                $payroll['overtime_rate'] = ($row->rate/8)*1.25; 
                 $payroll['overtime_hrs'] = $row->ot_hrs; 
                 $payroll['overtime_amt'] = $payroll['overtime_rate']*$payroll['overtime_hrs']; 
-                $payroll['nightdiff_rate'] = ($row->daily_rate/8)*0.1; 
+                $payroll['nightdiff_rate'] = ($row->rate/8)*0.1; 
                 $payroll['nightdiff_hrs'] = $row->night_diff_hrs; 
                 $payroll['nightdiff_amt'] = $payroll['nightdiff_rate']*$payroll['nightdiff_hrs']; 
-                $payroll['regday_rate'] = $row->daily_rate; 
+                $payroll['regday_rate'] = $row->rate; 
                 $payroll['regday_days'] = $row->reg_holiday;
                 $payroll['regday_amt'] = $payroll['regday_rate']*$payroll['regday_days']; 
-                $payroll['spcday_rate'] = $row->daily_rate*0.3; 
+                $payroll['spcday_rate'] = $row->rate*0.3; 
                 $payroll['spcday_days'] = $row->special_holiday; 
                 $payroll['spcday_amt'] = $payroll['spcday_rate']*$payroll['spcday_days'];
-                $payroll['wdo_rate'] = $row->daily_rate*1.3;
+                $payroll['wdo_rate'] = $row->rate*1.3;
                 $payroll['wdo_days'] = $row->wdo;
                 $payroll['wdo_amt'] = $payroll['wdo_rate']*$payroll['wdo_days'];
                 $payroll['incentives'] = $row->incentives; 
                 $payroll['commission'] = $row->commission; 
                 $payroll['13th_month'] = $row->thirteenth_month; 
                 $payroll['addback'] = $row->addback; 
-                $payroll['absent_rate'] = $row->daily_rate; 
+                $payroll['absent_rate'] = $row->rate; 
                 $payroll['absent_days'] = $row->days_absent; 
                 $payroll['absent_amt'] = $payroll['absent_rate']* $payroll['absent_days']; 
-                $payroll['tardiness_rate'] = $row->daily_rate/8; 
+                $payroll['tardiness_rate'] = $row->rate/8; 
                 $payroll['tardiness_hrs'] = $row->hours_late; 
                 $payroll['tardiness_amt'] = $payroll['tardiness_rate']*$payroll['tardiness_hrs']; 
-                $payroll['awol_rate'] = $row->daily_rate; 
+                $payroll['awol_rate'] = $row->rate; 
                 $payroll['awol_days'] = $row->awol;
                 $payroll['awol_amt'] = $payroll['awol_rate']*$payroll['awol_days']; 
                 $payroll['sss_cont'] = $row->sss_rate;
@@ -778,5 +821,193 @@ class PayrollController extends CI_Controller {
 		    $validate['errors'] = validation_errors();
 		}
         echo json_encode($validate);
+    }
+
+    public function getLeaveInfo($id) {
+
+        $this->load->model('LeaveModel');
+
+        $vacationleaves = $this->LeaveModel->fetchVacationLeave($id);
+        $sickleaves = $this->LeaveModel->fetchSickLeave($id);
+
+        if(!empty($vacationleaves)){
+            foreach ($vacationleaves as $row) {
+                $validate['leave_start_date'] = date_format(date_create($row->start_date),'d-m-yy');
+                $validate['leave_end_date'] = date_format(date_create($row->end_date),'d/m/yy');
+            }
+        }
+        else{
+            $validate['leave_start_date'] = "";
+            $validate['leave_end_date'] = "";
+        }
+
+        if(!empty($sickleaves)){
+            foreach ($sickleaves as $row) {
+                $validate['leave_start_date'] = date_format(date_create($row->start_date),'d/m/yy');
+                $validate['leave_end_date'] = date_format(date_create($row->end_date),'d/m/yy');
+            }
+        }
+        else{
+            $validate['leave_start_date'] = "";
+            $validate['leave_end_date'] = "";
+        }
+
+        $cutoff_start_date = date_format(date_create($this->input->post('start_date')),'m-d-yy');
+        $cutoff_end_date = date_format(date_create($this->input->post('end_date')),'d/m/yy');
+
+
+        $validate['cutoff_start_date'] = $cutoff_start_date;
+        $validate['cutoff_end_date'] = $cutoff_end_date;
+        
+
+		echo json_encode($validate);
+    }
+
+    // Export to CSV ( must be in result->array() )
+    function exportItems($start_date, $end_date)
+    {
+
+        $filename_start_date = date_format(date_create($start_date),'M d Y');
+        $filename_cutoff_start_date = date_format(date_create($end_date),'M d Y');
+
+        $file_name = $filename_start_date.'-'.$filename_cutoff_start_date. '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        
+
+		// get data
+		$this->load->model('PayrollModel');
+        $results = $this->PayrollModel->getPayrollArray($start_date, $end_date);
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+			'Employee Name',
+            'Daily Rate',
+            'Working Days',
+            'Basic Pay',
+            'Over Time',
+            'Amount',
+            'Night Diff Hrs',
+            'Amount',
+            'Regular Holiday',
+            'Amount',
+            'Special Holiday',
+            'Amount',
+            'WDO',
+            'Amount',
+            'Sick Leave',
+            'Amount',
+            'Vacation Leave',
+            'Amount',
+            'Incentives',
+            'Commision',
+            '13th Month',
+            'Addback',
+            'Absents',
+            'Deduction',
+            'Tardiness',
+            'Deduction',
+            'AWOL',
+            'Deduction',
+            'Rest Day',
+            'Deduction',
+            'Cash Advance',
+            'SSS',
+            'Pag Ibig',
+            'Philhealth',
+            'Tax',
+            'Others',
+            'Notes',
+            'Gross Pay',
+            'Net Pay'
+        ];
+        
+
+        fputcsv($file, $header);
+
+        // require_once 'assets/Classes/PHPExcel.php';
+        // include 'assets/Classes/Calculation.php';
+        // include 'assets/Classes/Cell.php';
+        //include 'assets/Classes/PHPExcel/IOFactory.php';
+
+        //$objPHPExcel = new PHPExcel();
+        // $objPHPExcel->getActiveSheet()->mergeCells('A2:B2');
+        // fputcsv($file, $objPHPExcel);
+
+
+        foreach ($results as $row) {
+
+            //Payroll Computation
+
+            $basic_pay = $row->rate*($row->days_worked - $row->rest_day - $row->sundays);
+            $regular_holiday_pay = $row->rate*$row->reg_holiday;
+            $special_holiday_pay = $row->rate*$row->special_holiday*0.3;
+            $wdo_pay = $row->rate*$row->wdo*1.3;
+            $ot_pay = ($row->rate/8)*1.25*$row->ot_hrs;
+            $night_diff_pay = ($row->rate/8)*0.1*$row->night_diff_hrs;
+            $absents = $row->rate*$row->days_absent;
+            $awol = $row->rate*$row->awol;
+            $rest_day = $row->rate*$row->rest_day;
+            //$rest_days = $row->daily_rate*$row->rest_day;
+            $tardiness = ($row->rate/8)*$row->hours_late;
+            $vl_pay = $row->vacation_leave*$row->rate;
+            $sl_pay = $row->sick_leave*$row->rate;
+            $gross_pay = ($basic_pay+$regular_holiday_pay+$special_holiday_pay+$wdo_pay+$ot_pay+$night_diff_pay+$vl_pay+$sl_pay) - ($absents+$tardiness+$awol);
+            $contribution = $row->sss_rate+$row->pag_ibig_rate+$row->phil_health_rate;
+            $net_pay = $gross_pay+$row->incentives+$row->commission+$row->thirteenth_month+$row->addback - ($contribution+$row->tax+$row->cash_adv+$row->others);
+
+
+            $sub_array = array();
+
+                $sub_array[] = $row->lastname.', '.$row->firstname.' '.$row->middlename;
+                $sub_array[] = $row->rate;
+				$sub_array[] = $row->days_worked;
+                $sub_array[] = $basic_pay;
+                $sub_array[] = $row->ot_hrs;
+                $sub_array[] = $ot_pay;
+                $sub_array[] = $row->night_diff_hrs;
+                $sub_array[] = $night_diff_pay;
+                $sub_array[] = $row->reg_holiday;
+                $sub_array[] = $regular_holiday_pay;
+                $sub_array[] = $row->special_holiday;
+                $sub_array[] = $special_holiday_pay;
+                $sub_array[] = $row->wdo;
+                $sub_array[] = $wdo_pay;
+                $sub_array[] = $row->sick_leave;
+                $sub_array[] = $sl_pay;
+                $sub_array[] = $row->vacation_leave;
+                $sub_array[] = $vl_pay;
+                $sub_array[] = $row->incentives;
+                $sub_array[] = $row->commission;
+                $sub_array[] = $row->thirteenth_month;
+                $sub_array[] = $row->addback;
+                $sub_array[] = $row->days_absent;
+                $sub_array[] = $absents;
+                $sub_array[] = $row->hours_late;
+                $sub_array[] = $tardiness;
+                $sub_array[] = $row->awol;
+                $sub_array[] = $awol;
+                $sub_array[] = $row->rest_day;
+                $sub_array[] = $rest_day;
+                $sub_array[] = $row->cash_adv;
+                $sub_array[] = $row->sss_rate;
+                $sub_array[] = $row->pag_ibig_rate;
+                $sub_array[] = $row->phil_health_rate;
+                $sub_array[] = $row->tax;
+                $sub_array[] = $row->others;
+                $sub_array[] = $row->notes;
+                $sub_array[] = $gross_pay;
+                $sub_array[] = $net_pay;
+
+				fputcsv($file, $sub_array);
+        }
+
+		fclose($file);
+		
+		
+        exit;
     }
 }

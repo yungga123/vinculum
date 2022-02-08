@@ -193,6 +193,7 @@ foreach ($results as $row) {
                                                             <option <?php if ($tech_status_edit == 'Project-Based'){echo ' selected';} ?>>Project-Based</option>
                                                             <option <?php if ($tech_status_edit == 'Part-Time'){echo ' selected';} ?>>Part-Time</option>
 															<option <?php if ($tech_status_edit == 'Regular'){echo ' selected';} ?>>Regular</option>
+															<option <?php if ($tech_status_edit == 'Managerial'){echo ' selected';} ?>>Managerial</option>
 															<option <?php if ($tech_status_edit == 'Resigned'){echo ' selected';} ?>>Resigned</option>
 															<option <?php if ($tech_status_edit == 'Terminated'){echo ' selected';} ?>>Terminated</option>
                                                         </select>

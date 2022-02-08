@@ -55,6 +55,7 @@ class DispatchFormsModel extends CI_Model {
 			"a.Installation",
 			"a.RepairOrService",
 			"a.Warranty",
+			"a.back_job",
 			"a.dispatch_out",
 			"a.sr_number",
 			"a.remarks2"
@@ -182,6 +183,7 @@ class DispatchFormsModel extends CI_Model {
 			"a.Installation",
 			"a.RepairOrService",
 			"a.Warranty",
+			"a.back_job",
 			"a.dispatch_out",
 			"a.sr_number",
 			"a.remarks2"

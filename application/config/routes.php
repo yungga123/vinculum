@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'LoginController';
+$route['default_controller'] = 'LoginController/startpage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -65,6 +65,10 @@ $route['addnewitem'] = 'ItemsController/register_new_item';
 $route['addnewitem-scan'] = 'ItemsController/register_new_item_by_scan';
 $route['print-items/(:any)/(:any)'] = 'ItemsController/print_items/$1/$2';
 $route['exportitems/(:any)'] = 'ItemsController/exportItems/$1';
+$route['prf-form/(:any)/(:any)/(:any)'] = 'PRFController/prf_form/$1/$2/$3';
+$route['prf-return/(:any)'] = 'PRFController/prf_return/$1';
+$route['prf-list/(:any)'] = 'PRFController/prf_list/$1';
+$route['prf-print/(:any)'] = 'PRFController/prf_print/$1';
 
 
 //Logs Controller
@@ -160,6 +164,7 @@ $route['payroll-filter'] = 'PayrollController/payroll_table_filter';
 $route['payroll-print/(:any)/(:any)'] = 'PayrollController/payslip_print/$1/$2';
 $route['payroll-print-all'] = 'PayrollController/payslip_print_all';
 $route['payroll-delete/(:any)'] = 'PayrollController/deletePayroll/$1';
+$route['payroll-exportitems/(:any)/(:any)'] = 'PayrollController/exportItems/$1/$2';
 
 //Job Order Controller
 $route['joborder'] = 'JobOrderController';
@@ -195,8 +200,8 @@ $route['inquiry-tempo-clients/(:any)'] = 'SalesInquiryController/new_client_list
 $route['inquiry-existing-clients/(:any)'] = 'SalesInquiryController/existing_client_list/$1';
 $route['inquiry-add-project/(:any)'] = 'SalesInquiryController/add_project/$1';
 $route['inquiry-add-existingclient-project/(:any)'] = 'SalesInquiryController/add_existingclient_project/$1';
-$route['inquiry-edit-project/(:any)/(:any)'] = 'SalesInquiryController/edit_project/$1/$2';
-$route['inquiry-edit-existingclient-project/(:any)/(:any)'] = 'SalesInquiryController/edit_existingclient_project/$1/$2';
+$route['inquiry-edit-project/(:any)'] = 'SalesInquiryController/edit_project/$1/$2';
+$route['inquiry-edit-existingclient-project/(:any)'] = 'SalesInquiryController/edit_existingclient_project/$1/$2';
 $route['exportnewclientsproject'] = 'SalesInquiryController/exportnewclientsproject';
 $route['exportexistingclientsproject'] = 'SalesInquiryController/exportexistingclientsproject';
 $route['inquiry-archive-projects'] = 'SalesInquiryController/archive_projects_list';

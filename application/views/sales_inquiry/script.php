@@ -490,7 +490,8 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].project_details + '</td>' +
 							'<td>' + response.results[key].project_amount + '</td>' +
 							'<td>' + response.results[key].quotation_ref + '</td>' +
-							'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '/new' + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> <a href="' + '<?php echo site_url('inquiry-tempo-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>' +
+							'<td>' + response.results[key].date_of_installation + '</td>' +
+							'<td> <a href="' + '<?php echo site_url('inquiry-edit-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_newclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a> <a href="' + '<?php echo site_url('inquiry-tempo-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>' +
 							'</tr>'
 						);
 
@@ -534,6 +535,8 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].branch_id + '</td>' +
 							'<td>' + response.results[key].branch_name + '</td>' +
 							'<td>' + response.results[key].branch_address + '</td>' +
+							'<td>' + response.results[key].branch_contact_person + '</td>' +
+							'<td>' + response.results[key].branch_contact_number + '</td>' +
 							'<td> <button type="button" class="btn btn-warning btn-xs btn-block btn_edit_branch"><i class="fas fa-edit"></i> Edit Branch</button><a href="' + '<?php echo site_url('SalesInquiryController/delete_branch_new/') ?>' + response.results[key].branch_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Branch</a></td>' +
 							'</tr>'
 						);
@@ -643,6 +646,8 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].branch_id + '</td>' +
 							'<td>' + response.results[key].branch_name + '</td>' +
 							'<td>' + response.results[key].branch_address + '</td>' +
+							'<td>' + response.results[key].branch_contact_person + '</td>' +
+							'<td>' + response.results[key].branch_contact_number + '</td>' +
 							'<td> <button type="button" class="btn btn-warning btn-xs btn-block btn_edit_branch"><i class="fas fa-edit"></i> Edit Branch</button><a href="' + '<?php echo site_url('SalesInquiryController/delete_branch_existing/') ?>' + response.results[key].branch_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Branch</a></td>' +
 							'</tr>'
 						);
@@ -746,7 +751,8 @@ defined('BASEPATH') or die('Access Denied');
 							'<td>' + response.results[key].project_details + '</td>' +
 							'<td>' + response.results[key].project_amount + '</td>' +
 							'<td>' + response.results[key].quotation_ref + '</td>' +
-							'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '/existing' + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a><a href="' + '<?php echo site_url('inquiry-existing-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>'
+							'<td>' + response.results[key].date_of_installation + '</td>' +
+							'<td> <a href="' + '<?php echo site_url('inquiry-edit-existingclient-project/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-warning btn-block"><i class="fas fa-edit"></i> Edit Project</a><a href="' + '<?php echo site_url('SalesInquiryController/delete_existingclient_project/') ?>' + response.results[key].project_id + '" class="btn btn-danger btn-xs btn-block" onclick="return confirm(\'Are you sure?\')" title="Delete"><i class="fas fa-trash"></i> Delete Project</a><a href="' + '<?php echo site_url('inquiry-existing-clients/') ?>' + response.results[key].project_id + '" class="btn btn-xs btn-danger btn-block" id="btn-archive-project"><i class="far fa-times-circle"></i> Reject Project</a></td>'
 						);
 
 						$('#reject_project_id').val(response.results[key].project_id);
@@ -1153,17 +1159,21 @@ defined('BASEPATH') or die('Access Denied');
 			});
 		<?php endif ?>
 
-		$("#table-branch").on('click', '.btn_edit_branch', function() {
+		$("#table-branch").on('click', '.btn_edit_branch', function() { 
 			// get the current row
 			var currentRow = $(this).closest("tr");
 
 			var col1 = currentRow.find("td:eq(0)").text();
 			var col2 = currentRow.find("td:eq(1)").text();
 			var col3 = currentRow.find("td:eq(2)").text();
+			var col4 = currentRow.find("td:eq(3)").text();
+			var col5 = currentRow.find("td:eq(4)").text();
 
 			$('#edit_branch_id').val(col1);
 			$('#edit_branch_name').val(col2);
 			$('#edit_branch_address').val(col3);
+			$('#edit_branch_contact_person').val(col4);
+			$('#edit_branch_contact_number').val(col5);
 
 
 			$(".modal_view_branch").modal('hide');

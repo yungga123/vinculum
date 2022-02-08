@@ -69,6 +69,9 @@ defined('BASEPATH') or die('Access Denied');
 			 			else  if (response.dispatch_form_edit[0].RepairOrService =="1"){
 			 				$(".TypeOfService_Edit").val("Service");
 			 			}
+						 else  if (response.dispatch_form_edit[0].back_job =="1"){
+			 				$(".TypeOfService_Edit").val("back_job");
+			 			}
 			 		}
 			 	});
 			} );

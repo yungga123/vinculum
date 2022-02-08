@@ -122,6 +122,10 @@ foreach ($results as $row) {
 	if ($row->Warranty) {
 		$typeOfService = 'Warranty';
 	}
+
+	if ($row->back_job == 1) {
+		$typeOfService = 'Back Job';
+	}
 }
 
 ?>

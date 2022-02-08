@@ -144,3 +144,75 @@ defined('BASEPATH') or die('Access Denied');
 		</div>
 	</div>
 </div>
+
+<!-- Modal for Delete-->
+<div class="modal fade modal-deletecustomer" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><b>Delete Client</b></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php echo form_open('CustomersController/delete_client', ["id" => "modal-delete-client"]) ?>
+            <div class="modal-body text-center">
+                <div class="form-group">
+                    <label for="po_id_del">Are you sure you want to delete?</label>
+                    <input type="text" class="form-control col-6 offset-3 text-center text-bold" name="client_del_id" id="client_del_id" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> NO</button>
+                <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> YES</button>
+            </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade modal_view_project">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div id="modal_loading">
+
+			</div>
+			<div class="modal-header">
+				<h5 class="modal-title"><b>Project List</b>
+					<h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+			</div>
+			<div class="modal-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-xl" id="table-project">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Project Type</th>
+								<th>Status</th>
+								<th>Sales Incharge</th>
+								<th>Branch</th>
+								<th>Task</th>
+								<th>Date of Task</th>
+								<th>Project Details</th>
+								<th>Project Amount</th>
+								<th>Quotation Reference</th>
+							</tr>
+						</thead>
+
+						<tbody id="tbody-project">
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+			</div>
+		</div>
+	</div>
+</div>

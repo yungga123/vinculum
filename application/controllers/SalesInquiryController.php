@@ -191,7 +191,7 @@ class SalesInquiryController extends CI_Controller
 								'Website' => $row->website,
 								'source' => $row->source,
 								'Interest' => $row->interest,
-								'InstallationDate' => $date,
+								'InstallationDate' => $row->date,
 								'Type' => $row->type,
 								'Notes' => $row->notes,
 								'is_deleted' => "0"
@@ -205,7 +205,8 @@ class SalesInquiryController extends CI_Controller
 						}
 
 						$this->SalesInquiryModel->update_branch($customer_id, [
-							'customer_id' => $client_specific_id
+							'customer_id' => $client_specific_id,
+							'client_status' => "existing"
 						]);
 
 						$this->SalesInquiryModel->update_project($customer_id, [
@@ -224,8 +225,8 @@ class SalesInquiryController extends CI_Controller
 
 		$data = array();
 		foreach ($fetch_data as $row) {
-
-
+			
+			$date='';
 			if ($row->date != '0000-00-00') {
 				$date = date_format(date_create($row->date), 'F d, Y');
 			}
@@ -242,7 +243,7 @@ class SalesInquiryController extends CI_Controller
 			$sub_array[] = $row->interest;
 			$sub_array[] = $row->type;
 			$sub_array[] = $row->notes;
-
+			$sub_array[] = $date;
 
 
 			$sub_array[] = '
@@ -361,6 +362,7 @@ class SalesInquiryController extends CI_Controller
 			$data['ul_sales_tree'] = ' active';
 			$data['new_client_id'] = $id;
 			$data['form_id'] = 'newclient';
+			$data['client_status'] = 'new';
 			$data['results'] = $this->SalesInquiryModel->get_sales_list();
 			$data['branch_list'] = $this->SalesInquiryModel->get_specific_branch_list($id);
 
@@ -391,6 +393,7 @@ class SalesInquiryController extends CI_Controller
 			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $id;
 			$data['form_id'] = "edit_newclient";
+			$data['client_status'] = 'new';
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
 			$data['edit_project'] = $this->SalesInquiryModel->get_specific_project($id);
 
@@ -432,6 +435,7 @@ class SalesInquiryController extends CI_Controller
 			$data['ul_sales_tree'] = ' active';
 			$data['project_id'] = $project_id;
 			$data['form_id'] = "edit_existingclient";
+			$data['client_status'] = 'existing';
 			$data['edit_sales_list'] = $this->SalesInquiryModel->get_sales_list();
 			$data['edit_project'] = $this->SalesInquiryModel->get_specific_project($project_id);
 
@@ -497,7 +501,8 @@ class SalesInquiryController extends CI_Controller
 				'client_status' => $form_id,
 				'project_details' => $this->input->post('project_details'),
 				'project_amount' => $this->input->post('project_amount'),
-				'quotation_ref' => $this->input->post('quotation_ref')
+				'quotation_ref' => $this->input->post('quotation_ref'),
+				'date_of_installation' => $this->input->post('date_of_installation')
 			]);
 
 
@@ -580,7 +585,8 @@ class SalesInquiryController extends CI_Controller
 				'client_status' => $form_id,
 				'project_details' => $this->input->post('project_details'),
 				'project_amount' => $this->input->post('project_amount'),
-				'quotation_ref' => $this->input->post('quotation_ref')
+				'quotation_ref' => $this->input->post('quotation_ref'),
+				'date_of_installation' => $this->input->post('date_of_installation')
 			]);
 
 			$task_id_data = array();
@@ -646,6 +652,16 @@ class SalesInquiryController extends CI_Controller
 
 		$data = array();
 			foreach($results as $row){
+				$date_of_installation = '';
+				$date_of_task = '';
+				if ($row->date_of_installation != '0000-00-00') {
+					$date_of_installation = date_format(date_create($row->date_of_installation), 'F d, Y');
+				}
+
+				if ($row->date_of_task != '0000-00-00') {
+					$date_of_task = date_format(date_create($row->date_of_task), 'F d, Y');
+				}
+
 				$sub_data = array();
 				$sub_data['project_id'] = $row->project_id;
 				$sub_data['project_type'] = $row->project_type;
@@ -655,10 +671,11 @@ class SalesInquiryController extends CI_Controller
 				$sub_data['middlename'] = $row->middlename;
 				$sub_data['branch'] = $row->branch;
 				$sub_data['project_task'] = $row->project_task;
-				$sub_data['date_of_task'] = $row->date_of_task;
+				$sub_data['date_of_task'] = $date_of_task;
 				$sub_data['project_details'] = $row->project_details;
 				$sub_data['project_amount'] = number_format($row->project_amount,2);
 				$sub_data['quotation_ref'] = $row->quotation_ref;
+				$sub_data['date_of_installation'] = $date_of_installation;
 				$data[] = $sub_data;
 			}
 		
@@ -936,6 +953,7 @@ class SalesInquiryController extends CI_Controller
 			$data['ul_sales_tree'] = ' active';
 			$data['new_client_id'] = $id;
 			$data['form_id'] = 'Existing_Clients';
+			$data['client_status'] = 'existing';
 			$data['results'] = $this->SalesInquiryModel->get_sales_list();
 			$data['branch_list'] = $this->SalesInquiryModel->get_specific_branch_list($id);
 
@@ -960,10 +978,10 @@ class SalesInquiryController extends CI_Controller
 
 		$data = array();
 		foreach ($fetch_data as $row) {
-			$installationDate = '';
+			$date = '';
 
 			if ($row->InstallationDate != '0000-00-00') {
-				$installationDate = date_format(date_create($row->InstallationDate), 'F d, Y');
+				$date = date_format(date_create($row->InstallationDate), 'F d, Y');
 			}
 
 			$sub_array = array();
@@ -978,8 +996,7 @@ class SalesInquiryController extends CI_Controller
 			$sub_array[] = $row->Interest;
 			$sub_array[] = $row->Type;
 			$sub_array[] = $row->Notes;
-			$sub_array[] = $installationDate;
-
+			$sub_array[] = $date;
 
 
 			$sub_array[] = '
@@ -1028,9 +1045,6 @@ class SalesInquiryController extends CI_Controller
 		if ($this->form_validation->run()) {
 			$validate['success'] = true;
 
-			date_default_timezone_set('Asia/Manila');
-			$date = $this->input->post('existing_client_installationdate', 'Y-m-d');
-
 			$this->SalesInquiryModel->update_existing_client(
 				$this->input->post('existing_client_id_edit'),
 				[
@@ -1039,7 +1053,6 @@ class SalesInquiryController extends CI_Controller
 					'ContactNumber' => $this->input->post('existing_contact_number'),
 					'Address' => $this->input->post('existing_location'),
 					'EmailAddress' => $this->input->post('existing_client_email'),
-					'InstallationDate' => $date,
 					'Website' => $this->input->post('existing_client_website'),
 					'source' => $this->input->post('existing_client_source'),
 					'Interest' => $this->input->post('existing_client_interest'),
@@ -1133,7 +1146,9 @@ class SalesInquiryController extends CI_Controller
 				'customer_id' => $this->input->post('client_id'),
 				'branch_name' => $this->input->post('project_branch'),
 				'branch_address' => $this->input->post('project_address'),
-				'client_status' => $this->input->post('client_status')
+				'client_status' => $this->input->post('client_status'),
+				'branch_contact_person' => $this->input->post('branch_contact_person'),
+				'branch_contact_number' => $this->input->post('branch_contact_number')
 			]);
 		} else {
 			$validate['errors'] = validation_errors();
@@ -1560,7 +1575,9 @@ class SalesInquiryController extends CI_Controller
 
 			$this->SalesInquiryModel->update_branch_details($this->input->post('edit_branch_id'),[
 				'branch_name' => $this->input->post('edit_branch_name'),
-				'branch_address' => $this->input->post('edit_branch_name')
+				'branch_address' => $this->input->post('edit_branch_name'),
+				'branch_contact_person' => $this->input->post('edit_branch_contact_person'),
+				'branch_contact_number' => $this->input->post('edit_branch_contact_number')
 			]);
 
 			$this->SalesInquiryModel->update_projects_branch($this->input->post('edit_branch_id'),[

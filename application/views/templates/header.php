@@ -44,6 +44,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- fullCalendar -->
   <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/fullcalendar/main.css">
   
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   
 
   <!-- Date Range Picker -->
@@ -54,4 +56,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="<?php echo base_url('assets') ?>/images/vcmlogo.png" alt="VCMLogo" height="60" width="100">
 </div>
-

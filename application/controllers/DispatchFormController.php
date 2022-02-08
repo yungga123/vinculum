@@ -316,6 +316,7 @@ class DispatchFormController extends CI_Controller {
 			$installation = 0;
 			$service = 0;
 			$warranty = 0;
+			$back_job = 0;
 
 			if ($service_type == "Installation") {
 				$installation = 1;
@@ -325,6 +326,9 @@ class DispatchFormController extends CI_Controller {
 			}
 			if ($service_type == "Warranty") {
 				$warranty = 1;
+			}
+			if ($service_type == "back_job") {
+				$back_job = 1;
 			}
 
 			$id = $this->input->post('dispatch_id');
@@ -346,6 +350,7 @@ class DispatchFormController extends CI_Controller {
 				'Installation' => $installation,
 				'RepairOrService' => $service,
 				'Warranty' => $warranty,
+				'back_job' => $back_job,
 				'dispatch_out' => $this->input->post('dispatch_out'),
 				'sr_number' => $this->input->post('sr_number'),
 				'remarks2' => $this->input->post('remarks2')
@@ -471,6 +476,7 @@ class DispatchFormController extends CI_Controller {
 			$installation = 0;
 			$service = 0;
 			$warranty = 0;
+			$back_job = 0;
 
 			$this->load->model('DispatchFormsModel');
 
@@ -482,6 +488,9 @@ class DispatchFormController extends CI_Controller {
 			}
 			if ($service_type == "Warranty") {
 				$warranty = 1;
+			}
+			if ($service_type == "back_job") {
+				$back_job = 1;
 			}
 
 			$data = [
@@ -502,6 +511,7 @@ class DispatchFormController extends CI_Controller {
 				'Installation' => $installation,
 				'RepairOrService' => $service,
 				'Warranty' => $warranty,
+				'back_job' => $back_job,
 				'dispatch_out' => $this->input->post('dispatch_out'),
 				'sr_number' => $this->input->post('sr_number'),
 				'remarks2' => $this->input->post('remarks2'),

@@ -43,6 +43,9 @@ defined('BASEPATH') or die('Access Denied');
 				            				<th>Industry Classification</th>
 				            				<th>Terms and Condition</th>
 											<th>Date of Partnership</th>
+											<th>Bank Name</th>
+											<th>Account Name</th>
+											<th>Account Number</th>
 											<th>Operation</th>
 				            			</tr>
 				            		</thead>

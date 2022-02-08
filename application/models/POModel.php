@@ -131,11 +131,13 @@ class POModel extends CI_Model
         return $this->db->get()->result();
     }
 
-    public function get_new_po_data()
+    public function get_new_po_data($supplier_id)
     {
         $this->db->select('*');
         $this->db->from('generated_po');
+        $this->db->where('supplier_id', $supplier_id);
         $this->db->order_by('po_id', 'DESC');
+        $this->db->limit(1);
         return $this->db->get()->result();
     }
 
@@ -185,7 +187,7 @@ class POModel extends CI_Model
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->where('a.po_id', $po_id);
-        $this->db->where('po_status', 'approved');
+        // $this->db->where('po_status', 'filed');
         $this->db->limit(1);
         return $this->db->get()->result();
     }

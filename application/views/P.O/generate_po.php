@@ -41,18 +41,32 @@ foreach ($supplier_details as $row) {
 }
 
 foreach ($po_details as $row) {
-    $po_data = [
-        'po_date_year' => date('y'),
-        'po_date_month' => date('m'),
-        'po_date_day' => date('d'),
-        'po_revise_count' => $row->po_revise
-    ];
+    if($row->po_status == "approved"){
+        $po_data = [
+            'po_id' =>$row->po_id,
+            'po_date_year' => date('y'),
+            'po_date_month' => date('m'),
+            'po_date_day' => date('d'),
+            'po_revise_count' => $row->po_revise
+        ];
+    }
+    elseif($row->po_status =="filed"){
+        $po_data = [
+            'po_id' =>$row->po_id,
+            'po_date_year' => date_format(date_create($row->date_filed), 'y'),
+            'po_date_month' => date_format(date_create($row->date_filed), 'm'),
+            'po_date_day' => date_format(date_create($row->date_filed), 'd'),
+            'po_revise_count' => $row->po_revise
+        ];
+    }
+    
 }
 
 
 
 $requisition_id = "";
 $requisition_id_result = "";
+
 foreach ($items_details as $row) {
     $total_per_item = $row->qty * $row->unit_cost;
     $sub_total = $sub_total + $total_per_item;
@@ -68,9 +82,10 @@ foreach ($items_details as $row) {
     }
 }
 
-$net_of_vat = $sub_total / 12;
+$net_of_vat = $sub_total / 1.12;
 $vat_amount = $net_of_vat * .12;
-$total_amount = $sub_total + $vat_amount;
+// $total_amount = $sub_total + $vat_amount;
+$total_amount = $sub_total;
 ?>
 
 <!DOCTYPE html>
@@ -148,7 +163,7 @@ $total_amount = $sub_total + $vat_amount;
                     <tr class="text-center">
                         <td style="font-weight: bold">PURCHASE ORDER NO.
                             <br>
-                            F06-<?php echo $supplier_data['vendor_category'] ?>-<?php echo $supplier_data['vendor_acronym'] ?>-<?php echo $po_data['po_date_year'] ?>-<?php echo $po_data['po_date_month'] ?><?php echo $po_data['po_date_day'] ?>-0<?php echo $po_data['po_revise_count'] ?>
+                            F06-<?php echo $supplier_data['vendor_category'] ?>-<?php echo $supplier_data['vendor_acronym'] ?>-<?php echo $po_data['po_date_year'] ?>-<?php echo $po_data['po_date_month'] ?><?php echo $po_data['po_date_day'] ?>-<?php echo $po_data['po_id'] ?> <!-- <?php echo $po_data['po_revise_count'] ?> -->
                         </td>
                     </tr>
                     <br>
@@ -264,7 +279,7 @@ $total_amount = $sub_total + $vat_amount;
 
                     </tr>
                     <tr>
-                        <td width="10%" style="font-weight: bold" colspan="2" class="text-right">TOTAL AMOUNT(PHP)</td>
+                        <td width="10%" style="font-weight: bold" colspan="2" class="text-right">TOTAL AMOUNT(<label id="vat"></label>)</td>
                         <td width="10%" style="font-weight: bold" class="text-right"> PHP <text id="total_po"></td>
                     </tr>
                 </tbody>
@@ -314,6 +329,9 @@ $total_amount = $sub_total + $vat_amount;
                     } elseif ($supplier_data['vendor_terms'] == "07") {
                         echo "90 DAYS PDC";
                     }
+                    elseif ($supplier_data['vendor_terms'] == "08") {
+                        echo "21 DAYS PDC";
+                    }
                     ?>
                 </b>
 
@@ -323,19 +341,8 @@ $total_amount = $sub_total + $vat_amount;
     <br>
     <br>
     <div class="row">
-        <div class="col-sm-12">
-            <h6>
-                <b>
-                    PREPARED BY: VERONICA SEMBRANO
-                </b>
-            </h6>
-        </div>
-    </div>
-    <br>
-    <br>
-    <div class="row">
         <div class="col-sm-9">
-            <h6>RECOMMENDING APPROVAL:</h6>
+            <h6>PREPARED BY:</h6>
         </div>
         <div class="col-sm-3">
             <h6>APPROVED BY:</h6>
@@ -346,14 +353,14 @@ $total_amount = $sub_total + $vat_amount;
         <div class="col-sm-9">
             <h6>
                 <b>
-                    ENGR. GINELOU NIÑO T. GARZON
+                VERONICA SEMBRANO
                 </b>
             </h6>
         </div>
         <div class="col-sm-3">
             <h6>
                 <b>
-                    MARVIN G. LUCAS
+                ENGR. GINELOU NIÑO T. GARZON
                 </b>
             </h6>
         </div>
@@ -405,6 +412,8 @@ $total_amount = $sub_total + $vat_amount;
                         <input type="hidden" name="net_of_vat" id="net_of_vat" value="<?php echo number_format($net_of_vat, 2) ?>">
                         <input type="hidden" name="sub_total" id="sub_total" value="<?php echo number_format($sub_total, 2) ?>">
                         <input type="hidden" name="total_amount" id="total_amount" value="<?php echo number_format($total_amount, 2) ?>">
+                        <input type="hidden" id="vat_inc" value="VAT INC.">
+                        <input type="hidden" id="vat_ex" value="VAT EX">
                     </div>
                 </div>
             </div>
@@ -571,10 +580,12 @@ $total_amount = $sub_total + $vat_amount;
                         $('#vat_po').html($('').val());
                         $('#total_po').html($('#sub_total').val());
                         $('#net_of_vat_po').html($('').val());
+                        $('#vat').html($('#vat_ex').val());
                     } else {
                         $('#vat_po').html($('#po_vat').val());
                         $('#total_po').html($('#total_amount').val());
                         $('#net_of_vat_po').html($('#net_of_vat').val());
+                        $('#vat').html($('#vat_inc').val());
                     }
 
 

@@ -19,7 +19,10 @@ foreach($vendor_data as $row){
         'vendor_category_edit' => $row->vendor_category,
         'vendor_technical_person' => $row->vendor_technical_person,
         'vendor_technical_contact' => $row->vendor_technical_contact,
-        'vendor_technical_email' => $row->vendor_technical_email
+        'vendor_technical_email' => $row->vendor_technical_email,
+        'vendor_bank_name' => $row->vendor_bank_name,
+        'vendor_account_name' => $row->vendor_account_name,
+        'vendor_account_number' => $row->vendor_account_number
     ];
 }
 
@@ -45,7 +48,7 @@ foreach($vendor_data as $row){
             <div class="row">
                 <div class="col-sm-12">
                     <div class="card">
-                        <?php echo form_open('VendorController/update_vendor_validate',["id" => "modal-update-vendor"]) ?>
+
                         <input type="hidden" name="vendor_code" value="<?php echo $vendor_data_result['vendor_code_edit'] ?>">
                         <input type="hidden" name="vendor_id" value="<?php echo $vendor_data_result['vendor_id_edit'] ?>">
                             <div class="card-header">
@@ -129,6 +132,7 @@ foreach($vendor_data as $row){
                                                                     <option value="05" <?php if ($vendor_data_result['vendor_terms_edit'] == "05") { echo 'selected';} ?> >05 --- 45 Days</option>
                                                                     <option value="06" <?php if ($vendor_data_result['vendor_terms_edit'] == "06") { echo 'selected';} ?> >06 --- 60 Days</option>
                                                                     <option value="07" <?php if ($vendor_data_result['vendor_terms_edit'] == "07") { echo 'selected';} ?> >07 --- 90 Days</option>
+                                                                    <option value="08" <?php if ($vendor_data_result['vendor_terms_edit'] == "08") { echo 'selected';} ?> >08 --- 21 Days</option>
                                                                 </select>
                                                             </p>
                                                         </div>
@@ -328,7 +332,6 @@ foreach($vendor_data as $row){
                                     </div>
                                 </div>
                             </div>
-                        <?php echo form_close() ?>
                     </div>
                 </div>
             </div>

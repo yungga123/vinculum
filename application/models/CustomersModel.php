@@ -4,7 +4,8 @@ defined('BASEPATH') or die('Access Denied');
 class CustomersModel extends CI_Model
 {
 
-
+	var $join_table = "technicians as b";
+	var $join_table1 = "sales_inquiry_task as c";
 
 	public function addCustomer($data)
 	{
@@ -202,4 +203,25 @@ class CustomersModel extends CI_Model
 	{
 		return $this->db->get('customer_vt')->num_rows();
 	}
+
+	public function delete_client($client_id, $data)
+    {
+		$this->db->where('CustomerID', $client_id);
+		return $this->db->update('customer_vt', $data);
+    }
+
+	public function get_project_data($client_id) {
+		
+		$this->db->select("*");
+		$this->db->from('customers_project as a');
+		$this->db->where("a.customer_id", $client_id);
+		$this->db->join($this->join_table,'b.id=a.sales_incharge','inner');
+		$this->db->join($this->join_table1,'c.project_id=a.project_id','inner');
+		$this->db->where('a.archive', 0);
+		$this->db->where('a.project_status', "100%");
+		$this->db->where('c.mark_last_task', 1);
+		$this->db->order_by('c.task_id','DESC');
+		return $this->db->get()->result();
+	}
+
 }

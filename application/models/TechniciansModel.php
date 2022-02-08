@@ -42,7 +42,11 @@ class TechniciansModel extends CI_Model {
 		//select id,concat(firstname,' ',substring(middlename,1,1),'. ',lastname) as name from technicians
 
 		$this->db->select(
-			"id,concat(firstname,' ',substring(middlename,1,1),' ',lastname) as name,
+			"id,
+			firstname,
+			middlename,
+			lastname,
+			concat(firstname,' ',substring(middlename,1,1),' ',lastname) as name,
 			position,
 			birthdate,
 			contact_number,
@@ -111,6 +115,13 @@ class TechniciansModel extends CI_Model {
 	public function sl_return($sl_count,$emp_id) {
 		//UPDATE items SET stocks = stocks - $value WHERE itemCode = $itemCode
 		return $this->db->query("UPDATE technicians SET sl_credit = (sl_credit + ".$sl_count.") WHERE id = '".$emp_id."'");
+	}
+
+	public function update_vlsl_to_default($data) {
+
+		$this->db->where('status', 'Regular');
+		$this->db->update('technicians', $data);
+		
 	}
 	
 }

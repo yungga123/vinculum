@@ -78,11 +78,22 @@ if(!function_exists('html_variable')) {
 			'ul_project_tree' => '',
 			'ul_sales_tree' => '',
 			'ul_hr_tree' => '',
+			'hr_status' => '',
+
+			'leaves' => '',
 
 			'sales_tree_status' => '',
 
 
-			'category' => '' //for Get Items Masterlist
+			'category' => '', //for Get Items Masterlist
+
+			'prf_menu_status' => '',
+			'ul_prf' => '',
+			'prf_menu_display' => '',
+			'new_prf' => '',
+			'prf_list' => '',
+			'inventory_menu_status' => '',
+			'prf_title' => ''
 		];
 
     return $data;

@@ -55,9 +55,18 @@ class VendorController extends CI_Controller
 			[
 				'field' => 'vendor_terms',
 				'label' => 'Vendor Terms and Condition',
-				'rules' => 'trim|max_length[50]',
+				'rules' => 'trim|max_length[50]|required',
 				'errors' => [
-					'max_length' => 'You are allowed only of 50 characters'
+					'max_length' => 'You are allowed only of 50 characters',
+					'required' => 'Please Provide Vendor Terms'
+				]
+			],
+			[
+				'field' => 'vendor_ranking',
+				'label' => 'Vendor Ranking',
+				'rules' => 'trim|required',
+				'errors' => [
+					'required' => 'Please Provide Vendor Ranking'
 				]
 			],
 			[
@@ -300,6 +309,61 @@ class VendorController extends CI_Controller
 					$this->VendorModel->update_vendor_brand(
 						$this->input->post('brand_data_id')[$i],
 						[
+			$vendor_code_generated = $v."-".$this->input->post('vendor_terms')."".$this->input->post('vendor_ranking');
+			
+			
+
+				$this->VendorModel->update_vendor($vendor_id,[
+					'vendor_code' => $vendor_code_generated,
+					'name' => $this->input->post('vendor_name'),
+					'address' => $this->input->post('vendor_address'),
+					'vendor_category' => $this->input->post('vendor_category'),
+					'contact_number' => $this->input->post('vendor_contact'),
+					'email' => $this->input->post('vendor_email'),
+					'contact_person' => $this->input->post('vendor_contact_person'),
+					'supplier_ranking' => $this->input->post('vendor_ranking'),
+					'industry_classification' => $this->input->post('vendor_classification'),
+					'terms_and_condition' => $this->input->post('vendor_terms'),
+					'date' => $this->input->post('vendor_date'),
+					'vendor_technical_person' => $this->input->post('vendor_technical_name'),
+					'vendor_technical_contact' => $this->input->post('vendor_technical_contact'),
+					'vendor_technical_email' => $this->input->post('vendor_technical_email'),
+					'vendor_bank_name' => $this->input->post('vendor_bank_name'),
+					'vendor_account_name' => $this->input->post('vendor_account_name'),
+					'vendor_account_number' => $this->input->post('vendor_account_number')
+				]);
+				
+				//Update Existing Request Item
+				$brand_id_data = array();
+				
+				for ($i=0; $i < count($this->input->post('brand_data_id')); $i++) {
+	
+					$brand_sub_data = array();
+	
+					if ($this->input->post('brand_data_id')[$i] != '') {
+	
+						$this->VendorModel->update_vendor_brand(
+							$this->input->post('brand_data_id')[$i],
+							[
+								'brand_id' => $vendor_id,
+								'brand_name' => $this->input->post('brand_name')[$i],
+								'products' => $this->input->post('brand_products')[$i],
+								'classification_level' => $this->input->post('brand_classification')[$i],
+								'ranking' => $this->input->post('brand_ranking')[$i],
+								'brand_contact_person' => $this->input->post('brand_contact_person')[$i],
+								'brand_contact_number' => $this->input->post('brand_contact_number')[$i],
+								'brand_email' => $this->input->post('brand_email')[$i],
+								'brand_technical_person' => $this->input->post('brand_technical_name')[$i],
+								'brand_technical_contact' => $this->input->post('brand_technical_contact')[$i],
+								'brand_technical_email' => $this->input->post('brand_technical_email')[$i]
+							]
+						);
+	
+						$brand_sub_data[] = $this->input->post('brand_data_id')[$i];
+						$brand_id_data[] = $brand_sub_data;
+					} else {
+						
+						$this->VendorModel->insert_vendor_brand([
 							'brand_id' => $vendor_id,
 							'brand_name' => $this->input->post('brand_name')[$i],
 							'products' => $this->input->post('brand_products')[$i],
@@ -400,8 +464,15 @@ class VendorController extends CI_Controller
 				} elseif ($row->terms_and_condition == "07") {
 					$sub_array[] = "90 Days";
 				}
+				elseif($row->terms_and_condition == "08"){
+					$sub_array[] = "21 Days";
+				}
 
 				$sub_array[] = $date;
+			$sub_array[] = $date;
+			$sub_array[] = $row->vendor_bank_name;
+			$sub_array[] = $row->vendor_account_name;
+			$sub_array[] = $row->vendor_account_number;
 
 				$sub_array[] = '
 			<a href="' . site_url('vendor-update/' . $row->id) . '" class="btn btn-xs btn-warning"><i class="fas fa-edit"></i></a>
@@ -467,6 +538,9 @@ class VendorController extends CI_Controller
 				'vendor_sales_contact' => $this->input->post('vendor_sales_contact'),
 				'vendor_sales_email' => $this->input->post('vendor_sales_email'),
 				'terms_and_condition' => $this->input->post('vendor_terms'),
+				'vendor_bank_name' => $this->input->post('vendor_bank_name'),
+				'vendor_account_name' => $this->input->post('vendor_account_name'),
+				'vendor_account_number' => $this->input->post('vendor_account_number'),
 				'date' => $date
 			]);
 

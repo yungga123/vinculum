@@ -321,6 +321,38 @@ class JobOrderController extends CI_Controller
 							);
 						}
 						break;
+					
+					case 'Video Wall':
+						if ($i == 0) {
+							$this->JobOrderModel->add_joborder_scope([
+								'job_order_id' => $job_order_id,
+								'video_wall' => 1
+							]);
+						} else {
+							$this->JobOrderModel->update_joborder_scope(
+								$job_order_id,
+								[
+									'video_wall' => 1
+								]
+							);
+						}
+						break;
+
+					case 'Wireless Access Point':
+						if ($i == 0) {
+							$this->JobOrderModel->add_joborder_scope([
+								'job_order_id' => $job_order_id,
+								'wap' => 1
+							]);
+						} else {
+							$this->JobOrderModel->update_joborder_scope(
+								$job_order_id,
+								[
+									'wap' => 1
+								]
+							);
+						}
+						break;
 				}
 			}
 		} else {
@@ -581,6 +613,12 @@ class JobOrderController extends CI_Controller
 			}
 			if ($row->pabgm == 1) {
 				$sub_scope[] = 'PABGM';
+			}
+			if ($row->video_wall == 1) {
+				$sub_scope[] = 'Video Wall';
+			}
+			if ($row->wap == 1) {
+				$sub_scope[] = 'WAP';
 			}
 
 			if ($row->date_requested != '0000-00-00') {
@@ -917,6 +955,16 @@ class JobOrderController extends CI_Controller
 			[
 				'field' => 'pabgm',
 				'label' => 'PABGM',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'video_wall',
+				'label' => 'Video Wall',
+				'rules' => 'trim'
+			],
+			[
+				'field' => 'wap',
+				'label' => 'Wireless Access Point',
 				'rules' => 'trim'
 			],
 			[
