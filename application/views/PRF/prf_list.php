@@ -8,7 +8,7 @@ defined('BASEPATH') or die('Access Denied');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"></h1>
+                    <h1 class="m-0 text-dark"> PROJECT REQUEST FORM LIST</h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -18,62 +18,57 @@ defined('BASEPATH') or die('Access Denied');
     <section class="content">
         <div class="container-fluid">
             <div class="form-group">
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Selections:</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <a href="<?php echo site_url('prf-list') ?>/pending" class="btn btn-warning text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'pending') {echo 'disabled';} ?>"><i class="fas fa-pause"></i> Pending Projects</a>
-                                        <a href="<?php echo site_url('prf-list') ?>/ongoing" class="btn btn-success text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'ongoing') {echo 'disabled';} ?>"><i class="fas fa-sync-alt"></i> Ongoing Projects</a>
-                                        <a href="<?php echo site_url('prf-list') ?>/filed" class="btn btn-danger text-bold btn-xl btn-block <?php if ($this->uri->segment(2) == 'filed') {echo 'disabled';} ?>"><i class="fas fa-file"></i> Filed Projects</a>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header p-2">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h4>Data List:</h4>
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item">
+                                            <a class="nav-link <?php if ($this->uri->segment(2) == 'pending') {echo 'active';} ?>" href="<?php echo site_url('prf-list') ?>/pending"><i class="fas fa-pause"></i> Pending Projects</a>
+                                            
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="<?php echo site_url('prf-list') ?>/ongoing" class="nav-link <?php if ($this->uri->segment(2) == 'ongoing') {echo 'active';} ?>"><i class="fas fa-sync-alt"></i> Ongoing Projects</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="<?php echo site_url('prf-list') ?>/filed" class="nav-link <?php if ($this->uri->segment(2) == 'filed') {echo 'active';} ?>"> <i class="fas fa-file"></i> Filed Projects</a>
+                                        </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <table id="prf_table" class="table table-bordered table-hover" style="width: 100%">
-                                    <thead>
-                                        <tr>
-                                            <th>PRF ID</th>
-                                            <th>Project Name</th>
-                                            <th>Project Branch</th>
-                                            <th>Project Activity</th>
-                                            <th>Date Requested</th>
-                                            <?php if ($this->uri->segment(2) != "pending") : ?>
-                                                <th>Sales Incharge</th>
-                                                <th>PIC</th>
-                                            <?php endif ?>
+                                <div class="tab-content">
+                                    <div class="active tab-pane" id="pending">
+                                    <table id="prf_table" class="table table-bordered table-hover" style="width: 100%">
+                                        <thead>
+                                            <tr>
+                                                <th>PRF ID</th>
+                                                <th>Project Name</th>
+                                                <th>Project Branch</th>
+                                                <th>Project Activity</th>
+                                                <th>Date Requested</th>
+                                                <?php if ($this->uri->segment(2) != "pending") : ?>
+                                                    <th>Sales Incharge</th>
+                                                    <th>PIC</th>
+                                                <?php endif ?>
 
-                                            <th>Requested By</th>
-                                            <th>Prepared By</th>
+                                                <th>Requested By</th>
+                                                <th>Prepared By</th>
 
-                                            <?php if ($this->uri->segment(2) == "filed") : ?>
-                                                <th>Return By</th>
-                                                <th>Return Date</th>
-                                                <th>Return Time</th>
-                                            <?php endif ?>
-                                            <th>Operation</th>
-                                        </tr>
-                                    </thead>
-                                </table>
+                                                <?php if ($this->uri->segment(2) == "filed") : ?>
+                                                    <th>Return By</th>
+                                                    <th>Return Date</th>
+                                                    <th>Return Time</th>
+                                                <?php endif ?>
+                                                <th>Operation</th>
+                                            </tr>
+                                        </thead> 
+                                    </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
