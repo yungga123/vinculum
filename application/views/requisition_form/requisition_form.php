@@ -165,7 +165,7 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                             </div>
                                             <input type="hidden" name="received_by" id="received_by" value="">
                                             <input type="hidden" name="checked_by" id="checked_by" value="">
-                                            <input type="hidden" name="approved_by" id="received_by" value="">
+                                            <input type="hidden" name="approved_by" id="approved_by" value="">
                                             <input type="hidden" name="processed_by" id="processed_by" value="">
                                         </div>
                                     <?php endif ?>
@@ -359,7 +359,6 @@ if ($this->uri->segment(1) == 'requisition-update') {
                     <input type="password" name="passcode" class="form-control">
                 </div>
             </div>
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> ACCEPT</button>

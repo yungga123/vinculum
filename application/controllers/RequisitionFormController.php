@@ -10,6 +10,24 @@ class RequisitionFormController extends CI_Controller {
 
     function validation_rules() {
 
+        if($this->uri->segment(2) == 'update_item_requisition_validate'){
+            $processed_rules = 'trim|required';
+            $processed_errors = ['required' => 'Please select Processed By'];
+            $received_rules = 'trim|required';
+            $received_errors = ['required' => 'Please select Received By'];
+            $checked_rules = 'trim|required';
+            $checked_errors = ['required' => 'Please select Checked By'];
+        }
+        else{
+            $processed_rules = 'trim';
+            $processed_errors = '';
+            $received_rules = 'trim';
+            $received_errors = '';
+            $checked_rules = 'trim';
+            $checked_errors = '';
+        }
+       
+
         $rules = [
 			[
 				'field' => 'requested_by',
@@ -22,7 +40,8 @@ class RequisitionFormController extends CI_Controller {
             [
                 'field' => 'processed_by',
                 'label' => 'Processed By',
-                'rules' => 'trim'
+                'rules' => $processed_rules,
+                'errors' => $processed_errors
             ],
             [
                 'field' => 'approved_by',
@@ -32,12 +51,14 @@ class RequisitionFormController extends CI_Controller {
             [
                 'field' => 'received_by',
                 'label' => 'Received By',
-                'rules' => 'trim'
+                'rules' => $received_rules,
+                'errors' => $received_errors
             ],
             [
                 'field' => 'checked_by',
                 'label' => 'Checked By',
-                'rules' => 'trim'
+                'rules' => $checked_rules,
+                'errors' => $checked_errors
             ],
             [
                 'field' => 'description[]',
@@ -536,7 +557,6 @@ class RequisitionFormController extends CI_Controller {
 		];
 
         $rules = [
-
             [
                 'field' => 'req_form_id',
                 'label' => 'Req. No.',

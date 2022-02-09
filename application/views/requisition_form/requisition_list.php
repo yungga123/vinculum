@@ -91,13 +91,11 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                 <?php endif ?>
             </div>
 
-            <?php if ($this->uri->segment(1) == 'requisition-accepted') { ?>
-                <input type="hidden" id="file_processed_by" name="file_processed_by" value="">
-                <input type="hidden" id="file_approved_by" name="file_approved_by" value="">
-                <input type="hidden" id="file_received_by" name="file_received_by" value="">
-                <input type="hidden" id="file_checked_by" name="file_checked_by" value="">
+                <input type="hidden" id="file_processed_by" name="file_processed_by">
+                <input type="hidden" id="file_approved_by" name="file_approved_by">
+                <input type="hidden" id="file_received_by" name="file_received_by">
+                <input type="hidden" id="file_checked_by" name="file_checked_by">
 
-            <?php } ?>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
