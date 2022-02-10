@@ -188,7 +188,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 										<li class="nav-item">
 											<a href="<?php echo site_url('prf-list/pending') ?>" class="nav-link<?php echo $prf_list ?>">
 												<i class="far fa-circle nav-icon"></i>
-												<p>PRF List <span class="right badge badge-danger"><?php echo $this->CountsModel->count_prf() ?></span></p>
+												<p>PRF List</p>
 											</a>
 										</li>
 									</ul>

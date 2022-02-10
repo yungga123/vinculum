@@ -26,17 +26,28 @@ defined('BASEPATH') or die('Access Denied');
                                     <div class="col-sm-12">
                                     <ul class="nav nav-pills">
                                         <li class="nav-item">
-                                            <a class="nav-link <?php if ($this->uri->segment(2) == 'pending') {echo 'active';} ?>" href="<?php echo site_url('prf-list') ?>/pending"><i class="fas fa-pause"></i> Pending Projects</a>
-                                            
+                                            <a class="nav-link <?php if ($this->uri->segment(2) == 'pending') {echo 'active';} ?>" href="<?php echo site_url('prf-list') ?>/pending">
+                                                <i class="fas fa-pause"></i> Pending Projects 
+                                                <span class="badge bg-danger">
+                                                    <?php echo $this->CountsModel->count_prf_pending() ?>
+                                                </span>
+                                            </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="<?php echo site_url('prf-list') ?>/ongoing" class="nav-link <?php if ($this->uri->segment(2) == 'ongoing') {echo 'active';} ?>"><i class="fas fa-sync-alt"></i> Ongoing Projects</a>
+                                            <a href="<?php echo site_url('prf-list') ?>/ongoing" class="nav-link <?php if ($this->uri->segment(2) == 'ongoing') {echo 'active';} ?>">
+                                                <i class="fas fa-sync-alt"></i> Ongoing Projects 
+                                                <span class="badge bg-danger"><?php echo $this->CountsModel->count_prf_ongoing() ?></span>
+                                            </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="<?php echo site_url('prf-list') ?>/filed" class="nav-link <?php if ($this->uri->segment(2) == 'filed') {echo 'active';} ?>"> <i class="fas fa-file"></i> Filed Projects</a>
+                                            <a href="<?php echo site_url('prf-list') ?>/filed" class="nav-link <?php if ($this->uri->segment(2) == 'filed') {echo 'active';} ?>">
+                                                <i class="fas fa-file"></i> Filed Projects
+                                                <span class="badge bg-danger"> <?php echo $this->CountsModel->count_prf_filed() ?></span>
+                                            </a>
                                         </li>
                                         </ul>
                                     </div>
+                                
                                 </div>
                             </div>
                             <div class="card-body">

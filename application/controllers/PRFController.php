@@ -572,24 +572,29 @@ class PRFController extends CI_Controller
             
             if($status =='ongoing'){
                 $sub_array[] = '
-                <button type="button" title="View Items List" class="btn btn-primary text-bold btn-xs fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
-                <a href="'.site_url('prf-form/'.$row->client_id .'/'.$row->branch_id.'/'.$row->prf_id).'" class="btn btn-warning text-bold btn-xs" title="Edit PRF Info"><i class="fas fa-edit"></i></a>
-                <button type="button" class="btn btn-success text-bold btn-xs select-prf-status" title="File PRF" data-toggle="modal" data-target="#file-prf"><i class="fas fa-file"></i></button>
-                <a href="'.site_url('prf-return/'.$row->prf_id).'" class="btn btn-warning text-bold btn-xs" title="Return Items"><i class="fas fa-undo"></i></a>
-                <a href="'.site_url('prf-print/'.$row->prf_id).'" class="btn btn-success text-bold btn-xs" title="Print PRF"><i class="fas fa-print"></i></a>';
+                <div class="btn-group btn-sm">
+                <button type="button" title="View Items List" class="btn btn-primary text-bold fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
+                <a href="'.site_url('prf-form/'.$row->client_id .'/'.$row->branch_id.'/'.$row->prf_id).'" class="btn btn-warning text-bold" title="Edit PRF Info"><i class="fas fa-edit"></i></a>
+                <button type="button" class="btn btn-success text-bold select-prf-status" title="File PRF" data-toggle="modal" data-target="#file-prf"><i class="fas fa-file"></i></button>
+                <a href="'.site_url('prf-return/'.$row->prf_id).'" class="btn btn-warning text-bold" title="Return Items"><i class="fas fa-undo"></i></a>
+                <a href="'.site_url('prf-print/'.$row->prf_id).'" class="btn btn-success text-bold" title="Print PRF"><i class="fas fa-print"></i></a>
+                </div>';
             }
             elseif($status =='pending'){
                 $sub_array[] = '
-                <button type="button" title="View Items List" class="btn btn-primary text-bold btn-xs fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
-                <button type="button" class="btn btn-success text-bold btn-xs select-prf-status" title="Pullout PRF" data-toggle="modal" data-target="#file-prf"><i class="fas fa-file"></i></button>
-                <a href="'.site_url('prf-form/'.$row->client_id .'/'.$row->branch_id.'/'.$row->prf_id).'" class="btn btn-warning text-bold btn-xs" title="Edit PRF Info"><i class="fas fa-edit"></i></a>
-                <a href="'.site_url('prf-print/'.$row->prf_id).'" class="btn btn-success text-bold btn-xs" title="Print PRF"><i class="fas fa-print"></i></a>';
+                <div class="btn-group btn-md">
+                <button type="button" title="View Items List" class="btn btn-primary text-bold fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
+                <button type="button" class="btn btn-success text-bold select-prf-status" title="Pullout PRF" data-toggle="modal" data-target="#file-prf"><i class="fas fa-file"></i></button>
+                <a href="'.site_url('prf-form/'.$row->client_id .'/'.$row->branch_id.'/'.$row->prf_id).'" class="btn btn-warning text-bold" title="Edit PRF Info"><i class="fas fa-edit"></i></a>
+                <a href="'.site_url('prf-print/'.$row->prf_id).'" class="btn btn-success text-bold" title="Print PRF"><i class="fas fa-print"></i></a>
+                </div>';
             }
             else{
                 $sub_array[] = '
-                <button type="button" title="View Items List" class="btn btn-primary text-bold btn-xs fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
-                <a href="'.site_url('prf-print/'.$row->prf_id).'" class="btn btn-success text-bold btn-xs" title="Print PRF"><i class="fas fa-print"></i></a>
-                ';
+                <div class="btn-group btn-md">
+                <button type="button" title="View Items List" class="btn btn-primary text-bold fetch-direct fetch-indirect fetch-tools" data-toggle="modal" data-target=".btn-view"><i class="fas fa-search"></i></button>
+                <a href="'.site_url('prf-print/'.$row->prf_id).'" class="btn btn-success text-bold" title="Print PRF"><i class="fas fa-print"></i></a>
+                </div>';
             }
 
 
