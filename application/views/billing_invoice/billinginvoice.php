@@ -52,14 +52,14 @@ defined('BASEPATH') or die('Access Denied');
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row" colspan="2" style="color:red;">F07-01-SPIST-21-0925-00</th>
+                                            <th scope="row" colspan="2" style="color:red;">F07-01-<?php echo date("A-y-md"); ?>-00</th>
                                         </tr>
                                         <tr>
                                             <th scope="row">SOA Date:</th>
                                             <th scope="row">Due Date:</th>
                                         </tr>
                                         <tr>
-                                            <td>September 25, 2021</td>
+                                            <td><?php echo date("F d, Y"); ?></td>
                                             <td><input type="text" class="form-control" placeholder=""></td>
                                         </tr>
                                     </tbody>
