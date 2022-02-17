@@ -332,8 +332,10 @@ if ($this->uri->segment(1) == 'requisition-pending') {
 
                 if (data == undefined) {
                     $('#req_form_id').val(rowdata[0]);
+                    $('#file_processed_by').val(rowdata[4]);
                 } else if (rowdata == undefined) {
                     $('#req_form_id').val(data[0]);
+                    $('#file_processed_by').val(data[4]);
                 }
 
             });
