@@ -39,8 +39,14 @@ class PRFModel extends CI_Model {
 			'b.CompanyName',
 			'c.branch_name',
 			'd.project_type',
-			'i.lastname',
+			'a.date_requested',
+			'a.sales',
+			'a.pic',
 			'a.requested_by',
+			'a.prepared_by',
+			'a.returned_by',
+			'a.date_return',
+			'a.time_return',
 			'a.prf_id'
         );
 

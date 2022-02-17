@@ -39,8 +39,22 @@ class CountsModel extends CI_Model {
 
 
     // PRF Counts
-	public function count_prf() {
+	public function count_prf_pending() {
         $this->db->where('status','pending');
+        $this->db->where('is_deleted',0);
+        return $this->db->count_all_results('prf_info');
+    }
+
+    // PRF Counts
+	public function count_prf_ongoing() {
+        $this->db->where('status','ongoing');
+        $this->db->where('is_deleted',0);
+        return $this->db->count_all_results('prf_info');
+    }
+
+    // PRF Counts
+	public function count_prf_filed() {
+        $this->db->where('status','filed');
         $this->db->where('is_deleted',0);
         return $this->db->count_all_results('prf_info');
     }

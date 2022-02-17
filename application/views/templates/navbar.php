@@ -25,6 +25,11 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
+					<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+						<i class="fas fa-th-large"></i>
+					</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="<?php echo site_url('LoginController/logout') ?>" style="color: #17a2b8">
 						<u>Logout</u>
 					</a>
@@ -183,7 +188,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 										<li class="nav-item">
 											<a href="<?php echo site_url('prf-list/pending') ?>" class="nav-link<?php echo $prf_list ?>">
 												<i class="far fa-circle nav-icon"></i>
-												<p>PRF List <span class="right badge badge-danger"><?php echo $this->CountsModel->count_prf() ?></span></p>
+												<p>PRF List</p>
 											</a>
 										</li>
 									</ul>
