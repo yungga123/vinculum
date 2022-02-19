@@ -85,31 +85,14 @@ defined('BASEPATH') or die('Access Denied');
                             <form>
                                 <div class="row">
                                     <div class="col">
-                                        <?php if ($select['location'] == 'id') { ?>
-                                            <select class="form-control form-control-sm select-employee select2" name="supplier_id" id="supplier_id">
-                                                <option value="">
-                                                    <--- Please Select --->
-                                                </option>
-                                                <?php foreach ($slcdata as $row) { ?>
-                                                    <option value="<?php echo $row->id ?>" <?php if ($row->id == $select['location']) {
-                                                        echo 'selected';
-                                                        } ?>>
-                                                        <?php echo $row->location ?>
-                                                    </option>
-                                                <?php } ?>
-                                            </select>
-                                        <?php } else { ?>
-                                            <select class="form-control form-control-sm select-employee select2" name="supplier_id" id="supplier_id">
-                                                <option value="">
-                                                    <--- Please Select --->
-                                                </option>
-                                                <?php foreach ($slcdata as $row) { ?>
-                                                    <option value="<?php echo $row->id ?>">
-                                                        <?php echo $row->location ?>
-                                                    </option>
-                                                <?php } ?>
-                                            </select>
-                                        <?php } ?>
+                                        <select type="text" name="sel_city" id='sel_city' class="form-control select-customer select2">
+                                            <option>-- Select Name --</option>
+                                            <?php
+                                            foreach ($cities as $city) {
+                                                echo "<option value='" . $city['id'] . "'>" . $city['customer_name'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                             </form>
@@ -119,9 +102,16 @@ defined('BASEPATH') or die('Access Denied');
                 </thead>
                 <tbody>
                     <tr>
-                        <td><input type="text" class="form-control" placeholder="" readonly <?php if ($select['location'] == 'id') {
-                        echo 'value="'.$select['location'].'"';
-                        } ?>></td>
+                        <td>
+                            <select type="text" name="sel_city" id='sel_city' class="form-control select-customer select2">
+                                <option>-- Select Name --</option>
+                                <?php
+                                foreach ($cities as $city) {
+                                    echo "<option value='" . $city['id'] . "'>" . $city['customer_name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </td>
                         <td>70 National Road, Putatan Muntinlupa City</td>
                     </tr>
                 </tbody>
@@ -129,8 +119,15 @@ defined('BASEPATH') or die('Access Denied');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="5">Attention: <input type="text" class="form-control" placeholder="" style="width:30%;" readonly <?php if ($select['location'] == 'id') {
-                        echo 'value="'.$select['contact_person'].'"'; } ?>></th>
+                        <th scope="col" colspan="5">Attention: <select type="text" name="project_branch" id='sel_user' class="form-control select-branch select2">
+                                <option>-- Select Name --</option>
+                                <?php
+                                foreach ($cities as $city) {
+                                    echo "<option value='" . $city['id'] . "'>" . $city['contact_person'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -261,3 +258,66 @@ defined('BASEPATH') or die('Access Denied');
         </section>
     </div>
 </div>
+
+<!-- Script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type='text/javascript'>
+    // baseURL variable
+    var baseURL = "<?php echo base_url(); ?>";
+
+    $(document).ready(function() {
+
+        // City change
+        $('#sel_city').change(function() {
+            var city = $(this).val();
+
+            // AJAX request
+            $.ajax({
+                url: '<?= base_url() ?>http://localhost/vinculum',
+                method: 'post',
+                data: {
+                    city: city
+                },
+                dataType: 'json',
+                success: function(response) {
+
+                    // Remove options 
+                    $('#sel_user').find('option').not(':first').remove();
+                    $('#sel_depart').find('option').not(':first').remove();
+
+                    // Add options
+                    $.each(response, function(index, data) {
+                        $('#sel_depart').append('<option value="' + data['id'] + '">' + data['customer_name'] + '</option>');
+                    });
+                }
+            });
+        });
+
+        // Department change
+        $('#sel_depart').change(function() {
+            var department = $(this).val();
+
+            // AJAX request
+            $.ajax({
+                url: '<?= base_url() ?>http://localhost/vinculum',
+                method: 'post',
+                data: {
+                    customer_name: customer_name
+                },
+                dataType: 'json',
+                success: function(response) {
+
+                    // Remove options
+                    $('#sel_user').find('option').not(':first').remove();
+
+                    // Add options
+                    $.each(response, function(index, data) {
+                        $('#sel_user').append('<option value="' + data['id'] + '">' + data['customer_name'] + '</option>');
+                    });
+                }
+            });
+        });
+
+    });
+</script>

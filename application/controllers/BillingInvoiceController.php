@@ -8,6 +8,7 @@ class BillingInvoiceController extends CI_Controller
 	{
 		Parent::__construct();
 		date_default_timezone_set('Asia/Manila');
+		$this->load->helper('url');
 		$this->load->model('BillingInvoiceModel');
 		$this->load->library('form_validation');
 		$this->load->database();
@@ -27,10 +28,12 @@ class BillingInvoiceController extends CI_Controller
 			$data['slcdata'] = $slcdata;
 			$data['birthdate'] = $birthdate;
 			$data['select'] = $this->select_data();
+			$data['cities'] = $this->BillingInvoiceModel->getCity();
+
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
-			$this->load->view('billing_invoice/billinginvoice');
+			$this->load->view('billing_invoice/billinginvoice', $data);
 			$this->load->view('templates/footer');
 			$this->load->view('project_report/script');
 		} else {
@@ -47,4 +50,5 @@ class BillingInvoiceController extends CI_Controller
 		return $select;
 	}
 
+	
 }
