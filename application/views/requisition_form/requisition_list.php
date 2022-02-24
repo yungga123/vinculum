@@ -1,4 +1,4 @@
-<?php 
+<?php
 defined('BASEPATH') or die('Access Denied');
 
 $page_title = '';
@@ -20,7 +20,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                <h1 class="m-0 text-dark"><?php echo $page_title ?></h1>
+                    <h1 class="m-0 text-dark"><?php echo $page_title ?></h1>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -36,23 +36,23 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                             <table class="table table-bordered table-hover" id="table_pending_request" style="width: 100%">
                                 <thead>
                                     <tr>
-                                    <?php if ($this->uri->segment(1) == 'requisition-pending'): ?>
-                                        <th>Req No.</th>
-                                        <th>Operation</th>
-                                        <th>Date Added</th>
-                                        <th>Requested By</th>
-                                        <th>Processed By</th>
-                                        <th>Approved By</th>
-                                    <?php else: ?>
-                                        <th>Req No.</th>
-                                        <th>Operation</th>
-                                        <th>Date Added</th>
-                                        <th>Requested By</th>
-                                        <th>Processed By</th>
-                                        <th>Approved By</th>
-                                        <th>Received By</th>
-                                        <th>Checked By</th>
-                                    <?php endif ?>
+                                        <?php if ($this->uri->segment(1) == 'requisition-pending') : ?>
+                                            <th>Req No.</th>
+                                            <th>Operation</th>
+                                            <th>Date Added</th>
+                                            <th>Requested By</th>
+                                            <th>Processed By</th>
+                                            <th>Approved By</th>
+                                        <?php else : ?>
+                                            <th>Req No.</th>
+                                            <th>Operation</th>
+                                            <th>Date Added</th>
+                                            <th>Requested By</th>
+                                            <th>Processed By</th>
+                                            <th>Approved By</th>
+                                            <th>Received By</th>
+                                            <th>Checked By</th>
+                                        <?php endif ?>
                                     </tr>
                                 </thead>
                             </table>
@@ -71,30 +71,30 @@ if ($this->uri->segment(1) == 'requisition-pending') {
         <div class="modal-content">
             <div class="modal-header">
                 <b class="modal-title"><?php echo ($this->uri->segment(1) == 'requisition-accepted') ? 'File Request' : 'Accept Request'  ?></b>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <?php echo ($this->uri->segment(1) == 'requisition-pending') ? form_open('RequisitionFormController/accept_requisition',["id" => "form-accept-req"]) : form_open('RequisitionFormController/file_requisition',["id" => "form-file-req"]) ?>
+            <?php echo ($this->uri->segment(1) == 'requisition-pending') ? form_open('RequisitionFormController/accept_requisition', ["id" => "form-accept-req"]) : form_open('RequisitionFormController/file_requisition', ["id" => "form-file-req"]) ?>
             <div class="modal-body text-center">
                 <div class="form-group">
-                  <label for="req_form_id">Req. No.</label>
-                  <input type="text" name="req_form_id" id="req_form_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
+                    <label for="req_form_id">Req. No.</label>
+                    <input type="text" name="req_form_id" id="req_form_id" class="form-control col-6 offset-3 text-bold text-center" readonly>
                 </div>
-                <?php if ($this->uri->segment(1) == 'requisition-pending'): ?>
+                <?php if ($this->uri->segment(1) == 'requisition-pending') : ?>
                     <div class="form-group">
-                    <label>Please Enter Passcode:</label>
+                        <label>Please Enter Passcode:</label>
                         <input type="password" name="passcode" class="form-control">
                     </div>
-                <?php else: ?>
+                <?php else : ?>
                     <input type="hidden" name="passcode" class="form-control">
                 <?php endif ?>
             </div>
 
-                <input type="hidden" id="file_processed_by" name="file_processed_by">
-                <input type="hidden" id="file_approved_by" name="file_approved_by">
-                <input type="hidden" id="file_received_by" name="file_received_by">
-                <input type="hidden" id="file_checked_by" name="file_checked_by">
+            <input type="hidden" id="file_processed_by" name="file_processed_by">
+            <input type="hidden" id="file_approved_by" name="file_approved_by">
+            <input type="hidden" id="file_received_by" name="file_received_by">
+            <input type="hidden" id="file_checked_by" name="file_checked_by">
 
 
             <div class="modal-footer">
@@ -113,15 +113,15 @@ if ($this->uri->segment(1) == 'requisition-pending') {
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"><b>Delete Requisition</b></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <?php echo form_open('RequisitionFormController/delete_requisition',["id" => "form-delete-request"]) ?>
+            <?php echo form_open('RequisitionFormController/delete_requisition', ["id" => "form-delete-request"]) ?>
             <div class="modal-body text-center">
                 <div class="form-group">
-                  <label for="req_form_id_del">Are you sure you want to delete?</label>
-                  <input type="text" class="form-control col-6 offset-3 text-center text-bold" name="req_form_id_del" id="req_form_id_del" readonly>
+                    <label for="req_form_id_del">Are you sure you want to delete?</label>
+                    <input type="text" class="form-control col-6 offset-3 text-center text-bold" name="req_form_id_del" id="req_form_id_del" readonly>
                 </div>
             </div>
             <div class="modal-footer">
@@ -142,12 +142,17 @@ if ($this->uri->segment(1) == 'requisition-pending') {
 
             </div>
             <div class="modal-header">
-                <h5 class="modal-title"><b>LIST OF ITEMS</b><h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                <h4 class="modal-title"><b>REQUISITION ID: </b><label id="request_id"></label><h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="modal-title"><b>LIST OF ITEMS</b><h5>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm" id="table-reqitems">
                         <thead>
