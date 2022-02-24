@@ -405,7 +405,7 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                         
                             $.each(response.results, function (key, value) {
                                 //total_cost = Number(response.results[key].unit_cost) * Number(response.results[key].qty);
-                                    
+                                
                                 $('#tbody-reqitems').append('<tr>' +
                                     '<td>' + i++ + '</td>' +
                                     '<td>' + response.results[key].description + '</td>' +
@@ -419,11 +419,12 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                                 '</tr>');
                                 //total_price = total_price+(response.results[key].unit_cost*response.results[key].qty);
                                 total_price = response.results[key].total;
+                                request_id = response.results[key].request_id;
 
                             });
 
                         $('#req_total_price').html(total_price);
-
+                        $('#request_id').html(request_id);
                         $('#modal_loading').removeClass('overlay d-flex justify-content-center align-items-center');
 						$('#modal_loading').empty();
                     }

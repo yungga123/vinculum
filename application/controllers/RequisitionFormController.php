@@ -681,6 +681,7 @@ class RequisitionFormController extends CI_Controller {
             $item_total = $row->qty * $row->unit_cost;
             $total = $total + $item_total;
 
+            $sub_data['request_id'] = $row->request_form_id;
             $sub_data['description'] = $row->description;
             $sub_data['qty'] = $row->qty;
             $sub_data['unit'] = $row->unit;
