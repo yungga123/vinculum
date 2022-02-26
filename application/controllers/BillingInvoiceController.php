@@ -19,21 +19,50 @@ class BillingInvoiceController extends CI_Controller
 
 		if ($this->session->userdata('logged_in')) {
 
-			$slcdata = $this->BillingInvoiceModel->billing_invoice();
+			$slcctmrs = $this->BillingInvoiceModel->billing_invoice();
+			$slcbrch = $this->BillingInvoiceModel->billing_invoice();
 			$birthdate = $this->BillingInvoiceModel->dateneeded();
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Billing Invoice';
-			$data['slcdata'] = $slcdata;
+			$data['slcctmrs'] = $slcctmrs;
+			$data['slcbrch'] = $slcbrch;
 			$data['birthdate'] = $birthdate;
 			$data['select'] = $this->select_data();
-			$data['cities'] = $this->BillingInvoiceModel->getCity();
 
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
 			$this->load->view('billing_invoice/billinginvoice', $data);
+			$this->load->view('templates/footer');
+			$this->load->view('project_report/script');
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
+	public function billinginvoiceviewprint()
+	{
+
+		if ($this->session->userdata('logged_in')) {
+
+			$slcctmrs = $this->BillingInvoiceModel->billing_invoice();
+			$slcbrch = $this->BillingInvoiceModel->billing_invoice();
+			$birthdate = $this->BillingInvoiceModel->dateneeded();
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Billing Invoice';
+			$data['slcctmrs'] = $slcctmrs;
+			$data['slcbrch'] = $slcbrch;
+			$data['birthdate'] = $birthdate;
+			$data['select'] = $this->select_data();
+
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('billing_invoice/billinginvoice_print', $data);
 			$this->load->view('templates/footer');
 			$this->load->view('project_report/script');
 		} else {

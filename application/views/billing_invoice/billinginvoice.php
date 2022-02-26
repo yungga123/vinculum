@@ -88,8 +88,8 @@ defined('BASEPATH') or die('Access Denied');
                                         <select type="text" name="sel_city" id='sel_city' class="form-control select-customer select2">
                                             <option>-- Select Name --</option>
                                             <?php
-                                            foreach ($cities as $city) {
-                                                echo "<option value='" . $city['id'] . "'>" . $city['customer_name'] . "</option>";
+                                            foreach ($slcctmrs as $row) {
+                                                echo "<option value='" . $row['id'] . "'>" . $row['customer_name'] . "</option>";
                                             }
                                             ?>
                                         </select>
@@ -106,8 +106,8 @@ defined('BASEPATH') or die('Access Denied');
                             <select type="text" name="sel_city" id='sel_city' class="form-control select-customer select2">
                                 <option>-- Select Name --</option>
                                 <?php
-                                foreach ($cities as $city) {
-                                    echo "<option value='" . $city['id'] . "'>" . $city['customer_name'] . "</option>";
+                                foreach ($slcctmrs as $row) {
+                                    echo "<option value='" . $row['id'] . "'>" . $row['customer_name'] . "</option>";
                                 }
                                 ?>
                             </select>
@@ -122,8 +122,8 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="col" colspan="5">Attention: <select type="text" name="project_branch" id='sel_user' class="form-control select-branch select2">
                                 <option>-- Select Name --</option>
                                 <?php
-                                foreach ($cities as $city) {
-                                    echo "<option value='" . $city['id'] . "'>" . $city['contact_person'] . "</option>";
+                                foreach ($slcbrch as $row) {
+                                    echo "<option value='" . $row['id'] . "'>" . $row['contact_person'] . "</option>";
                                 }
                                 ?>
                             </select>
@@ -258,66 +258,3 @@ defined('BASEPATH') or die('Access Denied');
         </section>
     </div>
 </div>
-
-<!-- Script -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script type='text/javascript'>
-    // baseURL variable
-    var baseURL = "<?php echo base_url(); ?>";
-
-    $(document).ready(function() {
-
-        // City change
-        $('#sel_city').change(function() {
-            var city = $(this).val();
-
-            // AJAX request
-            $.ajax({
-                url: '<?= base_url() ?>http://localhost/vinculum',
-                method: 'post',
-                data: {
-                    city: city
-                },
-                dataType: 'json',
-                success: function(response) {
-
-                    // Remove options 
-                    $('#sel_user').find('option').not(':first').remove();
-                    $('#sel_depart').find('option').not(':first').remove();
-
-                    // Add options
-                    $.each(response, function(index, data) {
-                        $('#sel_depart').append('<option value="' + data['id'] + '">' + data['customer_name'] + '</option>');
-                    });
-                }
-            });
-        });
-
-        // Department change
-        $('#sel_depart').change(function() {
-            var department = $(this).val();
-
-            // AJAX request
-            $.ajax({
-                url: '<?= base_url() ?>http://localhost/vinculum',
-                method: 'post',
-                data: {
-                    customer_name: customer_name
-                },
-                dataType: 'json',
-                success: function(response) {
-
-                    // Remove options
-                    $('#sel_user').find('option').not(':first').remove();
-
-                    // Add options
-                    $.each(response, function(index, data) {
-                        $('#sel_user').append('<option value="' + data['id'] + '">' + data['customer_name'] + '</option>');
-                    });
-                }
-            });
-        });
-
-    });
-</script>

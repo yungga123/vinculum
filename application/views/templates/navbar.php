@@ -289,6 +289,16 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 											</a>
 										</li>
 									</ul>
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<a href="<?php echo site_url('billing_invoice/billinginvoice_print') ?>" class="nav-link<?php echo $li_payroll ?>">
+												<i class="far fa-circle nav-icon"></i>
+												<p>
+													billing invoice print
+												</p>
+											</a>
+										</li>
+									</ul>
 								</li>
 
 								<li class="nav-item has-treeview<?php echo $li_servicereport ?>">

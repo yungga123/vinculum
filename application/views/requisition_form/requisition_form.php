@@ -112,8 +112,8 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                         <?php foreach ($employees as $row) { ?>
 
                                                             <option value="<?php echo $row->id ?>" <?php if ($this->uri->segment(1) == 'requisition-update') {
-                                                                                                        echo ($req_data['received_by'] == $row->id) ? ' selected' : '';
-                                                                                                    } ?>><?php echo $row->name ?>
+                                                            echo ($req_data['received_by'] == $row->id) ? ' selected' : '';
+                                                            } ?>><?php echo $row->name ?>
                                                             </option>
                                                         <?php } ?>
                                                     </select>
