@@ -52,6 +52,7 @@ defined('BASEPATH') or die('Access Denied');
 									<div class="bg-danger color-palette"><span>Payables</span></div>
 									<div class="bg-success color-palette"><span>Holiday/Event</span></div>
 									<div class="bg-secondary color-palette"><span>Meetings</span></div>
+									<div class="bg-info color-palette"><span>Deployment</span></div>
 
 								</div>
 							</div>
@@ -113,6 +114,7 @@ defined('BASEPATH') or die('Access Denied');
 						<option value="payables">Payables/Bills</option>
 						<option value="holiday">Holiday/event</option>
 						<option value="meeting">Meeting</option>
+						<option value="deployment">Deployment</option>
 					</select>
 				</div>
 				
@@ -164,6 +166,7 @@ defined('BASEPATH') or die('Access Denied');
 						<option value="payables">Payables/Bills</option>
 						<option value="holiday">Holiday</option>
 						<option value="meeting">Meeting</option>
+						<option value="deployment">Deployment</option>
 					</select>
 				</div>
 
@@ -248,6 +251,7 @@ defined('BASEPATH') or die('Access Denied');
 										<div class="bg-danger color-palette"><span>Payables</span></div>
 										<div class="bg-success color-palette"><span>Holiday/Event</span></div>
 										<div class="bg-secondary color-palette"><span>Meeting</span></div>
+										<div class="bg-info color-palette"><span>Deployment</span></div>
 
 									</div>
 								</div>
@@ -286,6 +290,8 @@ defined('BASEPATH') or die('Access Denied');
 														 		echo 'bg-success';
 														 	} else if ($row->type == 'meeting') {
 																echo 'bg-secondary';
+															} else if ($row->type == 'deployment') {
+																echo 'bg-info';
 															}
 
 														 ?>">
