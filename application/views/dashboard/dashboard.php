@@ -39,6 +39,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
                       <div class="bg-danger color-palette"><span>Payables</span></div>
                       <div class="bg-success color-palette"><span>Holiday/Event</span></div>
                       <div class="bg-secondary color-palette"><span>Meeting</span></div>
+                      <div class="bg-info color-palette"><span>Deployment</span></div>
 
                     </div>
                   </div>
@@ -77,6 +78,8 @@ defined('BASEPATH') or exit('No direct script access allowed.');
                                             echo 'bg-success';
                                           } else if ($row->type == 'meeting') {
                                             echo 'bg-secondary';
+                                          } else if ($row->type == 'deployment') {
+                                            echo 'bg-info';
                                           }
 
                                           ?>">
