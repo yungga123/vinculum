@@ -161,4 +161,35 @@ class LeaveModel extends CI_Model
 
 		return $this->db->get()->result();
 	}
+
+	public function getapprovedleave($status){
+		$this->db->select('*');
+		$this->db->from('filed_leave as a');
+		$this->db->join('technicians as b','a.emp_id=b.id','left');
+		$this->db->where('a.status',$status);
+		$this->db->where('b.position','Technician');
+		$this->db->where('a.is_deleted', '0');
+
+		return $this->db->get()->result();
+	}
+
+	public function fetch_approved_leave($user_id, $status){
+		$this->db->select('*');
+		$this->db->from('filed_leave');
+		$this->db->where('emp_id', $user_id);
+		$this->db->where('status', $status);
+		$this->db->where('is_deleted', '0');
+
+		return $this->db->get()->result();
+	}
+
+	public function fetch_disapproved_leave($user_id, $status){
+		$this->db->select('*');
+		$this->db->from('filed_leave');
+		$this->db->where('emp_id', $user_id);
+		$this->db->where('status', $status);
+		$this->db->where('is_deleted', '0');
+
+		return $this->db->get()->result();
+	}
 }

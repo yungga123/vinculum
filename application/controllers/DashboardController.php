@@ -15,6 +15,7 @@ class DashboardController extends CI_Controller {
 			$this->load->model('ToolsModel');
 			$this->load->model('CovidSurveyModel');
 			$this->load->model('JobOrderModel');
+			$this->load->model('LeaveModel');
 			
 			$api_url = 'https://api.quotable.io/random';
 
@@ -34,9 +35,6 @@ class DashboardController extends CI_Controller {
 			$data['count_joborder_pending'] = $this->JobOrderModel->count_joborder('');
 			$data['count_joborder_accepted'] = $this->JobOrderModel->count_joborder('Accepted');
 			$data['count_jo_phone_support'] = $this->JobOrderModel->count_jo_phone_support();
-			//$data['count_joborder_filed'] = $this->JobOrderModel->count_joborder('Filed');
-
-
 
 			$month = date('m');
 			$day = date('d');

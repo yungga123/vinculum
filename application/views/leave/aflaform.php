@@ -161,6 +161,69 @@ defined('BASEPATH') or die('Access Denied');
             </div>
         </div>
     </div>
+    
+
+    
+<!-- Modal -->
+<div class="modal fade modal-approvedleaves">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div id="modal_loading">
+
+            </div>
+            <div class="modal-header">
+                <h4 class="modal-title"><b>Approved Leaves: </b><h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm" id="table-reqitems">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Leave ID</th>
+                                <th>Name of Employee</th>
+                                <th>Type of Leave</th>
+                                <th>Department</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php $id = 1; ?>
+                            <?php foreach($approvedleave as $row): ?>
+                                <?php if($row->end_date >= $today_date): ?>
+                                    <tr>
+                                    <td><?php echo $id; ?></td>
+                                    <td><?php echo $row->id; ?></td>
+                                    <td><?php echo $row->lastname.', '.$row->firstname; ?></td>
+                                    <td><?php echo $row->type_of_leave; ?></td>
+                                    <td><?php echo $row->department; ?></td>
+                                    <td>
+                                        <?php echo date_format(date_create($row->start_date),'F d, Y'); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo date_format(date_create($row->end_date),'F d, Y'); ?>
+                                    </td>
+                                </tr>
+                                <?php $id = $id + 1; ?>
+                                <?php endif ?>
+                            <?php endforeach ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <!-- jQuery -->
@@ -260,6 +323,9 @@ defined('BASEPATH') or die('Access Denied');
             });
 
         });
+    </script>
+    <script>
+        $('.modal-approvedleaves').modal();
     </script>
 </body>
 

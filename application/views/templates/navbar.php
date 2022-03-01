@@ -1,5 +1,30 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed.');
+
+$user_id = $this->session->userdata('logged_in')['emp_id'];
+$today_date = date('Y-m-d');
+
+
+// $approved_count =  count($this->LeaveModel->fetch_approved_leave($user_id,$status));
+$status = 'approved';
+$approved_count = 0;
+foreach($this->LeaveModel->fetch_approved_leave($user_id,$status) as $row){
+	if($row->end_date >= $today_date){
+		$approved_count =+ 1;
+	}
+}
+
+
+// $disapproved_count =  count($this->LeaveModel->fetch_disapproved_leave($user_id,$status));
+$status = 'discarded';
+$disapproved_count = 0;
+foreach($this->LeaveModel->fetch_disapproved_leave($user_id,$status) as $row){
+	if($row->end_date >= $today_date){
+		$disapproved_count =+ 1;
+	}
+}
+
+$total = $approved_count + $disapproved_count;
 ?>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -24,10 +49,42 @@ defined('BASEPATH') or exit('No direct script access allowed.');
 
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-						<i class="fas fa-th-large"></i>
+				<li class="nav-item dropdown">
+					<a class="nav-link" data-toggle="dropdown" href="#">
+						<i class="far fa-bell"></i>
+						<span class="badge badge-warning navbar-badge">
+							<?php echo $total; ?>
+						</span>
 					</a>
+					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+						<span class="dropdown-item dropdown-header">
+							<?php 
+							echo $total;
+							?>
+							Notification
+						</span>
+							<?php
+								if($approved_count != 0 ): ?>
+								<div class="dropdown-divider"></div>
+								<a href="#" class="dropdown-item" data-toggle="modal" data-target=".ApprovedFiledModalOfUser">
+									<i class="fa-solid fa-thumbs-up mr-2"></i> Approved Filed Leaves
+									<!-- <span class="float-right text-muted text-sm">3 mins</span> -->
+								</a>
+							<?php endif ?>
+
+							<?php
+								$status = 'discarded';
+								if($disapproved_count != 0 ): ?>
+								<div class="dropdown-divider"></div>
+								<a href="#" class="dropdown-item" data-toggle="modal" data-target=".DisapprovedFiledModalOfUser">
+									<i class="fa-solid fa-thumbs-down mr-2"></i> Dis-approved Filed Leaves
+									<!-- <span class="float-right text-muted text-sm">3 mins</span> -->
+								</a>
+							<?php endif ?>
+						
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+					</div>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo site_url('LoginController/logout') ?>" style="color: #17a2b8">
