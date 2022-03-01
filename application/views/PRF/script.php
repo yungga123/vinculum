@@ -227,7 +227,6 @@ if ($this->uri->segment(2) == "pending") {
         });
 
         $('.select-customer').on("change", function() {
-
             if ($(this).val() != "") {
                 window.location = '<?php echo site_url('prf-form') ?>' + '/' + $(this).val();
             }

@@ -22,6 +22,113 @@ defined('BASEPATH') or exit('No direct script access allowed');
 </div>
 <!-- /.modal -->
 
+<!-- Modal -->
+<div class="modal fade ApprovedFiledModalOfUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <p class="text-bold text-success" style="font-size: 28px;">Filed Leave Approved</p>
+                </div>
+                <div class="modal-body">
+                    <label>Your Application For Leave of Absence has been approved!</label>
+
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-sm" id="table-reqitems">
+                        <thead>
+                            <tr>
+                                <th>Type of Leave</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                          <?php 
+							$user_id = $this->session->userdata('logged_in')['emp_id'];
+							$status = 'approved'; 
+							$today_date = date('Y-m-d');
+						  	foreach($this->LeaveModel->fetch_approved_leave($user_id,$status) as $row):
+						  ?>
+                            <?php if($row->end_date >= $today_date): ?>
+								<tr>
+									<td><?php echo $row->type_of_leave; ?></td>
+									<td>
+										<?php echo date_format(date_create($row->start_date),'F d, Y'); ?>
+									</td>
+									<td>
+										<?php echo date_format(date_create($row->end_date),'F d, Y'); ?>
+									</td>
+									<td><?php echo $row->reason; ?></td>
+								</tr>
+							<?php endif ?>
+                          <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade DisapprovedFiledModalOfUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <p class="text-bold text-danger" style="font-size: 28px;">Filed Leave Dis-approved</p>
+                </div>
+                <div class="modal-body">
+                    <label>Your Application For Leave of Absence has been dis-approved!</label>
+
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-sm" id="table-reqitems">
+                        <thead>
+                            <tr>
+                                <th>Type of Leave</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                          <?php 
+							$user_id = $this->session->userdata('logged_in')['emp_id'];
+							$status = 'discarded'; 
+							$today_date = date('Y-m-d');
+						  	foreach($this->LeaveModel->fetch_disapproved_leave($user_id,$status) as $row):
+						  ?>
+						  	<?php if($row->end_date >= $today_date): ?>
+								<tr>
+								<td><?php echo $row->type_of_leave; ?></td>
+								<td>
+									<?php echo date_format(date_create($row->start_date),'F d, Y'); ?>
+								</td>
+								<td>
+									<?php echo date_format(date_create($row->end_date),'F d, Y'); ?>
+								</td>
+								<td><?php echo $row->reason; ?></td>
+								</tr>
+							<?php endif ?>
+                          <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    </div>
+
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success text-bold" data-dismiss="modal"><i class="fas fa-check"></i> OKAY</button>
+                </div>
+            </div>
+        </div>
+</div>
 
 <!-- Modal for Accepted Request Login -->
 <div class="modal fade" id="acceptedrequest_validate" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">

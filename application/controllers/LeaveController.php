@@ -66,11 +66,12 @@ class LeaveController extends CI_Controller
 
     public function index()
     {
-
+        $status = 'approved';
         $this->load->model('TechniciansModel');
 
         $data['results'] = $this->TechniciansModel->getTechniciansByStatus();
-
+        $data['approvedleave'] = $this->LeaveModel->getapprovedleave($status);
+        $data['today_date'] = date('Y-m-d');
         $this->load->view('leave/aflaform', $data);
     }
 
