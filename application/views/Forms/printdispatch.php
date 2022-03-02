@@ -190,7 +190,7 @@ foreach ($results as $row) {
 		<div class="col-12">
 			<div class="row">
 				<div class="col-3">
-					<img src="<?php echo base_url('assets/images/vinculumNewLogo.jpg') ?>" alt="vcmlogo" class="img-thumbnail mb-4" style="height: 80px;width: 200px">
+					<img src="<?php echo base_url('assets/images/vinculumnew.jpg') ?>" alt="vcmlogo" class="img-thumbnail mb-4" style="height: 80px;width: 200px">
 				</div>
 				<div class="col-6">
 					<p class="text-center mx-auto" style="font-size: 23px;font-weight: bold;">DISPATCH FORM</p>
