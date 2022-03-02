@@ -74,6 +74,10 @@ defined('BASEPATH') or die('Access Denied');
 			          		echo '#6BBA44';
 			          	} else if ($row->type == 'meeting') {
 							echo '#6c757d';
+						} else if ($row->type == 'deployment') {
+							echo '#00BFFF';
+						} else if ($row->type == 'turnover') {
+							echo '#DCDCDC';
 						}
 
 			          ?>",
@@ -88,6 +92,10 @@ defined('BASEPATH') or die('Access Denied');
 			          		echo '#28a745';
 			          	} else if ($row->type == 'meeting') {
 							echo '#6c757d';
+						} else if ($row->type == 'deployment') {
+							echo '#00BFFF';
+						} else if ($row->type == 'turnover') {
+							echo '#DCDCDC';
 						}
 
 			          ?>",
