@@ -40,7 +40,7 @@ defined('BASEPATH') or exit('No direct script access allowed.');
                       <div class="bg-success color-palette"><span>Holiday/Event</span></div>
                       <div class="bg-secondary color-palette"><span>Meeting</span></div>
                       <div class="bg-info color-palette"><span>Deployment</span></div>
-
+                      <div style="background-color:LightGray;" class="color-palette"><span>Project Turn-Over</span></div>
                     </div>
                   </div>
                 </div>
@@ -82,7 +82,10 @@ defined('BASEPATH') or exit('No direct script access allowed.');
                                             echo 'bg-info';
                                           }
 
-                                          ?>">
+                                          ?>" <?php if ($row->type == 'turnover') {
+                                            echo 'style="background-color:LightGray;"';
+                                          } ?>>
+                                          
                                 <td><?php echo $row->title ?></td>
                                 <td><?php echo str_replace("\n", "<br>", $row->description) ?></td>
                                 <td><?php echo date_format(date_create($row->start), 'M d, Y h:i A') ?></td>
