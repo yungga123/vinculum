@@ -212,7 +212,7 @@ $total_amount = $sub_total;
                     <tr class="text-center">
                         <td style="font-weight: bold">
                             <b>
-                                VINCULUM TECH ENTERPRISE
+                                VINCULUM TECHNOLOGIES CORPORATION
                             </b>
                         </td>
                     </tr>
