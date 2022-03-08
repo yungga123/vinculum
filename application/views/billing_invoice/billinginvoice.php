@@ -166,7 +166,7 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="row" colspan="4" class="a">
                             <center>***Nothing follows***</center>Sub Total (Vat Exclusive)
                         </th>
-                        <th scope="row">103,630.28</th>
+                        <th scope="row"><input type="number" class="form-control" name="input" id="input" readonly></th>
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a" style="color: red;">Plus 12% VAT</th>
@@ -190,7 +190,15 @@ defined('BASEPATH') or die('Access Denied');
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a">Grand Total Vat Inclusive</th>
-                        <th scope="row">P 116,065.91</th>
+                        <th scope="row"><?php
+                            if (isset($_POST['input'])) {
+                                $x = $_POST['input'];
+                                $y = 0.12;
+
+                                $sum = $x * $y;
+                                echo "<strong> $sum </strong>";
+                            }
+                            ?></th>
                     </tr>
                 </tbody>
             </table>

@@ -79,5 +79,16 @@ class BillingInvoiceController extends CI_Controller
 		return $select;
 	}
 
+	function computaion($sum, $x)
+	{
+		if (isset($_POST['input'])) {
+			$x = $_POST['input'];
+			$y = 0.12;
+
+			$sum = $x * $y;
+			echo "<strong> $sum </strong>";
+		}
+	}
+
 	
 }
