@@ -150,15 +150,18 @@ defined('BASEPATH') or die('Access Denied');
                         <td><input type="number" class="form-control" placeholder=""></td>
                         <td><input type="text" class="form-control" placeholder=""></td>
                         <td><input type="text" class="form-control" placeholder=""></td>
-                        <td><input type="number" class="form-control" placeholder="P"></td>
+                        <?php echo form_open('BillingInvoiceController/billinginvoiceview') ?>
+                        <td><input type="number" class="form-control" name="input" id="input" placeholder="P"></td>
                     </tr>
+                    
                     <tr>
                         <th scope="row"></th>
                         <th scope="row"></th>
                         <th scope="row"></th>
                         <th scope="row"></th>
-                        <th scope="row"></th>
+                        <th scope="row"><input type="submit" value="=" id="submit"></th>
                     </tr>
+                    <?php echo form_close() ?>
                     <tr>
                         <th scope="row" colspan="4" class="a">
                             <center>***Nothing follows***</center>Sub Total (Vat Exclusive)
@@ -171,7 +174,15 @@ defined('BASEPATH') or die('Access Denied');
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a">Amount Due</th>
-                        <th scope="row">116,065.91</th>
+                        <th scope="row"><?php
+                            if (isset($_POST['input'])) {
+                                $x = $_POST['input'];
+                                $y = 0.12;
+
+                                $sum = $x * $y;
+                                echo "<strong> $sum </strong>";
+                            }
+                            ?></th>
                     </tr>
                     <tr>
                         <th scope="row" colspan="4"></th>
