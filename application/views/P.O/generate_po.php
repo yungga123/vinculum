@@ -534,6 +534,12 @@ $total_amount = $sub_total;
             backdrop: 'static',
             keyboard: false
         });
+    <?php elseif ($this->uri->segment(1) == 'generate-po-filed') : ?>
+        $("#generate-po").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+        
     <?php endif ?>
 
     $('#Modal-Generate-PO').submit(function(e) {

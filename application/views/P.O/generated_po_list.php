@@ -26,6 +26,9 @@ defined('BASEPATH') or die('Access Denied');
                         </div>
                         <div class="card-body">
                         <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target=".btn-accepted"> <i class="fas fa-file"></i> Generate P.O.</a>
+                        <?php if($this->uri->segment(2) == "filed"): ?>
+                            <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target=".btn-report"> <i class="fas fa-file-excel"></i> Generate Report</a>
+                        <?php endif ?>
                         </div>
                     </div>
                     </div>
@@ -259,6 +262,57 @@ defined('BASEPATH') or die('Access Denied');
                 <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button>
                 <button type="submit" class="btn btn-success text-bold"><i class="fas fa-check"></i> File</button>
             </div>
+            <?php echo form_close() ?>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Generate Report -->
+<div class="modal fade btn-report" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <b class="modal-title">Selection:</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <?php echo form_open('export_po_report') ?>
+            <!-- <form id="form_validate"> -->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>Supplier:</label>
+                                <select type="text" name="supplier_id" class="form-control form-control-sm">
+                                    <option value="">---Please Select---</option>
+
+                                    <?php foreach ($vendor as $vendor_row) : ?>
+                                        <option value="<?php echo $vendor_row->id ?>">
+                                            <?php echo $vendor_row->name ?>
+                                        </option>
+                                    <?php endforeach ?>
+                                </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Start Date:</label>
+                                <input type="date" name="start_date" id="start_date" class="form-control form-control-sm" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>End Date:</label>
+                            <input type="date" name="end_date" class="form-control form-control-sm" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-danger text-bold" data-dismiss="modal"><i class="fas fa-times"></i> CLOSE</button> -->
+                    <button type="submit" class="btn btn-success text-bold"><i class="fas fa-plus"></i> GENERATE</button>
+                </div>
+            <!-- </form> -->
             <?php echo form_close() ?>
         </div>
     </div>

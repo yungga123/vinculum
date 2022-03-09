@@ -75,6 +75,7 @@ class POController extends CI_Controller
             $data['li_generated_po'] = ' active';
             $data['ul_purchasing_tree'] = ' active';
             $data['requisition_list'] = $this->POModel->acc_req_list();
+            $data['vendor'] = $this->POModel->getVendorList();
             $this->load->view('templates/header', $data);
             $this->load->view('templates/navbar');
             $this->load->view('P.O/generated_po_list');
@@ -114,14 +115,12 @@ class POController extends CI_Controller
 <button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po" title="Delete PO"><i class="fas fa-trash"></i></button>
 <button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items" title="View Items"><i class="fas fa-search"></i></button>
 ';
-            }
-            elseif ($po_status == 'filed') {
+            } elseif ($po_status == 'filed') {
                 $sub_array[] = '
 <button type="button" class="btn btn-primary btn-xs btn_view" data-toggle="modal" data-target=".modal_view_items" title="View Items"><i class="fas fa-search"></i></button>
-<a href="' . site_url('generate-po/' . $row->po_id) . '" class="btn btn-xs btn-success" target="_blank" title="Print PO"><i class="fas fa-print"></i></a>
+<a href="' . site_url('generate-po-filed/' . $row->po_id) . '" class="btn btn-xs btn-success" target="_blank" title="Print PO"><i class="fas fa-print"></i></a>
 ';
-            }
-             else {
+            } else {
                 $sub_array[] = '
                 <button type="button" class="btn btn-success text-bold btn-xs btn_po_id_filing" data-toggle="modal" data-target="#file-po" title="File PO"><i class="fas fa-file"></i></button>
 <button type="button" class="btn btn-danger text-bold btn-xs btn_po_del" data-toggle="modal" data-target="#delete-po" title="Delete PO"><i class="fas fa-trash"></i></button>
@@ -182,7 +181,6 @@ class POController extends CI_Controller
                     if ($supplier_id == $row->supplier) {
                         $supplier_id = $row->supplier;
                     } elseif ($row->supplier == "") {
-
                     } else {
                         $key = in_array($row->supplier, $supplier_id2);
                         if ($key == "") {
@@ -286,17 +284,18 @@ class POController extends CI_Controller
     public function generate_po_view($po_id)
     {
         if ($this->session->userdata('logged_in')) {
-            
+
             $this->load->model('TechniciansModel');
             $this->load->model('POModel');
             $data['title'] = 'Generate PO';
 
-            if($this->uri->segment(1) == 'generate-po'){
-                $this->POModel->reset_items_status([
+            if ($this->uri->segment(1) == 'generate-po') {
+                $this->POModel->reset_items_status($po_id, 
+                [
                     'mark_as_proceed' => '0'
                 ]);
             }
-            
+
             $data['employee_list'] = $this->POModel->get_employee_list();
             $data['supplier_details'] = $this->POModel->get_supplier_details($po_id);
             $mark_as_read = 1;
@@ -520,10 +519,13 @@ class POController extends CI_Controller
             $po_id = $this->input->post('po_id');
             for ($i = 0; $i < $reqcount; $i++) {
                 $req_id = $this->input->post('reqid')[$i];
-                $this->POModel->mark_po_item($req_id,$po_id,
-                [
-                    'mark_as_proceed' => '1'
-                ]);
+                $this->POModel->mark_po_item(
+                    $req_id,
+                    $po_id,
+                    [
+                        'mark_as_proceed' => '1'
+                    ]
+                );
             }
         } else {
             $validate['errors'] = validation_errors();
@@ -567,5 +569,126 @@ class POController extends CI_Controller
             $validate['errors'] = validation_errors();
         }
         echo json_encode($validate);
+    }
+
+    // Export to CSV ( must be in result->array() )
+    public function exportreport()
+    {
+
+        $start_date = $this->input->post('start_date');
+        $end_date = $this->input->post('end_date');
+        $supplier_id = $this->input->post('supplier_id');
+
+        $file_name = 'PO Report From:' . $start_date . 'To: ' . $end_date . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+            'Description',
+            'Qty',
+            'Unit',
+            'Cost',
+            'Total Cost',
+            'Date Needed',
+            'Purpose',
+            'Date Filed',
+            'Supplier',
+            'Category',
+            'Terms'
+        ];
+
+        fputcsv($file, $header);
+
+        // get data
+        $po_data = $this->POModel->fetch_generated_po_data($start_date, $end_date, $supplier_id);
+        $total_amount = 0;
+        $total_items = 0;
+
+        foreach ($po_data as $row) {
+            $po_items_data = $this->POModel->fetch_generated_po_items_data($row->po_id);
+
+            foreach ($po_items_data as $row1) {
+                $requisition_items_data = $this->POModel->fetch_requisition_items_data($row1->requisition_item_id);
+
+                foreach ($requisition_items_data as $row2) {
+
+                    $sub_array = array();
+                    $total_cost = $row2->unit_cost * $row2->qty;
+                    $total_amount = $total_amount +  $total_cost;
+                    $total_items = $total_items + 1;
+
+                    $sub_array[] = $row2->description;
+                    $sub_array[] = $row2->qty;
+                    $sub_array[] = $row2->unit;
+                    $sub_array[] = $row2->unit_cost;
+                    $sub_array[] = $total_cost;
+                    $sub_array[] = date_format(date_create($row2->date_needed), 'F d, Y');
+                    $sub_array[] = $row2->purpose;
+                    $sub_array[] = date_format(date_create($row->date_filed), 'F d, Y');
+                    $sub_array[] = $row->name;
+                    $sub_array[] = $row->vendor_category;
+
+                    if ($row->terms_and_condition == "00") {
+                        $terms = 'COD/Cash';
+                    } elseif ($row->terms_and_condition == "01") {
+                        $terms = 'Dated';
+                    } elseif ($row->terms_and_condition == "02") {
+                        $terms = '7 Days';
+                    } elseif ($row->terms_and_condition == "03") {
+                        $terms = '15 Days';
+                    } elseif ($row->terms_and_condition == "04") {
+                        $terms = '30 Days';
+                    } elseif ($row->terms_and_condition == "05") {
+                        $terms = '45 Days';
+                    } elseif ($row->terms_and_condition == "06") {
+                        $terms = '60 Days';
+                    } elseif ($row->terms_and_condition == "07") {
+                        $terms = '90 Days';
+                    } elseif ($row->terms_and_condition == "08") {
+                        $terms = '21 Days';
+                    }
+                    $sub_array[] = $terms;
+
+                    fputcsv($file, $sub_array);
+                }
+            }
+        }
+        $array_next_row[] = "";
+        fputcsv($file, $array_next_row);
+
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "";
+        $array_total_items[] = "Total Row Items:";
+        $array_total_items[] = $total_items;
+
+        fputcsv($file, $array_total_items);
+
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "";
+        $array_total_amount[] = "Total Amount:";
+        $array_total_amount[] = $total_amount;
+
+        fputcsv($file, $array_total_amount);
+
+        fclose($file);
+        exit;
     }
 }
