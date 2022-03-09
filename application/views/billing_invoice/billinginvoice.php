@@ -153,7 +153,7 @@ defined('BASEPATH') or die('Access Denied');
                         <?php echo form_open('BillingInvoiceController/billinginvoiceview') ?>
                         <td><input type="number" class="form-control" name="input" id="input" placeholder="P"></td>
                     </tr>
-                    
+
                     <tr>
                         <th scope="row"></th>
                         <th scope="row"></th>
@@ -166,7 +166,15 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="row" colspan="4" class="a">
                             <center>***Nothing follows***</center>Sub Total (Vat Exclusive)
                         </th>
-                        <th scope="row"><input type="number" class="form-control" name="input" id="input" readonly></th>
+                        <th scope="row">
+                            <?php
+                            if (isset($_POST['input'])) {
+                                $x = $_POST['input'];
+
+                                echo "<b> $x </b>";
+                            }
+                            ?>
+                        </th>
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a" style="color: red;">Plus 12% VAT</th>
@@ -175,14 +183,14 @@ defined('BASEPATH') or die('Access Denied');
                     <tr>
                         <th scope="row" colspan="4" class="a">Amount Due</th>
                         <th scope="row"><?php
-                            if (isset($_POST['input'])) {
-                                $x = $_POST['input'];
-                                $y = 0.12;
+                                        if (isset($_POST['input'])) {
+                                            $x = $_POST['input'];
+                                            $y = 0.12;
 
-                                $sum = $x * $y;
-                                echo "<strong> $sum </strong>";
-                            }
-                            ?></th>
+                                            $sum = $x * $y;
+                                            echo "<b> $sum </b>";
+                                        }
+                                        ?></th>
                     </tr>
                     <tr>
                         <th scope="row" colspan="4"></th>
@@ -191,14 +199,14 @@ defined('BASEPATH') or die('Access Denied');
                     <tr>
                         <th scope="row" colspan="4" class="a">Grand Total Vat Inclusive</th>
                         <th scope="row"><?php
-                            if (isset($_POST['input'])) {
-                                $x = $_POST['input'];
-                                $y = 0.12;
+                                        if (isset($_POST['input'])) {
+                                            $x = $_POST['input'];
+                                            $y = 0.12;
 
-                                $sum = $x * $y;
-                                echo "<strong> $sum </strong>";
-                            }
-                            ?></th>
+                                            $sum = $x * $y;
+                                            echo "<b> $sum </b>";
+                                        }
+                                        ?></th>
                     </tr>
                 </tbody>
             </table>
