@@ -221,12 +221,8 @@ if ($this->uri->segment(1) == 'requisition-update') {
                                                         <option value="">---Please Select---</option>
 
                                                         <?php foreach ($vendor as $vendor_row) : ?>
-                                                            <option value="<?php echo $vendor_row->id ?>" <?php if ($this->uri->segment(1) == 'requisition-update') {
-                                                                                                                echo ($row->supplier == $vendor_row->id) ? ' selected' : '';
-                                                                                                            } else {
-                                                                                                                echo $row->supplier;
-                                                                                                            }
-                                                                                                            ?>>
+                                                            <option value="<?php echo $vendor_row->id ?>" <?php if ($this->uri->segment(1) == 'requisition-update') { echo ($row->supplier == $vendor_row->id) ? ' selected' : '';} else {echo $row->supplier;}
+                                                                ?>>
                                                                 <?php echo $vendor_row->name ?>
                                                             </option>
                                                         <?php endforeach ?>

@@ -271,6 +271,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 
+<!-- jquery-validation -->
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="<?php echo base_url('assets/AdminLTE/') ?>plugins/jquery-validation/additional-methods.min.js"></script>
+
+
 <!-- Universal Toaster For Success -->
 <?php if ($this->session->flashdata('success')) : ?>
 	<script type="text/javascript">

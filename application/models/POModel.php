@@ -254,8 +254,50 @@ class POModel extends CI_Model
         $this->db->update('generated_po_items', $data);
     }
 
-    public function reset_items_status($data){
+    public function reset_items_status($po_id, $data){
+        $this->db->where('po_id', $po_id);
         $this->db->update('generated_po_items', $data);
     }
 
+    public function getVendorList(){
+		$this->db->select('*');
+		$this->db->from('vendor');
+		$this->db->order_by('name','ASC');
+		$this->db->where('is_deleted', '0');
+		
+		return $this->db->get()->result();
+	}
+
+    public function fetch_generated_po_data($start_date, $end_date, $supplier_id ){
+        $where = "date(date_filed) BETWEEN '".$start_date."' AND '".$end_date."'";
+
+        $this->db->select('*');
+        $this->db->from('generated_po as a');
+        if($supplier_id != ""){
+            $this->db->where('a.supplier_id',$supplier_id);
+        }
+        $this->db->where('a.po_status','filed');
+        $this->db->where('a.is_deleted','0');
+        $this->db->where($where);
+        $this->db->join('vendor as b','a.supplier_id=b.id','left');
+        // $this->db->join('requisition_form_items as c','b.requisition_item_id=c.request_form_id','left');
+
+        return $this->db->get()->result();
+    }
+
+    public function fetch_generated_po_items_data($po_id){
+        $this->db->select('*');
+        $this->db->from('generated_po_items as a');
+        $this->db->where('a.po_id',$po_id);
+
+        return $this->db->get()->result();
+    }
+
+    public function fetch_requisition_items_data($item_id){
+        $this->db->select('*');
+        $this->db->from('requisition_form_items as a');
+        $this->db->where('a.id',$item_id);
+
+        return $this->db->get()->result();
+    }
 }
