@@ -332,6 +332,12 @@ $total_amount = $sub_total;
                     elseif ($supplier_data['vendor_terms'] == "08") {
                         echo "21 DAYS PDC";
                     }
+                    elseif ($supplier_data['vendor_terms'] == "09") {
+                        echo "3 DAYS PDC";
+                    }
+                    elseif ($supplier_data['vendor_terms'] == "10") {
+                        echo "5 DAYS PDC";
+                    }
                     ?>
                 </b>
 
