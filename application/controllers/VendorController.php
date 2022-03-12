@@ -404,6 +404,12 @@ class VendorController extends CI_Controller {
 				elseif($row->terms_and_condition == "08"){
 					$sub_array[] = "21 Days";
 				}
+				elseif($row->terms_and_condition == "09"){
+					$sub_array[] = "3 Days";
+				}
+				elseif($row->terms_and_condition == "10"){
+					$sub_array[] = "5 Days";
+				}
 
 			$sub_array[] = $date;
 			$sub_array[] = $row->vendor_bank_name;

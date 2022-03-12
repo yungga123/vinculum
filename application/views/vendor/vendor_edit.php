@@ -126,13 +126,15 @@ foreach($vendor_data as $row){
                                                                     <option value="">---Please Select---</option>
                                                                     <option value="00" <?php if ($vendor_data_result['vendor_terms_edit'] == "00") { echo 'selected';} ?> >00 --- COD/Cash</option>
                                                                     <option value="01" <?php if ($vendor_data_result['vendor_terms_edit'] == "01") { echo 'selected';} ?> >01 --- Dated Check</option>
+                                                                    <option value="09" <?php if ($vendor_data_result['vendor_terms_edit'] == "09") { echo 'selected';} ?> >09 --- 3 Days</option>
+                                                                    <option value="10" <?php if ($vendor_data_result['vendor_terms_edit'] == "10") { echo 'selected';} ?> >10 --- 5 Days</option>
                                                                     <option value="02" <?php if ($vendor_data_result['vendor_terms_edit'] == "02") { echo 'selected';} ?> >02 --- 7 Days</option>
                                                                     <option value="03" <?php if ($vendor_data_result['vendor_terms_edit'] == "03") { echo 'selected';} ?> >03 --- 15 Days</option>
+                                                                    <option value="08" <?php if ($vendor_data_result['vendor_terms_edit'] == "08") { echo 'selected';} ?> >08 --- 21 Days</option>
                                                                     <option value="04" <?php if ($vendor_data_result['vendor_terms_edit'] == "04") { echo 'selected';} ?> >04 --- 30 Days</option>
                                                                     <option value="05" <?php if ($vendor_data_result['vendor_terms_edit'] == "05") { echo 'selected';} ?> >05 --- 45 Days</option>
                                                                     <option value="06" <?php if ($vendor_data_result['vendor_terms_edit'] == "06") { echo 'selected';} ?> >06 --- 60 Days</option>
                                                                     <option value="07" <?php if ($vendor_data_result['vendor_terms_edit'] == "07") { echo 'selected';} ?> >07 --- 90 Days</option>
-                                                                    <option value="08" <?php if ($vendor_data_result['vendor_terms_edit'] == "08") { echo 'selected';} ?> >08 --- 21 Days</option>
                                                                 </select>
                                                             </p>
                                                         </div>
