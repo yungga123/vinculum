@@ -94,13 +94,16 @@
                                                                     <option value="">---Please Select---</option>
                                                                     <option value="00">00 --- COD/Cash</option>
                                                                     <option value="01">01 --- Dated Check</option>
+                                                                    <option value="08">09 --- 3 Days</option>
+                                                                    <option value="08">10 --- 5 Days</option>
                                                                     <option value="02">02 --- 7 Days</option>
                                                                     <option value="03">03 --- 15 Days</option>
+                                                                    <option value="08">08 --- 21 Days</option>
                                                                     <option value="04">04 --- 30 Days</option>
                                                                     <option value="05">05 --- 45 Days</option>
                                                                     <option value="06">06 --- 60 Days</option>
                                                                     <option value="07">07 --- 90 Days</option>
-                                                                    <option value="08">08 --- 21 Days</option>
+                                                                    
                                                                 </select>
                                                             </p>
                                                         </div>
