@@ -47,9 +47,9 @@ class DashboardController extends CI_Controller {
 
 			
 
-			if ($sock = @fsockopen('www.google.com', 80)) {
-				$data['random_quote'] = json_decode(file_get_contents($api_url));
-			}
+			// if ($sock = @fsockopen('www.google.com', 80)) {
+			// 	$data['random_quote'] = json_decode(file_get_contents($api_url));
+			// }
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
