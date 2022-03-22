@@ -37,7 +37,7 @@ defined('BASEPATH') or die('Access Denied');
         </div><!-- /.container-fluid -->
     </div>
 
-    <?php echo form_open('BillingInvoiceController/bi_add') ?>
+    <?php echo form_open('BillingInvoiceController/billinginvoiceview') ?>
     <div class="container-fluid" style="background: white; margin-bottom: 1%; max-width: 100%; height: auto;">
         <section class="content">
             <table class="table table-bordered">
@@ -61,7 +61,7 @@ defined('BASEPATH') or die('Access Denied');
                                         </tr>
                                         <tr>
                                             <td><?php echo date("F d, Y"); ?></td>
-                                            <td><input type="date" class="form-control" name="due_date" id="due_date" placeholder=""></td>
+                                            <td><input type="text" class="form-control" name="due_date" id="due_date" placeholder=""></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -284,9 +284,10 @@ defined('BASEPATH') or die('Access Denied');
                 </div>
             </div>
         </section>
+
         <?php echo form_close() ?>
-        <div>
-        <input type="submit" value="SUBMIT" id="submit" class="btn btn-primary btn-sm" method="POST" style="margin: 2%;">
     </div>
+    <div>
+        <input type="submit" value="SUBMIT" id="submit" class="btn btn-primary btn-sm" method="POST">
     </div>
 </div>
