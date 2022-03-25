@@ -20,7 +20,7 @@ class BillingInvoiceController extends CI_Controller
 		if ($this->session->userdata('logged_in')) {
 
 			$slcctmrs = $this->BillingInvoiceModel->billing_invoice();
-			$slcbrch = $this->BillingInvoiceModel->billing_invoice();
+			$slcbrch = $this->BillingInvoiceModel->select_branch();
 			$birthdate = $this->BillingInvoiceModel->dateneeded();
 
 			$this->load->helper('site_helper');
@@ -50,7 +50,7 @@ class BillingInvoiceController extends CI_Controller
 		if ($this->session->userdata('logged_in')) {
 
 			$slcctmrs = $this->BillingInvoiceModel->billing_invoice();
-			$slcbrch = $this->BillingInvoiceModel->billing_invoice();
+			$slcbrch = $this->BillingInvoiceModel->select_branch();
 			$birthdate = $this->BillingInvoiceModel->dateneeded();
 			$duedate = $this->BillingInvoiceModel->getduedate();
 
@@ -73,18 +73,18 @@ class BillingInvoiceController extends CI_Controller
 		}
 	}
 
-	public function billinginvoiceedit()
+	public function billing_invoice_edit()
 	{
 
 		if ($this->session->userdata('logged_in')) {
 
 			$slcctmrs = $this->BillingInvoiceModel->billing_invoice();
-			$slcbrch = $this->BillingInvoiceModel->billing_invoice();
+			$slcbrch = $this->BillingInvoiceModel->select_branch();
 			$birthdate = $this->BillingInvoiceModel->dateneeded();
 
 			$this->load->helper('site_helper');
 			$data = html_variable();
-			$data['title'] = 'Billing Invoice';
+			$data['title'] = 'Billing Invoice Edit';
 			$data['slcctmrs'] = $slcctmrs;
 			$data['slcbrch'] = $slcbrch;
 			$data['birthdate'] = $birthdate;
@@ -92,7 +92,36 @@ class BillingInvoiceController extends CI_Controller
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
-			$this->load->view('billing_invoice/billinginvoice_edit', $data);
+			$this->load->view('billing_invoice/billinginvoice_edit');
+			$this->load->view('templates/footer');
+			$this->load->view('billing_invoice/script');
+		} else {
+			redirect('', 'refresh');
+		}
+	}
+
+	public function billing_invoice_view()
+	{
+
+		if ($this->session->userdata('logged_in')) {
+
+			$slcctmrs = $this->BillingInvoiceModel->billing_invoice();
+			$slcbrch = $this->BillingInvoiceModel->billing_invoice();
+			$birthdate = $this->BillingInvoiceModel->dateneeded();
+			$duedate = $this->BillingInvoiceModel->getduedate();
+
+			$this->load->helper('site_helper');
+			$data = html_variable();
+			$data['title'] = 'Billing Invoice View';
+			$data['slcctmrs'] = $slcctmrs;
+			$data['slcbrch'] = $slcbrch;
+			$data['duedate'] = $duedate;
+			$data['birthdate'] = $birthdate;
+			$data['select'] = $this->select_data();
+
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/navbar');
+			$this->load->view('billing_invoice/billinginvoice_view');
 			$this->load->view('templates/footer');
 			$this->load->view('billing_invoice/script');
 		} else {
@@ -134,7 +163,9 @@ class BillingInvoiceController extends CI_Controller
 			'unit' => $this->input->post('unit'),
 			'description' => $this->input->post('description'),
 			'payable_amount' => $this->input->post('payable_amount'),
-			'amount_due' => $this->input->post('amount_due')
+			'amount_due' => $this->input->post('amount_due'),
+			'sub_total' => $this->input->post('sub_total'),
+			'grand_total' => $this->input->post('grand_total')
 		);
 	
 		$this->BillingInvoiceModel->insert_data($data);

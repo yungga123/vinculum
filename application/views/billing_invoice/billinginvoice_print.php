@@ -46,54 +46,108 @@ defined('BASEPATH') or die('Access Denied');
 							<table id="projectReport_table" class="table table-bordered table-hover table-sm" style="width: 100%;">
 								<thead>
 									<tr>
-										<th style="width: 71px; text-align:center;">
+										<td style="width: 71px; text-align:center;">
+											<?php foreach ($slcctmrs as $row) {
+												echo "<option value='" . $row['po_id'] . "'>" . $row['po_id'] . "</option>";
+											} ?>
+										</td>
+										<td style="width: 107px;">
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-warning text-bold btn-xs btn-block"><i class="fas fa-edit">EDIT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_view') ?>" class="btn btn-primary text-bold btn-xs btn-block"><i class="fas fa-search">VIEW</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-success text-bold btn-xs btn-block"><i class="fas fa-check">ACCEPT</i></a>
+											<a href="<?php echo site_url('BillingInvoiceController/billing_invoice_edit') ?>" class="btn btn-danger text-bold btn-xs btn-block"><i class="fas fa-trash">DISCARD</i></a>
+										</td>
+										<td>
 											<?php
-											foreach ($slcctmrs as $row) {
-												echo "<option value='" . $row['id'] . "'>" . $row['id'] . "</option>";
-											}
-											?>
-										</th>
-										<th>
-											<a href="<? echo site_url('BillingInvoiceController/billinginvoiceedit') ?>"><button type="button" class="btn btn-warning btn-xs"><i class="fas fa-edit">EDIT</i></button></a>
-											<br>
-											<a href="<? echo site_url('BillingInvoiceController/billinginvoiceedit') ?>"><button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash">DELETE</i></button></a>
-											<br>
-											<a href="<? echo site_url('BillingInvoiceController/billinginvoiceedit') ?>"><button type="button" class="btn btn-primary btn-xs"><i class="fas fa-view">SEARCH</i></button></a>
-											<br>
-											<a href="<? echo site_url('BillingInvoiceController/billinginvoiceedit') ?>"><button type="button" class="btn btn-success btn-xs"><i class="fas fa-search">VIEW</i></button></a>
-										</th>
-										<th><?php
 											foreach ($duedate as $row) {
 												echo "<option value='" . $row['id'] . "'>" . $row['due_date'] . "</option>";
 											}
 											?>
-										</th>
-										<th><?php
+										</td>
+										<td>
+											<?php
 											foreach ($birthdate as $row) {
-												echo "<option value='" . $row['id'] . "'>" . $row['firstname'] . "</option>";
+												echo "<option value='" . $row['firstname'] . "'>" . $row['firstname'] . "</option>";
 											}
 											?>
-										</th>
-										<th><?php
+										</td>
+										<td>
+											<?php
 											foreach ($birthdate as $row) {
-												echo "<option value='" . $row['id'] . "'>" . $row['firstname'] . "</option>";
+												echo "<option value='" . $row['firstname'] . "'>" . $row['firstname'] . "</option>";
 											}
 											?>
-										</th>
-										<th><?php
+										</td>
+										<td>
+											<?php
 											foreach ($birthdate as $row) {
-												echo "<option value='" . $row['id'] . "'>" . $row['firstname'] . "</option>";
+												echo "<option value='" . $row['firstname'] . "'>" . $row['firstname'] . "</option>";
 											}
 											?>
-										</th>
+										</td>
 									</tr>
 								</thead>
 							</table>
-						</div>
 
+							<div class="modal" tabindex="-1" role="dialog">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title">Modal title</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<p>Modal body text goes here.</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-primary">Save changes</button>
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>

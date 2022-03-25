@@ -395,7 +395,6 @@ if ($this->uri->segment(1) == 'requisition-pending') {
                     type: 'get',
                     dataType: 'json',
                     success: function(response) {
-                        $('#tbody-reqitems').empty();
                         $('#req_total_price').empty();
                         i = 1;
                         total_price = 0;

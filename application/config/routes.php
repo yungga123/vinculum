@@ -218,5 +218,6 @@ $route['offlimits'] = 'LoginController/offlimits_page';
 
 //BILLING INVOICE
 $route['billing_invoice/billinginvoice'] = 'BillingInvoiceController/billinginvoiceview';
-$route['billing_invoice/billinginvoice_edit'] = 'BillingInvoiceController/billinginvoiceedit';
+$route['billing_invoice/billinginvoice_edit'] = 'BillingInvoiceController/billing_invoice_edit';
 $route['billing_invoice/billinginvoice_print'] = 'BillingInvoiceController/billinginvoiceviewprint';
+$route['billing_invoice/billinginvoice_view'] = 'BillingInvoiceController/billing_invoice_view';

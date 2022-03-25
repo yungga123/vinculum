@@ -30,14 +30,14 @@ defined('BASEPATH') or die('Access Denied');
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="page-header m-0 text-dark">Billing Invoice Edit</h1>
+                    <h1 class="page-header m-0 text-dark">Billing Invoice View</h1>
                     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
 
-    <?php echo form_open('BillingInvoiceController/billinginvoiceview') ?>
+    <?php echo form_open('BillingInvoiceController/bi_add') ?>
     <div class="container-fluid" style="background: white; margin-bottom: 1%; max-width: 100%; height: auto;">
         <section class="content">
             <table class="table table-bordered">
@@ -61,7 +61,7 @@ defined('BASEPATH') or die('Access Denied');
                                         </tr>
                                         <tr>
                                             <td><?php echo date("F d, Y"); ?></td>
-                                            <td><input type="text" class="form-control" name="due_date" id="due_date" placeholder=""></td>
+                                            <td><input type="date" class="form-control" name="due_date" id="due_date" placeholder="" readonly></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -86,13 +86,7 @@ defined('BASEPATH') or die('Access Denied');
                             <form>
                                 <div class="row">
                                     <div class="col">
-                                        <select type="text" name="served_to" id='served_to' class="form-control select-customer select2">
-                                            <?php
-                                            foreach ($slcctmrs as $row) {
-                                                echo "<option value='" . $row['id'] . "'>" . $row['supplier_id'] . "</option>";
-                                            }
-                                            ?>
-                                        </select>
+                                        <input type="text" class="form-control" name="served_to" id="served_to" readonly></input>
                                     </div>
                                 </div>
                             </form>
@@ -103,14 +97,7 @@ defined('BASEPATH') or die('Access Denied');
                 <tbody>
                     <tr>
                         <td>
-                            <select type="text" name="served_to_branch" id='served_to_branch' class="form-control select-customer select2">
-                                <option>-- Select Name --</option>
-                                <?php
-                                foreach ($slcctmrs as $row) {
-                                    echo "<option value='" . $row['id'] . "'>" . $row['supplier_id'] . "</option>";
-                                }
-                                ?>
-                            </select>
+                            <input type="text" class="form-control" name="served_by" id="served_by" readonly></input>
                         </td>
                         <td style="width: 50%;">70 National Road, Putatan Muntinlupa City</td>
                     </tr>
@@ -119,24 +106,18 @@ defined('BASEPATH') or die('Access Denied');
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="5">Attention: <select type="text" name="attention" id='attention' class="form-control select-branch select2">
-                                <option>-- Select Name --</option>
-                                <?php
-                                foreach ($slcbrch as $row) {
-                                    echo "<option value='" . $row['branch_id'] . "'>" . $row['branch_name'] . "</option>";
-                                }
-                                ?>
-                            </select>
+                        <th scope="col" colspan="5">Attention:
+                            <input type="text" class="form-control" name="attention" id="attention" readonly></input>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row" colspan="3">Project Name & Reference<br>
-                            <input type="text" class="form-control" name="project_name" id="project_name" placeholder="">
+                            <input type="text" class="form-control" name="project_name" id="project_name" placeholder="" readonly>
                         </th>
                         <th scope="row" style="text-align: center;">Total Project Cost</th>
-                        <th scope="row">PHP<input type="text" class="form-control" name="total_project_cost" id="total_project_cost" placeholder=""></th>
+                        <th scope="row">PHP<input type="text" class="form-control" name="total_project_cost" id="total_project_cost" placeholder="" readonly></th>
                     </tr>
                     <tr>
                         <th scope="row">Terms</th>
@@ -146,11 +127,11 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="row">Payable Amount</th>
                     </tr>
                     <tr>
-                        <td><input type="text" class="form-control" name="terms" id="terms" placeholder=""></td>
-                        <td><input type="number" class="form-control" name="quantity" id="quantity" placeholder=""></td>
-                        <td><input type="text" class="form-control" name="unit" id="unit" placeholder=""></td>
-                        <td><input type="text" class="form-control" name="description" id="description" placeholder=""></td>
-                        <td><input type="number" class="form-control" name="payable_amount" id="payable_amount" placeholder="P"></td>
+                        <td><input type="text" class="form-control" name="terms" id="terms" placeholder="" readonly></td>
+                        <td><input type="number" class="form-control" name="quantity" id="quantity" placeholder="" readonly></td>
+                        <td><input type="text" class="form-control" name="unit" id="unit" placeholder="" readonly></td>
+                        <td><input type="text" class="form-control" name="description" id="description" placeholder="" readonly></td>
+                        <td><input type="number" class="form-control" name="payable_amount" id="payable_amount" placeholder="P" readonly></td>
                     </tr>
 
                     <tr>
@@ -165,14 +146,14 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="row" colspan="4" class="a">
                             <center>***Nothing follows***</center>Sub Total (Vat Exclusive)
                         </th>
-                        <th scope="row">
+                        <th scope="row"><input type="text" class="form-control" name="sub_total" id="sub_total" value="
                             <?php
                             if (isset($_POST['payable_amount'])) {
                                 $x = $_POST['payable_amount'];
 
                                 echo "<b> $x </b>";
                             }
-                            ?>
+                            ?>" readonly>
                         </th>
                     </tr>
                     <tr>
@@ -181,7 +162,7 @@ defined('BASEPATH') or die('Access Denied');
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a">Amount Due</th>
-                        <th scope="row"><?php
+                        <th scope="row"><input type="text" class="form-control" name="amount_due" id="amount_due" value="<?php
                                         if (isset($_POST['payable_amount'])) {
                                             $x = $_POST['payable_amount'];
                                             $y = 0.12;
@@ -189,7 +170,7 @@ defined('BASEPATH') or die('Access Denied');
                                             $sum = $x * $y;
                                             echo "<b> $sum </b>";
                                         }
-                                        ?></th>
+                                        ?>" readonly></th>
                     </tr>
                     <tr>
                         <th scope="row" colspan="4"></th>
@@ -197,7 +178,7 @@ defined('BASEPATH') or die('Access Denied');
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a">Grand Total Vat Inclusive</th>
-                        <th scope="row"><?php
+                        <th scope="row"><input type="text" class="form-control" name="grand_total" id="grand_total" value="<?php
                                         if (isset($_POST['payable_amount'])) {
                                             $x = $_POST['payable_amount'];
                                             $y = 0.12;
@@ -205,7 +186,7 @@ defined('BASEPATH') or die('Access Denied');
                                             $sum = $x * $y;
                                             echo "<b> $sum </b>";
                                         }
-                                        ?>
+                                        ?>" readonly>
                         </th>
                     </tr>
                 </tbody>
@@ -283,10 +264,6 @@ defined('BASEPATH') or die('Access Denied');
                 </div>
             </div>
         </section>
-
         <?php echo form_close() ?>
-    </div>
-    <div>
-        <input type="submit" value="SUBMIT" id="submit" class="btn btn-primary btn-sm float-right" method="POST">
     </div>
 </div>

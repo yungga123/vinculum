@@ -7,7 +7,7 @@ class BillingInvoiceModel extends CI_Model
     {
         $response = array();
         $this->db->select('*');
-        $this->db->from('customers');
+        $this->db->from('generated_po');
         $q = $this->db->get();
         $response = $q->result_array();
         return $response;

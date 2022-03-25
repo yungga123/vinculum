@@ -90,7 +90,7 @@ defined('BASEPATH') or die('Access Denied');
                                             <option>-- Select Name --</option>
                                             <?php
                                             foreach ($slcctmrs as $row) {
-                                                echo "<option value='" . $row['id'] . "'>" . $row['customer_name'] . "</option>";
+                                                echo "<option value='" . $row['id'] . "'>" . $row['supplier_id'] . "</option>";
                                             }
                                             ?>
                                         </select>
@@ -108,7 +108,7 @@ defined('BASEPATH') or die('Access Denied');
                                 <option>-- Select Name --</option>
                                 <?php
                                 foreach ($slcctmrs as $row) {
-                                    echo "<option value='" . $row['id'] . "'>" . $row['customer_name'] . "</option>";
+                                    echo "<option value='" . $row['id'] . "'>" . $row['supplier_id'] . "</option>";
                                 }
                                 ?>
                             </select>
@@ -124,7 +124,7 @@ defined('BASEPATH') or die('Access Denied');
                                 <option>-- Select Name --</option>
                                 <?php
                                 foreach ($slcbrch as $row) {
-                                    echo "<option value='" . $row['id'] . "'>" . $row['contact_person'] . "</option>";
+                                    echo "<option value='" . $row['branch_id'] . "'>" . $row['branch_name'] . "</option>";
                                 }
                                 ?>
                             </select>
@@ -166,14 +166,14 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="row" colspan="4" class="a">
                             <center>***Nothing follows***</center>Sub Total (Vat Exclusive)
                         </th>
-                        <th scope="row">
+                        <th scope="row"><input type="text" class="form-control" name="sub_total" id="sub_total" value="
                             <?php
                             if (isset($_POST['payable_amount'])) {
                                 $x = $_POST['payable_amount'];
 
                                 echo "<b> $x </b>";
                             }
-                            ?>
+                            ?>" readonly>
                         </th>
                     </tr>
                     <tr>
@@ -182,7 +182,7 @@ defined('BASEPATH') or die('Access Denied');
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a">Amount Due</th>
-                        <th scope="row"><?php
+                        <th scope="row"><input type="text" class="form-control" name="amount_due" id="amount_due" value="<?php
                                         if (isset($_POST['payable_amount'])) {
                                             $x = $_POST['payable_amount'];
                                             $y = 0.12;
@@ -190,7 +190,7 @@ defined('BASEPATH') or die('Access Denied');
                                             $sum = $x * $y;
                                             echo "<b> $sum </b>";
                                         }
-                                        ?></th>
+                                        ?>" readonly></th>
                     </tr>
                     <tr>
                         <th scope="row" colspan="4"></th>
@@ -198,7 +198,7 @@ defined('BASEPATH') or die('Access Denied');
                     </tr>
                     <tr>
                         <th scope="row" colspan="4" class="a">Grand Total Vat Inclusive</th>
-                        <th scope="row"><?php
+                        <th scope="row"><input type="text" class="form-control" name="grand_total" id="grand_total" value="<?php
                                         if (isset($_POST['payable_amount'])) {
                                             $x = $_POST['payable_amount'];
                                             $y = 0.12;
@@ -206,7 +206,7 @@ defined('BASEPATH') or die('Access Denied');
                                             $sum = $x * $y;
                                             echo "<b> $sum </b>";
                                         }
-                                        ?>
+                                        ?>" readonly>
                         </th>
                     </tr>
                 </tbody>
@@ -286,7 +286,7 @@ defined('BASEPATH') or die('Access Denied');
         </section>
         <?php echo form_close() ?>
         <div>
-        <input type="submit" value="SUBMIT" id="submit" class="btn btn-primary btn-sm" method="POST" style="margin: 2%;">
+        <input type="submit" value="SUBMIT" id="submit" class="btn btn-primary float-right btn-sm" method="POST">
     </div>
     </div>
 </div>
