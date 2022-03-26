@@ -84,11 +84,13 @@ defined('BASEPATH') or die('Access Denied');
                     <tr>
                         <th scope="col">
                             <form>
+                            <?php foreach ($getbi as $row): ?>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="text" class="form-control" name="served_to" id="served_to" readonly></input>
+                                    <td><?php echo $row->served_to ?></td>
                                     </div>
                                 </div>
+                                <?php endforeach ?>
                             </form>
                         </th>
                         <th scope="col" style="width: 50%;">VINCULUM TECHNOLOGIES</th>

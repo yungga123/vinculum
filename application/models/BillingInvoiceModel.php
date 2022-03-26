@@ -12,7 +12,7 @@ class BillingInvoiceModel extends CI_Model
         $response = $q->result_array();
         return $response;
     }
-    
+
     public function select_branch()
     {
         $response = array();
@@ -43,8 +43,23 @@ class BillingInvoiceModel extends CI_Model
         return $response;
     }
 
+    public function get_bi_data()
+    {
+        $this->db->select('*');
+        $this->db->from('billinginvoice');
+        $q = $this->db->get();
+        $response = $q->result_array();
+        return $response;
+    }
+
     public function insert_data($data)
     {
         $this->db->insert('billinginvoice', $data);
+    }
+
+    function display_records()
+    {
+        $query = $this->db->get("billinginvoice");
+        return $query->result();
     }
 }

@@ -61,7 +61,10 @@ defined('BASEPATH') or die('Access Denied');
                                         </tr>
                                         <tr>
                                             <td><?php echo date("F d, Y"); ?></td>
-                                            <td><input type="text" class="form-control" name="due_date" id="due_date" placeholder=""></td>
+                                            <td>
+                                                <input type="text" class="form-control" name="due_date" id="due_date" value="">
+                                                </input>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -104,7 +107,6 @@ defined('BASEPATH') or die('Access Denied');
                     <tr>
                         <td>
                             <select type="text" name="served_to_branch" id='served_to_branch' class="form-control select-customer select2">
-                                <option>-- Select Name --</option>
                                 <?php
                                 foreach ($slcctmrs as $row) {
                                     echo "<option value='" . $row['id'] . "'>" . $row['supplier_id'] . "</option>";
@@ -120,7 +122,6 @@ defined('BASEPATH') or die('Access Denied');
                 <thead>
                     <tr>
                         <th scope="col" colspan="5">Attention: <select type="text" name="attention" id='attention' class="form-control select-branch select2">
-                                <option>-- Select Name --</option>
                                 <?php
                                 foreach ($slcbrch as $row) {
                                     echo "<option value='" . $row['branch_id'] . "'>" . $row['branch_name'] . "</option>";
@@ -145,13 +146,15 @@ defined('BASEPATH') or die('Access Denied');
                         <th scope="row">Description</th>
                         <th scope="row">Payable Amount</th>
                     </tr>
-                    <tr>
-                        <td><input type="text" class="form-control" name="terms" id="terms" placeholder=""></td>
-                        <td><input type="number" class="form-control" name="quantity" id="quantity" placeholder=""></td>
-                        <td><input type="text" class="form-control" name="unit" id="unit" placeholder=""></td>
-                        <td><input type="text" class="form-control" name="description" id="description" placeholder=""></td>
-                        <td><input type="number" class="form-control" name="payable_amount" id="payable_amount" placeholder="P"></td>
-                    </tr>
+                    <?php foreach ($data as $row) {
+                    echo "<tr>";
+                        echo "<td>".$row->terms."</td>";
+                        echo "<td>".$row->quantity."</td>";
+                        echo "<td>".$row->unit."</td>";
+                        echo "<td>".$row->description."</td>";
+                        echo "<td>".$row->payable_amount."</td>";
+                    echo "</tr>";
+                    } ?>
 
                     <tr>
                         <th scope="row"></th>

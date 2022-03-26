@@ -90,7 +90,7 @@ defined('BASEPATH') or die('Access Denied');
                                             <option>-- Select Name --</option>
                                             <?php
                                             foreach ($slcctmrs as $row) {
-                                                echo "<option value='" . $row['id'] . "'>" . $row['supplier_id'] . "</option>";
+                                                echo "<option value='" . $row['po_id'] . "'>" . $row['po_id'] . "---" . $row['supplier_id'] . "</option>";
                                             }
                                             ?>
                                         </select>
@@ -108,7 +108,7 @@ defined('BASEPATH') or die('Access Denied');
                                 <option>-- Select Name --</option>
                                 <?php
                                 foreach ($slcctmrs as $row) {
-                                    echo "<option value='" . $row['id'] . "'>" . $row['supplier_id'] . "</option>";
+                                    echo "<option value='" . $row['po_id'] . "'>" . $row['po_id'] . "---" . $row['supplier_id'] . "</option>";
                                 }
                                 ?>
                             </select>

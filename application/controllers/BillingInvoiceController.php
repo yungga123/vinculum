@@ -85,6 +85,7 @@ class BillingInvoiceController extends CI_Controller
 			$this->load->helper('site_helper');
 			$data = html_variable();
 			$data['title'] = 'Billing Invoice Edit';
+			$data['data'] = $this->BillingInvoiceModel->display_records();
 			$data['slcctmrs'] = $slcctmrs;
 			$data['slcbrch'] = $slcbrch;
 			$data['birthdate'] = $birthdate;
@@ -92,7 +93,7 @@ class BillingInvoiceController extends CI_Controller
 
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/navbar');
-			$this->load->view('billing_invoice/billinginvoice_edit');
+			$this->load->view('billing_invoice/billinginvoice_edit', $data);
 			$this->load->view('templates/footer');
 			$this->load->view('billing_invoice/script');
 		} else {
@@ -106,6 +107,7 @@ class BillingInvoiceController extends CI_Controller
 		if ($this->session->userdata('logged_in')) {
 
 			$slcctmrs = $this->BillingInvoiceModel->billing_invoice();
+			$getbi = $this->BillingInvoiceModel->get_bi_data();
 			$slcbrch = $this->BillingInvoiceModel->billing_invoice();
 			$birthdate = $this->BillingInvoiceModel->dateneeded();
 			$duedate = $this->BillingInvoiceModel->getduedate();
@@ -117,6 +119,7 @@ class BillingInvoiceController extends CI_Controller
 			$data['slcbrch'] = $slcbrch;
 			$data['duedate'] = $duedate;
 			$data['birthdate'] = $birthdate;
+			$data['getbi'] = $getbi;
 			$data['select'] = $this->select_data();
 
 			$this->load->view('templates/header', $data);
@@ -195,4 +198,10 @@ class BillingInvoiceController extends CI_Controller
 			redirect('', 'refresh');
 		}
 	}
+
+	public function displaydata()
+  {
+      $result['data']=$this->Crud_model->display_records();
+      $this->load->view('display_records',$result);
+  }
 }
