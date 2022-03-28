@@ -24,6 +24,7 @@ class ToolsModel extends CI_Model {
 		]);
 		$this->db->from('tools');
 		$this->db->where('is_deleted', 0);
+		$this->db->where_not_in('quantity','0');
 		return $this->db->get();
 	}
 
