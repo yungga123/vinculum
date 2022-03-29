@@ -28,6 +28,32 @@ class ToolsModel extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function export_all_items() {
+
+		$this->db->select([
+			'a.code',
+			'a.model',
+			'a.description',
+			'a.type',
+			'a.quantity',
+			'a.price'
+		]);
+		$this->db->from('tools as a');
+		return $this->db->get()->result();
+	}
+
+	public function fetch_items_data_zero_stock($item_code) {
+
+		$this->db->select('*');
+		$this->db->from('tools_pullout as a');
+		$this->db->where('a.tool_code',$item_code);
+		$this->db->order_by('a.toolpullout_id','desc');
+		$this->db->limit(1);
+		$this->db->join('customer_vt as b','a.customer=b.CustomerID','left');
+
+		return $this->db->get()->result();
+	}
+
 	public function export_pullout_tools() {
 
 		$this->db->select([

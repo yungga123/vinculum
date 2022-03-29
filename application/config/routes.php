@@ -144,6 +144,7 @@ $route['tools-pullout'] = 'ToolsController/tools_pullout';
 $route['tool-return-history'] = 'ToolsController/return_history';
 $route['export-excel'] = 'ToolsController/exportTools';
 $route['export-pullout-excel'] = 'ToolsController/exportpulloutTools';
+$route['export-all-excel'] = 'ToolsController/exportAllTools';
 
 //Service Report Controller
 $route['service-report'] = 'ServiceReportController';
