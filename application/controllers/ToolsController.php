@@ -759,4 +759,60 @@ class ToolsController extends CI_Controller {
         exit;
     }
 
+	function exportAllTools()
+    {
+		$this->load->model('ToolsModel');
+        $file_name = 'toolsalldata_on' . date('Ymd') . '.csv';
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+        
+
+        // file creation 
+        $file = fopen('php://output', 'w');
+
+        $header = [
+            'Tool Code',
+			'Model',
+			'Description',
+			'Tool Type',
+			'Quantity',
+			'Price',
+			'Customer Name',
+			'Quantity'
+        ];
+        fputcsv($file, $header);
+
+		// get data 
+        $results = $this->ToolsModel->export_all_items();
+
+        foreach ($results as $row) {
+			$sub_array = array();
+			$customer = "";
+			$quantity = "";
+			
+			if($row->quantity == "0"){
+				$results1 = $this->ToolsModel->fetch_items_data_zero_stock($row->code);
+				foreach($results1 as $row1){
+					$customer = $row1->CompanyName;
+					$quantity = $row1->quantity;
+				}
+			}
+
+			$sub_array[] = $row->code;
+			$sub_array[] = $row->model;
+			$sub_array[] = $row->description;
+			$sub_array[] = $row->type;
+			$sub_array[] = $row->quantity;
+			$sub_array[] = $row->price;
+			$sub_array[] = $customer;
+			$sub_array[] = $quantity;
+
+            fputcsv($file, $sub_array);
+        }
+        fclose($file);
+        exit;
+    }
+
 }
