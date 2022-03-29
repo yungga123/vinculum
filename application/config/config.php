@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://192.168.0.90/vinculum';
+$config['base_url'] = 'http://localhost/vinculum';
 // 223.130.19.88:8080
 
 

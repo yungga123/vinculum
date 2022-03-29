@@ -39,6 +39,7 @@ class ToolsModel extends CI_Model {
 			'a.price'
 		]);
 		$this->db->from('tools as a');
+		$this->db->where('is_deleted', '0');
 		return $this->db->get()->result();
 	}
 
