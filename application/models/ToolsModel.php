@@ -30,14 +30,7 @@ class ToolsModel extends CI_Model {
 
 	public function export_all_items() {
 
-		$this->db->select([
-			'a.code',
-			'a.model',
-			'a.description',
-			'a.type',
-			'a.quantity',
-			'a.price'
-		]);
+		$this->db->select('*');
 		$this->db->from('tools as a');
 		$this->db->where('is_deleted', '0');
 		return $this->db->get()->result();
@@ -48,10 +41,10 @@ class ToolsModel extends CI_Model {
 		$this->db->select('*');
 		$this->db->from('tools_pullout as a');
 		$this->db->where('a.tool_code',$item_code);
-		$this->db->order_by('a.toolpullout_id','desc');
-		$this->db->limit(1);
+		$this->db->where('a.is_deleted','0');
+		$this->db->order_by('a.toolpullout_id','asc');
 		$this->db->join('customer_vt as b','a.customer=b.CustomerID','left');
-
+		// $this->db->limit(1);
 		return $this->db->get()->result();
 	}
 

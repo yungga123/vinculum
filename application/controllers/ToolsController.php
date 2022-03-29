@@ -766,12 +766,8 @@ class ToolsController extends CI_Controller {
         header("Content-Description: File Transfer");
         header("Content-Disposition: attachment; filename=$file_name");
         header("Content-Type: application/csv;");
-
-        
-
         // file creation 
         $file = fopen('php://output', 'w');
-
         $header = [
             'Tool Code',
 			'Model',
@@ -783,22 +779,14 @@ class ToolsController extends CI_Controller {
 			'Quantity'
         ];
         fputcsv($file, $header);
-
 		// get data 
         $results = $this->ToolsModel->export_all_items();
+		$code = "";
 
         foreach ($results as $row) {
+			$results1 = $this->ToolsModel->fetch_items_data_zero_stock($row->code);
+			$count = count($results1);
 			$sub_array = array();
-			$customer = "";
-			$quantity = "";
-			
-			if($row->quantity == "0"){
-				$results1 = $this->ToolsModel->fetch_items_data_zero_stock($row->code);
-				foreach($results1 as $row1){
-					$customer = $row1->CompanyName;
-					$quantity = $row1->quantity;
-				}
-			}
 
 			$sub_array[] = $row->code;
 			$sub_array[] = $row->model;
@@ -806,10 +794,56 @@ class ToolsController extends CI_Controller {
 			$sub_array[] = $row->type;
 			$sub_array[] = $row->quantity;
 			$sub_array[] = $row->price;
-			$sub_array[] = $customer;
-			$sub_array[] = $quantity;
 
-            fputcsv($file, $sub_array);
+			if($row->quantity == "0"){
+				if($count > 1){
+					// display more than 1 data of pulled out items
+					foreach($results1 as $row1){
+						$sub_array[] = $row1->CompanyName;
+						$sub_array[] = $row1->quantity;
+						fputcsv($file, $sub_array);
+						$sub_array = array();
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+					}
+				}
+				else{
+					foreach($results1 as $row1){
+						$sub_array[] = $row1->CompanyName;
+						$sub_array[] = $row1->quantity;	
+					}
+					fputcsv($file, $sub_array);
+				}
+			}
+			else{
+				if($count > 0){
+					// display more than 1 data of pulled out items
+					foreach($results1 as $row1){
+						$sub_array[] = $row1->CompanyName;
+						$sub_array[] = $row1->quantity;
+						fputcsv($file, $sub_array);
+						$sub_array = array();
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+					}
+				}
+				else{
+					foreach($results1 as $row1){
+						$sub_array[] = $row1->CompanyName;
+						$sub_array[] = $row1->quantity;
+					}
+					fputcsv($file, $sub_array);
+				}
+				
+			}
         }
         fclose($file);
         exit;
