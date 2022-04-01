@@ -30,7 +30,7 @@ class ItemsModel extends CI_Model {
 		$this->db->select("itemCode,itemName,item_brand,item_size,itemType,itemSupplierPrice,itemPrice,project_price,stocks,DATE_FORMAT(date_of_purchase, '%b %d, %Y') as date_of_purchase,location,supplier,encoder");
 		$this->db->from("items");
 		$this->db->where("itemType",$itemType);
-		$this->db->where_not_in("stocks","0");
+		// $this->db->where_not_in("stocks","0");
 		$this->db->order_by("itemName","asc");
 		return $this->db->get()->result_array();
 	}
