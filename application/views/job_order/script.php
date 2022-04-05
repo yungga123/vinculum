@@ -102,6 +102,8 @@ if ($this->uri->segment(1) == 'joborder-list') {
             +           '<?php foreach($joborder_scheduled_data as $row): ?>'
             +           '<option value="<?php echo $row->id ?>">' + '<?php echo $row->lastname.", ".$row->firstname." ".$row->middlename ?>' + '</option>'
             +           '<?php endforeach ?>'
+            +           '<option value="newpic1"> RAMOS, ANDY </option>'
+            +           '<option value="newpic2"> DIAGAN, JOMAR </option>'
             +       '</select>'
             +   '</div>');
             

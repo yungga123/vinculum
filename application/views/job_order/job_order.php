@@ -549,6 +549,8 @@ elseif($form_id="edit-form"){
                                                 <?php foreach($joborder_scheduled_data as $row): ?>
                                                     <option value="<?php echo $row->id ?>" <?php if ($joborder_data_edit_result['joborder_pic_edit'] == $row->id) { echo 'selected';} ?> ><?php echo $row->lastname.", ".$row->firstname." ".$row->middlename ?></option>
                                                 <?php endforeach ?>
+                                                <option value="newpic1" <?php if($joborder_data_edit_result['joborder_pic_edit'] == "newpic1") echo 'selected'; ?>> RAMOS, ANDY </option>
+                                                <option value="newpic2" <?php if($joborder_data_edit_result['joborder_pic_edit'] == "newpic2") echo 'selected'; ?>> DIAGAN, JOMAR </option>
                                             </select>
                                             <small id="requestor_help" class="text-muted">Must be registered first to employee list.</small>
                                         </div>
