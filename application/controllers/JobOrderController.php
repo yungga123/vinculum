@@ -679,15 +679,21 @@ class JobOrderController extends CI_Controller
 			else{
 				$id = $row->pic;
 
-				if($id != ""){
+				if($id == ""){
+					$sub_array[] = "";
+				}
+				elseif($id == "newpic1"){
+					$sub_array[] = "Ramos, Andy";
+				}
+				elseif($id == "newpic2"){
+					$sub_array[] = "Diagan, Jomar";
+				}
+				else{
 					$result = $this->JobOrderModel->pic_data($id);
 					foreach($result as $row){
 						$pic = $row->lastname.", ".$row->firstname." ".$row->middlename;
 						$sub_array[] = $pic;
 					}
-				}
-				else{
-					$sub_array[] = "";
 				}
 			}
 

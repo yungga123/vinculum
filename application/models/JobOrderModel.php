@@ -265,10 +265,13 @@ class JobOrderModel extends CI_Model {
 		
 		$this->db->select("*");
 		$this->db->from('technicians');
-		$this->db->where('position',$ITposition);
-        $this->db->or_where('position',$ENGRposition);
-        $this->db->or_where('position',$IITposition);
-        $this->db->or_where('position',$ITHeadposition);
+        
+        $this->db->where('position',$ITposition);
+        $this->db->where_not_in('status','Resigned');
+        $this->db->or_where_in('position',$ENGRposition);
+        $this->db->or_where_in('position',$IITposition);
+        // $this->db->or_where_in('position',$ITHeadposition);
+        
 		return $this->db->get()->result();
 
         }
