@@ -116,7 +116,7 @@ defined('BASEPATH') or die('Access Denied');
                                             </select>
                                         </div>
                                         <div class="col-sm-1">
-                                            <input type="text" name="indirect_item_qty[]" class="form-control" value="<?php echo $row1->item_qty; ?>" readonly>
+                                            <input type="text" name="indirect_item_qty[]" class="form-control" value="<?php echo $row1->stock_available; ?>" readonly>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="text" name="indirect_consumed_qty[]" class="form-control" value="<?php echo $row1->consumed_qty ?>">
@@ -184,7 +184,7 @@ defined('BASEPATH') or die('Access Denied');
                                             </select>
                                         </div>
                                         <div class="col-sm-1">
-                                            <input type="text" name="direct_item_qty[]" class="form-control" value="<?php echo $row1->item_qty; ?>" readonly>
+                                            <input type="text" name="direct_item_qty[]" class="form-control" value="<?php echo $row1->stock_available; ?>" readonly>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="text" name="direct_consumed_qty[]" class="form-control" value="<?php echo $row1->consumed_qty ?>">
@@ -252,7 +252,7 @@ defined('BASEPATH') or die('Access Denied');
                                             </select>
                                         </div>
                                         <div class="col-sm-1">
-                                            <input type="text" name="tools_item_qty[]" class="form-control" value="<?php echo $row1->item_qty; ?>" readonly>
+                                            <input type="text" name="tools_item_qty[]" class="form-control" value="<?php echo $row1->stock_available; ?>" readonly>
                                         </div>
                                         <div class="col-sm-1">
                                             <input type="text" name="tools_consumed_qty[]" class="form-control" value="<?php echo $row1->consumed_qty ?>">
