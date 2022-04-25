@@ -22,7 +22,10 @@ defined('BASEPATH') or die('Access Denied');
 					<div class="card">
 						<div class="card-header">
 							Vendor Details
-							<a href="<?php echo site_url('vendor-add') ?>" class="btn btn-success float-right"> <i class="fas fa-plus"></i> ADD VENDOR</a>
+							<div class="float-right">
+							<a href="<?php echo site_url('vendor-add') ?>" class="btn btn-success"> <i class="fas fa-plus"></i> ADD VENDOR</a>
+							<a href="<?php echo site_url('vendor-export') ?>" class="btn btn-danger"> <i class="fas fa-excel"></i> EXPORT TO EXCEL</a>
+							</div>
 						</div>
 						<div class="card-body">
 							<div class="col-sm-12">

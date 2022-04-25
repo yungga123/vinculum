@@ -135,6 +135,26 @@ class VendorModel extends CI_Model {
 		$this->db->limit(1);
 		return $this->db->get()->result();
 	}
+
+	public function ExportVendorList(){
+		$this->db->select('*');
+		$this->db->from('vendor');
+		$this->db->where('is_deleted','0');
+		$this->db->order_by('id','desc');
+
+		return $this->db->get()->result();
+	}
+
+	public function ExportBrandList($vendor_id){
+		$this->db->select('*');
+		$this->db->from('vendor_brand');
+		$this->db->where('brand_id', $vendor_id);
+		$this->db->order_by('id','desc');
+
+		return $this->db->get()->result();
+	}
+
+	
 	//*****************SERVER SIDE VALIDATION FOR DATATABLE*********************
 	var $table = "vendor as a";
 	var $join_table = "vendor_brand as b";
@@ -162,6 +182,8 @@ class VendorModel extends CI_Model {
 		"a.supplier_ranking",
         "a.date"	
 	);
+
+
 	//*****************end*********************
 	
 }

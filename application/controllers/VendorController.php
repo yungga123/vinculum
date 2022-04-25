@@ -560,4 +560,196 @@ class VendorController extends CI_Controller {
 		}
         echo json_encode($validate);
     }
+
+	// Export to CSV ( must be in result->array() )
+	function exportvendorlist()
+	{
+		$file_name = 'Vendor_List_' . date('Ymd') . '.csv';
+		header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Type: application/csv;");
+
+		// file creation 
+		$file = fopen('php://output', 'w');
+
+		$header = [
+			'ID',
+			'VENDOR CODE',
+			'NAME',
+			'ADDRESS',
+			'VENDOR CATEGORY',
+			'VENDOR CONTACT NUMBER',
+			'CONTACT PERSON',
+			'VENDOR EMAIL ADDRESS',
+			'TECHNICAL PERSON',
+			'TECHNICAL CONTACT',
+			'TECHNICAL EMAIL',
+			'SUPPLIER RANKING',
+			'INDUSTRY CLASSIFICATION',
+			'TERMS AND CONDITION',
+			'DATE OF PARTNERSHIP',
+			'BANK NAME',
+			'ACCOUNT NAME',
+			'ACCOUNT NUMBER',
+			'BRAND NAME',
+			'PRODUCTS',
+			'BRAND CONTACT PERSON',
+			'BRAND CONTACT NUMBER',
+			'BRAND EMAIL ADDRESS',
+			'BRAND TECHNICAL PERSON',
+			'BRAND TECHNICAL CONTACT PERSON',
+			'BRAND TECHNICAL EMAIL',
+			'BRAND CLASSIFICATION LEVEL',
+			'BRAND RANKING'
+		];
+		fputcsv($file, $header);
+
+		// get data
+		$results = $this->VendorModel->ExportVendorList();
+		$name = "";
+		$loop_id = 0;
+		foreach ($results as $row) {
+			$vendor_id = $row->id;
+
+			$sub_array = array();
+
+			$sub_array[] = $row->id;
+			$sub_array[] = $row->vendor_code;
+			$sub_array[] = $row->name;
+			$sub_array[] = $row->address;
+			$sub_array[] = $row->vendor_category;
+		
+			// REPLACING CHARACTERS
+			$replace = array(
+				'+63' => '0'
+				);
+
+			$vendor_contact_number = $this->strReplaceAssoc($replace, $row->contact_number);
+
+			$sub_array[] = $vendor_contact_number;
+			$sub_array[] = $row->contact_person;
+			$sub_array[] = $row->email;
+			$sub_array[] = $row->vendor_technical_person;
+			$sub_array[] = $row->vendor_technical_contact;
+			$sub_array[] = $row->vendor_technical_email;
+			// $sub_array[] = $row->supplier_ranking;
+
+			if($row->supplier_ranking == "AA"){
+				$sub_array[] = "Rank 1";
+			}
+			elseif($row->supplier_ranking == "BB"){
+				$sub_array[] = "Rank 2";
+			}
+			elseif($row->supplier_ranking == "CC"){
+				$sub_array[] = "Rank 3";
+			}
+			elseif($row->supplier_ranking == "DD"){
+				$sub_array[] = "Rank 4";
+			}
+			elseif($row->supplier_ranking == "EE"){
+				$sub_array[] = "Rank 5";
+			}
+
+			$sub_array[] = $row->industry_classification;
+			// $sub_array[] = $row->terms_and_condition;
+
+			if($row->terms_and_condition == "00"){
+				$sub_array[] = "COD/CASH";
+			}
+			elseif($row->terms_and_condition == "01"){
+				$sub_array[] = "Date Check";
+			}
+			elseif($row->terms_and_condition == "02"){
+				$sub_array[] = "7 Days";
+			}
+			elseif($row->terms_and_condition == "03"){
+				$sub_array[] = "15 Days";
+			}
+			elseif($row->terms_and_condition == "04"){
+				$sub_array[] = "30 Days";
+			}
+			elseif($row->terms_and_condition == "05"){
+				$sub_array[] = "45 Days";
+			}
+			elseif($row->terms_and_condition == "06"){
+				$sub_array[] = "60 Days";
+			}
+			elseif($row->terms_and_condition == "07"){
+				$sub_array[] = "90 Days";
+			}
+			elseif($row->terms_and_condition == "08"){
+				$sub_array[] = "21 Days";
+			}
+			elseif($row->terms_and_condition == "09"){
+				$sub_array[] = "3 Days";
+			}
+			elseif($row->terms_and_condition == "10"){
+				$sub_array[] = "5 Days";
+			}
+
+			$sub_array[] = date_format(date_create($row->date), 'F d, Y');
+			$sub_array[] = $row->vendor_bank_name;
+			$sub_array[] = $row->vendor_account_name;
+			$sub_array[] = $row->vendor_account_number;
+			
+
+			$brand_results = $this->VendorModel->ExportBrandList($vendor_id);
+			$count = count($brand_results);
+			$brand_id = "";
+			foreach($brand_results as $row1){
+				if($count > 1){
+					if($brand_id == $row1->brand_id){
+						$sub_array = array();
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+						$sub_array[] = "";
+					}
+					$sub_array[] = $row1->brand_name;
+					$sub_array[] = $row1->products;
+					$sub_array[] = $row1->brand_contact_person;
+					$sub_array[] = $row1->brand_contact_number;
+					$sub_array[] = $row1->brand_email;
+					$sub_array[] = $row1->brand_technical_person;
+					$sub_array[] = $row1->brand_technical_contact;
+					$sub_array[] = $row1->brand_technical_email;
+					$sub_array[] = $row1->classification_level;
+					$sub_array[] = $row1->ranking;
+					fputcsv($file, $sub_array);
+				}else{
+					$sub_array[] = $row1->brand_name;
+					$sub_array[] = $row1->products;
+					$sub_array[] = $row1->brand_contact_person;
+					$sub_array[] = $row1->brand_contact_number;
+					$sub_array[] = $row1->brand_email;
+					$sub_array[] = $row1->brand_technical_person;
+					$sub_array[] = $row1->brand_technical_contact;
+					$sub_array[] = $row1->brand_technical_email;
+					$sub_array[] = $row1->classification_level;
+					$sub_array[] = $row1->ranking;
+					fputcsv($file, $sub_array);	
+				}
+				$brand_id = $row1->brand_id;
+			}
+			
+		}
+		fclose($file);
+
+
+		exit;
+	}
 }

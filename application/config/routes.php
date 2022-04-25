@@ -193,6 +193,7 @@ $route['requisition-generate-po'] = 'RequisitionFormController/requistion_genera
 $route['vendor-database'] = 'VendorController';
 $route['vendor-update/(:any)'] = 'VendorController/Vendor_Update/$1';
 $route['vendor-add'] = 'VendorController/Vendor_Add';
+$route['vendor-export'] = 'VendorController/exportvendorlist';
 
 //Sales Inquiry
 $route['inquiry-tempo-clients/(:any)'] = 'SalesInquiryController/new_client_list/$1';
