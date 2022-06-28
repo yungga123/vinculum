@@ -262,6 +262,7 @@ class JobOrderModel extends CI_Model {
         $ENGRposition = 'TECHNICAL SUPPORT ENGINEER';
         $IITposition = 'Internal IT Support';
         $ITHeadposition = 'IT Support Head';
+        $PICposition = 'PROJECT IN-CHARGE';
 		
 		$this->db->select("*");
 		$this->db->from('technicians');
@@ -270,6 +271,7 @@ class JobOrderModel extends CI_Model {
         $this->db->where_not_in('status','Resigned');
         $this->db->or_where_in('position',$ENGRposition);
         $this->db->or_where_in('position',$IITposition);
+        $this->db->or_where_in('position',$PICposition);
         // $this->db->or_where_in('position',$ITHeadposition);
         
 		return $this->db->get()->result();
