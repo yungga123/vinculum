@@ -258,20 +258,23 @@ class JobOrderModel extends CI_Model {
         }
 
         public function joborder_scheduled_data(){
-        $ITposition = 'Field IT Support';
+        $FITposition = 'Field IT Support';
         $ENGRposition = 'TECHNICAL SUPPORT ENGINEER';
         $IITposition = 'Internal IT Support';
+        $ITposition = 'IT Support';
         $ITHeadposition = 'IT Support Head';
         $PICposition = 'PROJECT IN-CHARGE';
 		
 		$this->db->select("*");
 		$this->db->from('technicians');
         
-        $this->db->where('position',$ITposition);
+        $this->db->where('position',$FITposition);
         $this->db->where_not_in('status','Resigned');
+        $this->db->where_not_in('status','Terminated');
         $this->db->or_where_in('position',$ENGRposition);
         $this->db->or_where_in('position',$IITposition);
         $this->db->or_where_in('position',$PICposition);
+        $this->db->or_where_in('position',$ITposition);
         // $this->db->or_where_in('position',$ITHeadposition);
         
 		return $this->db->get()->result();
