@@ -337,8 +337,8 @@ foreach ($results as $row) {
 
 				<div class="col-2 text-center">
 					<p style="font-weight: bold">Checked By:</p>
-					<p><u>Marvin Lucas</u><br> 
-					General Manager</p>
+					<p><u>Jenina Gaceta</u><br> 
+					Human Resource</p>
 				</div>
 
 			</div>
