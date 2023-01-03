@@ -47,8 +47,7 @@ if ($this->uri->segment(2) == 'pending') {
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9 text-bold">
-                    <div class="card">
+                <div class="col-sm-9 text-bold">                    <div class="card">
                         <div class="card-header">
                             <?php echo $page_title ?>
                         </div>
