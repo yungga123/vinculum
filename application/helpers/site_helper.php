@@ -81,7 +81,7 @@ if(!function_exists('html_variable')) {
 			'hr_status' => '',
 
 			'leaves' => '',
-			'li_accounts' => '',
+
 			'sales_tree_status' => '',
 
 

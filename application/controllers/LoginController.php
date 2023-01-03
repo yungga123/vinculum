@@ -47,7 +47,7 @@ class LoginController extends CI_Controller
 	function confirm_pw($password){
 
 		$this->load->model('AccountsModel', 'login');
-		$this->load->model('AccountsModel');
+
 		$username = $this->input->post('username');
 		$result = $this->login->checkUser($username,$password);
 		if($result){
@@ -196,32 +196,6 @@ class LoginController extends CI_Controller
 
 	}
 
-	function create_user($username) {
-		$this->load->model('AccountsModel');
-		$result = $this->AccountsModel->checkusername($username);
-
-		if ($result) {
-			$this->form_validation->set_message('create_user', 'Username is Existing.');
-			return false;
-		} else {
-			return true;
-		}
-
-	}
-
-	function validate_employee_id($employee_id) {
-		$this->load->model('AccountsModel');
-		$result = $this->AccountsModel->checkemployeeid($employee_id);
-
-		if ($result) {
-			$this->form_validation->set_message('validate_employee_id', 'Employee Already registered');
-			return false;
-		} else {
-			return true;
-		}
-
-	}
-
 	function change_pass_validate() {
 		$rules = [
 			[
@@ -290,70 +264,6 @@ class LoginController extends CI_Controller
 
 	public function startpage() {
 		$this->load->view('startpage');
-	}
-
-	function create_account_validate() {
-		$rules = [
-			[
-				'field' => 'CreateAccount_id',
-				'label' => 'Employee ID',
-				'rules' => 'trim|required|alpha_numeric|min_length[6]|callback_validate_employee_id',
-				'errors' => [
-					'required' => 'Please provide Employee ID',
-					'alpha_numeric' => 'Employee ID only provides alpha numeric characters.'
-				]
-			],
-			[
-				'field' => 'CreateAccount_username',
-				'label' => 'Username',
-				'rules' => 'trim|required|alpha_dash|max_length[20]|min_length[4]|callback_create_user',
-				'errors' => [
-					'required' => 'Please provide Username'
-				]
-			],
-			[
-				'field' => 'CreateAccount_password',
-				'label' => 'Password',
-				'rules' => 'trim|required|max_length[20]|alpha_dash|min_length[4]',
-				'errors' => [
-					'required' => 'Please provide Password.'
-				]
-			],
-			[
-				'field' => 'CreateAccount_confirmpassword',
-				'label' => 'Confirm Password',
-				'rules' => 'trim|required|max_length[20]|alpha_dash|min_length[4]|matches[CreateAccount_password]',
-				'errors' => [
-					'required' => 'Please provide Confirm Password Field.',
-					'matches' => 'Password does not match.'
-				]
-			]
-		];
-
-		$this->form_validation->set_error_delimiters('<p>• ','</p>');
-
-		$this->form_validation->set_rules($rules);
-
-		if ($this->form_validation->run()) {
-			$validate['success'] = true;
-
-			$this->load->model('AccountsModel');
-
-			$data = [
-				'emp_id' => $this->input->post('CreateAccount_id'),
-				'username' => $this->input->post('CreateAccount_username'),
-				'password' => $this->input->post('CreateAccount_password'),
-				'class' => '0',
-				'status' => 'pending'
-
-			];
-
-			$this->AccountsModel->CreateAccount($data);
-		} 
-		else {
-			$validate['errors'] = validation_errors();
-		}
-		echo json_encode($validate);
 	}
 
 }
