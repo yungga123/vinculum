@@ -627,9 +627,18 @@ $total = $approved_count + $disapproved_count;
 
 								<li class="nav-item">
 									<a href="<?php echo site_url('filed-leaves/pending') ?>" class="nav-link<?php echo $leaves ?>">
-										<i class="nav-icon fas fa-user-shield"></i>
+										<i class="nav-icon fas fa-file"></i>
 										<p>
 											Filed Leaves
+										</p>
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a href="<?php echo site_url('accounts') ?>" class="nav-link<?php echo $li_accounts ?>">
+										<i class="nav-icon fas fa-user-shield"></i>
+										<p>
+											Accounts
 										</p>
 									</a>
 								</li>
